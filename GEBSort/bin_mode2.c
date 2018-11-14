@@ -23,9 +23,7 @@
 #include "GEBSort.h"
 #include "GTMerge.h"
 
-
 #define MAXPAD 1024
-
 
 float egamBinWidth;
 

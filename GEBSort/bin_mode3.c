@@ -215,16 +215,13 @@ sup_mode3 ()
 
 
 // = new TCUT("eftof");
-
- TFile *g = new TFile("ede1b.root","read");
-
- z1 = (TCutG*) g->Get("z1");
- z2 = (TCutG*) g->Get("z2");
- z3 = (TCutG*) g->Get("z3");
- z4 = (TCutG*) g->Get("z4");
- z5 = (TCutG*) g->Get("z5");
-
- g->Close();
+/* TFile *g = new TFile("ede1b.root","read"); */
+/* z1 = (TCutG*) g->Get("z1"); */
+/* z2 = (TCutG*) g->Get("z2"); */
+/* z3 = (TCutG*) g->Get("z3"); */
+/* z4 = (TCutG*) g->Get("z4"); */
+/* z5 = (TCutG*) g->Get("z5"); */
+/* g->Close(); */
 
   return (0);
 
@@ -583,149 +580,122 @@ bin_mode3 (GEB_EVENT * GEB_event)
                 };
 
               /* extract LED external time, per documentation, works */
-
+	      
               Event.LEDts = (unsigned long long int) Event.hdr[2] +
                 ((unsigned long long int) Event.hdr[3] << 16) + ((unsigned long long int) Event.hdr[4] << 32);
               if (Pars.CurEvNo <= Pars.NumToPrint)
                 printf ("Event.LEDts = %20lli\n", Event.LEDts);
-
+	      
               /* extract CFD external time, per documentation, seems odd...not working? */
-
+	      
               Event.CFDts = (unsigned long long int) Event.hdr[7] +
                 ((unsigned long long int) Event.hdr[8] << 16) + ((unsigned long long int) Event.hdr[9] << 32);
               if (Pars.CurEvNo <= Pars.NumToPrint)
                 printf ("Event.CFDts = %20lli\n", Event.CFDts);
-
-
-     if ((Event.module_id==31)&&(Event.chan_id==0)) { h1_chan0->Fill(Event.ehi); right=Event.ehi; h1_right->Fill(right); };
-      if ((Event.module_id==31)&&(Event.chan_id==1)) { up=Event.ehi; h1_up->Fill(up); }
-      if ((Event.module_id==31)&&(Event.chan_id==2)) { de3=Event.ehi; h1_de3->Fill(de3); };
-      if ((Event.module_id==31)&&(Event.chan_id==3)) { left=Event.ehi; h1_left->Fill(left); ppacts=Event.LEDts; };
-      if ((Event.module_id==31)&&(Event.chan_id==5)) { down=Event.ehi; h1_down->Fill(down); };
-      if ((Event.module_id==31)&&(Event.chan_id==6)) { de1=Event.ehi; h1_de1->Fill(de1); };
-      if ((Event.module_id==31)&&(Event.chan_id==7)) { de2=Event.ehi; h1_de2->Fill(de2); };
-      if ((Event.module_id==31)&&(Event.chan_id==9)) { rftof=Event.ehi; h1_rftof->Fill(rftof); };
-
-    if (Event.module_id==31) h2_chan->Fill(Event.ehi,Event.chan_id);
-    h1_module_id->Fill(Event.module_id);
-
+	      
+	      
+	      if ((Event.module_id==31)&&(Event.chan_id==0)) { h1_chan0->Fill(Event.ehi); right=Event.ehi; h1_right->Fill(right); };
+	      if ((Event.module_id==31)&&(Event.chan_id==1)) { up=Event.ehi; h1_up->Fill(up); }
+	      if ((Event.module_id==31)&&(Event.chan_id==2)) { de3=Event.ehi; h1_de3->Fill(de3); };
+	      if ((Event.module_id==31)&&(Event.chan_id==3)) { left=Event.ehi; h1_left->Fill(left); ppacts=Event.LEDts; };
+	      if ((Event.module_id==31)&&(Event.chan_id==5)) { down=Event.ehi; h1_down->Fill(down); };
+	      if ((Event.module_id==31)&&(Event.chan_id==6)) { de1=Event.ehi; h1_de1->Fill(de1); };
+	      if ((Event.module_id==31)&&(Event.chan_id==7)) { de2=Event.ehi; h1_de2->Fill(de2); };
+	      if ((Event.module_id==31)&&(Event.chan_id==9)) { rftof=Event.ehi; h1_rftof->Fill(rftof); };
+	      
+	      if (Event.module_id==31) h2_chan->Fill(Event.ehi,Event.chan_id);
+	      h1_module_id->Fill(Event.module_id);
+	      
             };                  /* while (pos<=GEB_event->ptgd[ii]->length) */
-
-
         };                      /* if(GEB_event->ptgd[ii]->type == GEB_TYPE_RAW) */
-
-
- 
-
- 
-
     };
-
-
-
-      h2_lr->Fill(left, right);
-      h2_ud->Fill(up, down);
   
-      if ((left>0)&&(right>0)) {
-        sumlr=left+right;
-        h1_sumlr->Fill(sumlr);
-        x=left-right+5000;
-        h1_x->Fill(x);
-      };
-
-      if ((up>0)&&(down>0)) {
-        sumud=up+down;
-        h1_sumud->Fill(sumud);
-        y=up-down+5000;
-        h1_y->Fill(y);
-      };
-
-
-      if ((de1>0)&&(de2>0)&&(de3>0)) {
-	etot=de1+de3;
-        de12=de1+de2;
-        h2_ede1->Fill(etot,de1);
-        h2_ede2->Fill(etot,de2);
-        h2_ede12->Fill(etot,de12);
-        h1_de12->Fill(de12);
-        h1_etot->Fill(etot);
-        h2_xde1->Fill(x,de1);
-      };
-
-    h2_erftof->Fill(etot, rftof);
-
-    if (de1>1400) h2_erftofg->Fill(etot, rftof);
-
-    for (i=0; i<nCCenergies; i++) {
-      //printf ("---CCenergies[%i]=%7.2f\n", i, CCenergies[i]);
-      h1_sumehi->Fill(CCenergies[i]);
-    };
-
-    h1_ng->Fill(nCCenergies);
-
-   
-    for (i=0; i<nCCenergies; i++) {
-       tgppac=CCtimestamps[i]-Event.LEDts;
-       h1_tgppac->Fill(tgppac);
-       h2_xehi1->Fill(x, CCenergies[i]);
-       h2_de1ehi->Fill(de1, CCenergies[i]);
-       if ((tgppac>-80)&&(tgppac<-40)) {
-         h2_ede1g->Fill(etot,de1);
-	 //if ((de1>1200)&&(de2>10)&&(de3>10)) {
-         h1_tgppacg->Fill(tgppac);
-         h2_xehi1g->Fill(x, CCenergies[i]);
-         h2_de1ehig->Fill(de1, CCenergies[i]);
- 
-         if (z1->IsInside(etot,de1)) {h1_ehiz1->Fill(CCenergies[i]);};
-         if (z2->IsInside(etot,de1)) {h1_ehiz2->Fill(CCenergies[i]);};
-         if (z3->IsInside(etot,de1)) {h1_ehiz3->Fill(CCenergies[i]);};
-         if (z4->IsInside(etot,de1)) {h1_ehiz4->Fill(CCenergies[i]);};
-         if (z5->IsInside(etot,de1)) {h1_ehiz5->Fill(CCenergies[i]);};
-
-	 //};
-	if (nCCenergies > 1){
-		for (int j=0; j<i; j++){
-			h1_gg_dt->Fill(CCtimestamps[i] - CCtimestamps[j]);
-				//if (CCtimestamps[i] - CCtimestamps[j] > -40 && CCtimestamps[i] - CCtimestamps[j] < 40){
-					h2_gg->Fill(CCenergies[i], CCenergies[j]);
-					h2_gg->Fill(CCenergies[j], CCenergies[i]);
-         				if (z1->IsInside(etot,de1)) {
-						h2_gg_z1->Fill(CCenergies[i], CCenergies[j]);
-						h2_gg_z1->Fill(CCenergies[j], CCenergies[i]);
-					}
-         				if (z2->IsInside(etot,de1)) {
-						h2_gg_z2->Fill(CCenergies[i], CCenergies[j]);
-						h2_gg_z2->Fill(CCenergies[j], CCenergies[i]);
-					}
-         				if (z3->IsInside(etot,de1)) {
-						h2_gg_z3->Fill(CCenergies[i], CCenergies[j]);
-						h2_gg_z3->Fill(CCenergies[j], CCenergies[i]);
-					}
-         				if (z4->IsInside(etot,de1)) {
-						h2_gg_z4->Fill(CCenergies[i], CCenergies[j]);
-						h2_gg_z4->Fill(CCenergies[j], CCenergies[i]);
-					}
-         				if (z5->IsInside(etot,de1)) {
-						h2_gg_z5->Fill(CCenergies[i], CCenergies[j]);
-						h2_gg_z5->Fill(CCenergies[j], CCenergies[i]);
-					}
-
-				//}
-		}
+  
+  
+  h2_lr->Fill(left, right);
+  h2_ud->Fill(up, down);
+  
+  if ((left>0)&&(right>0)) {
+    sumlr=left+right;
+    h1_sumlr->Fill(sumlr);
+    x=left-right+5000;
+    h1_x->Fill(x);
+  };
+  
+  if ((up>0)&&(down>0)) {
+    sumud=up+down;
+    h1_sumud->Fill(sumud);
+    y=up-down+5000;
+    h1_y->Fill(y);
+  };
+  
+  
+  if ((de1>0)&&(de2>0)&&(de3>0)) {
+    etot=de1+de3;
+    de12=de1+de2;
+    h2_ede1->Fill(etot,de1);
+    h2_ede2->Fill(etot,de2);
+    h2_ede12->Fill(etot,de12);
+    h1_de12->Fill(de12);
+    h1_etot->Fill(etot);
+    h2_xde1->Fill(x,de1);
+  };
+  
+  h2_erftof->Fill(etot, rftof);
+  
+  if (de1>1400) h2_erftofg->Fill(etot, rftof);
+  
+  for (i=0; i<nCCenergies; i++) {
+    //printf ("---CCenergies[%i]=%7.2f\n", i, CCenergies[i]);
+    h1_sumehi->Fill(CCenergies[i]);
+  };
+  
+  h1_ng->Fill(nCCenergies);
+  
+  
+  for (i=0; i<nCCenergies; i++) {
+    tgppac=CCtimestamps[i]-Event.LEDts;
+    h1_tgppac->Fill(tgppac);
+    h2_xehi1->Fill(x, CCenergies[i]);
+    h2_de1ehi->Fill(de1, CCenergies[i]);
+    if ((tgppac>-80)&&(tgppac<-40)) {
+      h2_ede1g->Fill(etot,de1);
+      //if ((de1>1200)&&(de2>10)&&(de3>10)) {
+      h1_tgppacg->Fill(tgppac);
+      h2_xehi1g->Fill(x, CCenergies[i]);
+      h2_de1ehig->Fill(de1, CCenergies[i]);
+      
+      /* if (z1->IsInside(etot,de1)) {h1_ehiz1->Fill(CCenergies[i]);}; */
+      /* if (z2->IsInside(etot,de1)) {h1_ehiz2->Fill(CCenergies[i]);}; */
+      /* if (z3->IsInside(etot,de1)) {h1_ehiz3->Fill(CCenergies[i]);}; */
+      /* if (z4->IsInside(etot,de1)) {h1_ehiz4->Fill(CCenergies[i]);}; */
+      /* if (z5->IsInside(etot,de1)) {h1_ehiz5->Fill(CCenergies[i]);}; */
+      
+      //};
+      if (nCCenergies > 1){
+	for (int j=0; j<i; j++){
+	  h1_gg_dt->Fill(CCtimestamps[i] - CCtimestamps[j]);
+	  //if (CCtimestamps[i] - CCtimestamps[j] > -40 && CCtimestamps[i] - CCtimestamps[j] < 40){
+	  h2_gg->Fill(CCenergies[i], CCenergies[j]);
+	  h2_gg->Fill(CCenergies[j], CCenergies[i]);
+	  //	if (z1->IsInside(etot,de1)) {
+	  //		h2_gg_z1->Fill(CCenergies[i], CCenergies[j]);
+	  //		h2_gg_z1->Fill(CCenergies[j], CCenergies[i]);
+	  //	}
+	  
+	  //}
 	}
-     };
+      }
     };
-
-
-
-
- nCCenergies=0;
-
+  };
+   
+  nCCenergies=0;
+  
   /* done */
-
+  
   if (Pars.CurEvNo <= Pars.NumToPrint)
     printf ("exit bin_mode3\n");
-
+  
   return (0);
-
+  
 }
