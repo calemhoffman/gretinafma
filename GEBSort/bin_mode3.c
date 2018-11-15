@@ -22,6 +22,7 @@
 #include "veto_pos.h"
 #include "GEBSort.h"
 #include "GTmode3.h"
+#include "bin_mode3.h"
 
 #define MAXINT   2147483647
 
@@ -69,6 +70,9 @@ TH1D *h1_ehiz1,  *h1_ehiz2,   *h1_ehiz3,  *h1_ehiz4,  *h1_ehiz5;
 TH1D *h1_gg_dt;
 TH2F *h2_gg, *h2_gg_z1, *h2_gg_z2, *h2_gg_z3, *h2_gg_z4, *h2_gg_z5;
 
+/* CRH ADDING TTREE */
+extern TTree *tree;
+evtList* el = new evtList(1000);
 
 /* ----------------------------------------------------------------- */
 
@@ -79,6 +83,11 @@ sup_mode3 ()
 
   char str1[STRLEN], str2[STRLEN];
   int i;
+
+  /* CRH MAKE TTREE */
+  tree = new TTree("tree","tree");
+  //Branches
+  tree->Branch("runNumber",&el->runNumber,"runNumber/I");//evt defined in .h
 
   TH1D *mkTH1D (char *, char *, int, double, double);
   TH2F *mkTH2F (char *, char *, int, double, double, int, double, double);
@@ -690,7 +699,9 @@ bin_mode3 (GEB_EVENT * GEB_event)
   };
    
   nCCenergies=0;
-  
+
+  /* CRH ADD TTREE */
+  el->runNumber = 10;
   /* done */
   
   if (Pars.CurEvNo <= Pars.NumToPrint)

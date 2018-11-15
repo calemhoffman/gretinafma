@@ -1,6 +1,7 @@
 
 /* sorter for data from the GEB tab (or a file) */
 /* totally universal in its scope */
+#include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
@@ -3044,19 +3045,15 @@ GEBacq (char *ChatFileName)
               if (Pars.echo_data)
                 echo_data (&GEB_event);
 
-
               /* bin GT mode 2 data  (== decomposed data) */
 
               if (Pars.do_bin_mode2 == 1)
                 bin_mode2 (&GEB_event);
 
-
               /* bin GT mode 3 data  (== raw data with traces) */
 
               if (Pars.do_bin_mode3 == 1)
                 bin_mode3 (&GEB_event);
-
-
 
               /* bin mode 1 data (==tracked data) */
 
@@ -3098,14 +3095,18 @@ GEBacq (char *ChatFileName)
 
               if (Pars.do_bin_final == 1)
                 bin_final (&GEB_event);
-
+	      
             };
-
-      /*-------------------------*/
+	  
+	  /* CRH ADDING TTREE */
+	  extern TTree *tree;
+	  tree->Fill();
+	  
+	  /*-------------------------*/
           /* execute user event code */
-      /*-------------------------*/
+	  /*-------------------------*/
 #include "UserEv.h"
-
+	  
           if (Pars.CurEvNo <= Pars.NumToPrint)
             {
               printf ("*end of event # %i\n", Pars.CurEvNo);
