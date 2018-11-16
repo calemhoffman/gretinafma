@@ -12,7 +12,7 @@ class evtList {
     this->maxHits = maxHits;
     runNumber;
     numHits = maxHits;
-    left = new float[maxHits];
+    left = new float[maxHits];//raw energies for each
     right = new float[maxHits];
     up = new float[maxHits];
     down = new float[maxHits];
@@ -20,6 +20,8 @@ class evtList {
     e2 = new float[maxHits];
     e3 = new float[maxHits];
     tac = new float[maxHits];
+    fmaDeltaTime = new float[maxHits];//trigger TS in seconds
+    //fmaMult[10];//mult of each fma channel
  };
   
   //Reset Function
@@ -27,7 +29,7 @@ class evtList {
     runNumber=TMath::QuietNaN();
     numHits=TMath::QuietNaN();
 
-    for (int i=0;(i<numHits&&i<maxHits);i++) {
+    for (int i=0;i<maxHits;i++) {
       left[i] = TMath::QuietNaN();
       right[i] = TMath::QuietNaN();
       up[i] = TMath::QuietNaN();
@@ -36,7 +38,10 @@ class evtList {
       e2[i] = TMath::QuietNaN();
       e3[i] = TMath::QuietNaN();
       tac[i] = TMath::QuietNaN();
+      fmaDeltaTime[i] = TMath::QuietNaN();
     }
+    for (int i=0;i<10;i++)
+      fmaMult[i] = TMath::QuietNaN();
     return;
   };
   
@@ -47,4 +52,6 @@ class evtList {
   float *left,*right,*up,*down; //ppac positions
   float *e1,*e2,*e3; //IC energies
   float *tac; //RF-PPAC TOF tac (may not be good)
+  float *fmaDeltaTime;//TS from trigger (?)
+  int fmaMult[10];
 };

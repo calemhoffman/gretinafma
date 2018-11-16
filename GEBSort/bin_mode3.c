@@ -43,10 +43,11 @@ TH1D *h1_chan0;
 TH1D *h1_module_id;
 TH2F *h2_chan;
 
-TH1D *h1_left, *h1_right, *h1_up, *h1_down, *h1_de1, *h1_de2, *h1_de3, *h1_rftof, *h1_sumlr, *h1_sumud, *h1_de12, *h1_etot, *h1_x, *h1_y; 
+TH1D *h1_left, *h1_right, *h1_up, *h1_down, *h1_de1, *h1_de2;
+TH1D *h1_de3, *h1_rftof, *h1_sumlr, *h1_sumud, *h1_de12, *h1_etot, *h1_x, *h1_y; 
 
-TH2F *h2_ede1, *h2_ede1g, *h2_ede2, *h2_ede12, *h2_lr, *h2_ud, *h2_erftof, *h2_erftofg, *h2_xde1; 
-
+TH2F *h2_ede1, *h2_ede1g, *h2_ede2, *h2_ede12;
+TH2F *h2_lr, *h2_ud, *h2_erftof, *h2_erftofg, *h2_xde1; 
 
 TH1D *h1_sumehi, *h1_tgppac, *h1_tgppacg;
 TH2F *h2_xehi1, *h2_xehi1g;
@@ -73,6 +74,7 @@ TH2F *h2_gg, *h2_gg_z1, *h2_gg_z2, *h2_gg_z3, *h2_gg_z4, *h2_gg_z5;
 /* CRH ADDING TTREE */
 extern TTree *tree;
 evtList* el = new evtList(1000);
+unsigned long long int currentEventNumber = 0;
 
 /* ----------------------------------------------------------------- */
 
@@ -97,8 +99,9 @@ sup_mode3 ()
   tree->Branch("e2",el->e2,"e2[numHits]/F");
   tree->Branch("e3",el->e3,"e3[numHits]/F");
   tree->Branch("tac",el->tac,"tac[numHits]/F");
+  tree->Branch("fmaDeltaTime",el->fmaDeltaTime,"fmaDeltaTime[numHits]/F");
+  tree->Branch("fmaMult",el->fmaMult,"fmaMult[10]/I");
   
-
   TH1D *mkTH1D (char *, char *, int, double, double);
   TH2F *mkTH2F (char *, char *, int, double, double, int, double, double);
   int test_convert();
@@ -290,6 +293,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
  float de1,de2,de3,de12,etot, left,right,up,down,rftof, sumlr, sumud, x, y;
  unsigned long long int ppacts;
  long long int tgppac;
+ int fmaMultCounter[10];
 
  if (Pars.CurEvNo <= Pars.NumToPrint)
    printf ("entered bin_mode3 @ event number: %i \n", Pars.CurEvNo);
@@ -297,6 +301,8 @@ bin_mode3 (GEB_EVENT * GEB_event)
  
  de1=0; de2=0; de3=0; de12=0; etot=0; left=0; right=0; up=0; down=0; rftof=0; sumlr=0; sumud=0; x=0; y=0;
  ppacts=0; tgppac=0;
+ for (int i=0;i<10;i++)
+   fmaMultCounter[i] = 0;
  
  for (ii = 0; ii < GEB_event->mult; ii++)
    {
@@ -598,8 +604,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
 
                 };
 
-              /* extract LED external time, per documentation, works */
-	      
+              /* extract LED external time, per documentation, works */	      
               Event.LEDts = (unsigned long long int) Event.hdr[2] +
                 ((unsigned long long int) Event.hdr[3] << 16) + ((unsigned long long int) Event.hdr[4] << 32);
               if (Pars.CurEvNo <= Pars.NumToPrint)
@@ -611,35 +616,53 @@ bin_mode3 (GEB_EVENT * GEB_event)
                 ((unsigned long long int) Event.hdr[8] << 16) + ((unsigned long long int) Event.hdr[9] << 32);
               if (Pars.CurEvNo <= Pars.NumToPrint)
                 printf ("Event.CFDts = %20lli\n", Event.CFDts);
-	      
-	      el->Reset();//Reset event data
-	      el->numHits=1;
-	      if ((Event.module_id==31)&&(Event.chan_id==0)) { h1_chan0->Fill(Event.ehi); right=Event.ehi; h1_right->Fill(right);
-		el->right[el->numHits-1] = Event.ehi;};
-	      if ((Event.module_id==31)&&(Event.chan_id==1)) { up=Event.ehi; h1_up->Fill(up);
-		el->up[el->numHits-1] = Event.ehi;}
-	      if ((Event.module_id==31)&&(Event.chan_id==2)) { de3=Event.ehi; h1_de3->Fill(de3);
-		el->e3[el->numHits-1] = Event.ehi;};
-	      if ((Event.module_id==31)&&(Event.chan_id==3)) { left=Event.ehi; h1_left->Fill(left); ppacts=Event.LEDts;
-		el->left[el->numHits-1] = Event.ehi;};
-	      if ((Event.module_id==31)&&(Event.chan_id==5)) { down=Event.ehi; h1_down->Fill(down);
-		el->down[el->numHits-1] = Event.ehi;};
-	      if ((Event.module_id==31)&&(Event.chan_id==6)) { de1=Event.ehi; h1_de1->Fill(de1);
-		el->e1[el->numHits-1] = Event.ehi;};
-	      if ((Event.module_id==31)&&(Event.chan_id==7)) { de2=Event.ehi; h1_de2->Fill(de2);
-		el->e2[el->numHits-1] = Event.ehi;};
-	      if ((Event.module_id==31)&&(Event.chan_id==9)) { rftof=Event.ehi; h1_rftof->Fill(rftof);
-		el->tac[el->numHits-1] = Event.ehi;};
-	      
-	      if (Event.module_id==31) h2_chan->Fill(Event.ehi,Event.chan_id);
-	      h1_module_id->Fill(Event.module_id);
-	      
-            };                  /* while (pos<=GEB_event->ptgd[ii]->length) */
-        };                      /* if(GEB_event->ptgd[ii]->type == GEB_TYPE_RAW) */
-    };
-  
-  
-  
+
+	      //CRH NEW CASE FOR READOUT//
+	      if (Event.module_id==31) {
+		h1_module_id->Fill(Event.module_id);
+		h2_chan->Fill(Event.ehi,Event.chan_id);
+		
+		switch (Event.chan_id) {
+		case 0 :
+		  right=Event.ehi; h1_right->Fill(right);
+		  fmaMultCounter[0]+=1;
+		  break;
+		case 1:
+		  up=Event.ehi; h1_up->Fill(up);
+		  fmaMultCounter[1]+=1;
+		  break;
+		case 2:
+		  de3=Event.ehi; h1_de3->Fill(de3);
+		  fmaMultCounter[2]+=1;
+		  break;
+		case 3:
+		  left=Event.ehi; h1_left->Fill(left); ppacts=Event.LEDts;
+		  fmaMultCounter[3]+=1;
+		  break;
+		case 5:
+		  down=Event.ehi; h1_down->Fill(down);
+		  fmaMultCounter[5]+=1;
+		  break;
+		case 6:
+		  de1=Event.ehi; h1_de1->Fill(de1);
+		  fmaMultCounter[6]+=1;
+		  break;
+		case 7:
+		  de2=Event.ehi; h1_de2->Fill(de2);
+		  fmaMultCounter[7]+=1;
+		  break;
+		case 9:
+		  rftof=Event.ehi; h1_rftof->Fill(rftof);
+		  fmaMultCounter[9]+=1;
+		  break;
+		default :
+		  ;
+		}
+	      }
+	    };/* while (pos<=GEB_event->ptgd[ii]->length) */
+       };/* if(GEB_event->ptgd[ii]->type == GEB_TYPE_RAW) */
+   };/*for (ii = 0; ii < GEB_event->mult; ii++)*/
+ 
   h2_lr->Fill(left, right);
   h2_ud->Fill(up, down);
   
@@ -719,9 +742,25 @@ bin_mode3 (GEB_EVENT * GEB_event)
    
   nCCenergies=0;
 
-  /* CRH ADD TTREE */
-
-  
+  /* CRH ADD TTREE PASS ALL PARAMETERS HERE TO TTREE*/
+  el->Reset();//Reset event data
+  el->numHits=1;
+  el->right[el->numHits-1] = right;
+  el->left[el->numHits-1] = left;
+  el->up[el->numHits-1] = up;
+  el->down[el->numHits-1] = down;
+  el->e1[el->numHits-1] = de1;
+  el->e2[el->numHits-1] = de2;
+  el->e3[el->numHits-1] = de3;
+  el->tac[el->numHits-1] = rftof;
+  el->fmaDeltaTime[el->numHits-1] = (Float_t)Event.LEDts/1.0e8;
+  for (Int_t i=0;i<10;i++) {
+    //if (fmaMultCounter[i]>0)
+    el->fmaMult[i] = fmaMultCounter[i];
+  }
+  currentEventNumber++;
+  //if (fmaMultCounter[0]>0)
+  // tree->Fill();
   /* done */
   
   if (Pars.CurEvNo <= Pars.NumToPrint)
