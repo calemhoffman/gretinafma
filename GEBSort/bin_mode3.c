@@ -88,6 +88,16 @@ sup_mode3 ()
   tree = new TTree("tree","tree");
   //Branches
   tree->Branch("runNumber",&el->runNumber,"runNumber/I");//evt defined in .h
+  tree->Branch("numHits",&el->numHits,"numHits/I");
+  tree->Branch("left",el->left,"left[numHits]/F");
+  tree->Branch("right",el->right,"right[numHits]/F");
+  tree->Branch("up",el->up,"up[numHits]/F");
+  tree->Branch("down",el->down,"down[numHits]/F");
+  tree->Branch("e1",el->e1,"e1[numHits]/F");
+  tree->Branch("e2",el->e2,"e2[numHits]/F");
+  tree->Branch("e3",el->e3,"e3[numHits]/F");
+  tree->Branch("tac",el->tac,"tac[numHits]/F");
+  
 
   TH1D *mkTH1D (char *, char *, int, double, double);
   TH2F *mkTH2F (char *, char *, int, double, double, int, double, double);
@@ -281,63 +291,63 @@ bin_mode3 (GEB_EVENT * GEB_event)
  unsigned long long int ppacts;
  long long int tgppac;
 
-  if (Pars.CurEvNo <= Pars.NumToPrint)
-    printf ("entered bin_mode3 @ event number: %i \n", Pars.CurEvNo);
-
-
-  de1=0; de2=0; de3=0; de12=0; etot=0; left=0; right=0; up=0; down=0; rftof=0; sumlr=0; sumud=0; x=0; y=0;
-  ppacts=0; tgppac=0;
-
-  for (ii = 0; ii < GEB_event->mult; ii++)
-    {
-
-      /* pos keeps record of how far we have */
-      /* proceeded in the payload */
-      /* and count how many crystals in payload */
-
-      pos = 0;
-      ncrystal = 0;
-
-      if (GEB_event->ptgd[ii]->type == GEB_TYPE_RAW || GEB_event->ptgd[ii]->type == GEB_TYPE_GT_MOD29)
-        {
-
-          if (Pars.CurEvNo <= Pars.NumToPrint)
+ if (Pars.CurEvNo <= Pars.NumToPrint)
+   printf ("entered bin_mode3 @ event number: %i \n", Pars.CurEvNo);
+ 
+ 
+ de1=0; de2=0; de3=0; de12=0; etot=0; left=0; right=0; up=0; down=0; rftof=0; sumlr=0; sumud=0; x=0; y=0;
+ ppacts=0; tgppac=0;
+ 
+ for (ii = 0; ii < GEB_event->mult; ii++)
+   {
+     
+     /* pos keeps record of how far we have */
+     /* proceeded in the payload */
+     /* and count how many crystals in payload */
+     
+     pos = 0;
+     ncrystal = 0;
+     
+     if (GEB_event->ptgd[ii]->type == GEB_TYPE_RAW || GEB_event->ptgd[ii]->type == GEB_TYPE_GT_MOD29)
+       {
+	 
+	 if (Pars.CurEvNo <= Pars.NumToPrint)
+	   {
+	     GebTypeStr (GEB_event->ptgd[ii]->type, str);
+	     printf ("\nbin_mode3: %2i> %2i, %s, TS=%lli, 0x%llx; ", ii, GEB_event->ptgd[ii]->type, str,
+		     GEB_event->ptgd[ii]->timestamp, GEB_event->ptgd[ii]->timestamp);
+	     printf ("payload length: %i bytes\n", GEB_event->ptgd[ii]->length);
+	   }
+	 
+	 /* byteswap the entire payload */
+	 
+	 bit32Pointer = (unsigned int *) GEB_event->ptinp[ii];
+	 for (i = 0; i < GEB_event->ptgd[ii]->length / 4; i++)
+	   {
+	     t1 = (*(bit32Pointer + i) & 0x000000ff) << 24;
+	     t2 = (*(bit32Pointer + i) & 0x0000ff00) << 8;
+	     t3 = (*(bit32Pointer + i) & 0x00ff0000) >> 8;
+	     t4 = (*(bit32Pointer + i) & 0xff000000) >> 24;
+	     *(bit32Pointer + i) = t1 + t2 + t3 + t4;
+	   };
+	 
+	 /* inside the payload we have the a number */
+	 /* of header/trace data sets. These are the  */
+	 /* crystals that were in coincidence. Here  */
+	 /* we loop over these header/trace data sets. */
+	 /* We may have data from more than one crystal  */
+	 /* in this payload. Thus, there will be at  */
+	 /* least 40 traces, but there can also be  */
+	 /* 80, 120... etc. Be sure MAXPAYLOADSIZE  */
+	 /* is big enough to handle GT mode3 payloads. */
+	 
+	 /* loop over the header/traces of the mode 3 data */
+	 
+	 while (pos < GEB_event->ptgd[ii]->length)
             {
-              GebTypeStr (GEB_event->ptgd[ii]->type, str);
-              printf ("\nbin_mode3: %2i> %2i, %s, TS=%lli, 0x%llx; ", ii, GEB_event->ptgd[ii]->type, str,
-                      GEB_event->ptgd[ii]->timestamp, GEB_event->ptgd[ii]->timestamp);
-              printf ("payload length: %i bytes\n", GEB_event->ptgd[ii]->length);
-            }
-
-          /* byteswap the entire payload */
-
-          bit32Pointer = (unsigned int *) GEB_event->ptinp[ii];
-          for (i = 0; i < GEB_event->ptgd[ii]->length / 4; i++)
-            {
-              t1 = (*(bit32Pointer + i) & 0x000000ff) << 24;
-              t2 = (*(bit32Pointer + i) & 0x0000ff00) << 8;
-              t3 = (*(bit32Pointer + i) & 0x00ff0000) >> 8;
-              t4 = (*(bit32Pointer + i) & 0xff000000) >> 24;
-              *(bit32Pointer + i) = t1 + t2 + t3 + t4;
-            };
-
-          /* inside the payload we have the a number */
-          /* of header/trace data sets. These are the  */
-          /* crystals that were in coincidence. Here  */
-          /* we loop over these header/trace data sets. */
-          /* We may have data from more than one crystal  */
-          /* in this payload. Thus, there will be at  */
-          /* least 40 traces, but there can also be  */
-          /* 80, 120... etc. Be sure MAXPAYLOADSIZE  */
-          /* is big enough to handle GT mode3 payloads. */
-
-          /* loop over the header/traces of the mode 3 data */
-
-          while (pos < GEB_event->ptgd[ii]->length)
-            {
-
+	      
               /* start of event (Event.len known from last event) */
-
+	      
               if (pos == 0)
                 bit32Pointer = (unsigned int *) GEB_event->ptinp[ii];
               else
@@ -533,7 +543,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
                     fflush (fp2);
                   };
 
-              /* extract the energies like Shoufei does in muxTest.cc */
+              /* extract the energies like Shoafei does in muxTest.cc */
               /* needs some translating.... */
 
               tempE = (((unsigned int) Event.hdr[6]) & 0x00ff) << 16;
@@ -602,15 +612,24 @@ bin_mode3 (GEB_EVENT * GEB_event)
               if (Pars.CurEvNo <= Pars.NumToPrint)
                 printf ("Event.CFDts = %20lli\n", Event.CFDts);
 	      
-	      
-	      if ((Event.module_id==31)&&(Event.chan_id==0)) { h1_chan0->Fill(Event.ehi); right=Event.ehi; h1_right->Fill(right); };
-	      if ((Event.module_id==31)&&(Event.chan_id==1)) { up=Event.ehi; h1_up->Fill(up); }
-	      if ((Event.module_id==31)&&(Event.chan_id==2)) { de3=Event.ehi; h1_de3->Fill(de3); };
-	      if ((Event.module_id==31)&&(Event.chan_id==3)) { left=Event.ehi; h1_left->Fill(left); ppacts=Event.LEDts; };
-	      if ((Event.module_id==31)&&(Event.chan_id==5)) { down=Event.ehi; h1_down->Fill(down); };
-	      if ((Event.module_id==31)&&(Event.chan_id==6)) { de1=Event.ehi; h1_de1->Fill(de1); };
-	      if ((Event.module_id==31)&&(Event.chan_id==7)) { de2=Event.ehi; h1_de2->Fill(de2); };
-	      if ((Event.module_id==31)&&(Event.chan_id==9)) { rftof=Event.ehi; h1_rftof->Fill(rftof); };
+	      el->Reset();//Reset event data
+	      el->numHits=1;
+	      if ((Event.module_id==31)&&(Event.chan_id==0)) { h1_chan0->Fill(Event.ehi); right=Event.ehi; h1_right->Fill(right);
+		el->right[el->numHits-1] = Event.ehi;};
+	      if ((Event.module_id==31)&&(Event.chan_id==1)) { up=Event.ehi; h1_up->Fill(up);
+		el->up[el->numHits-1] = Event.ehi;}
+	      if ((Event.module_id==31)&&(Event.chan_id==2)) { de3=Event.ehi; h1_de3->Fill(de3);
+		el->e3[el->numHits-1] = Event.ehi;};
+	      if ((Event.module_id==31)&&(Event.chan_id==3)) { left=Event.ehi; h1_left->Fill(left); ppacts=Event.LEDts;
+		el->left[el->numHits-1] = Event.ehi;};
+	      if ((Event.module_id==31)&&(Event.chan_id==5)) { down=Event.ehi; h1_down->Fill(down);
+		el->down[el->numHits-1] = Event.ehi;};
+	      if ((Event.module_id==31)&&(Event.chan_id==6)) { de1=Event.ehi; h1_de1->Fill(de1);
+		el->e1[el->numHits-1] = Event.ehi;};
+	      if ((Event.module_id==31)&&(Event.chan_id==7)) { de2=Event.ehi; h1_de2->Fill(de2);
+		el->e2[el->numHits-1] = Event.ehi;};
+	      if ((Event.module_id==31)&&(Event.chan_id==9)) { rftof=Event.ehi; h1_rftof->Fill(rftof);
+		el->tac[el->numHits-1] = Event.ehi;};
 	      
 	      if (Event.module_id==31) h2_chan->Fill(Event.ehi,Event.chan_id);
 	      h1_module_id->Fill(Event.module_id);
@@ -701,7 +720,8 @@ bin_mode3 (GEB_EVENT * GEB_event)
   nCCenergies=0;
 
   /* CRH ADD TTREE */
-  el->runNumber = 10;
+
+  
   /* done */
   
   if (Pars.CurEvNo <= Pars.NumToPrint)
