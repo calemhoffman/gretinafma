@@ -74,7 +74,8 @@ TH2F *h2_gg, *h2_gg_z1, *h2_gg_z2, *h2_gg_z3, *h2_gg_z4, *h2_gg_z5;
 /* CRH ADDING TTREE */
 extern TTree *tree;
 evtList* el = new evtList(1000);
-unsigned long long int currentEventNumber = 0;
+unsigned long long int currentEventNumber;
+float TimestampTemp;
 
 /* ----------------------------------------------------------------- */
 
@@ -101,6 +102,9 @@ sup_mode3 ()
   tree->Branch("tac",el->tac,"tac[numHits]/F");
   tree->Branch("fmaDeltaTime",el->fmaDeltaTime,"fmaDeltaTime[numHits]/F");
   tree->Branch("fmaMult",el->fmaMult,"fmaMult[10]/I");
+
+  TimestampTemp=0;
+  currentEventNumber=0;
   
   TH1D *mkTH1D (char *, char *, int, double, double);
   TH2F *mkTH2F (char *, char *, int, double, double, int, double, double);
@@ -753,14 +757,19 @@ bin_mode3 (GEB_EVENT * GEB_event)
   el->e2[el->numHits-1] = de2;
   el->e3[el->numHits-1] = de3;
   el->tac[el->numHits-1] = rftof;
-  el->fmaDeltaTime[el->numHits-1] = (Float_t)Event.LEDts/1.0e8;
+  
   for (Int_t i=0;i<10;i++) {
     //if (fmaMultCounter[i]>0)
     el->fmaMult[i] = fmaMultCounter[i];
   }
-  currentEventNumber++;
-  //if (fmaMultCounter[0]>0)
-  // tree->Fill();
+
+  if (el->fmaMult[0]>0 && TimestampTemp==0)
+    TimestampTemp = (Float_t)Event.LEDts/1.0e8;
+  
+  el->fmaDeltaTime[el->numHits-1] = (Float_t)Event.LEDts/1.0e8 - TimestampTemp;
+  
+  if (fmaMultCounter[0]>0)
+    tree->Fill(); currentEventNumber++;
   /* done */
   
   if (Pars.CurEvNo <= Pars.NumToPrint)
