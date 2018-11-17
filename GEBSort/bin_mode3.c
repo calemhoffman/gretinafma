@@ -102,6 +102,8 @@ sup_mode3 ()
   tree->Branch("tac",el->tac,"tac[numHits]/F");
   tree->Branch("fmaDeltaTime",el->fmaDeltaTime,"fmaDeltaTime[numHits]/F");
   tree->Branch("fmaMult",el->fmaMult,"fmaMult[10]/I");
+  tree->Branch("gammaMult",&el->gammaMult,"gammaMult/I");
+  tree->Branch("gammaEnergy",el->gammaEnergy,"gammaEnergy[gammaMult]/F");
 
   TimestampTemp=0;
   currentEventNumber=0;
@@ -703,6 +705,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
   for (i=0; i<nCCenergies; i++) {
     //printf ("---CCenergies[%i]=%7.2f\n", i, CCenergies[i]);
     h1_sumehi->Fill(CCenergies[i]);
+    
   };
   
   h1_ng->Fill(nCCenergies);
@@ -744,8 +747,6 @@ bin_mode3 (GEB_EVENT * GEB_event)
     };
   };
    
-  nCCenergies=0;
-
   /* CRH ADD TTREE PASS ALL PARAMETERS HERE TO TTREE*/
   el->Reset();//Reset event data
   el->numHits=1;
@@ -767,11 +768,18 @@ bin_mode3 (GEB_EVENT * GEB_event)
     TimestampTemp = (Float_t)Event.LEDts/1.0e8;
   
   el->fmaDeltaTime[el->numHits-1] = (Float_t)Event.LEDts/1.0e8 - TimestampTemp;
+
+  el->gammaMult = nCCenergies;
+  for (i=0; i<nCCenergies; i++) {
+    el->gammaEnergy[i] = CCenergies[i];
+  };
   
-  if (fmaMultCounter[0]>0)
+  // Must go last of course
+  //if (left>0 || right>0)
     tree->Fill(); currentEventNumber++;
   /* done */
-  
+
+  nCCenergies=0;
   if (Pars.CurEvNo <= Pars.NumToPrint)
     printf ("exit bin_mode3\n");
   
