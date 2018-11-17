@@ -3099,8 +3099,8 @@ GEBacq (char *ChatFileName)
             };
 	  
 	  /* CRH ADDING TTREE */
-	  extern TTree *tree;
-	  tree->Fill();
+	  //extern TTree *tree;
+	  //tree->Fill();
 	  
 	  /*-------------------------*/
           /* execute user event code */
