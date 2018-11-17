@@ -104,6 +104,8 @@ sup_mode3 ()
   tree->Branch("fmaMult",el->fmaMult,"fmaMult[10]/I");
   tree->Branch("gammaMult",&el->gammaMult,"gammaMult/I");
   tree->Branch("gammaEnergy",el->gammaEnergy,"gammaEnergy[gammaMult]/F");
+  tree->Branch("gammaTimestamp",el->gammaTimestamp,"gammaTimestamp[gammaMult]/F");
+  tree->Branch("deltaTime",el->deltaTime,"deltaTime[gammaMult]/F");
 
   TimestampTemp=0;
   currentEventNumber=0;
@@ -772,6 +774,8 @@ bin_mode3 (GEB_EVENT * GEB_event)
   el->gammaMult = nCCenergies;
   for (i=0; i<nCCenergies; i++) {
     el->gammaEnergy[i] = CCenergies[i];
+    el->gammaTimestamp[i] = (Float_t)CCtimestamps[i]/1.0e8 - TimestampTemp;
+    el->deltaTime[i] = (Float_t)(Event.LEDts - CCtimestamps[i]);
   };
   
   // Must go last of course
