@@ -23,6 +23,8 @@ class evtList {
     fmaDeltaTime = new float[maxHits];//trigger TS in seconds
     fmaMult = new int[10];
     gammaEnergy = new float[maxHits];
+    gammaTimestamp = new float[maxHits];
+    deltaTime = new float[maxHits];
 };
   
   //Reset Function
@@ -42,6 +44,8 @@ class evtList {
       tac[i] = TMath::QuietNaN();
       fmaDeltaTime[i] = TMath::QuietNaN();
       gammaEnergy[i] = TMath::QuietNaN();
+      gammaTimestamp[i] = TMath::QuietNaN();
+      deltaTime[i] = TMath::QuietNaN();
     }
     
     for (int i=0;i<10;i++)
@@ -60,4 +64,6 @@ class evtList {
   int *fmaMult;
   int gammaMult;
   float *gammaEnergy;
+  float *gammaTimestamp;
+  float *deltaTime;
 };
