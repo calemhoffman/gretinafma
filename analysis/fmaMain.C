@@ -13,6 +13,8 @@
 #include <fstream>
 #include <TProof.h>
 
+#include "fmaDraw.C"
+
 void fmaMain(void){
   
   int option;
@@ -40,11 +42,10 @@ void fmaMain(void){
     //    gROOT->ProcessLine(".q");
     return ;
   }
+  
+  if( option == 1 ) fmaDraw(chain);
+
   /*
-      
-   
-   if( option == 1 ) Cali_xf_xn_to_e(chain);
-   
    TString rootfileSim="transfer.root";
       
    if( option == 2 ) {
