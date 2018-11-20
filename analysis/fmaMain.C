@@ -14,6 +14,7 @@
 #include <TProof.h>
 
 #include "fmaDraw.C"
+#include "fmaFit.C"
 
 void fmaMain(void){
   
@@ -23,8 +24,8 @@ void fmaMain(void){
   printf(" ---- GEBSort -> runXXX.root-----  \n");
   printf(" ================================ \n");
   printf(" 0 = list read file(s) \n");
-  printf(" 1 = draw fp spectra   \n");
-  printf(" 2 = ic energy calibration \n");
+  printf(" 1 = draw ic spectra   \n");
+  printf(" 2 = fit ic spectra    \n");
   printf(" ================================ \n");
   printf(" Choose action : ");
   int temp = scanf("%d", &option);
@@ -44,6 +45,8 @@ void fmaMain(void){
   }
   
   if( option == 1 ) fmaDraw(chain);
+  
+  if( option == 2 ) fmaFit(chain);
 
   /*
    TString rootfileSim="transfer.root";
