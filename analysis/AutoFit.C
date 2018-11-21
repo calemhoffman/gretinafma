@@ -140,7 +140,8 @@ void fitGauss(TH1 * hist, double mean, double sigma, double xMin, double xMax){
 //########################################
 //########################################
 //########################################
-void fitGaussP1(TH1 * hist, double mean, double sigma, double xMin, double xMax){
+void fitGaussP1(TH1 * hist, double mean, double sigma, double xMin, double xMax,
+		FILE * fileOut=NULL){
   
   
   //if( gROOT->FindObjectAny("cFitGaussP1") == NULL ){
@@ -166,17 +167,23 @@ void fitGaussP1(TH1 * hist, double mean, double sigma, double xMin, double xMax)
   
   hist->Fit("fit", "R");
   
-  const Double_t* paraE = fit->GetParErrors();
-  const Double_t* paraA = fit->GetParameters();
+  const Double_t*paraE = fit->GetParErrors();
+  const Double_t*paraA = fit->GetParameters();
   
   double bw = hist->GetBinWidth(1);
 
-  printf("%s ====== count: %8.0f(%3.0f), mean: %8.4f(%8.4f), sigma: %8.4f(%8.4f) \n", 
+  printf("%s ====== counts: %8.0f(%3.0f), mean: %8.4f(%8.4f), sigma: %8.4f(%8.4f) \n",
             hist->GetName(),
-            paraA[0] / bw,   paraE[0] /bw, 
+            paraA[0] / bw,   paraE[0] /bw,
             paraA[1], paraE[1],
             paraA[2], paraE[2]);
-  
+
+  /**///================================= print fit outputs to file
+  if (fileOut)     
+    fprintf(fileOut, "%4.3f %4.3f %4.3f %4.3f %4.3f %4.3f\n",
+	    paraA[0] / bw,   paraE[0] /bw,
+	    paraA[1], paraE[1],
+            paraA[2], paraE[2]);
 }
 
 //########################################

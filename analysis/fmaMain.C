@@ -15,38 +15,52 @@
 
 #include "fmaDraw.C"
 #include "fmaFit.C"
+#include "fmaCalibrate.C"
 
-void fmaMain(void){
+void fmaMain(Int_t runNumber=0){
   
   int option;
   printf(" ========= fmaMain ============== \n");
   printf(" ================================ \n");
   printf(" ---- GEBSort -> runXXX.root-----  \n");
   printf(" ================================ \n");
-  printf(" 0 = list read file(s) \n");
+  //printf(" 0 = XXX \n");
   printf(" 1 = draw ic spectra   \n");
   printf(" 2 = fit ic spectra    \n");
   printf(" ================================ \n");
+  printf(" ===requires fma_fits.dat file=== \n");
+  printf(" 3 = calibrate ic spectra    \n");
+  printf(" ================================ \n");
   printf(" Choose action : ");
   int temp = scanf("%d", &option);
-  
+
   //==================================================== data files
   TChain * chain = new TChain("tree");
-  chain->Add("../../data/root_data/run200.root");
-  chain->GetListOfFiles()->Print();
-   
+  TString fileName;
+  
+  if ( (option == 1 || option == 2) ) {
+    if (runNumber==0) {
+      printf(" ================ enter run number:  \n");
+      int tempRunNumber = scanf("%d", &runNumber);
+    }
+    
+    fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runNumber);
+    chain->Add(fileName);
+    chain->GetListOfFiles()->Print();
+    printf(" ================================== \n");
+  }
+  
   /**///=========================================== option select
   if( option == 0 ) {
-    printf(" ================ files :  \n");
-    chain->GetListOfFiles()->Print();
-    printf(" ======================== \n");
-    //    gROOT->ProcessLine(".q");
+    printf(" ======== vacant for the moment ======\n");
     return ;
   }
   
   if( option == 1 ) fmaDraw(chain);
   
-  if( option == 2 ) fmaFit(chain);
+  if( option == 2 ) fmaFit(chain,runNumber);
+
+  if( option == 3 ) fmaCalibrate();
 
   /*
    TString rootfileSim="transfer.root";

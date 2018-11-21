@@ -76,25 +76,35 @@ void fmaFit(TTree *tree, Int_t runNumber = 0) {
   }
 
   /**///======================================================== Fits
-  
+  FILE * fitFileOut;
+  fitFileOut = fopen ("fma_fits.dat", "w+");
+  fprintf(fitFileOut, "#runNumber   counts   err   mean   err   sigma   err\n");
   Double_t mean=1750; Double_t fitLow=1500; Double_t fitHigh=2000;
+
   cic_e1d->cd(1);
-  fitGaussP1(hic_e1[runNumber],mean,100,fitLow,fitHigh);
+  fprintf(fitFileOut, "%d ", runNumber);
+  fitGaussP1(hic_e1[runNumber],mean,100,fitLow,fitHigh,fitFileOut);
   hic_e1[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
-  
+ 
   mean=1425; fitLow=1000; fitHigh=2000;
   cic_e1d->cd(2);
-  fitGaussP1(hic_e2[runNumber],mean,100,fitLow,fitHigh);
+  fprintf(fitFileOut, "%d ", runNumber);
+  fitGaussP1(hic_e2[runNumber],mean,100,fitLow,fitHigh,fitFileOut);
   hic_e2[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
 
   mean=2250; fitLow=1250; fitHigh=3300;
   cic_e1d->cd(3);
-  fitGaussP1(hic_e3[runNumber],mean,100,fitLow,fitHigh);
+  fprintf(fitFileOut, "%d ", runNumber);
+  fitGaussP1(hic_e3[runNumber],mean,100,fitLow,fitHigh,fitFileOut);
   hic_e3[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
-  
+
+  fprintf(fitFileOut, "\n");
   /**///======================================================== Cleanup
   cic_e1d->Modified();
   cic_e1d->Update();
+
+  fflush(fitFileOut);
+  fclose(fitFileOut);
   
   gSystem->ProcessEvents();
 	 
