@@ -78,7 +78,7 @@ void fmaFit(TTree *tree, Int_t runNumber = 0) {
   /**///======================================================== Fits
   FILE * fitFileOut;
   fitFileOut = fopen ("fma_fits.dat", "w+");
-  fprintf(fitFileOut, "#runNumber   counts   err   mean   err   sigma   err\n");
+  //fprintf(fitFileOut, "#runNumber   counts   err   mean   err   sigma   err\n");
   Double_t mean=1750; Double_t fitLow=1500; Double_t fitHigh=2000;
 
   cic_e1d->cd(1);
