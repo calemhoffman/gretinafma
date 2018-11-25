@@ -23,7 +23,7 @@
 
 #include "AutoFit.C"
 
-void fmaFit(TTree *tree, Int_t runNumber = 0) {
+void fmaFit(TTree *tree, Int_t runNumber = 0, FILE * fitFileOut = NULL) {
 
   printf("==========================================================\n");
   printf("================= fit all fma spectra  ===================\n");
@@ -76,8 +76,7 @@ void fmaFit(TTree *tree, Int_t runNumber = 0) {
   }
 
   /**///======================================================== Fits
-  FILE * fitFileOut;
-  fitFileOut = fopen ("fma_fits.dat", "w+");
+ 
   //fprintf(fitFileOut, "#runNumber   counts   err   mean   err   sigma   err\n");
   Double_t mean=1750; Double_t fitLow=1500; Double_t fitHigh=2000;
 
@@ -103,8 +102,6 @@ void fmaFit(TTree *tree, Int_t runNumber = 0) {
   cic_e1d->Modified();
   cic_e1d->Update();
 
-  fflush(fitFileOut);
-  fclose(fitFileOut);
   
   gSystem->ProcessEvents();
 	 

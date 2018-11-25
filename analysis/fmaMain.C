@@ -38,7 +38,7 @@ void fmaMain(Int_t runNumber=0){
   TChain * chain = new TChain("tree");
   TString fileName;
   
-  if ( (option == 1 || option == 2) ) {
+  if ( option == 1 ) {
     if (runNumber==0) {
       printf(" ================ enter run number:  \n");
       int tempRunNumber = scanf("%d", &runNumber);
@@ -47,19 +47,36 @@ void fmaMain(Int_t runNumber=0){
     fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runNumber);
     chain->Add(fileName);
     chain->GetListOfFiles()->Print();
+    
+    fmaDraw(chain);
     printf(" ================================== \n");
   }
-  
-  /**///=========================================== option select
-  if( option == 0 ) {
-    printf(" ======== vacant for the moment ======\n");
-    return ;
-  }
-  
-  if( option == 1 ) fmaDraw(chain);
-  
-  if( option == 2 ) fmaFit(chain,runNumber);
+    
+  if( option == 2 ) {
+    FILE * fitFileOut;
+    fitFileOut = fopen ("fma_fits.dat", "w+");
+    if (runNumber!=0) {
+      fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runNumber);
+      chain->Add(fileName);
+      chain->GetListOfFiles()->Print();
+      fmaFit(chain,runNumber,fitFileOut);
+    } else {
 
+      for (Int_t runNumberIndex=99;runNumberIndex<295;runNumberIndex++) {
+	runNumber=runNumberIndex;
+	chain = new TChain("tree");
+	fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runNumber);
+	chain->Add(fileName);
+	chain->GetListOfFiles()->Print();
+	fmaFit(chain,runNumber,fitFileOut);
+      }
+    }
+
+    fflush(fitFileOut);
+    fclose(fitFileOut);
+  }
+
+    
   if( option == 3 ) fmaCalibrate();
 
   /*
