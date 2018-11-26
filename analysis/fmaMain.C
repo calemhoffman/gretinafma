@@ -25,7 +25,7 @@ void fmaMain(Int_t runNumber=0){
   printf(" ---- GEBSort -> runXXX.root-----  \n");
   printf(" ================================ \n");
   //printf(" 0 = XXX \n");
-  printf(" 1 = draw ic spectra   \n");
+  printf(" 1 = draw ic spectra (& cuts)  \n");
   printf(" 2 = fit ic spectra    \n");
   printf(" ================================ \n");
   printf(" ===requires fma_fits.dat file=== \n");

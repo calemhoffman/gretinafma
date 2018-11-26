@@ -46,13 +46,14 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   TH1F ** hic_e1  = new TH1F*[300]; //array of runs
   TH1F ** hic_e2  = new TH1F*[300]; //array of runs
   TH1F ** hic_e3  = new TH1F*[300]; //array of runs
+  TH2F ** hic_e1e3 = new TH2F*[300]; //array of runs?
   
   //  Int_t runNumber=0;//should be set from ttree or in loop
   TString name[3];
   TString title[3];
   for (Int_t i=1;i<4;i++) {
     name[i-1].Form("hic_e%d_%d",i,runNumber);
-    title[i-1].Form("hic_e%d[%d]; energy [arb. units]",i,runNumber);
+    title[i-1].Form("hic_e%d_%d; energy [arb. units]",i,runNumber);
   }
   
   hic_e1[runNumber]  = new TH1F(name[0] , title[0] , 500, 50, 3500);
@@ -65,43 +66,78 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   hic_e2[runNumber]->SetTitle(title[1]);
   hic_e3[runNumber]->SetTitle(title[2]);
 
+  TString name2d;
+  TString title2d;
+  name2d.Form("hic_e1e3_%d",runNumber);
+  title2d.Form("hic_e1e3_%d; e3; e1",runNumber);
+  
+  hic_e1e3[runNumber] = new TH2F(name2d,title2d,500,10,5010,500,10,5010);
+  
+
   /**///======================================================== Cuts?
+  TCutG* cutG[10]; //!
   TFile * inFileCut = new TFile("fmaCuts.root");
   Int_t numberCuts = 0 ;
-  TCutG* cutG; //!
   TObjArray * cutList;
-  TString cutTag;
+  TString cutName;
   Bool_t isCutFileOpen;
   vector<int> countFromCut;
+  Int_t cutOption=0;
   
   if(inFileCut->IsOpen()){
     cutList = (TObjArray *) inFileCut->FindObjectAny("cutList");
     numberCuts = cutList->GetEntries();
     printf("=========== found %d cutG in %s \n", numberCuts, inFileCut->GetName());
     
-    cutG = new TCutG();
     for(int numCutIndex = 0; numCutIndex < numberCuts ; numCutIndex++){
       printf(" cut name : %s , VarX: %s, VarY: %s, numPoints: %d \n",
 	     cutList->At(numCutIndex)->GetName(),
 	     ((TCutG*)cutList->At(numCutIndex))->GetVarX(),
 	     ((TCutG*)cutList->At(numCutIndex))->GetVarY(),
 	     ((TCutG*)cutList->At(numCutIndex))->GetN());
+      cutG[numCutIndex] = (TCutG *)cutList->At(numCutIndex);
+      cutName.Form("%s",cutList->At(numCutIndex)->GetName());
     }
+  } else {
+    printf(" ======== create cuts file ?? 1:0 (y/n) ========\n");
+    
+    int temp = scanf("%d",&cutOption);
+    //if (cutOption == 1) {
+      //fmaCuts(inFileCut);
+    //}
   }
+  inFileCut->Close();
   
   /**///======================================================== Draws
+  TString varX,varY,draw;
+  cutList = new TObjArray();
+ 
   for (Int_t i=1;i<4;i++) {
-    TString draw;
-    draw.Form("e%d>>hic_e%d_%d",i,i,runNumber);
+    varX.Form("e%d",i);
+    draw.Form("%s>>hic_e%d_%d",varX.Data(),i,runNumber);
     cic_e1d->cd(i);
     tree->Draw(draw,"","");
   }
+
+  varX.Form("e3"); varY.Form("e1");
+  draw.Form("%s:%s>>hic_%s%s_%d",
+	    varY.Data(),varX.Data(),
+	    varY.Data(),varX.Data(),
+	    runNumber);
+  tree->Draw(draw,"","col");
+  if (cutOption == 1) {
+    
+  }
+
+
+  
   /**///======================================================== Cleanup
   cic_e1d->Modified();
   cic_e1d->Update();
-  
   gSystem->ProcessEvents();
-	 
+  
+ 
+  
   gClock.Stop("gTimer");
   double gTime =  gClock.GetRealTime("gTimer");
   printf("=========== Finsihed, total runTime : %7.0f sec \n", gTime);
