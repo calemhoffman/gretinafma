@@ -22,7 +22,7 @@
 #include <TObjArray.h>
 #include <TMath.h>
 
-void fmaCalibrate(void) {
+void fmaCalibrate(FILE * calFileOut=NULL) {
   printf("==========================================================\n");
   printf("================= calibrate ic spectra ===================\n");
   printf("==========================================================\n");
@@ -71,6 +71,7 @@ void fmaCalibrate(void) {
     for (Int_t detIndex=0;detIndex<3;detIndex++) {
       calibrationFactor[runNumberIndex][detIndex]=centroid[runNumberIndex][detIndex] / normFactor[detIndex];
       printf("run %d, cal factor %1.4f\n",runNumber[runNumberIndex],calibrationFactor[runNumberIndex][detIndex]);
+      fprintf(calFileOut, "%d %d %2.5f\n", runNumber[runNumberIndex],detIndex,calibrationFactor[runNumberIndex][detIndex]);
     }
   }
   

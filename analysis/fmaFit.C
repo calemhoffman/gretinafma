@@ -66,6 +66,30 @@ void fmaFit(TTree *tree, Int_t runNumber = 0, FILE * fitFileOut = NULL) {
   hic_e1[runNumber]->SetTitle(title[0]);
   hic_e2[runNumber]->SetTitle(title[1]);
   hic_e3[runNumber]->SetTitle(title[2]);
+
+ /**///======================================================== Cuts?
+  TFile * inFileCut = new TFile("fmaCuts.root");
+  Int_t numberCuts = 0 ;
+  TCutG* cutG; //!
+  TObjArray * cutList;
+  TString cutTag;
+  Bool_t isCutFileOpen;
+  vector<int> countFromCut;
+  
+  if(inFileCut->IsOpen()){
+    cutList = (TObjArray *) inFileCut->FindObjectAny("cutList");
+    numberCuts = cutList->GetEntries();
+    printf("=========== found %d cutG in %s \n", numberCuts, inFileCut->GetName());
+    
+    cutG = new TCutG();
+    for(int numCutIndex = 0; numCutIndex < numberCuts ; numCutIndex++){
+      printf(" cut name : %s , VarX: %s, VarY: %s, numPoints: %d \n",
+	     cutList->At(numCutIndex)->GetName(),
+	     ((TCutG*)cutList->At(numCutIndex))->GetVarX(),
+	     ((TCutG*)cutList->At(numCutIndex))->GetVarY(),
+	     ((TCutG*)cutList->At(numCutIndex))->GetN());
+    }
+  }
   
   /**///======================================================== Draws
   for (Int_t i=1;i<4;i++) {

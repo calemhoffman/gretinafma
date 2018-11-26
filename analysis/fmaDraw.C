@@ -55,15 +55,39 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
     title[i-1].Form("hic_e%d[%d]; energy [arb. units]",i,runNumber);
   }
   
-  hic_e1[runNumber]  = new TH1F(name[0] , title[0] , 1000, 50, 3500);
-  hic_e2[runNumber]  = new TH1F(name[1] , title[1] , 1000, 50, 3500);
-  hic_e3[runNumber]  = new TH1F(name[2] , title[2] , 1000, 50, 3500);
+  hic_e1[runNumber]  = new TH1F(name[0] , title[0] , 500, 50, 3500);
+  hic_e2[runNumber]  = new TH1F(name[1] , title[1] , 500, 50, 3500);
+  hic_e3[runNumber]  = new TH1F(name[2] , title[2] , 500, 50, 3500);
   hic_e1[runNumber]->Reset();
   hic_e2[runNumber]->Reset();
   hic_e3[runNumber]->Reset();
   hic_e1[runNumber]->SetTitle(title[0]);
   hic_e2[runNumber]->SetTitle(title[1]);
   hic_e3[runNumber]->SetTitle(title[2]);
+
+  /**///======================================================== Cuts?
+  TFile * inFileCut = new TFile("fmaCuts.root");
+  Int_t numberCuts = 0 ;
+  TCutG* cutG; //!
+  TObjArray * cutList;
+  TString cutTag;
+  Bool_t isCutFileOpen;
+  vector<int> countFromCut;
+  
+  if(inFileCut->IsOpen()){
+    cutList = (TObjArray *) inFileCut->FindObjectAny("cutList");
+    numberCuts = cutList->GetEntries();
+    printf("=========== found %d cutG in %s \n", numberCuts, inFileCut->GetName());
+    
+    cutG = new TCutG();
+    for(int numCutIndex = 0; numCutIndex < numberCuts ; numCutIndex++){
+      printf(" cut name : %s , VarX: %s, VarY: %s, numPoints: %d \n",
+	     cutList->At(numCutIndex)->GetName(),
+	     ((TCutG*)cutList->At(numCutIndex))->GetVarX(),
+	     ((TCutG*)cutList->At(numCutIndex))->GetVarY(),
+	     ((TCutG*)cutList->At(numCutIndex))->GetN());
+    }
+  }
   
   /**///======================================================== Draws
   for (Int_t i=1;i<4;i++) {
