@@ -62,7 +62,7 @@ void fmaMain(Int_t runNumber=0){
       fmaFit(chain,runNumber,fitFileOut);
     } else {
 
-      for (Int_t runNumberIndex=99;runNumberIndex<295;runNumberIndex++) {
+      for (Int_t runNumberIndex=50;runNumberIndex<295;runNumberIndex++) {
 	runNumber=runNumberIndex;
 	chain = new TChain("tree");
 	fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runNumber);
@@ -77,8 +77,14 @@ void fmaMain(Int_t runNumber=0){
   }
 
     
-  if( option == 3 ) fmaCalibrate();
+  if( option == 3 ) {
+    FILE * calFileOut;
+    calFileOut = fopen ("fma_cal.dat", "w+");
+    fmaCalibrate(calFileOut);
 
+    fflush(calFileOut);
+    fclose(calFileOut);
+  }
   /*
    TString rootfileSim="transfer.root";
       
