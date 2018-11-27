@@ -48,7 +48,7 @@ void fmaMain(Int_t runNumber=0){
     chain->Add(fileName);
     chain->GetListOfFiles()->Print();
     
-    fmaDraw(chain);
+    fmaDraw(chain,runNumber);
     printf(" ================================== \n");
   }
     

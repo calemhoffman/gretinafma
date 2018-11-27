@@ -42,6 +42,13 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
     cic_e1d->cd(i)->SetGrid();
   }
 
+  Div[0]=2; Div[1]=2;
+  TCanvas * cic_e2d = new TCanvas("cic_e2d", "cic_e2d", 0, 0, size[0]*Div[0], size[1]*Div[1]);
+  cic_e2d->Divide(Div[0],Div[1]);
+  for( int i = 1; i <= Div[0]+Div[1] ; i++){
+    cic_e2d->cd(i)->SetGrid();
+  }
+
   /**///======================================================== Histograms
   TH1F ** hic_e1  = new TH1F*[300]; //array of runs
   TH1F ** hic_e2  = new TH1F*[300]; //array of runs
@@ -83,8 +90,9 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   Bool_t isCutFileOpen;
   vector<int> countFromCut;
   Int_t cutOption=0;
+  isCutFileOpen = inFileCut->IsOpen();
   
-  if(inFileCut->IsOpen()){
+  if(isCutFileOpen){
     cutList = (TObjArray *) inFileCut->FindObjectAny("cutList");
     numberCuts = cutList->GetEntries();
     printf("=========== found %d cutG in %s \n", numberCuts, inFileCut->GetName());
@@ -98,15 +106,17 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
       cutG[numCutIndex] = (TCutG *)cutList->At(numCutIndex);
       cutName.Form("%s",cutList->At(numCutIndex)->GetName());
     }
+    inFileCut->Close();
   } else {
-    printf(" ======== create cuts file ?? 1:0 (y/n) ========\n");
+    cutName.Form("");
+    //printf(" ======== create cuts file ?? 1:0 (y/n) ========\n");
     
-    int temp = scanf("%d",&cutOption);
+    //int temp = scanf("%d",&cutOption);
     //if (cutOption == 1) {
       //fmaCuts(inFileCut);
     //}
   }
-  inFileCut->Close();
+  
   
   /**///======================================================== Draws
   TString varX,varY,draw;
@@ -116,28 +126,25 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
     varX.Form("e%d",i);
     draw.Form("%s>>hic_e%d_%d",varX.Data(),i,runNumber);
     cic_e1d->cd(i);
-    tree->Draw(draw,"","");
+    tree->Draw(draw,cutName,"");
   }
 
+  cic_e2d->cd();
+  cic_e2d->Clear();
   varX.Form("e3"); varY.Form("e1");
   draw.Form("%s:%s>>hic_%s%s_%d",
 	    varY.Data(),varX.Data(),
 	    varY.Data(),varX.Data(),
 	    runNumber);
-  tree->Draw(draw,"","col");
-  if (cutOption == 1) {
-    
-  }
-
-
+  tree->Draw(draw,cutName,"col");
   
   /**///======================================================== Cleanup
   cic_e1d->Modified();
   cic_e1d->Update();
+  cic_e2d->Modified();
+  cic_e2d->Update();
   gSystem->ProcessEvents();
-  
- 
-  
+
   gClock.Stop("gTimer");
   double gTime =  gClock.GetRealTime("gTimer");
   printf("=========== Finsihed, total runTime : %7.0f sec \n", gTime);
