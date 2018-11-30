@@ -33,7 +33,7 @@
   gStyle->SetHistLineWidth(1);                    // a thicker histogram line
   gStyle->SetFrameFillColor(10);                  // a different frame colour   
   gStyle->SetTitleFillColor(33);                 // title colour to highlight it
-  gStyle->SetTitleW(.76);                         // Title Width
+  gStyle->SetTitleW(.46);                         // Title Width
   gStyle->SetTitleH(.07);                        // Title height
   gStyle->SetHistMinimumZero(true);               // Suppresses Histogram Zero Supression
 
