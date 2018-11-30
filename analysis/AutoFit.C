@@ -98,7 +98,8 @@ bool loadFitParameters(TString fitParaFile){
 //########################################
 //########################################
 //########################################
-void fitGauss(TH1 * hist, double mean, double sigma, double xMin, double xMax){
+void fitGauss(TH1 * hist, double mean, double sigma, double xMin, double xMax,
+	      FILE * fileOut=NULL){
   
   
   //if( gROOT->FindObjectAny("cFitGauss") == NULL ){
@@ -133,6 +134,13 @@ void fitGauss(TH1 * hist, double mean, double sigma, double xMin, double xMax){
             hist->GetName(),
             paraA[0] / bw,   paraE[0] /bw, 
             paraA[1], paraE[1],
+            paraA[2], paraE[2]);
+
+  /**///================================= print fit outputs to file
+  if (fileOut)     
+    fprintf(fileOut, "%4.3f %4.3f %4.3f %4.3f %4.3f %4.3f\n",
+	    paraA[0] / bw,   paraE[0] /bw,
+	    paraA[1], paraE[1],
             paraA[2], paraE[2]);
 
 }

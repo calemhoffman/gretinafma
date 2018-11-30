@@ -77,10 +77,8 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   TString title2d;
   name2d.Form("hic_e1e3_%d",runNumber);
   title2d.Form("hic_e1e3_%d; e3; e1",runNumber);
-  
   hic_e1e3[runNumber] = new TH2F(name2d,title2d,500,10,5010,500,10,5010);
   
-
   /**///======================================================== Cuts?
   TCutG* cutG[10]; //!
   TFile * inFileCut = new TFile("fmaCuts.root");

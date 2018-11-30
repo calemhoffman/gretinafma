@@ -17,6 +17,9 @@
 #include "fmaFit.C"
 #include "fmaCalibrate.C"
 
+///define globals....
+//gROOT or gSystem FindObjAny("name")
+
 void fmaMain(Int_t runNumber=0){
   
   int option;
@@ -62,7 +65,7 @@ void fmaMain(Int_t runNumber=0){
       fmaFit(chain,runNumber,fitFileOut);
     } else {
 
-      for (Int_t runNumberIndex=50;runNumberIndex<295;runNumberIndex++) {
+      for (Int_t runNumberIndex=50;runNumberIndex<300;runNumberIndex++) {
 	runNumber=runNumberIndex;
 	chain = new TChain("tree");
 	fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runNumber);
