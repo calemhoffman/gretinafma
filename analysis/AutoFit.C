@@ -197,7 +197,7 @@ void fitGaussP1(TH1 * hist, double mean, double sigma, double xMin, double xMax,
 //########################################
 //########################################
 //########################################
-void fit2GaussP1(TH1 * hist, double mean1, double sigma1, double mean2, double sigma2, double xMin, double xMax, bool newCanvas){
+void fit2GaussP1(TH1 * hist, double mean1, double sigma1, double mean2, double sigma2, double xMin, double xMax, bool newCanvas, FILE * fileOut=NULL){
   
   if( newCanvas &&  gROOT->FindObjectAny("cFit2GaussP1") == NULL ){
     TCanvas * cFit2GaussP1 = new TCanvas("cFit2GaussP1", "fit Gauss & P1", 800, 400);
@@ -263,6 +263,90 @@ void fit2GaussP1(TH1 * hist, double mean1, double sigma1, double mean2, double s
   text.DrawLatex(0.15, 0.6, Form("Line : %6.3f(%5.3f) + %6.3f(%5.3f)x ",
                                     paraA[6], paraE[6],
                                     paraA[7], paraE[7]));
+
+  /**///================================= print fit outputs to file
+  if (fileOut)     
+    fprintf(fileOut, "%4.3f %4.3f %4.3f %4.3f %4.3f %4.3f %4.3f %4.3f\n",
+	    paraA[1], paraE[1],
+	    paraA[2], paraE[2],
+	    paraA[4], paraE[4],
+	    paraA[5], paraE[5]);
+                                    
+
+}
+//########################################
+//########################################
+//########################################
+void fit2Gauss(TH1 * hist, double mean1, double sigma1, double mean2, double sigma2, double xMin, double xMax, bool newCanvas, FILE * fileOut=NULL){
+  
+  if( newCanvas &&  gROOT->FindObjectAny("cFit2Gauss") == NULL ){
+    TCanvas * cFit2GaussP1 = new TCanvas("cFit2Gauss", "fit 2 Gauss", 800, 400);
+  }
+  gStyle->SetOptStat("neiou");
+  
+  hist->Draw();
+  
+  TF1 * fit = new TF1("fit", "[0] * TMath::Gaus(x, [1], [2], 1) + [3] * TMath::Gaus(x, [4], [5], 1)", xMin, xMax);
+  
+  double * para = new double[6]; 
+  para[0] = 20 * 0.05 * TMath::Sqrt(TMath::TwoPi());
+  para[1] = mean1;
+  para[2] = sigma1;
+  para[3] = 100 * 0.05 * TMath::Sqrt(TMath::TwoPi());
+  para[4] = mean2;
+  para[5] = sigma2;
+  //  para[6] = 1;
+  //  para[7] = 0;
+
+  fit->SetLineWidth(2);
+  fit->SetLineColor(2);
+  fit->SetNpx(1000);
+  fit->SetParameters(para);
+  
+  hist->Fit("fit", "Rq");
+  
+  const Double_t* paraE = fit->GetParErrors();
+  const Double_t* paraA = fit->GetParameters();
+  
+  double bw = hist->GetBinWidth(1);
+
+  printf("%7s ====== count: %8.0f(%3.0f), mean: %8.4f(%8.4f), sigma: %8.4f(%8.4f) \n", 
+            hist->GetName(),
+            paraA[0] / bw,   paraE[0] /bw, 
+            paraA[1], paraE[1],
+            paraA[2], paraE[2]);
+  printf("%7s ====== count: %8.0f(%3.0f), mean: %8.4f(%8.4f), sigma: %8.4f(%8.4f) \n", 
+            "",
+            paraA[3] / bw,   paraE[3] /bw, 
+            paraA[4], paraE[4],
+            paraA[5], paraE[5]);
+            
+            
+  TLatex text;
+  text.SetNDC();
+  text.SetTextFont(82);
+  text.SetTextSize(0.04);
+  
+  double chi2 = fit->GetChisquare();
+  int ndf = fit->GetNDF();
+  text.DrawLatex(0.15, 0.8, Form("#bar{#chi^{2}} : %5.3f", chi2/ndf));
+
+  text.DrawLatex(0.15, 0.75,Form("count: %4.0f(%3.0f), E_{x}: %6.3f(%5.3f) MeV, #sigma: %3.0f(%3.0f) keV ", 
+                                    paraA[0] / bw,   paraE[0] /bw,
+                                    paraA[1], paraE[1],
+                                    paraA[2], paraE[2]));
+  text.DrawLatex(0.15, 0.7, Form("count: %4.0f(%3.0f), E_{x}: %6.3f(%5.3f) MeV, #sigma: %3.0f(%3.0f) keV  ", 
+                                    paraA[3] / bw,   paraE[3] /bw,
+                                    paraA[4], paraE[4],
+                                    paraA[5], paraE[5]));
+       
+  /**///================================= print fit outputs to file
+  if (fileOut)     
+    fprintf(fileOut, "%4.3f %4.3f %4.3f %4.3f %4.3f %4.3f %4.3f %4.3f\n",
+	    paraA[1], paraE[1],
+	    paraA[2], paraE[2],
+	    paraA[4], paraE[4],
+	    paraA[5], paraE[5]);
                                     
 
 }
@@ -329,7 +413,7 @@ void fitAuto(TH1 * hist, int bgEst = 10, double peakThreshold = 0.1){
   for(int i = 0; i < nPeaks ; i++){
     para[3*i+0] = height[i] * 0.05 * TMath::Sqrt(TMath::TwoPi());
     para[3*i+1] = energy[i];
-    para[3*i+2] = 0.08;
+    para[3*i+2] = 100;
   }
 
   TF1 * fit = new TF1("fit", nGauss, xMin, xMax, 3* nPeaks );

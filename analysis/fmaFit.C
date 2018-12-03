@@ -49,24 +49,24 @@ void fmaFit(TTree *tree, Int_t runNumber = 0, FILE * fitFileOut = NULL) {
   for( int i = 1; i <= Div[0]+Div[1] ; i++){
     cic_e2d->cd(i)->SetGrid();
   }
-
-  /**///======================================================== Histograms
+/**///======================================================== Histograms
   TH1F ** hic_e1  = new TH1F*[300]; //array of runs
   TH1F ** hic_e2  = new TH1F*[300]; //array of runs
   TH1F ** hic_e3  = new TH1F*[300]; //array of runs
   TH2F ** hic_e1e3 = new TH2F*[300]; //array of runs?
+  TH2F ** hic_e2e3 = new TH2F*[300]; //array of runs?
   
   //  Int_t runNumber=0;//should be set from ttree or in loop
   TString name[3];
   TString title[3];
   for (Int_t i=1;i<4;i++) {
     name[i-1].Form("hic_e%d_%d",i,runNumber);
-    title[i-1].Form("hic_e%d[%d]; energy [arb. units]",i,runNumber);
+    title[i-1].Form("hic_e%d_%d; energy [arb. units]",i,runNumber);
   }
   
-  hic_e1[runNumber]  = new TH1F(name[0] , title[0] , 1000, 50, 3500);
-  hic_e2[runNumber]  = new TH1F(name[1] , title[1] , 1000, 50, 3500);
-  hic_e3[runNumber]  = new TH1F(name[2] , title[2] , 1000, 50, 3500);
+  hic_e1[runNumber]  = new TH1F(name[0] , title[0] , 250, 50, 3500);
+  hic_e2[runNumber]  = new TH1F(name[1] , title[1] , 250, 50, 3500);
+  hic_e3[runNumber]  = new TH1F(name[2] , title[2] , 500, 50, 3500);
   hic_e1[runNumber]->Reset();
   hic_e2[runNumber]->Reset();
   hic_e3[runNumber]->Reset();
@@ -79,13 +79,57 @@ void fmaFit(TTree *tree, Int_t runNumber = 0, FILE * fitFileOut = NULL) {
   name2d.Form("hic_e1e3_%d",runNumber);
   title2d.Form("hic_e1e3_%d; e3; e1",runNumber);
   hic_e1e3[runNumber] = new TH2F(name2d,title2d,500,10,5010,500,10,5010);
+  name2d.Form("hic_e2e3_%d",runNumber);
+  title2d.Form("hic_e2e3_%d; e3; e2",runNumber);
+  hic_e2e3[runNumber] = new TH2F(name2d,title2d,500,10,5010,500,10,5010);
 
- /**///======================================================== Cuts?
+   /**///======================================================== Cals
+  //Read in cal file to array, do draws w/ cals
+  TString cal[300][10];
+  ifstream inFile;
+  inFile.open("fma_cal.dat");
+  Int_t lineRead=0;
+  Int_t runNumberRead;
+  Int_t detIndexRead;
+  Double_t calibrationFactor[300][10];
+  Int_t tempInt1=0;
+  Int_t tempInt2=0;
+  Double_t tempDouble1=0;
+  
+  if( inFile.is_open() ) {
+    while (1) {
+      inFile >> tempInt1 >> tempInt2 >> tempDouble1;
+      runNumberRead=tempInt1;
+      detIndexRead=tempInt2;
+      calibrationFactor[runNumberRead][detIndexRead]=tempDouble1;
+      cal[runNumberRead][detIndexRead].Form("/%5.10f",
+					    calibrationFactor[runNumberRead][detIndexRead]);
+      lineRead++;
+      if (!inFile.good()) break;
+      if (lineRead<10) printf("%d %d %4.4f\n",
+			      runNumberRead,
+			      detIndexRead,
+			      calibrationFactor[runNumberRead][detIndexRead]);
+    }
+    inFile.close();
+    printf("... done reading cal file\n");
+  }else{
+    for (Int_t i=0;i<300;i++) {
+      for (Int_t j=0;j<3;j++) {
+	cal[i][j].Form("/1.0");
+      }
+    }
+    printf("... failed to read cal file\n");
+    return;
+  }
+
+ 
+  /**///======================================================== Cuts?
   TCutG* cutG[10]; //!
   TFile * inFileCut = new TFile("fmaCuts.root");
   Int_t numberCuts = 0 ;
   TObjArray * cutList;
-  TString cutName;
+  TString cutName[300];
   Bool_t isCutFileOpen;
   vector<int> countFromCut;
   Int_t cutOption=0;
@@ -103,73 +147,119 @@ void fmaFit(TTree *tree, Int_t runNumber = 0, FILE * fitFileOut = NULL) {
 	     ((TCutG*)cutList->At(numCutIndex))->GetVarY(),
 	     ((TCutG*)cutList->At(numCutIndex))->GetN());
       cutG[numCutIndex] = (TCutG *)cutList->At(numCutIndex);
-      cutName.Form("%s",cutList->At(numCutIndex)->GetName());
+      cutName[runNumber].Form("%s",cutList->At(numCutIndex)->GetName());
     }
     inFileCut->Close();
   } else {
-    cutName.Form("");
-    //printf(" ======== create cuts file ?? 1:0 (y/n) ========\n");
-    
-    //int temp = scanf("%d",&cutOption);
-    //if (cutOption == 1) {
-      //fmaCuts(inFileCut);
-    //}
+    cutName[runNumber].Form("e3%s>2400 && e3%s<2600",
+			    cal[runNumber][2].Data(),
+			    cal[runNumber][2].Data());
+    //cutName[runNumber].Form("");
   }
-  
+
   /**///======================================================== Draws
   TString varX,varY,draw;
   cutList = new TObjArray();
-  
+ 
   for (Int_t i=1;i<4;i++) {
     varX.Form("e%d",i);
-    draw.Form("%s>>hic_e%d_%d",varX.Data(),i,runNumber);
+    draw.Form("%s%s>>hic_e%d_%d",varX.Data(),cal[runNumber][i-1].Data(),i,runNumber);
     cic_e1d->cd(i);
-    tree->Draw(draw,cutName,"");
+    tree->Draw(draw,cutName[runNumber],"");
   }
-  
+
   cic_e2d->cd();
   cic_e2d->Clear();
+  cic_e2d->Divide(1,2);
+  cic_e2d->cd(1);
   varX.Form("e3"); varY.Form("e1");
-  draw.Form("%s:%s>>hic_%s%s_%d",
-	    varY.Data(),varX.Data(),
-	    varY.Data(),varX.Data(),
+  draw.Form("%s%s:%s%s>>hic_%s%s_%d",
+	    varY.Data(),cal[runNumber][0].Data(),varX.Data(),
+	    cal[runNumber][2].Data(),varY.Data(),varX.Data(),
 	    runNumber);
-  tree->Draw(draw,cutName,"col");
-
+  tree->Draw(draw,cutName[runNumber],"col");
+  cic_e2d->cd(2);
+  varX.Form("e3"); varY.Form("e2");
+  draw.Form("%s%s:%s%s>>hic_%s%s_%d",
+	    varY.Data(),cal[runNumber][0].Data(),varX.Data(),
+	    cal[runNumber][2].Data(),varY.Data(),varX.Data(),
+	    runNumber);
+  tree->Draw(draw,cutName[runNumber],"col");
+  
   /**///======================================================== Fits
- 
-  //fprintf(fitFileOut, "#runNumber   counts   err   mean   err   sigma   err\n");
-  Double_t mean=1750; Double_t fitLow=1500; Double_t fitHigh=2000;
-
-  cic_e1d->cd(1);
-  fprintf(fitFileOut, "%d ", runNumber);
-  fitGauss(hic_e1[runNumber],mean,50,fitLow,fitHigh,fitFileOut);
-  hic_e1[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
- 
-  mean=1425; fitLow=1000; fitHigh=2000;
-  cic_e1d->cd(2);
-  fprintf(fitFileOut, "%d ", runNumber);
-  fitGauss(hic_e2[runNumber],mean,50,fitLow,fitHigh,fitFileOut);
-  hic_e2[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
-
-  mean=2250; fitLow=1250; fitHigh=3300;
-  cic_e1d->cd(3);
-  fprintf(fitFileOut, "%d ", runNumber);
-  fitGauss(hic_e3[runNumber],mean,100,fitLow,fitHigh,fitFileOut);
-  hic_e3[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
-
-  fprintf(fitFileOut, "\n");
-  /**///======================================================== Cleanup
-  cic_e1d->Modified();
-  cic_e1d->Update();
-  cic_e1d->Print(Form("figures/cic_e1d_%d.pdf",runNumber),"pdf");
-  cic_e2d->Modified();
-  cic_e2d->Update();
+  Int_t fitType = 2;
+  if (fitType == 1) { //choose fit type
+    
+    //fprintf(fitFileOut, "#runNumber   counts   err   mean   err   sigma   err\n");
+    Double_t mean=1750; Double_t fitLow=1500; Double_t fitHigh=2000;
+    
+    cic_e1d->cd(1);
+    fprintf(fitFileOut, "%d ", runNumber);
+    fitGauss(hic_e1[runNumber],mean,50,fitLow,fitHigh,fitFileOut);
+    hic_e1[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
+    
+    mean=1425; fitLow=1000; fitHigh=2000;
+    cic_e1d->cd(2);
+    fprintf(fitFileOut, "%d ", runNumber);
+    fitGauss(hic_e2[runNumber],mean,50,fitLow,fitHigh,fitFileOut);
+    hic_e2[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
+    
+    mean=2250; fitLow=1250; fitHigh=3300;
+    cic_e1d->cd(3);
+    fprintf(fitFileOut, "%d ", runNumber);
+    fitGauss(hic_e3[runNumber],mean,100,fitLow,fitHigh,fitFileOut);
+    hic_e3[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
+    
+    fprintf(fitFileOut, "\n");
+    /**///======================================================== Cleanup
+    cic_e1d->Modified();
+    cic_e1d->Update();
+    cic_e1d->Print(Form("figures/cic_e1d_fit1_%d.pdf",runNumber),"pdf");
+    cic_e2d->Modified();
+    cic_e2d->Update();
+    
+  } else if (fitType == 2) {
+    
+    //fprintf(fitFileOut, "#runNumber   counts   err   mean   err   sigma   err\n");
+    Double_t mean1=2000; Double_t mean2=2750;
+    Double_t fitLow=1500; Double_t fitHigh=3500;
+    TCanvas *tempCanvas;
+    
+    cic_e1d->cd(1);
+    fprintf(fitFileOut, "%d ", runNumber);
+    fit2Gauss(hic_e1[runNumber],mean1,40,mean2,40,fitLow,fitHigh,tempCanvas,fitFileOut);
+    hic_e1[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
+    
+    mean1=1500; mean2=1750; fitLow=1000; fitHigh=2000;
+    cic_e1d->cd(2);
+    fprintf(fitFileOut, "%d ", runNumber);
+    fit2Gauss(hic_e2[runNumber],mean1,40,mean2,40,fitLow,fitHigh,tempCanvas,fitFileOut);
+    hic_e2[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
+    
+    /* mean=2250; fitLow=1250; fitHigh=3300; */
+    /* cic_e1d->cd(3); */
+    /* fprintf(fitFileOut, "%d ", runNumber); */
+    /* fitGauss(hic_e3[runNumber],mean,100,fitLow,fitHigh,fitFileOut); */
+    /* hic_e3[runNumber]->GetXaxis()->SetRangeUser(fitLow,fitHigh); */
+    
+    fprintf(fitFileOut, "\n");
+    /**///======================================================== Cleanup
+    cic_e1d->Modified();
+    cic_e1d->Update();
+    cic_e1d->Print(Form("figures/cic_e1d_fit2_%d.pdf",runNumber),"pdf");
+    cic_e2d->Modified();
+    cic_e2d->Update();
+    
+  }
   
   gSystem->ProcessEvents();
 	 
   gClock.Stop("gTimer");
   double gTime =  gClock.GetRealTime("gTimer");
   printf("=========== Finsihed, total runTime : %7.0f sec \n", gTime);
+
+ 
+
+
   
 }
