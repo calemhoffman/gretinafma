@@ -10,13 +10,13 @@ sort_func(){
     echo "Done with File $1"
 }
 
-# For loop 5 times
-for i in {252..258}
+# For loop
+for i in {200..234}
 do
     sort_func $i & #
     count=$((count+1))
     echo "Counter status: $count"
-    if [ $count -eq 3 ]; then
+    if [ $count -eq 35 ]; then
 	#echo "inside"
         wait
     	count=0

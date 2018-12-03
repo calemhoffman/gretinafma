@@ -8,7 +8,7 @@ merge_func(){
 }
 # For loop 5 times
 #count=0
-for i in {180..189}
+for i in {50..59}
 do
 	merge_func $i & # Put a function in the background
 #	(( count++ ))
