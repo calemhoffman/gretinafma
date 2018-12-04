@@ -91,25 +91,34 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   Int_t lineRead=0;
   Int_t runNumberRead;
   Int_t detIndexRead;
-  Double_t calibrationFactor[300][10];
+  Double_t calibrationOffset[300][10];
+  Double_t calibrationLinear[300][10];
+  Double_t calibrationXOffset[300][10];
   Int_t tempInt1=0;
   Int_t tempInt2=0;
-  Double_t tempDouble1=0;
+  Double_t tempDouble1=0,tempDouble2=0, tempDouble3=0;
   
   if( inFile.is_open() ) {
     while (1) {
-      inFile >> tempInt1 >> tempInt2 >> tempDouble1;
+      inFile >> tempInt1 >> tempInt2 >> tempDouble1 >> tempDouble2 >> tempDouble3;
       runNumberRead=tempInt1;
       detIndexRead=tempInt2;
-      calibrationFactor[runNumberRead][detIndexRead]=tempDouble1;
-      cal[runNumberRead][detIndexRead].Form("/%5.10f",
-					    calibrationFactor[runNumberRead][detIndexRead]);
+      calibrationOffset[runNumberRead][detIndexRead]=tempDouble1;
+      calibrationLinear[runNumberRead][detIndexRead]=tempDouble2;
+      calibrationXOffset[runNumberRead][detIndexRead]=tempDouble3;
+      if(detIndexRead<2)
+	cal[runNumberRead][detIndexRead].Form("%4.4f*(e%d-%4.4f)+%4.4f",
+					      calibrationLinear[runNumberRead][detIndexRead],
+					      detIndexRead+1,calibrationXOffset[runNumberRead][detIndexRead],
+					      calibrationOffset[runNumberRead][detIndexRead]);
+      if (detIndexRead==2)
+	cal[runNumberRead][detIndexRead].Form("e%d+%4.4f",
+					      detIndexRead+1,
+					      calibrationOffset[runNumberRead][detIndexRead]);
+
       lineRead++;
       if (!inFile.good()) break;
-      if (lineRead<10) printf("%d %d %4.4f\n",
-			      runNumberRead,
-			      detIndexRead,
-			      calibrationFactor[runNumberRead][detIndexRead]);
+      if (lineRead<10) printf("%s\n",cal[runNumberRead][detIndexRead].Data());
     }
     inFile.close();
     printf("... done reading cal file\n");
@@ -151,9 +160,9 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
     }
     inFileCut->Close();
   } else {
-    cutName[runNumber].Form("e3%s>2400 && e3%s<2600",
-			    cal[runNumber][2].Data(),
-			    cal[runNumber][2].Data());
+    /* cutName[runNumber].Form("e3%s>2400 && e3%s<2600", */
+    /* 			    cal[runNumber][2].Data(), */
+    /* 			    cal[runNumber][2].Data()); */
     //cutName[runNumber].Form("");
   }
 
@@ -163,7 +172,8 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
  
   for (Int_t i=1;i<4;i++) {
     varX.Form("e%d",i);
-    draw.Form("%s%s>>hic_e%d_%d",varX.Data(),cal[runNumber][i-1].Data(),i,runNumber);
+    //draw.Form("%s%s>>hic_e%d_%d",varX.Data(),cal[runNumber][i-1].Data(),i,runNumber);
+    draw.Form("%s>>hic_e%d_%d",cal[runNumber][i-1].Data(),i,runNumber);
     cic_e1d->cd(i);
     tree->Draw(draw,cutName[runNumber],"");
   }
@@ -173,15 +183,15 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   cic_e2d->Divide(1,2);
   cic_e2d->cd(1);
   varX.Form("e3"); varY.Form("e1");
-  draw.Form("%s%s:%s%s>>hic_%s%s_%d",
-	    varY.Data(),cal[runNumber][0].Data(),varX.Data(),
+  draw.Form("%s:%s>>hic_%s%s_%d",
+	    cal[runNumber][0].Data(),
 	    cal[runNumber][2].Data(),varY.Data(),varX.Data(),
 	    runNumber);
   tree->Draw(draw,cutName[runNumber],"col");
   cic_e2d->cd(2);
   varX.Form("e3"); varY.Form("e2");
-  draw.Form("%s%s:%s%s>>hic_%s%s_%d",
-	    varY.Data(),cal[runNumber][0].Data(),varX.Data(),
+  draw.Form("%s:%s>>hic_%s%s_%d",
+	    cal[runNumber][0].Data(),
 	    cal[runNumber][2].Data(),varY.Data(),varX.Data(),
 	    runNumber);
   tree->Draw(draw,cutName[runNumber],"col");

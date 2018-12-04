@@ -19,6 +19,36 @@
 
 ///define globals....
 //gROOT or gSystem FindObjAny("name")
+Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
+		      0,0,0,0,0,0,0,0,0,0,//10
+		      0,0,0,0,0,0,0,0,0,0,//20
+		      0,0,0,0,0,0,0,0,0,0,//30
+		      0,0,0,0,0,0,0,0,0,0,//40
+		      0,0,0,0,0,0,0,0,0,0,//50
+		      0,0,0,0,0,0,0,0,0,0,//60
+		      0,0,0,0,0,0,0,1,1,1,//70
+		      1,1,1,1,1,1,1,1,1,1,//80
+		      1,1,1,1,1,0,0,0,0,1,//90
+		      1,1,1,1,1,1,1,1,1,1,//100
+		      1,1,1,1,1,1,1,1,1,1,//110
+		      1,1,1,1,0,1,1,1,1,1,//120
+		      1,1,1,1,1,0,0,0,1,1,//130
+		      1,1,1,1,1,1,0,0,0,0,//140
+		      1,1,1,1,1,1,1,1,1,1,//150
+		      0,1,1,1,1,1,0,1,1,0,//160
+		      1,1,1,1,1,0,0,0,0,0,//170
+		      0,0,0,0,0,0,0,0,0,0,//180
+		      0,0,0,0,0,0,1,1,1,0,//190
+		      1,0,1,1,1,1,1,1,1,1,//200
+		      0,0,1,1,1,1,1,1,1,1,//210
+		      1,0,0,1,1,1,1,1,1,0,//220
+		      1,1,1,1,1,1,1,1,1,0,//230
+		      1,1,1,1,1,1,0,0,1,1,//240
+		      1,1,1,1,1,1,1,1,1,1,//250
+		      0,1,1,1,1,1,1,1,1,1,//260
+		      1,1,1,1,1,1,1,1,1,1,//270
+		      0,1,1,1,1,1,1,1,1,1,//280
+		      1,1,1,0,0,0,0,0,0,0};//290
 
 void fmaMain(Int_t runNumber=0){
   
@@ -47,7 +77,7 @@ void fmaMain(Int_t runNumber=0){
       int tempRunNumber = scanf("%d", &runNumber);
     }
     
-    fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runNumber);
+    fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runNumber);
     chain->Add(fileName);
     chain->GetListOfFiles()->Print();
     
@@ -67,12 +97,15 @@ void fmaMain(Int_t runNumber=0){
 
       for (Int_t runNumberIndex=50;runNumberIndex<300;runNumberIndex++) {
 	runNumber=runNumberIndex;
-	chain = new TChain("tree");
-	fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runNumber);
-	chain->Add(fileName);
-	chain->GetListOfFiles()->Print();
-	fmaFit(chain,runNumber,fitFileOut);
+	if (goodRun[runNumber]!=0) {
+	  chain = new TChain("tree");
+	  fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runNumber);
+	  chain->Add(fileName);
+	  chain->GetListOfFiles()->Print();
+	  fmaFit(chain,runNumber,fitFileOut);
+	}
       }
+      
     }
 
     fflush(fitFileOut);
