@@ -160,9 +160,9 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
     }
     inFileCut->Close();
   } else {
-    /* cutName[runNumber].Form("e3%s>2400 && e3%s<2600", */
-    /* 			    cal[runNumber][2].Data(), */
-    /* 			    cal[runNumber][2].Data()); */
+    cutName[runNumber].Form("%s>950 && %s<1050",
+    			    cal[runNumber][2].Data(),
+    			    cal[runNumber][2].Data());
     //cutName[runNumber].Form("");
   }
 

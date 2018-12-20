@@ -130,19 +130,18 @@ void fitGauss(TH1 * hist, double mean, double sigma, double xMin, double xMax,
   
   double bw = hist->GetBinWidth(1);
 
-  printf("%s ====== count: %8.0f(%3.0f), mean: %8.4f(%8.4f), sigma: %8.4f(%8.4f) \n", 
-            hist->GetName(),
-            paraA[0] / bw,   paraE[0] /bw, 
-            paraA[1], paraE[1],
-            paraA[2], paraE[2]);
-
+  printf("%s ====== mean: %8.4f(%8.4f), sigma: %8.4f(%8.4f) \n", 
+	 hist->GetName(),
+	 paraA[1], paraE[1],
+	 paraA[2], paraE[2]);
+  
   /**///================================= print fit outputs to file
   if (fileOut)     
     fprintf(fileOut, "%4.3f %4.3f %4.3f %4.3f %4.3f %4.3f\n",
 	    paraA[0] / bw,   paraE[0] /bw,
 	    paraA[1], paraE[1],
             paraA[2], paraE[2]);
-
+  
 }
 
 //########################################
@@ -251,18 +250,16 @@ void fit2GaussP1(TH1 * hist, double mean1, double sigma1, double mean2, double s
   int ndf = fit->GetNDF();
   text.DrawLatex(0.15, 0.8, Form("#bar{#chi^{2}} : %5.3f", chi2/ndf));
 
-  text.DrawLatex(0.15, 0.75,Form("count: %4.0f(%3.0f), E_{x}: %6.3f(%5.3f) MeV, #sigma: %3.0f(%3.0f) keV ", 
-                                    paraA[0] / bw,   paraE[0] /bw,
-                                    paraA[1], paraE[1],
-                                    paraA[2] * 1000., paraE[2] * 1000.));
-  text.DrawLatex(0.15, 0.7, Form("count: %4.0f(%3.0f), E_{x}: %6.3f(%5.3f) MeV, #sigma: %3.0f(%3.0f) keV  ", 
-                                    paraA[3] / bw,   paraE[3] /bw,
-                                    paraA[4], paraE[4],
-                                    paraA[5] * 1000., paraE[5] * 1000.));
-                                    
+  text.DrawLatex(0.15, 0.75,Form("mean: %6.3f(%5.3f), #sigma: %3.0f(%3.0f) ", 
+				 paraA[1], paraE[1],
+				 paraA[2] * 1000., paraE[2] * 1000.));
+  text.DrawLatex(0.15, 0.7, Form("ean: %6.3f(%5.3f), #sigma: %3.0f(%3.0f)", 
+				 paraA[4], paraE[4],
+				 paraA[5] * 1000., paraE[5] * 1000.));
+  
   text.DrawLatex(0.15, 0.6, Form("Line : %6.3f(%5.3f) + %6.3f(%5.3f)x ",
-                                    paraA[6], paraE[6],
-                                    paraA[7], paraE[7]));
+				 paraA[6], paraE[6],
+				 paraA[7], paraE[7]));
 
   /**///================================= print fit outputs to file
   if (fileOut)     
@@ -331,14 +328,12 @@ void fit2Gauss(TH1 * hist, double mean1, double sigma1, double mean2, double sig
   int ndf = fit->GetNDF();
   text.DrawLatex(0.15, 0.8, Form("#bar{#chi^{2}} : %5.3f", chi2/ndf));
 
-  text.DrawLatex(0.15, 0.75,Form("count: %4.0f(%3.0f), E_{x}: %6.3f(%5.3f) MeV, #sigma: %3.0f(%3.0f) keV ", 
-                                    paraA[0] / bw,   paraE[0] /bw,
-                                    paraA[1], paraE[1],
-                                    paraA[2], paraE[2]));
-  text.DrawLatex(0.15, 0.7, Form("count: %4.0f(%3.0f), E_{x}: %6.3f(%5.3f) MeV, #sigma: %3.0f(%3.0f) keV  ", 
-                                    paraA[3] / bw,   paraE[3] /bw,
-                                    paraA[4], paraE[4],
-                                    paraA[5], paraE[5]));
+  text.DrawLatex(0.15, 0.75,Form("mean: %6.3f(%5.3f), #sigma: %3.0f(%3.0f)", 
+				 paraA[1], paraE[1],
+				 paraA[2], paraE[2]));
+  text.DrawLatex(0.15, 0.7, Form("mean: %6.3f(%5.3f), #sigma: %3.0f(%3.0f)", 
+				 paraA[4], paraE[4],
+				 paraA[5], paraE[5]));
        
   /**///================================= print fit outputs to file
   if (fileOut)     

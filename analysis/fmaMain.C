@@ -89,17 +89,17 @@ void fmaMain(Int_t runNumber=0){
     FILE * fitFileOut;
     fitFileOut = fopen ("fma_fits.dat", "w+");
     if (runNumber!=0) {
-      fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runNumber);
+      fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runNumber);
       chain->Add(fileName);
       chain->GetListOfFiles()->Print();
       fmaFit(chain,runNumber,fitFileOut);
     } else {
 
-      for (Int_t runNumberIndex=50;runNumberIndex<300;runNumberIndex++) {
+      for (Int_t runNumberIndex=200;runNumberIndex<235;runNumberIndex++) {
 	runNumber=runNumberIndex;
 	if (goodRun[runNumber]!=0) {
 	  chain = new TChain("tree");
-	  fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runNumber);
+	  fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runNumber);
 	  chain->Add(fileName);
 	  chain->GetListOfFiles()->Print();
 	  fmaFit(chain,runNumber,fitFileOut);
