@@ -95,7 +95,7 @@ void fmaMain(Int_t runNumber=0){
       fmaFit(chain,runNumber,fitFileOut);
     } else {
 
-      for (Int_t runNumberIndex=200;runNumberIndex<235;runNumberIndex++) {
+      for (Int_t runNumberIndex=100;runNumberIndex<235;runNumberIndex++) {
 	runNumber=runNumberIndex;
 	if (goodRun[runNumber]!=0) {
 	  chain = new TChain("tree");
