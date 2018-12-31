@@ -55,7 +55,11 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   TH1F ** hic_e3  = new TH1F*[300]; //array of runs
   TH2F ** hic_e1e3 = new TH2F*[300]; //array of runs?
   TH2F ** hic_e2e3 = new TH2F*[300]; //array of runs?
-  
+
+  TH2F ** hgates = new TH2F*[10];//gates for new cals [leftVright,x,TOF]
+  TString gateName;
+  TString gateTitle;
+ 
   //  Int_t runNumber=0;//should be set from ttree or in loop
   TString name[3];
   TString title[3];
@@ -160,10 +164,10 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
     }
     inFileCut->Close();
   } else {
-    cutName[runNumber].Form("%s>950 && %s<1050",
-    			    cal[runNumber][2].Data(),
-    			    cal[runNumber][2].Data());
-    //cutName[runNumber].Form("");
+    /* cutName[runNumber].Form("%s>950 && %s<1050", */
+    /* 			    cal[runNumber][2].Data(), */
+    /* 			    cal[runNumber][2].Data()); */
+    cutName[runNumber].Form("");
   }
 
   /**///======================================================== Draws
@@ -195,7 +199,7 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
 	    cal[runNumber][2].Data(),varY.Data(),varX.Data(),
 	    runNumber);
   tree->Draw(draw,cutName[runNumber],"col");
-  
+
   /**///======================================================== Cleanup
   cic_e1d->Modified();
   cic_e1d->Update();

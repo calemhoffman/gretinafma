@@ -4,8 +4,8 @@ set out "|ps2pdf - cal.pdf"
 set title ""
 set ylabel "scale factor"
 set xlabel "run number"
-xmin=99
-xmax=235
+xmin=69
+xmax=299
 
 plot [xmin:xmax][1000:3000] 'fma_fits.dat' u 1:2 every 3::0 w points tit 'signal e1 1',\
                          '' u 1:2 every 3::1 w points tit 'signal e2 1',\

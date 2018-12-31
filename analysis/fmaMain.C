@@ -16,6 +16,7 @@
 #include "fmaDraw.C"
 #include "fmaFit.C"
 #include "fmaCalibrate.C"
+#include "calTree.C"
 
 ///define globals....
 //gROOT or gSystem FindObjAny("name")
@@ -70,6 +71,7 @@ void fmaMain(Int_t runNumber=0){
   //==================================================== data files
   TChain * chain = new TChain("tree");
   TString fileName;
+  TString fileNameOut;
   
   if ( option == 1 ) {
     if (runNumber==0) {
@@ -95,7 +97,7 @@ void fmaMain(Int_t runNumber=0){
       fmaFit(chain,runNumber,fitFileOut);
     } else {
 
-      for (Int_t runNumberIndex=100;runNumberIndex<235;runNumberIndex++) {
+      for (Int_t runNumberIndex=50;runNumberIndex<299;runNumberIndex++) {
 	runNumber=runNumberIndex;
 	if (goodRun[runNumber]!=0) {
 	  chain = new TChain("tree");
@@ -115,12 +117,26 @@ void fmaMain(Int_t runNumber=0){
     
   if( option == 3 ) {
     FILE * calFileOut;
-    calFileOut = fopen ("fma_cal.dat", "w+");
+    calFileOut = fopen ("fma_cal_jan19.dat", "w+");
     fmaCalibrate(calFileOut);
 
     fflush(calFileOut);
     fclose(calFileOut);
   }
+
+  if (option == 4) { /* gen cal tree */
+    TFile *calTreeFileOut;
+    runNumber=200;
+    fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runNumber);
+    chain->Add(fileName);
+    chain->GetListOfFiles()->Print();
+    fileNameOut.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/cal%d.root",runNumber);
+    calTreeFileOut = new TFile(fileNameOut,"RECREATE");
+    calTree(chain,runNumber/*,calTreeFileOut*/);
+  }
+
+
+  
   /*
    TString rootfileSim="transfer.root";
       
