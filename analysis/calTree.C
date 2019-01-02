@@ -35,8 +35,13 @@ void calTree() {
   Float_t e1[numHits];
   Float_t e2[numHits];
   Float_t e3[numHits];
-  Float_t gammaEnergy[numHits];
-  Float_t deltaTime[numHits];
+  Float_t tac[numHits];
+  Float_t fmaDeltaTime[numHits];
+  Int_t fmaMult[10];
+  Int_t gammaMult;
+  Float_t gammaEnergy[100];
+  Float_t gammaTimestamp[100];
+  Float_t deltaTime[100];
   
   tree->SetBranchAddress("runNumber",&runNumber);
   tree->SetBranchAddress("numHits",&numHits);
@@ -44,11 +49,17 @@ void calTree() {
   tree->SetBranchAddress("right",right);
   tree->SetBranchAddress("up",up);
   tree->SetBranchAddress("down",down);
-  /* tree->SetBranchAddress("e1",e1); */
-  /* tree->SetBranchAddress("e2",e2); */
-  /* tree->SetBranchAddress("e3",e3); */
-  /* tree->SetBranchAddress("gammaEnergy",gammaEnergy); */
-  /* tree->SetBranchAddress("deltaTime",deltaTime); */
+  tree->SetBranchAddress("e1",e1);
+  tree->SetBranchAddress("e2",e2);
+  tree->SetBranchAddress("e3",e3);
+  tree->SetBranchAddress("e3",e3);
+  tree->SetBranchAddress("tac",tac);
+  tree->SetBranchAddress("fmaDeltaTime",fmaDeltaTime);
+  tree->SetBranchAddress("fmaMult",fmaMult);
+  tree->SetBranchAddress("gammaMult",&gammaMult);
+  tree->SetBranchAddress("gammaEnergy",gammaEnergy);
+  tree->SetBranchAddress("gammaTimestamp",gammaTimestamp);
+  tree->SetBranchAddress("deltaTime",deltaTime);
 
   TFile * calFile = new TFile("cal.root","RECREATE");
   TTree * ctree = new TTree("ctree", "Cal Tree");
@@ -56,24 +67,27 @@ void calTree() {
   Int_t run;
   Int_t hits;
   Float_t l,r,u,d,x,y;
+  Float_t e[3];
+  Int_t gmult;
+  Float_t genergy[100];
+  Float_t dtime[100];
 
+  //Generic
   ctree->Branch("run", &run, "run/I");
   ctree->Branch("hits",&hits,"hits/I");
+  //Positions
   ctree->Branch("l",&l,"l/F");
   ctree->Branch("r",&r,"r/F");
   ctree->Branch("u",&u,"u/F");
   ctree->Branch("d",&d,"d/F");
   ctree->Branch("x",&x,"x/F");
   ctree->Branch("y",&y,"y/F");
-  
-  /* Tree->Branch("right",right); */
-  /* tree->Branch("up",up); */
-  /* tree->Branch("down",down); */
-  /* tree->Branch("e1",e1); */
-  /* tree->Branch("e2",e2); */
-  /* tree->Branch("e3",e3); */
-  /* tree->Branch("gammaEnergy",gammaEnergy); */
-  /* tree->Branch("deltaTime",deltaTime); */
+  //Energies
+  ctree->Branch("e",e,"e[3]/F");
+  //Gammas
+  ctree->Branch("gmult",&gmult,"gmult/I");
+  ctree->Branch("genergy",genergy,"genergy[gmult]/F");
+  ctree->Branch("dtime",dtime,"dtime[gmult]/F");
   
   Int_t nEntries = tree->GetEntries();
   printf("nEntries: %d\n",nEntries);
@@ -110,12 +124,32 @@ void calTree() {
     x = (l-r);
     y = (u-d);
 
+    if (e1[0]>=0) {
+      e[0] = e1[0];
+    } else {
+      e[0] = e1[0] + 6560.0;
+    }
+    if (e2[0]>=0) {
+      e[1] = e2[0];
+    } else {
+      e[1] = e2[0] + 6560.0;
+    }
+    if (e3[0]>=0) {
+      e[2] = e3[0];
+    } else {
+      e[2] = e3[0] + 6560.0;
+    }
+
+    gmult = gammaMult;
+    for (Int_t i=0;i<gmult;i++) {
+      genergy[i] = gammaEnergy[i];
+      dtime[i] = deltaTime[i];
+    }
 
      if (entryNumber<10)
-      printf("entryNumber:%d l:%4.0f r:%4.0f u:%4.0f d:%4.0f x:%4.0f y:%4.0f\n",
-	     entryNumber,l,r,u,d,x,y);
+      printf("entryNumber:%d \n l:%4.0f r:%4.0f u:%4.0f d:%4.0f \n x:%4.0f y:%4.0f\n e1:%4.2f e2:%4.2f e3:%4.2f gammaMult:%d gammaEnergy[0]:%4.1f\n\n",
+	     entryNumber,l,r,u,d,x,y,e[0],e[1],e[2],gammaMult,gammaEnergy[0]);
 
-     
     ctree->Fill();
 
   } //entryNumber Loop
