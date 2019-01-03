@@ -1,7 +1,7 @@
 {
   TString cuts;
-  cuts.Form("cut1");
-  //TFile f("../../data/root_data/devel/run220.root");
+  cuts.Form("gcut1||gcut2||gcut3||gcut4");
+  //TFile f("../../data/root_data/devel/run200.root");
   TFile f("cal.root");
   
   TCanvas *cCan;

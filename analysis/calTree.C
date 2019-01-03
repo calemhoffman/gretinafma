@@ -21,8 +21,10 @@
 #include <TTreeReaderValue.h>
 #include <TTreeReaderArray.h>
 
+#define runN 220
+
 void calTree() {
-  TFile * fNameIn = new TFile("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run220.root");
+  TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runN));
   if (fNameIn == 0) printf("Error: file read in fail\n");
   TTree * tree = (TTree *) fNameIn->FindObjectAny("tree");
   
@@ -88,14 +90,45 @@ void calTree() {
   ctree->Branch("gmult",&gmult,"gmult/I");
   ctree->Branch("genergy",genergy,"genergy[gmult]/F");
   ctree->Branch("dtime",dtime,"dtime[gmult]/F");
+
+  //Read Cals In
+  ifstream inFile;
+  inFile.open("fma_cal.dat");
+  Int_t lineRead=0;
+  Int_t runNumberRead;
+  Int_t detIndexRead;
+  Double_t calibrationOffset[300][10];
+  Double_t calibrationLinear[300][10];
+  Double_t calibrationXOffset[300][10];
+  Int_t tempInt1=0;
+  Int_t tempInt2=0;
+  Double_t tempDouble1=0,tempDouble2=0, tempDouble3=0;
+  if( inFile.is_open() ) {
+    while (1) {
+      inFile >> tempInt1 >> tempInt2 >> tempDouble1 >> tempDouble2 >> tempDouble3;
+      runNumberRead=tempInt1;
+      detIndexRead=tempInt2;
+      calibrationOffset[runNumberRead][detIndexRead]=tempDouble1;
+      calibrationLinear[runNumberRead][detIndexRead]=tempDouble2;
+      calibrationXOffset[runNumberRead][detIndexRead]=tempDouble3;
+      lineRead++;
+      if (!inFile.good()) break;
+    }
+    inFile.close();
+    printf("... done reading cal file\n");
+  }else{
+    printf("... failed to read cal file\n");
+    return;
+  }
   
+   //Process Events
   Int_t nEntries = tree->GetEntries();
   printf("nEntries: %d\n",nEntries);
 
   for (Int_t entryNumber=0;entryNumber<=nEntries; entryNumber++) {
     tree->GetEntry(entryNumber);
    
-    run=runNumber;
+    run=runN;
     hits=numHits;
     if (left[0]>=-500) {
       l = left[0];
@@ -104,9 +137,9 @@ void calTree() {
     }
 
     if (right[0]>=-500) {
-      r = right[0];
+      r = right[0]/0.934829;
     } else {
-      r = right[0]+6560.0;
+      r = (right[0]+6560.0)/0.934829;
     }
 
     if (up[0]>=-500) {
@@ -125,19 +158,19 @@ void calTree() {
     y = (u-d);
 
     if (e1[0]>=0) {
-      e[0] = e1[0];
+      e[0] = (e1[0]-calibrationXOffset[run][0])*calibrationLinear[run][0]+calibrationOffset[run][0];
     } else {
-      e[0] = e1[0] + 6560.0;
+      e[0] = (e1[0]-calibrationXOffset[run][0]+6560.0)*calibrationLinear[run][0]+calibrationOffset[run][0];
     }
     if (e2[0]>=0) {
-      e[1] = e2[0];
+      e[1] = (e2[0]-calibrationXOffset[run][1])*calibrationLinear[run][1]+calibrationOffset[run][1];
     } else {
-      e[1] = e2[0] + 6560.0;
+      e[1] = (e2[0]-calibrationXOffset[run][1]+6560.0)*calibrationLinear[run][1]+calibrationOffset[run][1];
     }
     if (e3[0]>=0) {
-      e[2] = e3[0];
+      e[2] = e3[0] + calibrationOffset[run][2];
     } else {
-      e[2] = e3[0] + 6560.0;
+      e[2] = (e3[0] + 6560.0)+calibrationOffset[run][2];
     }
 
     gmult = gammaMult;
