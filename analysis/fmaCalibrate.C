@@ -35,27 +35,45 @@ void fmaCalibrate(FILE * calFileOut=NULL) {
   Int_t lineRead=0;
   Int_t runNumber[300];
   Int_t tempCounter=0;
-  Double_t centroid[300][10];
-  Double_t centroidError[300][10];
+  Double_t centroid1[300][10];
+  Double_t centroid1Error[300][10];
+  Double_t centroid2[300][10];
+  Double_t centroid2Error[300][10];
   Double_t temp;
-  Double_t calibrationFactor[300][10];
-  Double_t normFactor[3]={2000,1500,2500};
+  Double_t calibrationLinear[300][10];
+  Double_t normLinear[3]={1750,1500,2500};
+  Double_t calibrationOffset[300][10];
+  Double_t normOffset[3]={2500,1750,0};
+  Double_t calibrationXOffset[300][10];
   
   //Reset
   for (Int_t resetID1=0;resetID1<300;resetID1++) {
     runNumber[resetID1]=TMath::QuietNaN();
     for (Int_t resetID2=0;resetID2<10;resetID2++) {
-      centroid[resetID1][resetID2] = TMath::QuietNaN();
-      centroidError[resetID1][resetID2]=TMath::QuietNaN();
-      calibrationFactor[resetID1][resetID2]=TMath::QuietNaN();
+      centroid1[resetID1][resetID2] = TMath::QuietNaN();
+      centroid1Error[resetID1][resetID2]=TMath::QuietNaN();
+      calibrationLinear[resetID1][resetID2]=TMath::QuietNaN();
+      centroid2[resetID1][resetID2] = TMath::QuietNaN();
+      centroid2Error[resetID1][resetID2]=TMath::QuietNaN();
+      calibrationOffset[resetID1][resetID2]=TMath::QuietNaN();
+      calibrationXOffset[resetID1][resetID2]=TMath::QuietNaN();
     }
   }
   
   if( inFile.is_open() ) {
     while (1) {
-      inFile >> runNumber[lineRead] >> temp >> temp >>  centroid[lineRead][tempCounter] >> centroidError[lineRead][tempCounter] >> temp >> temp;
+      if (tempCounter<2)
+	inFile >> runNumber[lineRead] >> centroid1[lineRead][tempCounter] >> centroid1Error[lineRead][tempCounter]
+	       >> temp >> temp >> centroid2[lineRead][tempCounter] >> centroid2Error[lineRead][tempCounter]
+	  >> temp >> temp;
+
+      if (tempCounter==2)
+	inFile >> runNumber[lineRead] >> temp >> temp >> centroid1[lineRead][tempCounter] >> centroid1Error[lineRead][tempCounter]
+	       >> temp >> temp ;
+      
       if (!inFile.good()) break;
-      if (lineRead<10) printf("%d %d %d %4.4f %4.4f \n",lineRead,tempCounter,runNumber[lineRead],centroid[lineRead][tempCounter],centroidError[lineRead][tempCounter]);
+      if (lineRead<10 && tempCounter<2) printf("%d %d %d %4.1f %4.1f \n",lineRead,tempCounter,runNumber[lineRead],centroid1[lineRead][tempCounter],centroid2[lineRead][tempCounter]);
+      if (lineRead<10 && tempCounter==2) printf("%d %d %d %4.1f \n",lineRead,tempCounter,runNumber[lineRead],centroid1[lineRead][tempCounter]); 
       tempCounter++; if (tempCounter==3) {lineRead++; tempCounter=0;}
     }
     printf("... done reading fit file\n");
@@ -69,9 +87,24 @@ void fmaCalibrate(FILE * calFileOut=NULL) {
  
   for (Int_t runNumberIndex=0;runNumberIndex<lineRead;runNumberIndex++) {
     for (Int_t detIndex=0;detIndex<3;detIndex++) {
-      calibrationFactor[runNumberIndex][detIndex]=centroid[runNumberIndex][detIndex] / normFactor[detIndex];
-      printf("run %d, cal factor %1.4f\n",runNumber[runNumberIndex],calibrationFactor[runNumberIndex][detIndex]);
-      fprintf(calFileOut, "%d %d %2.5f\n", runNumber[runNumberIndex],detIndex,calibrationFactor[runNumberIndex][detIndex]);
+      if (detIndex<2)
+	{
+	  calibrationLinear[runNumberIndex][detIndex]
+	    =(normOffset[detIndex]-normLinear[detIndex])/(centroid2[runNumberIndex][detIndex]-centroid1[runNumberIndex][detIndex]);
+	  calibrationOffset[runNumberIndex][detIndex] = normLinear[detIndex];
+	  calibrationXOffset[runNumberIndex][detIndex] = centroid1[runNumberIndex][detIndex];
+	} else {
+	calibrationLinear[runNumberIndex][detIndex] = 0;
+	calibrationOffset[runNumberIndex][detIndex] = (normLinear[detIndex]-centroid1[runNumberIndex][detIndex]);
+	calibrationXOffset[runNumberIndex][detIndex] = 0;
+      }
+      /* calibrationFactor[runNumberIndex][detIndex]=centroid[runNumberIndex][detIndex] / normFactor[detIndex]; */
+      if (runNumberIndex<10)
+	printf("run %d | cal factors | %1.4f %1.4f %1.4f\n",runNumber[runNumberIndex],calibrationOffset[runNumberIndex][detIndex],
+	       calibrationLinear[runNumberIndex][detIndex], calibrationXOffset[runNumberIndex][detIndex]);
+
+      fprintf(calFileOut, "%d %d %2.5f %2.5f %2.5f\n", runNumber[runNumberIndex],detIndex,calibrationOffset[runNumberIndex][detIndex],
+	      calibrationLinear[runNumberIndex][detIndex], calibrationXOffset[runNumberIndex][detIndex]);
     }
   }
   
