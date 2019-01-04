@@ -21,7 +21,7 @@
 #include <TTreeReaderValue.h>
 #include <TTreeReaderArray.h>
 
-#define runN 220
+#define runN 131
 
 void calTree() {
   TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runN));
@@ -120,6 +120,14 @@ void calTree() {
     printf("... failed to read cal file\n");
     return;
   }
+  //Read Cuts In // NEEDS TO LOOP OVER MULT ??
+  /* TCutG * cut; */
+  /* TFile * cutFileIn = new TFile("cuts.root"); */
+  /* Bool_t isCutFileOpen = cutFileIn->IsOpen(); */
+
+  /* if (isCutFileOpen) { */
+  /*   cut = (TCutG *) cutFileIn->FindObjectAny("cut_gen_dtge"); */
+  /* } */
   
    //Process Events
   Int_t nEntries = tree->GetEntries();
@@ -179,11 +187,12 @@ void calTree() {
       dtime[i] = deltaTime[i];
     }
 
-     if (entryNumber<10)
+     if (entryNumber<1)
       printf("entryNumber:%d \n l:%4.0f r:%4.0f u:%4.0f d:%4.0f \n x:%4.0f y:%4.0f\n e1:%4.2f e2:%4.2f e3:%4.2f gammaMult:%d gammaEnergy[0]:%4.1f\n\n",
 	     entryNumber,l,r,u,d,x,y,e[0],e[1],e[2],gammaMult,gammaEnergy[0]);
 
-    ctree->Fill();
+
+     ctree->Fill();
 
   } //entryNumber Loop
   ctree->Write();
