@@ -1,10 +1,10 @@
 {
-  Int_t runN=131;
+  Int_t runN=115;
   
   TString cuts;
   cuts.Form("gcut1||gcut2||gcut3||gcut4");
   //TFile f("../../data/root_data/devel/run200.root");
-  TFile f("cal.root");
+  TFile f(Form("cal_%d.root",runN));
   
   TCanvas *cCan;
   cCan = new TCanvas("cCan","cCan",1400,800);
@@ -22,13 +22,13 @@
 
   cCan->cd(4);
   ctree->Draw("e[0]>>he1(500,0,4000)","e[2]>800&&e[2]<1000","");
-  hist_ref_e1__1->SetLineColor(2); hist_ref_e1__1->Draw("same");
+  hist_ref_e1__1->SetLineColor(2); hist_ref_e1__1->Scale(1); hist_ref_e1__1->Draw("same");
   cCan->cd(5);
   ctree->Draw("e[1]>>he2(500,0,4000)","e[2]>800&&e[2]<1000","");
-  hist_ref_e2__2->SetLineColor(2); hist_ref_e2__2->Draw("same");
+  hist_ref_e2__2->SetLineColor(2); hist_ref_e2__2->Scale(1); hist_ref_e2__2->Draw("same");
   cCan->cd(6);
   ctree->Draw("e[2]>>he3(500,0,4000)","e[0]>1400&&e[0]<1600","");
-  hist_ref_e3__3->SetLineColor(2); hist_ref_e3__3->Draw("same");
+  hist_ref_e3__3->SetLineColor(2); hist_ref_e3__3->Scale(1); hist_ref_e3__3->Draw("same");
   cCan->SaveAs(Form("figures/cCan1_r%d.pdf",runN));
   cCan->SaveAs(Form("figures/cCan1_r%d.C",runN));
 	         

@@ -21,7 +21,7 @@
 #include <TTreeReaderValue.h>
 #include <TTreeReaderArray.h>
 
-#define runN 131
+#define runN 115
 
 void calTree() {
   TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runN));
@@ -63,7 +63,7 @@ void calTree() {
   tree->SetBranchAddress("gammaTimestamp",gammaTimestamp);
   tree->SetBranchAddress("deltaTime",deltaTime);
 
-  TFile * calFile = new TFile("cal.root","RECREATE");
+  TFile * calFile = new TFile(Form("cal_%d.root",runN),"RECREATE");
   TTree * ctree = new TTree("ctree", "Cal Tree");
 
   Int_t run;

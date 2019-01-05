@@ -10,7 +10,7 @@
 
    ci = TColor::GetColor("#0000ff");
    cutg->SetLineColor(ci);
-   cutg->SetLineWidth(6);
+   cutg->SetLineWidth(2);
    cutg->SetPoint(0,1108.73,2038.64);
    cutg->SetPoint(1,1052.14,2073.11);
    cutg->SetPoint(2,947.049,2007.61);
