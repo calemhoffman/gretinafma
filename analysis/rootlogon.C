@@ -50,7 +50,10 @@
   gROOT->ProcessLine(".x hist_ref_e1.C");hist_ref_e1__1;
   gROOT->ProcessLine(".x hist_ref_e2.C");hist_ref_e2__2;
   gROOT->ProcessLine(".x hist_ref_e3.C");hist_ref_e3__3;
-  
+  gROOT->ProcessLine(".x cuts/cut_ref2_e1e2.C"); cut_ref2_e1e2;
+  gROOT->ProcessLine(".x cuts/cut_ref2_e1x.C"); cut_ref2_e1x;
+  gROOT->ProcessLine(".x cuts/cut_ref2_lr.C"); cut_ref2_lr;
+ 
   //  TBrowser *b = new TBrowser()
 
 }

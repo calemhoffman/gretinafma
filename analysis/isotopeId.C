@@ -1,19 +1,20 @@
 {
-  Int_t runN=77;
+  Int_t runN=89;
   Float_t scaleF=1.15;
   
   TString cuts;
   cuts.Form("gcut1||gcut2||gcut3||gcut4");
   //TFile f("../../data/root_data/devel/run200.root");
+
   TFile f(Form("cal_%d.root",runN));
-  
+  //TFile f(Form("temp.root"));
   TCanvas *cCan;
   cCan = new TCanvas("cCan","cCan",1400,800);
   cCan->Clear(); cCan->Divide(3,2);
   
   cCan->cd(1);//gPad->SetLogz(1);
   ctree->Draw("e[0]:e[1]>>he1e2(500,0,4000,500,0,4000)",cuts,"colz");
-  cut_ref_e1e2->Draw("same");
+  cut_ref_e1e2->Draw("same"); cut_ref2_e1e2->Draw("same");
   cCan->cd(2);//gPad->SetLogz(1);
   ctree->Draw("e[0]:e[2]>>he1e3(500,0,4000,500,0,4000)",cuts,"colz");
   cut_ref_e1e3->Draw("same");
@@ -23,12 +24,18 @@
 
   cCan->cd(4);
   ctree->Draw("e[0]>>he1(500,0,4000)","e[2]>800&&e[2]<1000","");
+  TH1F *he1 = (TH1F *) gDirectory->FindObjectAny("he1");
+  he1->Fit("gaus");
   hist_ref_e1__1->SetLineColor(2); hist_ref_e1__1->Scale(scaleF); hist_ref_e1__1->Draw("same");
   cCan->cd(5);
   ctree->Draw("e[1]>>he2(500,0,4000)","e[2]>800&&e[2]<1000","");
+  TH1F *he2 = (TH1F *) gDirectory->FindObjectAny("he2");
+  he2->Fit("gaus");
   hist_ref_e2__2->SetLineColor(2); hist_ref_e2__2->Scale(scaleF); hist_ref_e2__2->Draw("same");
   cCan->cd(6);
   ctree->Draw("e[2]>>he3(500,0,4000)","e[0]>1400&&e[0]<1600","");
+  TH1F *he3 = (TH1F *) gDirectory->FindObjectAny("he3");
+  he3->Fit("gaus","","",400,900);
   hist_ref_e3__3->SetLineColor(2); hist_ref_e3__3->Scale(scaleF); hist_ref_e3__3->Draw("same");
   cCan->SaveAs(Form("figures/cCan1_r%d.pdf",runN));
   cCan->SaveAs(Form("figures/cCan1_r%d.C",runN));
@@ -45,13 +52,15 @@
   
   cCan2->cd(2);//gPad->SetLogz(1);
   ctree->Draw("e[0]:x>>he1x(1000,-2500,2500,500,0,4000)",cuts,"colz");
-  cut_ref_e1x->Draw("same");
+  
+  cut_ref2_e1x->Draw("same");
   cCan2->cd(3);
   ctree->Draw("x>>hx(1000,-2500,2500)",cuts,"");
-
+  TH1F *hx = (TH1F *) gDirectory->FindObjectAny("hx");
+  hx->Fit("gaus","","",-100,100);
   cCan2->cd(4);gPad->SetLogz(1);
   ctree->Draw("l:r>>hlr(500,0,4000,500,0,4000)",cuts,"colz");
-  cut_ref_lr->Draw("same");
+  cut_ref2_lr->Draw("same");
 
   cCan2->SaveAs(Form("figures/cCan2_r%d.pdf",runN));
   cCan2->SaveAs(Form("figures/cCan2_r%d.C",runN));

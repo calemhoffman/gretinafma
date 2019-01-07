@@ -1,7 +1,7 @@
 void cCan1_r77()
 {
 //=========Macro generated from canvas: cCan/cCan
-//=========  (Mon Jan  7 13:03:22 2019) by ROOT version 6.15/01
+//=========  (Mon Jan  7 17:33:24 2019) by ROOT version 6.15/01
    TCanvas *cCan = new TCanvas("cCan", "cCan",0,45,1400,848);
    gStyle->SetOptFit(1);
    cCan->ToggleEventStatus();
@@ -6515,6 +6515,29 @@ void cCan1_r77()
    cutg->SetPoint(16,1048.1,1836.96);
    cutg->SetPoint(17,1137.03,1992.24);
    cutg->SetPoint(18,1116.81,2077.64);
+   cutg->Draw("");
+   
+   cutg = new TCutG("cut_ref2_e1e2",14);
+   cutg->SetVarX("e[1]");
+   cutg->SetVarY("e[0]");
+   cutg->SetTitle("cut_ref2_e1e2");
+   cutg->SetFillStyle(1000);
+   cutg->SetLineColor(51);
+   cutg->SetLineWidth(3);
+   cutg->SetPoint(0,1407.29,2517.35);
+   cutg->SetPoint(1,898.176,2021.69);
+   cutg->SetPoint(2,506.839,1513.63);
+   cutg->SetPoint(3,305.471,1117.1);
+   cutg->SetPoint(4,305.471,986.989);
+   cutg->SetPoint(5,385.258,949.814);
+   cutg->SetPoint(6,636.018,1191.45);
+   cutg->SetPoint(7,932.371,1600.37);
+   cutg->SetPoint(8,1126.14,1848.2);
+   cutg->SetPoint(9,1281.91,2027.88);
+   cutg->SetPoint(10,1494.68,2232.34);
+   cutg->SetPoint(11,1574.47,2461.59);
+   cutg->SetPoint(12,1411.09,2517.35);
+   cutg->SetPoint(13,1407.29,2517.35);
    cutg->Draw("");
    
    TPaveText *pt = new TPaveText(0.01,0.925,0.47,0.995,"blNDC");
@@ -22547,7 +22570,7 @@ void cCan1_r77()
    TPad *cCan_4 = new TPad("cCan_4", "cCan_4",0.01,0.01,0.3233333,0.49);
    cCan_4->Draw();
    cCan_4->cd();
-   cCan_4->Range(-500,-109.2,4500,982.8);
+   cCan_4->Range(-500,-117.4233,4500,1056.81);
    cCan_4->SetFillColor(0);
    cCan_4->SetBorderMode(0);
    cCan_4->SetBorderSize(2);
@@ -22764,19 +22787,44 @@ void cCan1_r77()
    he1__1->SetBinContent(417,1);
    he1__1->SetEntries(35016);
    
-   ptstats = new TPaveStats(0.78,0.595,0.98,0.995,"brNDC");
+   TF1 *gaus7 = new TF1("gaus","gaus",0,4000, TF1::EAddToList::kNo);
+   gaus7->SetFillColor(19);
+   gaus7->SetFillStyle(0);
+   gaus7->SetLineWidth(3);
+   gaus7->SetChisquare(1592.073);
+   gaus7->SetNDF(200);
+   gaus7->GetXaxis()->SetTitleOffset(1);
+   gaus7->GetYaxis()->SetTitleOffset(1);
+   gaus7->SetParameter(0,894.8452);
+   gaus7->SetParError(0,5.756683);
+   gaus7->SetParLimits(0,0,0);
+   gaus7->SetParameter(1,1737.533);
+   gaus7->SetParError(1,0.6712762);
+   gaus7->SetParLimits(1,0,0);
+   gaus7->SetParameter(2,119.2348);
+   gaus7->SetParError(2,0.404596);
+   gaus7->SetParLimits(2,0,1375);
+   gaus7->SetParent(he1__1);
+   he1__1->GetListOfFunctions()->Add(gaus7);
+   
+   ptstats = new TPaveStats(0.62,0.475,0.98,0.995,"brNDC");
    ptstats->SetName("stats");
    ptstats->SetBorderSize(1);
    ptstats->SetFillColor(0);
    ptstats->SetTextAlign(12);
    ptstats_LaTex = ptstats->AddText("he1");
-   ptstats_LaTex->SetTextSize(0.05257143);
+   ptstats_LaTex->SetTextSize(0.03986667);
    ptstats_LaTex = ptstats->AddText("Entries = 35016  ");
    ptstats_LaTex = ptstats->AddText("Mean  =   1739");
    ptstats_LaTex = ptstats->AddText("Std Dev   =  137.5");
    ptstats_LaTex = ptstats->AddText("Underflow =      0");
    ptstats_LaTex = ptstats->AddText("Overflow  =      0");
    ptstats_LaTex = ptstats->AddText("Integral = 3.502e+04");
+   ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf =  1592 / 200");
+   ptstats_LaTex = ptstats->AddText("Prob  =     0");
+   ptstats_LaTex = ptstats->AddText("Constant = 894.8 #pm 5.8 ");
+   ptstats_LaTex = ptstats->AddText("Mean     =  1738 #pm 0.7 ");
+   ptstats_LaTex = ptstats->AddText("Sigma    = 119.2 #pm 0.4 ");
    ptstats->SetOptStat(1111111);
    ptstats->SetOptFit(1111);
    ptstats->Draw();
@@ -23438,19 +23486,44 @@ void cCan1_r77()
    he2__3->SetBinContent(311,1);
    he2__3->SetEntries(35016);
    
-   ptstats = new TPaveStats(0.78,0.595,0.98,0.995,"brNDC");
+   TF1 *gaus10 = new TF1("gaus","gaus",0,4000, TF1::EAddToList::kNo);
+   gaus10->SetFillColor(19);
+   gaus10->SetFillStyle(0);
+   gaus10->SetLineWidth(3);
+   gaus10->SetChisquare(786.8035);
+   gaus10->SetNDF(144);
+   gaus10->GetXaxis()->SetTitleOffset(1);
+   gaus10->GetYaxis()->SetTitleOffset(1);
+   gaus10->SetParameter(0,1502.6);
+   gaus10->SetParError(0,9.906295);
+   gaus10->SetParLimits(0,0,0);
+   gaus10->SetParameter(1,880.4641);
+   gaus10->SetParError(1,0.4033333);
+   gaus10->SetParLimits(1,0,0);
+   gaus10->SetParameter(2,72.7044);
+   gaus10->SetParError(2,0.2744587);
+   gaus10->SetParLimits(2,0,855.4834);
+   gaus10->SetParent(he2__3);
+   he2__3->GetListOfFunctions()->Add(gaus10);
+   
+   ptstats = new TPaveStats(0.62,0.475,0.98,0.995,"brNDC");
    ptstats->SetName("stats");
    ptstats->SetBorderSize(1);
    ptstats->SetFillColor(0);
    ptstats->SetTextAlign(12);
    ptstats_LaTex = ptstats->AddText("he2");
-   ptstats_LaTex->SetTextSize(0.05257143);
+   ptstats_LaTex->SetTextSize(0.03986667);
    ptstats_LaTex = ptstats->AddText("Entries = 35016  ");
    ptstats_LaTex = ptstats->AddText("Mean  =  884.1");
    ptstats_LaTex = ptstats->AddText("Std Dev   =  85.52");
    ptstats_LaTex = ptstats->AddText("Underflow =      0");
    ptstats_LaTex = ptstats->AddText("Overflow  =      0");
    ptstats_LaTex = ptstats->AddText("Integral = 3.502e+04");
+   ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf = 786.8 / 144");
+   ptstats_LaTex = ptstats->AddText("Prob  =     0");
+   ptstats_LaTex = ptstats->AddText("Constant =  1503 #pm 9.9 ");
+   ptstats_LaTex = ptstats->AddText("Mean     = 880.5 #pm 0.4 ");
+   ptstats_LaTex = ptstats->AddText("Sigma    =  72.7 #pm 0.3 ");
    ptstats->SetOptStat(1111111);
    ptstats->SetOptFit(1111);
    ptstats->Draw();
@@ -24187,19 +24260,44 @@ void cCan1_r77()
    he3__5->SetBinContent(501,1079);
    he3__5->SetEntries(52335);
    
-   ptstats = new TPaveStats(0.78,0.595,0.98,0.995,"brNDC");
+   TF1 *gaus13 = new TF1("gaus","gaus",400,900, TF1::EAddToList::kNo);
+   gaus13->SetFillColor(19);
+   gaus13->SetFillStyle(0);
+   gaus13->SetLineWidth(3);
+   gaus13->SetChisquare(1600.709);
+   gaus13->SetNDF(60);
+   gaus13->GetXaxis()->SetTitleOffset(1);
+   gaus13->GetYaxis()->SetTitleOffset(1);
+   gaus13->SetParameter(0,1403.82);
+   gaus13->SetParError(0,8.578606);
+   gaus13->SetParLimits(0,0,0);
+   gaus13->SetParameter(1,643.2759);
+   gaus13->SetParError(1,0.5797344);
+   gaus13->SetParLimits(1,0,0);
+   gaus13->SetParameter(2,108.0556);
+   gaus13->SetParError(2,0.4898661);
+   gaus13->SetParLimits(2,0,1030.847);
+   gaus13->SetParent(he3__5);
+   he3__5->GetListOfFunctions()->Add(gaus13);
+   
+   ptstats = new TPaveStats(0.62,0.475,0.98,0.995,"brNDC");
    ptstats->SetName("stats");
    ptstats->SetBorderSize(1);
    ptstats->SetFillColor(0);
    ptstats->SetTextAlign(12);
    ptstats_LaTex = ptstats->AddText("he3");
-   ptstats_LaTex->SetTextSize(0.05257143);
+   ptstats_LaTex->SetTextSize(0.03986667);
    ptstats_LaTex = ptstats->AddText("Entries = 52335  ");
    ptstats_LaTex = ptstats->AddText("Mean  =  661.5");
    ptstats_LaTex = ptstats->AddText("Std Dev   =  276.5");
    ptstats_LaTex = ptstats->AddText("Underflow =     29");
    ptstats_LaTex = ptstats->AddText("Overflow  =   1079");
    ptstats_LaTex = ptstats->AddText("Integral = 5.123e+04");
+   ptstats_LaTex = ptstats->AddText("#chi^{2} / ndf =  1601 / 60");
+   ptstats_LaTex = ptstats->AddText("Prob  =     0");
+   ptstats_LaTex = ptstats->AddText("Constant =  1404 #pm 8.6 ");
+   ptstats_LaTex = ptstats->AddText("Mean     = 643.3 #pm 0.6 ");
+   ptstats_LaTex = ptstats->AddText("Sigma    = 108.1 #pm 0.5 ");
    ptstats->SetOptStat(1111111);
    ptstats->SetOptFit(1111);
    ptstats->Draw();

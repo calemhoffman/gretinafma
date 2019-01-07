@@ -21,12 +21,12 @@
 #include <TTreeReaderValue.h>
 #include <TTreeReaderArray.h>
 
-#define runN 77
+
 
 void calTree() {
-  TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runN));
-  if (fNameIn == 0) printf("Error: file read in fail\n");
-  TTree * tree = (TTree *) fNameIn->FindObjectAny("tree");
+  Int_t lowRunNumber=77;
+  Int_t highRunNumber=89;
+  Int_t runN;
   
   Int_t runNumber;
   Int_t numHits=1;
@@ -44,6 +44,15 @@ void calTree() {
   Float_t gammaEnergy[100];
   Float_t gammaTimestamp[100];
   Float_t deltaTime[100];
+
+
+   for (Int_t index=lowRunNumber;index<=highRunNumber;index++) {
+    runN=index;
+    printf("Starting sort of run number: %d\n",runN);
+  TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runN));
+  if (fNameIn == 0) printf("Error: file read in fail\n");
+  TTree * tree = (TTree *) fNameIn->FindObjectAny("tree");
+ 
   
   tree->SetBranchAddress("runNumber",&runNumber);
   tree->SetBranchAddress("numHits",&numHits);
@@ -93,7 +102,7 @@ void calTree() {
 
   //Read Cals In
   ifstream inFile;
-  inFile.open("fma_cal.dat");
+  inFile.open("fma_ecal.dat");
   Int_t lineRead=0;
   Int_t runNumberRead;
   Int_t detIndexRead;
@@ -120,6 +129,26 @@ void calTree() {
     printf("... failed to read cal file\n");
     return;
   }
+  Double_t xCalOffset[300];
+  Double_t xCalScale[300];
+  inFile.open("fma_xcal.dat");
+  lineRead=0; tempInt1=0; tempDouble1=0; tempDouble2=0;
+  if( inFile.is_open() ) {
+    while (1) {
+      inFile >> tempInt1 >> tempDouble1 >> tempDouble2;
+      runNumberRead=tempInt1;
+      xCalOffset[runNumberRead]=tempDouble1;
+      xCalScale[runNumberRead]=tempDouble2;
+      lineRead++;
+      if (!inFile.good()) break;
+    }
+    inFile.close();
+    printf("... done reading cal file\n");
+  }else{
+    printf("... failed to read cal file\n");
+    return;
+  } 
+
   //Read Cuts In // NEEDS TO LOOP OVER MULT ??
   /* TCutG * cut; */
   /* TFile * cutFileIn = new TFile("cuts.root"); */
@@ -162,7 +191,7 @@ void calTree() {
       d = down[0]+6560.0;
     }
     
-    x = (l-r);
+    x = (l-r)-xCalOffset[runN];
     y = (u-d);
 
     if (e1[0]>=0) {
@@ -198,5 +227,6 @@ void calTree() {
   ctree->Write();
   //printf("Run Number: %d\n",runNumber);
   /* printf("left: %f\n",left[0]); */
+   }
 
 }
