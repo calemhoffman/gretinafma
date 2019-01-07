@@ -1,5 +1,5 @@
 {
-  Int_t runN=115;
+  Int_t runN=90;
   
   TString cuts;
   cuts.Form("gcut1||gcut2||gcut3||gcut4");
