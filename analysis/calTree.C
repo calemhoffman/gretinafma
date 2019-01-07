@@ -21,7 +21,7 @@
 #include <TTreeReaderValue.h>
 #include <TTreeReaderArray.h>
 
-#define runN 90
+#define runN 77
 
 void calTree() {
   TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runN));
