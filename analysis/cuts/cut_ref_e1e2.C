@@ -12,7 +12,7 @@
    TColor *color; // for color definition with alpha
    ci = TColor::GetColor("#0000ff");
    cutg->SetLineColor(ci);
-   cutg->SetLineWidth(6);
+   cutg->SetLineWidth(2);
    cutg->SetPoint(0,1116.81,2077.64);
    cutg->SetPoint(1,1023.85,2077.64);
    cutg->SetPoint(2,934.923,1992.24);
