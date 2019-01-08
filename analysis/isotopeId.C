@@ -1,5 +1,5 @@
 {
-  Int_t runN=94;
+  Int_t runN=110;
   Float_t scaleF=1;
   
   TString cuts;
@@ -7,7 +7,7 @@
   //TFile f("../../data/root_data/devel/run200.root");
 
   TFile f(Form("cal_%d.root",runN));
-  //TFile f(Form("temp.root"));
+  //TFile f(Form("cal_10.root"));
   TCanvas *cCan;
   cCan = new TCanvas("cCan","cCan",1400,800);
   cCan->Clear(); cCan->Divide(3,2);

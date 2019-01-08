@@ -24,8 +24,8 @@
 
 
 void calTree() {
-  Int_t lowRunNumber=94;
-  Int_t highRunNumber=94;
+  Int_t lowRunNumber=77;
+  Int_t highRunNumber=109;
   Int_t runN;
   
   Int_t runNumber;
@@ -78,7 +78,7 @@ void calTree() {
   Int_t run;
   Int_t hits;
   Float_t l,r,u,d,x,y;
-  Float_t e[3];
+  Float_t e[10];
   Int_t gmult;
   Float_t genergy[100];
   Float_t dtime[100];
@@ -94,7 +94,7 @@ void calTree() {
   ctree->Branch("x",&x,"x/F");
   ctree->Branch("y",&y,"y/F");
   //Energies
-  ctree->Branch("e",e,"e[3]/F");
+  ctree->Branch("e",e,"e[10]/F");
   //Gammas
   ctree->Branch("gmult",&gmult,"gmult/I");
   ctree->Branch("genergy",genergy,"genergy[gmult]/F");
@@ -210,6 +210,11 @@ void calTree() {
       e[2] = (e3[0] + 6560.0)+calibrationOffset[run][2];
     }
 
+    e[3] = e[0]+e[1];
+    e[4] = e[0]+e[2];
+    e[5] = e[1]+e[2];
+    e[6] = e[0]+e[1]+e[2];
+    
     gmult = gammaMult;
     for (Int_t i=0;i<gmult;i++) {
       genergy[i] = gammaEnergy[i];
