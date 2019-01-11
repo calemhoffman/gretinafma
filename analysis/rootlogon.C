@@ -64,7 +64,7 @@
   gROOT->ProcessLine(".x cuts/cut_ar38_g1600.C"); cut_ar38_g1600;
   gROOT->ProcessLine(".x cuts/cut_ar38_g1800.C"); cut_ar38_g1800;
   gROOT->ProcessLine(".x cuts/cut_ar38_g2100.C"); cut_ar38_g2100;
-  
+
   //  TBrowser *b = new TBrowser()
 
 }

@@ -19,18 +19,27 @@
 #include <TTreeReaderValue.h>
 #include <TTreeReaderArray.h>
 #include <TFile.h>
-
+#include <TEventList.h>
+TFile * lNameIn;
+TFile * fNameIn;
+TEventList * ar38_elist_x;
+TEventList * elist;
+TCutG *cut_ar38_e1x;
+TCutG *cut_ar38_dtge;
+TCutG *cut_ar38_e1e3;
+TCutG *cut_ar38_e1e2;
+TCutG *cut_ar38_e2e3;
 
 void fmaCuts(void) {
   TBenchmark gClock;  
   gClock.Reset(); gClock.Start("gTimer");
-
+ 
   //Get Cuts
-  TCutG *cut_ar38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1x");
-  TCutG *cut_ar38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_ar38_dtge");
-  TCutG *cut_ar38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1e3");
-  TCutG *cut_ar38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1e2");
-  TCutG *cut_ar38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e2e3");
+  cut_ar38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1x");
+  cut_ar38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_ar38_dtge");
+  cut_ar38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1e3");
+  cut_ar38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1e2");
+  cut_ar38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e2e3");
   
   Int_t runN=10;
 
@@ -42,9 +51,15 @@ void fmaCuts(void) {
   Float_t genergy[100];
   Float_t dtime[100];
 
-  TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_%d.root",runN));
+   //Get List
+  lNameIn = new TFile("eventLists.root");
+  lNameIn->GetObject("ar38_elist_x",ar38_elist_x); 
+  Int_t nElistEntry = ar38_elist_x->GetN(); 
+  printf("nElistEntry: %d ",nElistEntry);
+
+  fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_%d.root",runN));
   if (fNameIn == 0) {printf("Error: file read in fail\n"); return;}
-  TTree * ctree = (TTree *) fNameIn->FindObjectAny("ctree");
+  TTree * ctree = (TTree *) fNameIn->Get("ctree");
 
   //Generic
   ctree->SetBranchAddress("run", &run);
@@ -108,57 +123,54 @@ void fmaCuts(void) {
   he13e123 = new TH2F("he13e123","he13e123; e123; e13",3*ch,0,3*rg,2*ch,0,2*rg);
   
   //----------- process the tree ---------------//
-   Int_t nEntries = ctree->GetEntries();
+  Int_t nEntries = ctree->GetEntries();
   printf("nEntries: %d\n",nEntries);
 
-  for (Int_t entryNumber=0;entryNumber<=nEntries; entryNumber++) {
-    ctree->GetEntry(entryNumber);
-    //Fill outside of gates
+  
+  for (Int_t entryNumber=0;entryNumber<nElistEntry/*nEntries*/; entryNumber++) {
+    ctree->GetEntry(ar38_elist_x->GetEntry(entryNumber));
+    //   printf("GetEntry: %ull\n\n",ar38_elist_x->GetEntry(entryNumber));
+    
+    /* //Fill outside of gates */
     for (Int_t iMult=0;iMult<gmult;iMult++) {
       hg_tot->Fill(genergy[iMult]);
+
       if ( cut_ar38_dtge->IsInside(genergy[iMult],dtime[iMult]) ) {
 	hg_t->Fill(genergy[iMult]);
       }//cut_ar38_dtge
-      if ( cut_ar38_e1x->IsInside(x,e[0]) ) {
-	hg_x->Fill(genergy[iMult]);
-      }//cut_ar38_e1x
+
+      //if ( cut_ar38_e1x->IsInside(x,e[0]) ) {
+    	hg_x->Fill(genergy[iMult]);
+	//}//cut_ar38_e1x
+
       if ( cut_ar38_e1e3->IsInside(e[2],e[0]) &&
-	   cut_ar38_e1e2->IsInside(e[1],e[0]) &&
-	   cut_ar38_e2e3->IsInside(e[2],e[1]) ) {
-	hg_z->Fill(genergy[iMult]);
-      }//cut_ar38_e1e3
+    	   cut_ar38_e1e2->IsInside(e[1],e[0]) &&
+    	   cut_ar38_e2e3->IsInside(e[2],e[1]) ) {
+    	hg_z->Fill(genergy[iMult]);
+      }//cut_ar38_z
+      
       if ( cut_ar38_dtge->IsInside(genergy[iMult],dtime[iMult]) &&
-	   cut_ar38_e1x->IsInside(x,e[0]) &&
-	   cut_ar38_e1e3->IsInside(e[2],e[0]) &&
-	   cut_ar38_e1e2->IsInside(e[1],e[0]) &&
-	   cut_ar38_e2e3->IsInside(e[2],e[1]) ) {
+    	   cut_ar38_e1x->IsInside(x,e[0]) &&
+    	   cut_ar38_e1e3->IsInside(e[2],e[0]) &&
+    	   cut_ar38_e1e2->IsInside(e[1],e[0]) &&
+    	   cut_ar38_e2e3->IsInside(e[2],e[1]) ) {
 	
-	hg_ar38->Fill(genergy[iMult]);
-	he1e2->Fill(e[1],e[0]);
-	he1e3->Fill(e[2],e[0]);
-	he2e3->Fill(e[2],e[1]);//
-	he1e12->Fill(e[0]+e[1],e[0]);
-	he1e13->Fill(e[0]+e[2],e[0]);
-	he2e13->Fill(e[0]+e[2],e[1]);//
-	he1e123->Fill(e[0]+e[1]+e[2],e[0]);
-	he2e123->Fill(e[0]+e[1]+e[2],e[1]);
-	he3e123->Fill(e[0]+e[1]+e[2],e[2]);//
-	he12e123->Fill(e[0]+e[1]+e[2],e[0]+e[1]);
-	he23e123->Fill(e[0]+e[1]+e[2],e[1]+e[2]);
-	he13e123->Fill(e[0]+e[1]+e[2],e[0]+e[2]);//
-      }//ar38
-      
+    	hg_ar38->Fill(genergy[iMult]);
+    	he1e2->Fill(e[1],e[0]);
+    	he1e3->Fill(e[2],e[0]);
+    	he2e3->Fill(e[2],e[1]);//
+    	he1e12->Fill(e[0]+e[1],e[0]);
+    	he1e13->Fill(e[0]+e[2],e[0]);
+    	he2e13->Fill(e[0]+e[2],e[1]);//
+    	he1e123->Fill(e[0]+e[1]+e[2],e[0]);
+    	he2e123->Fill(e[0]+e[1]+e[2],e[1]);
+    	he3e123->Fill(e[0]+e[1]+e[2],e[2]);//
+    	he12e123->Fill(e[0]+e[1]+e[2],e[0]+e[1]);
+    	he23e123->Fill(e[0]+e[1]+e[2],e[1]+e[2]);
+    	he13e123->Fill(e[0]+e[1]+e[2],e[0]+e[2]);//
+      }//ar38 
     }//iMult
-   
-
-    //Fill (with gates)
-    /*  */
-
-
-      
-    /* } */
-    
-  }
+  }//EntryLoop
   
   TCanvas *cCan1 = new TCanvas("cCan1","cCan1",1550,500);
   cCan1->Clear(); cCan1->Divide(3,1);
@@ -169,5 +181,5 @@ void fmaCuts(void) {
   gClock.Stop("gTimer");
   double gTime =  gClock.GetRealTime("gTimer");
   printf("=========== Finsihed, total runTime : %7.0f sec \n", gTime);
-  printf("=========== Or, %7.0f sec / 100k events\n", gTime/((double)nEntries)*1e5);
+  printf("=========== Or, %7.1f sec / 1M events\n", gTime/((double)nEntries)*1e6);
 }
