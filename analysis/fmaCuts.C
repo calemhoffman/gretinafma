@@ -57,7 +57,7 @@ void fmaCuts(void) {
   Int_t nElistEntry = ar38_elist_x->GetN(); 
   printf("nElistEntry: %d ",nElistEntry);
 
-  fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_%d.root",runN));
+  fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_tot.root",runN));
   if (fNameIn == 0) {printf("Error: file read in fail\n"); return;}
   TTree * ctree = (TTree *) fNameIn->Get("ctree");
 
@@ -139,9 +139,9 @@ void fmaCuts(void) {
 	hg_t->Fill(genergy[iMult]);
       }//cut_ar38_dtge
 
-      //if ( cut_ar38_e1x->IsInside(x,e[0]) ) {
+      if ( cut_ar38_e1x->IsInside(x,e[0]) ) {
     	hg_x->Fill(genergy[iMult]);
-	//}//cut_ar38_e1x
+      }//cut_ar38_e1x
 
       if ( cut_ar38_e1e3->IsInside(e[2],e[0]) &&
     	   cut_ar38_e1e2->IsInside(e[1],e[0]) &&
@@ -177,6 +177,8 @@ void fmaCuts(void) {
   cCan1->cd(1); he1e2->Draw("colz");
   cCan1->cd(2); he1e3->Draw("colz");
   cCan1->cd(3); he2e3->Draw("colz");
+
+  cCan1->Clear(); hg_ar38->Draw();
   
   gClock.Stop("gTimer");
   double gTime =  gClock.GetRealTime("gTimer");
