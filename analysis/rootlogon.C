@@ -53,7 +53,18 @@
   gROOT->ProcessLine(".x cuts/cut_ref2_e1e2.C"); cut_ref2_e1e2;
   gROOT->ProcessLine(".x cuts/cut_ref2_e1x.C"); cut_ref2_e1x;
   gROOT->ProcessLine(".x cuts/cut_ref2_lr.C"); cut_ref2_lr;
- 
+  gROOT->ProcessLine(".x cuts/cut_ar38_dtge.C"); cut_ar38_dtge;
+  gROOT->ProcessLine(".x cuts/cut_ar38_e1e3.C"); cut_ar38_e1e3;
+  gROOT->ProcessLine(".x cuts/cut_ar38_e12e3.C"); cut_ar38_e12e3;
+  gROOT->ProcessLine(".x cuts/cut_ar38_e1e2.C"); cut_ar38_e1e2;
+  gROOT->ProcessLine(".x cuts/cut_ar38_e2e3.C"); cut_ar38_e2e3;
+  gROOT->ProcessLine(".x cuts/cut_ar38_e12e123.C"); cut_ar38_e12e123;
+  gROOT->ProcessLine(".x cuts/cut_ar38_e1x.C"); cut_ar38_e1x;
+  gROOT->ProcessLine(".x cuts/cut_ar38_g600.C"); cut_ar38_g600;
+  gROOT->ProcessLine(".x cuts/cut_ar38_g1600.C"); cut_ar38_g1600;
+  gROOT->ProcessLine(".x cuts/cut_ar38_g1800.C"); cut_ar38_g1800;
+  gROOT->ProcessLine(".x cuts/cut_ar38_g2100.C"); cut_ar38_g2100;
+  
   //  TBrowser *b = new TBrowser()
 
 }
