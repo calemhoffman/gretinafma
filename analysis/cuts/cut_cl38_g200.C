@@ -2,7 +2,7 @@
 //========= Macro generated from object: cut_cl38_g200/cut_cl38_g200
 //========= by ROOT version6.15/01
    
-   TCutG *cutg = new TCutG("cut_cl38_g200",12);
+   cutg = new TCutG("cut_cl38_g200",12);
    cutg->SetVarX("genergy");
    cutg->SetVarY("dtime");
    cutg->SetTitle("cut_cl38_g200");
@@ -19,5 +19,4 @@
    cutg->SetPoint(9,293.409,84.8636);
    cutg->SetPoint(10,292.343,85.6946);
    cutg->SetPoint(11,291.591,85.6946);
-   cutg->Draw("");
 }

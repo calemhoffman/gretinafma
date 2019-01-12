@@ -33,5 +33,4 @@
    cutg->SetPoint(23,1546.13,2216.57);
    cutg->SetPoint(24,1501.04,2199.61);
    cutg->SetPoint(25,1477.52,2186.05);
-   cutg->Draw("");
 }

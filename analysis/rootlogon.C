@@ -64,6 +64,25 @@
   gROOT->ProcessLine(".x cuts/cut_ar38_g1600.C"); cut_ar38_g1600;
   gROOT->ProcessLine(".x cuts/cut_ar38_g1800.C"); cut_ar38_g1800;
   gROOT->ProcessLine(".x cuts/cut_ar38_g2100.C"); cut_ar38_g2100;
+  gROOT->ProcessLine(".x cuts/cut_cl38_dtge.C"); cut_cl38_dtge;
+  gROOT->ProcessLine(".x cuts/cut_cl38_e1e3.C"); cut_cl38_e1e3;
+  gROOT->ProcessLine(".x cuts/cut_cl38_e1e2.C"); cut_cl38_e1e2;
+  gROOT->ProcessLine(".x cuts/cut_cl38_e2e3.C"); cut_cl38_e2e3;
+  gROOT->ProcessLine(".x cuts/cut_cl38_e1x.C"); cut_cl38_e1x;
+  gROOT->ProcessLine(".x cuts/cut_cl38_g200.C"); cut_cl38_g200;
+  gROOT->ProcessLine(".x cuts/cut_cl38_g700.C"); cut_cl38_g700;
+  gROOT->ProcessLine(".x cuts/cut_cl38_g1100.C"); cut_cl38_g1100;
+  gROOT->ProcessLine(".x cuts/cut_cl38_g2600.C"); cut_cl38_g2600;
+  gROOT->ProcessLine(".x cuts/cut_cl38_g3100.C"); cut_cl38_g3100;
+  
+  gROOT->ProcessLine(".x cuts/cut_s38_dtge.C"); cut_s38_dtge;
+  gROOT->ProcessLine(".x cuts/cut_s38_e1e3.C"); cut_s38_e1e3;
+  gROOT->ProcessLine(".x cuts/cut_s38_e1e2.C"); cut_s38_e1e2;
+  gROOT->ProcessLine(".x cuts/cut_s38_e2e3.C"); cut_s38_e2e3;
+  gROOT->ProcessLine(".x cuts/cut_s38_e1x.C"); cut_s38_e1x;
+  gROOT->ProcessLine(".x cuts/cut_s38_g800.C"); cut_s38_g800;
+  gROOT->ProcessLine(".x cuts/cut_s38_g1200.C"); cut_s38_g1200;
+  gROOT->ProcessLine(".x cuts/cut_s38_g1500.C"); cut_s38_g1500;
 
   //  TBrowser *b = new TBrowser()
 
