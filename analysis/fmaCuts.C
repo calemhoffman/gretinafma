@@ -20,6 +20,7 @@
 #include <TTreeReaderArray.h>
 #include <TFile.h>
 #include <TEventList.h>
+
 TFile * lNameIn;
 TFile * fNameIn;
 TEventList * all_elist_x;
@@ -61,7 +62,7 @@ void fmaCuts(void) {
   cut_s38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1e2");
   cut_s38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e2e3");
   
-  Int_t runN=10;
+  Int_t runN=7;
 
   Int_t run;
   Int_t hits;
@@ -77,7 +78,7 @@ void fmaCuts(void) {
   Int_t nElistEntry = all_elist_x->GetN(); 
   printf("nElistEntry: %d ",nElistEntry);
 
-  fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_tot.root",runN));
+  fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_%d.root",runN));
   if (fNameIn == 0) {printf("Error: file read in fail\n"); return;}
   TTree * ctree = (TTree *) fNameIn->Get("ctree");
 
@@ -104,8 +105,13 @@ void fmaCuts(void) {
   //dtegamma vs mult
   //e's vs x
   //l,r,u,d stuff??
+
+  //single gammas
   TH1F *hg_tot; TH1F *hg_ar38; TH1F *hg_cl38; TH1F *hg_s38;
   TH1F *hg_x; TH1F *hg_z; TH1F *hg_t;
+
+  //histos for gamma scans
+  TH1F *hscan[1000];
   
   TH2F *he1e2; TH2F *he1e3; TH2F *he2e3;
   TH2F *he1e12; TH2F *he1e13; TH2F *he2e13;
@@ -125,6 +131,28 @@ void fmaCuts(void) {
   hg_ar38 = new TH1F("hg_ar38","Ungated hg_ar38; Energy [keV]",ch,0,rg);
   hg_cl38 = new TH1F("hg_cl38","Ungated hg_cl38; Energy [keV]",ch,0,rg);
   hg_s38 = new TH1F("hg_s38","Ungated hg_s38; Energy [keV]",ch,0,rg);
+
+  ch=4000;
+  rg=4000;
+  
+  for (Int_t id1=0;id1<1000;id1++)
+    hscan[id1] = new TH1F(Form("hscan_%d",id1),Form("hscan_%d",id1),ch,0,rg);
+
+  	//SCANNING HERE FOR NOW
+	for (Int_t id1=0;id1<=30;id1++) {
+	  for (Int_t id2=0;id2<=30;id2++) {
+	    Float_t temp1 = (float)id1*200;
+	    Float_t temp2 = (float)id1*200+200;
+	    Float_t temp3 = (float)id2*200;
+	    Float_t temp4 = (float)id2*200+200;
+	    Int_t tempID = id1*30+id2;
+	    hscan[tempID]->SetTitle(Form("id:%d, 1:%4.0f, 2:%4.0f, 3:%4.0f, 4:%4.0f\n",
+					 tempID,temp1,temp2,temp3,temp4));
+
+	
+
+	  }
+	}
   
   ch=600;
   rg=6000;
@@ -155,11 +183,16 @@ void fmaCuts(void) {
   Int_t nEntries = ctree->GetEntries();
   printf("nEntries: %d\n",nEntries);
 
-  
+  Float_t counter=0;
+  printf("0----------25----------50----------75----------100\n");
   for (Int_t entryNumber=0;entryNumber<nElistEntry/*nEntries*/; entryNumber++) {
     ctree->GetEntry(all_elist_x->GetEntry(entryNumber));
-    //   printf("GetEntry: %ull\n\n",ar38_elist_x->GetEntry(entryNumber));
-    
+ 
+    if (((Float_t)entryNumber/(Float_t)nElistEntry)>counter)
+     {
+       printf("^_^_^_\n");
+       counter=counter+0.125;
+     }
     /* //Fill outside of gates */
     for (Int_t iMult=0;iMult<gmult;iMult++) {
       hg_tot->Fill(genergy[iMult]);
@@ -168,6 +201,31 @@ void fmaCuts(void) {
 	   cut_cl38_dtge->IsInside(genergy[iMult],dtime[iMult]) ||
 	   cut_s38_dtge->IsInside(genergy[iMult],dtime[iMult]) ) {
 	hg_t->Fill(genergy[iMult]);
+
+	//SCANNING HERE FOR NOW
+	/* for (Int_t id1=0;id1<=30;id1++) { */
+	/*   for (Int_t id2=0;id2<=30;id2++) { */
+	/*     Float_t temp1 = (float)id1*200; */
+	/*     Float_t temp2 = (float)id1*200+200; */
+	/*     Float_t temp3 = (float)id2*200; */
+	/*     Float_t temp4 = (float)id2*200+200; */
+	/*     Int_t tempID = id1*30+id2; */
+	/*     if ( (e[0]>temp1&&e[0]<temp2)&&(e[2]>temp3&&e[2]<temp4) ) */
+	/*       hscan[tempID]->Fill(genergy[iMult]);	     */
+	/*   } */
+	/* } */
+	he1e2->Fill(e[1],e[0]);
+	he1e3->Fill(e[2],e[0]);
+	he2e3->Fill(e[2],e[1]);//
+	he1e12->Fill(e[0]+e[1],e[0]);
+	he1e13->Fill(e[0]+e[2],e[0]);
+	he2e13->Fill(e[0]+e[2],e[1]);//
+	he1e123->Fill(e[0]+e[1]+e[2],e[0]);
+	he2e123->Fill(e[0]+e[1]+e[2],e[1]);
+	he3e123->Fill(e[0]+e[1]+e[2],e[2]);//
+	he12e123->Fill(e[0]+e[1]+e[2],e[0]+e[1]);
+	he23e123->Fill(e[0]+e[1]+e[2],e[1]+e[2]);
+	he13e123->Fill(e[0]+e[1]+e[2],e[0]+e[2]);//	
       }//cut_ar38_dtge
 
       if ( cut_ar38_e1x->IsInside(x,e[0]) ||
@@ -226,18 +284,7 @@ void fmaCuts(void) {
 	}
 	  
 	
-	he1e2->Fill(e[1],e[0]);
-	he1e3->Fill(e[2],e[0]);
-	he2e3->Fill(e[2],e[1]);//
-	he1e12->Fill(e[0]+e[1],e[0]);
-	he1e13->Fill(e[0]+e[2],e[0]);
-	he2e13->Fill(e[0]+e[2],e[1]);//
-	he1e123->Fill(e[0]+e[1]+e[2],e[0]);
-	he2e123->Fill(e[0]+e[1]+e[2],e[1]);
-	he3e123->Fill(e[0]+e[1]+e[2],e[2]);//
-	he12e123->Fill(e[0]+e[1]+e[2],e[0]+e[1]);
-	he23e123->Fill(e[0]+e[1]+e[2],e[1]+e[2]);
-	he13e123->Fill(e[0]+e[1]+e[2],e[0]+e[2]);//
+
       }//s38 
     }//iMult
   }//EntryLoop
