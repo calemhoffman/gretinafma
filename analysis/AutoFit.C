@@ -148,7 +148,7 @@ void fitGauss(TH1 * hist, double mean, double sigma, double xMin, double xMax,
 //########################################
 //########################################
 void fitGaussP1(TH1 * hist, double mean, double sigma, double xMin, double xMax,
-		FILE * fileOut=NULL){
+		FILE * fileOut=NULL, double x=0, double y=0){
   
   
   //if( gROOT->FindObjectAny("cFitGaussP1") == NULL ){
@@ -186,11 +186,17 @@ void fitGaussP1(TH1 * hist, double mean, double sigma, double xMin, double xMax,
             paraA[2], paraE[2]);
 
   /**///================================= print fit outputs to file
-  if (fileOut)     
-    fprintf(fileOut, "%4.3f %4.3f %4.3f %4.3f %4.3f %4.3f\n",
-	    paraA[0] / bw,   paraE[0] /bw,
-	    paraA[1], paraE[1],
-            paraA[2], paraE[2]);
+  if (fileOut)  {
+    /* if (paraA[0]>10) { */
+      fprintf(fileOut, "%4.3f %4.3f %4.3f %4.3f %4.3f %4.3f",
+	      paraA[0] / bw,   paraE[0] /bw,
+	      paraA[1], paraE[1],
+	      paraA[2], paraE[2]);
+      if (x>0 && y>0) 
+	fprintf(fileOut," %4.3f %4.3f",x,y);
+      fprintf(fileOut,"\n");
+    /* } */
+  }
 }
 
 //########################################

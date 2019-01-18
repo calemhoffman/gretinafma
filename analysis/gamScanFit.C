@@ -23,22 +23,27 @@
 
 #include "AutoFit.C"
 
-TH1F * hscan[1000];
+#define numHistScan 10000
+
+TH1F * hscan[numHistScan];
 FILE * fitFileOut;
 
 TH2F *hScanData;
+
+Float_t bins=80;
+Float_t delta=40;
   
 
 int gamScanFit(void) {
   //Get the scan fill data - mathes the loops in fmaCuts.C
-  Float_t x[1000];
-  Float_t y[1000];
+  Float_t x[numHistScan];
+  Float_t y[numHistScan];
 
-  for (Int_t i=0;i<=30;i++) {
-    for (Int_t j=0;j<=30;j++) {
-      Int_t id = i*30+j;
-      x[id] = (j*200+100);
-      y[id] = (i*200+100);
+  for (Int_t i=0;i<=bins;i++) {
+    for (Int_t j=0;j<=bins;j++) {
+      Int_t id = i*bins+j;
+      x[id] = (j*delta+delta/2.0);
+      y[id] = (i*delta+delta/2.0);
     }
   }
 
@@ -56,32 +61,78 @@ int gamScanFit(void) {
   TFile * inFile = new TFile("g.root");
   if (inFile == 0) {printf("In File Did Not Open\n"); return 1;}
 
-  for (Int_t i=0;i<1000;i++) {
+  //try some fitting
+    /* double fitLow=660; */
+    /* double fitHigh=680; */
+    /* double mean=670; */
+    /* double sigma=10; */
+    /* Int_t intgrl[numHistScan]; */
+     double fitLow=285;
+    double fitHigh=298;
+    double mean=292;
+    double sigma=5;
+    Int_t intgrl[numHistScan];
+    
+  for (Int_t i=0;i<numHistScan;i++) {
     //pull histo
     hscan[i] = (TH1F *)inFile->Get(Form("hscan_%d",i));
     //get integral to determine binning [CHECK]
-    Int_t intgrl = hscan[i]->Integral(100,7000);
-    if (intgrl<1e5)
+    intgrl[i] = hscan[i]->Integral(100,7000);
+    if (intgrl[i]<1e5)
       hscan[i]->Rebin();
-    if (intgrl<1e4)
+    if (intgrl[i]<1e4)
       hscan[i]->Rebin();
-    if (intgrl<1e3)
+    if (intgrl[i]<1e3)
       hscan[i]->Rebin();
 
-    //try some fitting
-    double fitLow=660;
-    double fitHigh=680;
-    double mean=670;
-    double sigma=10;
-
-   
-    if (intgrl>1e2) {
+    
+    if (intgrl[i]>1e2) {
       fprintf(fitFileOut, "%d ", i);
-      fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh,fitFileOut);
+      fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh,fitFileOut,x[i],y[i]);
       //      can->SaveAs(Form("fit_%d.pdf",i));
     }
+    printf("%d\n\n",i);
   }
 
+  fprintf(fitFileOut, "\n");
+  //try some fitting
+  /* fitLow=1800; */
+  /* fitHigh=1845; */
+  /* mean=1823; */
+  /* sigma=10; */
+  fitLow=2020;
+  fitHigh=2070;
+  mean=2044;
+  sigma=8;
+
+ for (Int_t i=0;i<numHistScan;i++) {
+  
+   if (intgrl[i]>1e2) {
+     fprintf(fitFileOut, "%d ", i);
+     fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh,fitFileOut,x[i],y[i]);
+     //      can->SaveAs(Form("fit_%d.pdf",i));
+   } 
+ }
+
+  fprintf(fitFileOut, "\n");
+  //try some fitting
+  /* fitLow=2150; */
+  /* fitHigh=2190; */
+  /* mean=2168; */
+  /* sigma=10; */
+  fitLow=1120;
+  fitHigh=1150;
+  mean=1133;
+  sigma=6;
+
+ for (Int_t i=0;i<numHistScan;i++) {
+  
+   if (intgrl[i]>1e2) {
+     fprintf(fitFileOut, "%d ", i);
+     fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh,fitFileOut,x[i],y[i]);
+     //      can->SaveAs(Form("fit_%d.pdf",i));
+   } 
+ }
 
   return 0;
 }
