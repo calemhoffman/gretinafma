@@ -219,17 +219,17 @@ void fmaCuts(void) {
 	hg_t->Fill(genergy[iMult]);
 
 	//SCANNING HERE FOR NOW
-	for (Int_t id1=0;id1<=bins;id1++) {
-	  for (Int_t id2=0;id2<=bins;id2++) {
-	    Float_t temp1 = (float)id1*delta;
-	    Float_t temp2 = (float)id1*delta+delta;
-	    Float_t temp3 = (float)id2*delta;
-	    Float_t temp4 = (float)id2*delta+delta;
-	    Int_t tempID = id1*bins+id2;
-	    if ( (e[0]>temp1&&e[0]<temp2)&&(e[2]>temp3&&e[2]<temp4) )
-	      hscan[tempID]->Fill(genergy[iMult]);
-	  }
-	}
+	/* for (Int_t id1=0;id1<=bins;id1++) { */
+	/*   for (Int_t id2=0;id2<=bins;id2++) { */
+	/*     Float_t temp1 = (float)id1*delta; */
+	/*     Float_t temp2 = (float)id1*delta+delta; */
+	/*     Float_t temp3 = (float)id2*delta; */
+	/*     Float_t temp4 = (float)id2*delta+delta; */
+	/*     Int_t tempID = id1*bins+id2; */
+	/*     if ( (e[0]>temp1&&e[0]<temp2)&&(e[2]>temp3&&e[2]<temp4) ) */
+	/*       hscan[tempID]->Fill(genergy[iMult]); */
+	/*   } */
+	/* } */
 
 	
 

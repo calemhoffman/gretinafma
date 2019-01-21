@@ -24,8 +24,8 @@
 //121 no e2 ??
 
 void calTree() {
-  Int_t lowRunNumber=198;
-  Int_t highRunNumber=198;
+  Int_t lowRunNumber=212;
+  Int_t highRunNumber=212;
   Int_t runN;
   
   Int_t runNumber;
@@ -119,7 +119,7 @@ void calTree() {
       detIndexRead=tempInt2;
       calibrationOffset[runNumberRead][detIndexRead]=tempDouble1;
       calibrationLinear[runNumberRead][detIndexRead]=tempDouble2;
-      calibrationXOffset[runNumberRead][detIndexRead]=tempDouble3;
+      calibrationXOffset[runNumberRead][detIndexRead]=tempDouble3;  
       lineRead++;
       if (!inFile.good()) break;
     }
@@ -128,6 +128,14 @@ void calTree() {
   }else{
     printf("... failed to read cal file\n");
     return;
+  }
+
+  for (Int_t i=0;i<3;i++) {
+  printf("Det: %d, Offset: %4.4f, Linear: %4.4f, XOffset: %4.4f\n",
+	 detIndexRead,
+	 calibrationOffset[runN][i],
+	 calibrationLinear[runN][i],
+	 calibrationXOffset[runN][i]);
   }
   Double_t xCalOffset[300];
   Double_t xCalScale[300];
