@@ -60,3 +60,7 @@ set pointsize 1
 set title '292+670 keV'
 plot [0:3500][0:3500] 'scan_fits_ar38.dat' u ($8):($2>1e2 ? ($6 > 0 ? ($4<674 ? ($4>666 ? $9:1/0):1/0):1/0):1/0) every :::0::0 w points notit,\
                       'scan_fits.dat' u ($8):($2>1e1 ? ($6 > 0 ? ($4<294 ? ($4>290 ? $9:1/0):1/0):1/0):1/0) every :::0::0 w points notit
+
+
+set title '1292 keV'
+plot [0:3500][0:3500] 'scan_fits.dat' u 8:($2>0 ? ($6 > 0 ? ($4<1305 ? ($4>1280 ? $9:1/0):1/0):1/0):1/0) every :::3::3 w points notit

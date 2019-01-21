@@ -298,6 +298,9 @@ bin_mode3 (GEB_EVENT * GEB_event)
   void pprint_32 (char *, unsigned int);
   int twoscomp_to_int_24 (unsigned int );
 
+  CRYS_INTPTS *ptinp;
+  GEBDATA *ptgd;
+
  float de1,de2,de3,de12,etot, left,right,up,down,rftof, sumlr, sumud, x, y;
  unsigned long long int ppacts;
  long long int tgppac;
@@ -314,7 +317,8 @@ bin_mode3 (GEB_EVENT * GEB_event)
  
  for (ii = 0; ii < GEB_event->mult; ii++)
    {
-     
+     ptinp = (CRYS_INTPTS *) GEB_event->ptinp[i];
+
      /* pos keeps record of how far we have */
      /* proceeded in the payload */
      /* and count how many crystals in payload */

@@ -134,5 +134,38 @@ int gamScanFit(void) {
    } 
  }
 
+
+  fprintf(fitFileOut, "\n");
+  //try some fitting
+  fitLow=1277;
+  fitHigh=1302;
+  mean=1292;
+  sigma=4;
+
+ for (Int_t i=0;i<numHistScan;i++) {
+   hscan[i]->Rebin();
+   if (intgrl[i]>1e1) {
+     fprintf(fitFileOut, "%d ", i);
+     fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh,fitFileOut,x[i],y[i]);
+     //      can->SaveAs(Form("fit_%d.pdf",i));
+   } 
+ }
+ 
+  fprintf(fitFileOut, "\n");
+  //try some fitting
+  fitLow=2359;
+  fitHigh=2395;
+  mean=2375;
+  sigma=7;
+
+ for (Int_t i=0;i<numHistScan;i++) {
+   hscan[i]->Rebin();
+   if (intgrl[i]>1e1) {
+     fprintf(fitFileOut, "%d ", i);
+     fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh,fitFileOut,x[i],y[i]);
+     //      can->SaveAs(Form("fit_%d.pdf",i));
+   } 
+ }
+
   return 0;
 }
