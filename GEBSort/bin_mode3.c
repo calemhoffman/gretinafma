@@ -317,7 +317,20 @@ bin_mode3 (GEB_EVENT * GEB_event)
  
  for (ii = 0; ii < GEB_event->mult; ii++)
    {
-     ptinp = (CRYS_INTPTS *) GEB_event->ptinp[i];
+     ptinp = (CRYS_INTPTS *) GEB_event->ptinp[ii];
+     printf("GEB_event->mult: %d, %d\n",GEB_event->mult,ii);
+     printf("CRYS_INTPTS ptinp->tot_e: %4.4f\n",ptinp->tot_e);
+     printf("CRYS_INTPTS ptinp->num: %d\n",ptinp->num);
+     if ((ptinp->tot_e<1e4) && (ptinp->num < 10)) {
+       for (Int_t kk=0;kk < ptinp->num; kk++) {
+	 printf("x,y,z,e: %4.4f %4.4f %4.4f %4.4f\n",
+		ptinp->intpts[kk].x,
+		ptinp->intpts[kk].y,
+		ptinp->intpts[kk].z,
+		ptinp->intpts[kk].e);
+       }//int point loop
+     }//if need to clean up tot_e
+   
 
      /* pos keeps record of how far we have */
      /* proceeded in the payload */
