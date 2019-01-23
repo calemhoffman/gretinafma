@@ -1,6 +1,6 @@
 {
-  Int_t runN=220;
-  Float_t scaleF=1.6;
+  Int_t runN=228;
+  Float_t scaleF=2.0;
   
   TString cuts;
   cuts.Form("gcut1||gcut2||gcut3||gcut4");
@@ -58,7 +58,7 @@
   ctree->Draw("x>>hx(1000,-2500,2500)",cuts,"");
   TH1F *hx = (TH1F *) gDirectory->FindObjectAny("hx");
   hx->Fit("gaus","","",-100,100);
-  hx->Fit("gaus","","",230,400);
+  hx->Fit("gaus","","",180,300);
   cCan2->cd(4);gPad->SetLogz(1);
   ctree->Draw("l:r>>hlr(500,0,4000,500,0,4000)",cuts,"colz");
   cut_ref2_lr->Draw("same");
