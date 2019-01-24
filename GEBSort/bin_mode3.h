@@ -25,6 +25,27 @@ class evtList {
     gammaEnergy = new float[maxHits];
     gammaTimestamp = new float[maxHits];
     deltaTime = new float[maxHits];
+
+    crysType = new int[maxHits];
+    crysId = new int[maxHits];
+    crysNum = new int[maxHits];
+    crysTot_e = new float[maxHits];
+    crysTimestamp = new long long int[maxHits];
+    crysTrigtime = new long long[maxHits];
+    crysT0 = new float[maxHits];
+    crysCfd = new float[maxHits]; 
+    crysChisq = new float[maxHits]; 
+    crysNormChisq = new float[maxHits]; 
+    crysBaseline = new float[maxHits]; 
+    crysTpad = new unsigned int[maxHits];
+    crysPolAngle = new float[maxHits];
+
+    intMaxX = new float[maxHits];
+    intMaxY = new float[maxHits];
+    intMaxZ = new float[maxHits];
+    intMaxE = new float[maxHits];
+    intMaxSeg = new int[maxHits];
+    intMaxSegE = new float[maxHits];    
 };
   
   //Reset Function
@@ -32,6 +53,7 @@ class evtList {
     runNumber=TMath::QuietNaN();
     numHits=TMath::QuietNaN();
     gammaMult=TMath::QuietNaN();
+    gebMult=TMath::QuietNaN();
 
     for (int i=0;i<maxHits;i++) {
       left[i] = TMath::QuietNaN();
@@ -46,6 +68,37 @@ class evtList {
       gammaEnergy[i] = TMath::QuietNaN();
       gammaTimestamp[i] = TMath::QuietNaN();
       deltaTime[i] = TMath::QuietNaN();
+
+      crysType[i] = TMath::QuietNaN();
+      crysId[i] = TMath::QuietNaN();
+      crysNum[i] = TMath::QuietNaN();
+      crysTot_e[i] = TMath::QuietNaN();
+      crysTimestamp[i] = TMath::QuietNaN();
+      crysTrigtime[i] = TMath::QuietNaN();
+      crysT0[i] = TMath::QuietNaN();
+      crysCfd[i] = TMath::QuietNaN();
+      crysChisq[i] = TMath::QuietNaN();
+      crysNormChisq[i] = TMath::QuietNaN();
+      crysBaseline[i] = TMath::QuietNaN();
+      crysTpad[i] = TMath::QuietNaN();
+      crysPolAngle[i] = TMath::QuietNaN();
+
+      intMaxX[i] = TMath::QuietNaN();
+      intMaxY[i] = TMath::QuietNaN();
+      intMaxZ[i] = TMath::QuietNaN();
+      intMaxE[i] = TMath::QuietNaN();
+      intMaxSeg[i] = TMath::QuietNaN();
+      intMaxSegE[i] = TMath::QuietNaN();
+
+      //not initializing as expected...
+      // for (int j=0;j<20;j++) {
+      // 	intX[i][j] = TMath::QuietNaN();
+      // 	intY[i][j] = TMath::QuietNaN();
+      // 	intZ[i][j] = TMath::QuietNaN();
+      //  	intE[i][j] = TMath::QuietNaN();
+      //  	intSeg[i][j] = TMath::QuietNaN();
+      //  	intSegEnergy[i][j] = TMath::QuietNaN();
+      // }  
     }
     
     for (int i=0;i<10;i++)
@@ -66,4 +119,35 @@ class evtList {
   float *gammaEnergy;
   float *gammaTimestamp;
   float *deltaTime;
+  //------------------//
+  int gebMult;//New
+  int *crysType;                                             /* typically: abcd1234 */
+  int *crysId;
+  int *crysNum;
+  float *crysTot_e;
+  long long int *crysTimestamp;
+  long long *crysTrigtime;
+  float *crysT0;
+  float *crysCfd;
+  float *crysChisq;
+  float *crysNormChisq;
+  float *crysBaseline;
+  unsigned int *crysTpad;
+  float *crysPolAngle;
+  float *intMaxX;
+  float *intMaxY;
+  float *intMaxZ;
+  float *intMaxE;       /* here e refers to the fraction */
+  int *intMaxSeg;                /* segment hit */
+  float *intMaxSegE;   
+  //-------------------//
+  // float intX[100][20];
+  // float intY[100][20];
+  // float intZ[100][20];
+  // float intE[100][20];       /* here e refers to the fraction */
+  // int intSeg[100][20];                /* segment hit */
+  // float intSegEnergy[100][20];         /* energy of hit segment */
+  /* to ensure 8-byte alignment of struct */
+  // DCR_INTPTS intpts[MAX_INTPTS];
+  
 };

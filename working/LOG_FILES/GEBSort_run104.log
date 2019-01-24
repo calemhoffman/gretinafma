@@ -5,6 +5,21 @@ file size is 4905790272 bytes or 4790 MBytes
 
 4... -rootfile
 rootfile name specified on command line
+__will store spectra in rootfile: ../../data/root_data/run104.root
+will recreate root file
+7... -chat
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+file size               (blocks, -f) unlimited
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 256
+pipe size            (512 bytes, -p) 1
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 1418
+virtual memory          (kbytes, -v) unlimited
+=======
 __will store spectra in rootfile: /lcrc/project/HELIOS/gretinafma/root_data/run104.root
 will recreate root file
 7... -chat
@@ -37,8 +52,7 @@ crmat.LINUX is open (input) binary format
 read 7936 bytes into Pars.crmat
 chat file: <GEBSort.chat> open
 
-will sort a max of 1410065408 events
-will sort a max of 1000000 events
+
 will sort 86400 minutes of data
 will print details of the first 10 events
 will use Pars.Beta (v/c) correction of 0.033000
@@ -265,7 +279,6 @@ will use ecal file "dgs_ehi.cal" in bin_dgs
 will skip rest of chat file
 
 chat file: <GEBSort.chat> closed
-processed 39 sort instructions and 198 lines
 
 
 sorting this:
@@ -280,7 +293,7 @@ Pars.do_bin_final = 0
 Pars.do_bin_angcor = 0
 Pars.do_bin_angdis = 0
 checking proper input of chat file...
-input file "/lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run104.gtd_000" is open, inData=0x268d2a60
+
 file size is 610822976 bytes or 596 MBs 
 input source is set up, supposedly
 
@@ -289,6 +302,97 @@ xyz offset values:
 executing ShareMemFileUserInit.h code
 
 deleted \rm -f GEBSort.command
+root file <../../data/root_data/run104.root>
+base=<../../data/root_data/run104.root:/>
+TFile: name=../../data/root_data/run104.root, title=, option=CREATE
+
+executing UserInit.h code
+
+Created Object "dtbtev", 0x7fd0440f6a00
+Created Object "T0", 0x7fd0435c3540
+, "T0"Created Object "hitpat", 0x7fd0435c39b0
+, "hitpat"Created Object "numHitArray2", 0x7fd0435c3da0
+, "numHitArray2"Created Object "CCmult", 0x7fd0435c4660
+, "CC Multiplicity"Created Object "CCsum", 0x7fd0435c7440
+, "CCsum"Created Object "hit2", 0x7fd0435bf700
+, "hit2"Created Object "hit3", 0x7fd0435c7970
+, "hit3"Created Object "hit4", 0x7fd0435c7d60
+, "hit4"Created Object "CCsum_nodop", 0x7fd0435c8150
+, "CCsum_nodop"Created Object "CCadd", 0x7fd0435c8540
+, "CCadd"Created Object "SEGadd_FPGA", 0x7fd0440fb200
+Created Object "SEGadd_PSA", 0x7fd04407fc00
+Created Object "SEGsum_FPGA", 0x7fd044080200
+Created Object "SEGsum_PSA", 0x7fd04418c000
+Created Object "radius_all", 0x7fd0435c8e70
+, "radius (all points)"Created Object "rate_mode2_min", 0x7fd0435c9400
+, "rate_mode2_min headers"Created Object "rate_mode2_sec", 0x7fd0435c9990
+, "rate_mode2_sec headers"Created Object "rate_mode2_intp", 0x7fd0435c9f20
+, "rate_mode2 interaction points"Created Object "cdtbtev", 0x7fd044162000
+Created Object "evsr_all", 0x7fd044181400
+Created Object "SMAP_allhits", 0x7fd04418c600
+Created Object "SMAP_allhits_sq", 0x7fd044149e00
+Created Object "seghitpat", 0x7fd04414a400
+Created Object "CCe", 0x7fd04414be00
+Created Object "ggCC", 0x7fd04414c400
+Created Object "z_plot", 0x7fd044045200
+Created Object "crystal_hit", 0x7fd044045800
+Created Object "SegE", 0x7fd044171600
+Created Object "crXcr", 0x7fd044171c00
+MAXDETPOS=180
+Created Object "eCC_a", 0x7fd044285e00
+Created Object "eCC_b", 0x7fd04422a400
+Created Object "eCC_c", 0x7fd0442b4200
+Created Object "eCC_d", 0x7fd0442b4800
+Created Object "eSeg", 0x7fd0442b4e00
+Created Object "mode3_hitpat", 0x7fd0459a8070
+, "mode3_hitpat"Created Object "mode3_hitpat_chan", 0x7fd045936870
+, "mode3_hitpat_chan"Created Object "chan0", 0x7fd0459a9b70
+, "chan0"Created Object "module", 0x7fd0459a9f60
+, "module"Created Object "chan", 0x7fd043987400
+Created Object "l", 0x7fd0459aa3b0
+, "l"Created Object "r", 0x7fd0459aa940
+, "r"Created Object "up", 0x7fd0459aae60
+, "up"Created Object "down", 0x7fd0459ab380
+, "down"Created Object "sumlr", 0x7fd0459ab910
+, "sumlr"Created Object "sumud", 0x7fd0459abea0
+, "sumud"Created Object "x", 0x7fd0459ac430
+, "x"Created Object "y", 0x7fd0459ac9c0
+, "y"Created Object "de1", 0x7fd0459acf50
+, "de1"Created Object "de2", 0x7fd0459ad470
+, "de2"Created Object "de3", 0x7fd0459ad990
+, "de3"Created Object "de12", 0x7fd0459adf20
+, "de12"Created Object "etot", 0x7fd0459ae4b0
+, "etot"Created Object "rftof", 0x7fd0459ae9d0
+, "rftof"Created Object "lr", 0x7fd0439b8200
+Created Object "ud", 0x7fd043b70000
+Created Object "ede1", 0x7fd043b70600
+Created Object "ede1g", 0x7fd043b04200
+Created Object "ede2", 0x7fd043b04800
+Created Object "ede12", 0x7fd0439ccc00
+Created Object "xde1", 0x7fd0439cd200
+Created Object "erftof", 0x7fd0439cd800
+Created Object "erftofg", 0x7fd043991c00
+Created Object "sumehi", 0x7fd0459afb60
+, "sumehi"Created Object "tgppac", 0x7fd0459b0080
+, "tgppac"Created Object "tgppacg", 0x7fd0459b0610
+, "tgppacg"Created Object "xehi1", 0x7fd043992200
+Created Object "xehi1g", 0x7fd043992800
+Created Object "de1ehi", 0x7fd043992e00
+Created Object "de1ehig", 0x7fd043975a00
+Created Object "ng", 0x7fd043619000
+, "ng"Created Object "ehiz1", 0x7fd043619670
+, "ehiz1"Created Object "ehiz2", 0x7fd043619a60
+, "ehiz2"Created Object "ehiz3", 0x7fd043619ff0
+, "ehiz3"Created Object "ehiz4", 0x7fd04361a580
+, "ehiz4"Created Object "ehiz5", 0x7fd04361ab10
+, "ehiz5"Created Object "gg_dt", 0x7fd04361b030
+, "gg_dt"Created Object "gg", 0x7fd045045e00
+Created Object "gg_z1", 0x7fd0442b5400
+Created Object "gg_z2", 0x7fd0442b5a00
+Created Object "gg_z3", 0x7fd0442b6000
+Created Object "gg_z4", 0x7fd0442b6600
+Created Object "gg_z5", 0x7fd0442b6c00
+=======
 root file </lcrc/project/HELIOS/gretinafma/root_data/run104.root>
 base=</lcrc/project/HELIOS/gretinafma/root_data/run104.root:/>
 TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run104.root, title=, option=CREATE
@@ -413,6 +517,8 @@ Collection name='THashList', class='THashList', size=84
  TH1.Print Name  = crXcr, Entries= 0, Total sum= 0
  ******************************************************************************
 *Tree    :tree      : tree                                                   *
+*Entries :        0 : Total =           16301 bytes  File  Size =          0 *
+=======
 *Entries :        0 : Total =            8461 bytes  File  Size =          0 *
 *        :          : Tree compression factor =   1.00                       *
 ******************************************************************************
@@ -480,6 +586,67 @@ Collection name='THashList', class='THashList', size=84
 *Entries :        0 : Total  Size=        608 bytes  One basket in memory    *
 *Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
 *............................................................................*
+*Br   16 :gebMult   : gebMult/I                                              *
+*Entries :        0 : Total  Size=        493 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   17 :crysType  : crysType[gebMult]/I                                    *
+*Entries :        0 : Total  Size=        589 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   18 :crysId    : crysId[gebMult]/I                                      *
+*Entries :        0 : Total  Size=        581 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   19 :crysNum   : crysNum[gebMult]/I                                     *
+*Entries :        0 : Total  Size=        585 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   20 :crysTot_e : crysTot_e[gebMult]/F                                   *
+*Entries :        0 : Total  Size=        600 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   21 :crysPolAngle : crysPolAngle[gebMult]/F                             *
+*Entries :        0 : Total  Size=        612 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   22 :intMaxX   : intMaxX[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   23 :intMaxY   : intMaxY[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   24 :intMaxZ   : intMaxZ[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   25 :intMaxE   : intMaxE[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   26 :intMaxSeg : intMaxSeg[gebMult]/I                                   *
+*Entries :        0 : Total  Size=        593 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   27 :intMaxSegE : intMaxSegE[gebMult]/F                                 *
+*Entries :        0 : Total  Size=        604 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   28 :crysTimestamp : crysTimestamp[gebMult]/L                           *
+*Entries :        0 : Total  Size=        624 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   29 :crysTrigtime : crysTrigtime[gebMult]/D                             *
+*Entries :        0 : Total  Size=        620 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   30 :crysT0    : crysT0[gebMult]/F                                      *
+*Entries :        0 : Total  Size=        588 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+=======
  TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
  TH1.Print Name  = eCC_b, Entries= 0, Total sum= 0
  TH1.Print Name  = eCC_c, Entries= 0, Total sum= 0
@@ -2126,6 +2293,8 @@ ev# 800000 GEB_TYPE_GT_MOD29      440Bytes TS=1590308714013 curTS=1590308704795 
 ev# 850000 GEB_TYPE_DECOMP        464Bytes TS=1591085412789 curTS=1591085329607 dTS= 83182
 ev# 900000 GEB_TYPE_DECOMP        464Bytes TS=1591860703529 curTS=1591860643989 dTS= 59540
 ev# 950000 GEB_TYPE_GT_MOD29      440Bytes TS=1592622397395 curTS=1592622397065 dTS= 330
+ev# 1000000 GEB_TYPE_GT_MOD29      440Bytes TS=1593402117297 curTS=1593402115683 dTS= 1614
+=======
 
 Sorting is done
 attempting to save root or map file

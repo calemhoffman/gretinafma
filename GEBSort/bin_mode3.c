@@ -73,7 +73,7 @@ TH2F *h2_gg, *h2_gg_z1, *h2_gg_z2, *h2_gg_z3, *h2_gg_z4, *h2_gg_z5;
 
 /* CRH ADDING TTREE */
 extern TTree *tree;
-evtList* el = new evtList(1000);
+evtList* el = new evtList(100);
 unsigned long long int currentEventNumber;
 float TimestampTemp;
 
@@ -106,7 +106,34 @@ sup_mode3 ()
   tree->Branch("gammaEnergy",el->gammaEnergy,"gammaEnergy[gammaMult]/F");
   tree->Branch("gammaTimestamp",el->gammaTimestamp,"gammaTimestamp[gammaMult]/F");
   tree->Branch("deltaTime",el->deltaTime,"deltaTime[gammaMult]/F");
-
+  tree->Branch("gebMult",&el->gebMult,"gebMult/I");
+  tree->Branch("crysType",el->crysType,"crysType[gebMult]/I");
+  tree->Branch("crysId",el->crysId,"crysId[gebMult]/I");
+  tree->Branch("crysNum",el->crysNum,"crysNum[gebMult]/I");
+  tree->Branch("crysTot_e",el->crysTot_e,"crysTot_e[gebMult]/F");
+  tree->Branch("crysPolAngle",el->crysPolAngle,"crysPolAngle[gebMult]/F");
+  tree->Branch("intMaxX",el->intMaxX,"intMaxX[gebMult]/F");
+  tree->Branch("intMaxY",el->intMaxY,"intMaxY[gebMult]/F");
+  tree->Branch("intMaxZ",el->intMaxZ,"intMaxZ[gebMult]/F");
+  tree->Branch("intMaxE",el->intMaxE,"intMaxE[gebMult]/F");
+  tree->Branch("intMaxSeg",el->intMaxSeg,"intMaxSeg[gebMult]/I");
+  tree->Branch("intMaxSegE",el->intMaxSegE,"intMaxSegE[gebMult]/F");
+  tree->Branch("crysTimestamp",el->crysTimestamp,"crysTimestamp[gebMult]/L");
+  tree->Branch("crysTrigtime",el->crysTrigtime,"crysTrigtime[gebMult]/D");
+  tree->Branch("crysT0",el->crysT0,"crysT0[gebMult]/F");
+  /* tree->Branch("crysCfd",el->crysCfd,"crysCfd[gebMult]/F"); */
+  /* tree->Branch("crysChisq",el->crysChisq,"crysChisqr[gebMult]/F"); */
+  /* tree->Branch("crysNormChisq",el->crysNormChisq,"crysNormChisq[gebMult]/F"); */
+  /* tree->Branch("crysBaseline",el->crysBaseline,"crysBaseline[gebMult]/F"); */
+  /* tree->Branch("crysTpad",el->crysTpad,"crysTpad[gebMult]/i"); */
+  /* tree->Branch("intX",el->intX,"intX[1000][100]/F"); */
+  /* tree->Branch("intY",el->intY,"intY[1000][100]/F"); */
+  /* tree->Branch("intZ",el->intZ,"intZ[1000][100]/F"); */
+  /* tree->Branch("intE",el->intE,"intE[1000][100]/F"); */
+  /* tree->Branch("intSeg",el->intSeg,"intSeg[1000][100]/I"); */
+  /* tree->Branch("intSegEnergy",el->intSegEnergy,"intSegEnergy[1000][100]/F"); */
+  //May have incorrect data types for a few new branches crh 1.19
+  
   TimestampTemp=0;
   currentEventNumber=0;
   
@@ -117,7 +144,7 @@ sup_mode3 ()
 #if(0)
   for (i = 0; i < 20; i++)
     {
-      printf ("%15u 0x%8.8x --> ", i, i);
+      printf ("%15u 0x%8.8x -> ", i, i);
       printf ("%15i 0x%8.8x \n", twoscomp_to_int_24 ((unsigned int) i), twoscomp_to_int_24 ((unsigned int) i));
     }
   if (1)
@@ -298,6 +325,9 @@ bin_mode3 (GEB_EVENT * GEB_event)
   void pprint_32 (char *, unsigned int);
   int twoscomp_to_int_24 (unsigned int );
 
+  CRYS_INTPTS *ptinp;
+  GEBDATA *ptgd;
+
  float de1,de2,de3,de12,etot, left,right,up,down,rftof, sumlr, sumud, x, y;
  unsigned long long int ppacts;
  long long int tgppac;
@@ -314,7 +344,9 @@ bin_mode3 (GEB_EVENT * GEB_event)
  
  for (ii = 0; ii < GEB_event->mult; ii++)
    {
-     
+  
+   
+
      /* pos keeps record of how far we have */
      /* proceeded in the payload */
      /* and count how many crystals in payload */
@@ -725,12 +757,6 @@ bin_mode3 (GEB_EVENT * GEB_event)
       h2_xehi1g->Fill(x, CCenergies[i]);
       h2_de1ehig->Fill(de1, CCenergies[i]);
       
-      /* if (z1->IsInside(etot,de1)) {h1_ehiz1->Fill(CCenergies[i]);}; */
-      /* if (z2->IsInside(etot,de1)) {h1_ehiz2->Fill(CCenergies[i]);}; */
-      /* if (z3->IsInside(etot,de1)) {h1_ehiz3->Fill(CCenergies[i]);}; */
-      /* if (z4->IsInside(etot,de1)) {h1_ehiz4->Fill(CCenergies[i]);}; */
-      /* if (z5->IsInside(etot,de1)) {h1_ehiz5->Fill(CCenergies[i]);}; */
-      
       //};
       if (nCCenergies > 1){
 	for (int j=0; j<i; j++){
@@ -738,12 +764,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
 	  //if (CCtimestamps[i] - CCtimestamps[j] > -40 && CCtimestamps[i] - CCtimestamps[j] < 40){
 	  h2_gg->Fill(CCenergies[i], CCenergies[j]);
 	  h2_gg->Fill(CCenergies[j], CCenergies[i]);
-	  //	if (z1->IsInside(etot,de1)) {
-	  //		h2_gg_z1->Fill(CCenergies[i], CCenergies[j]);
-	  //		h2_gg_z1->Fill(CCenergies[j], CCenergies[i]);
-	  //	}
-	  
-	  //}
+
 	}
       }
     };
@@ -751,6 +772,21 @@ bin_mode3 (GEB_EVENT * GEB_event)
    
   /* CRH ADD TTREE PASS ALL PARAMETERS HERE TO TTREE*/
   el->Reset();//Reset event data
+
+
+     /* printf("GEB_event->mult: %d, %d\n",GEB_event->mult,ii); */
+     /* printf("CRYS_INTPTS ptinp->tot_e: %4.4f\n",ptinp->tot_e); */
+     /* printf("CRYS_INTPTS ptinp->num: %d\n",ptinp->num); */
+     /* if ((ptinp->tot_e<1e4) && (ptinp->num < 10)) { */
+     /*   for (Int_t kk=0;kk < ptinp->num; kk++) { */
+     /* 	 printf("x,y,z,e: %4.4f %4.4f %4.4f %4.4f\n", */
+     /* 		ptinp->intpts[kk].x, */
+     /* 		ptinp->intpts[kk].y, */
+     /* 		ptinp->intpts[kk].z, */
+     /* 		ptinp->intpts[kk].e); */
+     /*   }//int point loop */
+     /* }//if need to clean up tot_e */
+
   el->numHits=1;
   el->right[el->numHits-1] = right;
   el->left[el->numHits-1] = left;
@@ -766,6 +802,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
     el->fmaMult[i] = fmaMultCounter[i];
   }
 
+  //pushes timestamp only for fma ...
   if (el->fmaMult[0]>0 && TimestampTemp==0)
     TimestampTemp = (Float_t)Event.LEDts/1.0e8;
   
@@ -777,20 +814,69 @@ bin_mode3 (GEB_EVENT * GEB_event)
     el->gammaEnergy[i] = CCenergies[i];
     el->gammaTimestamp[i] = (Float_t)CCtimestamps[i]/1.0e8 - TimestampTemp;
     el->deltaTime[i] = (Float_t)(Event.LEDts - CCtimestamps[i]);
-    if (TMath::Abs(el->deltaTime[i])>0 && TMath::Abs(el->deltaTime[i])<200)
+    if (TMath::Abs(el->deltaTime[i])>30 && TMath::Abs(el->deltaTime[i]<120))
       writeYN = 1;
   };
   
   // Must go last of course
-  if (writeYN == 1)
-    tree->Fill();
-  currentEventNumber++;
-  /* done */
+  if (writeYN == 1) {
+    //gamma tracking data
+    el->gebMult = (Int_t)GEB_event->mult;
+    for (Int_t ii=0;ii<el->gebMult; ii++) {
+      
+      ptinp = (CRYS_INTPTS *) GEB_event->ptinp[ii];
+      
+      if ( (ii<100) &&
+	   (ptinp->tot_e<1e4 && ptinp->tot_e>0) &&
+	   (ptinp->num>0 && ptinp->num<20) ) {
+	el->crysType[ii] = ptinp->type;
+	el->crysId[ii] = ptinp->crystal_id;
+	el->crysNum[ii] = ptinp->num;
+	el->crysTot_e[ii] = ptinp->tot_e;
+	el->crysTimestamp[ii] = ptinp->timestamp;
+	el->crysTrigtime[ii] = ptinp->trig_time;
+	el->crysT0[ii] = ptinp->t0;
+	el->crysCfd[ii] = ptinp->cfd;
+	el->crysChisq[ii] = ptinp->chisq;
+	el->crysNormChisq[ii] = ptinp->norm_chisq;
+	el->crysBaseline[ii] = ptinp->baseline;
+	el->crysTpad[ii] = ptinp->pad;
 
+	if (el->crysId[ii]>0&&el->crysId[ii]<130) {
+	  Int_t moduleId = el->crysId[ii]/4;
+	  Int_t segId = (el->crysId[ii] - moduleId*4)%4;
+	  el->crysPolAngle[ii] = Pars.modCCang[moduleId][segId];
+	}
+	
+	//loop interaction points
+	Int_t tempMaxE = 0;
+	Int_t maxJJ = -1;
+	for (Int_t jj=0;jj<ptinp->num;jj++) {
+	  if ( (ptinp->intpts[jj].e>0)
+	       && (ptinp->intpts[jj].e<1e4)
+	       && (ptinp->intpts[jj].e > tempMaxE) ) {
+	    tempMaxE = ptinp->intpts[jj].e;
+	    maxJJ = jj; 
+	  }
+	}
+	//Fill the max values
+	el->intMaxX[ii] = ptinp->intpts[maxJJ].x;
+	el->intMaxY[ii] = ptinp->intpts[maxJJ].y;
+	el->intMaxZ[ii] = ptinp->intpts[maxJJ].z;
+	el->intMaxE[ii] = ptinp->intpts[maxJJ].e;
+	el->intMaxSeg[ii] = ptinp->intpts[maxJJ].seg;
+	el->intMaxSegE[ii] = ptinp->intpts[maxJJ].seg_ener;
+      } else {
+	el->gebMult = el->gebMult - 1;
+      }
+    }
+    tree->Fill(); currentEventNumber++;
+  }
+  
   nCCenergies=0;
   if (Pars.CurEvNo <= Pars.NumToPrint)
     printf ("exit bin_mode3\n");
   
   return (0);
-  
+ 
 }

@@ -16,7 +16,6 @@ plot [xmin:xmax][1000:3000] 'fma_fits.dat' u 1:2 every 3::0 w points tit 'signal
 plot [xmin:xmax][0.5:1.5] 'fma_fits.dat' u 1:($2/$6) every 3::0 w points tit 'signal e1 1/2',\
                        '' u 1:($2/$6) every 3::1 w points tit 'signal e2 1/2'
 
-exit
 
 f(x)=a*x+b
 a=1
@@ -49,8 +48,11 @@ plot [xmin:xmax][2000:3000] 'fma_fits.dat' u 1:4 every 3::2 w points tit 'signal
                          f1(x) w lines tit '',\
                          f2(x) w lines tit ''
 
-plot [xmin:xmax][0.5:2.5] 'fma_cal.dat' u 1:4 every 3::0 w points tit 'signal e1',\
-                       'fma_cal.dat' u 1:4 every 3::1 w points tit 'signal e2'
+set title 'slope'
+plot [xmin:xmax][0.5:2.5] 'fma_ecal.dat' u 1:4 every 3::0 w points tit 'signal e1',\
+                          'fma_ecal.dat' u 1:4 every 3::1 w points tit 'signal e2'
 
-
-plot [xmin:xmax][-400:400] 'fma_cal.dat' u 1:3 every 3::2 w points tit 'signal e3'
+set title "offset"
+plot [xmin:xmax][-100:2000] 'fma_ecal.dat' u 1:5 every 3::0 w points tit 'signal e1',\
+                           'fma_ecal.dat' u 1:5 every 3::1 w points tit 'signal e2',\
+                           'fma_ecal.dat' u 1:3 every 3::2 w points tit 'signal e3'

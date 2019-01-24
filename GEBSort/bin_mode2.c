@@ -950,7 +950,7 @@ bin_mode2 (GEB_EVENT * GEB_event)
                   for (j = 0; j < ptinp->num; j++)
                     ptinp->intpts[j].e = ptinp->intpts[j].e / r1 * ptinp->tot_e;
 
-
+		  //WHY DO THIS ??? CRH
                   ptinp->tot_e = 0;
                   for (j = 0; j < ptinp->num; j++)
                     ptinp->tot_e += (ptinp->intpts[j].e);
