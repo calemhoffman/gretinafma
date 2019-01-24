@@ -1,13 +1,23 @@
 #!/bin/sh
-
-echo "GEBSorting in parallel"
-# For loop 5 times
 count=0
-for i in {200..209}
+echo "GEBSorting in parallel"
+
+sort_func(){
+    sleep 1
+    echo "Working File $1"
+    ./gebsort_lcrc.sh $i &
+    wait
+    echo "Done with File $1"
+}
+
+# For loop
+for i in {200..234}
 do
-    ./gebsort_lcrc.sh $i & # Put a function in the background
-    (( count++ ))
-    if (( count = 2 )); then
+    sort_func $i & #
+    count=$((count+1))
+    echo "Counter status: $count"
+    if [ $count -eq 35 ]; then
+	#echo "inside"
         wait
     	count=0
     fi

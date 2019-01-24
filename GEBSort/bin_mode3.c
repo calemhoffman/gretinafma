@@ -772,15 +772,19 @@ bin_mode3 (GEB_EVENT * GEB_event)
   el->fmaDeltaTime[el->numHits-1] = (Float_t)Event.LEDts/1.0e8 - TimestampTemp;
 
   el->gammaMult = nCCenergies;
+  Int_t writeYN = 0;
   for (i=0; i<nCCenergies; i++) {
     el->gammaEnergy[i] = CCenergies[i];
     el->gammaTimestamp[i] = (Float_t)CCtimestamps[i]/1.0e8 - TimestampTemp;
     el->deltaTime[i] = (Float_t)(Event.LEDts - CCtimestamps[i]);
+    if (TMath::Abs(el->deltaTime[i])>0 && TMath::Abs(el->deltaTime[i])<200)
+      writeYN = 1;
   };
   
   // Must go last of course
-  //if (left>0 || right>0)
-    tree->Fill(); currentEventNumber++;
+  if (writeYN == 1)
+    tree->Fill();
+  currentEventNumber++;
   /* done */
 
   nCCenergies=0;

@@ -5,20 +5,25 @@ file size is 42378450632 bytes or 41385 MBytes
 
 4... -rootfile
 rootfile name specified on command line
-__will store spectra in rootfile: ../../data/root_data/run252.root
+__will store spectra in rootfile: /lcrc/project/HELIOS/gretinafma/root_data/run252.root
 will recreate root file
 7... -chat
-core file size          (blocks, -c) 0
+core file size          (blocks, -c) unlimited
 data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
 file size               (blocks, -f) unlimited
+pending signals                 (-i) 510315
 max locked memory       (kbytes, -l) unlimited
-max memory size         (kbytes, -m) unlimited
-open files                      (-n) 256
-pipe size            (512 bytes, -p) 1
-stack size              (kbytes, -s) 8192
+max memory size         (kbytes, -m) 128769024
+open files                      (-n) 51200
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
 cpu time               (seconds, -t) unlimited
-max user processes              (-u) 1418
+max user processes              (-u) 4096
 virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
 will read sorting instructions from chatfile: GEBSort.chat
 
 executing UserDeclare.h code
@@ -275,7 +280,7 @@ Pars.do_bin_final = 0
 Pars.do_bin_angcor = 0
 Pars.do_bin_angdis = 0
 checking proper input of chat file...
-input file "../../data/merged_data/GEBMerged_run252.gtd_000" is open, inData=0x7fffa53fc030
+input file "/lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run252.gtd_000" is open, inData=0x25603a60
 file size is -571222328 bytes or -557 MBs 
 input source is set up, supposedly
 
@@ -284,96 +289,11 @@ xyz offset values:
 executing ShareMemFileUserInit.h code
 
 deleted \rm -f GEBSort.command
-root file <../../data/root_data/run252.root>
-base=<../../data/root_data/run252.root:/>
-TFile: name=../../data/root_data/run252.root, title=, option=CREATE
+root file </lcrc/project/HELIOS/gretinafma/root_data/run252.root>
+base=</lcrc/project/HELIOS/gretinafma/root_data/run252.root:/>
+TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run252.root, title=, option=CREATE
 
 executing UserInit.h code
-
-Created Object "dtbtev", 0x7fbfeb93e400
-Created Object "T0", 0x7fbfeca46df0
-, "T0"Created Object "hitpat", 0x7fbfeca47380
-, "hitpat"Created Object "numHitArray2", 0x7fbfeca47910
-, "numHitArray2"Created Object "CCmult", 0x7fbfeca47ea0
-, "CC Multiplicity"Created Object "CCsum", 0x7fbfeca484f0
-, "CCsum"Created Object "hit2", 0x7fbfeca48a80
-, "hit2"Created Object "hit3", 0x7fbfeca49010
-, "hit3"Created Object "hit4", 0x7fbfeca495a0
-, "hit4"Created Object "CCsum_nodop", 0x7fbfeca49b30
-, "CCsum_nodop"Created Object "CCadd", 0x7fbfeca4a0c0
-, "CCadd"Created Object "SEGadd_FPGA", 0x7fbfeb93ea00
-Created Object "SEGadd_PSA", 0x7fbfebbbb400
-Created Object "SEGsum_FPGA", 0x7fbfebbbba00
-Created Object "SEGsum_PSA", 0x7fbfea975e00
-Created Object "radius_all", 0x7fbfeca4ab30
-, "radius (all points)"Created Object "rate_mode2_min", 0x7fbfeca4b0c0
-, "rate_mode2_min headers"Created Object "rate_mode2_sec", 0x7fbfeca4b650
-, "rate_mode2_sec headers"Created Object "rate_mode2_intp", 0x7fbfeca4bbe0
-, "rate_mode2 interaction points"Created Object "cdtbtev", 0x7fbfebbbc000
-Created Object "evsr_all", 0x7fbfebbbc600
-Created Object "SMAP_allhits", 0x7fbfebbbcc00
-Created Object "SMAP_allhits_sq", 0x7fbfeb030400
-Created Object "seghitpat", 0x7fbfea966a00
-Created Object "CCe", 0x7fbfea95e200
-Created Object "ggCC", 0x7fbfeaaea600
-Created Object "z_plot", 0x7fbfeaaeac00
-Created Object "crystal_hit", 0x7fbfea962a00
-Created Object "SegE", 0x7fbfebbbd200
-Created Object "crXcr", 0x7fbfebbbd800
-MAXDETPOS=180
-Created Object "eCC_a", 0x7fbfeb030a00
-Created Object "eCC_b", 0x7fbfeb018a00
-Created Object "eCC_c", 0x7fbfeb019000
-Created Object "eCC_d", 0x7fbfeb019600
-Created Object "eSeg", 0x7fbfeaa98600
-Created Object "mode3_hitpat", 0x7fbfea62f780
-, "mode3_hitpat"Created Object "mode3_hitpat_chan", 0x7fbfea6300f0
-, "mode3_hitpat_chan"Created Object "chan0", 0x7fbfea6307b0
-, "chan0"Created Object "module", 0x7fbfea630d40
-, "module"Created Object "chan", 0x7fbfeb046200
-Created Object "l", 0x7fbfea631470
-, "l"Created Object "r", 0x7fbfea631a00
-, "r"Created Object "up", 0x7fbfea631f20
-, "up"Created Object "down", 0x7fbfea632440
-, "down"Created Object "sumlr", 0x7fbfea6329d0
-, "sumlr"Created Object "sumud", 0x7fbfea632f60
-, "sumud"Created Object "x", 0x7fbfea6334f0
-, "x"Created Object "y", 0x7fbfea633a80
-, "y"Created Object "de1", 0x7fbfea634010
-, "de1"Created Object "de2", 0x7fbfea634530
-, "de2"Created Object "de3", 0x7fbfea634a50
-, "de3"Created Object "de12", 0x7fbfea634fe0
-, "de12"Created Object "etot", 0x7fbfea635570
-, "etot"Created Object "rftof", 0x7fbfea635a90
-, "rftof"Created Object "lr", 0x7fbfeb046800
-Created Object "ud", 0x7fbfeb046e00
-Created Object "ede1", 0x7fbfeba67000
-Created Object "ede1g", 0x7fbfeb8dee00
-Created Object "ede2", 0x7fbfebbfd200
-Created Object "ede12", 0x7fbfebbfd800
-Created Object "xde1", 0x7fbfebc7c800
-Created Object "erftof", 0x7fbfebc7ce00
-Created Object "erftofg", 0x7fbfebbbde00
-Created Object "sumehi", 0x7fbfeca4eee0
-, "sumehi"Created Object "tgppac", 0x7fbfeca4f400
-, "tgppac"Created Object "tgppacg", 0x7fbfeca4f990
-, "tgppacg"Created Object "xehi1", 0x7fbfebbbe400
-Created Object "xehi1g", 0x7fbfeab2ce00
-Created Object "de1ehi", 0x7fbfebc81400
-Created Object "de1ehig", 0x7fbfebc81a00
-Created Object "ng", 0x7fbfeca502b0
-, "ng"Created Object "ehiz1", 0x7fbfeca507d0
-, "ehiz1"Created Object "ehiz2", 0x7fbfeca50cf0
-, "ehiz2"Created Object "ehiz3", 0x7fbfeca51280
-, "ehiz3"Created Object "ehiz4", 0x7fbfeca51810
-, "ehiz4"Created Object "ehiz5", 0x7fbfeca51da0
-, "ehiz5"Created Object "gg_dt", 0x7fbfeca522c0
-, "gg_dt"Created Object "gg", 0x7fbfebc82000
-Created Object "gg_z1", 0x7fbfebd0fc00
-Created Object "gg_z2", 0x7fbfebd10200
-Created Object "gg_z3", 0x7fbfeb047400
-Created Object "gg_z4", 0x7fbfebd10800
-Created Object "gg_z5", 0x7fbfebd10e00
 we have define the following ROOT spectra:
 Collection name='THashList', class='THashList', size=84
  TH1.Print Name  = dtbtev, Entries= 0, Total sum= 0
@@ -1006,7 +926,7 @@ bin_mode2 calculated mean CCadd energy to be 1157.942 keV
 attempting to close root file...
 Pars.f1->Write();
 Pars.f1->Print();
-TFile: name=../../data/root_data/run252.root, title=, option=CREATE
+TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run252.root, title=, option=CREATE
 TH1.Print Name  = dtbtev, Entries= 2041020, Total sum= 2.04102e+06
 TH1.Print Name  = T0, Entries= 0, Total sum= 0
 TH1.Print Name  = hitpat, Entries= 1507013, Total sum= 1.50701e+06
@@ -1035,76 +955,76 @@ TH1.Print Name  = CCe, Entries= 3476812, Total sum= 1.50699e+06
 TH1.Print Name  = ggCC, Entries= 3127400, Total sum= 2.73734e+06
 TH1.Print Name  = z_plot, Entries= 3476934, Total sum= 3.47372e+06
 TH1.Print Name  = crystal_hit, Entries= 0, Total sum= 0
-TH1.Print Name  = SegE, Entries= 3476205, Total sum= 3.47620e+06
+TH1.Print Name  = SegE, Entries= 3476205, Total sum= 3.4762e+06
 TH1.Print Name  = crXcr, Entries= 1564000, Total sum= 1.564e+06
 ******************************************************************************
 *Tree    :tree      : tree                                                   *
-*Entries :  1000000 : Total =       154384519 bytes  File  Size =   66235047 *
-*        :          : Tree compression factor =   2.33                       *
+*Entries :  1000000 : Total =       154606756 bytes  File  Size =   37264941 *
+*        :          : Tree compression factor =   4.15                       *
 ******************************************************************************
 *Br    0 :runNumber : runNumber/I                                            *
-*Entries :  1000000 : Total  Size=    4006225 bytes  File Size  =      21986 *
-*Baskets :       59 : Basket Size=    1328128 bytes  Compression= 182.14     *
+*Entries :  1000000 : Total  Size=    4010325 bytes  File Size  =      30614 *
+*Baskets :      100 : Basket Size=    1328128 bytes  Compression= 130.91     *
 *............................................................................*
 *Br    1 :numHits   : numHits/I                                              *
-*Entries :  1000000 : Total  Size=    4006099 bytes  File Size  =      21868 *
-*Baskets :       59 : Basket Size=    1328128 bytes  Compression= 183.12     *
+*Entries :  1000000 : Total  Size=    4010117 bytes  File Size  =      30413 *
+*Baskets :      100 : Basket Size=    1328128 bytes  Compression= 131.77     *
 *............................................................................*
 *Br    2 :left      : left[numHits]/F                                        *
-*Entries :  1000000 : Total  Size=    8017811 bytes  File Size  =    5319285 *
-*Baskets :      169 : Basket Size=    6215168 bytes  Compression=   1.51     *
+*Entries :  1000000 : Total  Size=    8030995 bytes  File Size  =    2850059 *
+*Baskets :      297 : Basket Size=    8958464 bytes  Compression=   2.82     *
 *............................................................................*
 *Br    3 :right     : right[numHits]/F                                       *
-*Entries :  1000000 : Total  Size=    8017984 bytes  File Size  =    5268986 *
-*Baskets :      169 : Basket Size=    6215168 bytes  Compression=   1.52     *
+*Entries :  1000000 : Total  Size=    8031296 bytes  File Size  =    2827865 *
+*Baskets :      297 : Basket Size=    8958464 bytes  Compression=   2.84     *
 *............................................................................*
 *Br    4 :up        : up[numHits]/F                                          *
-*Entries :  1000000 : Total  Size=    8017465 bytes  File Size  =    5273158 *
-*Baskets :      169 : Basket Size=    6214656 bytes  Compression=   1.52     *
+*Entries :  1000000 : Total  Size=    8030393 bytes  File Size  =    2807658 *
+*Baskets :      297 : Basket Size=    8957952 bytes  Compression=   2.86     *
 *............................................................................*
 *Br    5 :down      : down[numHits]/F                                        *
-*Entries :  1000000 : Total  Size=    8017811 bytes  File Size  =    5285605 *
-*Baskets :      169 : Basket Size=    6215168 bytes  Compression=   1.52     *
+*Entries :  1000000 : Total  Size=    8030995 bytes  File Size  =    2831643 *
+*Baskets :      297 : Basket Size=    8958464 bytes  Compression=   2.83     *
 *............................................................................*
 *Br    6 :e1        : e1[numHits]/F                                          *
-*Entries :  1000000 : Total  Size=    8017465 bytes  File Size  =    5248433 *
-*Baskets :      169 : Basket Size=    6214656 bytes  Compression=   1.53     *
+*Entries :  1000000 : Total  Size=    8030393 bytes  File Size  =    2735152 *
+*Baskets :      297 : Basket Size=    8957952 bytes  Compression=   2.93     *
 *............................................................................*
 *Br    7 :e2        : e2[numHits]/F                                          *
-*Entries :  1000000 : Total  Size=    8017465 bytes  File Size  =    5226296 *
-*Baskets :      169 : Basket Size=    6214656 bytes  Compression=   1.53     *
+*Entries :  1000000 : Total  Size=    8030393 bytes  File Size  =    2708112 *
+*Baskets :      297 : Basket Size=    8957952 bytes  Compression=   2.96     *
 *............................................................................*
 *Br    8 :e3        : e3[numHits]/F                                          *
-*Entries :  1000000 : Total  Size=    8017465 bytes  File Size  =    5183058 *
-*Baskets :      169 : Basket Size=    6214656 bytes  Compression=   1.55     *
+*Entries :  1000000 : Total  Size=    8030393 bytes  File Size  =    2644128 *
+*Baskets :      297 : Basket Size=    8957952 bytes  Compression=   3.03     *
 *............................................................................*
 *Br    9 :tac       : tac[numHits]/F                                         *
-*Entries :  1000000 : Total  Size=    8017638 bytes  File Size  =    5006772 *
-*Baskets :      169 : Basket Size=    6215168 bytes  Compression=   1.60     *
+*Entries :  1000000 : Total  Size=    8030694 bytes  File Size  =    2411697 *
+*Baskets :      297 : Basket Size=    8957952 bytes  Compression=   3.33     *
 *............................................................................*
 *Br   10 :fmaDeltaTime : fmaDeltaTime[numHits]/F                             *
-*Entries :  1000000 : Total  Size=    8019306 bytes  File Size  =    5100976 *
-*Baskets :      170 : Basket Size=    6216192 bytes  Compression=   1.57     *
+*Entries :  1000000 : Total  Size=    8033403 bytes  File Size  =    2238433 *
+*Baskets :      297 : Basket Size=    8958976 bytes  Compression=   3.59     *
 *............................................................................*
 *Br   11 :fmaMult   : fmaMult[10]/I                                          *
-*Entries :  1000000 : Total  Size=   40055107 bytes  File Size  =    1638608 *
-*Baskets :      559 : Basket Size=   25600000 bytes  Compression=  24.44     *
+*Entries :  1000000 : Total  Size=   40097149 bytes  File Size  =    1040577 *
+*Baskets :      988 : Basket Size=   25600000 bytes  Compression=  38.51     *
 *............................................................................*
 *Br   12 :gammaMult : gammaMult/I                                            *
-*Entries :  1000000 : Total  Size=    4006225 bytes  File Size  =    1047847 *
-*Baskets :       59 : Basket Size=    1328128 bytes  Compression=   3.82     *
+*Entries :  1000000 : Total  Size=    4010325 bytes  File Size  =     710821 *
+*Baskets :      100 : Basket Size=    1328128 bytes  Compression=   5.64     *
 *............................................................................*
 *Br   13 :gammaEnergy : gammaEnergy[gammaMult]/F                             *
-*Entries :  1000000 : Total  Size=   10050272 bytes  File Size  =    9105691 *
-*Baskets :      198 : Basket Size=    6887936 bytes  Compression=   1.10     *
+*Entries :  1000000 : Total  Size=   10066662 bytes  File Size  =    7128748 *
+*Baskets :      347 : Basket Size=    9632768 bytes  Compression=   1.41     *
 *............................................................................*
 *Br   14 :gammaTimestamp : gammaTimestamp[gammaMult]/F                       *
-*Entries :  1000000 : Total  Size=   10050878 bytes  File Size  =    3482718 *
-*Baskets :      198 : Basket Size=    6888448 bytes  Compression=   2.88     *
+*Entries :  1000000 : Total  Size=   10067828 bytes  File Size  =    1790583 *
+*Baskets :      348 : Basket Size=    9633280 bytes  Compression=   5.62     *
 *............................................................................*
 *Br   15 :deltaTime : deltaTime[gammaMult]/F                                 *
-*Entries :  1000000 : Total  Size=   10049868 bytes  File Size  =    3974031 *
-*Baskets :      198 : Basket Size=    6887936 bytes  Compression=   2.53     *
+*Entries :  1000000 : Total  Size=   10065960 bytes  File Size  =    2436328 *
+*Baskets :      347 : Basket Size=    9632768 bytes  Compression=   4.13     *
 *............................................................................*
 TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
 TH1.Print Name  = eCC_b, Entries= 0, Total sum= 0
@@ -1160,10 +1080,10 @@ TH1.Print Name  = gg_z3, Entries= 0, Total sum= 0
 TH1.Print Name  = gg_z4, Entries= 0, Total sum= 0
 TH1.Print Name  = gg_z5, Entries= 0, Total sum= 0
 Pars.f1->Close();
-done saving rootfile "../../data/root_data/run252.root
+done saving rootfile "/lcrc/project/HELIOS/gretinafma/root_data/run252.root
 
 
-read 1000000 events; Pars.beta=0.0330; time since last update 1 minutes
+read 1000000 events; Pars.beta=0.0330; time since last update 2 minutes
 CommandFileName="GEBSort.command"
 
 sorted timestamp range 1390085324589-->1399662315903: 9576991314
