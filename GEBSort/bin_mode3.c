@@ -820,8 +820,6 @@ bin_mode3 (GEB_EVENT * GEB_event)
   
   // Must go last of course
   if (writeYN == 1) {
-
-    
     //gamma tracking data
     el->gebMult = (Int_t)GEB_event->mult;
     for (Int_t ii=0;ii<el->gebMult; ii++) {
@@ -880,5 +878,5 @@ bin_mode3 (GEB_EVENT * GEB_event)
     printf ("exit bin_mode3\n");
   
   return (0);
-  
+ 
 }

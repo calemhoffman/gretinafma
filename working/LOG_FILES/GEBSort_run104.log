@@ -19,6 +19,26 @@ stack size              (kbytes, -s) 8192
 cpu time               (seconds, -t) unlimited
 max user processes              (-u) 1418
 virtual memory          (kbytes, -v) unlimited
+=======
+__will store spectra in rootfile: /lcrc/project/HELIOS/gretinafma/root_data/run104.root
+will recreate root file
+7... -chat
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 510315
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) 128769024
+open files                      (-n) 51200
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 4096
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
 will read sorting instructions from chatfile: GEBSort.chat
 
 executing UserDeclare.h code
@@ -32,7 +52,7 @@ crmat.LINUX is open (input) binary format
 read 7936 bytes into Pars.crmat
 chat file: <GEBSort.chat> open
 
-will sort a max of 1410065408 events
+
 will sort 86400 minutes of data
 will print details of the first 10 events
 will use Pars.Beta (v/c) correction of 0.033000
@@ -259,7 +279,6 @@ will use ecal file "dgs_ehi.cal" in bin_dgs
 will skip rest of chat file
 
 chat file: <GEBSort.chat> closed
-processed 38 sort instructions and 197 lines
 
 
 sorting this:
@@ -274,7 +293,7 @@ Pars.do_bin_final = 0
 Pars.do_bin_angcor = 0
 Pars.do_bin_angdis = 0
 checking proper input of chat file...
-input file "../../data/GEBMerged_run104.gtd_000" is open, inData=0x7fff8eb08030
+
 file size is 610822976 bytes or 596 MBs 
 input source is set up, supposedly
 
@@ -373,6 +392,97 @@ Created Object "gg_z2", 0x7fd0442b5a00
 Created Object "gg_z3", 0x7fd0442b6000
 Created Object "gg_z4", 0x7fd0442b6600
 Created Object "gg_z5", 0x7fd0442b6c00
+=======
+root file </lcrc/project/HELIOS/gretinafma/root_data/run104.root>
+base=</lcrc/project/HELIOS/gretinafma/root_data/run104.root:/>
+TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run104.root, title=, option=CREATE
+
+executing UserInit.h code
+
+Created Object "dtbtev", 0x279280b0
+Created Object "T0", 0x279284c0
+, "T0"Created Object "hitpat", 0x279288b0
+, "hitpat"Created Object "numHitArray2", 0x27929300
+, "numHitArray2"Created Object "CCmult", 0x27929dc0
+, "CC Multiplicity"Created Object "CCsum", 0x27bfb6e0
+, "CCsum"Created Object "hit2", 0x27c0b4f0
+, "hit2"Created Object "hit3", 0x27c1b300
+, "hit3"Created Object "hit4", 0x27c2b110
+, "hit4"Created Object "CCsum_nodop", 0x27c3af20
+, "CCsum_nodop"Created Object "CCadd", 0x27c4ad30
+, "CCadd"Created Object "SEGadd_FPGA", 0x27c5ab40
+Created Object "SEGadd_PSA", 0x27c5af50
+Created Object "SEGsum_FPGA", 0x27c5b360
+Created Object "SEGsum_PSA", 0x27c5b770
+Created Object "radius_all", 0x27c5bb80
+, "radius (all points)"Created Object "rate_mode2_min", 0x27c63f90
+, "rate_mode2_min headers"Created Object "rate_mode2_sec", 0x27c670a0
+, "rate_mode2_sec headers"Created Object "rate_mode2_intp", 0x27c6a1b0
+, "rate_mode2 interaction points"Created Object "cdtbtev", 0x27c6d3f0
+Created Object "evsr_all", 0x27d333d0
+Created Object "SMAP_allhits", 0x27d33910
+Created Object "SMAP_allhits_sq", 0x27e332a0
+Created Object "seghitpat", 0x27f32c30
+Created Object "CCe", 0x27f3b030
+Created Object "ggCC", 0x27f3b5e0
+Created Object "z_plot", 0x27f3bb90
+Created Object "crystal_hit", 0x27fef260
+Created Object "SegE", 0x27fef830
+Created Object "crXcr", 0x27fefd70
+MAXDETPOS=180
+Created Object "eCC_a", 0x280dd8d0
+Created Object "eCC_b", 0x280ddce0
+Created Object "eCC_c", 0x280de150
+Created Object "eCC_d", 0x280de700
+Created Object "eSeg", 0x280dec40
+Created Object "mode3_hitpat", 0x280df1f0
+, "mode3_hitpat"Created Object "mode3_hitpat_chan", 0x280dfb60
+, "mode3_hitpat_chan"Created Object "chan0", 0x280e0290
+, "chan0"Created Object "module", 0x280f40c0
+, "module"Created Object "chan", 0x28107ef0
+Created Object "l", 0x2817d810
+, "l"Created Object "r", 0x28191640
+, "r"Created Object "up", 0x281a5400
+, "up"Created Object "down", 0x281b91c0
+, "down"Created Object "sumlr", 0x281ccff0
+, "sumlr"Created Object "sumud", 0x281e0e20
+, "sumud"Created Object "x", 0x281f4c50
+, "x"Created Object "y", 0x28208a80
+, "y"Created Object "de1", 0x2821c8b0
+, "de1"Created Object "de2", 0x28230670
+, "de2"Created Object "de3", 0x28244430
+, "de3"Created Object "de12", 0x28258260
+, "de12"Created Object "etot", 0x2826c090
+, "etot"Created Object "rftof", 0x2827fe50
+, "rftof"Created Object "lr", 0x28293c10
+Created Object "ud", 0x28294150
+Created Object "ede1", 0x28294690
+Created Object "ede1g", 0x28294bd0
+Created Object "ede2", 0x28295180
+Created Object "ede12", 0x28295730
+Created Object "xde1", 0x28295ce0
+Created Object "erftof", 0x28296220
+Created Object "erftofg", 0x28296760
+Created Object "sumehi", 0x28296d10
+, "sumehi"Created Object "tgppac", 0x282aaad0
+, "tgppac"Created Object "tgppacg", 0x282d2180
+, "tgppacg"Created Object "xehi1", 0x282f9830
+Created Object "xehi1g", 0x282f9d70
+Created Object "de1ehi", 0x282fa320
+Created Object "de1ehig", 0x282fa860
+Created Object "ng", 0x282fada0
+, "ng"Created Object "ehiz1", 0x2830eb60
+, "ehiz1"Created Object "ehiz2", 0x28322920
+, "ehiz2"Created Object "ehiz3", 0x28336750
+, "ehiz3"Created Object "ehiz4", 0x2834a580
+, "ehiz4"Created Object "ehiz5", 0x2835e3b0
+, "ehiz5"Created Object "gg_dt", 0x28372170
+, "gg_dt"Created Object "gg", 0x283765a0
+Created Object "gg_z1", 0x28376b50
+Created Object "gg_z2", 0x28377100
+Created Object "gg_z3", 0x283776b0
+Created Object "gg_z4", 0x28377c60
+Created Object "gg_z5", 0x283781a0
 we have define the following ROOT spectra:
 Collection name='THashList', class='THashList', size=84
  TH1.Print Name  = dtbtev, Entries= 0, Total sum= 0
@@ -408,6 +518,8 @@ Collection name='THashList', class='THashList', size=84
  ******************************************************************************
 *Tree    :tree      : tree                                                   *
 *Entries :        0 : Total =           16301 bytes  File  Size =          0 *
+=======
+*Entries :        0 : Total =            8461 bytes  File  Size =          0 *
 *        :          : Tree compression factor =   1.00                       *
 ******************************************************************************
 *Br    0 :runNumber : runNumber/I                                            *
@@ -534,6 +646,7 @@ Collection name='THashList', class='THashList', size=84
 *Entries :        0 : Total  Size=        588 bytes  One basket in memory    *
 *Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
 *............................................................................*
+=======
  TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
  TH1.Print Name  = eCC_b, Entries= 0, Total sum= 0
  TH1.Print Name  = eCC_c, Entries= 0, Total sum= 0
@@ -2181,3 +2294,305 @@ ev# 850000 GEB_TYPE_DECOMP        464Bytes TS=1591085412789 curTS=1591085329607 
 ev# 900000 GEB_TYPE_DECOMP        464Bytes TS=1591860703529 curTS=1591860643989 dTS= 59540
 ev# 950000 GEB_TYPE_GT_MOD29      440Bytes TS=1592622397395 curTS=1592622397065 dTS= 330
 ev# 1000000 GEB_TYPE_GT_MOD29      440Bytes TS=1593402117297 curTS=1593402115683 dTS= 1614
+=======
+
+Sorting is done
+attempting to save root or map file
+
+
+
+mean observed polar and azimuth angles
+for the detectors we saw (module,crystal)
+
+------------------------------------------
+mean pol/azi angle for detector  56 are   96.75/ 119.48
+mean pol/azi angle for detector  57 are  100.41/ 138.29
+mean pol/azi angle for detector  58 are   83.38/ 132.67
+mean pol/azi angle for detector  59 are   79.61/ 114.05
+mean pol/azi angle for detector  60 are   87.42/ 152.68
+mean pol/azi angle for detector  61 are  105.30/ 157.67
+mean pol/azi angle for detector  62 are   93.11/ 168.29
+mean pol/azi angle for detector  63 are   73.80/ 165.98
+mean pol/azi angle for detector  68 are   87.13/-134.99
+mean pol/azi angle for detector  69 are  105.28/-130.00
+mean pol/azi angle for detector  70 are   92.89/-116.90
+mean pol/azi angle for detector  71 are   74.12/-121.81
+mean pol/azi angle for detector  76 are   87.52/ -63.16
+mean pol/azi angle for detector  77 are  105.32/ -58.16
+mean pol/azi angle for detector  78 are   92.96/ -44.99
+mean pol/azi angle for detector  79 are   74.18/ -49.86
+mean pol/azi angle for detector  84 are  112.26/  33.59
+mean pol/azi angle for detector  85 are  125.25/  17.37
+mean pol/azi angle for detector  86 are  130.68/  39.20
+mean pol/azi angle for detector  87 are  115.91/  52.98
+mean pol/azi angle for detector  88 are  112.42/ 105.54
+mean pol/azi angle for detector  89 are  124.92/  89.35
+mean pol/azi angle for detector  90 are  130.82/ 111.15
+mean pol/azi angle for detector  91 are  115.76/ 125.02
+mean pol/azi angle for detector  96 are  112.61/-110.65
+mean pol/azi angle for detector  97 are  124.82/-126.66
+mean pol/azi angle for detector  98 are  130.87/-104.94
+mean pol/azi angle for detector  99 are  115.80/ -90.99
+mean pol/azi angle for detector 100 are  112.44/ -38.60
+mean pol/azi angle for detector 101 are  124.68/ -55.03
+mean pol/azi angle for detector 102 are  130.69/ -32.97
+mean pol/azi angle for detector 103 are  115.75/ -19.06
+mean pol/azi angle for detector 104 are  144.45/  88.25
+mean pol/azi angle for detector 105 are  132.70/  65.83
+mean pol/azi angle for detector 106 are  148.91/  53.90
+mean pol/azi angle for detector 107 are  162.41/  88.29
+mean pol/azi angle for detector 108 are  144.76/ 160.11
+mean pol/azi angle for detector 109 are  132.71/ 137.92
+mean pol/azi angle for detector 110 are  149.58/ 125.45
+mean pol/azi angle for detector 111 are  162.32/ 110.97
+mean pol/azi angle for detector 116 are  144.32/ -55.95
+mean pol/azi angle for detector 117 are  132.55/ -78.28
+mean pol/azi angle for detector 118 are  148.97/ -90.26
+mean pol/azi angle for detector 119 are  162.42/ -55.96
+we found 44 crystals
+------------------------------------------
+
+minimum pol angle between crystals is  18.65
+compactness =  64.39%, 85 of 264
+module hit statistics
+module  14, crystal 0 was hit      78184 times
+module  14, crystal 1 was hit      84087 times
+module  14, crystal 2 was hit      83019 times
+module  14, crystal 3 was hit      72462 times
+module  15, crystal 0 was hit      83383 times
+module  15, crystal 1 was hit      75952 times
+module  15, crystal 2 was hit      71366 times
+module  15, crystal 3 was hit      73604 times
+module  17, crystal 0 was hit      62801 times
+module  17, crystal 1 was hit      59829 times
+module  17, crystal 2 was hit      60634 times
+module  17, crystal 3 was hit      62934 times
+module  19, crystal 0 was hit      57552 times
+module  19, crystal 1 was hit      59680 times
+module  19, crystal 2 was hit      70117 times
+module  19, crystal 3 was hit      68915 times
+module  21, crystal 0 was hit      71289 times
+module  21, crystal 1 was hit      62792 times
+module  21, crystal 2 was hit      74204 times
+module  21, crystal 3 was hit      70398 times
+module  22, crystal 0 was hit      77784 times
+module  22, crystal 1 was hit      71448 times
+module  22, crystal 2 was hit      81357 times
+module  22, crystal 3 was hit      74239 times
+module  24, crystal 0 was hit      64669 times
+module  24, crystal 1 was hit      61795 times
+module  24, crystal 2 was hit      64697 times
+module  24, crystal 3 was hit      60257 times
+module  25, crystal 0 was hit      61197 times
+module  25, crystal 1 was hit      64012 times
+module  25, crystal 2 was hit      62336 times
+module  25, crystal 3 was hit      60192 times
+module  26, crystal 0 was hit      71124 times
+module  26, crystal 1 was hit      69379 times
+module  26, crystal 2 was hit      68918 times
+module  26, crystal 3 was hit      65035 times
+module  27, crystal 0 was hit      74833 times
+module  27, crystal 1 was hit      71736 times
+module  27, crystal 2 was hit      74236 times
+module  27, crystal 3 was hit      68448 times
+module  29, crystal 0 was hit      60747 times
+module  29, crystal 1 was hit      59743 times
+module  29, crystal 2 was hit      65211 times
+module  29, crystal 3 was hit      59169 times
+
+bin_mode2: pad distribution
+__id   0,      1318188, 94.93%
+__id   2,          139,  0.01%
+__id   3,          376,  0.03%
+__id   4,          390,  0.03%
+__id   5,         2481,  0.18%
+__id   6,         4778,  0.34%
+__id 128,        62111,  4.47%
+__id 133,          115,  0.01%
+
+bin_mode2 calculated mean CCsum energy to be  740.819 keV
+bin_mode2 calculated mean CCadd energy to be  989.950 keV
+attempting to close root file...
+Pars.f1->Write();
+Pars.f1->Print();
+TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run104.root, title=, option=CREATE
+TH1.Print Name  = dtbtev, Entries= 1874737, Total sum= 1.87474e+06
+TH1.Print Name  = T0, Entries= 0, Total sum= 0
+TH1.Print Name  = hitpat, Entries= 1318188, Total sum= 1.31819e+06
+TH1.Print Name  = numHitArray2, Entries= 1000000, Total sum= 681884
+TH1.Print Name  = CCmult, Entries= 1000000, Total sum= 1e+06
+TH1.Print Name  = CCsum, Entries= 3015626, Total sum= 1.31816e+06
+TH1.Print Name  = hit2, Entries= 145796, Total sum= 145616
+TH1.Print Name  = hit3, Entries= 76882, Total sum= 76326
+TH1.Print Name  = hit4, Entries= 42267, Total sum= 41240
+TH1.Print Name  = CCsum_nodop, Entries= 3015626, Total sum= 1.31816e+06
+TH1.Print Name  = CCadd, Entries= 1000000, Total sum= 674494
+TH1.Print Name  = SEGadd_FPGA, Entries= 200000000, Total sum= 1.31757e+06
+TH1.Print Name  = SEGadd_PSA, Entries= 200000000, Total sum= 1.31117e+06
+TH1.Print Name  = SEGsum_FPGA, Entries= 2031510, Total sum= 2.03107e+06
+TH1.Print Name  = SEGsum_PSA, Entries= 3015764, Total sum= 2.99336e+06
+TH1.Print Name  = radius_all, Entries= 3015763, Total sum= 3.01576e+06
+TH1.Print Name  = rate_mode2_min, Entries= 1318187, Total sum= 21969.8
+TH1.Print Name  = rate_mode2_sec, Entries= 1318187, Total sum= 1.31819e+06
+TH1.Print Name  = rate_mode2_intp, Entries= 1318187, Total sum= 50262.7
+TH1.Print Name  = cdtbtev, Entries= 235010, Total sum= 235010
+TH1.Print Name  = evsr_all, Entries= 3015763, Total sum= 2.94838e+06
+TH1.Print Name  = SMAP_allhits, Entries= 3015764, Total sum= 3.01576e+06
+TH1.Print Name  = SMAP_allhits_sq, Entries= 3015764, Total sum= 3.01576e+06
+TH1.Print Name  = seghitpat, Entries= 3015764, Total sum= 3.01576e+06
+TH1.Print Name  = CCe, Entries= 3015626, Total sum= 1.31816e+06
+TH1.Print Name  = ggCC, Entries= 2562382, Total sum= 2.24083e+06
+TH1.Print Name  = z_plot, Entries= 3015764, Total sum= 3.01292e+06
+TH1.Print Name  = crystal_hit, Entries= 0, Total sum= 0
+TH1.Print Name  = SegE, Entries= 3015091, Total sum= 3.01509e+06
+TH1.Print Name  = crXcr, Entries= 1281191, Total sum= 1.28119e+06
+******************************************************************************
+*Tree    :tree      : tree                                                   *
+*Entries :  1000000 : Total =       152329942 bytes  File  Size =   37479586 *
+*        :          : Tree compression factor =   4.07                       *
+******************************************************************************
+*Br    0 :runNumber : runNumber/I                                            *
+*Entries :  1000000 : Total  Size=    4010225 bytes  File Size  =      30498 *
+*Baskets :       99 : Basket Size=    1348096 bytes  Compression= 131.40     *
+*............................................................................*
+*Br    1 :numHits   : numHits/I                                              *
+*Entries :  1000000 : Total  Size=    4010019 bytes  File Size  =      30301 *
+*Baskets :       99 : Basket Size=    1348096 bytes  Compression= 132.25     *
+*............................................................................*
+*Br    2 :left      : left[numHits]/F                                        *
+*Entries :  1000000 : Total  Size=    8030686 bytes  File Size  =    2953127 *
+*Baskets :      294 : Basket Size=    8936960 bytes  Compression=   2.72     *
+*............................................................................*
+*Br    3 :right     : right[numHits]/F                                       *
+*Entries :  1000000 : Total  Size=    8030984 bytes  File Size  =    2927966 *
+*Baskets :      294 : Basket Size=    8936960 bytes  Compression=   2.74     *
+*............................................................................*
+*Br    4 :up        : up[numHits]/F                                          *
+*Entries :  1000000 : Total  Size=    8030090 bytes  File Size  =    2920697 *
+*Baskets :      294 : Basket Size=    8936960 bytes  Compression=   2.75     *
+*............................................................................*
+*Br    5 :down      : down[numHits]/F                                        *
+*Entries :  1000000 : Total  Size=    8030686 bytes  File Size  =    2951608 *
+*Baskets :      294 : Basket Size=    8936960 bytes  Compression=   2.72     *
+*............................................................................*
+*Br    6 :e1        : e1[numHits]/F                                          *
+*Entries :  1000000 : Total  Size=    8030090 bytes  File Size  =    2845854 *
+*Baskets :      294 : Basket Size=    8936960 bytes  Compression=   2.82     *
+*............................................................................*
+*Br    7 :e2        : e2[numHits]/F                                          *
+*Entries :  1000000 : Total  Size=    8030090 bytes  File Size  =    2814523 *
+*Baskets :      294 : Basket Size=    8936960 bytes  Compression=   2.85     *
+*............................................................................*
+*Br    8 :e3        : e3[numHits]/F                                          *
+*Entries :  1000000 : Total  Size=    8030090 bytes  File Size  =    2749931 *
+*Baskets :      294 : Basket Size=    8936960 bytes  Compression=   2.92     *
+*............................................................................*
+*Br    9 :tac       : tac[numHits]/F                                         *
+*Entries :  1000000 : Total  Size=    8030388 bytes  File Size  =    2519533 *
+*Baskets :      294 : Basket Size=    8936960 bytes  Compression=   3.18     *
+*............................................................................*
+*Br   10 :fmaDeltaTime : fmaDeltaTime[numHits]/F                             *
+*Entries :  1000000 : Total  Size=    8033181 bytes  File Size  =    2418983 *
+*Baskets :      295 : Basket Size=    8937984 bytes  Compression=   3.32     *
+*............................................................................*
+*Br   11 :fmaMult   : fmaMult[10]/I                                          *
+*Entries :  1000000 : Total  Size=   40096267 bytes  File Size  =    1078216 *
+*Baskets :      979 : Basket Size=   25600000 bytes  Compression=  37.17     *
+*............................................................................*
+*Br   12 :gammaMult : gammaMult/I                                            *
+*Entries :  1000000 : Total  Size=    4010225 bytes  File Size  =     691730 *
+*Baskets :       99 : Basket Size=    1348096 bytes  Compression=   5.79     *
+*............................................................................*
+*Br   13 :gammaEnergy : gammaEnergy[gammaMult]/F                             *
+*Entries :  1000000 : Total  Size=    9309052 bytes  File Size  =    6362081 *
+*Baskets :      326 : Basket Size=    9365504 bytes  Compression=   1.46     *
+*............................................................................*
+*Br   14 :gammaTimestamp : gammaTimestamp[gammaMult]/F                       *
+*Entries :  1000000 : Total  Size=    9310042 bytes  File Size  =    1885387 *
+*Baskets :      326 : Basket Size=    9366016 bytes  Compression=   4.93     *
+*............................................................................*
+*Br   15 :deltaTime : deltaTime[gammaMult]/F                                 *
+*Entries :  1000000 : Total  Size=    9308392 bytes  File Size  =    2257880 *
+*Baskets :      326 : Basket Size=    9364992 bytes  Compression=   4.12     *
+*............................................................................*
+TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_b, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_c, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_d, Entries= 146031, Total sum= 0
+TH1.Print Name  = eSeg, Entries= 0, Total sum= 0
+TH1.Print Name  = mode3_hitpat, Entries= 4835645, Total sum= 0
+TH1.Print Name  = mode3_hitpat_chan, Entries= 4835645, Total sum= 4.83564e+06
+TH1.Print Name  = chan0, Entries= 0, Total sum= 0
+TH1.Print Name  = module, Entries= 4835645, Total sum= 4.83564e+06
+TH1.Print Name  = chan, Entries= 4835645, Total sum= 4.83256e+06
+TH1.Print Name  = l, Entries= 483565, Total sum= 483541
+TH1.Print Name  = r, Entries= 483565, Total sum= 483560
+TH1.Print Name  = up, Entries= 483563, Total sum= 483561
+TH1.Print Name  = down, Entries= 483564, Total sum= 483562
+TH1.Print Name  = sumlr, Entries= 473285, Total sum= 473285
+TH1.Print Name  = sumud, Entries= 451865, Total sum= 451865
+TH1.Print Name  = x, Entries= 473285, Total sum= 473285
+TH1.Print Name  = y, Entries= 451865, Total sum= 451865
+TH1.Print Name  = de1, Entries= 483565, Total sum= 483549
+TH1.Print Name  = de2, Entries= 483565, Total sum= 483565
+TH1.Print Name  = de3, Entries= 483564, Total sum= 482492
+TH1.Print Name  = de12, Entries= 418179, Total sum= 418179
+TH1.Print Name  = etot, Entries= 418179, Total sum= 418179
+TH1.Print Name  = rftof, Entries= 483565, Total sum= 481812
+TH1.Print Name  = lr, Entries= 1000000, Total sum= 999974
+TH1.Print Name  = ud, Entries= 1000000, Total sum= 999998
+TH1.Print Name  = ede1, Entries= 418179, Total sum= 418179
+TH1.Print Name  = ede1g, Entries= 70497, Total sum= 70483
+TH1.Print Name  = ede2, Entries= 418179, Total sum= 418179
+TH1.Print Name  = ede12, Entries= 418179, Total sum= 418179
+TH1.Print Name  = xde1, Entries= 418179, Total sum= 418179
+TH1.Print Name  = erftof, Entries= 1000000, Total sum= 998247
+TH1.Print Name  = erftofg, Entries= 29782, Total sum= 29732
+TH1.Print Name  = sumehi, Entries= 1318188, Total sum= 1.31818e+06
+TH1.Print Name  = tgppac, Entries= 1318188, Total sum= 358298
+TH1.Print Name  = tgppacg, Entries= 70497, Total sum= 70497
+TH1.Print Name  = xehi1, Entries= 1318188, Total sum= 1.31818e+06
+TH1.Print Name  = xehi1g, Entries= 70497, Total sum= 70497
+TH1.Print Name  = de1ehi, Entries= 1318188, Total sum= 1.31814e+06
+TH1.Print Name  = de1ehig, Entries= 70497, Total sum= 70483
+TH1.Print Name  = ng, Entries= 1000000, Total sum= 1e+06
+TH1.Print Name  = ehiz1, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz2, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz3, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz4, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz5, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_dt, Entries= 87443, Total sum= 87443
+TH1.Print Name  = gg, Entries= 174886, Total sum= 172340
+TH1.Print Name  = gg_z1, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z2, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z3, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z4, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z5, Entries= 0, Total sum= 0
+Pars.f1->Close();
+done saving rootfile "/lcrc/project/HELIOS/gretinafma/root_data/run104.root
+
+
+read 1000000 events; Pars.beta=0.0330; time since last update 1 minutes
+CommandFileName="GEBSort.command"
+
+sorted timestamp range 1577642414743-->1593402115429: 15759700686
+that is 157.6 seconds or 0h2m37s
+^^^^^ any timestamp jumps will upset this accounting
+
+hit statistics per type
+ 1 GEB_TYPE_DECOMP          1388578 ;   8810.94 Hz 
+ 8 GEB_TYPE_GT_MOD29         486159 ;   3084.82 Hz 
+read a total of              1874737 ; header/payloads
+
+
+nn1=0
+nn2=1874738
+nn3=1874738
+
+nok_validate= 1000000, ntot_validate=1000000; validate fraction 100.00%
+
+bytes read=887064844, 845.970959 MB
+
+boniva sancta! ...GEBSort (unexpectedly) did not crash!
+
+ ** GEBSort is done at 

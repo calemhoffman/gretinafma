@@ -1,0 +1,207 @@
+chat file: <GEBMerge.chat> open
+
+will echo command lines
+chat->
+chat->#---------------------------------------
+chat-># max coincidence events to create, listing etc
+chat->
+chat->maxNoEvents 10000000000
+chat->TSlistelen 5000 1 1
+chat->#            |   | +-- last bigbuf
+chat->#            |   +-- first bigbuf
+chat->#            +-- max TS to write per file
+chat->
+chat->nprint 100
+will print information for first 100 events
+chat->
+chat->#---------------------------------------
+chat-># output chunck size
+chat->
+chat->chunksiz 2000000000
+chat->
+chat->#---------------------------------------
+chat-># wait for nn seconds for data to appear
+chat-># (meant for on-line merging and sorting)
+chat->
+chat->;waitfordata 600
+chat->
+chat->#---------------------------------------
+chat-># bigbuf size and wosize
+chat->#    +--- big size makes program slow;
+chat->#         but it may be necessary sometimes
+chat->
+chat->bigbufsize 4500
+sizeof(EVENT)= 16
+will use a bigbuffer size of 4500, or   0.086 MBytes
+chat->wosize     50
+will use a bigbuffer wosize of 2250
+chat->#  |
+chat->#  +--- in percent of bigbufsize
+chat->#       written out per buffer
+chat->
+chat->#---------------------------------------
+chat-># how often should we write 
+chat-># statistics to output
+chat->
+chat->reportinterval 100
+chat->
+chat->#---------------------------------------
+chat-># TS jump recovery trigger limits
+chat-># (if timestamps jumps outside these
+chat->#  limits GTMerge will read forward to 
+chat->#  try and recover, 0.1 to 1 sec seems to works)
+chat->#  100000000 ==  1 sec
+chat->#  100000    ==  1 ms
+chat->#  100       ==  1 us
+chat->#  1         == 10 ns
+chat->
+chat->dts_min  -10000000000
+control.dts_min=-10000000000
+chat->dts_max   10000000000
+control.dts_max=10000000000
+chat->
+chat->dtsfabort 50
+chat->dtsbabort 50
+chat->#         |
+chat->#         +----- abort recovery and accept TS
+chat->#                after this many tries in a row
+chat->
+chat->#---------------------------------------
+chat-># enable to zzip output data file
+chat-># does not work at the moment
+chat->
+chat->;zzipout
+chat->
+chat->#---------------------------------------
+chat-># TS manipulation
+chat->
+chat->#         +--- Apply to this GEB Id data
+chat->#         |     +--- range of board/channel IDs
+chat->#         |     |           +--- offset value
+chat->;TSoffset 16 2308-2324,2329 -10
+chat->#
+chat->#---------------------------------------
+chat->
+../GEBSort/GEBMerge: will produce a max of 1410065408 events
+../GEBSort/GEBMerge: will write combined data to file "/lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run114.gtd"
+../GEBSort/GEBMerge: we have 1 datafiles to combine
+../GEBSort/GEBMerge: will keep a pool of 1 events to combine from 
+../GEBSort/GEBMerge: input data file "/lcrc/project/HELIOS/gretinafma/data/Run0114/Global.dat", number 0, is open
+../GEBSort/GEBMerge: output data file "/lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run114.gtd_000" is open
+
+mapping
+0 0 0 /lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run114.gtd_000
+allocated     20016000 bytes for file pools,    or           19 MB
+allocated     90092016 bytes for bigbuf events, or           85 MB
+filling pool
+attempting to read event... i=0 
+got initial header, TS=2328617047081 for storeNo=0
+read initial payload of siz=440 into  storeNo=0
+st=0
+file   0, first TS          2328617047081;
+file   0, first TS          2328617047081 or 23286170.000 msec;
+
+initial pool of events read (1 events)
+Event[0].gd->timestamp=2328617047081
+ 
+First TS=2328617047081, from file 0
+
+**----------------------------------------
+file   0 is     active;          1 reads ;        472 bytes; (  0.000GB) TS=     2328617047081
+current TS:            0; current event no:         0;
+events written:         0; total reads=        1;
+elapsed time..................: -006h-28m-06s, [t0=2328617047081, curTS=0]
+Wed Nov 21 11:13:44 2018
+number of open files:    1
+CPU time: user     0.010 sec, system      0.010 sec, Total      0.020 sec
+bigbuf fills..........=          0
+time order swaps......=          0
+swaps per buffer......=       -nan
+bigbuf covers           0.000 ms
+# bytes read...:          456B,   0.000GB;   0.022MB/sec;   0.078GB/hour, 0.0TB/day
+# bytes written:            0B,   0.000GB;   0.000MB/sec
+total IO rate:   0.022MB/sec or     0Mbits/sec
+output chunk # 0 (chunksiz=2000000000 bytes, or  1.863 GBytes)
+
+----------------------------------------
+channel hit statistics
+
+0 ids were found
+----------------------------------------
+
+
+got initial header, TS=2328617520959 for storeNo=0
+read initial payload of siz=440 into  storeNo=0
+
+got initial header, TS=2328627880479 for storeNo=0
+read initial payload of siz=440 into  storeNo=0
+
+got initial header, TS=2328628380781 for storeNo=0
+read initial payload of siz=440 into  storeNo=0
+
+got initial header, TS=2328628386169 for storeNo=0
+read initial payload of siz=440 into  storeNo=0
+
+got initial header, TS=2328638715265 for storeNo=0
+read initial payload of siz=440 into  storeNo=0
+
+got initial header, TS=2328639195799 for storeNo=0
+read initial payload of siz=440 into  storeNo=0
+
+got initial header, TS=2328649548061 for storeNo=0
+read initial payload of siz=440 into  storeNo=0
+
+got initial header, TS=2328650048881 for storeNo=0
+read initial payload of siz=440 into  storeNo=0
+
+got initial header, TS=2328650052627 for storeNo=0
+read initial payload of siz=440 into  storeNo=0
+failed to read 16 bytes for header, got 0
+failed to read more data from file 0, nextTSpoolIndex=0
+no more data to be read
+
+hit statistics hit/Compton-suppress fraction
+
+wrote "dtbtev.spe"
+
+
+**----------------------------------------
+file   0 is NOT active;       1719 reads ;     811800 bytes; (  0.001GB)  -- completed
+current TS: 2334314034859; current event no:         0;
+events written:         0; total reads=     1719;
+elapsed time..................: 000h00m56s, [t0=2328617047081, curTS=2334314034859]
+Wed Nov 21 11:13:44 2018
+number of open files:    0
+CPU time: user     0.010 sec, system      0.010 sec, Total      0.020 sec
+bigbuf fills..........=          0
+time order swaps......=          0
+swaps per buffer......=       -nan
+bigbuf covers           0.000 ms
+# bytes read...:       784296B,   0.001GB;  37.398MB/sec; 134.633GB/hour, 3.2TB/day
+# bytes written:            0B,   0.000GB;   0.000MB/sec
+total IO rate:  37.398MB/sec or   299Mbits/sec
+output chunk # 0 (chunksiz=2000000000 bytes, or  1.863 GBytes)
+
+----------------------------------------
+channel hit statistics
+
+0 ids were found
+----------------------------------------
+
+
+used big buf of size     0.000 GBytes
+
+
+flushing 1719 bytes from bigbuf
+wrote 1719 events and 1719 bytes
+executing "file /lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run114.gtd_* >> /dev/stderr; ls -l /lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run114.gtd_*  >> /dev/stderr"
+close all files
+
+
+GEBID  1, had         18 hits, mean length   480.00 bytes
+GEBID  8, had       1701 hits, mean length   456.00 bytes
+
+
+Boniva Sancta ;-) >> GEBMerge did not crash << !!
+
+td_000
