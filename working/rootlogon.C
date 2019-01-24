@@ -26,8 +26,8 @@
   gStyle->SetPadTickX(1);                         // tic marks on all axes
   gStyle->SetPadTickY(1);                         //
   gStyle->SetOptFit(1111);                        // the results of the fits
-  gStyle->SetPadGridX(kTRUE);                     // draw horizontal and vertical grids
-  gStyle->SetPadGridY(kTRUE);
+  //gStyle->SetPadGridX(kTRUE);                     // draw horizontal and vertical grids
+  //gStyle->SetPadGridY(kTRUE);
   gStyle->SetPalette(53,0);
   gStyle->SetNumberContours(99);                     // pretty and useful palette
   gStyle->SetHistLineWidth(1);                    // a thicker histogram line
