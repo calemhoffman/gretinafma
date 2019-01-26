@@ -306,6 +306,7 @@ void fmaCuts(void) {
   TFile *fNameOut = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/gamma.root"),"RECREATE");
   if (fNameOut == 0) {printf("Error: file read in fail\n"); return;}
   hg_ar38->Write(); hg_cl38->Write(); hg_s38->Write();
+  hgg_s38->Write(); hgg_cl38->Write(); hgg_ar38->Write();
   for (Int_t i=0;i<numScanHist;i++)
     hscan[i]->Write();
   
@@ -314,6 +315,6 @@ void fmaCuts(void) {
   
   gClock.Stop("gTimer");
   gTime =  gClock.GetRealTime("gTimer");
-  printf("=========== Finsihed, total runTime : %7.0f sec \n", gTime);
+  printf("=========== Finished, total runTime : %7.0f sec \n", gTime);
   printf("=========== Or, %7.1f sec / 1M events\n", gTime/((double)nEntries)*1e6);
 }
