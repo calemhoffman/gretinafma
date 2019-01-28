@@ -1,6 +1,6 @@
 {
-  Int_t runN=249;
-  Float_t scaleF=2.0;
+  Int_t runN=269;
+  Float_t scaleF=2.2;
   
   TString cuts;
   cuts.Form("gcut1||gcut2||gcut3||gcut4");
