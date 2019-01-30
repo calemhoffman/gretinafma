@@ -11,7 +11,7 @@ sort_func(){
 }
 
 # For loop
-for i in {200..234}
+for i in {70..300}
 do
     sort_func $i & #
     count=$((count+1))
