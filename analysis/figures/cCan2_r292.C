@@ -1,8 +1,8 @@
 void cCan2_r292()
 {
 //=========Macro generated from canvas: cCan2/cCan2
-//=========  (Wed Jan 30 09:44:35 2019) by ROOT version 6.15/01
-   TCanvas *cCan2 = new TCanvas("cCan2", "cCan2",0,45,1200,807);
+//=========  (Mon Mar 11 10:51:48 2019) by ROOT version 6.15/01
+   TCanvas *cCan2 = new TCanvas("cCan2", "cCan2",0,45,1200,848);
    gStyle->SetOptFit(1);
    cCan2->ToggleEventStatus();
    cCan2->ToggleToolTips();

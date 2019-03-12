@@ -117,7 +117,7 @@ void fmaMain(Int_t runNumber=0){
     
   if( option == 3 ) {
     FILE * calFileOut;
-    calFileOut = fopen ("fma_cal_jan19.dat", "w+");
+    calFileOut = fopen ("fma_cal_mar19.dat", "w+");
     fmaCalibrate(calFileOut);
 
     fflush(calFileOut);

@@ -23,7 +23,7 @@
 #include <TFile.h>
 
 void calTree() {
-  Int_t lowRunNumber=281;
+  Int_t lowRunNumber=292;
   Int_t highRunNumber=292;
   Int_t runN;
   
@@ -43,12 +43,32 @@ void calTree() {
   Float_t gammaEnergy[100];
   Float_t gammaTimestamp[100];
   Float_t deltaTime[100];
-
-
+  Int_t gebMult;
+  Int_t crysType[100];
+  Int_t crysId[100];
+  Int_t crysNum[100];
+  Float_t crysTot_e[100];
+  long long int crysTimestamp[100];
+  double crysTrigtime[100];
+  Float_t crysT0[100];
+  Float_t crysCfd[100];
+  Float_t crysChisq[100];
+  Float_t crysNormChisq[100];
+  Float_t crysBaseline[100];
+  unsigned int crysTpad[100];
+  Float_t crysPolAngle[100];
+  Float_t intMaxX[100];
+  Float_t intMaxY[100];
+  Float_t intMaxZ[100];
+  Float_t intMaxE[100];
+  Int_t intMaxSeg[100];
+  Float_t intMaxSegE[100];
+  
    for (Int_t index=lowRunNumber;index<=highRunNumber;index++) {
     runN=index;
     printf("Starting sort of run number: %d\n",runN);
-  TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runN));
+  TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runN));
+  //TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runN));
   if (fNameIn == 0) printf("Error: file read in fail\n");
   TTree * tree = (TTree *) fNameIn->FindObjectAny("tree");
  
@@ -70,6 +90,21 @@ void calTree() {
   tree->SetBranchAddress("gammaEnergy",gammaEnergy);
   tree->SetBranchAddress("gammaTimestamp",gammaTimestamp);
   tree->SetBranchAddress("deltaTime",deltaTime);
+  tree->SetBranchAddress("gebMult",&gebMult);
+  tree->SetBranchAddress("crysType",crysType);
+  tree->SetBranchAddress("crysId",crysId);
+  tree->SetBranchAddress("crysNum",crysNum);
+  tree->SetBranchAddress("crysTot_e",crysTot_e);
+  tree->SetBranchAddress("crysPolAngle",crysPolAngle);
+  tree->SetBranchAddress("intMaxX",intMaxX);
+  tree->SetBranchAddress("intMaxY",intMaxY);
+  tree->SetBranchAddress("intMaxZ",intMaxZ);
+  tree->SetBranchAddress("intMaxE",intMaxE);
+  tree->SetBranchAddress("intMaxSeg",intMaxSeg);
+  tree->SetBranchAddress("intMaxSegE",intMaxSegE);
+  tree->SetBranchAddress("crysTimestamp",crysTimestamp);
+  tree->SetBranchAddress("crysTrigtime",crysTrigtime);
+  tree->SetBranchAddress("crysT0",crysT0);
 
   TFile * calFile = new TFile(Form("cal_%d.root",runN),"RECREATE");
   TTree * ctree = new TTree("ctree", "Cal Tree");

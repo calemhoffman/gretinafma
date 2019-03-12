@@ -205,6 +205,7 @@ void fmaCuts(void) {
   
   for (Int_t entryNumber=0;entryNumber<nElistEntry/*nEntries*/; entryNumber++) {
     ctree->GetEntry(all_elist_x->GetEntry(entryNumber));
+    //ctree->GetEntry(entryNumber);
  
     if (((Float_t)entryNumber/(Float_t)nElistEntry)>counter)
      {      
