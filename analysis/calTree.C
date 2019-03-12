@@ -22,6 +22,22 @@
 #include <TTreeReaderArray.h>
 #include <TFile.h>
 
+TCutG *cut_ar38_e1x;
+TCutG *cut_ar38_dtge;
+TCutG *cut_ar38_e1e3;
+TCutG *cut_ar38_e1e2;
+TCutG *cut_ar38_e2e3;
+TCutG *cut_cl38_e1x;
+TCutG *cut_cl38_dtge;
+TCutG *cut_cl38_e1e3;
+TCutG *cut_cl38_e1e2;
+TCutG *cut_cl38_e2e3;
+TCutG *cut_s38_e1x;
+TCutG *cut_s38_dtge;
+TCutG *cut_s38_e1e3;
+TCutG *cut_s38_e1e2;
+TCutG *cut_s38_e2e3;
+
 void calTree() {
   Int_t lowRunNumber=292;
   Int_t highRunNumber=292;
@@ -63,6 +79,23 @@ void calTree() {
   Float_t intMaxE[100];
   Int_t intMaxSeg[100];
   Float_t intMaxSegE[100];
+
+  //Get Cuts
+  cut_ar38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1x");
+  cut_ar38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_ar38_dtge");
+  cut_ar38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1e3");
+  cut_ar38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1e2");
+  cut_ar38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e2e3");
+  cut_cl38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e1x");
+  cut_cl38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_cl38_dtge");
+  cut_cl38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e1e3");
+  cut_cl38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e1e2");
+  cut_cl38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e2e3");
+  cut_s38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1x");
+  cut_s38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_s38_dtge");
+  cut_s38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1e3");
+  cut_s38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1e2");
+  cut_s38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e2e3");
   
    for (Int_t index=lowRunNumber;index<=highRunNumber;index++) {
     runN=index;
@@ -129,7 +162,7 @@ void calTree() {
   ctree->Branch("y",&y,"y/F");
   //Energies
   ctree->Branch("e",e,"e[10]/F");
-  //Gammas
+  //Gammas - a bunch more to add...
   ctree->Branch("gmult",&gmult,"gmult/I");
   ctree->Branch("genergy",genergy,"genergy[gmult]/F");
   ctree->Branch("dtime",dtime,"dtime[gmult]/F");
@@ -267,8 +300,12 @@ void calTree() {
       printf("entryNumber:%d \n l:%4.0f r:%4.0f u:%4.0f d:%4.0f \n x:%4.0f y:%4.0f\n e1:%4.2f e2:%4.2f e3:%4.2f gammaMult:%d gammaEnergy[0]:%4.1f\n\n",
 	     entryNumber,l,r,u,d,x,y,e[0],e[1],e[2],gammaMult,gammaEnergy[0]);
 
-
-     ctree->Fill();
+     //Should setup a few of the basic cuts here to limit file size / save time later.
+     if ( cut_ar38_e1x->IsInside(x,e[0]) || /* basic eVx cut first */
+	  cut_cl38_e1x->IsInside(x,e[0]) ||
+	  cut_s38_e1x->IsInside(x,e[0])) {
+       ctree->Fill();
+     }
 
   } //entryNumber Loop
   ctree->Write();
