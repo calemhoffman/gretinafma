@@ -103,7 +103,7 @@ void fmaCuts(void) {
   printf("nElistEntry: %d ",nElistEntry);
 
   //fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_%d.root",runN));
-  fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_tot.root"));
+  fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_292.root"));
   if (fNameIn == 0) {printf("Error: file read in fail\n"); return;}
   TTree * ctree = (TTree *) fNameIn->Get("ctree");
 
@@ -203,9 +203,9 @@ void fmaCuts(void) {
   Float_t counter=0;
   double gTime;
   
-  for (Int_t entryNumber=0;entryNumber<nElistEntry/*nEntries*/; entryNumber++) {
-    ctree->GetEntry(all_elist_x->GetEntry(entryNumber));
-    //ctree->GetEntry(entryNumber);
+  for (Int_t entryNumber=0;entryNumber<nEntries/*nElistEntry*/; entryNumber++) {
+    //ctree->GetEntry(all_elist_x->GetEntry(entryNumber));
+    ctree->GetEntry(entryNumber);
  
     if (((Float_t)entryNumber/(Float_t)nElistEntry)>counter)
      {      
