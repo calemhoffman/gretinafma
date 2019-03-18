@@ -12,7 +12,7 @@ core file size          (blocks, -c) unlimited
 data seg size           (kbytes, -d) unlimited
 scheduling priority             (-e) 0
 file size               (blocks, -f) unlimited
-pending signals                 (-i) 510315
+pending signals                 (-i) 510311
 max locked memory       (kbytes, -l) unlimited
 max memory size         (kbytes, -m) 128769024
 open files                      (-n) 51200
@@ -38,7 +38,6 @@ read 7936 bytes into Pars.crmat
 chat file: <GEBSort.chat> open
 
 will sort a max of 1410065408 events
-will sort a max of 1000000 events
 will sort 86400 minutes of data
 will print details of the first 10 events
 will use Pars.Beta (v/c) correction of 0.033000
@@ -265,7 +264,7 @@ will use ecal file "dgs_ehi.cal" in bin_dgs
 will skip rest of chat file
 
 chat file: <GEBSort.chat> closed
-processed 39 sort instructions and 198 lines
+processed 38 sort instructions and 197 lines
 
 
 sorting this:
@@ -280,7 +279,7 @@ Pars.do_bin_final = 0
 Pars.do_bin_angcor = 0
 Pars.do_bin_angdis = 0
 checking proper input of chat file...
-input file "/lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run166.gtd_000" is open, inData=0x266f3a60
+input file "/lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run166.gtd_000" is open, inData=0x24e43440
 file size is 285820720 bytes or 279 MBs 
 input source is set up, supposedly
 
@@ -295,90 +294,90 @@ TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run166.root, title=, optio
 
 executing UserInit.h code
 
-Created Object "dtbtev", 0x27748e20
-Created Object "T0", 0x27749230
-, "T0"Created Object "hitpat", 0x27749620
-, "hitpat"Created Object "numHitArray2", 0x2774a070
-, "numHitArray2"Created Object "CCmult", 0x2774ab30
-, "CC Multiplicity"Created Object "CCsum", 0x2774b040
-, "CCsum"Created Object "hit2", 0x27a2c580
-, "hit2"Created Object "hit3", 0x27a3c390
-, "hit3"Created Object "hit4", 0x27a4c1a0
-, "hit4"Created Object "CCsum_nodop", 0x27a5bfb0
-, "CCsum_nodop"Created Object "CCadd", 0x27a6bdc0
-, "CCadd"Created Object "SEGadd_FPGA", 0x27a7bbd0
-Created Object "SEGadd_PSA", 0x27a7bfe0
-Created Object "SEGsum_FPGA", 0x27a7c3f0
-Created Object "SEGsum_PSA", 0x27a7c800
-Created Object "radius_all", 0x27a7cc10
-, "radius (all points)"Created Object "rate_mode2_min", 0x27a85020
-, "rate_mode2_min headers"Created Object "rate_mode2_sec", 0x27a88130
-, "rate_mode2_sec headers"Created Object "rate_mode2_intp", 0x27a8b310
-, "rate_mode2 interaction points"Created Object "cdtbtev", 0x27a8e5c0
-Created Object "evsr_all", 0x27b545a0
-Created Object "SMAP_allhits", 0x27b54ae0
-Created Object "SMAP_allhits_sq", 0x27c54470
-Created Object "seghitpat", 0x27d53e00
-Created Object "CCe", 0x27d5c200
-Created Object "ggCC", 0x27d5c7b0
-Created Object "z_plot", 0x27d5cd60
-Created Object "crystal_hit", 0x27e10430
-Created Object "SegE", 0x27e10a00
-Created Object "crXcr", 0x27e10f40
+Created Object "dtbtev", 0x25e98970
+Created Object "T0", 0x25e98d80
+, "T0"Created Object "hitpat", 0x25e99170
+, "hitpat"Created Object "numHitArray2", 0x25e99bc0
+, "numHitArray2"Created Object "CCmult", 0x25e9a680
+, "CC Multiplicity"Created Object "CCsum", 0x2616c590
+, "CCsum"Created Object "hit2", 0x2617c3a0
+, "hit2"Created Object "hit3", 0x2618c1b0
+, "hit3"Created Object "hit4", 0x2619bfc0
+, "hit4"Created Object "CCsum_nodop", 0x261abdd0
+, "CCsum_nodop"Created Object "CCadd", 0x261bbbe0
+, "CCadd"Created Object "SEGadd_FPGA", 0x261cb9f0
+Created Object "SEGadd_PSA", 0x261cbe00
+Created Object "SEGsum_FPGA", 0x261cc210
+Created Object "SEGsum_PSA", 0x261cc620
+Created Object "radius_all", 0x261cca30
+, "radius (all points)"Created Object "rate_mode2_min", 0x261d4e40
+, "rate_mode2_min headers"Created Object "rate_mode2_sec", 0x261d7f50
+, "rate_mode2_sec headers"Created Object "rate_mode2_intp", 0x261db060
+, "rate_mode2 interaction points"Created Object "cdtbtev", 0x261de170
+Created Object "evsr_all", 0x262a40e0
+Created Object "SMAP_allhits", 0x262a4620
+Created Object "SMAP_allhits_sq", 0x263a3fb0
+Created Object "seghitpat", 0x264a3940
+Created Object "CCe", 0x264abd40
+Created Object "ggCC", 0x264ac2f0
+Created Object "z_plot", 0x264ac8a0
+Created Object "crystal_hit", 0x2655ff70
+Created Object "SegE", 0x26560540
+Created Object "crXcr", 0x26560a80
 MAXDETPOS=180
-Created Object "eCC_a", 0x27efe9b0
-Created Object "eCC_b", 0x27efedc0
-Created Object "eCC_c", 0x27eff230
-Created Object "eCC_d", 0x27eff7e0
-Created Object "eSeg", 0x27effd20
-Created Object "mode3_hitpat", 0x27f002d0
-, "mode3_hitpat"Created Object "mode3_hitpat_chan", 0x27f00c40
-, "mode3_hitpat_chan"Created Object "chan0", 0x27f01370
-, "chan0"Created Object "module", 0x27f151a0
-, "module"Created Object "chan", 0x27f28fd0
-Created Object "l", 0x27f9e8f0
-, "l"Created Object "r", 0x27fb2720
-, "r"Created Object "up", 0x27fc64e0
-, "up"Created Object "down", 0x27fda2a0
-, "down"Created Object "sumlr", 0x27fee0d0
-, "sumlr"Created Object "sumud", 0x28001f00
-, "sumud"Created Object "x", 0x28015d30
-, "x"Created Object "y", 0x28029b60
-, "y"Created Object "de1", 0x2803d990
-, "de1"Created Object "de2", 0x28051750
-, "de2"Created Object "de3", 0x28065510
-, "de3"Created Object "de12", 0x28079340
-, "de12"Created Object "etot", 0x2808d170
-, "etot"Created Object "rftof", 0x280a0f30
-, "rftof"Created Object "lr", 0x280b4cf0
-Created Object "ud", 0x280b5230
-Created Object "ede1", 0x280b5770
-Created Object "ede1g", 0x280b5cb0
-Created Object "ede2", 0x280b6260
-Created Object "ede12", 0x280b6810
-Created Object "xde1", 0x280b6dc0
-Created Object "erftof", 0x280b7300
-Created Object "erftofg", 0x280b7840
-Created Object "sumehi", 0x280b7df0
-, "sumehi"Created Object "tgppac", 0x280cbbb0
-, "tgppac"Created Object "tgppacg", 0x280f3260
-, "tgppacg"Created Object "xehi1", 0x2811a910
-Created Object "xehi1g", 0x2811ae50
-Created Object "de1ehi", 0x2811b400
-Created Object "de1ehig", 0x2811b940
-Created Object "ng", 0x2811be80
-, "ng"Created Object "ehiz1", 0x2812fc40
-, "ehiz1"Created Object "ehiz2", 0x28143a00
-, "ehiz2"Created Object "ehiz3", 0x28157830
-, "ehiz3"Created Object "ehiz4", 0x2816b660
-, "ehiz4"Created Object "ehiz5", 0x2817f490
-, "ehiz5"Created Object "gg_dt", 0x28193250
-, "gg_dt"Created Object "gg", 0x28197680
-Created Object "gg_z1", 0x28197c30
-Created Object "gg_z2", 0x281981e0
-Created Object "gg_z3", 0x28198790
-Created Object "gg_z4", 0x28198d40
-Created Object "gg_z5", 0x28199280
+Created Object "eCC_a", 0x26655190
+Created Object "eCC_b", 0x266555a0
+Created Object "eCC_c", 0x26655a70
+Created Object "eCC_d", 0x26655ff0
+Created Object "eSeg", 0x26656530
+Created Object "mode3_hitpat", 0x26656ae0
+, "mode3_hitpat"Created Object "mode3_hitpat_chan", 0x26657450
+, "mode3_hitpat_chan"Created Object "chan0", 0x26657b90
+, "chan0"Created Object "module", 0x2666b9c0
+, "module"Created Object "chan", 0x2667f7f0
+Created Object "l", 0x266f5110
+, "l"Created Object "r", 0x26708f40
+, "r"Created Object "up", 0x2671cd00
+, "up"Created Object "down", 0x26730ac0
+, "down"Created Object "sumlr", 0x267448f0
+, "sumlr"Created Object "sumud", 0x26758720
+, "sumud"Created Object "x", 0x2676c550
+, "x"Created Object "y", 0x26780380
+, "y"Created Object "de1", 0x267941b0
+, "de1"Created Object "de2", 0x267a7f70
+, "de2"Created Object "de3", 0x267bbd30
+, "de3"Created Object "de12", 0x267cfb60
+, "de12"Created Object "etot", 0x267e3990
+, "etot"Created Object "rftof", 0x267f7750
+, "rftof"Created Object "lr", 0x2680b510
+Created Object "ud", 0x2680ba50
+Created Object "ede1", 0x2680bf90
+Created Object "ede1g", 0x2680c4d0
+Created Object "ede2", 0x2680ca80
+Created Object "ede12", 0x2680d030
+Created Object "xde1", 0x2680d5e0
+Created Object "erftof", 0x2680db20
+Created Object "erftofg", 0x2680e060
+Created Object "sumehi", 0x2680e610
+, "sumehi"Created Object "tgppac", 0x268223d0
+, "tgppac"Created Object "tgppacg", 0x26849a80
+, "tgppacg"Created Object "xehi1", 0x26871130
+Created Object "xehi1g", 0x26871670
+Created Object "de1ehi", 0x26871c20
+Created Object "de1ehig", 0x26872160
+Created Object "ng", 0x268726a0
+, "ng"Created Object "ehiz1", 0x26886460
+, "ehiz1"Created Object "ehiz2", 0x2689a220
+, "ehiz2"Created Object "ehiz3", 0x268ae050
+, "ehiz3"Created Object "ehiz4", 0x268c1e80
+, "ehiz4"Created Object "ehiz5", 0x268d5cb0
+, "ehiz5"Created Object "gg_dt", 0x268e9a70
+, "gg_dt"Created Object "gg", 0x268edea0
+Created Object "gg_z1", 0x268ee450
+Created Object "gg_z2", 0x268eea00
+Created Object "gg_z3", 0x268eefb0
+Created Object "gg_z4", 0x268ef560
+Created Object "gg_z5", 0x268efaa0
 we have define the following ROOT spectra:
 Collection name='THashList', class='THashList', size=84
  TH1.Print Name  = dtbtev, Entries= 0, Total sum= 0
@@ -413,7 +412,7 @@ Collection name='THashList', class='THashList', size=84
  TH1.Print Name  = crXcr, Entries= 0, Total sum= 0
  ******************************************************************************
 *Tree    :tree      : tree                                                   *
-*Entries :        0 : Total =            8461 bytes  File  Size =          0 *
+*Entries :        0 : Total =           16301 bytes  File  Size =          0 *
 *        :          : Tree compression factor =   1.00                       *
 ******************************************************************************
 *Br    0 :runNumber : runNumber/I                                            *
@@ -478,6 +477,66 @@ Collection name='THashList', class='THashList', size=84
 *............................................................................*
 *Br   15 :deltaTime : deltaTime[gammaMult]/F                                 *
 *Entries :        0 : Total  Size=        608 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   16 :gebMult   : gebMult/I                                              *
+*Entries :        0 : Total  Size=        493 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   17 :crysType  : crysType[gebMult]/I                                    *
+*Entries :        0 : Total  Size=        589 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   18 :crysId    : crysId[gebMult]/I                                      *
+*Entries :        0 : Total  Size=        581 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   19 :crysNum   : crysNum[gebMult]/I                                     *
+*Entries :        0 : Total  Size=        585 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   20 :crysTot_e : crysTot_e[gebMult]/F                                   *
+*Entries :        0 : Total  Size=        600 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   21 :crysPolAngle : crysPolAngle[gebMult]/F                             *
+*Entries :        0 : Total  Size=        612 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   22 :intMaxX   : intMaxX[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   23 :intMaxY   : intMaxY[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   24 :intMaxZ   : intMaxZ[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   25 :intMaxE   : intMaxE[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   26 :intMaxSeg : intMaxSeg[gebMult]/I                                   *
+*Entries :        0 : Total  Size=        593 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   27 :intMaxSegE : intMaxSegE[gebMult]/F                                 *
+*Entries :        0 : Total  Size=        604 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   28 :crysTimestamp : crysTimestamp[gebMult]/L                           *
+*Entries :        0 : Total  Size=        624 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   29 :crysTrigtime : crysTrigtime[gebMult]/D                             *
+*Entries :        0 : Total  Size=        620 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   30 :crysT0    : crysT0[gebMult]/F                                      *
+*Entries :        0 : Total  Size=        588 bytes  One basket in memory    *
 *Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
 *............................................................................*
  TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
@@ -3575,72 +3634,132 @@ TH1.Print Name  = SegE, Entries= 902325, Total sum= 902325
 TH1.Print Name  = crXcr, Entries= 271108, Total sum= 271108
 ******************************************************************************
 *Tree    :tree      : tree                                                   *
-*Entries :   363552 : Total =        54432717 bytes  File  Size =   14141515 *
-*        :          : Tree compression factor =   3.85                       *
+*Entries :    23200 : Total =         8035384 bytes  File  Size =    3641669 *
+*        :          : Tree compression factor =   2.20                       *
 ******************************************************************************
 *Br    0 :runNumber : runNumber/I                                            *
-*Entries :   363552 : Total  Size=    1459133 bytes  File Size  =      12211 *
-*Baskets :       46 : Basket Size=      32000 bytes  Compression= 119.38     *
+*Entries :    23200 : Total  Size=      93545 bytes  File Size  =        787 *
+*Baskets :        3 : Basket Size=      32000 bytes  Compression= 118.21     *
 *............................................................................*
 *Br    1 :numHits   : numHits/I                                              *
-*Entries :   363552 : Total  Size=    1459033 bytes  File Size  =      12121 *
-*Baskets :       46 : Basket Size=      32000 bytes  Compression= 120.26     *
+*Entries :    23200 : Total  Size=      93531 bytes  File Size  =        781 *
+*Baskets :        3 : Basket Size=      32000 bytes  Compression= 119.11     *
 *............................................................................*
 *Br    2 :left      : left[numHits]/F                                        *
-*Entries :   363552 : Total  Size=    2922931 bytes  File Size  =    1122272 *
-*Baskets :      137 : Basket Size=      32000 bytes  Compression=   2.60     *
+*Entries :    23200 : Total  Size=     186931 bytes  File Size  =      82395 *
+*Baskets :        9 : Basket Size=      32000 bytes  Compression=   2.26     *
 *............................................................................*
 *Br    3 :right     : right[numHits]/F                                       *
-*Entries :   363552 : Total  Size=    2923072 bytes  File Size  =    1111391 *
-*Baskets :      137 : Basket Size=      32000 bytes  Compression=   2.63     *
+*Entries :    23200 : Total  Size=     186944 bytes  File Size  =      82291 *
+*Baskets :        9 : Basket Size=      32000 bytes  Compression=   2.26     *
 *............................................................................*
 *Br    4 :up        : up[numHits]/F                                          *
-*Entries :   363552 : Total  Size=    2922649 bytes  File Size  =    1109904 *
-*Baskets :      137 : Basket Size=      32000 bytes  Compression=   2.63     *
+*Entries :    23200 : Total  Size=     186905 bytes  File Size  =      82227 *
+*Baskets :        9 : Basket Size=      32000 bytes  Compression=   2.27     *
 *............................................................................*
 *Br    5 :down      : down[numHits]/F                                        *
-*Entries :   363552 : Total  Size=    2922931 bytes  File Size  =    1118466 *
-*Baskets :      137 : Basket Size=      32000 bytes  Compression=   2.61     *
+*Entries :    23200 : Total  Size=     186931 bytes  File Size  =      82791 *
+*Baskets :        9 : Basket Size=      32000 bytes  Compression=   2.25     *
 *............................................................................*
 *Br    6 :e1        : e1[numHits]/F                                          *
-*Entries :   363552 : Total  Size=    2922649 bytes  File Size  =    1080709 *
-*Baskets :      137 : Basket Size=      32000 bytes  Compression=   2.70     *
+*Entries :    23200 : Total  Size=     186905 bytes  File Size  =      85599 *
+*Baskets :        9 : Basket Size=      32000 bytes  Compression=   2.18     *
 *............................................................................*
 *Br    7 :e2        : e2[numHits]/F                                          *
-*Entries :   363552 : Total  Size=    2922649 bytes  File Size  =    1069493 *
-*Baskets :      137 : Basket Size=      32000 bytes  Compression=   2.73     *
+*Entries :    23200 : Total  Size=     186905 bytes  File Size  =      83881 *
+*Baskets :        9 : Basket Size=      32000 bytes  Compression=   2.22     *
 *............................................................................*
 *Br    8 :e3        : e3[numHits]/F                                          *
-*Entries :   363552 : Total  Size=    2922649 bytes  File Size  =    1044905 *
-*Baskets :      137 : Basket Size=      32000 bytes  Compression=   2.79     *
+*Entries :    23200 : Total  Size=     186905 bytes  File Size  =      82470 *
+*Baskets :        9 : Basket Size=      32000 bytes  Compression=   2.26     *
 *............................................................................*
 *Br    9 :tac       : tac[numHits]/F                                         *
-*Entries :   363552 : Total  Size=    2922790 bytes  File Size  =     950431 *
-*Baskets :      137 : Basket Size=      32000 bytes  Compression=   3.07     *
+*Entries :    23200 : Total  Size=     186918 bytes  File Size  =      71205 *
+*Baskets :        9 : Basket Size=      32000 bytes  Compression=   2.62     *
 *............................................................................*
 *Br   10 :fmaDeltaTime : fmaDeltaTime[numHits]/F                             *
-*Entries :   363552 : Total  Size=    2924059 bytes  File Size  =    1197550 *
-*Baskets :      137 : Basket Size=      32000 bytes  Compression=   2.44     *
+*Entries :    23200 : Total  Size=     187035 bytes  File Size  =     110775 *
+*Baskets :        9 : Basket Size=      32000 bytes  Compression=   1.68     *
 *............................................................................*
 *Br   11 :fmaMult   : fmaMult[10]/I                                          *
-*Entries :   363552 : Total  Size=   14587093 bytes  File Size  =     411062 *
-*Baskets :      456 : Basket Size=      32000 bytes  Compression=  35.46     *
+*Entries :    23200 : Total  Size=     931265 bytes  File Size  =      14326 *
+*Baskets :       30 : Basket Size=      32000 bytes  Compression=  64.93     *
 *............................................................................*
 *Br   12 :gammaMult : gammaMult/I                                            *
-*Entries :   363552 : Total  Size=    1459133 bytes  File Size  =     236910 *
-*Baskets :       46 : Basket Size=      32000 bytes  Compression=   6.15     *
+*Entries :    23200 : Total  Size=      93545 bytes  File Size  =      13921 *
+*Baskets :        3 : Basket Size=      32000 bytes  Compression=   6.68     *
 *............................................................................*
 *Br   13 :gammaEnergy : gammaEnergy[gammaMult]/F                             *
-*Entries :   363552 : Total  Size=    3054122 bytes  File Size  =    2003207 *
-*Baskets :      141 : Basket Size=      32000 bytes  Compression=   1.52     *
+*Entries :    23200 : Total  Size=     270860 bytes  File Size  =     201045 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   1.34     *
 *............................................................................*
 *Br   14 :gammaTimestamp : gammaTimestamp[gammaMult]/F                       *
-*Entries :   363552 : Total  Size=    3054557 bytes  File Size  =     973626 *
-*Baskets :      141 : Basket Size=      32000 bytes  Compression=   3.13     *
+*Entries :    23200 : Total  Size=     270908 bytes  File Size  =     124024 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   2.18     *
 *............................................................................*
 *Br   15 :deltaTime : deltaTime[gammaMult]/F                                 *
-*Entries :   363552 : Total  Size=    3053832 bytes  File Size  =     667259 *
-*Baskets :      141 : Basket Size=      32000 bytes  Compression=   4.57     *
+*Entries :    23200 : Total  Size=     270828 bytes  File Size  =     102599 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   2.63     *
+*............................................................................*
+*Br   16 :gebMult   : gebMult/I                                              *
+*Entries :    23200 : Total  Size=      93531 bytes  File Size  =      14208 *
+*Baskets :        3 : Basket Size=      32000 bytes  Compression=   6.55     *
+*............................................................................*
+*Br   17 :crysType  : crysType[gebMult]/I                                    *
+*Entries :    23200 : Total  Size=     276501 bytes  File Size  =      49816 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   5.54     *
+*............................................................................*
+*Br   18 :crysId    : crysId[gebMult]/I                                      *
+*Entries :    23200 : Total  Size=     276469 bytes  File Size  =     104356 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   2.64     *
+*............................................................................*
+*Br   19 :crysNum   : crysNum[gebMult]/I                                     *
+*Entries :    23200 : Total  Size=     276485 bytes  File Size  =      83226 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   3.31     *
+*............................................................................*
+*Br   20 :crysTot_e : crysTot_e[gebMult]/F                                   *
+*Entries :    23200 : Total  Size=     276524 bytes  File Size  =     202671 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   1.36     *
+*............................................................................*
+*Br   21 :crysPolAngle : crysPolAngle[gebMult]/F                             *
+*Entries :    23200 : Total  Size=     276572 bytes  File Size  =     101246 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   2.72     *
+*............................................................................*
+*Br   22 :intMaxX   : intMaxX[gebMult]/F                                     *
+*Entries :    23200 : Total  Size=     276492 bytes  File Size  =     204219 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   23 :intMaxY   : intMaxY[gebMult]/F                                     *
+*Entries :    23200 : Total  Size=     276492 bytes  File Size  =     201537 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   1.37     *
+*............................................................................*
+*Br   24 :intMaxZ   : intMaxZ[gebMult]/F                                     *
+*Entries :    23200 : Total  Size=     276492 bytes  File Size  =     204457 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   25 :intMaxE   : intMaxE[gebMult]/F                                     *
+*Entries :    23200 : Total  Size=     276492 bytes  File Size  =     202744 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   1.36     *
+*............................................................................*
+*Br   26 :intMaxSeg : intMaxSeg[gebMult]/I                                   *
+*Entries :    23200 : Total  Size=     276517 bytes  File Size  =     104890 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   2.63     *
+*............................................................................*
+*Br   27 :intMaxSegE : intMaxSegE[gebMult]/F                                 *
+*Entries :    23200 : Total  Size=     276540 bytes  File Size  =     202941 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   1.36     *
+*............................................................................*
+*Br   28 :crysTimestamp : crysTimestamp[gebMult]/L                           *
+*Entries :    23200 : Total  Size=     459272 bytes  File Size  =     216819 *
+*Baskets :       18 : Basket Size=      32000 bytes  Compression=   2.11     *
+*............................................................................*
+*Br   29 :crysTrigtime : crysTrigtime[gebMult]/D                             *
+*Entries :    23200 : Total  Size=     459250 bytes  File Size  =     329843 *
+*Baskets :       18 : Basket Size=      32000 bytes  Compression=   1.39     *
+*............................................................................*
+*Br   30 :crysT0    : crysT0[gebMult]/F                                      *
+*Entries :    23200 : Total  Size=     276476 bytes  File Size  =     192282 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   1.43     *
 *............................................................................*
 TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
 TH1.Print Name  = eCC_b, Entries= 0, Total sum= 0
