@@ -83,6 +83,8 @@
   gROOT->ProcessLine(".x cuts/cut_s38_g800.C"); cut_s38_g800;
   gROOT->ProcessLine(".x cuts/cut_s38_g1200.C"); cut_s38_g1200;
   gROOT->ProcessLine(".x cuts/cut_s38_g1500.C"); cut_s38_g1500;
+  gROOT->ProcessLine(".x cuts/all_aq_e0x.C"); all_aq_e0x;
+  gROOT->ProcessLine(".x cuts/all_z_e1e3.C"); all_z_e1e3;
 
   //  TBrowser *b = new TBrowser()
 
