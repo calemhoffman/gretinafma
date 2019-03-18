@@ -2,7 +2,7 @@
 //========= Macro generated from object: all_z_e1e3/all_z_e1e3
 //========= by ROOT version6.15/01
    
-   TCutG *cutg = new TCutG("all_z_e1e3",25);
+   cutg = new TCutG("all_z_e1e3",25);
    cutg->SetVarX("e[2]");
    cutg->SetVarY("e[0]");
    cutg->SetTitle("all_z_e1e3");

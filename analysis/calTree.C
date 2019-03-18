@@ -37,6 +37,8 @@ TCutG *cut_s38_dtge;
 TCutG *cut_s38_e1e3;
 TCutG *cut_s38_e1e2;
 TCutG *cut_s38_e2e3;
+TCutG *all_aq_e0x;
+TCutG *all_z_e1e3;
 
 void calTree() {
   Int_t lowRunNumber=292;
@@ -96,6 +98,8 @@ void calTree() {
   cut_s38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1e3");
   cut_s38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1e2");
   cut_s38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e2e3");
+  all_z_e1e3 = (TCutG *) gDirectory->FindObjectAny("all_z_e1e3");
+  all_aq_e0x = (TCutG *) gDirectory->FindObjectAny("all_aq_e0x");
   
    for (Int_t index=lowRunNumber;index<=highRunNumber;index++) {
     runN=index;
@@ -166,7 +170,30 @@ void calTree() {
   ctree->Branch("gmult",&gmult,"gmult/I");
   ctree->Branch("genergy",genergy,"genergy[gmult]/F");
   ctree->Branch("dtime",dtime,"dtime[gmult]/F");
+  //Gamma breakdown
+  ctree->Branch("gebMult",&gebMult,"gebMult/I");
+  //ctree->Branch("crysType",crysType,"crysType[gebMult]/I"); //leaving out for now
+  ctree->Branch("crysId",crysId,"crysId[gebMult]/I");
+  ctree->Branch("crysNum",crysNum,"crysNum[gebMult]/I");
+  ctree->Branch("crysTot_e",crysTot_e,"crysTot_e[gebMult]/F");
+  //ctree->Branch("crysTimestamp",crysTimestamp,"crysTimestamp[gebMult]/L");
+  //ctree->Branch("crysTrigtime",crysTrigtime,"crysTrigtime[gebMult]/D");
+  ctree->Branch("crysT0",crysT0,"crysT0[gebMult]/F");
+  //ctree->Branch("crysCfd",crysCfd,"crysCfd[gebMult]/F");
+  //ctree->Branch("crysChisq",crysChisq,"crysChisq[gebMult]/F");
+  //ctree->Branch("crysNormChisq",crysNormChisq,"crysNormChisq[gebMult]/F");
+  //ctree->Branch("crysBaseline",crysBaseline,"crysBaseline[gebMult]/F");
+  //ctree->Branch("crysTpad",crysTpad,"crysTpad[gebMult]/i");
+  ctree->Branch("crysPolAngle",crysPolAngle,"crysPolAngle[gebMult]/F");
+  ctree->Branch("intMaxX",intMaxX,"intMaxX[gebMult]/F");
+  ctree->Branch("intMaxY",intMaxY,"intMaxY[gebMult]/F");
+  ctree->Branch("intMaxZ",intMaxZ,"intMaxZ[gebMult]/F");
+  ctree->Branch("intMaxE",intMaxE,"intMaxE[gebMult]/F");
+  ctree->Branch("intMaxSeg",intMaxSeg,"intMaxSeg[gebMult]/I");
+  ctree->Branch("intMaxSegE",intMaxSegE,"intMaxSegE[gebMult]/F");
 
+
+  
   //Read Cals In
   ifstream inFile;
   inFile.open("fma_ecal.dat");
@@ -299,18 +326,21 @@ void calTree() {
      if (entryNumber<1)
       printf("entryNumber:%d \n l:%4.0f r:%4.0f u:%4.0f d:%4.0f \n x:%4.0f y:%4.0f\n e1:%4.2f e2:%4.2f e3:%4.2f gammaMult:%d gammaEnergy[0]:%4.1f\n\n",
 	     entryNumber,l,r,u,d,x,y,e[0],e[1],e[2],gammaMult,gammaEnergy[0]);
-
+     
      //Should setup a few of the basic cuts here to limit file size / save time later.
-     if ( cut_ar38_e1x->IsInside(x,e[0]) || /* basic eVx cut first */
-	  cut_cl38_e1x->IsInside(x,e[0]) ||
-	  cut_s38_e1x->IsInside(x,e[0])) {
+     //     if ( cut_ar38_e1x->IsInside(x,e[0]) || /* basic eVx cut first */
+     //	  cut_cl38_e1x->IsInside(x,e[0]) ||
+     //	  cut_s38_e1x->IsInside(x,e[0])) {
+     if ( all_aq_e0x->IsInside(x,e[0])
+	  && all_z_e1e3->IsInside(e[2],e[0]) ) {
        ctree->Fill();
      }
-
+     
   } //entryNumber Loop
   ctree->Write();
   //printf("Run Number: %d\n",runNumber);
   /* printf("left: %f\n",left[0]); */
    }
-
+   
 }
+   
