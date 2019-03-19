@@ -41,8 +41,8 @@ TCutG *all_aq_e0x;
 TCutG *all_z_e1e3;
 
 void calTree() {
-  Int_t lowRunNumber=292;
-  Int_t highRunNumber=292;
+  Int_t lowRunNumber=144;
+  Int_t highRunNumber=310;
   Int_t runN;
   
   Int_t runNumber;
@@ -82,6 +82,37 @@ void calTree() {
   Int_t intMaxSeg[100];
   Float_t intMaxSegE[100];
 
+Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
+		      0,0,0,0,0,0,0,0,0,0,//10
+		      0,0,0,0,0,0,0,0,0,0,//20
+		      0,0,0,0,0,0,0,0,0,0,//30
+		      0,0,0,0,0,0,0,0,0,0,//40
+		      0,0,0,0,0,0,0,0,0,0,//50
+		      0,0,0,0,0,0,0,0,0,0,//60
+		      0,0,0,0,0,0,0,1,1,1,//70
+		      1,1,1,1,1,1,1,1,1,1,//80
+		      1,1,1,1,1,0,0,0,0,1,//90
+		      1,1,1,1,1,1,1,1,1,1,//100
+		      1,1,1,1,1,1,1,1,1,1,//110
+		      1,1,1,1,0,1,1,1,1,1,//120
+		      1,1,1,1,1,0,0,0,1,1,//130
+		      1,1,1,1,1,1,0,0,0,0,//140
+		      1,1,1,1,1,1,1,1,1,1,//150
+		      0,1,1,1,1,1,0,1,1,0,//160
+		      1,1,1,1,1,0,0,0,0,0,//170
+		      0,0,0,0,0,0,0,0,0,0,//180
+		      0,0,0,0,0,0,1,1,1,0,//190
+		      1,0,1,1,1,1,1,1,1,1,//200
+		      0,0,1,1,1,1,1,1,1,1,//210
+		      1,0,0,1,1,1,1,1,1,0,//220
+		      1,1,1,1,1,1,1,1,1,0,//230
+		      1,1,1,1,1,1,0,0,1,1,//240
+		      1,1,1,1,1,1,1,1,1,1,//250
+		      0,1,1,1,1,1,1,1,1,1,//260
+		      1,1,1,1,1,1,1,1,1,1,//270
+		      0,1,1,1,1,1,1,1,1,1,//280
+		      1,1,1,0,0,0,0,0,0,0};//290
+
   //Get Cuts
   cut_ar38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1x");
   cut_ar38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_ar38_dtge");
@@ -103,9 +134,10 @@ void calTree() {
   
    for (Int_t index=lowRunNumber;index<=highRunNumber;index++) {
     runN=index;
+    if (goodRun[runN]==1) {
     printf("Starting sort of run number: %d\n",runN);
-  TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runN));
-  //TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/devel/run%d.root",runN));
+  TFile * fNameIn = new TFile(Form("/lcrc/project/HELIOS/gretinafma/root_data/run%d.root",runN));
+
   if (fNameIn == 0) printf("Error: file read in fail\n");
   TTree * tree = (TTree *) fNameIn->FindObjectAny("tree");
  
@@ -143,7 +175,7 @@ void calTree() {
   tree->SetBranchAddress("crysTrigtime",crysTrigtime);
   tree->SetBranchAddress("crysT0",crysT0);
 
-  TFile * calFile = new TFile(Form("cal_%d.root",runN),"RECREATE");
+  TFile * calFile = new TFile(Form("/lcrc/project/HELIOS/gretinafma/root_data/cal_%d.root",runN),"RECREATE");
   TTree * ctree = new TTree("ctree", "Cal Tree");
 
   Int_t run;
@@ -340,6 +372,7 @@ void calTree() {
   ctree->Write();
   //printf("Run Number: %d\n",runNumber);
   /* printf("left: %f\n",left[0]); */
+    }
    }
    
 }
