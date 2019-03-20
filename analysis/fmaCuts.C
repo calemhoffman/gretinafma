@@ -65,6 +65,39 @@ TH2F *he1x;
 //gg
 TH2F *hgg_ar38; TH2F *hgg_cl38; TH2F *hgg_s38;
 
+TChain *chain;
+
+Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
+		      0,0,0,0,0,0,0,0,0,0,//10
+		      0,0,0,0,0,0,0,0,0,0,//20
+		      0,0,0,0,0,0,0,0,0,0,//30
+		      0,0,0,0,0,0,0,0,0,0,//40
+		      0,0,0,0,0,0,0,0,0,0,//50
+		      0,0,0,0,0,0,0,0,0,0,//60
+		      0,0,0,0,0,0,0,1,1,1,//70
+		      1,1,1,1,1,1,1,1,1,1,//80
+		      1,1,1,1,1,0,0,0,0,1,//90
+		      1,1,1,1,1,1,1,1,1,1,//100
+		      1,1,1,1,1,1,1,1,1,1,//110
+		      1,1,1,1,0,1,1,1,1,1,//120
+		      1,1,1,1,1,0,0,0,1,1,//130
+		      1,1,1,1,1,1,0,0,0,0,//140
+		      1,1,1,1,1,1,1,1,1,1,//150
+		      0,1,1,1,1,1,0,1,1,0,//160
+		      1,1,1,1,1,0,0,0,0,0,//170
+		      0,0,0,0,0,0,0,0,0,0,//180
+		      0,0,0,0,0,0,1,1,1,0,//190
+		      1,0,1,1,1,1,1,1,1,1,//200
+		      0,0,1,1,1,1,1,1,1,1,//210
+		      1,0,0,1,1,1,1,1,1,0,//220
+		      1,1,1,1,1,1,1,1,1,0,//230
+		      1,1,1,1,1,1,0,0,1,1,//240
+		      1,1,1,1,1,1,1,1,1,1,//250
+		      0,1,1,1,1,1,1,1,1,1,//260
+		      1,1,1,1,1,1,1,1,1,1,//270
+		      0,1,1,1,1,1,1,1,1,1,//280
+		      1,1,1,0,0,0,0,0,0,0};//290
+
 void fmaCuts(void) {
   TBenchmark gClock;  
   gClock.Reset(); gClock.Start("gTimer");
@@ -96,33 +129,46 @@ void fmaCuts(void) {
   Float_t genergy[100];
   Float_t dtime[100];
 
+
+
    //Get List
   lNameIn = new TFile("eventLists.root");
   lNameIn->GetObject("all_elist_x",all_elist_x); 
   Int_t nElistEntry = all_elist_x->GetN(); 
   printf("nElistEntry: %d ",nElistEntry);
+  //Get Chain
+  TString fileName;
+  chain = new TChain("ctree");
+  for (Int_t rn = 50; rn<300; rn++) {
+    if (goodRun[rn]==1) {
+      fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
+      chain->Add(fileName);
+    }
+  }
 
+  chain->GetListOfFiles()->Print();
+    
   //fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_%d.root",runN));
-  fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_292.root"));
-  if (fNameIn == 0) {printf("Error: file read in fail\n"); return;}
-  TTree * ctree = (TTree *) fNameIn->Get("ctree");
+  //fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_292.root"));
+  //if (fNameIn == 0) {printf("Error: file read in fail\n"); return;}
+  //TTree * ctree = (TTree *) fNameIn->Get("ctree");
 
   //Generic
-  ctree->SetBranchAddress("run", &run);
-  ctree->SetBranchAddress("hits",&hits);
+  chain->SetBranchAddress("run", &run);
+  chain->SetBranchAddress("hits",&hits);
   //Positions
-  ctree->SetBranchAddress("l",&l);
-  ctree->SetBranchAddress("r",&r);
-  ctree->SetBranchAddress("u",&u);
-  ctree->SetBranchAddress("d",&d);
-  ctree->SetBranchAddress("x",&x);
-  ctree->SetBranchAddress("y",&y);
+  chain->SetBranchAddress("l",&l);
+  chain->SetBranchAddress("r",&r);
+  chain->SetBranchAddress("u",&u);
+  chain->SetBranchAddress("d",&d);
+  chain->SetBranchAddress("x",&x);
+  chain->SetBranchAddress("y",&y);
   //Energies
-  ctree->SetBranchAddress("e",e);
+  chain->SetBranchAddress("e",e);
   //Gammas
-  ctree->SetBranchAddress("gmult",&gmult);
-  ctree->SetBranchAddress("genergy",genergy);
-  ctree->SetBranchAddress("dtime",dtime);
+  chain->SetBranchAddress("gmult",&gmult);
+  chain->SetBranchAddress("genergy",genergy);
+  chain->SetBranchAddress("dtime",dtime);
 
   //histograms
   Int_t ch = 8000;
@@ -197,15 +243,15 @@ void fmaCuts(void) {
   hgg_s38 = new TH2F("hgg_s38","hgg_s38",ch,0,rg,ch,0,rg);
   
   //----------- process the tree ---------------//
-  Int_t nEntries = ctree->GetEntries();
+  Int_t nEntries = chain->GetEntries();
   printf("nEntries: %d\n",nEntries);
 
   Float_t counter=0;
   double gTime;
   
   for (Int_t entryNumber=0;entryNumber<nEntries/*nElistEntry*/; entryNumber++) {
-    //ctree->GetEntry(all_elist_x->GetEntry(entryNumber));
-    ctree->GetEntry(entryNumber);
+    //chain->GetEntry(all_elist_x->GetEntry(entryNumber));
+    chain->GetEntry(entryNumber);
  
     if (((Float_t)entryNumber/(Float_t)nElistEntry)>counter)
      {      
