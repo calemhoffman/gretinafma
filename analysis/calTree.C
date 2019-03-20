@@ -370,6 +370,7 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
      
   } //entryNumber Loop
   ctree->Write();
+  calFile->Close();
   //printf("Run Number: %d\n",runNumber);
   /* printf("left: %f\n",left[0]); */
     }
