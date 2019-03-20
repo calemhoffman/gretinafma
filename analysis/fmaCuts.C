@@ -20,6 +20,7 @@
 #include <TTreeReaderArray.h>
 #include <TFile.h>
 #include <TEventList.h>
+#include <TChain.h>
 
 #define numScanHist 10000
 
@@ -67,36 +68,12 @@ TH2F *hgg_ar38; TH2F *hgg_cl38; TH2F *hgg_s38;
 
 TChain *chain;
 
-Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
-		      0,0,0,0,0,0,0,0,0,0,//10
-		      0,0,0,0,0,0,0,0,0,0,//20
-		      0,0,0,0,0,0,0,0,0,0,//30
-		      0,0,0,0,0,0,0,0,0,0,//40
-		      0,0,0,0,0,0,0,0,0,0,//50
-		      0,0,0,0,0,0,0,0,0,0,//60
-		      0,0,0,0,0,0,0,1,1,1,//70
-		      1,1,1,1,1,1,1,1,1,1,//80
-		      1,1,1,1,1,0,0,0,0,1,//90
-		      1,1,1,1,1,1,1,1,1,1,//100
-		      1,1,1,1,1,1,1,1,1,1,//110
-		      1,1,1,1,0,1,1,1,1,1,//120
-		      1,1,1,1,1,0,0,0,1,1,//130
-		      1,1,1,1,1,1,0,0,0,0,//140
-		      1,1,1,1,1,1,1,1,1,1,//150
-		      0,1,1,1,1,1,0,1,1,0,//160
-		      1,1,1,1,1,0,0,0,0,0,//170
-		      0,0,0,0,0,0,0,0,0,0,//180
-		      0,0,0,0,0,0,1,1,1,0,//190
-		      1,0,1,1,1,1,1,1,1,1,//200
-		      0,0,1,1,1,1,1,1,1,1,//210
-		      1,0,0,1,1,1,1,1,1,0,//220
-		      1,1,1,1,1,1,1,1,1,0,//230
-		      1,1,1,1,1,1,0,0,1,1,//240
-		      1,1,1,1,1,1,1,1,1,1,//250
-		      0,1,1,1,1,1,1,1,1,1,//260
-		      1,1,1,1,1,1,1,1,1,1,//270
-		      0,1,1,1,1,1,1,1,1,1,//280
-		      1,1,1,0,0,0,0,0,0,0};//290
+Int_t goodRun[30] = {0,0,0,0,0,
+		     0,0,1,1,1,
+		     1,1,1,1,1,
+		     1,1,1,0,1,
+		     1,1,1,1,1,
+		     1,1,1,1,1};
 
 void fmaCuts(void) {
   TBenchmark gClock;  
@@ -139,11 +116,11 @@ void fmaCuts(void) {
   //Get Chain
   TString fileName;
   chain = new TChain("ctree");
-  for (Int_t rn = 50; rn<300; rn++) {
+  for (Int_t rn = 7; rn<30; rn++) {
     if (goodRun[rn]==1) {
       fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
       chain->Add(fileName);
-    }
+     }
   }
 
   chain->GetListOfFiles()->Print();
@@ -253,7 +230,7 @@ void fmaCuts(void) {
     //chain->GetEntry(all_elist_x->GetEntry(entryNumber));
     chain->GetEntry(entryNumber);
  
-    if (((Float_t)entryNumber/(Float_t)nElistEntry)>counter)
+    if (((Float_t)entryNumber/(Float_t)nEntries)>counter)
      {      
        printf("^_^_^_%4.1f_^_^_^\n",counter*100);
        counter=counter+0.1;
