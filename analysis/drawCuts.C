@@ -39,6 +39,7 @@ TCutG *all_aq_e0x;
 TCutG *cut_ar38_dtge;
 TCutG *cut_cl38_dtge;
 TCutG *cut_s38_dtge;
+TCutG *cut_s38_g1200,*cut_s38_g1500,*cut_s38_g800;
 
 //Histos
 TH2F *he0x,*he1e3;
@@ -69,6 +70,9 @@ void drawCuts(void) {
   cut_ar38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_ar38_dtge");
   cut_cl38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_cl38_dtge");
   cut_s38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_s38_dtge");
+  cut_s38_g1200 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1200");
+  cut_s38_g1500 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1500");
+  cut_s38_g800 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g800");
   
   //Generic
   chain->SetBranchAddress("run", &run);
@@ -108,13 +112,19 @@ void drawCuts(void) {
 	counter=counter+0.1;
       }
     //Fill recoil stuff
-    he0x->Fill(x,e[0]);
-    he1e3->Fill(e[2],e[0]);
-    hlr->Fill(r,l);
-    hud->Fill(d,u);
     for (Int_t gMult=0;gMult< gmult; gMult++) {
-      hdtge->Fill(genergy[gMult],dtime[gMult]);
+      if (cut_s38_g1200->IsInside(genergy[gMult],dtime[gMult])
+	  || cut_s38_g1500->IsInside(genergy[gMult],dtime[gMult])
+	  || cut_s38_g800->IsInside(genergy[gMult],dtime[gMult]) ) {
+	he0x->Fill(x,e[0]);
+	he1e3->Fill(e[2],e[0]);
+	hlr->Fill(r,l);
+	hud->Fill(d,u);
+	
+	hdtge->Fill(genergy[gMult],dtime[gMult]);
+      }
     }
+    
   }
   
   c1 = new TCanvas("c1","c1",1000,1000);
