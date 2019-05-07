@@ -33,13 +33,16 @@ Int_t goodRun[30] = {0,0,0,0,0,
 		     1,1,1,1,1};
 TCanvas *c1;
 
+//list stuff
+TEventList * elist_all;
+
 //Cuts for histos
-TCutG *all_z_e1e3;
-TCutG *all_aq_e0x;
+TCutG *all_z_e1e3,*all_aq_e0x,*all_tof_dtge;
 TCutG *cut_ar38_dtge;
 TCutG *cut_cl38_dtge;
 TCutG *cut_s38_dtge;
 TCutG *cut_s38_g1200,*cut_s38_g1500,*cut_s38_g800;
+TCutG *cut_e1e3_s38,*cut_e0x_s38,*cut_lr_s38,*cut_ud_s38,*cut_dtge_s38;
 
 //Histos
 TH2F *he0x,*he1e3;
@@ -55,24 +58,49 @@ Float_t dtime[100];
 
 /* main */
 void drawCuts(void) {
-  
-  chain = new TChain("ctree");
-  
+
+  //TwoChains!
+  chain = new TChain("ctree"); 
   for (Int_t rn = 7; rn<30; rn++) {
     if (goodRun[rn]==1) {
       fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
       chain->Add(fileName);
     }
   }
+  chain->GetListOfFiles()->Print();
   
+  //Listomania
+  TFile *listFile = new TFile("eventLists.root");
+  listFile->GetObject("elist_all",elist_all);
+  Int_t numElistEntries = elist_all->GetN();
+  printf("Number of ElistEntries: %d \n",numElistEntries);
+  gDirectory->pwd();
+  gROOT->cd();
+  gDirectory->pwd();
+  //elist_all = elist_temp;
+  // listFile->Close();
+  
+  //General cuts, already applied if with eventList (some in calTree as well).
   all_z_e1e3 = (TCutG *) gDirectory->FindObjectAny("all_z_e1e3");
   all_aq_e0x = (TCutG *) gDirectory->FindObjectAny("all_aq_e0x");
+  all_tof_dtge = (TCutG *) gDirectory->FindObjectAny("all_tof_dtge");
+
+  //AR
   cut_ar38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_ar38_dtge");
+  //CL
   cut_cl38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_cl38_dtge");
-  cut_s38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_s38_dtge");
+  //S
+  cut_dtge_s38 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_s38");
+  cut_e1e3_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_s38");
+  cut_e0x_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e0x_s38");
+  cut_lr_s38 = (TCutG *) gDirectory->FindObjectAny("cut_lr_s38");
+  cut_ud_s38 = (TCutG *) gDirectory->FindObjectAny("cut_ud_s38");
+
   cut_s38_g1200 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1200");
   cut_s38_g1500 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1500");
   cut_s38_g800 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g800");
+  //MISC
+
   
   //Generic
   chain->SetBranchAddress("run", &run);
@@ -101,10 +129,11 @@ void drawCuts(void) {
   Int_t nEntries = chain->GetEntries();
   printf("nEntries: %d\n",nEntries);
   Float_t counter=0;
-  
-  for (Int_t entryNumber=0;entryNumber<nEntries; entryNumber++) {
-    //chain->GetEntry(all_elist_x->GetEntry(entryNumber));
-    chain->GetEntry(entryNumber);
+
+  for (Int_t entryNumber=0;entryNumber<numElistEntries; entryNumber++) {
+  //for (Int_t entryNumber=0;entryNumber<nEntries; entryNumber++) {
+    chain->GetEntry(elist_all->GetEntry(entryNumber));
+    //chain->GetEntry(entryNumber);
     
     if (((Float_t)entryNumber/(Float_t)nEntries)>counter)
       {      
@@ -112,19 +141,24 @@ void drawCuts(void) {
 	counter=counter+0.1;
       }
     //Fill recoil stuff
-    for (Int_t gMult=0;gMult< gmult; gMult++) {
-      if (cut_s38_g1200->IsInside(genergy[gMult],dtime[gMult])
-	  || cut_s38_g1500->IsInside(genergy[gMult],dtime[gMult])
-	  || cut_s38_g800->IsInside(genergy[gMult],dtime[gMult]) ) {
-	he0x->Fill(x,e[0]);
-	he1e3->Fill(e[2],e[0]);
-	hlr->Fill(r,l);
-	hud->Fill(d,u);
-	
-	hdtge->Fill(genergy[gMult],dtime[gMult]);
+  
+    /* if (cut_s38_g1200->IsInside(genergy[gMult],dtime[gMult]) */
+    /* 	  || cut_s38_g1500->IsInside(genergy[gMult],dtime[gMult]) */
+    /* 	  || cut_s38_g800->IsInside(genergy[gMult],dtime[gMult]) ) { */
+    if ( (cut_e1e3_s38->IsInside(e[2],e[0]))
+	 && (cut_e0x_s38->IsInside(x,e[0]))
+	 && (cut_lr_s38->IsInside(r,l))
+	 && (cut_ud_s38->IsInside(d,u)) ) {
+      he0x->Fill(x,e[0]);
+      he1e3->Fill(e[2],e[0]);
+      hlr->Fill(r,l);
+      hud->Fill(d,u);
+      for (Int_t gMult=0;gMult< gmult; gMult++) {
+	if ( (cut_dtge_s38->IsInside(genergy[gMult],dtime[gMult])) ) {
+	  hdtge->Fill(genergy[gMult],dtime[gMult]);
+	}
       }
     }
-    
   }
   
   c1 = new TCanvas("c1","c1",1000,1000);
@@ -133,5 +167,6 @@ void drawCuts(void) {
   //c1->cd(1); he0x->Draw("colz");all_aq_e0x->Draw("same");
   //c1->cd(2); he1e3->Draw("colz");all_z_e1e3->Draw("same");
   hdtge->Draw("colz");
+ 
   
 }
