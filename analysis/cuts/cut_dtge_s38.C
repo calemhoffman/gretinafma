@@ -3,8 +3,8 @@
 //========= by ROOT version6.15/01
    
    cutg = new TCutG("cut_dtge_s38",9);
-   cutg->SetVarX("hdtge");
-   cutg->SetVarY("");
+   cutg->SetVarX("genergy");
+   cutg->SetVarY("dtime");
    cutg->SetTitle("cut_dtge_s38");
    cutg->SetFillStyle(1000);
    cutg->SetLineColor(8);
