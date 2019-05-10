@@ -1,11 +1,11 @@
 {
-//========= Macro generated from object: cut_ud_ar38/cut_ud_ar38
+//========= Macro generated from object: cut_ud_p33/cut_ud_p33
 //========= by ROOT version6.15/01
    
-   cutg = new TCutG("cut_ud_ar38",11);
+   cutg = new TCutG("cut_ud_p33",11);
    cutg->SetVarX("hud");
    cutg->SetVarY("");
-   cutg->SetTitle("cut_ud_ar38");
+   cutg->SetTitle("cut_ud_p33");
    cutg->SetFillStyle(1000);
    cutg->SetLineColor(50);
    cutg->SetLineWidth(8);

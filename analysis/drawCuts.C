@@ -44,10 +44,12 @@ TCutG *cut_cl38_dtge;
 TCutG *cut_cl38_g200,*cut_cl38_g700,*cut_cl38_g1100,*cut_cl38_g2600,*cut_cl38_g3100;
 TCutG *cut_s38_dtge;
 TCutG *cut_s38_g1200,*cut_s38_g1500,*cut_s38_g800;
+TCutG *cut_p33_g1400,*cut_p33_g1800,*cut_p33_g2300;
 //finals
 TCutG *cut_e1e3_s38,*cut_e0x_s38,*cut_lr_s38,*cut_ud_s38,*cut_dtge_s38;
 TCutG *cut_e1e3_cl38,*cut_e0x_cl38,*cut_lr_cl38,*cut_ud_cl38,*cut_dtge_cl38;
 TCutG *cut_e1e3_ar38,*cut_e0x_ar38,*cut_lr_ar38,*cut_ud_ar38,*cut_dtge_ar38;
+TCutG *cut_e1e3_p33,*cut_e0x_p33,*cut_lr_p33,*cut_ud_p33,*cut_dtge_p33;
 //Histos
 TH2F *he0x,*he1e3;
 TH2F *hdtge,*hlr,*hud;
@@ -126,9 +128,17 @@ void drawCuts(void) {
   cut_s38_g1200 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1200");
   cut_s38_g1500 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1500");
   cut_s38_g800 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g800");
-  //MISC
+  //P33
+  cut_p33_g1400 = (TCutG *) gDirectory->FindObjectAny("cut_p33_g1400");
+  cut_p33_g1800 = (TCutG *) gDirectory->FindObjectAny("cut_p33_g1800");
+  cut_p33_g2300 = (TCutG *) gDirectory->FindObjectAny("cut_p33_g2300");
 
-  
+  cut_dtge_p33 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
+  cut_e1e3_p33 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_p33");
+  cut_e0x_p33 = (TCutG *) gDirectory->FindObjectAny("cut_e0x_p33");
+  cut_lr_p33 = (TCutG *) gDirectory->FindObjectAny("cut_lr_p33");
+  cut_ud_p33 = (TCutG *) gDirectory->FindObjectAny("cut_ud_p33");
+
   //Generic
   chain->SetBranchAddress("run", &run);
   chain->SetBranchAddress("hits",&hits);
@@ -176,32 +186,19 @@ void drawCuts(void) {
 	counter=counter+0.1;
       }
     //Fill recoil stuff
-    /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
-      
-    /*   if (cut_ar38_g600->IsInside(genergy[gMult],dtime[gMult]) */
-    /* 	  || cut_ar38_g1600->IsInside(genergy[gMult],dtime[gMult]) */
-    /* 	  || cut_ar38_g1800->IsInside(genergy[gMult],dtime[gMult]) */
-    /* 	  || cut_ar38_g2100->IsInside(genergy[gMult],dtime[gMult]) ) { */
-
-    /* 	he0x->Fill(x,e[0]); */
-    /* 	he1e3->Fill(e[2],e[0]); */
-    /* 	hlr->Fill(r,l); */
-    /* 	hud->Fill(d,u); */
-    /* 	hdtge->Fill(genergy[gMult],dtime[gMult]); */
-
-    /*   } */
-    /* } */
-
+    he0x->Fill(x,e[0]);
+    he1e3->Fill(e[2],e[0]);
+    hlr->Fill(r,l);
+    hud->Fill(d,u);
+    for (Int_t gMult=0;gMult< gmult; gMult++) {
+      hdtge->Fill(genergy[gMult],dtime[gMult]);
+    }
+    
     /* s38 */
     if ( (cut_e1e3_s38->IsInside(e[2],e[0]))
 	 && (cut_e0x_s38->IsInside(x,e[0]))
 	 && (cut_lr_s38->IsInside(r,l))
 	 && (cut_ud_s38->IsInside(d,u)) ) {
-      
-      /* he0x->Fill(x,e[0]); */
-      /* he1e3->Fill(e[2],e[0]); */
-      /* hlr->Fill(r,l); */
-      /* hud->Fill(d,u); */
       
       for (Int_t gMult=0;gMult< gmult; gMult++) {
 	if ( (cut_dtge_s38->IsInside(genergy[gMult],dtime[gMult])) ) {
@@ -218,11 +215,6 @@ void drawCuts(void) {
 	 && (cut_lr_cl38->IsInside(r,l))
 	 && (cut_ud_cl38->IsInside(d,u)) ) {
       
-      /* he0x->Fill(x,e[0]); */
-      /* he1e3->Fill(e[2],e[0]); */
-      /* hlr->Fill(r,l); */
-      /* hud->Fill(d,u); */
-      
       for (Int_t gMult=0;gMult< gmult; gMult++) {
 	if ( (cut_dtge_cl38->IsInside(genergy[gMult],dtime[gMult])) ) {
 	  // hdtge->Fill(genergy[gMult],dtime[gMult]);
@@ -232,17 +224,11 @@ void drawCuts(void) {
       
     } /* cl38 */
 
-
-    /* ar38 */
+   /* ar38 */
     if ( (cut_e1e3_ar38->IsInside(e[2],e[0]))
 	 && (cut_e0x_ar38->IsInside(x,e[0]))
 	 && (cut_lr_ar38->IsInside(r,l))
 	 && (cut_ud_ar38->IsInside(d,u)) ) {
-      
-      he0x->Fill(x,e[0]);
-      he1e3->Fill(e[2],e[0]);
-      hlr->Fill(r,l);
-      hud->Fill(d,u);
       
       for (Int_t gMult=0;gMult< gmult; gMult++) {
 	if ( (cut_dtge_ar38->IsInside(genergy[gMult],dtime[gMult])) ) {
@@ -252,7 +238,23 @@ void drawCuts(void) {
       }
       
     } /* ar38 */
-    
+
+
+    /* p33 */
+    if ( (cut_e1e3_p33->IsInside(e[2],e[0]))
+	 && (cut_e0x_p33->IsInside(x,e[0]))
+	 && (cut_lr_p33->IsInside(r,l))
+	 && (cut_ud_p33->IsInside(d,u)) ) {
+         
+      for (Int_t gMult=0;gMult< gmult; gMult++) {
+	if ( (cut_dtge_p33->IsInside(genergy[gMult],dtime[gMult])) ) {
+	  //hdtge->Fill(genergy[gMult],dtime[gMult]);
+	  hg_p33->Fill(genergy[gMult]);
+	}
+      }
+      
+    } /* p33 */
+  
   }
   
   c1 = new TCanvas("c1","c1",1000,1000);
@@ -261,6 +263,6 @@ void drawCuts(void) {
   //c1->cd(1); he0x->Draw("colz");all_aq_e0x->Draw("same");
   //c1->cd(2); he1e3->Draw("colz");all_z_e1e3->Draw("same");
   // hdtge->Draw("colz");
-  hg_ar38->Draw(""); hg_cl38->Draw("same"); hg_s38->Draw("same");
+  hg_ar38->Draw(""); hg_cl38->Draw("same"); hg_s38->Draw("same"); hg_p33->Draw("same");
   
 }
