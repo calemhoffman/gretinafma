@@ -1,3 +1,5 @@
+#include <TChain.h>
+#include <TString.h>
 #include <TSelector.h>
 #include <TMath.h>
 #include <TBenchmark.h>
@@ -20,115 +22,135 @@
 #include <TTreeReaderArray.h>
 #include <TFile.h>
 #include <TEventList.h>
-#include <TChain.h>
-
-#define numScanHist 10000
-
-TFile * lNameIn;
-TFile * fNameIn;
-TEventList * all_elist_x;
-TEventList * elist;
-TCutG *cut_ar38_e1x;
-TCutG *cut_ar38_dtge;
-TCutG *cut_ar38_e1e3;
-TCutG *cut_ar38_e1e2;
-TCutG *cut_ar38_e2e3;
-TCutG *cut_cl38_e1x;
-TCutG *cut_cl38_dtge;
-TCutG *cut_cl38_e1e3;
-TCutG *cut_cl38_e1e2;
-TCutG *cut_cl38_e2e3;
-TCutG *cut_s38_e1x;
-TCutG *cut_s38_dtge;
-TCutG *cut_s38_e1e3;
-TCutG *cut_s38_e1e2;
-TCutG *cut_s38_e2e3;
-
-//----------- generate the histograms --------//
-//Need - all params vs. egamma
-//varios egammas
-//dtegamma vs mult
-//e's vs x
-//l,r,u,d stuff??
-//single gammas
-TH1F *hg_tot; TH1F *hg_ar38; TH1F *hg_cl38; TH1F *hg_s38;
- TH1F *hg_ar38_1; TH1F *hg_cl38_1; TH1F *hg_s38_1;
- TH1F *hg_ar38_2; TH1F *hg_cl38_2; TH1F *hg_s38_2;
- TH1F *hg_ar38_3; TH1F *hg_cl38_3; TH1F *hg_s38_3;
-TH1F *hg_x; TH1F *hg_z; TH1F *hg_t;
-//histos for gamma scans
-TH1F *hscan[numScanHist];
-TH2F *he1e2; TH2F *he1e3; TH2F *he2e3;
-TH2F *he1e12; TH2F *he1e13; TH2F *he2e13;
-TH2F *he1e123; TH2F *he2e123; TH2F *he3e123;
-TH2F *he12e123; TH2F *he23e123; TH2F *he13e123;
-TH2F *he1x;
-//gg
-TH2F *hgg_ar38; TH2F *hgg_cl38; TH2F *hgg_s38;
 
 TChain *chain;
-
+TString fileName;
 Int_t goodRun[30] = {0,0,0,0,0,
 		     0,0,1,1,1,
 		     1,1,1,1,1,
 		     1,1,1,0,1,
 		     1,1,1,1,1,
 		     1,1,1,1,1};
+TCanvas *c1;
 
+TTree *tree_s38;
+TTree *tree_cl38;
+
+//list stuff
+TEventList * elist_all;
+
+//Cuts for histos
+TCutG *all_z_e1e3,*all_aq_e0x,*all_tof_dtge;
+TCutG *cut_ar38_dtge;
+TCutG *cut_ar38_g600,*cut_ar38_g1600,*cut_ar38_g1800,*cut_ar38_g2100;
+TCutG *cut_cl38_dtge;
+TCutG *cut_cl38_g200,*cut_cl38_g700,*cut_cl38_g1100,*cut_cl38_g2600,*cut_cl38_g3100;
+TCutG *cut_s38_dtge;
+TCutG *cut_s38_g1200,*cut_s38_g1500,*cut_s38_g800;
+TCutG *cut_p33_g1400,*cut_p33_g1800,*cut_p33_g2300;
+//finals
+TCutG *cut_e1e3_s38,*cut_e0x_s38,*cut_lr_s38,*cut_ud_s38,*cut_dtge_s38;
+TCutG *cut_e1e3_cl38,*cut_e0x_cl38,*cut_lr_cl38,*cut_ud_cl38,*cut_dtge_cl38;
+TCutG *cut_e1e3_ar38,*cut_e0x_ar38,*cut_lr_ar38,*cut_ud_ar38,*cut_dtge_ar38;
+TCutG *cut_e1e3_p33,*cut_e0x_p33,*cut_lr_p33,*cut_ud_p33,*cut_dtge_p33;
+//Histos
+TH2F *he0x,*he1e3;
+TH2F *hdtge,*hlr,*hud;
+
+TH1F *hg_tot;
+TH1F *hg_ar38; TH1F *hg_cl38;
+TH1F * hg_p33; TH1F *hg_s38;
+
+Int_t run;
+Int_t hits;
+Float_t l,r,u,d,x,y;
+Float_t e[10];
+Int_t gmult;
+Float_t genergy[100];
+Float_t dtime[100];
+
+Int_t recoilID;
+
+/* main */
 void fmaCuts(void) {
-  TBenchmark gClock;  
-  gClock.Reset(); gClock.Start("gTimer");
- 
-  //Get Cuts
-  cut_ar38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1x");
-  cut_ar38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_ar38_dtge");
-  cut_ar38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1e3");
-  cut_ar38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1e2");
-  cut_ar38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e2e3");
-  cut_cl38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e1x");
-  cut_cl38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_cl38_dtge");
-  cut_cl38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e1e3");
-  cut_cl38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e1e2");
-  cut_cl38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e2e3");
-  cut_s38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1x");
-  cut_s38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_s38_dtge");
-  cut_s38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1e3");
-  cut_s38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1e2");
-  cut_s38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e2e3");
-  
-  Int_t runN=7;
 
-  Int_t run;
-  Int_t hits;
-  Float_t l,r,u,d,x,y;
-  Float_t e[10];
-  Int_t gmult;
-  Float_t genergy[100];
-  Float_t dtime[100];
-
-
-
-   //Get List
-  lNameIn = new TFile("eventLists.root");
-  lNameIn->GetObject("all_elist_x",all_elist_x); 
-  Int_t nElistEntry = all_elist_x->GetN(); 
-  printf("nElistEntry: %d ",nElistEntry);
-  //Get Chain
-  TString fileName;
-  chain = new TChain("ctree");
+  //TwoChains!
+  chain = new TChain("ctree"); 
   for (Int_t rn = 7; rn<30; rn++) {
     if (goodRun[rn]==1) {
       fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
       chain->Add(fileName);
-     }
+    }
   }
-
   chain->GetListOfFiles()->Print();
-    
-  //fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_%d.root",runN));
-  //fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_292.root"));
-  //if (fNameIn == 0) {printf("Error: file read in fail\n"); return;}
-  //TTree * ctree = (TTree *) fNameIn->Get("ctree");
+
+  TFile * gamFile = new TFile("gamFile.root","RECREATE");
+  //TFile * gamFile = new TFile("/lcrc/project/HELIOS/gretinafma/root_data/gamFile.root","RECREATE");
+  tree_s38 = new TTree("tree_s38", "^{38}S Gamma Tree");
+  tree_s38->Branch("recoilID",&recoilID,"recoilID/I");
+
+  tree_cl38 = new TTree("tree_cl38", "^{38}Cl Gamma Tree");
+  tree_cl38->Branch("recoilID",&recoilID,"recoilID/I");
+ 
+  //Listomania
+  TFile *listFile = new TFile("eventLists.root");
+  listFile->GetObject("elist_all",elist_all);
+  Int_t numElistEntries = elist_all->GetN();
+  printf("Number of ElistEntries: %d \n",numElistEntries);
+  /* gDirectory->pwd(); */
+  /* gROOT->cd(); */
+  gDirectory->pwd();
+  //elist_all = elist_temp;
+  // listFile->Close();
+  
+  //General cuts, already applied if with eventList (some in calTree as well).
+  all_z_e1e3 = (TCutG *) gDirectory->FindObjectAny("all_z_e1e3");
+  all_aq_e0x = (TCutG *) gDirectory->FindObjectAny("all_aq_e0x");
+  all_tof_dtge = (TCutG *) gDirectory->FindObjectAny("all_tof_dtge");
+
+  //AR
+  cut_dtge_ar38 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_ar38");
+  cut_e1e3_ar38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_ar38");
+  cut_e0x_ar38 = (TCutG *) gDirectory->FindObjectAny("cut_e0x_ar38");
+  cut_lr_ar38 = (TCutG *) gDirectory->FindObjectAny("cut_lr_ar38");
+  cut_ud_ar38 = (TCutG *) gDirectory->FindObjectAny("cut_ud_ar38");
+
+  cut_ar38_g600 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_g600");
+  cut_ar38_g1600 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_g1600");
+  cut_ar38_g1800 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_g1800");
+  cut_ar38_g2100 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_g2100");
+  //CL
+  cut_dtge_cl38 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_cl38");
+  cut_e1e3_cl38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_cl38");
+  cut_e0x_cl38 = (TCutG *) gDirectory->FindObjectAny("cut_e0x_cl38");
+  cut_lr_cl38 = (TCutG *) gDirectory->FindObjectAny("cut_lr_cl38");
+  cut_ud_cl38 = (TCutG *) gDirectory->FindObjectAny("cut_ud_cl38");
+
+  cut_cl38_g200 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_g200");
+  cut_cl38_g700 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_g700");
+  cut_cl38_g1100 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_g1100");
+  cut_cl38_g2600 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_g2600");
+  cut_cl38_g3100 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_g3100");
+  //S
+  cut_dtge_s38 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_s38");
+  cut_e1e3_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_s38");
+  cut_e0x_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e0x_s38");
+  cut_lr_s38 = (TCutG *) gDirectory->FindObjectAny("cut_lr_s38");
+  cut_ud_s38 = (TCutG *) gDirectory->FindObjectAny("cut_ud_s38");
+
+  cut_s38_g1200 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1200");
+  cut_s38_g1500 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1500");
+  cut_s38_g800 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g800");
+  //P33
+  cut_p33_g1400 = (TCutG *) gDirectory->FindObjectAny("cut_p33_g1400");
+  cut_p33_g1800 = (TCutG *) gDirectory->FindObjectAny("cut_p33_g1800");
+  cut_p33_g2300 = (TCutG *) gDirectory->FindObjectAny("cut_p33_g2300");
+
+  cut_dtge_p33 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
+  cut_e1e3_p33 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_p33");
+  cut_e0x_p33 = (TCutG *) gDirectory->FindObjectAny("cut_e0x_p33");
+  cut_lr_p33 = (TCutG *) gDirectory->FindObjectAny("cut_lr_p33");
+  cut_ud_p33 = (TCutG *) gDirectory->FindObjectAny("cut_ud_p33");
 
   //Generic
   chain->SetBranchAddress("run", &run);
@@ -146,241 +168,126 @@ void fmaCuts(void) {
   chain->SetBranchAddress("gmult",&gmult);
   chain->SetBranchAddress("genergy",genergy);
   chain->SetBranchAddress("dtime",dtime);
+  
+  //histograms define
+  he0x = new TH2F("he0x","he0x; e0; x",1500,-1000,500,1000,0,3000);
+  he1e3 = new TH2F("he1e3","he1e3; e3; e1",1000,0,3000,1000,0,3000);
+  hdtge = new TH2F("hdtge","hdtge; dt; ge",10000,0,10000,75,0,150);
+  hlr = new TH2F("hlr","hlr; l; r",1000,0,4000,1000,0,4000);
+  hud = new TH2F("hud","hud; u; d",1000,0,4000,1000,0,4000);
 
-  //histograms
-  Int_t ch = 8000;
-  Int_t rg = 8000;
-
+  Int_t ch=6000;
+  Int_t rg=ch;
   hg_tot = new TH1F("hg_tot","Ungated hg_tot; Energy [keV]",ch,0,rg);
-  hg_x = new TH1F("hg_x","Ungated hg_x; Energy [keV]",ch,0,rg);
-  hg_z = new TH1F("hg_z","Ungated hg_z; Energy [keV]",ch,0,rg);
-  hg_t = new TH1F("hg_t","Ungated hg_t; Energy [keV]",ch,0,rg);
+  hg_p33 = new TH1F("hg_p33","hg_p33; Energy [keV]",ch,0,rg);
   hg_ar38 = new TH1F("hg_ar38","hg_ar38; Energy [keV]",ch,0,rg);
   hg_cl38 = new TH1F("hg_cl38","hg_cl38; Energy [keV]",ch,0,rg);
   hg_s38 = new TH1F("hg_s38","hg_s38; Energy [keV]",ch,0,rg);
-  hg_ar38_1 = new TH1F("hg_ar38_1"," hg_ar38_1; Energy [keV]",ch,0,rg);
-  hg_cl38_1 = new TH1F("hg_cl38_1"," hg_cl38_1; Energy [keV]",ch,0,rg);
-  hg_s38_1 = new TH1F("hg_s38_1"," hg_s38_1; Energy [keV]",ch,0,rg);
-  hg_ar38_2 = new TH1F("hg_ar38_2"," hg_ar38_2; Energy [keV]",ch,0,rg);
-  hg_cl38_2 = new TH1F("hg_cl38_2"," hg_cl38_2; Energy [keV]",ch,0,rg);
-  hg_s38_2 = new TH1F("hg_s38_2"," hg_s38_2; Energy [keV]",ch,0,rg);
-  hg_ar38_3 = new TH1F("hg_ar38_3"," hg_ar38_3; Energy [keV]",ch,0,rg);
-  hg_cl38_3 = new TH1F("hg_cl38_3"," hg_cl38_3; Energy [keV]",ch,0,rg);
-  hg_s38_3 = new TH1F("hg_s38_3"," hg_s38_3; Energy [keV]",ch,0,rg);
-
-  ch=4000;
-  rg=4000;
   
-  for (Int_t id1=0;id1<numScanHist;id1++)
-    hscan[id1] = new TH1F(Form("hscan_%d",id1),Form("hscan_%d",id1),ch,0,rg);
-  
-  Float_t bins=80;
-  Float_t delta=40;
-  Float_t mins=0;
-  Float_t maxs=6000;
-  
-  //SCANNING HERE FOR NOW
-  for (Int_t id1=0;id1<=bins;id1++) {
-    for (Int_t id2=0;id2<=bins;id2++) {
-      Float_t temp1 = (float)id1*delta;
-      Float_t temp2 = (float)id1*delta+delta;
-      Float_t temp3 = (float)id2*delta;
-      Float_t temp4 = (float)id2*delta+delta;
-      Int_t tempID = id1*bins+id2;
-      hscan[tempID]->SetTitle(Form("id:%d,y:%4.0f-%4.0f, x:%4.0f-%4.0f;egamma [keV]\n",
-				   tempID,temp1,temp2,temp3,temp4));
-    }
-  }
-  
-  ch=600;
-  rg=6000;
-
-  he1e2 = new TH2F("he1e2","he1e2; e2; e1",ch,0,rg,ch,0,rg);
-  he1e3 = new TH2F("he1e3","he1e3; e3; e1",ch,0,rg,ch,0,rg);
-  he2e3 = new TH2F("he2e3","he2e3; e3; e2",ch,0,rg,ch,0,rg);
-
-  he1e12 = new TH2F("he1e12","he1e12; e12; e1",2*ch,0,2*rg,ch,0,rg);
-  he1e13 = new TH2F("he1e13","he1e13; e13; e1",2*ch,0,2*rg,ch,0,rg);
-  he2e13 = new TH2F("he2e13","he2e13; e13; e2",2*ch,0,2*rg,ch,0,rg);
-
-  he1e123 = new TH2F("he1e123","he1e123; e123; e1",3*ch,0,3*rg,ch,0,rg);
-  he2e123 = new TH2F("he2e123","he2e123; e123; e2",3*ch,0,3*rg,ch,0,rg);
-  he3e123 = new TH2F("he3e123","he3e123; e123; e3",3*ch,0,3*rg,ch,0,rg);
-  
-  he12e123 = new TH2F("he12e123","he12e123; e123; e12",3*ch,0,3*rg,2*ch,0,2*rg);
-  he23e123 = new TH2F("he23e123","he23e123; e123; e23",3*ch,0,3*rg,2*ch,0,2*rg);
-  he13e123 = new TH2F("he13e123","he13e123; e123; e13",3*ch,0,3*rg,2*ch,0,2*rg);
-
-  he1x = new TH2F("he1x","he1x",1000,-2000,2000,600,0,6000);
-
-  ch=4000;
-  rg=8000;
-  hgg_ar38 = new TH2F("hgg_ar38","hgg_ar38",ch,0,rg,ch,0,rg);
-  hgg_cl38 = new TH2F("hgg_cl38","hgg_cl38",ch,0,rg,ch,0,rg);
-  hgg_s38 = new TH2F("hgg_s38","hgg_s38",ch,0,rg,ch,0,rg);
-  
-  //----------- process the tree ---------------//
   Int_t nEntries = chain->GetEntries();
   printf("nEntries: %d\n",nEntries);
-
   Float_t counter=0;
-  double gTime;
+
   
-  for (Int_t entryNumber=0;entryNumber<nEntries/*nElistEntry*/; entryNumber++) {
-    //chain->GetEntry(all_elist_x->GetEntry(entryNumber));
-    chain->GetEntry(entryNumber);
- 
+  for (Int_t entryNumber=0;entryNumber<numElistEntries; entryNumber++) {
+  //for (Int_t entryNumber=0;entryNumber<nEntries; entryNumber++) {
+    chain->GetEntry(elist_all->GetEntry(entryNumber));
+    //chain->GetEntry(entryNumber);
+    //ZERO OUT TTREE STUFF!!
+    recoilID = 0;
+    
     if (((Float_t)entryNumber/(Float_t)nEntries)>counter)
-     {      
-       printf("^_^_^_%4.1f_^_^_^\n",counter*100);
-       counter=counter+0.1;
-     }
-    /* //Fill outside of gates */
-    /* he1e2->Fill(e[1],e[0]); */
-    /* he1e3->Fill(e[2],e[0]); */
-    /* he2e3->Fill(e[2],e[1]);// */
-    /* he1e12->Fill(e[0]+e[1],e[0]); */
-    /* he1e13->Fill(e[0]+e[2],e[0]); */
-    /* he2e13->Fill(e[0]+e[2],e[1]);// */
-    /* he1e123->Fill(e[0]+e[1]+e[2],e[0]); */
-    /* he2e123->Fill(e[0]+e[1]+e[2],e[1]); */
-    /* he3e123->Fill(e[0]+e[1]+e[2],e[2]);// */
-    /* he12e123->Fill(e[0]+e[1]+e[2],e[0]+e[1]); */
-    /* he23e123->Fill(e[0]+e[1]+e[2],e[1]+e[2]); */
-    /* he13e123->Fill(e[0]+e[1]+e[2],e[0]+e[2]);// */
-
-    for (Int_t iMult=0;iMult<gmult;iMult++) {
-      hg_tot->Fill(genergy[iMult]);
-
-      if ( cut_ar38_dtge->IsInside(genergy[iMult],dtime[iMult]) ||
-	   cut_cl38_dtge->IsInside(genergy[iMult],dtime[iMult]) ||
-	   cut_s38_dtge->IsInside(genergy[iMult],dtime[iMult]) ) {
-	hg_t->Fill(genergy[iMult]);
-	he1x->Fill(x,e[0]);
-	//SCANNING HERE FOR NOW
-	/* for (Int_t id1=0;id1<=bins;id1++) { */
-	/*   for (Int_t id2=0;id2<=bins;id2++) { */
-	/*     Float_t temp1 = (float)id1*delta; */
-	/*     Float_t temp2 = (float)id1*delta+delta; */
-	/*     Float_t temp3 = (float)id2*delta; */
-	/*     Float_t temp4 = (float)id2*delta+delta; */
-	/*     Int_t tempID = id1*bins+id2; */
-	/*     if ( (e[0]>temp1&&e[0]<temp2)&&(e[2]>temp3&&e[2]<temp4) ) */
-	/*       hscan[tempID]->Fill(genergy[iMult]); */
-	/*   } */
-	/* } */
-
-	
-
-      }//cut_dtge
-
-      if ( cut_ar38_e1x->IsInside(x,e[0]) ||
-	   cut_cl38_e1x->IsInside(x,e[0]) ||
-	   cut_s38_e1x->IsInside(x,e[0])) {
-    	hg_x->Fill(genergy[iMult]);
-      }//cut_e1x (should be part of TEventList already
-      
-      if ( (cut_ar38_e1e3->IsInside(e[2],e[0]) &&
-	    cut_ar38_e1e2->IsInside(e[1],e[0]) &&
-	    cut_ar38_e2e3->IsInside(e[2],e[1])) ||
-	   (cut_cl38_e1e3->IsInside(e[2],e[0]) &&
-	    cut_cl38_e1e2->IsInside(e[1],e[0]) &&
-	    cut_cl38_e2e3->IsInside(e[2],e[1])) ||
-	   (cut_s38_e1e3->IsInside(e[2],e[0]) &&
-	    cut_s38_e1e2->IsInside(e[1],e[0]) &&
-	    cut_s38_e2e3->IsInside(e[2],e[1])) ) {
-    	hg_z->Fill(genergy[iMult]);
-      }//cut_z
-      
-      //Individual isotopes
-      if ( cut_ar38_dtge->IsInside(genergy[iMult],dtime[iMult]) &&
-    	   cut_ar38_e1x->IsInside(x,e[0]) &&
-    	   cut_ar38_e1e3->IsInside(e[2],e[0]) ) {
-	hg_ar38_1->Fill(genergy[iMult]);
-	
-	if (cut_ar38_e1e2->IsInside(e[1],e[0]) ) {
-	  hg_ar38_2->Fill(genergy[iMult]);
-	  
-	  if (cut_ar38_e2e3->IsInside(e[2],e[1]) ) {
-	    hg_ar38_3->Fill(genergy[iMult]);
-	    hg_ar38->Fill(genergy[iMult]);
-	    
-	    for (Int_t j=iMult+1;j<gmult;j++) {
-	      hgg_ar38->Fill(genergy[iMult],genergy[j]);
-	      hgg_ar38->Fill(genergy[j],genergy[iMult]);
-	    }
-	  }
+      {      
+	printf("^_^_^_%4.1f_^_^_^\n",counter*100);
+	counter=counter+0.1;
+      }
+    //Fill recoil stuff
+    he0x->Fill(x,e[0]);
+    he1e3->Fill(e[2],e[0]);
+    hlr->Fill(r,l);
+    hud->Fill(d,u);
+    for (Int_t gMult=0;gMult< gmult; gMult++) {
+      hdtge->Fill(genergy[gMult],dtime[gMult]);
+    }
+    
+    /* s38 */
+    if ( (cut_e1e3_s38->IsInside(e[2],e[0]))
+	 && (cut_e0x_s38->IsInside(x,e[0]))
+	 && (cut_lr_s38->IsInside(r,l))
+	 && (cut_ud_s38->IsInside(d,u)) ) {
+      //Tag 38S
+      recoilID = 1;
+      for (Int_t gMult=0;gMult< gmult; gMult++) {
+	if ( (cut_dtge_s38->IsInside(genergy[gMult],dtime[gMult])) ) {
+	  // hdtge->Fill(genergy[gMult],dtime[gMult]);
+	  hg_s38->Fill(genergy[gMult]);
 	}
       }
       
-      
-      if ( cut_cl38_dtge->IsInside(genergy[iMult],dtime[iMult]) &&
-    	   cut_cl38_e1x->IsInside(x,e[0]) &&
-    	   cut_cl38_e1e3->IsInside(e[2],e[0]) ) {
-	hg_cl38_1->Fill(genergy[iMult]);
-	
-	if (cut_cl38_e1e2->IsInside(e[1],e[0]) ) {
-	  hg_cl38_2->Fill(genergy[iMult]);
-	  
-	  if (cut_cl38_e2e3->IsInside(e[2],e[1]) ) {
-	    hg_cl38_3->Fill(genergy[iMult]);
-	    hg_cl38->Fill(genergy[iMult]);
-	    
-	    for (Int_t j=iMult+1;j<gmult;j++) {
-	      hgg_cl38->Fill(genergy[iMult],genergy[j]);
-	      hgg_cl38->Fill(genergy[j],genergy[iMult]);
-	    }
+    }
+    
+    /* cl38 */
+    if ( (cut_e1e3_cl38->IsInside(e[2],e[0]))
+	 && (cut_e0x_cl38->IsInside(x,e[0]))
+	 && (cut_lr_cl38->IsInside(r,l))
+	 && (cut_ud_cl38->IsInside(d,u)) ) {
+      //Tag 38Cl
+      recoilID = 2;
+      for (Int_t gMult=0;gMult< gmult; gMult++) {
+	if ( (cut_dtge_cl38->IsInside(genergy[gMult],dtime[gMult])) ) {
+	  // hdtge->Fill(genergy[gMult],dtime[gMult]);
+	  hg_cl38->Fill(genergy[gMult]);
 	  }
-	}
       }
       
-      if ( cut_s38_dtge->IsInside(genergy[iMult],dtime[iMult]) &&
-    	   cut_s38_e1x->IsInside(x,e[0]) &&
-    	   cut_s38_e1e3->IsInside(e[2],e[0]) ) {
-	hg_s38_1->Fill(genergy[iMult]);
-	
-	if (cut_s38_e1e2->IsInside(e[1],e[0]) ) {
-	  hg_s38_2->Fill(genergy[iMult]);
-	  
-	  if (cut_s38_e2e3->IsInside(e[2],e[1]) ) {
-	    hg_s38_3->Fill(genergy[iMult]);
-	    hg_s38->Fill(genergy[iMult]);
-	    
-	    for (Int_t j=iMult+1;j<gmult;j++) {
-	      hgg_s38->Fill(genergy[iMult],genergy[j]);
-	      hgg_s38->Fill(genergy[j],genergy[iMult]);
-	    }
-	  }
-	}
-      }
-    }//iMult
-  }//EntryLoop
-  
-  TCanvas *cCan1 = new TCanvas("cCan1","cCan1",1550,500);
-  cCan1->Clear(); cCan1->Divide(3,1);
-  cCan1->cd(1); he1e2->Draw("colz");
-  cCan1->cd(2); he1e3->Draw("colz");
-  cCan1->cd(3); he2e3->Draw("colz");
-  hg_ar38->SetLineColor(kRed);
-  hg_cl38->SetLineColor(kBlue);
-  hg_s38->SetFillColor(kBlack);
-  cCan1->Clear(); hg_ar38->Draw(); hg_cl38->Draw("same"); hg_s38->Draw("same");
+    } /* cl38 */
 
-  TFile *fNameOut = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/gamma.root"),"RECREATE");
-  if (fNameOut == 0) {printf("Error: file read in fail\n"); return;}
-  hg_ar38->Write(); hg_cl38->Write(); hg_s38->Write();
-  hg_ar38_1->Write(); hg_cl38_1->Write(); hg_s38_1->Write();
-  hg_ar38_2->Write(); hg_cl38_2->Write(); hg_s38_2->Write();
-  hg_ar38_3->Write(); hg_cl38_3->Write(); hg_s38_3->Write();
-  hgg_s38->Write(); hgg_cl38->Write(); hgg_ar38->Write();
-  for (Int_t i=0;i<numScanHist;i++)
-    hscan[i]->Write();
+   /* ar38 */
+    if ( (cut_e1e3_ar38->IsInside(e[2],e[0]))
+	 && (cut_e0x_ar38->IsInside(x,e[0]))
+	 && (cut_lr_ar38->IsInside(r,l))
+	 && (cut_ud_ar38->IsInside(d,u)) ) {
+      
+      for (Int_t gMult=0;gMult< gmult; gMult++) {
+	if ( (cut_dtge_ar38->IsInside(genergy[gMult],dtime[gMult])) ) {
+	  //hdtge->Fill(genergy[gMult],dtime[gMult]);
+	  hg_ar38->Fill(genergy[gMult]);
+	}
+      }
+      
+    } /* ar38 */
+
+
+    /* p33 */
+    if ( (cut_e1e3_p33->IsInside(e[2],e[0]))
+	 && (cut_e0x_p33->IsInside(x,e[0]))
+	 && (cut_lr_p33->IsInside(r,l))
+	 && (cut_ud_p33->IsInside(d,u)) ) {
+         
+      for (Int_t gMult=0;gMult< gmult; gMult++) {
+	if ( (cut_dtge_p33->IsInside(genergy[gMult],dtime[gMult])) ) {
+	  //hdtge->Fill(genergy[gMult],dtime[gMult]);
+	  hg_p33->Fill(genergy[gMult]);
+	}
+      }
+      
+    } /* p33 */
+
+    if (recoilID == 1)
+      tree_s38->Fill();
+
+    if (recoilID == 2)
+      tree_cl38->Fill();
+    
+  }
   
-  fNameOut->Write();
-  fNameOut->Close();
-  
-  gClock.Stop("gTimer");
-  gTime =  gClock.GetRealTime("gTimer");
-  printf("=========== Finished, total runTime : %7.0f sec \n", gTime);
-  printf("=========== Or, %7.1f sec / 1M events\n", gTime/((double)nEntries)*1e6);
+  c1 = new TCanvas("c1","c1",1000,1000);
+  c1->Clear();
+  //c1->Divide(2,1);
+  //c1->cd(1); he0x->Draw("colz");all_aq_e0x->Draw("same");
+  //c1->cd(2); he1e3->Draw("colz");all_z_e1e3->Draw("same");
+  // hdtge->Draw("colz");
+  hg_ar38->Draw(""); hg_cl38->Draw("same"); hg_s38->Draw("same"); hg_p33->Draw("same");
+  tree_s38->Write(); tree_cl38->Write();
+  gamFile->Write(); gamFile->Close();
 }
