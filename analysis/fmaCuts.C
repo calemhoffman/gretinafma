@@ -38,8 +38,45 @@ TEventList * elist_all;
 
 //New TTree Stuff
 TTree * gtree[10];
-Int_t recoilID=-1;
+Int_t recoilID[10];
 TString recoilName[10];
+
+Int_t runNumber;
+Int_t numHits=1;
+Float_t left[1];
+Float_t right[1];
+Float_t up[1];
+Float_t down[1];
+Float_t e1[1];
+Float_t e2[1];
+Float_t e3[1];
+Float_t tac[1];
+Float_t fmaDeltaTime[1];
+Int_t fmaMult[10];
+Int_t gammaMult;
+Float_t gammaEnergy[100];
+Float_t gammaTimestamp[100];
+Float_t deltaTime[100];
+Int_t gebMult;
+Int_t crysType[100];
+Int_t crysId[100];
+Int_t crysNum[100];
+Float_t crysTot_e[100];
+long long int crysTimestamp[100];
+double crysTrigtime[100];
+Float_t crysT0[100];
+Float_t crysCfd[100];
+Float_t crysChisq[100];
+Float_t crysNormChisq[100];
+Float_t crysBaseline[100];
+unsigned int crysTpad[100];
+Float_t crysPolAngle[100];
+Float_t intMaxX[100];
+Float_t intMaxY[100];
+Float_t intMaxZ[100];
+Float_t intMaxE[100];
+Int_t intMaxSeg[100];
+Float_t intMaxSegE[100];
 
 //Cuts for histos
 TCutG *all_z_e1e3,*all_aq_e0x,*all_tof_dtge;
@@ -146,9 +183,38 @@ void fmaCuts(void) {
   cut_ud_p33 = (TCutG *) gDirectory->FindObjectAny("cut_ud_p33");
 
   TFile * gamFile = new TFile("gamFile.root","RECREATE");
-  for (Int_t nt=0;nt<4;nt++) {
+  for (Int_t nt=0;nt<5;nt++) {
     gtree[nt] = new TTree(Form("gtree%d",nt),Form("Gam Tree %d",nt));
-    gtree[nt]->Branch("recoilID",&recoilID,"recoilID/I");
+    gtree[nt]->Branch("recoilID",recoilID,"recoilID[10]/I");
+    //Generic
+    gtree[nt]->Branch("run", &run, "run/I");
+    gtree[nt]->Branch("hits",&hits,"hits/I");
+    //Positions
+    gtree[nt]->Branch("l",&l,"l/F");
+    gtree[nt]->Branch("r",&r,"r/F");
+    gtree[nt]->Branch("u",&u,"u/F");
+    gtree[nt]->Branch("d",&d,"d/F");
+    gtree[nt]->Branch("x",&x,"x/F");
+    gtree[nt]->Branch("y",&y,"y/F");
+    //Energies
+    gtree[nt]->Branch("e",e,"e[10]/F");
+    //Gammas - a bunch more to add...
+    gtree[nt]->Branch("gmult",&gmult,"gmult/I");
+    gtree[nt]->Branch("genergy",genergy,"genergy[gmult]/F");
+    gtree[nt]->Branch("dtime",dtime,"dtime[gmult]/F");
+    //Gamma breakdown
+    gtree[nt]->Branch("gebMult",&gebMult,"gebMult/I");
+    gtree[nt]->Branch("crysId",crysId,"crysId[gebMult]/I");
+    gtree[nt]->Branch("crysNum",crysNum,"crysNum[gebMult]/I");
+    gtree[nt]->Branch("crysTot_e",crysTot_e,"crysTot_e[gebMult]/F");
+    gtree[nt]->Branch("crysT0",crysT0,"crysT0[gebMult]/F");
+    gtree[nt]->Branch("crysPolAngle",crysPolAngle,"crysPolAngle[gebMult]/F");
+    gtree[nt]->Branch("intMaxX",intMaxX,"intMaxX[gebMult]/F");
+    gtree[nt]->Branch("intMaxY",intMaxY,"intMaxY[gebMult]/F");
+    gtree[nt]->Branch("intMaxZ",intMaxZ,"intMaxZ[gebMult]/F");
+    gtree[nt]->Branch("intMaxE",intMaxE,"intMaxE[gebMult]/F");
+    gtree[nt]->Branch("intMaxSeg",intMaxSeg,"intMaxSeg[gebMult]/I");
+    gtree[nt]->Branch("intMaxSegE",intMaxSegE,"intMaxSegE[gebMult]/F");
   }
   
   
@@ -168,6 +234,18 @@ void fmaCuts(void) {
   chain->SetBranchAddress("gmult",&gmult);
   chain->SetBranchAddress("genergy",genergy);
   chain->SetBranchAddress("dtime",dtime);
+   chain->SetBranchAddress("gebMult",&gebMult);
+  chain->SetBranchAddress("crysId",crysId);
+  chain->SetBranchAddress("crysNum",crysNum);
+  chain->SetBranchAddress("crysTot_e",crysTot_e);
+   chain->SetBranchAddress("crysT0",crysT0);
+  chain->SetBranchAddress("crysPolAngle",crysPolAngle);
+  chain->SetBranchAddress("intMaxX",intMaxX);
+  chain->SetBranchAddress("intMaxY",intMaxY);
+  chain->SetBranchAddress("intMaxZ",intMaxZ);
+  chain->SetBranchAddress("intMaxE",intMaxE);
+  chain->SetBranchAddress("intMaxSeg",intMaxSeg);
+  chain->SetBranchAddress("intMaxSegE",intMaxSegE);
   
   //histograms define
   he0x = new TH2F("he0x","he0x; e0; x",1500,-1000,500,1000,0,3000);
@@ -199,26 +277,30 @@ void fmaCuts(void) {
 	counter=counter+0.1;
       }
     //Fill recoil stuff
-    he0x->Fill(x,e[0]);
-    he1e3->Fill(e[2],e[0]);
-    hlr->Fill(r,l);
-    hud->Fill(d,u);
-    for (Int_t gMult=0;gMult< gmult; gMult++) {
-      hdtge->Fill(genergy[gMult],dtime[gMult]);
-    }
+    //Need to save to file 
+    /* he0x->Fill(x,e[0]); */
+    /* he1e3->Fill(e[2],e[0]); */
+    /* hlr->Fill(r,l); */
+    /* hud->Fill(d,u); */
+    for (Int_t tempI=0;tempI<10;tempI++)
+      recoilID[tempI]=-1;
+    
+    /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
+    /*   hdtge->Fill(genergy[gMult],dtime[gMult]); */
+    /* } */
     
     /* s38 */
     if ( (cut_e1e3_s38->IsInside(e[2],e[0]))
 	 && (cut_e0x_s38->IsInside(x,e[0]))
 	 && (cut_lr_s38->IsInside(r,l))
 	 && (cut_ud_s38->IsInside(d,u)) ) {
-      recoilID=0;
-      for (Int_t gMult=0;gMult< gmult; gMult++) {
-	if ( (cut_dtge_s38->IsInside(genergy[gMult],dtime[gMult])) ) {
-	  // hdtge->Fill(genergy[gMult],dtime[gMult]);
-	  hg_s38->Fill(genergy[gMult]);
-	}
-      }
+      recoilID[0]=0;
+      /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
+      /* 	if ( (cut_dtge_s38->IsInside(genergy[gMult],dtime[gMult])) ) { */
+      /* 	  // hdtge->Fill(genergy[gMult],dtime[gMult]); */
+      /* 	  hg_s38->Fill(genergy[gMult]); */
+      /* 	} */
+      /* } */
       
     }
     
@@ -227,13 +309,13 @@ void fmaCuts(void) {
 	 && (cut_e0x_cl38->IsInside(x,e[0]))
 	 && (cut_lr_cl38->IsInside(r,l))
 	 && (cut_ud_cl38->IsInside(d,u)) ) {
-      recoilID=1;
-      for (Int_t gMult=0;gMult< gmult; gMult++) {
-	if ( (cut_dtge_cl38->IsInside(genergy[gMult],dtime[gMult])) ) {
-	  // hdtge->Fill(genergy[gMult],dtime[gMult]);
-	  hg_cl38->Fill(genergy[gMult]);
-	  }
-      }
+      recoilID[1]=1;
+      /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
+      /* 	if ( (cut_dtge_cl38->IsInside(genergy[gMult],dtime[gMult])) ) { */
+      /* 	  // hdtge->Fill(genergy[gMult],dtime[gMult]); */
+      /* 	  hg_cl38->Fill(genergy[gMult]); */
+      /* 	  } */
+      /* } */
       
     } /* cl38 */
 
@@ -242,13 +324,13 @@ void fmaCuts(void) {
 	 && (cut_e0x_ar38->IsInside(x,e[0]))
 	 && (cut_lr_ar38->IsInside(r,l))
 	 && (cut_ud_ar38->IsInside(d,u)) ) {
-      recoilID=2;
-      for (Int_t gMult=0;gMult< gmult; gMult++) {
-	if ( (cut_dtge_ar38->IsInside(genergy[gMult],dtime[gMult])) ) {
-	  //hdtge->Fill(genergy[gMult],dtime[gMult]);
-	  hg_ar38->Fill(genergy[gMult]);
-	}
-      }
+      recoilID[2]=2;
+      /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
+      /* 	if ( (cut_dtge_ar38->IsInside(genergy[gMult],dtime[gMult])) ) { */
+      /* 	  //hdtge->Fill(genergy[gMult],dtime[gMult]); */
+      /* 	  hg_ar38->Fill(genergy[gMult]); */
+      /* 	} */
+      /* } */
       
     } /* ar38 */
 
@@ -258,32 +340,30 @@ void fmaCuts(void) {
 	 && (cut_e0x_p33->IsInside(x,e[0]))
 	 && (cut_lr_p33->IsInside(r,l))
 	 && (cut_ud_p33->IsInside(d,u)) ) {
-      recoilID=3;
-      for (Int_t gMult=0;gMult< gmult; gMult++) {
-	if ( (cut_dtge_p33->IsInside(genergy[gMult],dtime[gMult])) ) {
-	  //hdtge->Fill(genergy[gMult],dtime[gMult]);
-	  hg_p33->Fill(genergy[gMult]);
-	}
-      }
+      recoilID[3]=3;
+      /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
+      /* 	if ( (cut_dtge_p33->IsInside(genergy[gMult],dtime[gMult])) ) { */
+      /* 	  //hdtge->Fill(genergy[gMult],dtime[gMult]); */
+      /* 	  hg_p33->Fill(genergy[gMult]); */
+      /* 	} */
+      /* } */
       
     } /* p33 */
   
     //Fill correct TTree//
-  if (recoilID>-1)
-    gtree[recoilID]->Fill();
-  }
-  
-  c1 = new TCanvas("c1","c1",1000,1000);
-  c1->Clear();
-  //c1->Divide(2,1);
-  //c1->cd(1); he0x->Draw("colz");all_aq_e0x->Draw("same");
-  //c1->cd(2); he1e3->Draw("colz");all_z_e1e3->Draw("same");
-  // hdtge->Draw("colz");
-  for (Int_t i=0;i<4;i++)
-    gtree[i]->Write();
+    for (Int_t tempI=0;tempI<10;tempI++) {
+      if (recoilID[tempI]>-1) {
+	gtree[recoilID[tempI]]->Fill();
+      } 
+    }
+
+  }//end entry loop
+
+
+  //cleanup
+  //  for (Int_t i=0;i<4;i++)
+  // gtree[i]->Write();
   gamFile->Close();
 
-  //gROOT->cd();
-  //  hg_ar38->Draw(""); hg_cl38->Draw("same"); hg_s38->Draw("same"); hg_p33->Draw("same");
-  
+ 
 }
