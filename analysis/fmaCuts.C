@@ -33,11 +33,13 @@ Int_t goodRun[30] = {0,0,0,0,0,
 		     1,1,1,1,1};
 TCanvas *c1;
 
-TTree *tree_s38;
-TTree *tree_cl38;
-
 //list stuff
 TEventList * elist_all;
+
+//New TTree Stuff
+TTree * gtree[10];
+Int_t recoilID=-1;
+TString recoilName[10];
 
 //Cuts for histos
 TCutG *all_z_e1e3,*all_aq_e0x,*all_tof_dtge;
@@ -69,8 +71,6 @@ Int_t gmult;
 Float_t genergy[100];
 Float_t dtime[100];
 
-Int_t recoilID;
-
 /* main */
 void fmaCuts(void) {
 
@@ -84,25 +84,18 @@ void fmaCuts(void) {
   }
   chain->GetListOfFiles()->Print();
 
-  TFile * gamFile = new TFile("gamFile.root","RECREATE");
-  //TFile * gamFile = new TFile("/lcrc/project/HELIOS/gretinafma/root_data/gamFile.root","RECREATE");
-  tree_s38 = new TTree("tree_s38", "^{38}S Gamma Tree");
-  tree_s38->Branch("recoilID",&recoilID,"recoilID/I");
-
-  tree_cl38 = new TTree("tree_cl38", "^{38}Cl Gamma Tree");
-  tree_cl38->Branch("recoilID",&recoilID,"recoilID/I");
- 
+  
   //Listomania
   TFile *listFile = new TFile("eventLists.root");
   listFile->GetObject("elist_all",elist_all);
   Int_t numElistEntries = elist_all->GetN();
   printf("Number of ElistEntries: %d \n",numElistEntries);
-  /* gDirectory->pwd(); */
-  /* gROOT->cd(); */
+  gDirectory->pwd();
+  gROOT->cd();
   gDirectory->pwd();
   //elist_all = elist_temp;
   // listFile->Close();
-  
+
   //General cuts, already applied if with eventList (some in calTree as well).
   all_z_e1e3 = (TCutG *) gDirectory->FindObjectAny("all_z_e1e3");
   all_aq_e0x = (TCutG *) gDirectory->FindObjectAny("all_aq_e0x");
@@ -152,6 +145,13 @@ void fmaCuts(void) {
   cut_lr_p33 = (TCutG *) gDirectory->FindObjectAny("cut_lr_p33");
   cut_ud_p33 = (TCutG *) gDirectory->FindObjectAny("cut_ud_p33");
 
+  TFile * gamFile = new TFile("gamFile.root","RECREATE");
+  for (Int_t nt=0;nt<4;nt++) {
+    gtree[nt] = new TTree(Form("gtree%d",nt),Form("Gam Tree %d",nt));
+    gtree[nt]->Branch("recoilID",&recoilID,"recoilID/I");
+  }
+  
+  
   //Generic
   chain->SetBranchAddress("run", &run);
   chain->SetBranchAddress("hits",&hits);
@@ -188,13 +188,10 @@ void fmaCuts(void) {
   printf("nEntries: %d\n",nEntries);
   Float_t counter=0;
 
-  
   for (Int_t entryNumber=0;entryNumber<numElistEntries; entryNumber++) {
   //for (Int_t entryNumber=0;entryNumber<nEntries; entryNumber++) {
     chain->GetEntry(elist_all->GetEntry(entryNumber));
     //chain->GetEntry(entryNumber);
-    //ZERO OUT TTREE STUFF!!
-    recoilID = 0;
     
     if (((Float_t)entryNumber/(Float_t)nEntries)>counter)
       {      
@@ -215,8 +212,7 @@ void fmaCuts(void) {
 	 && (cut_e0x_s38->IsInside(x,e[0]))
 	 && (cut_lr_s38->IsInside(r,l))
 	 && (cut_ud_s38->IsInside(d,u)) ) {
-      //Tag 38S
-      recoilID = 1;
+      recoilID=0;
       for (Int_t gMult=0;gMult< gmult; gMult++) {
 	if ( (cut_dtge_s38->IsInside(genergy[gMult],dtime[gMult])) ) {
 	  // hdtge->Fill(genergy[gMult],dtime[gMult]);
@@ -231,8 +227,7 @@ void fmaCuts(void) {
 	 && (cut_e0x_cl38->IsInside(x,e[0]))
 	 && (cut_lr_cl38->IsInside(r,l))
 	 && (cut_ud_cl38->IsInside(d,u)) ) {
-      //Tag 38Cl
-      recoilID = 2;
+      recoilID=1;
       for (Int_t gMult=0;gMult< gmult; gMult++) {
 	if ( (cut_dtge_cl38->IsInside(genergy[gMult],dtime[gMult])) ) {
 	  // hdtge->Fill(genergy[gMult],dtime[gMult]);
@@ -247,7 +242,7 @@ void fmaCuts(void) {
 	 && (cut_e0x_ar38->IsInside(x,e[0]))
 	 && (cut_lr_ar38->IsInside(r,l))
 	 && (cut_ud_ar38->IsInside(d,u)) ) {
-      
+      recoilID=2;
       for (Int_t gMult=0;gMult< gmult; gMult++) {
 	if ( (cut_dtge_ar38->IsInside(genergy[gMult],dtime[gMult])) ) {
 	  //hdtge->Fill(genergy[gMult],dtime[gMult]);
@@ -263,7 +258,7 @@ void fmaCuts(void) {
 	 && (cut_e0x_p33->IsInside(x,e[0]))
 	 && (cut_lr_p33->IsInside(r,l))
 	 && (cut_ud_p33->IsInside(d,u)) ) {
-         
+      recoilID=3;
       for (Int_t gMult=0;gMult< gmult; gMult++) {
 	if ( (cut_dtge_p33->IsInside(genergy[gMult],dtime[gMult])) ) {
 	  //hdtge->Fill(genergy[gMult],dtime[gMult]);
@@ -272,13 +267,10 @@ void fmaCuts(void) {
       }
       
     } /* p33 */
-
-    if (recoilID == 1)
-      tree_s38->Fill();
-
-    if (recoilID == 2)
-      tree_cl38->Fill();
-    
+  
+    //Fill correct TTree//
+  if (recoilID>-1)
+    gtree[recoilID]->Fill();
   }
   
   c1 = new TCanvas("c1","c1",1000,1000);
@@ -287,7 +279,11 @@ void fmaCuts(void) {
   //c1->cd(1); he0x->Draw("colz");all_aq_e0x->Draw("same");
   //c1->cd(2); he1e3->Draw("colz");all_z_e1e3->Draw("same");
   // hdtge->Draw("colz");
-  hg_ar38->Draw(""); hg_cl38->Draw("same"); hg_s38->Draw("same"); hg_p33->Draw("same");
-  tree_s38->Write(); tree_cl38->Write();
-  gamFile->Write(); gamFile->Close();
+  for (Int_t i=0;i<4;i++)
+    gtree[i]->Write();
+  gamFile->Close();
+
+  //gROOT->cd();
+  //  hg_ar38->Draw(""); hg_cl38->Draw("same"); hg_s38->Draw("same"); hg_p33->Draw("same");
+  
 }
