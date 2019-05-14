@@ -56,6 +56,7 @@ Int_t nEntries[10];
 //Histograms
 TString rName[5] = {"s38","cl38","ar38","p33","all"};
 TH1F *hg[5];
+TH2F *hgg[5];
 
 void gamDraw(void) {
   //Initialize items
@@ -65,6 +66,10 @@ void gamDraw(void) {
     hg[recNum] = new TH1F(Form("hg%d",recNum),
 			  Form("%s hg%d; Gamma Energy [keV]",rName[recNum].Data(),recNum),
 			  ch,0,rg);
+
+    hgg[recNum] = new TH2F(Form("hgg%d",recNum),
+			  Form("%s hgg%d; Gamma Energy [keV; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+			   ch/2,0,rg,ch/2,0,rg);
   }
   
   //Pull the TTrees of interest
@@ -119,13 +124,17 @@ void gamDraw(void) {
       if (entryNumber<nEntries[nTree]) {
 	gtree[nTree]->GetEntry(entryNumber);
 	for (Int_t gMult=0;gMult< gmult; gMult++) { /* need to apply dtge */
-	  hg[nTree]->Fill(genergy[gMult]);
+	  hg[nTree]->Fill(genergy[gMult]); //g fill
+	  for (Int_t iMult=gMult+1; iMult<gmult; iMult++) {
+	    hgg[nTree]->Fill(genergy[gMult],genergy[iMult]);
+	    hgg[nTree]->Fill(genergy[iMult],genergy[gMult]);
+	  }//gg fill
 	}
       }//nEntries[] if
     }//nTree loop
   }//entry loop
 
-
+  //Analyze histograms
   
   //Save and Draw
 

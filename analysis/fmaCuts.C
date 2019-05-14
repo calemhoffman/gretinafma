@@ -100,13 +100,7 @@ TH1F *hg_tot;
 TH1F *hg_ar38; TH1F *hg_cl38;
 TH1F * hg_p33; TH1F *hg_s38;
 
-Int_t run;
-Int_t hits;
-Float_t l,r,u,d,x,y;
-Float_t e[10];
-Int_t gmult;
-Float_t genergy[100];
-Float_t dtime[100];
+
 
 /* main */
 void fmaCuts(void) {
