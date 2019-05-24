@@ -1,4 +1,7 @@
 // Manipulation
+#include <TROOT.h>
+#include <TSystem.h>
+#include <TStyle.h>
 #include <TChain.h>
 #include <TString.h>
 #include <TSelector.h>
@@ -24,7 +27,10 @@
 #include <TFile.h>
 #include <TEventList.h>
 
-#define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
+#include "AutoFit.C"
+
+#define numRecoilProcess 4 //1-s38, 2-s38+cl38, etc.
+#define RUNLOOP 1
 
 TFile *gamFileIn;
 TString fileName;
@@ -58,9 +64,18 @@ TString rName[5] = {"s38","cl38","ar38","p33","all"};
 TH1F *hg[5];
 TH2F *hgg[5];
 
+//Cuts
+TCutG *cut_dtge[10];
+
 void gamDraw(void) {
+  //Get preloaded stuff, i.e. cuts
+  cut_dtge[0] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_s38");
+  cut_dtge[1] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_cl38");
+  cut_dtge[2] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_ar38");
+  cut_dtge[3] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
+  
   //Initialize items
-  Int_t ch=6000;
+  Int_t ch=4096;
   Int_t rg=ch;
   for (Int_t recNum = 0; recNum<numRecoilProcess; recNum++) {
     hg[recNum] = new TH1F(Form("hg%d",recNum),
@@ -69,12 +84,12 @@ void gamDraw(void) {
 
     hgg[recNum] = new TH2F(Form("hgg%d",recNum),
 			  Form("%s hgg%d; Gamma Energy [keV; Gamma Energy [keV]",rName[recNum].Data(),recNum),
-			   ch/2,0,rg,ch/2,0,rg);
+			   ch,0,rg,ch,0,rg);
   }
   
   //Pull the TTrees of interest
   fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/gamFile.root");
-  gamFileIn = new TFile(fileName);
+  gamFileIn = new TFile(fileName,"UPDATE");
   gDirectory->ls();
 
   Int_t maxEntries=0;
@@ -118,26 +133,61 @@ void gamDraw(void) {
   }
 
   //Apply Any EventLists
+  
   //Loop - process and fill
-  for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
-    for (Int_t nTree=0; nTree<numRecoilProcess; nTree++) {
-      if (entryNumber<nEntries[nTree]) {
-	gtree[nTree]->GetEntry(entryNumber);
-	for (Int_t gMult=0;gMult< gmult; gMult++) { /* need to apply dtge */
-	  hg[nTree]->Fill(genergy[gMult]); //g fill
-	  for (Int_t iMult=gMult+1; iMult<gmult; iMult++) {
-	    hgg[nTree]->Fill(genergy[gMult],genergy[iMult]);
-	    hgg[nTree]->Fill(genergy[iMult],genergy[gMult]);
-	  }//gg fill
-	}
-      }//nEntries[] if
-    }//nTree loop
-  }//entry loop
-
+  /**** only if necessary ****/
+  if (RUNLOOP == 1) {
+    for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
+      for (Int_t nTree=0; nTree<numRecoilProcess; nTree++) {
+	if (entryNumber<nEntries[nTree]) {
+	  gtree[nTree]->GetEntry(entryNumber);
+	  for (Int_t gMult=0;gMult< gmult; gMult++) { /* need to apply dtge */
+	    if (cut_dtge[nTree]->IsInside(genergy[gMult],dtime[gMult])) {
+	      hg[nTree]->Fill(genergy[gMult]); //g fill
+	      for (Int_t iMult=gMult+1; iMult<gmult; iMult++) {
+		hgg[nTree]->Fill(genergy[gMult],genergy[iMult]);
+		hgg[nTree]->Fill(genergy[iMult],genergy[gMult]);
+	      }//gg fill
+	    }//dtge cut if
+	  }//gMult++
+	}//nEntries[] if
+      }//nTree loop
+    }//entry loop
+  } else { //RUNLOOP
+    for (Int_t i=0;i<numRecoilProcess;i++) {
+      hg[i] = (TH1F *) gDirectory->FindObjectAny(Form("hg%d",i));
+    }
+  }
+  
   //Analyze histograms
+  FILE * fitFileOut;
+  fitFileOut = fopen ("gamFits.dat", "w+");
+  TCanvas *cc = new TCanvas("cc","fit can",1000,1000);
+  cc->Clear(); cc->Divide(2,2);
+
+  Double_t mean,sigma,fitLow,fitHigh;
+
+  //ar38 - 1643
+  mean = 1643;
+  sigma = 5;
+  fitLow = 1620;
+  fitHigh = 1660;
+
+  for (Int_t ifit=0;ifit<numRecoilProcess;ifit++) {
+    cc->cd(ifit+1);
+    fitGaussP1(hg[ifit],mean,sigma,fitLow,fitHigh,fitFileOut);
+    hg[ifit]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  }
+  cc->Modified(); cc->Update();
+
+
+
+
   
   //Save and Draw
-
+  for (Int_t i=0;i<numRecoilProcess;i++) {
+    hg[i]->Write(); hgg[i]->Write();
+  }
   //Cleanup
   
 

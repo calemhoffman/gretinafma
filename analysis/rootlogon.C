@@ -1,7 +1,7 @@
 {
   printf("rootlogon.C\n");
-  // gROOT->ProcessLine(".L GSUtil_new_cc.so");
-  //printf("GSUtil_new_cc.so loaded\n");
+  gROOT->ProcessLine(".L GSUtil_new_cc.so");
+  printf("GSUtil_new_cc.so loaded\n");
 
  
   // Set ROOT defaults

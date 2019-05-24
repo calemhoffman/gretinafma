@@ -31,7 +31,7 @@ Int_t goodRun[30] = {0,0,0,0,0,
 		     1,1,1,0,1,
 		     1,1,1,1,1,
 		     1,1,1,1,1};
-TCanvas *c1;
+TCanvas *c2;
 
 //list stuff
 TEventList * elist_all;
@@ -40,6 +40,14 @@ TEventList * elist_all;
 TTree * gtree[10];
 Int_t recoilID[10];
 TString recoilName[10];
+
+Int_t run;
+Int_t hits;
+Float_t l,r,u,d,x,y;
+Float_t e[10];
+Int_t gmult;
+Float_t genergy[100];
+Float_t dtime[100];
 
 Int_t runNumber;
 Int_t numHits=1;
