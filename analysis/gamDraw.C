@@ -29,8 +29,8 @@
 
 #include "AutoFit.C"
 
-#define numRecoilProcess 4 //1-s38, 2-s38+cl38, etc.
-#define RUNLOOP 1
+#define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
+#define RUNLOOP 0
 
 TFile *gamFileIn;
 TString fileName;
@@ -73,7 +73,7 @@ void gamDraw(void) {
   cut_dtge[1] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_cl38");
   cut_dtge[2] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_ar38");
   cut_dtge[3] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
-  
+
   //Initialize items
   Int_t ch=4096;
   Int_t rg=ch;
@@ -86,7 +86,7 @@ void gamDraw(void) {
 			  Form("%s hgg%d; Gamma Energy [keV; Gamma Energy [keV]",rName[recNum].Data(),recNum),
 			   ch,0,rg,ch,0,rg);
   }
-  
+
   //Pull the TTrees of interest
   fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/gamFile.root");
   gamFileIn = new TFile(fileName,"UPDATE");
@@ -133,62 +133,94 @@ void gamDraw(void) {
   }
 
   //Apply Any EventLists
-  
+
   //Loop - process and fill
   /**** only if necessary ****/
-  if (RUNLOOP == 1) {
-    for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
-      for (Int_t nTree=0; nTree<numRecoilProcess; nTree++) {
-	if (entryNumber<nEntries[nTree]) {
-	  gtree[nTree]->GetEntry(entryNumber);
-	  for (Int_t gMult=0;gMult< gmult; gMult++) { /* need to apply dtge */
-	    if (cut_dtge[nTree]->IsInside(genergy[gMult],dtime[gMult])) {
-	      hg[nTree]->Fill(genergy[gMult]); //g fill
-	      for (Int_t iMult=gMult+1; iMult<gmult; iMult++) {
-		hgg[nTree]->Fill(genergy[gMult],genergy[iMult]);
-		hgg[nTree]->Fill(genergy[iMult],genergy[gMult]);
-	      }//gg fill
-	    }//dtge cut if
-	  }//gMult++
-	}//nEntries[] if
-      }//nTree loop
-    }//entry loop
-  } else { //RUNLOOP
-    for (Int_t i=0;i<numRecoilProcess;i++) {
-      hg[i] = (TH1F *) gDirectory->FindObjectAny(Form("hg%d",i));
+ if (RUNLOOP == 1) {
+   for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
+     for (Int_t nTree=0; nTree<numRecoilProcess; nTree++) {
+ if (entryNumber<nEntries[nTree]) {
+   gtree[nTree]->GetEntry(entryNumber);
+   for (Int_t gMult=0;gMult< gmult; gMult++) { /* need to apply dtge */
+     if (cut_dtge[nTree]->IsInside(genergy[gMult],dtime[gMult])) {
+       hg[nTree]->Fill(genergy[gMult]); //g fill
+       for (Int_t iMult=gMult+1; iMult<gmult; iMult++) {
+   hgg[nTree]->Fill(genergy[gMult],genergy[iMult]);
+   hgg[nTree]->Fill(genergy[iMult],genergy[gMult]);
+       }//gg fill
+     }//dtge cut if
+   }//gMult++
+ }//nEntries[] if
+     }//nTree loop
+   }//entry loop
+ }
+ //
+ // else { //RUNLOOP
+ //   for (Int_t i=0;i<numRecoilProcess;i++) {
+ //     hg[i] = (TH1F *) gDirectory->FindObjectAny(Form("hg%d",i));
+ //   }
+ // }
+
+// //Doppler
+// //User Ins
+Int_t nTreeNum = 0; //only for s38 to start
+Float_t beta = 0.033;
+
+//Calcs
+Float_t r1 = 0; //change name later
+Float_t r2 = 0;
+Float_t beamdir[3] = {0,0,1};
+Float_t modCCang = 0;
+Float_t modCCdopfac = 0;
+Float_t iMaxX,iMaxY,iMaxZ;
+for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
+  if (entryNumber<nEntries[nTreeNum]) {
+    gtree[nTreeNum]->GetEntry(entryNumber);
+    for (Int_t multNumber=0; multNumber < gebMult; multNumber++) {
+      iMaxX = intMaxX[multNumber];
+      iMaxY = intMaxY[multNumber];
+      iMaxZ = intMaxZ[multNumber];
+      //printf ("x,y,z: %f,%f,%f \n",
+      //        iMaxX,iMaxY,iMaxZ);
+      r1 = TMath::Sqrt(iMaxX*iMaxX + iMaxY*iMaxY + iMaxZ*iMaxZ);
+      r2 = (beamdir[0] * iMaxX + beamdir[1] * iMaxY + beamdir[2] * iMaxZ) / r1;
+      modCCang = TMath::ACos(r2);
+      modCCdopfac = TMath::Sqrt(1. - beta*beta) / (1.0 - beta * TMath::Cos(modCCang));
+      //printf ("crysId: %d, x,y,z: %f,%f,%f | r1,r2: %f,%f | modAng, modDop: %f,%f\n",
+      //        crysId[multNumber],iMaxX,iMaxY,iMaxZ,r1,r2,modCCang,modCCdopfac);
+      hg[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac); //g fill
     }
-  }
-  
-  //Analyze histograms
-  FILE * fitFileOut;
-  fitFileOut = fopen ("gamFits.dat", "w+");
-  TCanvas *cc = new TCanvas("cc","fit can",1000,1000);
-  cc->Clear(); cc->Divide(2,2);
-
-  Double_t mean,sigma,fitLow,fitHigh;
-
-  //ar38 - 1643
-  mean = 1643;
-  sigma = 5;
-  fitLow = 1620;
-  fitHigh = 1660;
-
-  for (Int_t ifit=0;ifit<numRecoilProcess;ifit++) {
-    cc->cd(ifit+1);
-    fitGaussP1(hg[ifit],mean,sigma,fitLow,fitHigh,fitFileOut);
-    hg[ifit]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-  }
-  cc->Modified(); cc->Update();
 
 
+  }//entry loop
+}
 
+  // //Analyze histograms
+  // FILE * fitFileOut;
+  // fitFileOut = fopen ("gamFits.dat", "w+");
+  // TCanvas *cc = new TCanvas("cc","fit can",1000,1000);
+  // cc->Clear(); cc->Divide(2,2);
+  //
+  // Double_t mean,sigma,fitLow,fitHigh;
+  //
+  // //ar38 - 1643
+  // mean = 1643;
+  // sigma = 5;
+  // fitLow = 1620;
+  // fitHigh = 1660;
+  //
+  // for (Int_t ifit=0;ifit<numRecoilProcess;ifit++) {
+  //   cc->cd(ifit+1);
+  //   fitGaussP1(hg[ifit],mean,sigma,fitLow,fitHigh,fitFileOut);
+  //   hg[ifit]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  // }
+  // cc->Modified(); cc->Update();
+  //
+  // //Save and Draw
+  // for (Int_t i=0;i<numRecoilProcess;i++) {
+  //   hg[i]->Write(); hgg[i]->Write();
+  // }
+  // //Cleanup
 
-  
-  //Save and Draw
-  for (Int_t i=0;i<numRecoilProcess;i++) {
-    hg[i]->Write(); hgg[i]->Write();
-  }
-  //Cleanup
-  
 
 }
