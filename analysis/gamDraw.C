@@ -29,7 +29,7 @@
 
 #include "AutoFit.C"
 
-#define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
+#define numRecoilProcess 2 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
 
 TFile *gamFileIn;
@@ -61,9 +61,10 @@ Int_t nEntries[10];
 
 //Histograms
 TString rName[5] = {"s38","cl38","ar38","p33","all"};
-TH1F *hg[5];
-TH2F *hgg[5];
-
+TH1F *hg[5];//original gamma
+TH1F *hgDop[5],*hgAddBack[5];
+TH2F *hgg[5];//og gamma-gamma
+TH2F *hggDop[5],*hggAddBack[5];
 //Cuts
 TCutG *cut_dtge[10];
 
@@ -84,7 +85,23 @@ void gamDraw(void) {
 
     hgg[recNum] = new TH2F(Form("hgg%d",recNum),
 			  Form("%s hgg%d; Gamma Energy [keV; Gamma Energy [keV]",rName[recNum].Data(),recNum),
-			   ch,0,rg,ch,0,rg);
+			  ch,0,rg,ch,0,rg);
+
+    hgDop[recNum] = new TH1F(Form("hgDop%d",recNum),
+   			Form("%s hgDop%d; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+   			ch,0,rg);
+
+    hggDop[recNum] = new TH2F(Form("hggDop%d",recNum),
+   			Form("%s hggDop%d; Gamma Energy [keV; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+   			ch,0,rg,ch,0,rg);
+
+    hgAddBack[recNum] = new TH1F(Form("hgAddBack%d",recNum),
+       	Form("%s hgAddBack%d; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+       	ch,0,rg);
+
+    hggAddBack[recNum] = new TH2F(Form("hggAddBack%d",recNum),
+       	Form("%s hggAddBack%d; Gamma Energy [keV; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+       	ch,0,rg,ch,0,rg);
   }
 
   //Pull the TTrees of interest
@@ -188,7 +205,11 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       modCCdopfac = TMath::Sqrt(1. - beta*beta) / (1.0 - beta * TMath::Cos(modCCang));
       //printf ("crysId: %d, x,y,z: %f,%f,%f | r1,r2: %f,%f | modAng, modDop: %f,%f\n",
       //        crysId[multNumber],iMaxX,iMaxY,iMaxZ,r1,r2,modCCang,modCCdopfac);
-      hg[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac); //g fill
+
+      if (cut_dtge[nTreeNum]->IsInside(genergy[multNumber],dtime[multNumber])) {
+        hg[nTreeNum]->Fill(genergy[multNumber]); //g fill
+        hgDop[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac); //g fill
+      }
     }
 
 
@@ -217,9 +238,9 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   // cc->Modified(); cc->Update();
   //
   // //Save and Draw
-  // for (Int_t i=0;i<numRecoilProcess;i++) {
-  //   hg[i]->Write(); hgg[i]->Write();
-  // }
+  for (Int_t i=0;i<numRecoilProcess;i++) {
+    hg[i]->Write(); hgg[i]->Write();
+  }
   // //Cleanup
 
 
