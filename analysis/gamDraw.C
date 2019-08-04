@@ -198,32 +198,43 @@ Float_t beta = 0.033;
 //Calcs
 Float_t r1 = 0; //change name later
 Float_t r2 = 0;
-Float_t beamdir[3] = {0,0,1};
-Float_t modCCang = 0;
-Float_t modCCdopfac = 0;
-Float_t iMaxX,iMaxY,iMaxZ;
+Float_t intRad[100];
+//Float_t beamdir[3] = {0,0,1};
+Float_t modCCang[100];
+Float_t modCCdopfac[100];
+//Float_t iMaxX,iMaxY,iMaxZ;
 for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   if (entryNumber<nEntries[nTreeNum]) {
     gtree[nTreeNum]->GetEntry(entryNumber);
+    //loop to calc doppler etc, then fill in separate loop.
     for (Int_t multNumber=0; multNumber < gebMult; multNumber++) {
-      iMaxX = intMaxX[multNumber];
-      iMaxY = intMaxY[multNumber];
-      iMaxZ = intMaxZ[multNumber];
+      // iMaxX = intMaxX[multNumber];
+      // iMaxY = intMaxY[multNumber];
+      // iMaxZ = intMaxZ[multNumber];
       //printf ("x,y,z: %f,%f,%f \n",
       //        iMaxX,iMaxY,iMaxZ);
-      r1 = TMath::Sqrt(iMaxX*iMaxX + iMaxY*iMaxY + iMaxZ*iMaxZ);
-      r2 = (beamdir[0] * iMaxX + beamdir[1] * iMaxY + beamdir[2] * iMaxZ) / r1;
-      modCCang = TMath::ACos(r2);
-      modCCdopfac = TMath::Sqrt(1. - beta*beta) / (1.0 - beta * TMath::Cos(modCCang));
+      // r1 = TMath::Sqrt(iMaxX*iMaxX + iMaxY*iMaxY + iMaxZ*iMaxZ);
+      // r2 = (beamdir[0] * iMaxX + beamdir[1] * iMaxY + beamdir[2] * iMaxZ) / r1;
+      intRad[multNumber] = (intMaxZ[multNumber]) /
+        (TMath::Sqrt(intMaxX[multNumber]*intMaxX[multNumber]
+          + intMaxY[multNumber]*intMaxY[multNumber]
+          + intMaxZ[multNumber]*intMaxZ[multNumber]));
+      modCCang[multNumber] = TMath::ACos(intRad[multNumber]);
+      modCCdopfac[multNumber] = TMath::Sqrt(1. - beta*beta) /
+      (1.0 - beta * TMath::Cos(modCCang[multNumber]));
       //printf ("crysId: %d, x,y,z: %f,%f,%f | r1,r2: %f,%f | modAng, modDop: %f,%f\n",
       //        crysId[multNumber],iMaxX,iMaxY,iMaxZ,r1,r2,modCCang,modCCdopfac);
+      //For AddBack Calculate the distance between all other max points
+      //if radius less than param then add up the TotalE then apply Doppler
+      //Doppler from which angle though...
 
       if (cut_dtge[nTreeNum]->IsInside(genergy[multNumber],dtime[multNumber])) {
         hg[nTreeNum]->Fill(genergy[multNumber]); //g fill
-        hgDop[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac); //g fill
+        hgDop[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac[multNumber]); //g fill
 
-        hgNoDopVsAngle[nTreeNum]->Fill(crysTot_e[multNumber],modCCang*180./TMath::Pi());
-        hgDopVsAngle[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac,modCCang*180./TMath::Pi());
+        hgNoDopVsAngle[nTreeNum]->Fill(crysTot_e[multNumber],modCCang[multNumber]*180./TMath::Pi());
+        hgDopVsAngle[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac[multNumber],
+          modCCang[multNumber]*180./TMath::Pi());
       }
     }
 
