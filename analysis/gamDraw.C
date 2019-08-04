@@ -65,6 +65,8 @@ TH1F *hg[5];//original gamma
 TH1F *hgDop[5],*hgAddBack[5];
 TH2F *hgg[5];//og gamma-gamma
 TH2F *hggDop[5],*hggAddBack[5];
+TH2F *hgNoDopVsAngle[5];//raw data vs. angles
+TH2F *hgDopVsAngle[5];//Dop corr vs. angles
 //Cuts
 TCutG *cut_dtge[10];
 
@@ -84,7 +86,7 @@ void gamDraw(void) {
 			  ch,0,rg);
 
     hgg[recNum] = new TH2F(Form("hgg%d",recNum),
-			  Form("%s hgg%d; Gamma Energy [keV; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+			  Form("%s hgg%d; Gamma Energy [keV]; Gamma Energy [keV]",rName[recNum].Data(),recNum),
 			  ch,0,rg,ch,0,rg);
 
     hgDop[recNum] = new TH1F(Form("hgDop%d",recNum),
@@ -92,7 +94,7 @@ void gamDraw(void) {
    			ch,0,rg);
 
     hggDop[recNum] = new TH2F(Form("hggDop%d",recNum),
-   			Form("%s hggDop%d; Gamma Energy [keV; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+   			Form("%s hggDop%d; Gamma Energy [keV]; Gamma Energy [keV]",rName[recNum].Data(),recNum),
    			ch,0,rg,ch,0,rg);
 
     hgAddBack[recNum] = new TH1F(Form("hgAddBack%d",recNum),
@@ -100,8 +102,18 @@ void gamDraw(void) {
        	ch,0,rg);
 
     hggAddBack[recNum] = new TH2F(Form("hggAddBack%d",recNum),
-       	Form("%s hggAddBack%d; Gamma Energy [keV; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+       	Form("%s hggAddBack%d; Gamma Energy [keV]; Gamma Energy [keV]",rName[recNum].Data(),recNum),
        	ch,0,rg,ch,0,rg);
+
+    hgNoDopVsAngle[recNum] = new TH2F(Form("hgNoDopVsAngle%d",recNum),
+       	Form("%s hgNoDopVsAngle%d; Gamma Energy [keV]; Angle [degrees]",
+        rName[recNum].Data(),recNum),
+        ch,0,rg,180,0,180);
+    hgDopVsAngle[recNum] = new TH2F(Form("hgDopVsAngle%d",recNum),
+       	Form("%s hgDopVsAngle%d; Gamma Energy [keV]; Angle [degrees]",
+        rName[recNum].Data(),recNum),
+        ch,0,rg,180,0,180);
+
   }
 
   //Pull the TTrees of interest
@@ -209,6 +221,9 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       if (cut_dtge[nTreeNum]->IsInside(genergy[multNumber],dtime[multNumber])) {
         hg[nTreeNum]->Fill(genergy[multNumber]); //g fill
         hgDop[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac); //g fill
+
+        hgNoDopVsAngle[nTreeNum]->Fill(crysTot_e[multNumber],modCCang*180./TMath::Pi());
+        hgDopVsAngle[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac,modCCang*180./TMath::Pi());
       }
     }
 
