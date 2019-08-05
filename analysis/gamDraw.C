@@ -29,7 +29,7 @@
 
 #include "AutoFit.C"
 
-#define numRecoilProcess 2 //1-s38, 2-s38+cl38, etc.
+#define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
 
 TFile *gamFileIn;
@@ -196,25 +196,24 @@ Int_t nTreeNum = 0; //only for s38 to start
 Float_t beta = 0.033;
 
 //Calcs
-Float_t r1 = 0; //change name later
+Float_t r1 = 0; //
 Float_t r2 = 0;
 Float_t intRad[100];
 //Float_t beamdir[3] = {0,0,1};
 Float_t modCCang[100];
 Float_t modCCdopfac[100];
 //Float_t iMaxX,iMaxY,iMaxZ;
+Float_t radDiff[100][100];
+Float_t crysTotAddBack[100];
+Float_t radAddBackTest = 10; // distance between points for addback in cm
 for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   if (entryNumber<nEntries[nTreeNum]) {
     gtree[nTreeNum]->GetEntry(entryNumber);
+
+
     //loop to calc doppler etc, then fill in separate loop.
     for (Int_t multNumber=0; multNumber < gebMult; multNumber++) {
-      // iMaxX = intMaxX[multNumber];
-      // iMaxY = intMaxY[multNumber];
-      // iMaxZ = intMaxZ[multNumber];
-      //printf ("x,y,z: %f,%f,%f \n",
-      //        iMaxX,iMaxY,iMaxZ);
-      // r1 = TMath::Sqrt(iMaxX*iMaxX + iMaxY*iMaxY + iMaxZ*iMaxZ);
-      // r2 = (beamdir[0] * iMaxX + beamdir[1] * iMaxY + beamdir[2] * iMaxZ) / r1;
+
       intRad[multNumber] = (intMaxZ[multNumber]) /
         (TMath::Sqrt(intMaxX[multNumber]*intMaxX[multNumber]
           + intMaxY[multNumber]*intMaxY[multNumber]
@@ -222,20 +221,53 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       modCCang[multNumber] = TMath::ACos(intRad[multNumber]);
       modCCdopfac[multNumber] = TMath::Sqrt(1. - beta*beta) /
       (1.0 - beta * TMath::Cos(modCCang[multNumber]));
-      //printf ("crysId: %d, x,y,z: %f,%f,%f | r1,r2: %f,%f | modAng, modDop: %f,%f\n",
-      //        crysId[multNumber],iMaxX,iMaxY,iMaxZ,r1,r2,modCCang,modCCdopfac);
+
       //For AddBack Calculate the distance between all other max points
       //if radius less than param then add up the TotalE then apply Doppler
       //Doppler from which angle though...
 
+      //to start set all AddBacks as Tot_e (zero added values as we go)
+      crysTotAddBack[multNumber] = crysTot_e[multNumber];
+
+      for (Int_t j=multNumber+1; j < gebMult; j++ ) {
+
+        r2 = (intMaxX[multNumber] - intMaxX[j])*(intMaxX[multNumber] - intMaxX[j])
+        +(intMaxY[multNumber] - intMaxY[j])*(intMaxY[multNumber] - intMaxY[j])
+        +(intMaxZ[multNumber] - intMaxZ[j])*(intMaxZ[multNumber] - intMaxZ[j]);
+        radDiff[multNumber][j] = TMath::Sqrt(r2);
+
+//printf("I,J: %d,%d X1: %f X2: %f Y1: %f Y2: %f Z1: %f Z2: %f R2: %f radDiff: %f\n\n",
+// intMaxX[multNumber], intMaxX[j],
+// intMaxY[multNumber], intMaxY[j],
+// intMaxZ[multNumber], intMaxZ[j],
+
+// printf("I,J: %d,%d radDiff: %f e[i]: %f, e[j]: %f\n",
+//       multNumber,j,
+//       radDiff[multNumber][j],
+//     crysTot_e[multNumber], crysTot_e[j]);
+
+        if (radDiff[multNumber][j] <= radAddBackTest) {
+            crysTotAddBack[multNumber] += crysTot_e[j];
+
+      //CANT DO THIS!!! Will Zero Out the Dop !!
+      crysTot_e[j] = 0;
+
+        } //radDiff if
+      } //j++
+// printf("** crysTotAddBack: %f\n\n",crysTotAddBack[multNumber]);
+
+// **** to be moved to new loop _____
       if (cut_dtge[nTreeNum]->IsInside(genergy[multNumber],dtime[multNumber])) {
         hg[nTreeNum]->Fill(genergy[multNumber]); //g fill
-        hgDop[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac[multNumber]); //g fill
+        hgDop[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac[multNumber]); //dop fill
+        if (crysTotAddBack[multNumber] > 0)
+          hgAddBack[nTreeNum]->Fill(crysTotAddBack[multNumber]/modCCdopfac[multNumber]); //ab fill
 
         hgNoDopVsAngle[nTreeNum]->Fill(crysTot_e[multNumber],modCCang[multNumber]*180./TMath::Pi());
         hgDopVsAngle[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac[multNumber],
           modCCang[multNumber]*180./TMath::Pi());
       }
+// **** to be moved to new loop ^^^^
     }
 
 
@@ -266,6 +298,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   // //Save and Draw
   for (Int_t i=0;i<numRecoilProcess;i++) {
     hg[i]->Write(); hgg[i]->Write();
+    hgDop[i]->Write(); hgAddBack[i]->Write();
   }
   // //Cleanup
 
