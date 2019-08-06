@@ -33,6 +33,7 @@
 #define RUNLOOP 0
 
 TFile *gamFileIn;
+TFile *gamFileOut;
 TString fileName;
 
 TTree * gtree[10];
@@ -113,12 +114,11 @@ void gamDraw(void) {
        	Form("%s hgDopVsAngle%d; Gamma Energy [keV]; Angle [degrees]",
         rName[recNum].Data(),recNum),
         ch,0,rg,180,0,180);
-
-  }
+   }
 
   //Pull the TTrees of interest
-  fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/gamFile.root");
-  gamFileIn = new TFile(fileName,"UPDATE");
+  fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma/analysis/gamTree.root");
+  gamFileIn = new TFile(fileName);
   gDirectory->ls();
 
   Int_t maxEntries=0;
@@ -161,41 +161,13 @@ void gamDraw(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  //Apply Any EventLists
-
-  //Loop - process and fill
-  /**** only if necessary ****/
- if (RUNLOOP == 1) {
-   for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
-     for (Int_t nTree=0; nTree<numRecoilProcess; nTree++) {
- if (entryNumber<nEntries[nTree]) {
-   gtree[nTree]->GetEntry(entryNumber);
-   for (Int_t gMult=0;gMult< gmult; gMult++) { /* need to apply dtge */
-     if (cut_dtge[nTree]->IsInside(genergy[gMult],dtime[gMult])) {
-       hg[nTree]->Fill(genergy[gMult]); //g fill
-       for (Int_t iMult=gMult+1; iMult<gmult; iMult++) {
-   hgg[nTree]->Fill(genergy[gMult],genergy[iMult]);
-   hgg[nTree]->Fill(genergy[iMult],genergy[gMult]);
-       }//gg fill
-     }//dtge cut if
-   }//gMult++
- }//nEntries[] if
-     }//nTree loop
-   }//entry loop
- }
- //
- // else { //RUNLOOP
- //   for (Int_t i=0;i<numRecoilProcess;i++) {
- //     hg[i] = (TH1F *) gDirectory->FindObjectAny(Form("hg%d",i));
- //   }
- // }
-
-// //Doppler
-// //User Ins
+//User Ins
 Int_t nTreeNum = 0; //only for s38 to start
 Float_t beta = 0.033;
 
-//Calcs
+//Apply EventLists
+
+//Calcs Variables
 Float_t r1 = 0; //
 Float_t r2 = 0;
 Float_t intRad[100];
@@ -204,103 +176,94 @@ Float_t modCCang[100];
 Float_t modCCdopfac[100];
 //Float_t iMaxX,iMaxY,iMaxZ;
 Float_t radDiff[100][100];
-Float_t crysTotAddBack[100];
+//Float_t gEnergy[100];//orig genergy
+Float_t crysTotE[100];//original Seg energies
+Float_t crysTotDop[100];//Dopp corrected
+Float_t crysTotAddBack[100];//Addback + Dopp corrected
 Float_t radAddBackTest = 10; // distance between points for addback in cm
+
+//Loop to calculate everything
 for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   if (entryNumber<nEntries[nTreeNum]) {
-    gtree[nTreeNum]->GetEntry(entryNumber);
-
-
-    //loop to calc doppler etc, then fill in separate loop.
-    for (Int_t multNumber=0; multNumber < gebMult; multNumber++) {
-
-      intRad[multNumber] = (intMaxZ[multNumber]) /
-        (TMath::Sqrt(intMaxX[multNumber]*intMaxX[multNumber]
-          + intMaxY[multNumber]*intMaxY[multNumber]
-          + intMaxZ[multNumber]*intMaxZ[multNumber]));
-      modCCang[multNumber] = TMath::ACos(intRad[multNumber]);
-      modCCdopfac[multNumber] = TMath::Sqrt(1. - beta*beta) /
-      (1.0 - beta * TMath::Cos(modCCang[multNumber]));
-
-      //For AddBack Calculate the distance between all other max points
-      //if radius less than param then add up the TotalE then apply Doppler
-      //Doppler from which angle though...
-
-      //to start set all AddBacks as Tot_e (zero added values as we go)
-      crysTotAddBack[multNumber] = crysTot_e[multNumber];
-
-      for (Int_t j=multNumber+1; j < gebMult; j++ ) {
-
-        r2 = (intMaxX[multNumber] - intMaxX[j])*(intMaxX[multNumber] - intMaxX[j])
-        +(intMaxY[multNumber] - intMaxY[j])*(intMaxY[multNumber] - intMaxY[j])
-        +(intMaxZ[multNumber] - intMaxZ[j])*(intMaxZ[multNumber] - intMaxZ[j]);
-        radDiff[multNumber][j] = TMath::Sqrt(r2);
-
-//printf("I,J: %d,%d X1: %f X2: %f Y1: %f Y2: %f Z1: %f Z2: %f R2: %f radDiff: %f\n\n",
-// intMaxX[multNumber], intMaxX[j],
-// intMaxY[multNumber], intMaxY[j],
-// intMaxZ[multNumber], intMaxZ[j],
-
-// printf("I,J: %d,%d radDiff: %f e[i]: %f, e[j]: %f\n",
-//       multNumber,j,
 //       radDiff[multNumber][j],
-//     crysTot_e[multNumber], crysTot_e[j]);
+    gtree[nTreeNum]->GetEntry(entryNumber); //One and only pull of entries ??
 
-        if (radDiff[multNumber][j] <= radAddBackTest) {
-            crysTotAddBack[multNumber] += crysTot_e[j];
+//Loop over Segment Multiplicity
+    for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
+//PASS INFO
+      crysTotE[gebMultNum] = crysTot_e[gebMultNum];
+      //gEnergy[gebMultNum] = genergy[gebMultNum];
 
-      //CANT DO THIS!!! Will Zero Out the Dop !!
-      crysTot_e[j] = 0;
+//DOPPLER
+      intRad[gebMultNum] = (intMaxZ[gebMultNum]) /
+        (TMath::Sqrt(intMaxX[gebMultNum]*intMaxX[gebMultNum]
+          + intMaxY[gebMultNum]*intMaxY[gebMultNum]
+          + intMaxZ[gebMultNum]*intMaxZ[gebMultNum]));
 
+      modCCang[gebMultNum] = TMath::ACos(intRad[gebMultNum]);
+      modCCdopfac[gebMultNum] = TMath::Sqrt(1. - beta*beta) /
+      (1.0 - beta * TMath::Cos(modCCang[gebMultNum]));
+      crysTotDop[gebMultNum] = crysTotE[gebMultNum]/modCCdopfac[gebMultNum];
+
+//ADDBACK
+      crysTotAddBack[gebMultNum] = crysTot_e[gebMultNum];
+      // if (crysTotAddBack[gebMultNum]>0) {
+      for (Int_t j=gebMultNum+1; j < gebMult; j++ ) {
+        r2 = (intMaxX[gebMultNum] - intMaxX[j])*(intMaxX[gebMultNum] - intMaxX[j])
+        +(intMaxY[gebMultNum] - intMaxY[j])*(intMaxY[gebMultNum] - intMaxY[j])
+        +(intMaxZ[gebMultNum] - intMaxZ[j])*(intMaxZ[gebMultNum] - intMaxZ[j]);
+        radDiff[gebMultNum][j] = TMath::Sqrt(r2);
+
+        // printf("I,J: %d,%d radDiff: %f e[i]: %f, e[j]: %f\n",
+        // gebMultNum,j,
+        // radDiff[gebMultNum][j],
+        // crysTot_e[gebMultNum], crysTot_e[j]);
+
+        if (radDiff[gebMultNum][j] <= radAddBackTest) {
+          crysTotAddBack[gebMultNum] += crysTot_e[j];
+          crysTot_e[j] = 0;
         } //radDiff if
       } //j++
-// printf("** crysTotAddBack: %f\n\n",crysTotAddBack[multNumber]);
+      //printf("** crysTotAddBack: %f\n\n",crysTotAddBack[gebMultNum]);
+      crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum]/modCCdopfac[gebMultNum];
+      //printf("** crysTotAddBack w/ Dop: %f\n\n",crysTotAddBack[gebMultNum]);
+    // } //if e>0
+    } //gebMultNum
 
-// **** to be moved to new loop _____
-      if (cut_dtge[nTreeNum]->IsInside(genergy[multNumber],dtime[multNumber])) {
-        hg[nTreeNum]->Fill(genergy[multNumber]); //g fill
-        hgDop[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac[multNumber]); //dop fill
-        if (crysTotAddBack[multNumber] > 0)
-          hgAddBack[nTreeNum]->Fill(crysTotAddBack[multNumber]/modCCdopfac[multNumber]); //ab fill
+//Loop over segment multiplicity for histofill
+    for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
+            if (cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum])) {
 
-        hgNoDopVsAngle[nTreeNum]->Fill(crysTot_e[multNumber],modCCang[multNumber]*180./TMath::Pi());
-        hgDopVsAngle[nTreeNum]->Fill(crysTot_e[multNumber]/modCCdopfac[multNumber],
-          modCCang[multNumber]*180./TMath::Pi());
-      }
-// **** to be moved to new loop ^^^^
-    }
+              hg[nTreeNum]->Fill(genergy[gebMultNum]); //g fill
+              hgDop[nTreeNum]->Fill(crysTotDop[gebMultNum]); //dop fill
 
+              if (crysTotAddBack[gebMultNum] > 0)
+                hgAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum]); //ab fill
 
+              hgNoDopVsAngle[nTreeNum]->Fill(crysTotE[gebMultNum],modCCang[gebMultNum]*180./TMath::Pi());
+              hgDopVsAngle[nTreeNum]->Fill(crysTotDop[gebMultNum],
+                modCCang[gebMultNum]*180./TMath::Pi());
+
+            //     for (Int_t iMult=gMult+1; iMult<gmult; iMult++) {
+            //  hgg[nTree]->Fill(genergy[gMult],genergy[iMult]);
+            //  hgg[nTree]->Fill(genergy[iMult],genergy[gMult]);
+            //     }//gg fill
+          } //cut_dtge
+    }//gebMultNum - fills
   }//entry loop
 }
 
-  // //Analyze histograms
-  // FILE * fitFileOut;
-  // fitFileOut = fopen ("gamFits.dat", "w+");
-  // TCanvas *cc = new TCanvas("cc","fit can",1000,1000);
-  // cc->Clear(); cc->Divide(2,2);
-  //
-  // Double_t mean,sigma,fitLow,fitHigh;
-  //
-  // //ar38 - 1643
-  // mean = 1643;
-  // sigma = 5;
-  // fitLow = 1620;
-  // fitHigh = 1660;
-  //
-  // for (Int_t ifit=0;ifit<numRecoilProcess;ifit++) {
-  //   cc->cd(ifit+1);
-  //   fitGaussP1(hg[ifit],mean,sigma,fitLow,fitHigh,fitFileOut);
-  //   hg[ifit]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-  // }
-  // cc->Modified(); cc->Update();
-  //
-  // //Save and Draw
+//Pull the TTrees of interest
+fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma/analysis/gamFile.root");
+gamFileOut = new TFile(fileName,"RECREATE");
+gDirectory->ls();
+
   for (Int_t i=0;i<numRecoilProcess;i++) {
     hg[i]->Write(); hgg[i]->Write();
     hgDop[i]->Write(); hgAddBack[i]->Write();
   }
-  // //Cleanup
 
-
+//Cleanup
+//gamFileIn->Close();
+//gamFileOut->Close();
 }

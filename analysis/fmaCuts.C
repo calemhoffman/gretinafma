@@ -114,7 +114,7 @@ TH1F * hg_p33; TH1F *hg_s38;
 void fmaCuts(void) {
 
   //TwoChains!
-  chain = new TChain("ctree"); 
+  chain = new TChain("ctree");
   for (Int_t rn = 7; rn<30; rn++) {
     if (goodRun[rn]==1) {
       fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
@@ -123,7 +123,7 @@ void fmaCuts(void) {
   }
   chain->GetListOfFiles()->Print();
 
-  
+
   //Listomania
   TFile *listFile = new TFile("eventLists.root");
   listFile->GetObject("elist_all",elist_all);
@@ -184,7 +184,7 @@ void fmaCuts(void) {
   cut_lr_p33 = (TCutG *) gDirectory->FindObjectAny("cut_lr_p33");
   cut_ud_p33 = (TCutG *) gDirectory->FindObjectAny("cut_ud_p33");
 
-  TFile * gamFile = new TFile("gamFile.root","RECREATE");
+  TFile * gamFile = new TFile("gamTree.root","RECREATE");
   for (Int_t nt=0;nt<5;nt++) {
     gtree[nt] = new TTree(Form("gtree%d",nt),Form("Gam Tree %d",nt));
     gtree[nt]->Branch("recoilID",recoilID,"recoilID[10]/I");
@@ -218,8 +218,8 @@ void fmaCuts(void) {
     gtree[nt]->Branch("intMaxSeg",intMaxSeg,"intMaxSeg[gebMult]/I");
     gtree[nt]->Branch("intMaxSegE",intMaxSegE,"intMaxSegE[gebMult]/F");
   }
-  
-  
+
+
   //Generic
   chain->SetBranchAddress("run", &run);
   chain->SetBranchAddress("hits",&hits);
@@ -248,7 +248,7 @@ void fmaCuts(void) {
   chain->SetBranchAddress("intMaxE",intMaxE);
   chain->SetBranchAddress("intMaxSeg",intMaxSeg);
   chain->SetBranchAddress("intMaxSegE",intMaxSegE);
-  
+
   //histograms define
   he0x = new TH2F("he0x","he0x; e0; x",1500,-1000,500,1000,0,3000);
   he1e3 = new TH2F("he1e3","he1e3; e3; e1",1000,0,3000,1000,0,3000);
@@ -263,7 +263,7 @@ void fmaCuts(void) {
   hg_ar38 = new TH1F("hg_ar38","hg_ar38; Energy [keV]",ch,0,rg);
   hg_cl38 = new TH1F("hg_cl38","hg_cl38; Energy [keV]",ch,0,rg);
   hg_s38 = new TH1F("hg_s38","hg_s38; Energy [keV]",ch,0,rg);
-  
+
   Int_t nEntries = chain->GetEntries();
   printf("nEntries: %d\n",nEntries);
   Float_t counter=0;
@@ -272,25 +272,25 @@ void fmaCuts(void) {
   //for (Int_t entryNumber=0;entryNumber<nEntries; entryNumber++) {
     chain->GetEntry(elist_all->GetEntry(entryNumber));
     //chain->GetEntry(entryNumber);
-    
+
     if (((Float_t)entryNumber/(Float_t)nEntries)>counter)
-      {      
+      {
 	printf("^_^_^_%4.1f_^_^_^\n",counter*100);
 	counter=counter+0.1;
       }
     //Fill recoil stuff
-    //Need to save to file 
+    //Need to save to file
     /* he0x->Fill(x,e[0]); */
     /* he1e3->Fill(e[2],e[0]); */
     /* hlr->Fill(r,l); */
     /* hud->Fill(d,u); */
     for (Int_t tempI=0;tempI<10;tempI++)
       recoilID[tempI]=-1;
-    
+
     /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
     /*   hdtge->Fill(genergy[gMult],dtime[gMult]); */
     /* } */
-    
+
     /* s38 */
     if ( (cut_e1e3_s38->IsInside(e[2],e[0]))
 	 && (cut_e0x_s38->IsInside(x,e[0]))
@@ -303,9 +303,9 @@ void fmaCuts(void) {
       /* 	  hg_s38->Fill(genergy[gMult]); */
       /* 	} */
       /* } */
-      
+
     }
-    
+
     /* cl38 */
     if ( (cut_e1e3_cl38->IsInside(e[2],e[0]))
 	 && (cut_e0x_cl38->IsInside(x,e[0]))
@@ -318,7 +318,7 @@ void fmaCuts(void) {
       /* 	  hg_cl38->Fill(genergy[gMult]); */
       /* 	  } */
       /* } */
-      
+
     } /* cl38 */
 
    /* ar38 */
@@ -333,7 +333,7 @@ void fmaCuts(void) {
       /* 	  hg_ar38->Fill(genergy[gMult]); */
       /* 	} */
       /* } */
-      
+
     } /* ar38 */
 
 
@@ -349,14 +349,14 @@ void fmaCuts(void) {
       /* 	  hg_p33->Fill(genergy[gMult]); */
       /* 	} */
       /* } */
-      
+
     } /* p33 */
-  
+
     //Fill correct TTree//
     for (Int_t tempI=0;tempI<10;tempI++) {
       if (recoilID[tempI]>-1) {
 	gtree[recoilID[tempI]]->Fill();
-      } 
+      }
     }
 
   }//end entry loop
@@ -367,5 +367,5 @@ void fmaCuts(void) {
   // gtree[i]->Write();
   gamFile->Close();
 
- 
+
 }
