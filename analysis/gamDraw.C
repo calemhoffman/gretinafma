@@ -185,7 +185,6 @@ Float_t radAddBackTest = 10; // distance between points for addback in cm
 //Loop to calculate everything
 for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   if (entryNumber<nEntries[nTreeNum]) {
-//       radDiff[multNumber][j],
     gtree[nTreeNum]->GetEntry(entryNumber); //One and only pull of entries ??
 
 //Loop over Segment Multiplicity
