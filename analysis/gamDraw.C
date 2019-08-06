@@ -79,7 +79,7 @@ void gamDraw(void) {
   cut_dtge[3] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
 
   //Initialize items
-  Int_t ch=6000;
+  Int_t ch=4096;
   Int_t rg=ch;
   for (Int_t recNum = 0; recNum<numRecoilProcess; recNum++) {
     hg[recNum] = new TH1F(Form("hg%d",recNum),
@@ -166,7 +166,7 @@ void gamDraw(void) {
 
 //User Ins
 Int_t nTreeNum = 0; //only for s38 to start
-Float_t beta = 0.033;
+Float_t beta = 0.03375; //s38 from Fits
 
 //Apply EventLists
 
@@ -259,11 +259,17 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
               hg[nTreeNum]->Fill(genergy[gebMultNum]); //g fill
               hgDop[nTreeNum]->Fill(crysTotDop[gebMultNum]); //dop fill
 
-              if (crysTotAddBack[gebMultNum] > 0)
-                hgAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum]); //ab fill
+              if (crysTotAddBack[gebMultNum] > 0) {
+                if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
+                  hgAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum]); //ab fill
+                }
+              }
 
-              if (crysTotAdd2Back[gebMultNum] > 0)
-                hgAdd2Back[nTreeNum]->Fill(crysTotAdd2Back[gebMultNum]); //a2b fill
+              if (crysTotAdd2Back[gebMultNum] > 0) {
+                if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
+                  hgAdd2Back[nTreeNum]->Fill(crysTotAdd2Back[gebMultNum]); //a2b fill
+                }
+              }
 
               hgNoDopVsAngle[nTreeNum]->Fill(crysTotE[gebMultNum],modCCang[gebMultNum]*180./TMath::Pi());
               hgDopVsAngle[nTreeNum]->Fill(crysTotAddBack[gebMultNum],
@@ -274,8 +280,12 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
                   hgg[nTreeNum]->Fill(genergy[iMult],genergy[gebMultNum]);
                   hggDop[nTreeNum]->Fill(crysTotDop[gebMultNum],crysTotDop[iMult]);
                   hggDop[nTreeNum]->Fill(crysTotDop[iMult],crysTotDop[gebMultNum]);
-                  hggAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
-                  hggAddBack[nTreeNum]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
+                  if (crysTotAddBack[gebMultNum] > 0 && crysTotAddBack[iMult] > 0) {
+                    if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
+                      hggAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
+                      hggAddBack[nTreeNum]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
+                    }
+                  }
                 }//gg fill
           } //cut_dtge
     }//gebMultNum - fills
@@ -294,6 +304,6 @@ gDirectory->ls();
   }
 
 //Cleanup
-//gamFileIn->Close();
+gamFileIn->Close();
 //gamFileOut->Close();
 }

@@ -26,7 +26,7 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   printf("==========================================================\n");
   printf("================ draw all fma spectra  ===================\n");
   printf("==========================================================\n");
-  TBenchmark gClock;  
+  TBenchmark gClock;
   gClock.Reset(); gClock.Start("gTimer");
 
   /**///======================================================== TTree
@@ -59,7 +59,7 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   TH2F ** hgates = new TH2F*[10];//gates for new cals [leftVright,x,TOF]
   TString gateName;
   TString gateTitle;
- 
+
   //  Int_t runNumber=0;//should be set from ttree or in loop
   TString name[3];
   TString title[3];
@@ -67,7 +67,7 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
     name[i-1].Form("hic_e%d_%d",i,runNumber);
     title[i-1].Form("hic_e%d_%d; energy [arb. units]",i,runNumber);
   }
-  
+
   hic_e1[runNumber]  = new TH1F(name[0] , title[0] , 500, 50, 3500);
   hic_e2[runNumber]  = new TH1F(name[1] , title[1] , 500, 50, 3500);
   hic_e3[runNumber]  = new TH1F(name[2] , title[2] , 500, 50, 3500);
@@ -86,7 +86,7 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   name2d.Form("hic_e2e3_%d",runNumber);
   title2d.Form("hic_e2e3_%d; e3; e2",runNumber);
   hic_e2e3[runNumber] = new TH2F(name2d,title2d,500,10,5010,500,10,5010);
- 
+
   /**///======================================================== Cals
   //Read in cal file to array, do draws w/ cals
   TString cal[300][10];
@@ -101,7 +101,7 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   Int_t tempInt1=0;
   Int_t tempInt2=0;
   Double_t tempDouble1=0,tempDouble2=0, tempDouble3=0;
-  
+
   if( inFile.is_open() ) {
     while (1) {
       inFile >> tempInt1 >> tempInt2 >> tempDouble1 >> tempDouble2 >> tempDouble3;
@@ -136,7 +136,7 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
     return;
   }
 
- 
+
   /**///======================================================== Cuts?
   TCutG* cutG[10]; //!
   TFile * inFileCut = new TFile("fmaCuts.root");
@@ -147,12 +147,12 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   vector<int> countFromCut;
   Int_t cutOption=0;
   isCutFileOpen = inFileCut->IsOpen();
-  
+
   if(isCutFileOpen){
     cutList = (TObjArray *) inFileCut->FindObjectAny("cutList");
     numberCuts = cutList->GetEntries();
     printf("=========== found %d cutG in %s \n", numberCuts, inFileCut->GetName());
-    
+
     for(int numCutIndex = 0; numCutIndex < numberCuts ; numCutIndex++){
       printf(" cut name : %s , VarX: %s, VarY: %s, numPoints: %d \n",
 	     cutList->At(numCutIndex)->GetName(),
@@ -173,7 +173,7 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   /**///======================================================== Draws
   TString varX,varY,draw;
   cutList = new TObjArray();
- 
+
   for (Int_t i=1;i<4;i++) {
     varX.Form("e%d",i);
     //draw.Form("%s%s>>hic_e%d_%d",varX.Data(),cal[runNumber][i-1].Data(),i,runNumber);
@@ -210,5 +210,5 @@ void fmaDraw(TTree *tree, Int_t runNumber = 0) {
   gClock.Stop("gTimer");
   double gTime =  gClock.GetRealTime("gTimer");
   printf("=========== Finsihed, total runTime : %7.0f sec \n", gTime);
-  
+
 }
