@@ -21,17 +21,15 @@
   //TString gate("0");
   // TString name("s38")
 
-  hgg1->ProjectionX();
-  hgg1->ProjectionY();
-
-
-  wrspe("hgg1_px","hgg_cl38_px.spe");
-  wrspe("hgg1_py","hgg_cl38_py.spe");
-  TH1F *htotal_cl38 = new TH1F("htotal_cl38","Total Projection",4096,0,4096);
-  htotal_cl38->Add(hgg1_px);
-  htotal_cl38->Add(hgg1_py);
-  wrspe("htotal_cl38","hgg1_cl38_pxpy.spe");
-  wrspe("hg1","hg1_cl38_gce.spe");
-  wrRadmat("hgg1");
+  hggAddBack0->ProjectionX();
+  hggAddBack0->ProjectionY();
+  wrspe("hggAddBack0_px","hgg_s38_px.spe");
+  wrspe("hggAddBack0_py","hgg_s38_py.spe");
+  TH1F *htotal_s38 = new TH1F("htotal_s38","Total Projection",4096,0,4096);
+  htotal_s38->Add(hggAddBack0_px);
+  htotal_s38->Add(hggAddBack0_py);
+  wrspe("htotal_s38","hggAddBack_s38_pxpy.spe");
+  wrspe("hg0","hg0_s38_gce.spe");
+  wrRadmat("hggAddBack0");
 
 }
