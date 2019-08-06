@@ -5,7 +5,9 @@ hgDop0->SetLineColor(kBlue);
 
 hgAddBack0->SetLineColor(kBlack);
 
-hgAddBack0->Draw(); hgDop0->Draw("same"); hg0->Draw("same");
+hgAdd2Back0->SetLineColor(kGreen+2);
+
+hgAdd2Back0->Draw(""); hgAddBack0->Draw("same"); hgDop0->Draw("same"); hg0->Draw("same");
 
 
 

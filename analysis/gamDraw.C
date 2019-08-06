@@ -63,7 +63,7 @@ Int_t nEntries[10];
 //Histograms
 TString rName[5] = {"s38","cl38","ar38","p33","all"};
 TH1F *hg[5];//original gamma
-TH1F *hgDop[5],*hgAddBack[5];
+TH1F *hgDop[5],*hgAddBack[5],*hgAdd2Back[5];
 TH2F *hgg[5];//og gamma-gamma
 TH2F *hggDop[5],*hggAddBack[5];
 TH2F *hgNoDopVsAngle[5];//raw data vs. angles
@@ -79,7 +79,7 @@ void gamDraw(void) {
   cut_dtge[3] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
 
   //Initialize items
-  Int_t ch=4096;
+  Int_t ch=6000;
   Int_t rg=ch;
   for (Int_t recNum = 0; recNum<numRecoilProcess; recNum++) {
     hg[recNum] = new TH1F(Form("hg%d",recNum),
@@ -101,6 +101,9 @@ void gamDraw(void) {
     hgAddBack[recNum] = new TH1F(Form("hgAddBack%d",recNum),
        	Form("%s hgAddBack%d; Gamma Energy [keV]",rName[recNum].Data(),recNum),
        	ch,0,rg);
+    hgAdd2Back[recNum] = new TH1F(Form("hgAdd2Back%d",recNum),
+        Form("%s hgAdd2Back%d; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+        ch,0,rg);
 
     hggAddBack[recNum] = new TH2F(Form("hggAddBack%d",recNum),
        	Form("%s hggAddBack%d; Gamma Energy [keV]; Gamma Energy [keV]",rName[recNum].Data(),recNum),
@@ -180,7 +183,9 @@ Float_t radDiff[100][100];
 Float_t crysTotE[100];//original Seg energies
 Float_t crysTotDop[100];//Dopp corrected
 Float_t crysTotAddBack[100];//Addback + Dopp corrected
+Float_t crysTotAdd2Back[100];//Add2back + Dopp corrected
 Float_t radAddBackTest = 10; // distance between points for addback in cm
+Int_t addBackDopNum = 0;
 
 //Loop to calculate everything
 for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
@@ -206,7 +211,9 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
 
 //ADDBACK
       crysTotAddBack[gebMultNum] = crysTot_e[gebMultNum];
-      // if (crysTotAddBack[gebMultNum]>0) {
+      crysTotAdd2Back[gebMultNum] = crysTot_e[gebMultNum];
+      addBackDopNum = gebMultNum;
+    //  if (crysTotAddBack[gebMultNum]>0) {
       for (Int_t j=gebMultNum+1; j < gebMult; j++ ) {
         r2 = (intMaxX[gebMultNum] - intMaxX[j])*(intMaxX[gebMultNum] - intMaxX[j])
         +(intMaxY[gebMultNum] - intMaxY[j])*(intMaxY[gebMultNum] - intMaxY[j])
@@ -220,13 +227,29 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
 
         if (radDiff[gebMultNum][j] <= radAddBackTest) {
           crysTotAddBack[gebMultNum] += crysTot_e[j];
+          crysTotAdd2Back[gebMultNum] += crysTot_e[j];
+          if (crysTot_e[j] > crysTot_e[gebMultNum]) addBackDopNum = j;
           crysTot_e[j] = 0;
+//Add2Back - did not improve anything
+          for (Int_t k=j+1;k<gebMult;k++){
+            r2 = (intMaxX[gebMultNum] - intMaxX[j])*(intMaxX[gebMultNum] - intMaxX[j])
+            +(intMaxY[gebMultNum] - intMaxY[j])*(intMaxY[gebMultNum] - intMaxY[j])
+            +(intMaxZ[gebMultNum] - intMaxZ[j])*(intMaxZ[gebMultNum] - intMaxZ[j]);
+            radDiff[j][k] = TMath::Sqrt(r2);
+
+            if (radDiff[j][k] <= radAddBackTest) {
+              crysTotAdd2Back[gebMultNum] += crysTot_e[k];
+              //crysTot_e[k] = 0;
+            }//radDiff if
+          }// k++
+
         } //radDiff if
       } //j++
       //printf("** crysTotAddBack: %f\n\n",crysTotAddBack[gebMultNum]);
       crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum]/modCCdopfac[gebMultNum];
+      crysTotAdd2Back[gebMultNum] = crysTotAdd2Back[gebMultNum]/modCCdopfac[addBackDopNum];
       //printf("** crysTotAddBack w/ Dop: %f\n\n",crysTotAddBack[gebMultNum]);
-    // } //if e>0
+  //  } //if e>0
     } //gebMultNum
 
 //Loop over segment multiplicity for histofill
@@ -239,14 +262,21 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
               if (crysTotAddBack[gebMultNum] > 0)
                 hgAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum]); //ab fill
 
-              hgNoDopVsAngle[nTreeNum]->Fill(crysTotE[gebMultNum],modCCang[gebMultNum]*180./TMath::Pi());
-              hgDopVsAngle[nTreeNum]->Fill(crysTotDop[gebMultNum],
-                modCCang[gebMultNum]*180./TMath::Pi());
+              if (crysTotAdd2Back[gebMultNum] > 0)
+                hgAdd2Back[nTreeNum]->Fill(crysTotAdd2Back[gebMultNum]); //a2b fill
 
-            //     for (Int_t iMult=gMult+1; iMult<gmult; iMult++) {
-            //  hgg[nTree]->Fill(genergy[gMult],genergy[iMult]);
-            //  hgg[nTree]->Fill(genergy[iMult],genergy[gMult]);
-            //     }//gg fill
+              hgNoDopVsAngle[nTreeNum]->Fill(crysTotE[gebMultNum],modCCang[gebMultNum]*180./TMath::Pi());
+              hgDopVsAngle[nTreeNum]->Fill(crysTotAddBack[gebMultNum],
+              modCCang[gebMultNum]*180./TMath::Pi());
+
+                for (Int_t iMult=gebMultNum+1; iMult<gebMult; iMult++) {
+                  hgg[nTreeNum]->Fill(genergy[gebMultNum],genergy[iMult]);
+                  hgg[nTreeNum]->Fill(genergy[iMult],genergy[gebMultNum]);
+                  hggDop[nTreeNum]->Fill(crysTotDop[gebMultNum],crysTotDop[iMult]);
+                  hggDop[nTreeNum]->Fill(crysTotDop[iMult],crysTotDop[gebMultNum]);
+                  hggAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
+                  hggAddBack[nTreeNum]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
+                }//gg fill
           } //cut_dtge
     }//gebMultNum - fills
   }//entry loop
@@ -258,8 +288,9 @@ gamFileOut = new TFile(fileName,"RECREATE");
 gDirectory->ls();
 
   for (Int_t i=0;i<numRecoilProcess;i++) {
-    hg[i]->Write(); hgg[i]->Write();
-    hgDop[i]->Write(); hgAddBack[i]->Write();
+    hg[i]->Write(); hgDop[i]->Write(); hgAddBack[i]->Write(); hgAdd2Back[i]->Write();
+    hgg[i]->Write(); hggDop[i]->Write(); hggAddBack[i]->Write();
+    hgNoDopVsAngle[i]->Write(); hgDopVsAngle[i]->Write();
   }
 
 //Cleanup
