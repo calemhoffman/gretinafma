@@ -31,7 +31,7 @@ Int_t goodRun[30] = {0,0,0,0,0,
 		     1,1,1,0,1,
 		     1,1,1,1,1,
 		     1,1,1,1,1};
-TCanvas *c1;
+TCanvas *cc;
 
 //list stuff
 TEventList * elist_all;
@@ -70,7 +70,7 @@ Float_t dtime[100];
 void drawCuts(void) {
 
   //TwoChains!
-  chain = new TChain("ctree"); 
+  chain = new TChain("ctree");
   for (Int_t rn = 7; rn<30; rn++) {
     if (goodRun[rn]==1) {
       fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
@@ -78,7 +78,7 @@ void drawCuts(void) {
     }
   }
   chain->GetListOfFiles()->Print();
-  
+
   //Listomania
   TFile *listFile = new TFile("eventLists.root");
   listFile->GetObject("elist_all",elist_all);
@@ -89,7 +89,7 @@ void drawCuts(void) {
   gDirectory->pwd();
   //elist_all = elist_temp;
   // listFile->Close();
-  
+
   //General cuts, already applied if with eventList (some in calTree as well).
   all_z_e1e3 = (TCutG *) gDirectory->FindObjectAny("all_z_e1e3");
   all_aq_e0x = (TCutG *) gDirectory->FindObjectAny("all_aq_e0x");
@@ -155,7 +155,7 @@ void drawCuts(void) {
   chain->SetBranchAddress("gmult",&gmult);
   chain->SetBranchAddress("genergy",genergy);
   chain->SetBranchAddress("dtime",dtime);
-  
+
   //histograms define
   he0x = new TH2F("he0x","he0x; e0; x",1500,-1000,500,1000,0,3000);
   he1e3 = new TH2F("he1e3","he1e3; e3; e1",1000,0,3000,1000,0,3000);
@@ -170,7 +170,7 @@ void drawCuts(void) {
   hg_ar38 = new TH1F("hg_ar38","hg_ar38; Energy [keV]",ch,0,rg);
   hg_cl38 = new TH1F("hg_cl38","hg_cl38; Energy [keV]",ch,0,rg);
   hg_s38 = new TH1F("hg_s38","hg_s38; Energy [keV]",ch,0,rg);
-  
+
   Int_t nEntries = chain->GetEntries();
   printf("nEntries: %d\n",nEntries);
   Float_t counter=0;
@@ -179,9 +179,9 @@ void drawCuts(void) {
   //for (Int_t entryNumber=0;entryNumber<nEntries; entryNumber++) {
     chain->GetEntry(elist_all->GetEntry(entryNumber));
     //chain->GetEntry(entryNumber);
-    
+
     if (((Float_t)entryNumber/(Float_t)nEntries)>counter)
-      {      
+      {
 	printf("^_^_^_%4.1f_^_^_^\n",counter*100);
 	counter=counter+0.1;
       }
@@ -193,35 +193,35 @@ void drawCuts(void) {
     for (Int_t gMult=0;gMult< gmult; gMult++) {
       hdtge->Fill(genergy[gMult],dtime[gMult]);
     }
-    
+
     /* s38 */
     if ( (cut_e1e3_s38->IsInside(e[2],e[0]))
 	 && (cut_e0x_s38->IsInside(x,e[0]))
 	 && (cut_lr_s38->IsInside(r,l))
 	 && (cut_ud_s38->IsInside(d,u)) ) {
-      
+
       for (Int_t gMult=0;gMult< gmult; gMult++) {
 	if ( (cut_dtge_s38->IsInside(genergy[gMult],dtime[gMult])) ) {
 	  // hdtge->Fill(genergy[gMult],dtime[gMult]);
 	  hg_s38->Fill(genergy[gMult]);
 	}
       }
-      
+
     }
-    
+
     /* cl38 */
     if ( (cut_e1e3_cl38->IsInside(e[2],e[0]))
 	 && (cut_e0x_cl38->IsInside(x,e[0]))
 	 && (cut_lr_cl38->IsInside(r,l))
 	 && (cut_ud_cl38->IsInside(d,u)) ) {
-      
+
       for (Int_t gMult=0;gMult< gmult; gMult++) {
 	if ( (cut_dtge_cl38->IsInside(genergy[gMult],dtime[gMult])) ) {
 	  // hdtge->Fill(genergy[gMult],dtime[gMult]);
 	  hg_cl38->Fill(genergy[gMult]);
 	  }
       }
-      
+
     } /* cl38 */
 
    /* ar38 */
@@ -229,14 +229,14 @@ void drawCuts(void) {
 	 && (cut_e0x_ar38->IsInside(x,e[0]))
 	 && (cut_lr_ar38->IsInside(r,l))
 	 && (cut_ud_ar38->IsInside(d,u)) ) {
-      
+
       for (Int_t gMult=0;gMult< gmult; gMult++) {
 	if ( (cut_dtge_ar38->IsInside(genergy[gMult],dtime[gMult])) ) {
 	  //hdtge->Fill(genergy[gMult],dtime[gMult]);
 	  hg_ar38->Fill(genergy[gMult]);
 	}
       }
-      
+
     } /* ar38 */
 
 
@@ -245,24 +245,24 @@ void drawCuts(void) {
 	 && (cut_e0x_p33->IsInside(x,e[0]))
 	 && (cut_lr_p33->IsInside(r,l))
 	 && (cut_ud_p33->IsInside(d,u)) ) {
-         
+
       for (Int_t gMult=0;gMult< gmult; gMult++) {
 	if ( (cut_dtge_p33->IsInside(genergy[gMult],dtime[gMult])) ) {
 	  //hdtge->Fill(genergy[gMult],dtime[gMult]);
 	  hg_p33->Fill(genergy[gMult]);
 	}
       }
-      
+
     } /* p33 */
-  
+
   }
-  
-  c1 = new TCanvas("c1","c1",1000,1000);
-  c1->Clear();
-  //c1->Divide(2,1);
-  //c1->cd(1); he0x->Draw("colz");all_aq_e0x->Draw("same");
-  //c1->cd(2); he1e3->Draw("colz");all_z_e1e3->Draw("same");
+
+  cc = new TCanvas("cc","cc",1000,1000);
+  cc->Clear();
+  //cc->Divide(2,1);
+  //cc->cd(1); he0x->Draw("colz");all_aq_e0x->Draw("same");
+  //cc->cd(2); he1e3->Draw("colz");all_z_e1e3->Draw("same");
   // hdtge->Draw("colz");
   hg_ar38->Draw(""); hg_cl38->Draw("same"); hg_s38->Draw("same"); hg_p33->Draw("same");
-  
+
 }

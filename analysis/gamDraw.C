@@ -29,7 +29,7 @@
 
 #include "AutoFit.C"
 
-#define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
+#define numRecoilProcess 4 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
 
 TFile *gamFileIn;
@@ -68,6 +68,8 @@ TH2F *hgg[5];//og gamma-gamma
 TH2F *hggDop[5],*hggAddBack[5];
 TH2F *hgNoDopVsAngle[5];//raw data vs. angles
 TH2F *hgDopVsAngle[5];//Dop corr vs. angles
+TH1I *hMults[5];
+TH1I *hEventType[5];
 //Cuts
 TCutG *cut_dtge[10];
 
@@ -82,6 +84,9 @@ void gamDraw(void) {
   Int_t ch=4096;
   Int_t rg=ch;
   for (Int_t recNum = 0; recNum<numRecoilProcess; recNum++) {
+    hMults[recNum] = new TH1I(Form("hMults%d",recNum),Form("hMults%d",recNum),100,0,100);
+    hEventType[recNum] = new TH1I(Form("hEventType%d",recNum),Form("hEventType%d",recNum),10,0,10);
+
     hg[recNum] = new TH1F(Form("hg%d",recNum),
 			  Form("%s hg%d; Gamma Energy [keV]",rName[recNum].Data(),recNum),
 			  ch,0,rg);
@@ -165,7 +170,7 @@ void gamDraw(void) {
   }
 
 //User Ins
-Int_t nTreeNum = 0; //only for s38 to start
+//Int_t nTreeNum = 0; //only for s38 to start
 Float_t beta = 0.03375; //s38 from Fits
 
 //Apply EventLists
@@ -189,9 +194,10 @@ Int_t addBackDopNum = 0;
 
 //Loop to calculate everything
 for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
+  for (Int_t nTreeNum=0;nTreeNum<numRecoilProcess;nTreeNum++) {
   if (entryNumber<nEntries[nTreeNum]) {
     gtree[nTreeNum]->GetEntry(entryNumber); //One and only pull of entries ??
-
+    hMults[nTreeNum]->Fill(gebMult);//histo mults
 //Loop over Segment Multiplicity
     for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
 //PASS INFO
@@ -213,6 +219,8 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       crysTotAddBack[gebMultNum] = crysTot_e[gebMultNum];
       crysTotAdd2Back[gebMultNum] = crysTot_e[gebMultNum];
       addBackDopNum = gebMultNum;
+      hEventType[nTreeNum]->Fill(1);
+      if (crysTotE[gebMultNum]>0) hEventType[nTreeNum]->Fill(2);
     //  if (crysTotAddBack[gebMultNum]>0) {
       for (Int_t j=gebMultNum+1; j < gebMult; j++ ) {
         r2 = (intMaxX[gebMultNum] - intMaxX[j])*(intMaxX[gebMultNum] - intMaxX[j])
@@ -226,6 +234,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         // crysTot_e[gebMultNum], crysTot_e[j]);
 
         if (radDiff[gebMultNum][j] <= radAddBackTest) {
+          hEventType[nTreeNum]->Fill(3);
           crysTotAddBack[gebMultNum] += crysTot_e[j];
           crysTotAdd2Back[gebMultNum] += crysTot_e[j];
           if (crysTot_e[j] > crysTot_e[gebMultNum]) addBackDopNum = j;
@@ -237,7 +246,8 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
             +(intMaxZ[gebMultNum] - intMaxZ[j])*(intMaxZ[gebMultNum] - intMaxZ[j]);
             radDiff[j][k] = TMath::Sqrt(r2);
 
-            if (radDiff[j][k] <= radAddBackTest) {
+            if (radDiff[j][k] <= radAddBackTest / 3.) {
+              hEventType[nTreeNum]->Fill(4);
               crysTotAdd2Back[gebMultNum] += crysTot_e[k];
               //crysTot_e[k] = 0;
             }//radDiff if
@@ -247,7 +257,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       } //j++
       //printf("** crysTotAddBack: %f\n\n",crysTotAddBack[gebMultNum]);
       crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum]/modCCdopfac[gebMultNum];
-      crysTotAdd2Back[gebMultNum] = crysTotAdd2Back[gebMultNum]/modCCdopfac[addBackDopNum];
+      crysTotAdd2Back[gebMultNum] = crysTotAdd2Back[gebMultNum]/modCCdopfac[gebMultNum];//[addBackDopNum];
       //printf("** crysTotAddBack w/ Dop: %f\n\n",crysTotAddBack[gebMultNum]);
   //  } //if e>0
     } //gebMultNum
@@ -289,6 +299,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
                 }//gg fill
           } //cut_dtge
     }//gebMultNum - fills
+  } //nTreeNum
   }//entry loop
 }
 
@@ -301,6 +312,7 @@ gDirectory->ls();
     hg[i]->Write(); hgDop[i]->Write(); hgAddBack[i]->Write(); hgAdd2Back[i]->Write();
     hgg[i]->Write(); hggDop[i]->Write(); hggAddBack[i]->Write();
     hgNoDopVsAngle[i]->Write(); hgDopVsAngle[i]->Write();
+    hMults[i]->Write(); hEventType[i]->Write();
   }
 
 //Cleanup
