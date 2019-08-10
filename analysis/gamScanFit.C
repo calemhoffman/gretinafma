@@ -58,7 +58,7 @@ int gamScanFit(void) {
    fitFileOut = fopen ("scan_fits.dat", "w+");
      
   //open file read in hist, fit it, spit out results
-  TFile * inFile = new TFile("g.root");
+  TFile * inFile = new TFile("gamma.root");
   if (inFile == 0) {printf("In File Did Not Open\n"); return 1;}
 
   //try some fitting
