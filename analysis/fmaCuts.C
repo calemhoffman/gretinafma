@@ -1,3 +1,5 @@
+#include <TChain.h>
+#include <TString.h>
 #include <TSelector.h>
 #include <TMath.h>
 #include <TBenchmark.h>
@@ -21,137 +23,202 @@
 #include <TFile.h>
 #include <TEventList.h>
 
-#define numScanHist 10000
-
-TFile * lNameIn;
-TFile * fNameIn;
-TEventList * all_elist_x;
-TEventList * elist;
-TCutG *cut_ar38_e1x;
-TCutG *cut_ar38_dtge;
-TCutG *cut_ar38_e1e3;
-TCutG *cut_ar38_e1e2;
-TCutG *cut_ar38_e2e3;
-TCutG *cut_cl38_e1x;
-TCutG *cut_cl38_dtge;
-TCutG *cut_cl38_e1e3;
-TCutG *cut_cl38_e1e2;
-TCutG *cut_cl38_e2e3;
-TCutG *cut_s38_e1x;
-TCutG *cut_s38_dtge;
-TCutG *cut_s38_e1e3;
-TCutG *cut_s38_e1e2;
-TCutG *cut_s38_e2e3;
-
-//----------- generate the histograms --------//
-//Need - all params vs. egamma
-//varios egammas
-//dtegamma vs mult
-//e's vs x
-//l,r,u,d stuff??
-//single gammas
-TH1F *hg_tot; TH1F *hg_ar38; TH1F *hg_cl38; TH1F *hg_s38;
- TH1F *hg_ar38_1; TH1F *hg_cl38_1; TH1F *hg_s38_1;
- TH1F *hg_ar38_2; TH1F *hg_cl38_2; TH1F *hg_s38_2;
- TH1F *hg_ar38_3; TH1F *hg_cl38_3; TH1F *hg_s38_3;
-TH1F *hg_x; TH1F *hg_z; TH1F *hg_t;
-//histos for gamma scans
-TH1F *hscan[numScanHist];
-TH2F *he1e2; TH2F *he1e3; TH2F *he2e3;
-TH2F *he1e12; TH2F *he1e13; TH2F *he2e13;
-TH2F *he1e123; TH2F *he2e123; TH2F *he3e123;
-TH2F *he12e123; TH2F *he23e123; TH2F *he13e123;
-TH2F *he1x;
-//gg
-TH2F *hgg_ar38; TH2F *hgg_cl38; TH2F *hgg_s38;
-
 TChain *chain;
+TString fileName;
+Int_t goodRun[30] = {0,0,0,0,0,
+		     0,0,1,1,1,
+		     1,1,1,1,1,
+		     1,1,1,0,1,
+		     1,1,1,1,1,
+		     1,1,1,1,1};
+TCanvas *c2;
 
-Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
-		      0,0,0,0,0,0,0,0,0,0,//10
-		      0,0,0,0,0,0,0,0,0,0,//20
-		      0,0,0,0,0,0,0,0,0,0,//30
-		      0,0,0,0,0,0,0,0,0,0,//40
-		      0,0,0,0,0,0,0,0,0,0,//50
-		      0,0,0,0,0,0,0,0,0,0,//60
-		      0,0,0,0,0,0,0,1,1,1,//70
-		      1,1,1,1,1,1,1,1,1,1,//80
-		      1,1,1,1,1,0,0,0,0,1,//90
-		      1,1,1,1,1,1,1,1,1,1,//100
-		      1,1,1,1,1,1,1,1,1,1,//110
-		      1,1,1,1,0,1,1,1,1,1,//120
-		      1,1,1,1,1,0,0,0,1,1,//130
-		      1,1,1,1,1,1,0,0,0,0,//140
-		      1,1,1,1,1,1,1,1,1,1,//150
-		      0,1,1,1,1,1,0,1,1,0,//160
-		      1,1,1,1,1,0,0,0,0,0,//170
-		      0,0,0,0,0,0,0,0,0,0,//180
-		      0,0,0,0,0,0,1,1,1,0,//190
-		      1,0,1,1,1,1,1,1,1,1,//200
-		      0,0,1,1,1,1,1,1,1,1,//210
-		      1,0,0,1,1,1,1,1,1,0,//220
-		      1,1,1,1,1,1,1,1,1,0,//230
-		      1,1,1,1,1,1,0,0,1,1,//240
-		      1,1,1,1,1,1,1,1,1,1,//250
-		      0,1,1,1,1,1,1,1,1,1,//260
-		      1,1,1,1,1,1,1,1,1,1,//270
-		      0,1,1,1,1,1,1,1,1,1,//280
-		      1,1,1,0,0,0,0,0,0,0};//290
+//list stuff
+TEventList * elist_all;
 
+//New TTree Stuff
+TTree * gtree[10];
+Int_t recoilID[10];
+TString recoilName[10];
+
+Int_t run;
+Int_t hits;
+Float_t l,r,u,d,x,y;
+Float_t e[10];
+Int_t gmult;
+Float_t genergy[100];
+Float_t dtime[100];
+
+Int_t runNumber;
+Int_t numHits=1;
+Float_t left[1];
+Float_t right[1];
+Float_t up[1];
+Float_t down[1];
+Float_t e1[1];
+Float_t e2[1];
+Float_t e3[1];
+Float_t tac[1];
+Float_t fmaDeltaTime[1];
+Int_t fmaMult[10];
+Int_t gammaMult;
+Float_t gammaEnergy[100];
+Float_t gammaTimestamp[100];
+Float_t deltaTime[100];
+Int_t gebMult;
+Int_t crysType[100];
+Int_t crysId[100];
+Int_t crysNum[100];
+Float_t crysTot_e[100];
+long long int crysTimestamp[100];
+double crysTrigtime[100];
+Float_t crysT0[100];
+Float_t crysCfd[100];
+Float_t crysChisq[100];
+Float_t crysNormChisq[100];
+Float_t crysBaseline[100];
+unsigned int crysTpad[100];
+Float_t crysPolAngle[100];
+Float_t intMaxX[100];
+Float_t intMaxY[100];
+Float_t intMaxZ[100];
+Float_t intMaxE[100];
+Int_t intMaxSeg[100];
+Float_t intMaxSegE[100];
+
+//Cuts for histos
+TCutG *all_z_e1e3,*all_aq_e0x,*all_tof_dtge;
+TCutG *cut_ar38_dtge;
+TCutG *cut_ar38_g600,*cut_ar38_g1600,*cut_ar38_g1800,*cut_ar38_g2100;
+TCutG *cut_cl38_dtge;
+TCutG *cut_cl38_g200,*cut_cl38_g700,*cut_cl38_g1100,*cut_cl38_g2600,*cut_cl38_g3100;
+TCutG *cut_s38_dtge;
+TCutG *cut_s38_g1200,*cut_s38_g1500,*cut_s38_g800;
+TCutG *cut_p33_g1400,*cut_p33_g1800,*cut_p33_g2300;
+//finals
+TCutG *cut_e1e3_s38,*cut_e0x_s38,*cut_lr_s38,*cut_ud_s38,*cut_dtge_s38;
+TCutG *cut_e1e3_cl38,*cut_e0x_cl38,*cut_lr_cl38,*cut_ud_cl38,*cut_dtge_cl38;
+TCutG *cut_e1e3_ar38,*cut_e0x_ar38,*cut_lr_ar38,*cut_ud_ar38,*cut_dtge_ar38;
+TCutG *cut_e1e3_p33,*cut_e0x_p33,*cut_lr_p33,*cut_ud_p33,*cut_dtge_p33;
+//Histos
+TH2F *he0x,*he1e3;
+TH2F *hdtge,*hlr,*hud;
+
+TH1F *hg_tot;
+TH1F *hg_ar38; TH1F *hg_cl38;
+TH1F * hg_p33; TH1F *hg_s38;
+
+
+
+/* main */
 void fmaCuts(void) {
-  TBenchmark gClock;  
-  gClock.Reset(); gClock.Start("gTimer");
- 
-  //Get Cuts
-  cut_ar38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1x");
-  cut_ar38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_ar38_dtge");
-  cut_ar38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1e3");
-  cut_ar38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e1e2");
-  cut_ar38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_e2e3");
-  cut_cl38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e1x");
-  cut_cl38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_cl38_dtge");
-  cut_cl38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e1e3");
-  cut_cl38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e1e2");
-  cut_cl38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_e2e3");
-  cut_s38_e1x = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1x");
-  cut_s38_dtge = (TCutG *) gDirectory->FindObjectAny("cut_s38_dtge");
-  cut_s38_e1e3 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1e3");
-  cut_s38_e1e2 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e1e2");
-  cut_s38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e2e3");
-  
-  Int_t runN=7;
 
-  Int_t run;
-  Int_t hits;
-  Float_t l,r,u,d,x,y;
-  Float_t e[10];
-  Int_t gmult;
-  Float_t genergy[100];
-  Float_t dtime[100];
-
-
-
-   //Get List
-  lNameIn = new TFile("eventLists.root");
-  lNameIn->GetObject("all_elist_x",all_elist_x); 
-  Int_t nElistEntry = all_elist_x->GetN(); 
-  printf("nElistEntry: %d ",nElistEntry);
-  //Get Chain
-  TString fileName;
+  //TwoChains!
   chain = new TChain("ctree");
-  for (Int_t rn = 50; rn<300; rn++) {
+  for (Int_t rn = 7; rn<30; rn++) {
     if (goodRun[rn]==1) {
       fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
       chain->Add(fileName);
     }
   }
-
   chain->GetListOfFiles()->Print();
-    
-  //fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_%d.root",runN));
-  //fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/cal_292.root"));
-  //if (fNameIn == 0) {printf("Error: file read in fail\n"); return;}
-  //TTree * ctree = (TTree *) fNameIn->Get("ctree");
+
+
+  //Listomania
+  TFile *listFile = new TFile("eventLists.root");
+  listFile->GetObject("elist_all",elist_all);
+  Int_t numElistEntries = elist_all->GetN();
+  printf("Number of ElistEntries: %d \n",numElistEntries);
+  gDirectory->pwd();
+  gROOT->cd();
+  gDirectory->pwd();
+  //elist_all = elist_temp;
+  // listFile->Close();
+
+  //General cuts, already applied if with eventList (some in calTree as well).
+  all_z_e1e3 = (TCutG *) gDirectory->FindObjectAny("all_z_e1e3");
+  all_aq_e0x = (TCutG *) gDirectory->FindObjectAny("all_aq_e0x");
+  all_tof_dtge = (TCutG *) gDirectory->FindObjectAny("all_tof_dtge");
+
+  //AR
+  cut_dtge_ar38 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_ar38");
+  cut_e1e3_ar38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_ar38");
+  cut_e0x_ar38 = (TCutG *) gDirectory->FindObjectAny("cut_e0x_ar38");
+  cut_lr_ar38 = (TCutG *) gDirectory->FindObjectAny("cut_lr_ar38");
+  cut_ud_ar38 = (TCutG *) gDirectory->FindObjectAny("cut_ud_ar38");
+
+  cut_ar38_g600 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_g600");
+  cut_ar38_g1600 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_g1600");
+  cut_ar38_g1800 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_g1800");
+  cut_ar38_g2100 = (TCutG *) gDirectory->FindObjectAny("cut_ar38_g2100");
+  //CL
+  cut_dtge_cl38 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_cl38");
+  cut_e1e3_cl38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_cl38");
+  cut_e0x_cl38 = (TCutG *) gDirectory->FindObjectAny("cut_e0x_cl38");
+  cut_lr_cl38 = (TCutG *) gDirectory->FindObjectAny("cut_lr_cl38");
+  cut_ud_cl38 = (TCutG *) gDirectory->FindObjectAny("cut_ud_cl38");
+
+  cut_cl38_g200 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_g200");
+  cut_cl38_g700 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_g700");
+  cut_cl38_g1100 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_g1100");
+  cut_cl38_g2600 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_g2600");
+  cut_cl38_g3100 = (TCutG *) gDirectory->FindObjectAny("cut_cl38_g3100");
+  //S
+  cut_dtge_s38 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_s38");
+  cut_e1e3_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_s38");
+  cut_e0x_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e0x_s38");
+  cut_lr_s38 = (TCutG *) gDirectory->FindObjectAny("cut_lr_s38");
+  cut_ud_s38 = (TCutG *) gDirectory->FindObjectAny("cut_ud_s38");
+
+  cut_s38_g1200 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1200");
+  cut_s38_g1500 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1500");
+  cut_s38_g800 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g800");
+  //P33
+  cut_p33_g1400 = (TCutG *) gDirectory->FindObjectAny("cut_p33_g1400");
+  cut_p33_g1800 = (TCutG *) gDirectory->FindObjectAny("cut_p33_g1800");
+  cut_p33_g2300 = (TCutG *) gDirectory->FindObjectAny("cut_p33_g2300");
+
+  cut_dtge_p33 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
+  cut_e1e3_p33 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_p33");
+  cut_e0x_p33 = (TCutG *) gDirectory->FindObjectAny("cut_e0x_p33");
+  cut_lr_p33 = (TCutG *) gDirectory->FindObjectAny("cut_lr_p33");
+  cut_ud_p33 = (TCutG *) gDirectory->FindObjectAny("cut_ud_p33");
+
+  TFile * gamFile = new TFile("gamTree.root","RECREATE");
+  for (Int_t nt=0;nt<5;nt++) {
+    gtree[nt] = new TTree(Form("gtree%d",nt),Form("Gam Tree %d",nt));
+    gtree[nt]->Branch("recoilID",recoilID,"recoilID[10]/I");
+    //Generic
+    gtree[nt]->Branch("run", &run, "run/I");
+    gtree[nt]->Branch("hits",&hits,"hits/I");
+    //Positions
+    gtree[nt]->Branch("l",&l,"l/F");
+    gtree[nt]->Branch("r",&r,"r/F");
+    gtree[nt]->Branch("u",&u,"u/F");
+    gtree[nt]->Branch("d",&d,"d/F");
+    gtree[nt]->Branch("x",&x,"x/F");
+    gtree[nt]->Branch("y",&y,"y/F");
+    //Energies
+    gtree[nt]->Branch("e",e,"e[10]/F");
+    //Gammas - a bunch more to add...
+    gtree[nt]->Branch("gmult",&gmult,"gmult/I");
+    gtree[nt]->Branch("genergy",genergy,"genergy[gmult]/F");
+    gtree[nt]->Branch("dtime",dtime,"dtime[gmult]/F");
+    //Gamma breakdown
+    gtree[nt]->Branch("gebMult",&gebMult,"gebMult/I");
+    gtree[nt]->Branch("crysId",crysId,"crysId[gebMult]/I");
+    gtree[nt]->Branch("crysNum",crysNum,"crysNum[gebMult]/I");
+    gtree[nt]->Branch("crysTot_e",crysTot_e,"crysTot_e[gebMult]/F");
+    gtree[nt]->Branch("crysT0",crysT0,"crysT0[gebMult]/F");
+    gtree[nt]->Branch("crysPolAngle",crysPolAngle,"crysPolAngle[gebMult]/F");
+    gtree[nt]->Branch("intMaxX",intMaxX,"intMaxX[gebMult]/F");
+    gtree[nt]->Branch("intMaxY",intMaxY,"intMaxY[gebMult]/F");
+    gtree[nt]->Branch("intMaxZ",intMaxZ,"intMaxZ[gebMult]/F");
+    gtree[nt]->Branch("intMaxE",intMaxE,"intMaxE[gebMult]/F");
+    gtree[nt]->Branch("intMaxSeg",intMaxSeg,"intMaxSeg[gebMult]/I");
+    gtree[nt]->Branch("intMaxSegE",intMaxSegE,"intMaxSegE[gebMult]/F");
+  }
+
 
   //Generic
   chain->SetBranchAddress("run", &run);
@@ -169,241 +236,136 @@ void fmaCuts(void) {
   chain->SetBranchAddress("gmult",&gmult);
   chain->SetBranchAddress("genergy",genergy);
   chain->SetBranchAddress("dtime",dtime);
+   chain->SetBranchAddress("gebMult",&gebMult);
+  chain->SetBranchAddress("crysId",crysId);
+  chain->SetBranchAddress("crysNum",crysNum);
+  chain->SetBranchAddress("crysTot_e",crysTot_e);
+   chain->SetBranchAddress("crysT0",crysT0);
+  chain->SetBranchAddress("crysPolAngle",crysPolAngle);
+  chain->SetBranchAddress("intMaxX",intMaxX);
+  chain->SetBranchAddress("intMaxY",intMaxY);
+  chain->SetBranchAddress("intMaxZ",intMaxZ);
+  chain->SetBranchAddress("intMaxE",intMaxE);
+  chain->SetBranchAddress("intMaxSeg",intMaxSeg);
+  chain->SetBranchAddress("intMaxSegE",intMaxSegE);
 
-  //histograms
-  Int_t ch = 8000;
-  Int_t rg = 8000;
+  //histograms define
+  he0x = new TH2F("he0x","he0x; e0; x",1500,-1000,500,1000,0,3000);
+  he1e3 = new TH2F("he1e3","he1e3; e3; e1",1000,0,3000,1000,0,3000);
+  hdtge = new TH2F("hdtge","hdtge; dt; ge",10000,0,10000,75,0,150);
+  hlr = new TH2F("hlr","hlr; l; r",1000,0,4000,1000,0,4000);
+  hud = new TH2F("hud","hud; u; d",1000,0,4000,1000,0,4000);
 
+  Int_t ch=6000;
+  Int_t rg=ch;
   hg_tot = new TH1F("hg_tot","Ungated hg_tot; Energy [keV]",ch,0,rg);
-  hg_x = new TH1F("hg_x","Ungated hg_x; Energy [keV]",ch,0,rg);
-  hg_z = new TH1F("hg_z","Ungated hg_z; Energy [keV]",ch,0,rg);
-  hg_t = new TH1F("hg_t","Ungated hg_t; Energy [keV]",ch,0,rg);
+  hg_p33 = new TH1F("hg_p33","hg_p33; Energy [keV]",ch,0,rg);
   hg_ar38 = new TH1F("hg_ar38","hg_ar38; Energy [keV]",ch,0,rg);
   hg_cl38 = new TH1F("hg_cl38","hg_cl38; Energy [keV]",ch,0,rg);
   hg_s38 = new TH1F("hg_s38","hg_s38; Energy [keV]",ch,0,rg);
-  hg_ar38_1 = new TH1F("hg_ar38_1"," hg_ar38_1; Energy [keV]",ch,0,rg);
-  hg_cl38_1 = new TH1F("hg_cl38_1"," hg_cl38_1; Energy [keV]",ch,0,rg);
-  hg_s38_1 = new TH1F("hg_s38_1"," hg_s38_1; Energy [keV]",ch,0,rg);
-  hg_ar38_2 = new TH1F("hg_ar38_2"," hg_ar38_2; Energy [keV]",ch,0,rg);
-  hg_cl38_2 = new TH1F("hg_cl38_2"," hg_cl38_2; Energy [keV]",ch,0,rg);
-  hg_s38_2 = new TH1F("hg_s38_2"," hg_s38_2; Energy [keV]",ch,0,rg);
-  hg_ar38_3 = new TH1F("hg_ar38_3"," hg_ar38_3; Energy [keV]",ch,0,rg);
-  hg_cl38_3 = new TH1F("hg_cl38_3"," hg_cl38_3; Energy [keV]",ch,0,rg);
-  hg_s38_3 = new TH1F("hg_s38_3"," hg_s38_3; Energy [keV]",ch,0,rg);
 
-  ch=4000;
-  rg=4000;
-  
-  for (Int_t id1=0;id1<numScanHist;id1++)
-    hscan[id1] = new TH1F(Form("hscan_%d",id1),Form("hscan_%d",id1),ch,0,rg);
-  
-  Float_t bins=80;
-  Float_t delta=40;
-  Float_t mins=0;
-  Float_t maxs=6000;
-  
-  //SCANNING HERE FOR NOW
-  for (Int_t id1=0;id1<=bins;id1++) {
-    for (Int_t id2=0;id2<=bins;id2++) {
-      Float_t temp1 = (float)id1*delta;
-      Float_t temp2 = (float)id1*delta+delta;
-      Float_t temp3 = (float)id2*delta;
-      Float_t temp4 = (float)id2*delta+delta;
-      Int_t tempID = id1*bins+id2;
-      hscan[tempID]->SetTitle(Form("id:%d,y:%4.0f-%4.0f, x:%4.0f-%4.0f;egamma [keV]\n",
-				   tempID,temp1,temp2,temp3,temp4));
-    }
-  }
-  
-  ch=600;
-  rg=6000;
-
-  he1e2 = new TH2F("he1e2","he1e2; e2; e1",ch,0,rg,ch,0,rg);
-  he1e3 = new TH2F("he1e3","he1e3; e3; e1",ch,0,rg,ch,0,rg);
-  he2e3 = new TH2F("he2e3","he2e3; e3; e2",ch,0,rg,ch,0,rg);
-
-  he1e12 = new TH2F("he1e12","he1e12; e12; e1",2*ch,0,2*rg,ch,0,rg);
-  he1e13 = new TH2F("he1e13","he1e13; e13; e1",2*ch,0,2*rg,ch,0,rg);
-  he2e13 = new TH2F("he2e13","he2e13; e13; e2",2*ch,0,2*rg,ch,0,rg);
-
-  he1e123 = new TH2F("he1e123","he1e123; e123; e1",3*ch,0,3*rg,ch,0,rg);
-  he2e123 = new TH2F("he2e123","he2e123; e123; e2",3*ch,0,3*rg,ch,0,rg);
-  he3e123 = new TH2F("he3e123","he3e123; e123; e3",3*ch,0,3*rg,ch,0,rg);
-  
-  he12e123 = new TH2F("he12e123","he12e123; e123; e12",3*ch,0,3*rg,2*ch,0,2*rg);
-  he23e123 = new TH2F("he23e123","he23e123; e123; e23",3*ch,0,3*rg,2*ch,0,2*rg);
-  he13e123 = new TH2F("he13e123","he13e123; e123; e13",3*ch,0,3*rg,2*ch,0,2*rg);
-
-  he1x = new TH2F("he1x","he1x",1000,-2000,2000,600,0,6000);
-
-  ch=4000;
-  rg=8000;
-  hgg_ar38 = new TH2F("hgg_ar38","hgg_ar38",ch,0,rg,ch,0,rg);
-  hgg_cl38 = new TH2F("hgg_cl38","hgg_cl38",ch,0,rg,ch,0,rg);
-  hgg_s38 = new TH2F("hgg_s38","hgg_s38",ch,0,rg,ch,0,rg);
-  
-  //----------- process the tree ---------------//
   Int_t nEntries = chain->GetEntries();
   printf("nEntries: %d\n",nEntries);
-
   Float_t counter=0;
-  double gTime;
-  
-  for (Int_t entryNumber=0;entryNumber<nEntries/*nElistEntry*/; entryNumber++) {
-    //chain->GetEntry(all_elist_x->GetEntry(entryNumber));
-    chain->GetEntry(entryNumber);
- 
-    if (((Float_t)entryNumber/(Float_t)nElistEntry)>counter)
-     {      
-       printf("^_^_^_%4.1f_^_^_^\n",counter*100);
-       counter=counter+0.1;
-     }
-    /* //Fill outside of gates */
-    /* he1e2->Fill(e[1],e[0]); */
+
+  for (Int_t entryNumber=0;entryNumber<numElistEntries; entryNumber++) {
+  //for (Int_t entryNumber=0;entryNumber<nEntries; entryNumber++) {
+    chain->GetEntry(elist_all->GetEntry(entryNumber));
+    //chain->GetEntry(entryNumber);
+
+    if (((Float_t)entryNumber/(Float_t)nEntries)>counter)
+      {
+	printf("^_^_^_%4.1f_^_^_^\n",counter*100);
+	counter=counter+0.1;
+      }
+    //Fill recoil stuff
+    //Need to save to file
+    /* he0x->Fill(x,e[0]); */
     /* he1e3->Fill(e[2],e[0]); */
-    /* he2e3->Fill(e[2],e[1]);// */
-    /* he1e12->Fill(e[0]+e[1],e[0]); */
-    /* he1e13->Fill(e[0]+e[2],e[0]); */
-    /* he2e13->Fill(e[0]+e[2],e[1]);// */
-    /* he1e123->Fill(e[0]+e[1]+e[2],e[0]); */
-    /* he2e123->Fill(e[0]+e[1]+e[2],e[1]); */
-    /* he3e123->Fill(e[0]+e[1]+e[2],e[2]);// */
-    /* he12e123->Fill(e[0]+e[1]+e[2],e[0]+e[1]); */
-    /* he23e123->Fill(e[0]+e[1]+e[2],e[1]+e[2]); */
-    /* he13e123->Fill(e[0]+e[1]+e[2],e[0]+e[2]);// */
+    /* hlr->Fill(r,l); */
+    /* hud->Fill(d,u); */
+    for (Int_t tempI=0;tempI<10;tempI++)
+      recoilID[tempI]=-1;
 
-    for (Int_t iMult=0;iMult<gmult;iMult++) {
-      hg_tot->Fill(genergy[iMult]);
+    /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
+    /*   hdtge->Fill(genergy[gMult],dtime[gMult]); */
+    /* } */
 
-      if ( cut_ar38_dtge->IsInside(genergy[iMult],dtime[iMult]) ||
-	   cut_cl38_dtge->IsInside(genergy[iMult],dtime[iMult]) ||
-	   cut_s38_dtge->IsInside(genergy[iMult],dtime[iMult]) ) {
-	hg_t->Fill(genergy[iMult]);
-	he1x->Fill(x,e[0]);
-	//SCANNING HERE FOR NOW
-	/* for (Int_t id1=0;id1<=bins;id1++) { */
-	/*   for (Int_t id2=0;id2<=bins;id2++) { */
-	/*     Float_t temp1 = (float)id1*delta; */
-	/*     Float_t temp2 = (float)id1*delta+delta; */
-	/*     Float_t temp3 = (float)id2*delta; */
-	/*     Float_t temp4 = (float)id2*delta+delta; */
-	/*     Int_t tempID = id1*bins+id2; */
-	/*     if ( (e[0]>temp1&&e[0]<temp2)&&(e[2]>temp3&&e[2]<temp4) ) */
-	/*       hscan[tempID]->Fill(genergy[iMult]); */
-	/*   } */
-	/* } */
+    /* s38 */
+    if ( (cut_e1e3_s38->IsInside(e[2],e[0]))
+	 && (cut_e0x_s38->IsInside(x,e[0]))
+	 && (cut_lr_s38->IsInside(r,l))
+	 && (cut_ud_s38->IsInside(d,u)) ) {
+      recoilID[0]=0;
+      /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
+      /* 	if ( (cut_dtge_s38->IsInside(genergy[gMult],dtime[gMult])) ) { */
+      /* 	  // hdtge->Fill(genergy[gMult],dtime[gMult]); */
+      /* 	  hg_s38->Fill(genergy[gMult]); */
+      /* 	} */
+      /* } */
 
-	
+    }
 
-      }//cut_dtge
+    /* cl38 */
+    if ( (cut_e1e3_cl38->IsInside(e[2],e[0]))
+	 && (cut_e0x_cl38->IsInside(x,e[0]))
+	 && (cut_lr_cl38->IsInside(r,l))
+	 && (cut_ud_cl38->IsInside(d,u)) ) {
+      recoilID[1]=1;
+      /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
+      /* 	if ( (cut_dtge_cl38->IsInside(genergy[gMult],dtime[gMult])) ) { */
+      /* 	  // hdtge->Fill(genergy[gMult],dtime[gMult]); */
+      /* 	  hg_cl38->Fill(genergy[gMult]); */
+      /* 	  } */
+      /* } */
 
-      if ( cut_ar38_e1x->IsInside(x,e[0]) ||
-	   cut_cl38_e1x->IsInside(x,e[0]) ||
-	   cut_s38_e1x->IsInside(x,e[0])) {
-    	hg_x->Fill(genergy[iMult]);
-      }//cut_e1x (should be part of TEventList already
-      
-      if ( (cut_ar38_e1e3->IsInside(e[2],e[0]) &&
-	    cut_ar38_e1e2->IsInside(e[1],e[0]) &&
-	    cut_ar38_e2e3->IsInside(e[2],e[1])) ||
-	   (cut_cl38_e1e3->IsInside(e[2],e[0]) &&
-	    cut_cl38_e1e2->IsInside(e[1],e[0]) &&
-	    cut_cl38_e2e3->IsInside(e[2],e[1])) ||
-	   (cut_s38_e1e3->IsInside(e[2],e[0]) &&
-	    cut_s38_e1e2->IsInside(e[1],e[0]) &&
-	    cut_s38_e2e3->IsInside(e[2],e[1])) ) {
-    	hg_z->Fill(genergy[iMult]);
-      }//cut_z
-      
-      //Individual isotopes
-      if ( cut_ar38_dtge->IsInside(genergy[iMult],dtime[iMult]) &&
-    	   cut_ar38_e1x->IsInside(x,e[0]) &&
-    	   cut_ar38_e1e3->IsInside(e[2],e[0]) ) {
-	hg_ar38_1->Fill(genergy[iMult]);
-	
-	if (cut_ar38_e1e2->IsInside(e[1],e[0]) ) {
-	  hg_ar38_2->Fill(genergy[iMult]);
-	  
-	  if (cut_ar38_e2e3->IsInside(e[2],e[1]) ) {
-	    hg_ar38_3->Fill(genergy[iMult]);
-	    hg_ar38->Fill(genergy[iMult]);
-	    
-	    for (Int_t j=iMult+1;j<gmult;j++) {
-	      hgg_ar38->Fill(genergy[iMult],genergy[j]);
-	      hgg_ar38->Fill(genergy[j],genergy[iMult]);
-	    }
-	  }
-	}
+    } /* cl38 */
+
+   /* ar38 */
+    if ( (cut_e1e3_ar38->IsInside(e[2],e[0]))
+	 && (cut_e0x_ar38->IsInside(x,e[0]))
+	 && (cut_lr_ar38->IsInside(r,l))
+	 && (cut_ud_ar38->IsInside(d,u)) ) {
+      recoilID[2]=2;
+      /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
+      /* 	if ( (cut_dtge_ar38->IsInside(genergy[gMult],dtime[gMult])) ) { */
+      /* 	  //hdtge->Fill(genergy[gMult],dtime[gMult]); */
+      /* 	  hg_ar38->Fill(genergy[gMult]); */
+      /* 	} */
+      /* } */
+
+    } /* ar38 */
+
+
+    /* p33 */
+    if ( (cut_e1e3_p33->IsInside(e[2],e[0]))
+	 && (cut_e0x_p33->IsInside(x,e[0]))
+	 && (cut_lr_p33->IsInside(r,l))
+	 && (cut_ud_p33->IsInside(d,u)) ) {
+      recoilID[3]=3;
+      /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
+      /* 	if ( (cut_dtge_p33->IsInside(genergy[gMult],dtime[gMult])) ) { */
+      /* 	  //hdtge->Fill(genergy[gMult],dtime[gMult]); */
+      /* 	  hg_p33->Fill(genergy[gMult]); */
+      /* 	} */
+      /* } */
+
+    } /* p33 */
+
+    //Fill correct TTree//
+    for (Int_t tempI=0;tempI<10;tempI++) {
+      if (recoilID[tempI]>-1) {
+	gtree[recoilID[tempI]]->Fill();
       }
-      
-      
-      if ( cut_cl38_dtge->IsInside(genergy[iMult],dtime[iMult]) &&
-    	   cut_cl38_e1x->IsInside(x,e[0]) &&
-    	   cut_cl38_e1e3->IsInside(e[2],e[0]) ) {
-	hg_cl38_1->Fill(genergy[iMult]);
-	
-	if (cut_cl38_e1e2->IsInside(e[1],e[0]) ) {
-	  hg_cl38_2->Fill(genergy[iMult]);
-	  
-	  if (cut_cl38_e2e3->IsInside(e[2],e[1]) ) {
-	    hg_cl38_3->Fill(genergy[iMult]);
-	    hg_cl38->Fill(genergy[iMult]);
-	    
-	    for (Int_t j=iMult+1;j<gmult;j++) {
-	      hgg_cl38->Fill(genergy[iMult],genergy[j]);
-	      hgg_cl38->Fill(genergy[j],genergy[iMult]);
-	    }
-	  }
-	}
-      }
-      
-      if ( cut_s38_dtge->IsInside(genergy[iMult],dtime[iMult]) &&
-    	   cut_s38_e1x->IsInside(x,e[0]) &&
-    	   cut_s38_e1e3->IsInside(e[2],e[0]) ) {
-	hg_s38_1->Fill(genergy[iMult]);
-	
-	if (cut_s38_e1e2->IsInside(e[1],e[0]) ) {
-	  hg_s38_2->Fill(genergy[iMult]);
-	  
-	  if (cut_s38_e2e3->IsInside(e[2],e[1]) ) {
-	    hg_s38_3->Fill(genergy[iMult]);
-	    hg_s38->Fill(genergy[iMult]);
-	    
-	    for (Int_t j=iMult+1;j<gmult;j++) {
-	      hgg_s38->Fill(genergy[iMult],genergy[j]);
-	      hgg_s38->Fill(genergy[j],genergy[iMult]);
-	    }
-	  }
-	}
-      }
-    }//iMult
-  }//EntryLoop
-  
-  TCanvas *cCan1 = new TCanvas("cCan1","cCan1",1550,500);
-  cCan1->Clear(); cCan1->Divide(3,1);
-  cCan1->cd(1); he1e2->Draw("colz");
-  cCan1->cd(2); he1e3->Draw("colz");
-  cCan1->cd(3); he2e3->Draw("colz");
-  hg_ar38->SetLineColor(kRed);
-  hg_cl38->SetLineColor(kBlue);
-  hg_s38->SetFillColor(kBlack);
-  cCan1->Clear(); hg_ar38->Draw(); hg_cl38->Draw("same"); hg_s38->Draw("same");
+    }
 
-  TFile *fNameOut = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma_git/analysis/gamma.root"),"RECREATE");
-  if (fNameOut == 0) {printf("Error: file read in fail\n"); return;}
-  hg_ar38->Write(); hg_cl38->Write(); hg_s38->Write();
-  hg_ar38_1->Write(); hg_cl38_1->Write(); hg_s38_1->Write();
-  hg_ar38_2->Write(); hg_cl38_2->Write(); hg_s38_2->Write();
-  hg_ar38_3->Write(); hg_cl38_3->Write(); hg_s38_3->Write();
-  hgg_s38->Write(); hgg_cl38->Write(); hgg_ar38->Write();
-  for (Int_t i=0;i<numScanHist;i++)
-    hscan[i]->Write();
-  
-  fNameOut->Write();
-  fNameOut->Close();
-  
-  gClock.Stop("gTimer");
-  gTime =  gClock.GetRealTime("gTimer");
-  printf("=========== Finished, total runTime : %7.0f sec \n", gTime);
-  printf("=========== Or, %7.1f sec / 1M events\n", gTime/((double)nEntries)*1e6);
+  }//end entry loop
+
+
+  //cleanup
+  //  for (Int_t i=0;i<4;i++)
+  // gtree[i]->Write();
+  gamFile->Close();
+
+
 }

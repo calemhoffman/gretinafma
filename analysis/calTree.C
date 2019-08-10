@@ -224,8 +224,6 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
   ctree->Branch("intMaxSeg",intMaxSeg,"intMaxSeg[gebMult]/I");
   ctree->Branch("intMaxSegE",intMaxSegE,"intMaxSegE[gebMult]/F");
 
-
-  
   //Read Cals In
   ifstream inFile;
   inFile.open("fma_ecal.dat");
