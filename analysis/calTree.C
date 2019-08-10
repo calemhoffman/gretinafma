@@ -41,8 +41,8 @@ TCutG *all_aq_e0x;
 TCutG *all_z_e1e3;
 
 void calTree() {
-  Int_t lowRunNumber=144;
-  Int_t highRunNumber=310;
+  Int_t lowRunNumber=50;
+  Int_t highRunNumber=295;
   Int_t runN;
   
   Int_t runNumber;
