@@ -122,7 +122,7 @@ class evtList {
   float *gammaEnergy;
   float *gammaTimestamp;
   float *deltaTime;
-  float gDeltaTime[100][100];
+  int gDeltaTime[100][100];
   //------------------//
   int gebMult;//New
   int *crysType;                                             /* typically: abcd1234 */
