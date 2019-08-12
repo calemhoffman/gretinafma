@@ -845,7 +845,7 @@ if (nCCenergies>1) {
       el->gDeltaTime[i][j] = TMath::Abs(el->gDeltaTime[i][j]);
       //printf("gDeltaTime[%d][%d]: %5.5d\n",i,j,el->gDeltaTime[i][j]);
       h1_gdelta_time->Fill(el->gDeltaTime[i][j]);
-      if (TMath::Abs(el->gDeltaTime[i][j])>=0 && TMath::Abs(el->gDeltaTime[i][j]<200)) {
+      if (TMath::Abs(el->gDeltaTime[i][j])>=0 && TMath::Abs(el->gDeltaTime[i][j]<40)) {
         writeYN[1] = 1;
         h1_event_type->Fill(2);
       }
@@ -859,7 +859,7 @@ writeYN[2] = 1;
 
 
   // Must go last of course
-  if (writeYN[0] == 1 || writeYN[1] == 1) {
+  if (writeYN[0] == 1 || writeYN[1] == 1 || writeYN[2]==1) {
     //gamma tracking data
     el->gebMult = (Int_t)GEB_event->mult;
     for (Int_t ii=0;ii<el->gebMult; ii++) {
