@@ -44,10 +44,10 @@ TH1D *h1_module_id;
 TH2F *h2_chan;
 
 TH1D *h1_left, *h1_right, *h1_up, *h1_down, *h1_de1, *h1_de2;
-TH1D *h1_de3, *h1_rftof, *h1_sumlr, *h1_sumud, *h1_de12, *h1_etot, *h1_x, *h1_y; 
+TH1D *h1_de3, *h1_rftof, *h1_sumlr, *h1_sumud, *h1_de12, *h1_etot, *h1_x, *h1_y;
 
 TH2F *h2_ede1, *h2_ede1g, *h2_ede2, *h2_ede12;
-TH2F *h2_lr, *h2_ud, *h2_erftof, *h2_erftofg, *h2_xde1; 
+TH2F *h2_lr, *h2_ud, *h2_erftof, *h2_erftofg, *h2_xde1;
 
 TH1D *h1_sumehi, *h1_tgppac, *h1_tgppacg;
 TH2F *h2_xehi1, *h2_xehi1g;
@@ -55,12 +55,15 @@ TH2F *h2_de1ehi, *h2_de1ehig;
 
 TH1D *h1_ng;
 
+TH1I *h1_event_type;
+TH1F *h1_gdelta_time;
+
 /* parameters */
 
 extern PARS Pars;
 extern EXCHANGE exchange;
 
-extern  int nCCenergies; 
+extern  int nCCenergies;
 extern  float CCenergies[MAX_GAMMA_RAYS];
 extern  unsigned long long int CCtimestamps[MAX_GAMMA_RAYS]; //DS
 extern  int CCids[MAX_GAMMA_RAYS];
@@ -76,7 +79,7 @@ extern TTree *tree;
 evtList* el = new evtList(100);
 unsigned long long int currentEventNumber;
 float TimestampTemp;
-
+float TimestampTemp2;
 /* ----------------------------------------------------------------- */
 
 int
@@ -133,10 +136,11 @@ sup_mode3 ()
   /* tree->Branch("intSeg",el->intSeg,"intSeg[1000][100]/I"); */
   /* tree->Branch("intSegEnergy",el->intSegEnergy,"intSegEnergy[1000][100]/F"); */
   //May have incorrect data types for a few new branches crh 1.19
-  
+
   TimestampTemp=0;
+  TimestampTemp2=0;
   currentEventNumber=0;
-  
+
   TH1D *mkTH1D (char *, char *, int, double, double);
   TH2F *mkTH2F (char *, char *, int, double, double, int, double, double);
   int test_convert();
@@ -197,13 +201,16 @@ sup_mode3 ()
   mode3_hitpat_chan->SetXTitle ("channel ID");
   mode3_hitpat_chan->SetYTitle ("counts");
 
+  h1_event_type = new TH1I("h1_event_type","eventType",20,0,20);
+  h1_gdelta_time = new TH1F("h1_gdelta_time","gdeltaTime",500,0,500);
+
   h1_chan0 = mkTH1D ("chan0","chan0",10000,0,10000);
   h1_module_id = mkTH1D ("module","module",10000,0,10000);
- 
+
   h2_chan = mkTH2F ("chan","chan",10000,0,10000,10,0,10);
 
   h1_left = mkTH1D ("l","l",10000,0,10000);
-  h1_right = mkTH1D ("r","r",10000,0,10000); 
+  h1_right = mkTH1D ("r","r",10000,0,10000);
   h1_up = mkTH1D ("up","up",10000,0,10000);
   h1_down = mkTH1D ("down","down",10000,0,10000);
   h1_sumlr = mkTH1D ("sumlr","sumlr",10000,0,10000);
@@ -335,28 +342,28 @@ bin_mode3 (GEB_EVENT * GEB_event)
 
  if (Pars.CurEvNo <= Pars.NumToPrint)
    printf ("entered bin_mode3 @ event number: %i \n", Pars.CurEvNo);
- 
- 
+
+
  de1=0; de2=0; de3=0; de12=0; etot=0; left=0; right=0; up=0; down=0; rftof=0; sumlr=0; sumud=0; x=0; y=0;
  ppacts=0; tgppac=0;
  for (int i=0;i<10;i++)
    fmaMultCounter[i] = 0;
- 
+
  for (ii = 0; ii < GEB_event->mult; ii++)
    {
-  
-   
+
+
 
      /* pos keeps record of how far we have */
      /* proceeded in the payload */
      /* and count how many crystals in payload */
-     
+
      pos = 0;
      ncrystal = 0;
-     
+
      if (GEB_event->ptgd[ii]->type == GEB_TYPE_RAW || GEB_event->ptgd[ii]->type == GEB_TYPE_GT_MOD29)
        {
-	 
+
 	 if (Pars.CurEvNo <= Pars.NumToPrint)
 	   {
 	     GebTypeStr (GEB_event->ptgd[ii]->type, str);
@@ -364,9 +371,9 @@ bin_mode3 (GEB_EVENT * GEB_event)
 		     GEB_event->ptgd[ii]->timestamp, GEB_event->ptgd[ii]->timestamp);
 	     printf ("payload length: %i bytes\n", GEB_event->ptgd[ii]->length);
 	   }
-	 
+
 	 /* byteswap the entire payload */
-	 
+
 	 bit32Pointer = (unsigned int *) GEB_event->ptinp[ii];
 	 for (i = 0; i < GEB_event->ptgd[ii]->length / 4; i++)
 	   {
@@ -376,7 +383,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
 	     t4 = (*(bit32Pointer + i) & 0xff000000) >> 24;
 	     *(bit32Pointer + i) = t1 + t2 + t3 + t4;
 	   };
-	 
+
 	 /* inside the payload we have the a number */
 	 /* of header/trace data sets. These are the  */
 	 /* crystals that were in coincidence. Here  */
@@ -386,14 +393,14 @@ bin_mode3 (GEB_EVENT * GEB_event)
 	 /* least 40 traces, but there can also be  */
 	 /* 80, 120... etc. Be sure MAXPAYLOADSIZE  */
 	 /* is big enough to handle GT mode3 payloads. */
-	 
+
 	 /* loop over the header/traces of the mode 3 data */
-	 
+
 	 while (pos < GEB_event->ptgd[ii]->length)
             {
-	      
+
               /* start of event (Event.len known from last event) */
-	      
+
               if (pos == 0)
                 bit32Pointer = (unsigned int *) GEB_event->ptinp[ii];
               else
@@ -425,7 +432,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
                }
              gtheaders++;
 //             printf("%i %i %i\n", gtheaders, ncrystal, newcrystal);
-                
+
               /* fill event header, skip EOE */
 
               bit16Pointer = (unsigned short int *) (bit32Pointer + 1);
@@ -495,7 +502,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
               Event.chan_id = (Event.hdr[0] & 0x000f);
               Event.digitizer_id = (Event.hdr[0] >> 4) & 0x0003;
               Event.crystal_id = (Event.hdr[0] >> 6) & 0x0003;
-              Event.module_id = (Event.hdr[0] >> 8) & 0x00ff;   /* zhu use 0x00ff, tl use 0x001f */ 
+              Event.module_id = (Event.hdr[0] >> 8) & 0x00ff;   /* zhu use 0x00ff, tl use 0x001f */
 
 
               /* construct detector/channel/segment ID */
@@ -644,14 +651,14 @@ bin_mode3 (GEB_EVENT * GEB_event)
 
                 };
 
-              /* extract LED external time, per documentation, works */	      
+              /* extract LED external time, per documentation, works */
               Event.LEDts = (unsigned long long int) Event.hdr[2] +
                 ((unsigned long long int) Event.hdr[3] << 16) + ((unsigned long long int) Event.hdr[4] << 32);
               if (Pars.CurEvNo <= Pars.NumToPrint)
                 printf ("Event.LEDts = %20lli\n", Event.LEDts);
-	      
+
               /* extract CFD external time, per documentation, seems odd...not working? */
-	      
+
               Event.CFDts = (unsigned long long int) Event.hdr[7] +
                 ((unsigned long long int) Event.hdr[8] << 16) + ((unsigned long long int) Event.hdr[9] << 32);
               if (Pars.CurEvNo <= Pars.NumToPrint)
@@ -661,7 +668,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
 	      if (Event.module_id==31) {
 		h1_module_id->Fill(Event.module_id);
 		h2_chan->Fill(Event.ehi,Event.chan_id);
-		
+
 		switch (Event.chan_id) {
 		case 0 :
 		  right=Event.ehi; h1_right->Fill(right);
@@ -702,25 +709,25 @@ bin_mode3 (GEB_EVENT * GEB_event)
 	    };/* while (pos<=GEB_event->ptgd[ii]->length) */
        };/* if(GEB_event->ptgd[ii]->type == GEB_TYPE_RAW) */
    };/*for (ii = 0; ii < GEB_event->mult; ii++)*/
- 
+
   h2_lr->Fill(left, right);
   h2_ud->Fill(up, down);
-  
+
   if ((left>0)&&(right>0)) {
     sumlr=left+right;
     h1_sumlr->Fill(sumlr);
     x=left-right+5000;
     h1_x->Fill(x);
   };
-  
+
   if ((up>0)&&(down>0)) {
     sumud=up+down;
     h1_sumud->Fill(sumud);
     y=up-down+5000;
     h1_y->Fill(y);
   };
-  
-  
+
+
   if ((de1>0)&&(de2>0)&&(de3>0)) {
     etot=de1+de3;
     de12=de1+de2;
@@ -731,20 +738,20 @@ bin_mode3 (GEB_EVENT * GEB_event)
     h1_etot->Fill(etot);
     h2_xde1->Fill(x,de1);
   };
-  
+
   h2_erftof->Fill(etot, rftof);
-  
+
   if (de1>1400) h2_erftofg->Fill(etot, rftof);
-  
+
   for (i=0; i<nCCenergies; i++) {
     //printf ("---CCenergies[%i]=%7.2f\n", i, CCenergies[i]);
     h1_sumehi->Fill(CCenergies[i]);
-    
+
   };
-  
+
   h1_ng->Fill(nCCenergies);
-  
-  
+
+
   for (i=0; i<nCCenergies; i++) {
     tgppac=CCtimestamps[i]-Event.LEDts;
     h1_tgppac->Fill(tgppac);
@@ -756,7 +763,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
       h1_tgppacg->Fill(tgppac);
       h2_xehi1g->Fill(x, CCenergies[i]);
       h2_de1ehig->Fill(de1, CCenergies[i]);
-      
+
       //};
       if (nCCenergies > 1){
 	for (int j=0; j<i; j++){
@@ -769,11 +776,9 @@ bin_mode3 (GEB_EVENT * GEB_event)
       }
     };
   };
-   
+
   /* CRH ADD TTREE PASS ALL PARAMETERS HERE TO TTREE*/
   el->Reset();//Reset event data
-
-
      /* printf("GEB_event->mult: %d, %d\n",GEB_event->mult,ii); */
      /* printf("CRYS_INTPTS ptinp->tot_e: %4.4f\n",ptinp->tot_e); */
      /* printf("CRYS_INTPTS ptinp->num: %d\n",ptinp->num); */
@@ -796,36 +801,61 @@ bin_mode3 (GEB_EVENT * GEB_event)
   el->e2[el->numHits-1] = de2;
   el->e3[el->numHits-1] = de3;
   el->tac[el->numHits-1] = rftof;
-  
+
   for (Int_t i=0;i<10;i++) {
     //if (fmaMultCounter[i]>0)
     el->fmaMult[i] = fmaMultCounter[i];
   }
 
   //pushes timestamp only for fma ...
-  if (el->fmaMult[0]>0 && TimestampTemp==0)
-    TimestampTemp = (Float_t)Event.LEDts/1.0e8;
-  
-  el->fmaDeltaTime[el->numHits-1] = (Float_t)Event.LEDts/1.0e8 - TimestampTemp;
+  //if (TimestampTemp==0)
+  //TimestampTemp = (Float_t)Event.LEDts/1.0e8;
+
+  if (el->fmaMult[0]>0)
+    el->fmaDeltaTime[el->numHits-1] = (Float_t)Event.LEDts/1.0e8;
 
   el->gammaMult = nCCenergies;
+  // if (nCCenergies > 0 && TimestampTemp2 == 0)
+  //   TimestampTemp2 = (Float_t)Event.LEDts/1.0e8;
+
   Int_t writeYN = 0;
+  //fill everything for safety first
   for (i=0; i<nCCenergies; i++) {
     el->gammaEnergy[i] = CCenergies[i];
-    el->gammaTimestamp[i] = (Float_t)CCtimestamps[i]/1.0e8 - TimestampTemp;
-    el->deltaTime[i] = (Float_t)(Event.LEDts - CCtimestamps[i]);
-    if (TMath::Abs(el->deltaTime[i])>30 && TMath::Abs(el->deltaTime[i]<120))
-      writeYN = 1;
-  };
-  
+    el->gammaTimestamp[i] = (Float_t)CCtimestamps[i]/1.0e8;
+    if (el->fmaMult[0]>0) {
+      el->deltaTime[i] = (Float_t)(Event.LEDts - CCtimestamps[i]);
+      if (TMath::Abs(el->deltaTime[i])>30 && TMath::Abs(el->deltaTime[i]<120)) {
+        writeYN = 1; //condition for fma coincidence TTree write
+        h1_event_type->Fill(writeYN);
+      }
+    }
+  }
+
+//Gamma-Gamma coincidence if true writeYN = 2;
+for (i=0; i<nCCenergies; i++) {
+  for (Int_t j=i+1; j<nCCenergies; j++ ) {
+    el->gDeltaTime[i][j] = TMath::Abs(el->gammaTimestamp[i] - el->gammaTimestamp[j]);
+    el->gDeltaTime[i][j] = (el->gDeltaTime[i][j])*1.0e8; //
+    h1_gdelta_time->Fill(el->gDeltaTime[i][j]);
+    if (TMath::Abs(el->gDeltaTime[i][j])>0 && TMath::Abs(el->gDeltaTime[i][j]<200)) {
+      writeYN = 2;
+      h1_event_type->Fill(writeYN);
+    }
+  }
+};
+h1_event_type->Fill(3);
+//Singles if true writeYN = 3;
+
+
   // Must go last of course
   if (writeYN == 1) {
     //gamma tracking data
     el->gebMult = (Int_t)GEB_event->mult;
     for (Int_t ii=0;ii<el->gebMult; ii++) {
-      
+
       ptinp = (CRYS_INTPTS *) GEB_event->ptinp[ii];
-      
+
       if ( (ii<100) &&
 	   (ptinp->tot_e<1e4 && ptinp->tot_e>0) &&
 	   (ptinp->num>0 && ptinp->num<20) ) {
@@ -847,7 +877,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
 	  Int_t segId = (el->crysId[ii] - moduleId*4)%4;
 	  el->crysPolAngle[ii] = Pars.modCCang[moduleId][segId];
 	}
-	
+
 	//loop interaction points
 	Int_t tempMaxE = 0;
 	Int_t maxJJ = -1;
@@ -856,7 +886,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
 	       && (ptinp->intpts[jj].e<1e4)
 	       && (ptinp->intpts[jj].e > tempMaxE) ) {
 	    tempMaxE = ptinp->intpts[jj].e;
-	    maxJJ = jj; 
+	    maxJJ = jj;
 	  }
 	}
 	//Fill the max values
@@ -872,11 +902,11 @@ bin_mode3 (GEB_EVENT * GEB_event)
     }
     tree->Fill(); currentEventNumber++;
   }
-  
+
   nCCenergies=0;
   if (Pars.CurEvNo <= Pars.NumToPrint)
     printf ("exit bin_mode3\n");
-  
+
   return (0);
- 
+
 }

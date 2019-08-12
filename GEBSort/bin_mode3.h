@@ -25,6 +25,7 @@ class evtList {
     gammaEnergy = new float[maxHits];
     gammaTimestamp = new float[maxHits];
     deltaTime = new float[maxHits];
+    //gDeltaTime = new float[maxHits][100];
 
     crysType = new int[maxHits];
     crysId = new int[maxHits];
@@ -33,10 +34,10 @@ class evtList {
     crysTimestamp = new long long int[maxHits];
     crysTrigtime = new long long[maxHits];
     crysT0 = new float[maxHits];
-    crysCfd = new float[maxHits]; 
-    crysChisq = new float[maxHits]; 
-    crysNormChisq = new float[maxHits]; 
-    crysBaseline = new float[maxHits]; 
+    crysCfd = new float[maxHits];
+    crysChisq = new float[maxHits];
+    crysNormChisq = new float[maxHits];
+    crysBaseline = new float[maxHits];
     crysTpad = new unsigned int[maxHits];
     crysPolAngle = new float[maxHits];
 
@@ -45,9 +46,9 @@ class evtList {
     intMaxZ = new float[maxHits];
     intMaxE = new float[maxHits];
     intMaxSeg = new int[maxHits];
-    intMaxSegE = new float[maxHits];    
+    intMaxSegE = new float[maxHits];
 };
-  
+
   //Reset Function
   void Reset() {
     runNumber=TMath::QuietNaN();
@@ -68,6 +69,8 @@ class evtList {
       gammaEnergy[i] = TMath::QuietNaN();
       gammaTimestamp[i] = TMath::QuietNaN();
       deltaTime[i] = TMath::QuietNaN();
+      for (int j=0;j<100;j++)
+        gDeltaTime[i][j] = TMath::QuietNaN();
 
       crysType[i] = TMath::QuietNaN();
       crysId[i] = TMath::QuietNaN();
@@ -98,14 +101,14 @@ class evtList {
       //  	intE[i][j] = TMath::QuietNaN();
       //  	intSeg[i][j] = TMath::QuietNaN();
       //  	intSegEnergy[i][j] = TMath::QuietNaN();
-      // }  
+      // }
     }
-    
+
     for (int i=0;i<10;i++)
       fmaMult[i] = TMath::QuietNaN();
     return;
   };
-  
+
   //Members
   int maxHits;
   int runNumber;
@@ -119,6 +122,7 @@ class evtList {
   float *gammaEnergy;
   float *gammaTimestamp;
   float *deltaTime;
+  float gDeltaTime[100][100];
   //------------------//
   int gebMult;//New
   int *crysType;                                             /* typically: abcd1234 */
@@ -139,7 +143,7 @@ class evtList {
   float *intMaxZ;
   float *intMaxE;       /* here e refers to the fraction */
   int *intMaxSeg;                /* segment hit */
-  float *intMaxSegE;   
+  float *intMaxSegE;
   //-------------------//
   // float intX[100][20];
   // float intY[100][20];
@@ -149,5 +153,5 @@ class evtList {
   // float intSegEnergy[100][20];         /* energy of hit segment */
   /* to ensure 8-byte alignment of struct */
   // DCR_INTPTS intpts[MAX_INTPTS];
-  
+
 };
