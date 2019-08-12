@@ -56,7 +56,7 @@ TH2F *h2_de1ehi, *h2_de1ehig;
 TH1D *h1_ng;
 
 TH1I *h1_event_type;
-TH1F *h1_gdelta_time;
+TH1I *h1_gdelta_time;
 
 /* parameters */
 
@@ -109,6 +109,7 @@ sup_mode3 ()
   tree->Branch("gammaEnergy",el->gammaEnergy,"gammaEnergy[gammaMult]/F");
   tree->Branch("gammaTimestamp",el->gammaTimestamp,"gammaTimestamp[gammaMult]/F");
   tree->Branch("deltaTime",el->deltaTime,"deltaTime[gammaMult]/F");
+  tree->Branch("gDeltaTime",el->gDeltaTime,"gDeltaTime[gammaMult]/I");
   tree->Branch("gebMult",&el->gebMult,"gebMult/I");
   tree->Branch("crysType",el->crysType,"crysType[gebMult]/I");
   tree->Branch("crysId",el->crysId,"crysId[gebMult]/I");
@@ -202,7 +203,7 @@ sup_mode3 ()
   mode3_hitpat_chan->SetYTitle ("counts");
 
   h1_event_type = new TH1I("h1_event_type","eventType",20,0,20);
-  h1_gdelta_time = new TH1F("h1_gdelta_time","gdeltaTime",500,0,500);
+  h1_gdelta_time = new TH1I("h1_gdelta_time","gdeltaTime",200,-10,190);
 
   h1_chan0 = mkTH1D ("chan0","chan0",10000,0,10000);
   h1_module_id = mkTH1D ("module","module",10000,0,10000);
@@ -809,7 +810,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
 
   //pushes timestamp only for fma ...
   //if (TimestampTemp==0)
-  //TimestampTemp = (Float_t)Event.LEDts/1.0e8;
+    //TimestampTemp = (Float_t)Event.LEDts/1.0e8;
 
   if (el->fmaMult[0]>0)
     el->fmaDeltaTime[el->numHits-1] = (Float_t)Event.LEDts/1.0e8;
@@ -818,38 +819,47 @@ bin_mode3 (GEB_EVENT * GEB_event)
   // if (nCCenergies > 0 && TimestampTemp2 == 0)
   //   TimestampTemp2 = (Float_t)Event.LEDts/1.0e8;
 
-  Int_t writeYN = 0;
+  Int_t writeYN[5] = {0,0,0,0,0};
   //fill everything for safety first
   for (i=0; i<nCCenergies; i++) {
     el->gammaEnergy[i] = CCenergies[i];
-    el->gammaTimestamp[i] = (Float_t)CCtimestamps[i]/1.0e8;
+    //el->gammaTimestamp[i] = (Float_t)((Float_t)CCtimestamps[i]/1.0e8);//-> does not work as expected
+    //printf("CCtimestamps[%d]: %llu \n",i,CCtimestamps[i]);
+    //printf("gammaTimestamp[%d]: %10.16f\n",i,el->gammaTimestamp[i]);
     if (el->fmaMult[0]>0) {
       el->deltaTime[i] = (Float_t)(Event.LEDts - CCtimestamps[i]);
       if (TMath::Abs(el->deltaTime[i])>30 && TMath::Abs(el->deltaTime[i]<120)) {
-        writeYN = 1; //condition for fma coincidence TTree write
-        h1_event_type->Fill(writeYN);
+        writeYN[0] = 1; //condition for fma coincidence TTree write
+        h1_event_type->Fill(1);
       }
     }
   }
+  printf("\n\n");
 
 //Gamma-Gamma coincidence if true writeYN = 2;
-for (i=0; i<nCCenergies; i++) {
-  for (Int_t j=i+1; j<nCCenergies; j++ ) {
-    el->gDeltaTime[i][j] = TMath::Abs(el->gammaTimestamp[i] - el->gammaTimestamp[j]);
-    el->gDeltaTime[i][j] = (el->gDeltaTime[i][j])*1.0e8; //
-    h1_gdelta_time->Fill(el->gDeltaTime[i][j]);
-    if (TMath::Abs(el->gDeltaTime[i][j])>0 && TMath::Abs(el->gDeltaTime[i][j]<200)) {
-      writeYN = 2;
-      h1_event_type->Fill(writeYN);
+if (nCCenergies>1) {
+  for (i=0; i<nCCenergies; i++) {
+    for (Int_t j=i+1; j<nCCenergies; j++ ) {
+      //el->gDeltaTime[i][j] = TMath::Abs(el->gammaTimestamp[i] - el->gammaTimestamp[j]);
+      el->gDeltaTime[i][j] = (Int_t)(CCtimestamps[i] - CCtimestamps[j]); //(el->gDeltaTime[i][j])*1.0e8; //
+      el->gDeltaTime[i][j] = TMath::Abs(el->gDeltaTime[i][j]);
+      //printf("gDeltaTime[%d][%d]: %5.5d\n",i,j,el->gDeltaTime[i][j]);
+      h1_gdelta_time->Fill(el->gDeltaTime[i][j]);
+      if (TMath::Abs(el->gDeltaTime[i][j])>=0 && TMath::Abs(el->gDeltaTime[i][j]<200)) {
+        writeYN[1] = 1;
+        h1_event_type->Fill(2);
+      }
     }
   }
 };
+
 h1_event_type->Fill(3);
-//Singles if true writeYN = 3;
+//Singles if true
+writeYN[2] = 1;
 
 
   // Must go last of course
-  if (writeYN == 1) {
+  if (writeYN[0] == 1 || writeYN[1] == 1) {
     //gamma tracking data
     el->gebMult = (Int_t)GEB_event->mult;
     for (Int_t ii=0;ii<el->gebMult; ii++) {
