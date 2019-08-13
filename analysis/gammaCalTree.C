@@ -22,18 +22,20 @@
 #include <TTreeReaderArray.h>
 #include <TFile.h>
 
-#define maxEntryToSort 1e6
-#define SOURCE 1 //0 - Eu, 1 - ???
+#define maxEntryToSort 1e8
+#define SOURCE 0 //0 - Eu, 1 - ???
 
 TH1F *hg[5];//original gamma
 TH1F *hgDop[5],*hgAddBack[5],*hgAdd2Back[5];
 TH2F *hgg[5];//og gamma-gamma
 TH2F *hggDop[5],*hggAddBack[5];
-TH2F *hgNoDopVsAngle[5];//raw data vs. angles
-TH2F *hgDopVsAngle[5];//Dop corr vs. angles
 TH1I *hMults[5];
 TH1I *hEventType[5];
 TString rName[5] = {"all"};
+
+TFile *gamFileIn;
+TFile *gamFileOut;
+TString fileName;
 
 void gammaCalTree() {
   Int_t runN;
@@ -78,7 +80,7 @@ void gammaCalTree() {
   //Initialize items
   Int_t ch=4096;
   Int_t rg=ch;
-  for (Int_t recNum = 0; recNum<1; recNum++) {
+  for (Int_t recNum = 0; recNum<2; recNum++) {
     hMults[recNum] = new TH1I(Form("hMults%d",recNum),Form("hMults%d",recNum),100,0,100);
     hEventType[recNum] = new TH1I(Form("hEventType%d",recNum),Form("hEventType%d",recNum),10,0,10);
 
@@ -108,20 +110,11 @@ void gammaCalTree() {
     hggAddBack[recNum] = new TH2F(Form("hggAddBack%d",recNum),
        	Form("%s hggAddBack%d; Gamma Energy [keV]; Gamma Energy [keV]",rName[recNum].Data(),recNum),
        	ch,0,rg,ch,0,rg);
-
-    hgNoDopVsAngle[recNum] = new TH2F(Form("hgNoDopVsAngle%d",recNum),
-       	Form("%s hgNoDopVsAngle%d; Gamma Energy [keV]; Angle [degrees]",
-        rName[recNum].Data(),recNum),
-        ch,0,rg,180,0,180);
-    hgDopVsAngle[recNum] = new TH2F(Form("hgDopVsAngle%d",recNum),
-       	Form("%s hgDopVsAngle%d; Gamma Energy [keV]; Angle [degrees]",
-        rName[recNum].Data(),recNum),
-        ch,0,rg,180,0,180);
    }
 
-  Int_t goodRun[2] = {0,1};//303 (152Eu), 304 (??)
+  Int_t goodRun[2] = {0,0};//303 (152Eu), 304 (??)
 
-  for (Int_t index=0;index<=1;index++) {
+  for (Int_t index=0;index<=2;index++) {
     runN=303+index;
     printf("Starting sort of run number: %d\n",runN);
     if (goodRun[index]==SOURCE) {
@@ -193,7 +186,7 @@ void gammaCalTree() {
         if (entryNumber <= maxEntryToSort) {
           tree->GetEntry(entryNumber);
           entrySorted = entryNumber;
-          hMults[0]->Fill(gebMult);//histo mults
+          hMults[index]->Fill(gebMult);//histo mults
           for (Int_t gebMultNum=0;gebMultNum<gebMult; gebMultNum++) {
       //PASS INFO
           crysTotE[gebMultNum] = crysTot_e[gebMultNum];
@@ -210,8 +203,8 @@ void gammaCalTree() {
           crysTotAddBack[gebMultNum] = crysTot_e[gebMultNum];
           crysTotAdd2Back[gebMultNum] = crysTot_e[gebMultNum];
           addBackDopNum = gebMultNum;
-          hEventType[0]->Fill(1);
-            if (crysTotE[gebMultNum]>0) hEventType[0]->Fill(2);
+          hEventType[index]->Fill(1);
+            if (crysTotE[gebMultNum]>0) hEventType[index]->Fill(2);
             for (Int_t j=gebMultNum+1; j < gebMult; j++ ) {
               r2 = (intMaxX[gebMultNum] - intMaxX[j])*(intMaxX[gebMultNum] - intMaxX[j])
               +(intMaxY[gebMultNum] - intMaxY[j])*(intMaxY[gebMultNum] - intMaxY[j])
@@ -222,7 +215,7 @@ void gammaCalTree() {
             // radDiff[gebMultNum][j],
             // crysTot_e[gebMultNum], crysTot_e[j]);
               if (radDiff[gebMultNum][j] <= radAddBackTest) {
-                hEventType[0]->Fill(3);
+                hEventType[index]->Fill(3);
                 crysTotAddBack[gebMultNum] += crysTot_e[j];
                 crysTotAdd2Back[gebMultNum] += crysTot_e[j];
                 if (crysTot_e[j] > crysTot_e[gebMultNum]) addBackDopNum = j;
@@ -235,7 +228,7 @@ void gammaCalTree() {
                   radDiff[j][k] = TMath::Sqrt(r2);
 
                   if (radDiff[j][k] <= radAddBackTest / 3.) {
-                    hEventType[0]->Fill(4);
+                    hEventType[index]->Fill(4);
                     crysTotAdd2Back[gebMultNum] += crysTot_e[k];
                     //crysTot_e[k] = 0;
                   }//radDiff if
@@ -250,34 +243,29 @@ void gammaCalTree() {
 //Loop over segment multiplicity for histofill
     for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
 
-              hg[0]->Fill(gammaEnergy[gebMultNum]); //g fill
-              hgDop[0]->Fill(crysTotDop[gebMultNum]); //dop fill
+              hg[index]->Fill(gammaEnergy[gebMultNum]); //g fill
+              hgDop[index]->Fill(crysTotDop[gebMultNum]); //dop fill
 
               if (crysTotAddBack[gebMultNum] > 0) {
                 if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
-                  hgAddBack[0]->Fill(crysTotAddBack[gebMultNum]); //ab fill
+                  hgAddBack[index]->Fill(crysTotAddBack[gebMultNum]); //ab fill
                 }
               }
 
               if (crysTotAdd2Back[gebMultNum] > 0) {
                 if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
-                  hgAdd2Back[0]->Fill(crysTotAdd2Back[gebMultNum]); //a2b fill
+                  hgAdd2Back[index]->Fill(crysTotAdd2Back[gebMultNum]); //a2b fill
                 }
               }
-
-              hgNoDopVsAngle[0]->Fill(crysTotE[gebMultNum],modCCang[gebMultNum]*180./TMath::Pi());
-              hgDopVsAngle[0]->Fill(crysTotAddBack[gebMultNum],
-              modCCang[gebMultNum]*180./TMath::Pi());
-
                 for (Int_t iMult=gebMultNum+1; iMult<gebMult; iMult++) {
-                  hgg[0]->Fill(gammaEnergy[gebMultNum],gammaEnergy[iMult]);
-                  hgg[0]->Fill(gammaEnergy[iMult],gammaEnergy[gebMultNum]);
-                  hggDop[0]->Fill(crysTotDop[gebMultNum],crysTotDop[iMult]);
-                  hggDop[0]->Fill(crysTotDop[iMult],crysTotDop[gebMultNum]);
+                  hgg[index]->Fill(gammaEnergy[gebMultNum],gammaEnergy[iMult]);
+                  hgg[index]->Fill(gammaEnergy[iMult],gammaEnergy[gebMultNum]);
+                  hggDop[index]->Fill(crysTotDop[gebMultNum],crysTotDop[iMult]);
+                  hggDop[index]->Fill(crysTotDop[iMult],crysTotDop[gebMultNum]);
                   if (crysTotAddBack[gebMultNum] > 0 && crysTotAddBack[iMult] > 0) {
                     if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
-                      hggAddBack[0]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
-                      hggAddBack[0]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
+                      hggAddBack[index]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
+                      hggAddBack[index]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
                     }
                   }
                 }//gg fill
@@ -288,4 +276,15 @@ void gammaCalTree() {
       printf("Finished sorting Entry %d out of %d\n",entrySorted,nEntries);
     }//if >0
   }//for runs
+
+  fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma/analysis/gamCalFile.root");
+  gamFileOut = new TFile(fileName,"RECREATE");
+  gDirectory->ls();
+
+    for (Int_t i=0;i<2;i++) {
+      hg[i]->Write(); hgDop[i]->Write(); hgAddBack[i]->Write(); hgAdd2Back[i]->Write();
+      hgg[i]->Write(); hggDop[i]->Write(); hggAddBack[i]->Write();
+      hMults[i]->Write(); hEventType[i]->Write();
+    }
+
 }//gammaCalTree
