@@ -303,7 +303,6 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   }//entry loop
 }
 
-//Pull the TTrees of interest
 fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma/analysis/gamFile.root");
 gamFileOut = new TFile(fileName,"RECREATE");
 gDirectory->ls();
