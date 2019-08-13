@@ -130,12 +130,12 @@ sup_mode3 ()
   /* tree->Branch("crysNormChisq",el->crysNormChisq,"crysNormChisq[gebMult]/F"); */
   /* tree->Branch("crysBaseline",el->crysBaseline,"crysBaseline[gebMult]/F"); */
   /* tree->Branch("crysTpad",el->crysTpad,"crysTpad[gebMult]/i"); */
-  /* tree->Branch("intX",el->intX,"intX[1000][100]/F"); */
-  /* tree->Branch("intY",el->intY,"intY[1000][100]/F"); */
-  /* tree->Branch("intZ",el->intZ,"intZ[1000][100]/F"); */
-  /* tree->Branch("intE",el->intE,"intE[1000][100]/F"); */
-  /* tree->Branch("intSeg",el->intSeg,"intSeg[1000][100]/I"); */
-  /* tree->Branch("intSegEnergy",el->intSegEnergy,"intSegEnergy[1000][100]/F"); */
+  tree->Branch("intX",el->intX,"intX[100][100]/F");
+  tree->Branch("intY",el->intY,"intY[100][100]/F");
+  tree->Branch("intZ",el->intZ,"intZ[100][100]/F");
+  tree->Branch("intE",el->intE,"intE[100][100]/F");
+  tree->Branch("intSeg",el->intSeg,"intSeg[100][100]/I");
+  tree->Branch("intSegEnergy",el->intSegEnergy,"intSegEnergy[100][100]/F");
   //May have incorrect data types for a few new branches crh 1.19
 
   TimestampTemp=0;
@@ -783,15 +783,7 @@ bin_mode3 (GEB_EVENT * GEB_event)
      /* printf("GEB_event->mult: %d, %d\n",GEB_event->mult,ii); */
      /* printf("CRYS_INTPTS ptinp->tot_e: %4.4f\n",ptinp->tot_e); */
      /* printf("CRYS_INTPTS ptinp->num: %d\n",ptinp->num); */
-     /* if ((ptinp->tot_e<1e4) && (ptinp->num < 10)) { */
-     /*   for (Int_t kk=0;kk < ptinp->num; kk++) { */
-     /* 	 printf("x,y,z,e: %4.4f %4.4f %4.4f %4.4f\n", */
-     /* 		ptinp->intpts[kk].x, */
-     /* 		ptinp->intpts[kk].y, */
-     /* 		ptinp->intpts[kk].z, */
-     /* 		ptinp->intpts[kk].e); */
-     /*   }//int point loop */
-     /* }//if need to clean up tot_e */
+
 
   el->numHits=1;
   el->right[el->numHits-1] = right;
@@ -892,11 +884,18 @@ writeYN[2] = 1;
 	Int_t tempMaxE = 0;
 	Int_t maxJJ = -1;
 	for (Int_t jj=0;jj<ptinp->num;jj++) {
-	  if ( (ptinp->intpts[jj].e>0)
-	       && (ptinp->intpts[jj].e<1e4)
-	       && (ptinp->intpts[jj].e > tempMaxE) ) {
-	    tempMaxE = ptinp->intpts[jj].e;
-	    maxJJ = jj;
+    if ( (ptinp->intpts[jj].e>0)
+	       && (ptinp->intpts[jj].e<1e4) ) {
+           el->intX[ii][jj] = ptinp->intpts[jj].x;
+           el->intX[ii][jj] = ptinp->intpts[jj].y;
+           el->intX[ii][jj] = ptinp->intpts[jj].z;
+           el->intX[ii][jj] = ptinp->intpts[jj].e;
+           el->intSeg[ii][jj] = ptinp->intpts[jj].seg;
+           el->intSegEnergy[ii][jj] = ptinp->intpts[jj].seg_ener;
+	   if ( (ptinp->intpts[jj].e > tempMaxE) ) {
+	      tempMaxE = ptinp->intpts[jj].e;
+	      maxJJ = jj;
+      }
 	  }
 	}
 	//Fill the max values

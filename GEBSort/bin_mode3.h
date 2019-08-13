@@ -94,14 +94,14 @@ class evtList {
       intMaxSegE[i] = TMath::QuietNaN();
 
       //not initializing as expected...
-      // for (int j=0;j<20;j++) {
-      // 	intX[i][j] = TMath::QuietNaN();
-      // 	intY[i][j] = TMath::QuietNaN();
-      // 	intZ[i][j] = TMath::QuietNaN();
-      //  	intE[i][j] = TMath::QuietNaN();
-      //  	intSeg[i][j] = TMath::QuietNaN();
-      //  	intSegEnergy[i][j] = TMath::QuietNaN();
-      // }
+      for (int j=0;j<20;j++) {
+      	intX[i][j] = TMath::QuietNaN();
+      	intY[i][j] = TMath::QuietNaN();
+      	intZ[i][j] = TMath::QuietNaN();
+       	intE[i][j] = TMath::QuietNaN();
+       	intSeg[i][j] = TMath::QuietNaN();
+       	intSegEnergy[i][j] = TMath::QuietNaN();
+      }
     }
 
     for (int i=0;i<10;i++)
