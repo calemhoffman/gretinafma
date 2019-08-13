@@ -145,12 +145,12 @@ class evtList {
   int *intMaxSeg;                /* segment hit */
   float *intMaxSegE;
   //-------------------//
-  // float intX[100][20];
-  // float intY[100][20];
-  // float intZ[100][20];
-  // float intE[100][20];       /* here e refers to the fraction */
-  // int intSeg[100][20];                /* segment hit */
-  // float intSegEnergy[100][20];         /* energy of hit segment */
+  float intX[100][20];
+  float intY[100][20];
+  float intZ[100][20];
+  float intE[100][20];       /* here e refers to the fraction */
+  int intSeg[100][20];                /* segment hit */
+  float intSegEnergy[100][20];         /* energy of hit segment */
   /* to ensure 8-byte alignment of struct */
   // DCR_INTPTS intpts[MAX_INTPTS];
 
