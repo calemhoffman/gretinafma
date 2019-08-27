@@ -887,9 +887,9 @@ writeYN[2] = 1;
     if ( (ptinp->intpts[jj].e>0)
 	       && (ptinp->intpts[jj].e<1e4) ) {
            el->intX[ii][jj] = ptinp->intpts[jj].x;
-           el->intX[ii][jj] = ptinp->intpts[jj].y;
-           el->intX[ii][jj] = ptinp->intpts[jj].z;
-           el->intX[ii][jj] = ptinp->intpts[jj].e;
+           el->intY[ii][jj] = ptinp->intpts[jj].y;
+           el->intZ[ii][jj] = ptinp->intpts[jj].z;
+           el->intE[ii][jj] = ptinp->intpts[jj].e;
            el->intSeg[ii][jj] = ptinp->intpts[jj].seg;
            el->intSegEnergy[ii][jj] = ptinp->intpts[jj].seg_ener;
 	   if ( (ptinp->intpts[jj].e > tempMaxE) ) {
