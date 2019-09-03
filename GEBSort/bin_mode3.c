@@ -109,7 +109,7 @@ sup_mode3 ()
   tree->Branch("gammaEnergy",el->gammaEnergy,"gammaEnergy[gammaMult]/F");
   tree->Branch("gammaTimestamp",el->gammaTimestamp,"gammaTimestamp[gammaMult]/F");
   tree->Branch("deltaTime",el->deltaTime,"deltaTime[gammaMult]/F");
-  tree->Branch("gDeltaTime",el->gDeltaTime,"gDeltaTime[gammaMult]/I");
+  tree->Branch("gDeltaTime",el->gDeltaTime,"gDeltaTime[gammaMult][100]/I");
   tree->Branch("gebMult",&el->gebMult,"gebMult/I");
   tree->Branch("crysType",el->crysType,"crysType[gebMult]/I");
   tree->Branch("crysId",el->crysId,"crysId[gebMult]/I");

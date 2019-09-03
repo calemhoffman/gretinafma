@@ -44,7 +44,7 @@ void calTree() {
   Int_t lowRunNumber=50;
   Int_t highRunNumber=295;
   Int_t runN;
-  
+
   Int_t runNumber;
   Int_t numHits=1;
   Float_t left[numHits];
@@ -61,6 +61,7 @@ void calTree() {
   Float_t gammaEnergy[100];
   Float_t gammaTimestamp[100];
   Float_t deltaTime[100];
+  Int_t gDeltaTime[100][100];
   Int_t gebMult;
   Int_t crysType[100];
   Int_t crysId[100];
@@ -131,7 +132,7 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
   cut_s38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e2e3");
   all_z_e1e3 = (TCutG *) gDirectory->FindObjectAny("all_z_e1e3");
   all_aq_e0x = (TCutG *) gDirectory->FindObjectAny("all_aq_e0x");
-  
+
    for (Int_t index=lowRunNumber;index<=highRunNumber;index++) {
     runN=index;
     if (goodRun[runN]==1) {
@@ -140,8 +141,8 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
 
   if (fNameIn == 0) printf("Error: file read in fail\n");
   TTree * tree = (TTree *) fNameIn->FindObjectAny("tree");
- 
-  
+
+
   tree->SetBranchAddress("runNumber",&runNumber);
   tree->SetBranchAddress("numHits",&numHits);
   tree->SetBranchAddress("left",left);
@@ -151,7 +152,6 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
   tree->SetBranchAddress("e1",e1);
   tree->SetBranchAddress("e2",e2);
   tree->SetBranchAddress("e3",e3);
-  tree->SetBranchAddress("e3",e3);
   tree->SetBranchAddress("tac",tac);
   tree->SetBranchAddress("fmaDeltaTime",fmaDeltaTime);
   tree->SetBranchAddress("fmaMult",fmaMult);
@@ -159,6 +159,7 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
   tree->SetBranchAddress("gammaEnergy",gammaEnergy);
   tree->SetBranchAddress("gammaTimestamp",gammaTimestamp);
   tree->SetBranchAddress("deltaTime",deltaTime);
+  tree->SetBranchAddress("gDeltaTime",gDeltaTime);
   tree->SetBranchAddress("gebMult",&gebMult);
   tree->SetBranchAddress("crysType",crysType);
   tree->SetBranchAddress("crysId",crysId);
@@ -185,6 +186,7 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
   Int_t gmult;
   Float_t genergy[100];
   Float_t dtime[100];
+  Int_t gtime[100][100];
 
   //Generic
   ctree->Branch("run", &run, "run/I");
@@ -202,6 +204,7 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
   ctree->Branch("gmult",&gmult,"gmult/I");
   ctree->Branch("genergy",genergy,"genergy[gmult]/F");
   ctree->Branch("dtime",dtime,"dtime[gmult]/F");
+  ctree->Branch("gtime",gtime,"gtime[gmult][100]/I");
   //Gamma breakdown
   ctree->Branch("gebMult",&gebMult,"gebMult/I");
   //ctree->Branch("crysType",crysType,"crysType[gebMult]/I"); //leaving out for now
@@ -243,7 +246,7 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
       detIndexRead=tempInt2;
       calibrationOffset[runNumberRead][detIndexRead]=tempDouble1;
       calibrationLinear[runNumberRead][detIndexRead]=tempDouble2;
-      calibrationXOffset[runNumberRead][detIndexRead]=tempDouble3;  
+      calibrationXOffset[runNumberRead][detIndexRead]=tempDouble3;
       lineRead++;
       if (!inFile.good()) break;
     }
@@ -279,7 +282,7 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
   }else{
     printf("... failed to read cal file\n");
     return;
-  } 
+  }
 
   //Read Cuts In // NEEDS TO LOOP OVER MULT ??
   /* TCutG * cut; */
@@ -289,14 +292,14 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
   /* if (isCutFileOpen) { */
   /*   cut = (TCutG *) cutFileIn->FindObjectAny("cut_gen_dtge"); */
   /* } */
-  
+
    //Process Events
   Int_t nEntries = tree->GetEntries();
   printf("nEntries: %d\n",nEntries);
 
   for (Int_t entryNumber=0;entryNumber<=nEntries; entryNumber++) {
     tree->GetEntry(entryNumber);
-   
+
     run=runN;
     hits=numHits;
     if (left[0]>=-500) {
@@ -322,7 +325,7 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
     } else {
       d = down[0]+6560.0;
     }
-    
+
     x = (l-r)-xCalOffset[runN];
     y = (u-d);
 
@@ -346,17 +349,20 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
     e[4] = e[0]+e[2];
     e[5] = e[1]+e[2];
     e[6] = e[0]+e[1]+e[2];
-    
+
     gmult = gammaMult;
     for (Int_t i=0;i<gmult;i++) {
       genergy[i] = gammaEnergy[i];
       dtime[i] = deltaTime[i];
+      for (Int_t j=i+1;j<gmult;j++) {
+        gtime[i][j] = gDeltaTime[i][j];
+      }
     }
 
      if (entryNumber<1)
       printf("entryNumber:%d \n l:%4.0f r:%4.0f u:%4.0f d:%4.0f \n x:%4.0f y:%4.0f\n e1:%4.2f e2:%4.2f e3:%4.2f gammaMult:%d gammaEnergy[0]:%4.1f\n\n",
 	     entryNumber,l,r,u,d,x,y,e[0],e[1],e[2],gammaMult,gammaEnergy[0]);
-     
+
      //Should setup a few of the basic cuts here to limit file size / save time later.
      //     if ( cut_ar38_e1x->IsInside(x,e[0]) || /* basic eVx cut first */
      //	  cut_cl38_e1x->IsInside(x,e[0]) ||
@@ -365,7 +371,7 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
 	  && all_z_e1e3->IsInside(e[2],e[0]) ) {
        ctree->Fill();
      }
-     
+
   } //entryNumber Loop
   ctree->Write();
   calFile->Close();
@@ -373,6 +379,5 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
   /* printf("left: %f\n",left[0]); */
     }
    }
-   
+
 }
-   
