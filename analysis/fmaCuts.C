@@ -286,7 +286,7 @@ void fmaCuts(void) {
 
     if (((Float_t)entryNumber/(Float_t)nEntries)>counter)
       {
-	printf("^_^_^_%4.1f_^_^_^\n",counter*100);
+	//printf("^_^_^_%4.1f_^_^_^\n",counter*100);
 	counter=counter+0.1;
       }
     //Fill recoil stuff
