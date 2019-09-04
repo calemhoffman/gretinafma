@@ -247,7 +247,7 @@ void fmaCuts(void) {
   chain->SetBranchAddress("genergy",genergy);
   chain->SetBranchAddress("dtime",dtime);
 	chain->SetBranchAddress("gtime",gtime);
-   chain->SetBranchAddress("gebMult",&gebMult);
+  chain->SetBranchAddress("gebMult",&gebMult);
   chain->SetBranchAddress("crysId",crysId);
   chain->SetBranchAddress("crysNum",crysNum);
   chain->SetBranchAddress("crysTot_e",crysTot_e);
