@@ -123,7 +123,7 @@ void fmaCuts(void) {
   for (Int_t rn = 7; rn<30; rn++) {
     if (goodRun[rn]==1) {
 			if (LCRC == 1) {
-				fileName.Form("/lcrc/project/HELIOS/gretinafma/data/root_data/cal_%d.root",rn);
+				fileName.Form("/lcrc/project/HELIOS/gretinafma/root_data/cal_%d.root",rn);
 			} else {
 				fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
 			}
@@ -284,9 +284,10 @@ void fmaCuts(void) {
     chain->GetEntry(elist_all->GetEntry(entryNumber));
     //chain->GetEntry(entryNumber);
 
-    if (((Float_t)entryNumber/(Float_t)nEntries)>counter)
+    if (((Float_t)entryNumber/(Float_t)numElistEntries)>counter)
       {
-	//printf("^_^_^_%4.1f_^_^_^\n",counter*100);
+	//
+	printf("^_^_^_%4.1f_^_^_^\n",counter*100);
 	counter=counter+0.1;
       }
     //Fill recoil stuff
