@@ -23,9 +23,12 @@
 #include <TFile.h>
 #include <TEventList.h>
 
+#define LCRC 1 //0 local, 1 lcrc
+
 TChain *chain;
 TString fileName;
-Int_t goodRun[30] = {0,0,0,0,0,
+Int_t goodRun[30] =
+				{0,0,0,0,0,
 		     0,0,1,1,1,
 		     1,1,1,1,1,
 		     1,1,1,0,1,
@@ -119,8 +122,12 @@ void fmaCuts(void) {
   chain = new TChain("ctree");
   for (Int_t rn = 7; rn<30; rn++) {
     if (goodRun[rn]==1) {
-      fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
-      chain->Add(fileName);
+			if (LCRC == 1) {
+				fileName.Form("/lcrc/project/HELIOS/gretinafma/data/root_data/cal_%d.root",rn);
+			} else {
+				fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
+			}
+			chain->Add(fileName);
     }
   }
   chain->GetListOfFiles()->Print();
