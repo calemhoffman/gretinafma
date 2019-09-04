@@ -51,7 +51,7 @@ Float_t e[10];
 Int_t gmult;
 Float_t genergy[100];
 Float_t dtime[100];
-Int_T gtime[100][100];
+Int_t gtime[100][100];
 
 // Int_t runNumber;
 // Int_t numHits=1;
