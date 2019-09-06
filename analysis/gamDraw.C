@@ -45,6 +45,7 @@ Float_t e[10];
 Int_t gmult;
 Float_t genergy[100];
 Float_t dtime[100];
+Int_t gtime[100][100];
 Int_t gebMult;
 Int_t crysId[100];
 Int_t crysNum[100];
@@ -125,7 +126,7 @@ void gamDraw(void) {
    }
 
   //Pull the TTrees of interest
-  fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma/analysis/gamTree.root");
+  fileName.Form("gamTree.root");
   gamFileIn = new TFile(fileName);
   gDirectory->ls();
 
@@ -154,6 +155,7 @@ void gamDraw(void) {
     gtree[nt]->SetBranchAddress("gmult",&gmult);
     gtree[nt]->SetBranchAddress("genergy",genergy);
     gtree[nt]->SetBranchAddress("dtime",dtime);
+    gtree[nt]->SetBranchAddress("gtime",gtime);
     //Gamma breakdown
     gtree[nt]->SetBranchAddress("gebMult",&gebMult);
     gtree[nt]->SetBranchAddress("crysId",crysId);
@@ -304,7 +306,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
 }
 
 //Pull the TTrees of interest
-fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/gretinafma/analysis/gamFile.root");
+fileName.Form("gamFile.root");
 gamFileOut = new TFile(fileName,"RECREATE");
 gDirectory->ls();
 
