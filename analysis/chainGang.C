@@ -37,7 +37,7 @@ chain = new TChain("ctree");
 
 for (Int_t rn = 7; rn<30; rn++) {
   if (goodRun[rn]==1) {
-    fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
+    fileName.Form("/lcrc/project/HELIOS/gretinafma/root_data/cal_%d.root",rn);
     chain->Add(fileName);
   }
  }
