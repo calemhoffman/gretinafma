@@ -29,7 +29,7 @@
 
 #include "AutoFit.C"
 
-#define numRecoilProcess 4 //1-s38, 2-s38+cl38, etc.
+#define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
 
 TFile *gamFileIn;
@@ -235,7 +235,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         // radDiff[gebMultNum][j],
         // crysTot_e[gebMultNum], crysTot_e[j]);
 
-        if (radDiff[gebMultNum][j] <= radAddBackTest) {
+        if ( (radDiff[gebMultNum][j] <= radAddBackTest) && (gtime[gebMultNum][j]<20) ){
           hEventType[nTreeNum]->Fill(3);
           crysTotAddBack[gebMultNum] += crysTot_e[j];
           crysTotAdd2Back[gebMultNum] += crysTot_e[j];
@@ -248,7 +248,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
             +(intMaxZ[gebMultNum] - intMaxZ[j])*(intMaxZ[gebMultNum] - intMaxZ[j]);
             radDiff[j][k] = TMath::Sqrt(r2);
 
-            if (radDiff[j][k] <= radAddBackTest / 3.) {
+            if ( (radDiff[j][k] <= radAddBackTest / 3.) && (gtime[j][k]<20) ) {
               hEventType[nTreeNum]->Fill(4);
               crysTotAdd2Back[gebMultNum] += crysTot_e[k];
               //crysTot_e[k] = 0;
