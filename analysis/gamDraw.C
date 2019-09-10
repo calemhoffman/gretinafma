@@ -235,7 +235,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         // radDiff[gebMultNum][j],
         // crysTot_e[gebMultNum], crysTot_e[j]);
 
-        if ( (radDiff[gebMultNum][j] <= radAddBackTest) /* && (gtime[gebMultNum][j]<20)*/ ){
+        if ( (radDiff[gebMultNum][j] <= radAddBackTest) && (gtime[gebMultNum][j]<20) ){
           hEventType[nTreeNum]->Fill(3);
           crysTotAddBack[gebMultNum] += crysTot_e[j];
           crysTotAdd2Back[gebMultNum] += crysTot_e[j];
@@ -248,7 +248,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
             +(intMaxZ[gebMultNum] - intMaxZ[j])*(intMaxZ[gebMultNum] - intMaxZ[j]);
             radDiff[j][k] = TMath::Sqrt(r2);
 
-            if ( (radDiff[j][k] <= radAddBackTest / 3.) /* && (gtime[j][k]<20) */) {
+            if ( (radDiff[j][k] <= radAddBackTest / 3.) && (gtime[j][k]<20) ) {
               hEventType[nTreeNum]->Fill(4);
               crysTotAdd2Back[gebMultNum] += crysTot_e[k];
               //crysTot_e[k] = 0;
@@ -288,16 +288,18 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
               modCCang[gebMultNum]*180./TMath::Pi());
 
                 for (Int_t iMult=gebMultNum+1; iMult<gebMult; iMult++) {
-                  hgg[nTreeNum]->Fill(genergy[gebMultNum],genergy[iMult]);
-                  hgg[nTreeNum]->Fill(genergy[iMult],genergy[gebMultNum]);
-                  hggDop[nTreeNum]->Fill(crysTotDop[gebMultNum],crysTotDop[iMult]);
-                  hggDop[nTreeNum]->Fill(crysTotDop[iMult],crysTotDop[gebMultNum]);
-                  if (crysTotAddBack[gebMultNum] > 0 && crysTotAddBack[iMult] > 0) {
-                    if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
-                      hggAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
-                      hggAddBack[nTreeNum]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
+                  if (gtime[gebMultNum][iMult]>20) {
+                    hgg[nTreeNum]->Fill(genergy[gebMultNum],genergy[iMult]);
+                    hgg[nTreeNum]->Fill(genergy[iMult],genergy[gebMultNum]);
+                    hggDop[nTreeNum]->Fill(crysTotDop[gebMultNum],crysTotDop[iMult]);
+                    hggDop[nTreeNum]->Fill(crysTotDop[iMult],crysTotDop[gebMultNum]);
+                    if (crysTotAddBack[gebMultNum] > 0 && crysTotAddBack[iMult] > 0) {
+                      if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
+                        hggAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
+                        hggAddBack[nTreeNum]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
+                      }
                     }
-                  }
+                  }//gtime if
                 }//gg fill
           } //cut_dtge
     }//gebMultNum - fills
