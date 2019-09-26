@@ -59,6 +59,7 @@ Int_t run;
 Int_t hits;
 Float_t l,r,u,d,x,y;
 Float_t e[10];
+Float_t e1,e2,e3,e12,e13,e23,e123;
 Int_t gmult;
 Float_t genergy[100];
 Float_t dtime[100];
@@ -194,7 +195,14 @@ void mlTtree(void) {
   mltree->Branch("d",&d,"d/F");
   mltree->Branch("x",&x,"x/F");
   mltree->Branch("y",&y,"y/F");
-  mltree->Branch("e",e,"e[10]/F");
+	mltree->Branch("e",e,"e[10]/F");
+  mltree->Branch("e1",&e1,"e1/F");
+	mltree->Branch("e2",&e2,"e2/F");
+	mltree->Branch("e3",&e3,"e3/F");
+	mltree->Branch("e12",&e12,"e12/F");
+	mltree->Branch("e13",&e13,"e13/F");
+	mltree->Branch("e23",&e23,"e23/F");
+	mltree->Branch("e123",&e123,"e123/F");
 	mltree->Branch("recoilID",&recoilID,"recoilID/I");
   mltree->Branch("gmult",&gmult,"gmult/I");
   mltree->Branch("genergy",genergy,"genergy[gmult]/F");
@@ -265,6 +273,8 @@ void mlTtree(void) {
 			printf("^_^_^_%4.1f_^_^_^%4.0f\n",counter*100,(Float_t)entryNumber);
 			counter=counter+0.1;
     }
+		//Pass the e's
+		e1=e[0]; e2=e[1]; e3=e[2]; e12=e[3]; e13=e[4]; e23=e[5]; e123=e[6];
     recoilID=10;
   	/* s38 */
   	if ( (cut_e1e3_s38->IsInside(e[2],e[0]))
