@@ -71,6 +71,7 @@ TH2F *hgNoDopVsAngle[5];//raw data vs. angles
 TH2F *hgDopVsAngle[5];//Dop corr vs. angles
 TH1I *hMults[5];
 TH1I *hEventType[5];
+TH1F *hscan[1000]; //gam scans
 //Cuts
 TCutG *cut_dtge[10];
 
@@ -84,6 +85,9 @@ void gamDraw(void) {
   //Initialize items
   Int_t ch=4096;
   Int_t rg=ch;
+  for (Int_t i=0;i<1000;i++)
+    hscan[i] = new TH1F(Form("hscan%d",i),Form("hscan%d",i),ch,0,rg);
+
   for (Int_t recNum = 0; recNum<numRecoilProcess; recNum++) {
     hMults[recNum] = new TH1I(Form("hMults%d",recNum),Form("hMults%d",recNum),100,0,100);
     hEventType[recNum] = new TH1I(Form("hEventType%d",recNum),Form("hEventType%d",recNum),10,0,10);
@@ -304,6 +308,24 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
           } //cut_dtge
     }//gebMultNum - fills
   } //nTreeNum
+  //Work on only the AddBack for 38S and hscans
+  nTreeNum = 0;
+  Int_t scanCounter=0;
+  for (Int_t firstLoop=0; firstLoop<10; firstLoop++) {//e[0]
+    for (Int_t secondLoop=0; secondLoop<10; secondLoop++) {//e[1]
+      for (Int_t thirdLoop=0; thirdLoop<10; thirdLoop++) {//e[2]
+        if ( (e[0]>firstLoop*500 && e[0]<firstLoop*500+500)
+          && (e[1]>secondLoop*500 && e[1]<secondLoop*500+500)
+          && (e[2]>thirdLoop*500 && e[2]<thirdLoop*500+500) ) {
+            for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
+              scanCounter = firstLoop + secondLoop*10 + thirdLoop*100;
+              hscan[scanCounter]->Fill(crysTotAddBack[gebMultNum]);
+            } //gebMultNum
+        }//if
+      }//3loop
+    }//2loop
+  }//1loop
+
   }//entry loop
 }
 
@@ -318,6 +340,8 @@ gDirectory->ls();
     hgNoDopVsAngle[i]->Write(); hgDopVsAngle[i]->Write();
     hMults[i]->Write(); hEventType[i]->Write();
   }
+  for (Int_t i=0;i<1000;i++)
+    hscan[i]->Write();
 
 //Cleanup
 gamFileIn->Close();
