@@ -23,7 +23,7 @@
 #include <TFile.h>
 #include <TEventList.h>
 
-#define LCRC 1 //0 local, 1 lcrc
+#define LCRC 0 //0 local, 1 lcrc
 
 TChain *chain;
 TString fileName;
@@ -52,24 +52,6 @@ Int_t gmult;
 Float_t genergy[100];
 Float_t dtime[100];
 Int_t gtime[100][100];
-
-// Int_t runNumber;
-// Int_t numHits=1;
-// Float_t left[1];
-// Float_t right[1];
-// Float_t up[1];
-// Float_t down[1];
-// Float_t e1[1];
-// Float_t e2[1];
-// Float_t e3[1];
-// Float_t tac[1];
-// Float_t fmaDeltaTime[1];
-// Int_t fmaMult[10];
-// Int_t gammaMult;
-// Float_t gammaEnergy[100];
-// Float_t gammaTimestamp[100];
-// Float_t deltaTime[100];
-// Int_T gDeltaTime[100][100];
 Int_t gebMult;
 Int_t crysType[100];
 Int_t crysId[100];
@@ -112,8 +94,6 @@ TH2F *hdtge,*hlr,*hud;
 TH1F *hg_tot;
 TH1F *hg_ar38; TH1F *hg_cl38;
 TH1F * hg_p33; TH1F *hg_s38;
-
-
 
 /* main */
 void fmaCuts(void) {
@@ -229,7 +209,6 @@ void fmaCuts(void) {
     gtree[nt]->Branch("intMaxSegE",intMaxSegE,"intMaxSegE[gebMult]/F");
   }
 
-
   //Generic
   chain->SetBranchAddress("run", &run);
   chain->SetBranchAddress("hits",&hits);
@@ -286,28 +265,17 @@ void fmaCuts(void) {
 
     if (((Float_t)entryNumber/(Float_t)numElistEntries)>counter)
       {
-	//
-printf("^_^_^_%4.1f_^_^_^\n",counter*100);
-	counter=counter+0.1;
+				printf("^_^_^_%4.1f_^_^_^\n",counter*100);
+				counter=counter+0.1;
       }
-    //Fill recoil stuff
-    //Need to save to file
-    /* he0x->Fill(x,e[0]); */
-    /* he1e3->Fill(e[2],e[0]); */
-    /* hlr->Fill(r,l); */
-    /* hud->Fill(d,u); */
     for (Int_t tempI=0;tempI<10;tempI++)
       recoilID[tempI]=-1;
 
-    /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
-    /*   hdtge->Fill(genergy[gMult],dtime[gMult]); */
-    /* } */
-
     /* s38 */
     if ( (cut_e1e3_s38->IsInside(e[2],e[0]))
-	 && (cut_e0x_s38->IsInside(x,e[0]))
-	 && (cut_lr_s38->IsInside(r,l))
-	 && (cut_ud_s38->IsInside(d,u)) ) {
+	 	&& (cut_e0x_s38->IsInside(x,e[0]))
+	 	&& (cut_lr_s38->IsInside(r,l))
+	 	&& (cut_ud_s38->IsInside(d,u)) ) {
       recoilID[0]=0;
       /* for (Int_t gMult=0;gMult< gmult; gMult++) { */
       /* 	if ( (cut_dtge_s38->IsInside(genergy[gMult],dtime[gMult])) ) { */
@@ -315,7 +283,6 @@ printf("^_^_^_%4.1f_^_^_^\n",counter*100);
       /* 	  hg_s38->Fill(genergy[gMult]); */
       /* 	} */
       /* } */
-
     }
 
     /* cl38 */
@@ -361,13 +328,12 @@ printf("^_^_^_%4.1f_^_^_^\n",counter*100);
       /* 	  hg_p33->Fill(genergy[gMult]); */
       /* 	} */
       /* } */
-
     } /* p33 */
 
     //Fill correct TTree//
     for (Int_t tempI=0;tempI<10;tempI++) {
       if (recoilID[tempI]>-1) {
-	gtree[recoilID[tempI]]->Fill();
+				gtree[recoilID[tempI]]->Fill();
       }
     }
 
