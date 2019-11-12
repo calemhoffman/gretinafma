@@ -84,6 +84,7 @@ TCutG *cut_s38_g1200,*cut_s38_g1500,*cut_s38_g800;
 TCutG *cut_p33_g1400,*cut_p33_g1800,*cut_p33_g2300;
 //finals
 TCutG *cut_e1e3_s38,*cut_e0x_s38,*cut_lr_s38,*cut_ud_s38,*cut_dtge_s38;
+TCutG *cut_e2e3_s38,*cut_e1e2_s38;
 TCutG *cut_e1e3_cl38,*cut_e0x_cl38,*cut_lr_cl38,*cut_ud_cl38,*cut_dtge_cl38;
 TCutG *cut_e1e3_ar38,*cut_e0x_ar38,*cut_lr_ar38,*cut_ud_ar38,*cut_dtge_ar38;
 TCutG *cut_e1e3_p33,*cut_e0x_p33,*cut_lr_p33,*cut_ud_p33,*cut_dtge_p33;
@@ -158,6 +159,8 @@ void fmaCuts(void) {
   cut_e0x_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e0x_s38");
   cut_lr_s38 = (TCutG *) gDirectory->FindObjectAny("cut_lr_s38");
   cut_ud_s38 = (TCutG *) gDirectory->FindObjectAny("cut_ud_s38");
+	cut_e1e2_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e2_s38");
+	cut_e2e3_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e2e3_s38");
 
   cut_s38_g1200 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1200");
   cut_s38_g1500 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1500");
@@ -272,7 +275,8 @@ void fmaCuts(void) {
       recoilID[tempI]=-1;
 
     /* s38 */
-    if ( (cut_e1e3_s38->IsInside(e[2],e[0]))
+    if ( (cut_e1e2_s38->IsInside(e[1],e[0]))
+		&& (cut_e2e3_s38->IsInside(e[2],e[1]))
 	 	&& (cut_e0x_s38->IsInside(x,e[0]))
 	 	&& (cut_lr_s38->IsInside(r,l))
 	 	&& (cut_ud_s38->IsInside(d,u)) ) {
@@ -331,11 +335,14 @@ void fmaCuts(void) {
     } /* p33 */
 
     //Fill correct TTree//
-    for (Int_t tempI=0;tempI<10;tempI++) {
-      if (recoilID[tempI]>-1) {
-				gtree[recoilID[tempI]]->Fill();
-      }
-    }
+    // for (Int_t tempI=0;tempI<10;tempI++) {
+    //   if (recoilID[tempI]>-1) {
+		// 		gtree[recoilID[tempI]]->Fill();
+    //   }
+    // }
+
+		if (recoilID[0]==0)
+			gtree[0]->Fill();
 
   }//end entry loop
 

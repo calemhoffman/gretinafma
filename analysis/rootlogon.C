@@ -97,6 +97,14 @@
   gROOT->ProcessLine(".x cuts/cut_lr_s38.C"); cut_lr_s38;
   gROOT->ProcessLine(".x cuts/cut_ud_s38.C"); cut_ud_s38;
   gROOT->ProcessLine(".x cuts/cut_dtge_s38.C"); cut_dtge_s38;
+  gROOT->ProcessLine(".x cuts/cut_e2e3_s38.C"); cut_e2e3_s38;
+  gROOT->ProcessLine(".x cuts/cut_e1e2_s38.C"); cut_e1e2_s38;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan0.C"); cut_e1e3_scan0;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan1.C"); cut_e1e3_scan1;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan2.C"); cut_e1e3_scan2;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan3.C"); cut_e1e3_scan3;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan4.C"); cut_e1e3_scan4;
+
 
   gROOT->ProcessLine(".x cuts/cut_p33_g1400.C"); cut_p33_g1400;
   gROOT->ProcessLine(".x cuts/cut_p33_g1800.C"); cut_p33_g1800;

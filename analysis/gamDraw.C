@@ -71,9 +71,11 @@ TH2F *hgNoDopVsAngle[5];//raw data vs. angles
 TH2F *hgDopVsAngle[5];//Dop corr vs. angles
 TH1I *hMults[5];
 TH1I *hEventType[5];
-TH1F *hscan[1000]; //gam scans
+#define numScan 50
+TH1F *hscan[numScan]; //gam scans
 //Cuts
 TCutG *cut_dtge[10];
+TCutG *cut_e1e3_scan[10];
 
 void gamDraw(void) {
   //Get preloaded stuff, i.e. cuts
@@ -81,11 +83,13 @@ void gamDraw(void) {
   cut_dtge[1] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_cl38");
   cut_dtge[2] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_ar38");
   cut_dtge[3] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
+  for (Int_t i=0;i<5;i++)
+    cut_e1e3_scan[i] = (TCutG *) gDirectory->FindObjectAny(Form("cut_e1e3_scan%d",i));
 
   //Initialize items
   Int_t ch=4096;
   Int_t rg=ch;
-  for (Int_t i=0;i<1000;i++)
+  for (Int_t i=0;i<numScan;i++)
     hscan[i] = new TH1F(Form("hscan%d",i),Form("hscan%d",i),ch,0,rg);
 
   for (Int_t recNum = 0; recNum<numRecoilProcess; recNum++) {
@@ -309,22 +313,40 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
     }//gebMultNum - fills
   } //nTreeNum
   //Work on only the AddBack for 38S and hscans
-  nTreeNum = 0;
+  // nTreeNum = 0;
+  // Int_t scanCounter=0;
+  // for (Int_t firstLoop=0; firstLoop<10; firstLoop++) {//e[0]
+  //   for (Int_t secondLoop=0; secondLoop<10; secondLoop++) {//e[1]
+  //     for (Int_t thirdLoop=0; thirdLoop<10; thirdLoop++) {//e[2]
+  //       if ( (e[0]>firstLoop*500 && e[0]<firstLoop*500+500)
+  //         && (e[1]>secondLoop*500 && e[1]<secondLoop*500+500)
+  //         && (e[2]>thirdLoop*500 && e[2]<thirdLoop*500+500) ) {
+  //           for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
+  //             scanCounter = firstLoop + secondLoop*10 + thirdLoop*100;
+  //             hscan[scanCounter]->Fill(crysTotAddBack[gebMultNum]);
+  //           } //gebMultNum
+  //       }//if
+  //     }//3loop
+  //   }//2loop
+  // }//1loop
+  //Loop over scans, either cuts or ranges
   Int_t scanCounter=0;
-  for (Int_t firstLoop=0; firstLoop<10; firstLoop++) {//e[0]
-    for (Int_t secondLoop=0; secondLoop<10; secondLoop++) {//e[1]
-      for (Int_t thirdLoop=0; thirdLoop<10; thirdLoop++) {//e[2]
-        if ( (e[0]>firstLoop*500 && e[0]<firstLoop*500+500)
-          && (e[1]>secondLoop*500 && e[1]<secondLoop*500+500)
-          && (e[2]>thirdLoop*500 && e[2]<thirdLoop*500+500) ) {
-            for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
-              scanCounter = firstLoop + secondLoop*10 + thirdLoop*100;
+  Int_t xmin=0;
+  Int_t xmax=0;
+  for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
+    if ( cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum]) ) {
+      for (Int_t firstLoop=0;firstLoop<5;firstLoop++) {
+        if ( cut_e1e3_scan[firstLoop]->IsInside(e[2],e[0]) ) {
+          for (Int_t secondLoop=0; secondLoop<10; secondLoop++) {
+            xmin=-600 + (secondLoop*100); xmax=-500 + (secondLoop*100);
+            scanCounter = firstLoop*10 + secondLoop;
+            if ( (x>xmin) && (x<=xmax) )
               hscan[scanCounter]->Fill(crysTotAddBack[gebMultNum]);
-            } //gebMultNum
-        }//if
-      }//3loop
-    }//2loop
-  }//1loop
+          }
+        }
+      }
+    }
+  } //gebMultNum
 
   }//entry loop
 }
@@ -340,7 +362,7 @@ gDirectory->ls();
     hgNoDopVsAngle[i]->Write(); hgDopVsAngle[i]->Write();
     hMults[i]->Write(); hEventType[i]->Write();
   }
-  for (Int_t i=0;i<1000;i++)
+  for (Int_t i=0;i<numScan;i++)
     hscan[i]->Write();
 
 //Cleanup

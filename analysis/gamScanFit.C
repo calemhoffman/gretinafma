@@ -84,35 +84,14 @@ int gamScanFit(void) {
       hscan[i]->Rebin();
     if (intgrl[i]<1e3)
       hscan[i]->Rebin();
-
-
     if (intgrl[i]>1e2) {
       fprintf(fitFileOut, "%d ", i);
       fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh,fitFileOut,x[i],y[i]);
       //      can->SaveAs(Form("fit_%d.pdf",i));
     }
-    printf("%d\n\n",i);
   }
 
-  fprintf(fitFileOut, "\n");
-  //try some fitting
-  /* fitLow=1800; */
-  /* fitHigh=1845; */
-  /* mean=1833; */
-  /* sigma=10; */
-  fitLow=2020;
-  fitHigh=2070;
-  mean=2044;
-  sigma=8;
 
- for (Int_t i=0;i<1000;i++) {
-
-   if (intgrl[i]>1e2) {
-     fprintf(fitFileOut, "%d ", i);
-     fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh,fitFileOut,x[i],y[i]);
-     //      can->SaveAs(Form("fit_%d.pdf",i));
-   }
- }
 
   fprintf(fitFileOut, "\n");
   //try some fitting
@@ -127,23 +106,6 @@ int gamScanFit(void) {
 
  for (Int_t i=0;i<1000;i++) {
 
-   if (intgrl[i]>1e2) {
-     fprintf(fitFileOut, "%d ", i);
-     fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh,fitFileOut,x[i],y[i]);
-     //      can->SaveAs(Form("fit_%d.pdf",i));
-   }
- }
-
-
-  fprintf(fitFileOut, "\n");
-  //try some fitting
-  fitLow=1277;
-  fitHigh=1302;
-  mean=1292;
-  sigma=4;
-
- for (Int_t i=0;i<1000;i++) {
-   hscan[i]->Rebin();
    if (intgrl[i]>1e1) {
      fprintf(fitFileOut, "%d ", i);
      fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh,fitFileOut,x[i],y[i]);
@@ -163,7 +125,6 @@ int gamScanFit(void) {
    if (intgrl[i]>1e1) {
      fprintf(fitFileOut, "%d ", i);
      fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh,fitFileOut,x[i],y[i]);
-     //      can->SaveAs(Form("fit_%d.pdf",i));
    }
  }
 
