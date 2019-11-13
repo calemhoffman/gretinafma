@@ -73,6 +73,10 @@ TH1I *hMults[5];
 TH1I *hEventType[5];
 #define numScan 50
 TH1F *hscan[numScan]; //gam scans
+TH2F *hxVg;
+TH2F *he0Vg;
+TH2F *he2Vg;
+TH2F *hdtVg;
 //Cuts
 TCutG *cut_dtge[10];
 TCutG *cut_e1e3_scan[10];
@@ -91,6 +95,11 @@ void gamDraw(void) {
   Int_t rg=ch;
   for (Int_t i=0;i<numScan;i++)
     hscan[i] = new TH1F(Form("hscan%d",i),Form("hscan%d",i),ch,0,rg);
+
+  hxVg = new TH2F("hxVg","hxVg; x; g",1000,-2000,2000,4000,0,4000);
+  he0Vg = new TH2F("he0Vg","he0Vg; e0; g",1000,0,4000,4000,0,4000);
+  he2Vg = new TH2F("he2Vg","he2Vg; e2; g",1000,0,4000,4000,0,4000);
+  hdtVg = new TH2F("hdtVg","hdtVg; dt; g",1000,0,4000,4000,0,4000);
 
   for (Int_t recNum = 0; recNum<numRecoilProcess; recNum++) {
     hMults[recNum] = new TH1I(Form("hMults%d",recNum),Form("hMults%d",recNum),100,0,100);
@@ -333,6 +342,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   Int_t scanCounter=0;
   Int_t xmin=0;
   Int_t xmax=0;
+  nTreeNum=0;
   for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
     if ( cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum]) ) {
       for (Int_t firstLoop=0;firstLoop<5;firstLoop++) {
@@ -348,6 +358,22 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
     }
   } //gebMultNum
 
+  //resolution checks
+  for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
+    if ( cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum]) ) {
+      if (crysTotAddBack[gebMultNum] > 0) {
+        if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
+          if ( cut_e1e3_scan[0]->IsInside(e[2],e[0]) ) {
+            hxVg->Fill(x,crysTotAddBack[gebMultNum]);
+            he0Vg->Fill(e[0],crysTotAddBack[gebMultNum]);
+            he2Vg->Fill(e[2],crysTotAddBack[gebMultNum]);
+            //hdtVg->Fill(dtime,crysTotAddBack[gebMultNum]);
+          }
+        }
+      }
+    }
+  }
+//  if () printf("another 1 million\n");
   }//entry loop
 }
 
@@ -364,6 +390,8 @@ gDirectory->ls();
   }
   for (Int_t i=0;i<numScan;i++)
     hscan[i]->Write();
+
+  hxVg->Write();he0Vg->Write(); he2Vg->Write();
 
 //Cleanup
 gamFileIn->Close();
