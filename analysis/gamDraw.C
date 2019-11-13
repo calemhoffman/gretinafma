@@ -275,7 +275,9 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         } //radDiff if
       } //j++
       //printf("** crysTotAddBack: %f\n\n",crysTotAddBack[gebMultNum]);
-      crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum]/modCCdopfac[gebMultNum];
+      crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum]/modCCdopfac[gebMultNum];//DOPPLER
+      crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum] - (0.002*x);//X CORRECTION (from hxVg spectrum)
+      crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum] + (e[0]-1625)*0.002488;//e[0] from he0Vg specrum
       crysTotAdd2Back[gebMultNum] = crysTotAdd2Back[gebMultNum]/modCCdopfac[gebMultNum];//[addBackDopNum];
       //printf("** crysTotAddBack w/ Dop: %f\n\n",crysTotAddBack[gebMultNum]);
   //  } //if e>0
@@ -283,6 +285,8 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
 
 //Loop over segment multiplicity for histofill
     for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
+      if ( (cut_e1e3_scan[0]->IsInside(e[2],e[0]))
+    ||  (cut_e1e3_scan[1]->IsInside(e[2],e[0])) ) {//e1e3 scan cut
             if (cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum])) {
 
               hg[nTreeNum]->Fill(genergy[gebMultNum]); //g fill
@@ -320,6 +324,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
                 }//gg fill
           } //cut_dtge
     }//gebMultNum - fills
+  } //e1e3 scan cuts
   } //nTreeNum
   //Work on only the AddBack for 38S and hscans
   // nTreeNum = 0;

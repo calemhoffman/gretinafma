@@ -38,7 +38,7 @@ void s38Scan(void){
 
   TFile * inFile = new TFile("gamFile.root");
   if (inFile==0) {printf("In File Did Not Open\n"); return;}
-  TCanvas *can = new TCanvas("can","can",1200,900);
+  TCanvas *can = new TCanvas("can","can",1600,800);
   can->Clear();
 
   //fit parameters
@@ -210,24 +210,31 @@ void s38Scan(void){
   can->cd(8); hscanC[1]->Draw(); hscanC[2]->Draw("same"); hscanC[0]->Draw("same");
 
 
-fitLow=2000;fitHigh=4000;
+fitLow=2000;fitHigh=3000;
   for (Int_t i=0;i<3;i++) {
     hscanR[i]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
     hscanC[i]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
     hscanR[i]->SetLineColor(i+1);
     hscanC[i]->SetLineColor(i+1);
+    hscanR[i]->SetStats(0);
+    hscanC[i]->SetStats(0);
   }
 
   intgrl[0] = hscanR[0]->Integral(fitLow,fitHigh);
   intgrl[2] = hscanR[2]->Integral(fitLow,fitHigh);
   float scaleFactor = (Float_t)intgrl[0]/(Float_t)intgrl[2];
   hscanR[2]->Scale(scaleFactor);
+  //intgrl[0] = hscanC[0]->Integral(fitLow,fitHigh);
+  intgrl[2] = hscanC[2]->Integral(fitLow,fitHigh);
+  scaleFactor = (Float_t)intgrl[0]/(Float_t)intgrl[2];
+  hscanC[2]->Scale(scaleFactor);
 
-  can->Clear(); can->Divide(2,3);
-  can->cd(1); hscanR[0]->Draw(); can->cd(3); hscanR[2]->Draw("hist");
-  can->cd(2); hscanC[0]->Draw(); can->cd(4); hscanC[2]->Draw();
-  can->cd(5); hscanR[2]->Draw("hist"); hscanR[0]->Draw("same");
-  can->cd(6); hscanC[2]->Draw(); hscanC[0]->Draw("same");
+  can->Clear(); //can->Divide(1,2);
+  // can->cd(1); hscanR[0]->Draw(); can->cd(3); hscanR[2]->Draw("hist");
+  // can->cd(2); hscanC[0]->Draw(); can->cd(4); hscanC[2]->Draw();
+  hscanC[2]->SetLineColor(kRed);
+  can->cd(1); hscanR[0]->Draw(""); hscanR[2]->Draw("hist same"); hscanC[2]->Draw("hist same"); hscanR[0]->Draw("same");
+  //can->cd(2);  hscanC[0]->Draw("same");
 
 
 
