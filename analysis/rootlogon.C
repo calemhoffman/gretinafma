@@ -104,6 +104,7 @@
   gROOT->ProcessLine(".x cuts/cut_e1e3_scan2.C"); cut_e1e3_scan2;
   gROOT->ProcessLine(".x cuts/cut_e1e3_scan3.C"); cut_e1e3_scan3;
   gROOT->ProcessLine(".x cuts/cut_e1e3_scan4.C"); cut_e1e3_scan4;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan6.C"); cut_e1e3_scan6;
 
 
   gROOT->ProcessLine(".x cuts/cut_p33_g1400.C"); cut_p33_g1400;
