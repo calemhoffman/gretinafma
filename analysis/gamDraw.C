@@ -87,7 +87,7 @@ void gamDraw(void) {
   cut_dtge[1] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_cl38");
   cut_dtge[2] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_ar38");
   cut_dtge[3] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
-  for (Int_t i=0;i<10;i++)
+  for (Int_t i=0;i<5;i++)
     cut_e1e3_scan[i] = (TCutG *) gDirectory->FindObjectAny(Form("cut_e1e3_scan%d",i));
 
   //Initialize items
