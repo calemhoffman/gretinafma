@@ -69,6 +69,7 @@ TH2F *hgg[5];//og gamma-gamma
 TH2F *hggDop[5],*hggAddBack[5];
 TH2F *hgNoDopVsAngle[5];//raw data vs. angles
 TH2F *hgDopVsAngle[5];//Dop corr vs. angles
+TH2F *hgAddBackVsAngle[5];//best gam vs. angles
 TH1I *hMults[5];
 TH1I *hEventType[5];
 #define numScan 50
@@ -141,6 +142,11 @@ void gamDraw(void) {
         ch,0,rg,180,0,180);
     hgDopVsAngle[recNum] = new TH2F(Form("hgDopVsAngle%d",recNum),
        	Form("%s hgDopVsAngle%d; Gamma Energy [keV]; Angle [degrees]",
+        rName[recNum].Data(),recNum),
+        ch,0,rg,180,0,180);
+
+    hgAddBackVsAngle[recNum] = new TH2F(Form("hgAddBackVsAngle%d",recNum),
+       	Form("%s hgAddBackVsAngle%d; Gamma Energy [keV]; Angle [degrees]",
         rName[recNum].Data(),recNum),
         ch,0,rg,180,0,180);
    }
@@ -297,6 +303,8 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
               if (crysTotAddBack[gebMultNum] > 0) {
                 if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
                   hgAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum]); //ab fill
+                  hgAddBackVsAngle[nTreeNum]->Fill(crysTotAddBack[gebMultNum],
+                  modCCang[gebMultNum]*180./TMath::Pi());
                 }
               }
 
@@ -309,6 +317,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
               hgNoDopVsAngle[nTreeNum]->Fill(crysTotE[gebMultNum],modCCang[gebMultNum]*180./TMath::Pi());
               hgDopVsAngle[nTreeNum]->Fill(crysTotAddBack[gebMultNum],
               modCCang[gebMultNum]*180./TMath::Pi());
+
 
                 for (Int_t iMult=gebMultNum+1; iMult<gebMult; iMult++) {
                   if (gtime[gebMultNum][iMult]<40) {
@@ -392,7 +401,7 @@ gDirectory->ls();
   for (Int_t i=0;i<numRecoilProcess;i++) {
     hg[i]->Write(); hgDop[i]->Write(); hgAddBack[i]->Write(); hgAdd2Back[i]->Write();
     hgg[i]->Write(); hggDop[i]->Write(); hggAddBack[i]->Write();
-    hgNoDopVsAngle[i]->Write(); hgDopVsAngle[i]->Write();
+    hgNoDopVsAngle[i]->Write(); hgDopVsAngle[i]->Write(); hgAddBackVsAngle[i]->Write();
     hMults[i]->Write(); hEventType[i]->Write();
   }
   for (Int_t i=0;i<numScan;i++)

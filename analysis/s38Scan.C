@@ -56,7 +56,7 @@ void s38Scan(void){
   }
 
 //Sums
-  for (Int_t i=0;i<7;i++) {
+  for (Int_t i=0;i<6;i++) {
     hscanR[0]->Add(hscan[i]);
     hscanR[1]->Add(hscan[10+i]);
     hscanR[2]->Add(hscan[20+i]);
@@ -210,7 +210,7 @@ void s38Scan(void){
   can->cd(8); hscanC[1]->Draw(); hscanC[2]->Draw("same"); hscanC[0]->Draw("same");
 
 
-fitLow=2000;fitHigh=3000;
+fitLow=100;fitHigh=4000;
   for (Int_t i=0;i<3;i++) {
     hscanR[i]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
     hscanC[i]->GetXaxis()->SetRangeUser(fitLow,fitHigh);
