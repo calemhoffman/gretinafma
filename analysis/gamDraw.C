@@ -27,7 +27,7 @@
 #include <TFile.h>
 #include <TEventList.h>
 
-#include "AutoFit.C"
+//#include "AutoFit.C"
 
 #define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
@@ -67,6 +67,8 @@ TH1F *hg[5];//original gamma
 TH1F *hgDop[5],*hgAddBack[5],*hgAdd2Back[5];
 TH2F *hgg[5];//og gamma-gamma
 TH2F *hggDop[5],*hggAddBack[5];
+TH2F *hggRDC0[5];
+Float_t angleSpread=15.0;
 TH2F *hgNoDopVsAngle[5];//raw data vs. angles
 TH2F *hgDopVsAngle[5];//Dop corr vs. angles
 TH2F *hgAddBackVsAngle[5];//best gam vs. angles
@@ -134,6 +136,10 @@ void gamDraw(void) {
 
     hggAddBack[recNum] = new TH2F(Form("hggAddBack%d",recNum),
        	Form("%s hggAddBack%d; Gamma Energy [keV]; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+       	ch,0,rg,ch,0,rg);
+
+    hggRDC0[recNum] = new TH2F(Form("hggRDC0%d",recNum),
+       	Form("%s hggRDC0%d; Gamma Energy 90 [keV]; Gamma Energy off [keV]",rName[recNum].Data(),recNum),
        	ch,0,rg,ch,0,rg);
 
     hgNoDopVsAngle[recNum] = new TH2F(Form("hgNoDopVsAngle%d",recNum),
@@ -294,7 +300,8 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
 
 //Loop over segment multiplicity for histofill
     for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
-      if ( (cut_e1e3_s38->IsInside(e[2],e[0])) ) {//e1e3 scan cut
+      if ( /* (cut_e1e3_scan[0]->IsInside(e[2],e[0]) )*/
+          cut_e1e3_s38->IsInside(e[2],e[0]) ) {//e1e3 scan cut
             if (cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum])) {
 
               hg[nTreeNum]->Fill(genergy[gebMultNum]); //g fill
@@ -326,9 +333,21 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
                     hggDop[nTreeNum]->Fill(crysTotDop[gebMultNum],crysTotDop[iMult]);
                     hggDop[nTreeNum]->Fill(crysTotDop[iMult],crysTotDop[gebMultNum]);
                     if (crysTotAddBack[gebMultNum] > 0 && crysTotAddBack[iMult] > 0) {
-                      if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
-                        hggAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
-                        hggAddBack[nTreeNum]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
+                      if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0
+                        && (modCCang[iMult]*180./TMath::Pi())>60.0 && (modCCang[iMult]*180./TMath::Pi())<180.0 ) {
+                          hggAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
+                          hggAddBack[nTreeNum]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
+                          //RDC0 stuff, is this right??? Is all g-g right??
+                          if ( (90.0-angleSpread < modCCang[gebMultNum]*180./TMath::Pi())
+                            && (modCCang[gebMultNum]*180./TMath::Pi() < 90.0+angleSpread)
+                            && (130.0-angleSpread < modCCang[iMult]*180./TMath::Pi())
+                            && (modCCang[iMult]*180./TMath::Pi() < 130.0+angleSpread) )
+                              hggRDC0[nTreeNum]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
+                          if ( (90.0-angleSpread < modCCang[iMult]*180./TMath::Pi())
+                            && (modCCang[iMult]*180./TMath::Pi() < 90.0+angleSpread)
+                            && (130.0-angleSpread < modCCang[gebMultNum]*180./TMath::Pi())
+                            && (modCCang[gebMult]*180./TMath::Pi() < 130.0+angleSpread) )
+                              hggRDC0[nTreeNum]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
                       }
                     }
                   }//gtime if
@@ -400,7 +419,7 @@ gDirectory->ls();
 
   for (Int_t i=0;i<numRecoilProcess;i++) {
     hg[i]->Write(); hgDop[i]->Write(); hgAddBack[i]->Write(); hgAdd2Back[i]->Write();
-    hgg[i]->Write(); hggDop[i]->Write(); hggAddBack[i]->Write();
+    hgg[i]->Write(); hggDop[i]->Write(); hggAddBack[i]->Write(); hggRDC0[i]->Write();
     hgNoDopVsAngle[i]->Write(); hgDopVsAngle[i]->Write(); hgAddBackVsAngle[i]->Write();
     hMults[i]->Write(); hEventType[i]->Write();
   }

@@ -15,10 +15,17 @@ void gamAngleDraw(void) {
     {0.351,	0.011},
     {0.119,	0.006} };
 
+    for (Int_t i=0;i<20;i++) {
+      norm[i][0]=1;
+      norm[i][1]=0.0001;
+    }
+
 TH1D *hgndva0[50];
 Float_t binLow;
 Float_t binHigh;
 char * name("scan01");
+
+Int_t numAngles=5;
 
 FILE * fitFileOut;
 fitFileOut = fopen ("gamAngleFits.dat", "w+");
@@ -28,10 +35,10 @@ Double_t mean[10]={1292.0,1535.0,849.0,2668.0,1575};
 Double_t fitLow[10]={1280.0,1525.0,845.0,2640.0,1555};
 Double_t fitHigh[10]={1310.0,1545.0,855.0,2700.0,1590};
 
-for (Int_t i = 0;i< 11; i++) {
+for (Int_t i = 0;i<numAngles; i++) {
   hgndva0[i] = new TH1D(Form("hgang%s_%d",name,i),Form("hgang%s_%d",name,i),4096,0,4096);
-  binLow = 65 + 10 * (Float_t)i;
-  binHigh = 75 + 10 * (Float_t)i;
+  binLow = 65.0 + (100.0/(Float_t)numAngles) * (Float_t)i;
+  binHigh = 65.0 + (100.0/(Float_t)numAngles) + (100.0/(Float_t)numAngles) * (Float_t)i;
   hgAddBackVsAngle0->ProjectionX(Form("hgang%s_%d",name,i),binLow,binHigh);
   if (whichGam==3 || whichGam==4) hgndva0[i]->Rebin(2);
 // cic_e1d->cd(1);
@@ -42,7 +49,7 @@ fitGauss(hgndva0[i],mean[whichGam],3,fitLow[whichGam],fitHigh[whichGam],fitFileO
 
 TCanvas *cc = new TCanvas("cc","cc",1200,900);
 cc->Clear(); cc->Divide(4,3);
-for (Int_t i = 0;i<11;i++) {
+for (Int_t i = 0;i<numAngles;i++) {
   cc->cd(i+1);
   hgndva0[i]->GetXaxis()->SetRangeUser(fitLow[whichGam]-50,fitHigh[whichGam]+50);
   hgndva0[i]->GetYaxis()->SetRangeUser(0,20);
@@ -84,7 +91,7 @@ if( inFile.is_open() ) {
   printf("... done reading fit file\n");
 
 } else { printf("... failed to read fit file\n"); }
-TGraphErrors * gr = new TGraphErrors(11,x,y,xerr,yerr);
+TGraphErrors * gr = new TGraphErrors(numAngles,x,y,xerr,yerr);
 cc->cd(12);
 gr->Draw("ALP");
 gr->SetMarkerColor(4);
