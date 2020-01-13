@@ -14,7 +14,7 @@ void gamAngleDraw(void) {
     {0.561,	0.008},
     {0.351,	0.011},
     {0.119,	0.006} };
-Int_t binNum = 12;
+
 TH1D *hgndva0[50];
 Float_t binLow;
 Float_t binHigh;
@@ -23,26 +23,29 @@ char * name("scan01");
 FILE * fitFileOut;
 fitFileOut = fopen ("gamAngleFits.dat", "w+");
 //
-
-Double_t mean=1292; Double_t fitLow=1250; Double_t fitHigh=1310;
+const int whichGam=4;//0-1292,1-1535,2-849,3-2670,4-1575
+Double_t mean[10]={1292.0,1535.0,849.0,2668.0,1575};
+Double_t fitLow[10]={1280.0,1525.0,845.0,2640.0,1555};
+Double_t fitHigh[10]={1310.0,1545.0,855.0,2700.0,1590};
 
 for (Int_t i = 0;i< 11; i++) {
   hgndva0[i] = new TH1D(Form("hgang%s_%d",name,i),Form("hgang%s_%d",name,i),4096,0,4096);
   binLow = 65 + 10 * (Float_t)i;
   binHigh = 75 + 10 * (Float_t)i;
   hgAddBackVsAngle0->ProjectionX(Form("hgang%s_%d",name,i),binLow,binHigh);
+  if (whichGam==3 || whichGam==4) hgndva0[i]->Rebin(2);
 // cic_e1d->cd(1);
   fprintf(fitFileOut, "%f ", (binHigh+binLow)/2.0);
-//fitGaussP1(hgndva0[i],mean,50,fitLow,fitHigh,fitFileOut);
-  fitGauss(hgndva0[i],mean,50,fitLow,fitHigh,fitFileOut);
+//fitGaussP1(hgndva0[i],mean[whichGam],3,fitLow[whichGam],fitHigh[whichGam],fitFileOut);
+fitGauss(hgndva0[i],mean[whichGam],3,fitLow[whichGam],fitHigh[whichGam],fitFileOut);
 }
 
 TCanvas *cc = new TCanvas("cc","cc",1200,900);
 cc->Clear(); cc->Divide(4,3);
 for (Int_t i = 0;i<11;i++) {
   cc->cd(i+1);
-  hgndva0[i]->GetXaxis()->SetRangeUser(fitLow-50,fitHigh+50);
-  hgndva0[i]->GetYaxis()->SetRangeUser(0,110);
+  hgndva0[i]->GetXaxis()->SetRangeUser(fitLow[whichGam]-50,fitHigh[whichGam]+50);
+  hgndva0[i]->GetYaxis()->SetRangeUser(0,20);
   hgndva0[i]->Draw();
   wrspe(Form("hgang%s_%d",name,i),Form("angDist/hgang%s_%d.spe",name,i));
 }
@@ -95,7 +98,7 @@ TCanvas *cfit = new TCanvas("cfit","cfit",1400,700);
 cfit->cd();
 gr->Draw("ALP");
 Double_t * para2 = new Double_t[3];
-para2[0] = 450.0;
+para2[0] = 100.0;
 para2[1] = 0.5;
 para2[3] = 2;
 
@@ -107,7 +110,10 @@ TF1 * l2fit = new TF1("l2fit", "[0]*(1 + [1]*ROOT::Math::legendre([2],x))",-1,1)
 //l2fit->SetParameters(450,0.5);//,4,0.0);
 l2fit->SetParameters(para2);
 l2fit->FixParameter(2,2);
+//l2fit->SetParLimits(0,-2,2);
 l2fit->SetParLimits(1,-1,1);
+//l2fit->SetParLimits(2,-1,1);
+
 gr->Fit(l2fit);
 const Double_t* para2E = l2fit->GetParErrors();
 const Double_t* para2A = l2fit->GetParameters();
@@ -116,9 +122,9 @@ l2fit->Draw("same");
 
 
 Double_t * para4 = new Double_t[3];
-para4[0] = 450.0;
+para4[0] = 200.0;
 para4[1] = 0.5;
-para4[2] = -0.05;
+para4[2] = 0.1;
 
 TF1 * l4fit = new TF1("l4fit", "[0]*(1 + [1]*ROOT::Math::legendre(2,x) + [2]*ROOT::Math::legendre(4,x))",-1,1);//+ROOT::Math::legendre([2],x))",-1,1);
 // l2fit->SetParameters(450,0.5,0.05);//,4,0.0);
