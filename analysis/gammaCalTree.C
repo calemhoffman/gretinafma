@@ -79,8 +79,8 @@ void gammaCalTree() {
   Float_t intMaxSegE[100];
 
   //Initialize items
-  Int_t ch=4096;
-  Int_t rg=ch;
+  Int_t ch=8192;
+  Int_t rg=ch/2;
   for (Int_t recNum = 0; recNum<2; recNum++) {
     hMults[recNum] = new TH1I(Form("hMults%d",recNum),Form("hMults%d",recNum),100,0,100);
     hEventType[recNum] = new TH1I(Form("hEventType%d",recNum),Form("hEventType%d",recNum),10,0,10);
