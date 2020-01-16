@@ -22,7 +22,7 @@ TH1D *hg[50];
 Float_t binLow;
 Float_t binHigh;
 char * name("Cal");
-Int_t numAngles=4;
+Int_t numAngles=18;
 Double_t maxYvalue=0;
 FILE * fitFileOut;
 TH2F *hgg;
@@ -58,8 +58,8 @@ void gamAngleCal(void) {
     for (Int_t i = 0;i<numAngles; i++) {
       cc->cd(i+1);
       hg[i] = new TH1D(Form("hg%s_%d",name,i),Form("hg%s_%d",name,i),4096,0,4096);
-      binLow = 65.0 + (100.0/(Float_t)numAngles) * (Float_t)i;
-      binHigh = 65.0 + (100.0/(Float_t)numAngles) + (100.0/(Float_t)numAngles) * (Float_t)i;
+      binLow = 70.0 + (100.0/(Float_t)numAngles) * (Float_t)i;
+      binHigh = 70.0 + (100.0/(Float_t)numAngles) + (100.0/(Float_t)numAngles) * (Float_t)i;
       hgAddBackVsAngle0->ProjectionX(Form("hg%s_%d",name,i),binLow,binHigh);
 
       fprintf(fitFileOut, "%f ", (binHigh+binLow)/2.0);
@@ -105,7 +105,7 @@ void gamAngleCal(void) {
     average/=(Double_t)index;
 
     for (Int_t index2=0;index2<index-1;index2++) {
-      x[index2] = (TMath::Cos(TMath::Pi()*angleData[index2][0]/180.0));
+      x[index2] = angleData[index2][0];//(TMath::Cos(TMath::Pi()*angleData[index2][0]/180.0));
       y[index2] = (Double_t)angleData[index2][1]/average;//(Double_t)angleData[6][1];//average;
       xerr[index2] = 0.001;
       tempErr1 = (Double_t)((angleData[index2][2]/angleData[index2][1])*(angleData[index2][2]/angleData[index2][1]));
@@ -120,7 +120,7 @@ void gamAngleCal(void) {
     gr[whichGam]->Draw("ALP");
     gr[whichGam]->SetMarkerColor(kBlue+whichGam);
     gr[whichGam]->SetMarkerStyle(21);
-    gr[whichGam]->GetXaxis()->SetRangeUser(-1,1);
+    gr[whichGam]->GetXaxis()->SetRangeUser(60,180);
     //gr->GetYaxis()->SetRangeUser(0,1000);
     gr[whichGam]->Draw("ALP");
     cc->Update();
