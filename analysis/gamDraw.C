@@ -154,7 +154,7 @@ void gamDraw(void) {
     hgAddBackVsAngle[recNum] = new TH2F(Form("hgAddBackVsAngle%d",recNum),
        	Form("%s hgAddBackVsAngle%d; Gamma Energy [keV]; Angle [degrees]",
         rName[recNum].Data(),recNum),
-        ch,0,rg,180,0,180);
+        ch*4,0,rg,180,0,180);
    }
 
   //Pull the TTrees of interest
@@ -300,8 +300,8 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
 
 //Loop over segment multiplicity for histofill
     for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
-      if ( /* (cut_e1e3_scan[0]->IsInside(e[2],e[0]) )*/
-          cut_e1e3_s38->IsInside(e[2],e[0]) ) {//e1e3 scan cut
+      if ( /*(cut_e1e3_scan[1]->IsInside(e[2],e[0]))*/
+    cut_e1e3_s38->IsInside(e[2],e[0]) ) {//e1e3 scan cut
             if (cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum])) {
 
               hg[nTreeNum]->Fill(genergy[gebMultNum]); //g fill
