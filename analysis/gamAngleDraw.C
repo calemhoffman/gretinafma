@@ -58,10 +58,38 @@ void gamAngleDraw(void) {
     {0.458479,0.019816}
   };
 
+  Float_t normCal[20][20] = {
+{0.383143,0.375144,0.359136,0.342265,0.318332,0.312188,0.308352,0.305522,0.269761,0.246640,0.279892,0.213639},
+{0.474110,0.671570,0.770236,0.821058,0.860576,0.858476,0.858098,0.867735,0.849368,0.849518,0.858843,0.795673},
+{0.851894,0.900001,1.001139,1.054718,1.110680,1.117056,1.138791,1.153317,1.233870,1.200496,1.150104,1.107150},
+{1.180170,1.141191,1.116274,1.118330,1.110337,1.113759,1.122907,1.112875,1.116502,1.129929,1.062991,1.049798},
+{1.571142,1.585675,1.554377,1.541642,1.489716,1.490455,1.466106,1.469148,1.454407,1.381279,1.438185,1.493742},
+{1.584579,1.632706,1.617826,1.597239,1.608577,1.609430,1.600853,1.606147,1.572715,1.619030,1.587458,1.639398},
+{1.819427,1.808515,1.766131,1.768508,1.760370,1.761920,1.775004,1.764939,1.759812,1.762996,1.814662,1.919489},
+{1.293702,1.209176,1.156709,1.124421,1.134528,1.142966,1.147359,1.128412,1.142252,1.219228,1.189490,1.174130},
+{1.094917,1.019698,1.015723,0.991132,0.981387,0.982787,0.975824,0.984196,0.990544,1.002769,1.015898,1.038112},
+{0.746916,0.656325,0.642448,0.640687,0.625497,0.610963,0.606705,0.607710,0.610769,0.588114,0.602478,0.568869}};
+
+
+Float_t meanCal[20] = {121.5,
+245.0,
+344.0,
+444.0,
+779.0,
+964.1,
+1112.0,
+1408.0,
+2598.0,
+3009.0,
+3202.0,
+3452.0};
+
+Float_t normNew[20][20][2];
+
 TH1D *hgndva0[50];
 Float_t binLow;
 Float_t binHigh;
-char * name("scan01");
+char * name("misc");
 
 Int_t numAngles=10;
 const int  numGam=7;
@@ -94,6 +122,7 @@ Float_t maxGraphY[10]={200,200,200,200,200,200,200,200};
 // Double_t fitLow[10]={1400,1420};
 // Double_t fitHigh[10]={1420,1442};
 
+Float_t nfact[20];
 
 for (Int_t i=0;i<numAngles;i++) {
   if (numAngles==0) {
@@ -126,6 +155,20 @@ if (numAngles<10) {cfit->Divide(4,2);}
 else {cfit->Divide(4,5);}
 crat = new TCanvas("crat","crat",1000,1000);
 for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
+  for(Int_t k=0;k<11;k++) {//energy
+    if (mean[whichGam]>=meanCal[k] &&
+        mean[whichGam]<meanCal[k+1]) {
+        nfact[k] = (mean[whichGam]-meanCal[k])/
+                (meanCal[k+1]-meanCal[k]);
+                printf("nfact %f",nfact[k]);
+        for (Int_t j=0;j<numAngles;j++) {
+          normNew[whichGam][j][0] = normCal[j][k]
+          + nfact[k]*(normCal[j][k+1]-normCal[j][k]);
+          printf("normNew[][][] vs norm: %1.4f %1.4f\n",normNew[whichGam][j][0],norm[j][0]);
+        }
+      }
+    }
+
   fitFileOut = fopen (Form("gamAngleFits%.0f.dat",mean[whichGam]), "w+");
   cc[whichGam]= new TCanvas(Form("cc%d",whichGam),Form("cc%d",whichGam),1200,900);
   cc[whichGam]->cd();
@@ -140,7 +183,11 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
     hgAddBackVsAngle0->ProjectionX(Form("hgang%s_%d",name,i),binLow,binHigh);
     fprintf(fitFileOut, "%f ", (binHigh+binLow)/2.0);
     cc[whichGam]->cd(i+1);
-    hgndva0[i]->Scale(1./norm[i][0]);
+    if (numAngles!=10) {
+      hgndva0[i]->Scale(1./norm[i][0]);
+    } else {
+      hgndva0[i]->Scale(1./normNew[whichGam][i][0]);
+    }
     if (rebinFactor[whichGam]>1) hgndva0[i]->Rebin(rebinFactor[whichGam]);
 
     if (fitType[whichGam]==0)
