@@ -202,7 +202,8 @@ void fitGaussP1(TH1 * hist, double mean, double sigma, double xMin, double xMax,
 //########################################
 //########################################
 //########################################
-void fit2GaussP1(TH1 * hist, double mean1, double sigma1, double mean2, double sigma2, double xMin, double xMax, bool newCanvas, FILE * fileOut=NULL){
+void fit2GaussP1(TH1 * hist, double mean1, double sigma1, double mean2,
+  double sigma2, double xMin, double xMax, bool newCanvas, FILE * fileOut=NULL){
 
   if( newCanvas &&  gROOT->FindObjectAny("cFit2GaussP1") == NULL ){
     TCanvas * cFit2GaussP1 = new TCanvas("cFit2GaussP1", "fit Gauss & P1", 800, 400);
@@ -269,11 +270,10 @@ void fit2GaussP1(TH1 * hist, double mean1, double sigma1, double mean2, double s
 
   /**///================================= print fit outputs to file
   if (fileOut)
-    fprintf(fileOut, "%4.3f %4.3f %4.3f %4.3f %4.3f %4.3f %4.3f %4.3f\n",
-	    paraA[1], paraE[1],
-	    paraA[2], paraE[2],
-	    paraA[4], paraE[4],
-	    paraA[5], paraE[5]);
+    fprintf(fileOut, "%4.3f %4.3f %4.3f %4.3f %4.3f %4.3f\n",
+	    paraA[0], paraE[0],
+	    paraA[3], paraE[3],
+      paraA[1], paraA[4]);
 
 
 }
