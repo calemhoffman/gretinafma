@@ -21,7 +21,7 @@
 #include <TDatime.h>
 #include <TObjArray.h>
 
-#include "AutoFit.C"
+//#include "AutoFit.C"
 
 #define numHistScan 50
 
@@ -51,7 +51,7 @@ void s38Scan(void){
 //Fill
   for (Int_t i=0;i<numHistScan;i++) {
     hscan[i] = (TH1F *)inFile->Get(Form("hscan%d",i));
-    fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh);
+    //fitGaussP1(hscan[i],mean,sigma,fitLow,fitHigh);
     hscan[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
   }
 
@@ -87,118 +87,118 @@ void s38Scan(void){
   //fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
   fit2GaussP1(hscanC[2],1292,2,1300,2,1250,1350,0);
 
-  //1533
-  mean=1534;sigma=3;fitLow=1490;fitHigh=1560;
-  for (Int_t i=0;i<3;i++) {
-    hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanR[i]->SetLineColor(i+1);
-    hscanC[i]->SetLineColor(i+1);
-  }
-  fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
-  fitLow=1510;fitHigh=1548;fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
-
-  fitLow=1490;fitHigh=1560;fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
-
-  //33P - 1432
-  mean=1432;sigma=3;fitLow=1300;fitHigh=1530;
-  for (Int_t i=0;i<3;i++) {
-    hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanR[i]->SetLineColor(i+1);
-    hscanC[i]->SetLineColor(i+1);
-  }
-  fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
-  fitLow=1325;fitHigh=1525;
-  fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
-  fitLow=1416;fitHigh=1470;fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
-
-  fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
-
-  //33P - 1848
-  mean=1848;sigma=3;fitLow=1750;fitHigh=1950;
-  for (Int_t i=0;i<3;i++) {
-    hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanR[i]->SetLineColor(i+1);
-    hscanC[i]->SetLineColor(i+1);
-  }
-  fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
-
-  fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
-
-  //38Cl - 755
-  mean=755;sigma=1.5;fitLow=700;fitHigh=800;
-  for (Int_t i=0;i<3;i++) {
-    hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanR[i]->SetLineColor(i+1);
-    hscanC[i]->SetLineColor(i+1);
-  }
-  fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
-
-  fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
-
-  //38Cl - 3142
-  mean=3142;sigma=3;fitLow=3100;fitHigh=3200;
-  for (Int_t i=0;i<3;i++) {
-    hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanR[i]->SetLineColor(i+1);
-    hscanC[i]->SetLineColor(i+1);
-  }
-  fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
-
-  fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
-
-  //38Ar - 1643
-  mean=1643;sigma=3;fitLow=1620;fitHigh=1662;
-  for (Int_t i=0;i<3;i++) {
-    hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanR[i]->SetLineColor(i+1);
-    hscanC[i]->SetLineColor(i+1);
-  }
-  fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
-
-  fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
-
-  //38Ar - 2168
-  mean=2168;sigma=3;fitLow=2140;fitHigh=2200;
-  for (Int_t i=0;i<3;i++) {
-    hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
-    hscanR[i]->SetLineColor(i+1);
-    hscanC[i]->SetLineColor(i+1);
-  }
-  fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
-
-  fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
-  fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
+  // //1533
+  // mean=1534;sigma=3;fitLow=1490;fitHigh=1560;
+  // for (Int_t i=0;i<3;i++) {
+  //   hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanR[i]->SetLineColor(i+1);
+  //   hscanC[i]->SetLineColor(i+1);
+  // }
+  // fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
+  // fitLow=1510;fitHigh=1548;fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
+  //
+  // fitLow=1490;fitHigh=1560;fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
+  //
+  // //33P - 1432
+  // mean=1432;sigma=3;fitLow=1300;fitHigh=1530;
+  // for (Int_t i=0;i<3;i++) {
+  //   hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanR[i]->SetLineColor(i+1);
+  //   hscanC[i]->SetLineColor(i+1);
+  // }
+  // fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
+  // fitLow=1325;fitHigh=1525;
+  // fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
+  // fitLow=1416;fitHigh=1470;fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
+  //
+  // fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
+  //
+  // //33P - 1848
+  // mean=1848;sigma=3;fitLow=1750;fitHigh=1950;
+  // for (Int_t i=0;i<3;i++) {
+  //   hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanR[i]->SetLineColor(i+1);
+  //   hscanC[i]->SetLineColor(i+1);
+  // }
+  // fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
+  //
+  // fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
+  //
+  // //38Cl - 755
+  // mean=755;sigma=1.5;fitLow=700;fitHigh=800;
+  // for (Int_t i=0;i<3;i++) {
+  //   hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanR[i]->SetLineColor(i+1);
+  //   hscanC[i]->SetLineColor(i+1);
+  // }
+  // fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
+  //
+  // fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
+  //
+  // //38Cl - 3142
+  // mean=3142;sigma=3;fitLow=3100;fitHigh=3200;
+  // for (Int_t i=0;i<3;i++) {
+  //   hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanR[i]->SetLineColor(i+1);
+  //   hscanC[i]->SetLineColor(i+1);
+  // }
+  // fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
+  //
+  // fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
+  //
+  // //38Ar - 1643
+  // mean=1643;sigma=3;fitLow=1620;fitHigh=1662;
+  // for (Int_t i=0;i<3;i++) {
+  //   hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanR[i]->SetLineColor(i+1);
+  //   hscanC[i]->SetLineColor(i+1);
+  // }
+  // fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
+  //
+  // fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
+  //
+  // //38Ar - 2168
+  // mean=2168;sigma=3;fitLow=2140;fitHigh=2200;
+  // for (Int_t i=0;i<3;i++) {
+  //   hscanR[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanC[i]->GetXaxis()->SetRangeUser(fitLow-100,fitHigh+100);
+  //   hscanR[i]->SetLineColor(i+1);
+  //   hscanC[i]->SetLineColor(i+1);
+  // }
+  // fitGaussP1(hscanR[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanR[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanR[2],mean,sigma,fitLow,fitHigh);
+  //
+  // fitGaussP1(hscanC[0],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[1],mean,sigma,fitLow,fitHigh);
+  // fitGaussP1(hscanC[2],mean,sigma,fitLow,fitHigh);
 
 //Draws
   can->Clear(); can->Divide(2,4);
@@ -233,7 +233,8 @@ fitLow=100;fitHigh=4000;
   // can->cd(1); hscanR[0]->Draw(); can->cd(3); hscanR[2]->Draw("hist");
   // can->cd(2); hscanC[0]->Draw(); can->cd(4); hscanC[2]->Draw();
   hscanC[2]->SetLineColor(kRed);
-  can->cd(1); hscanR[0]->Draw(""); hscanR[2]->Draw("hist same"); hscanC[2]->Draw("hist same"); hscanR[0]->Draw("same");
+  can->cd(1); hscanR[0]->Draw(""); hscanR[2]->Draw("hist same");
+  hscanC[2]->Draw("hist same"); hscanR[0]->Draw("same");
   //can->cd(2);  hscanC[0]->Draw("same");
 
 

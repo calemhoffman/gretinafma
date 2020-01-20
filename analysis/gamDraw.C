@@ -64,10 +64,12 @@ Int_t nEntries[10];
 //Histograms
 TString rName[5] = {"s38","cl38","ar38","p33","all"};
 TH1F *hg[5];//original gamma
-TH1F *hgDop[5],*hgAddBack[5],*hgAdd2Back[5];
+//TH1F *hgDop[5];
+TH1F *hgAddBack[5],*hgAdd2Back[5];
 TH2F *hgg[5];//og gamma-gamma
-TH2F *hggDop[5],*hggAddBack[5];
-TH2F *hggRDC0[5];
+//TH2F *hggDop[5],
+TH2F *hggAddBack[5];
+//TH2F *hggRDC0[5];
 Float_t angleSpread=15.0;
 TH2F *hgNoDopVsAngle[5];//raw data vs. angles
 TH2F *hgDopVsAngle[5];//Dop corr vs. angles
@@ -80,6 +82,7 @@ TH2F *hxVg;
 TH2F *he0Vg;
 TH2F *he2Vg;
 TH2F *hdtVg;
+TH2F *he0x,*he1e3,*he1e2,*he2e3,*hdtge;
 //Cuts
 TCutG *cut_dtge[10];
 TCutG *cut_e1e3_scan[10];
@@ -107,6 +110,11 @@ void gamDraw(void) {
   he2Vg = new TH2F("he2Vg","he2Vg; e2; g",1000,0,4000,4000,0,4000);
   hdtVg = new TH2F("hdtVg","hdtVg; dt; g",1000,0,4000,4000,0,4000);
 
+  he0x = new TH2F("he0x","he0x; e0; x",1500,-1000,500,1000,0,3000);
+  he1e3 = new TH2F("he1e3","he1e3; e1; e3",1000,0,3000,1000,0,3000);
+  he1e2 = new TH2F("he1e2","he1e2; e1; e2",1000,0,3000,1000,0,3000);
+  he2e3 = new TH2F("he2e3","he2e3; e2; e3",1000,0,3000,1000,0,3000);
+  hdtge = new TH2F("hdtge","hdtge; ge; dt",10000,0,10000,75,0,150);
   for (Int_t recNum = 0; recNum<numRecoilProcess; recNum++) {
     hMults[recNum] = new TH1I(Form("hMults%d",recNum),Form("hMults%d",recNum),100,0,100);
     hEventType[recNum] = new TH1I(Form("hEventType%d",recNum),Form("hEventType%d",recNum),10,0,10);
@@ -119,14 +127,14 @@ void gamDraw(void) {
 			  Form("%s hgg%d; Gamma Energy [keV]; Gamma Energy [keV]",rName[recNum].Data(),recNum),
 			  ch,0,rg,ch,0,rg);
 
-    hgDop[recNum] = new TH1F(Form("hgDop%d",recNum),
-   			Form("%s hgDop%d; Gamma Energy [keV]",rName[recNum].Data(),recNum),
-   			ch,0,rg);
-
-    hggDop[recNum] = new TH2F(Form("hggDop%d",recNum),
-   			Form("%s hggDop%d; Gamma Energy [keV]; Gamma Energy [keV]",rName[recNum].Data(),recNum),
-   			ch,0,rg,ch,0,rg);
-
+    // hgDop[recNum] = new TH1F(Form("hgDop%d",recNum),
+   // 			Form("%s hgDop%d; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+   // 			ch,0,rg);
+    //
+    // hggDop[recNum] = new TH2F(Form("hggDop%d",recNum),
+   // 			Form("%s hggDop%d; Gamma Energy [keV]; Gamma Energy [keV]",rName[recNum].Data(),recNum),
+   // 			ch,0,rg,ch,0,rg);
+    //
     hgAddBack[recNum] = new TH1F(Form("hgAddBack%d",recNum),
        	Form("%s hgAddBack%d; Gamma Energy [keV]",rName[recNum].Data(),recNum),
        	ch,0,rg);
@@ -138,10 +146,10 @@ void gamDraw(void) {
        	Form("%s hggAddBack%d; Gamma Energy [keV]; Gamma Energy [keV]",rName[recNum].Data(),recNum),
        	ch,0,rg,ch,0,rg);
 
-    hggRDC0[recNum] = new TH2F(Form("hggRDC0%d",recNum),
-       	Form("%s hggRDC0%d; Gamma Energy 90 [keV]; Gamma Energy off [keV]",rName[recNum].Data(),recNum),
-       	ch,0,rg,ch,0,rg);
-
+    // hggRDC0[recNum] = new TH2F(Form("hggRDC0%d",recNum),
+    //    	Form("%s hggRDC0%d; Gamma Energy 90 [keV]; Gamma Energy off [keV]",rName[recNum].Data(),recNum),
+    //    	ch,0,rg,ch,0,rg);
+    //
     hgNoDopVsAngle[recNum] = new TH2F(Form("hgNoDopVsAngle%d",recNum),
        	Form("%s hgNoDopVsAngle%d; Gamma Energy [keV]; Angle [degrees]",
         rName[recNum].Data(),recNum),
@@ -301,11 +309,13 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
 //Loop over segment multiplicity for histofill
     for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
       if ( /*(cut_e1e3_scan[1]->IsInside(e[2],e[0]))*/
-    cut_e1e3_s38->IsInside(e[2],e[0]) ) {//e1e3 scan cut
+          cut_e1e3_s38->IsInside(e[2],e[0]) ) {//e1e3 scan cut
             if (cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum])) {
-
+              he0x->Fill(x,e[0]) ;
+              he1e3->Fill(e[2],e[0]);he1e2->Fill(e[1],e[0]);he2e3->Fill(e[2],e[1]);
+              hdtge->Fill(genergy[gebMultNum],dtime[gebMultNum]);
               hg[nTreeNum]->Fill(genergy[gebMultNum]); //g fill
-              hgDop[nTreeNum]->Fill(crysTotDop[gebMultNum]); //dop fill
+              //hgDop[nTreeNum]->Fill(crysTotDop[gebMultNum]); //dop fill
 
               if (crysTotAddBack[gebMultNum] > 0) {
                 if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
@@ -330,24 +340,24 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
                   if (gtime[gebMultNum][iMult]<40) {
                     hgg[nTreeNum]->Fill(genergy[gebMultNum],genergy[iMult]);
                     hgg[nTreeNum]->Fill(genergy[iMult],genergy[gebMultNum]);
-                    hggDop[nTreeNum]->Fill(crysTotDop[gebMultNum],crysTotDop[iMult]);
-                    hggDop[nTreeNum]->Fill(crysTotDop[iMult],crysTotDop[gebMultNum]);
+                    // hggDop[nTreeNum]->Fill(crysTotDop[gebMultNum],crysTotDop[iMult]);
+                    // hggDop[nTreeNum]->Fill(crysTotDop[iMult],crysTotDop[gebMultNum]);
                     if (crysTotAddBack[gebMultNum] > 0 && crysTotAddBack[iMult] > 0) {
                       if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0
                         && (modCCang[iMult]*180./TMath::Pi())>60.0 && (modCCang[iMult]*180./TMath::Pi())<180.0 ) {
                           hggAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
                           hggAddBack[nTreeNum]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
-                          //RDC0 stuff, is this right??? Is all g-g right??
+                            ;//RDC0 stuff, is this right??? Is all g-g right??
                           if ( (90.0-angleSpread < modCCang[gebMultNum]*180./TMath::Pi())
                             && (modCCang[gebMultNum]*180./TMath::Pi() < 90.0+angleSpread)
                             && (130.0-angleSpread < modCCang[iMult]*180./TMath::Pi())
                             && (modCCang[iMult]*180./TMath::Pi() < 130.0+angleSpread) )
-                              hggRDC0[nTreeNum]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
+                            ;  // hggRDC0[nTreeNum]->Fill(crysTotAddBack[gebMultNum],crysTotAddBack[iMult]);
                           if ( (90.0-angleSpread < modCCang[iMult]*180./TMath::Pi())
                             && (modCCang[iMult]*180./TMath::Pi() < 90.0+angleSpread)
                             && (130.0-angleSpread < modCCang[gebMultNum]*180./TMath::Pi())
                             && (modCCang[gebMult]*180./TMath::Pi() < 130.0+angleSpread) )
-                              hggRDC0[nTreeNum]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
+                            ;  // hggRDC0[nTreeNum]->Fill(crysTotAddBack[iMult],crysTotAddBack[gebMultNum]);
                       }
                     }
                   }//gtime if
@@ -418,8 +428,12 @@ gamFileOut = new TFile(fileName,"RECREATE");
 gDirectory->ls();
 
   for (Int_t i=0;i<numRecoilProcess;i++) {
-    hg[i]->Write(); hgDop[i]->Write(); hgAddBack[i]->Write(); hgAdd2Back[i]->Write();
-    hgg[i]->Write(); hggDop[i]->Write(); hggAddBack[i]->Write(); hggRDC0[i]->Write();
+    hg[i]->Write();
+    //hgDop[i]->Write()
+    hgAddBack[i]->Write(); hgAdd2Back[i]->Write();
+    hgg[i]->Write();
+    //hggDop[i]->Write();
+    hggAddBack[i]->Write(); //hggRDC0[i]->Write();
     hgNoDopVsAngle[i]->Write(); hgDopVsAngle[i]->Write(); hgAddBackVsAngle[i]->Write();
     hMults[i]->Write(); hEventType[i]->Write();
   }
@@ -427,6 +441,9 @@ gDirectory->ls();
     hscan[i]->Write();
 
   hxVg->Write();he0Vg->Write(); he2Vg->Write();
+
+  he0x->Write(); he1e3->Write(); hdtge->Write();
+  he1e2->Write(); he2e3->Write();
 
 //Cleanup
 gamFileIn->Close();

@@ -95,7 +95,7 @@ Float_t binHigh;
 char * name("misc");
 
 Int_t numAngles=10;
-const int  numGam=7;
+const int  numGam=8;
 FILE * fitFileOut;
 TCanvas *cfit;
 TCanvas *crat;
@@ -107,22 +107,23 @@ Double_t yAve[100],yAve2[100],yAve3[100],yAve4[100];
 Double_t xAveErr[100],xAve2Err[100],xAve3Err[100],xAve4Err[100];
 Double_t yAveErr[100],yAve2Err[100],yAve3Err[100],yAve4Err[100];
 
-Double_t mean[10]={755.0,292.0,1190.0,171.0,3142.0,2970.0,2680.0};
-Double_t fitLow[10]={745.0,282.0,1175.0,155.0,3110.0,2950.0,2650};
-Double_t fitHigh[10]={765.0,302.0,1200.0,181.0,3170.0,3000.0,2710};
-Int_t fitType[10]={1,1,1,1,1,1,1};
-Double_t mean2[10]={0,0,0,0,0,0,2666.0};
-Int_t rebinFactor[10]={4,4,4,4,4,4,4};
-Float_t maxGraphY[10]={200,200,200,200,200,40,200};
+// Double_t mean[10]={755.0,292.0,1190.0,171.0,3142.0,2970.0,2680.0};
+// Double_t fitLow[10]={745.0,282.0,1175.0,155.0,3110.0,2950.0,2650};
+// Double_t fitHigh[10]={765.0,302.0,1200.0,181.0,3170.0,3000.0,2710};
+// Int_t fitType[10]={1,1,1,1,1,1,1};
+// Double_t mean2[10]={0,0,0,0,0,0,2666.0};
+// Int_t rebinFactor[10]={4,4,4,4,4,4,4};
+// Float_t maxGraphY[10]={200,200,200,200,200,40,200};
 
-// Double_t mean[10]={1292.0,1535.0,849.0,2668.0,1575,1610.0,384.5,2322.0};
-// Double_t fitLow[10]={1270.0,1520.0,840.0,2640.0,1555,1600.0,375.0,2314.0};
-// Double_t fitHigh[10]={1320.0,1550.0,860.0,2700.0,1590,1620.0,390.0,2334.0};
-// Int_t fitType[10]={1,1,1,1,1,1,1,0};
-// Int_t rebinFactor[10]={1,1,1,2,2,2,1,2};
-// Float_t maxGraphY[10]={100,80,80,25,50,50,50,30};
+Double_t mean[10]={1292.0,1535.0,849.0,2668.0,1575,1610.0,384.5,2322.0};
+Double_t fitLow[10]={1270.0,1520.0,840.0,2640.0,1555,1600.0,375.0,2314.0};
+Double_t fitHigh[10]={1320.0,1550.0,860.0,2700.0,1590,1620.0,390.0,2334.0};
+Int_t fitType[10]={1,1,1,1,1,1,1,0};
+Int_t rebinFactor[10]={1,1,1,2,2,2,1,2};
+Float_t maxGraphY[10]={100,80,80,25,50,50,50,30};
+Double_t mean2[10]={0,0,0,0,0,0,0,0};
 
-// Double_t mean[10]={1412,1432};
+//Double_t mean[10]={1412,1432};
 // Double_t fitLow[10]={1400,1420};
 // Double_t fitHigh[10]={1420,1442};
 
