@@ -87,6 +87,7 @@ TH2F *he0x,*he1e3,*he1e2,*he2e3,*hdtge;
 TCutG *cut_dtge[10];
 TCutG *cut_e1e3_scan[10];
 TCutG *cut_e1e3_s38;
+TCutG *cut_e1e3_jan0;
 
 void gamDraw(void) {
   //Get preloaded stuff, i.e. cuts
@@ -95,7 +96,7 @@ void gamDraw(void) {
   cut_dtge[2] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_ar38");
   cut_dtge[3] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
   cut_e1e3_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_s38");
-
+  cut_e1e3_jan0 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_jan0");
   for (Int_t i=0;i<5;i++)
     cut_e1e3_scan[i] = (TCutG *) gDirectory->FindObjectAny(Form("cut_e1e3_scan%d",i));
 
@@ -308,8 +309,12 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
 
 //Loop over segment multiplicity for histofill
     for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
-      if ( /*(cut_e1e3_scan[1]->IsInside(e[2],e[0]))*/
-          cut_e1e3_s38->IsInside(e[2],e[0]) ) {//e1e3 scan cut
+      if (  (cut_e1e3_jan0->IsInside(e[2],e[0]))
+        // ( (cut_e1e3_scan[0]->IsInside(e[2],e[0]))
+        //  || (cut_e1e3_scan[1]->IsInside(e[2],e[0]))
+        // || (cut_e1e3_scan[2]->IsInside(e[2],e[0])) )
+           && (x>-600&&x<100)
+          ) {//e1e3 scan cut
             if (cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum])) {
               he0x->Fill(x,e[0]) ;
               he1e3->Fill(e[2],e[0]);he1e2->Fill(e[1],e[0]);he2e3->Fill(e[2],e[1]);

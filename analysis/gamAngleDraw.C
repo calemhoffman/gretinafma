@@ -94,7 +94,7 @@ Float_t binLow;
 Float_t binHigh;
 char * name("misc");
 
-Int_t numAngles=10;
+Int_t numAngles=5;
 const int  numGam=8;
 FILE * fitFileOut;
 TCanvas *cfit;
@@ -119,7 +119,7 @@ Double_t mean[10]={1292.0,1535.0,849.0,2668.0,1575,1610.0,384.5,2322.0};
 Double_t fitLow[10]={1270.0,1520.0,840.0,2640.0,1555,1600.0,375.0,2314.0};
 Double_t fitHigh[10]={1320.0,1550.0,860.0,2700.0,1590,1620.0,390.0,2334.0};
 Int_t fitType[10]={1,1,1,1,1,1,1,0};
-Int_t rebinFactor[10]={1,1,1,2,2,2,1,2};
+Int_t rebinFactor[10]={1,1,1,4,3,4,2,4};
 Float_t maxGraphY[10]={100,80,80,25,50,50,50,30};
 Double_t mean2[10]={0,0,0,0,0,0,0,0};
 
