@@ -1,10 +1,10 @@
 {
 //========= Macro generated from object: cut_e0x_s38/cut_e0x_s38
 //========= by ROOT version6.15/01
-   
+
    cutg = new TCutG("cut_e0x_s38",25);
-   cutg->SetVarX("he0x");
-   cutg->SetVarY("");
+   cutg->SetVarX("x");
+   cutg->SetVarY("e[0]");
    cutg->SetTitle("cut_e0x_s38");
    cutg->SetFillStyle(1000);
    cutg->SetLineWidth(8);
