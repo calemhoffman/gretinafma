@@ -320,10 +320,10 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
            && (x>-600&&x<100)
           ) {//e1e3 scan cut
             if (cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum])
-           && (dtime[gebMultNum]>70 && dtime[gebMultNum]<90)) {
+           && (dtime[gebMultNum]>40 && dtime[gebMultNum]<120)) {
               he0x->Fill(x,e[0]) ;
               he1e3->Fill(e[2],e[0]);he1e2->Fill(e[1],e[0]);he2e3->Fill(e[2],e[1]);
-              hdtge->Fill(genergy[gebMultNum],dtime[gebMultNum]);
+              //hdtge->Fill(genergy[gebMultNum],dtime[gebMultNum]);
               hg[nTreeNum]->Fill(genergy[gebMultNum]); //g fill
               //hgDop[nTreeNum]->Fill(crysTotDop[gebMultNum]); //dop fill
 
@@ -332,15 +332,12 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
                   hgAddBack[nTreeNum]->Fill(crysTotAddBack[gebMultNum]); //ab fill
                   hgAddBackVsAngle[nTreeNum]->Fill(crysTotAddBack[gebMultNum],
                   modCCang[gebMultNum]*180./TMath::Pi());
+                  hxVg->Fill(x,crysTotAddBack[gebMultNum]);
+                  he0Vg->Fill(e[0],crysTotAddBack[gebMultNum]);
+                  he2Vg->Fill(e[2],crysTotAddBack[gebMultNum]);
+                  hdtge->Fill(crysTotAddBack[gebMultNum],dtime[gebMultNum]);
                 }
               }
-
-              if (crysTotAdd2Back[gebMultNum] > 0) {
-                if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
-                  hgAdd2Back[nTreeNum]->Fill(crysTotAdd2Back[gebMultNum]); //a2b fill
-                }
-              }
-
               hgNoDopVsAngle[nTreeNum]->Fill(crysTotE[gebMultNum],modCCang[gebMultNum]*180./TMath::Pi());
               hgDopVsAngle[nTreeNum]->Fill(crysTotAddBack[gebMultNum],
               modCCang[gebMultNum]*180./TMath::Pi());
@@ -419,9 +416,10 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       if (crysTotAddBack[gebMultNum] > 0) {
         if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
           if ( cut_e1e3_scan[0]->IsInside(e[2],e[0]) ) {
-            hxVg->Fill(x,crysTotAddBack[gebMultNum]);
-            he0Vg->Fill(e[0],crysTotAddBack[gebMultNum]);
-            he2Vg->Fill(e[2],crysTotAddBack[gebMultNum]);
+            // hxVg->Fill(x,crysTotAddBack[gebMultNum]);
+            // he0Vg->Fill(e[0],crysTotAddBack[gebMultNum]);
+            // he2Vg->Fill(e[2],crysTotAddBack[gebMultNum]);
+            // hdtge->Fill(crysTotAddBack[gebMultNum],dtime[gebMultNum]);
             //hdtVg->Fill(dtime,crysTotAddBack[gebMultNum]);
           }
         }
