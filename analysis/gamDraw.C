@@ -83,6 +83,7 @@ TH2F *he0Vg;
 TH2F *he2Vg;
 TH2F *hdtVg;
 TH2F *he0x,*he1e3,*he1e2,*he2e3,*hdtge;
+TH2F *hmVx;
 //Cuts
 TCutG *cut_dtge[10];
 TCutG *cut_e1e3_scan[10];
@@ -90,6 +91,8 @@ TCutG *cut_e1e3_s38;
 TCutG *cut_e1e3_jan0;
 TCutG *cut_e1e3_scan15;
 TCutG *cut_e1e3_scan25;
+TCutG *cut_dtge_feb10;
+TCutG *cut_mx_test;
 
 void gamDraw(void) {
   //Get preloaded stuff, i.e. cuts
@@ -97,10 +100,12 @@ void gamDraw(void) {
   cut_dtge[1] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_cl38");
   cut_dtge[2] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_ar38");
   cut_dtge[3] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
+  cut_dtge_feb10 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_feb10");
   cut_e1e3_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_s38");
   cut_e1e3_jan0 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_jan0");
   cut_e1e3_scan15 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan15");
   cut_e1e3_scan25 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan25");
+  cut_mx_test = (TCutG *) gDirectory->FindObjectAny("cut_mx_test");
   for (Int_t i=0;i<5;i++)
     cut_e1e3_scan[i] = (TCutG *) gDirectory->FindObjectAny(Form("cut_e1e3_scan%d",i));
 
@@ -114,6 +119,8 @@ void gamDraw(void) {
   he0Vg = new TH2F("he0Vg","he0Vg; e0; g",1000,0,4000,4000,0,4000);
   he2Vg = new TH2F("he2Vg","he2Vg; e2; g",1000,0,4000,4000,0,4000);
   hdtVg = new TH2F("hdtVg","hdtVg; dt; g",1000,0,4000,4000,0,4000);
+  hmVx = new TH2F("hmVx","hmVx; m; x",1000,-2000,2000,1000,0,4000);
+
 
   he0x = new TH2F("he0x","he0x; e0; x",1500,-1000,500,1000,0,3000);
   he1e3 = new TH2F("he1e3","he1e3; e1; e3",1000,0,3000,1000,0,3000);
@@ -313,14 +320,18 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
 
 //Loop over segment multiplicity for histofill
     for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
-      if (  (cut_e1e3_scan25->IsInside(e[2],e[0]))
+      Double_t t = (Double_t)dtime[gebMultNum];
+      Double_t mass = ((e[0]+e[2])*t*t)/1.0e4;
+      if (  (cut_e1e3_scan[0]->IsInside(e[2],e[0]))
         // ( (cut_e1e3_scan[0]->IsInside(e[2],e[0]))
         //  || (cut_e1e3_scan[1]->IsInside(e[2],e[0]))
         // || (cut_e1e3_scan[2]->IsInside(e[2],e[0])) )
-           && (x>-600&&x<100)
+           && (x>-600&&x<600)
+           //&& (cut_mx_test->IsInside(x,mass))
           ) {//e1e3 scan cut
-            if (cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum])
-           && (dtime[gebMultNum]>40 && dtime[gebMultNum]<120)) {
+            if ( //cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum])
+           //&& (dtime[gebMultNum]>40 && dtime[gebMultNum]<120)) {
+           cut_dtge_feb10->IsInside(genergy[gebMultNum],dtime[gebMultNum]) ) {
               he0x->Fill(x,e[0]) ;
               he1e3->Fill(e[2],e[0]);he1e2->Fill(e[1],e[0]);he2e3->Fill(e[2],e[1]);
               //hdtge->Fill(genergy[gebMultNum],dtime[gebMultNum]);
@@ -336,6 +347,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
                   he0Vg->Fill(e[0],crysTotAddBack[gebMultNum]);
                   he2Vg->Fill(e[2],crysTotAddBack[gebMultNum]);
                   hdtge->Fill(crysTotAddBack[gebMultNum],dtime[gebMultNum]);
+                  hmVx->Fill(x,mass);
                 }
               }
               hgNoDopVsAngle[nTreeNum]->Fill(crysTotE[gebMultNum],modCCang[gebMultNum]*180./TMath::Pi());
@@ -451,7 +463,7 @@ gDirectory->ls();
   hxVg->Write();he0Vg->Write(); he2Vg->Write();
 
   he0x->Write(); he1e3->Write(); hdtge->Write();
-  he1e2->Write(); he2e3->Write();
+  he1e2->Write(); he2e3->Write(); hmVx->Write();
 
 //Cleanup
 gamFileIn->Close();
