@@ -110,6 +110,9 @@
   gROOT->ProcessLine(".x cuts/cut_e1e3_scan25.C"); cut_e1e3_scan25;
   gROOT->ProcessLine(".x cuts/cut_e1e3_jan0.C"); cut_e1e3_jan0;
   gROOT->ProcessLine(".x cuts/cut_mx_test.C"); cut_mx_test;
+  gROOT->ProcessLine(".x cuts/cut_mg_good.C"); cut_mg_good;
+  gROOT->ProcessLine(".x cuts/cut_mx_good.C"); cut_mx_good;
+  gROOT->ProcessLine(".x cuts/cut_mx_tight.C"); cut_mx_tight;
 
 
   gROOT->ProcessLine(".x cuts/cut_p33_g1400.C"); cut_p33_g1400;

@@ -1,4 +1,3 @@
-// Manipulation
 #include <TROOT.h>
 #include <TSystem.h>
 #include <TStyle.h>
@@ -37,6 +36,7 @@ TFile *gamFileOut;
 TString fileName;
 
 TTree * gtree[10];
+TTree * tree;
 Int_t recoilID[10];
 Int_t run;
 Int_t hits;
@@ -58,6 +58,10 @@ Float_t intMaxZ[100];
 Float_t intMaxE[100];
 Int_t intMaxSeg[100];
 Float_t intMaxSegE[100];
+//new
+Float_t mass;
+Float_t gAddBack[100];
+Float_t gAngle[100];
 
 Int_t nEntries[10];
 
@@ -92,7 +96,8 @@ TCutG *cut_e1e3_jan0;
 TCutG *cut_e1e3_scan15;
 TCutG *cut_e1e3_scan25;
 TCutG *cut_dtge_feb10;
-TCutG *cut_mx_test;
+TCutG *cut_mx_test,*cut_mg_good;
+TCutG *cut_mx_good;
 
 void gamProc(void) {
   //Get preloaded stuff, i.e. cuts
@@ -106,6 +111,8 @@ void gamProc(void) {
   cut_e1e3_scan15 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan15");
   cut_e1e3_scan25 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan25");
   cut_mx_test = (TCutG *) gDirectory->FindObjectAny("cut_mx_test");
+  cut_mg_good = (TCutG *) gDirectory->FindObjectAny("cut_mg_good");
+  cut_mx_good = (TCutG *) gDirectory->FindObjectAny("cut_mx_good");
   for (Int_t i=0;i<5;i++)
     cut_e1e3_scan[i] = (TCutG *) gDirectory->FindObjectAny(Form("cut_e1e3_scan%d",i));
 
@@ -174,6 +181,9 @@ void gamProc(void) {
         ch*4,0,rg,180,0,180);
    }
 
+
+
+
   //Pull the TTrees of interest
   fileName.Form("gamTree.root");
   gamFileIn = new TFile(fileName);
@@ -220,6 +230,19 @@ void gamProc(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
+  fileName.Form("gamProc.root");
+  gamFileOut = new TFile(fileName,"RECREATE");
+  gDirectory->ls();
+
+tree = new TTree("tree","tree");
+tree->Branch("e",e,"e[10]/F");
+tree->Branch("gmult",&gmult,"gmult/I");
+tree->Branch("gAddBack",gAddBack,"gAddBack[gmult]/F");
+tree->Branch("dtime",dtime,"dtime[gmult]/F");
+tree->Branch("x",&x,"x/F");
+tree->Branch("mass",&mass,"mass/F");
+tree->Branch("gAngle",gAngle,"gAngle[gmult]/F");
+
 //User Ins
 //Int_t nTreeNum = 0; //only for s38 to start
 Float_t beta = 0.03375; //s38 from Fits
@@ -242,8 +265,10 @@ Float_t crysTotAddBack[100];//Addback + Dopp corrected
 Float_t radAddBackTest = 10; // distance between points for addback in cm
 Int_t addBackDopNum = 0;
 
+Int_t isGoodEvent = 0;
 //Loop to calculate everything
 for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
+  isGoodEvent=0;
   for (Int_t nTreeNum=0;nTreeNum<numRecoilProcess;nTreeNum++) {
   if (entryNumber<nEntries[nTreeNum]) {
     gtree[nTreeNum]->GetEntry(entryNumber); //One and only pull of entries ??
@@ -282,7 +307,8 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         // radDiff[gebMultNum][j],
         // crysTot_e[gebMultNum], crysTot_e[j]);
 
-        if ( (radDiff[gebMultNum][j] <= radAddBackTest) && (gtime[gebMultNum][j]<40) ){
+        if ( (radDiff[gebMultNum][j] <= radAddBackTest) && (gtime[gebMultNum][j]<40) )
+        {
           hEventType[nTreeNum]->Fill(3);
           crysTotAddBack[gebMultNum] += crysTot_e[j];
           if (crysTot_e[j] > crysTot_e[gebMultNum]) addBackDopNum = j;
@@ -293,6 +319,8 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum]/modCCdopfac[gebMultNum];//DOPPLER
       crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum] - (0.002*x);//X CORRECTION (from hxVg spectrum)
       crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum] + (e[0]-1625)*0.002488;//e[0] from he0Vg specrum
+      gAddBack[gebMultNum] = crysTotAddBack[gebMultNum];
+      gAngle[gebMultNum] = (modCCang[gebMultNum]*180./TMath::Pi());
       //printf("** crysTotAddBack w/ Dop: %f\n\n",crysTotAddBack[gebMultNum]);
   //  } //if e>0
     } //gebMultNum
@@ -301,10 +329,13 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
     for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++)
     {
       Double_t t = (Double_t)dtime[gebMultNum];
-      Double_t mass = ((e[0]+e[2])*t*t)/1.0e4;
-      if ( (cut_e1e3_scan25->IsInside(e[2],e[0]) )
-      && (x>-600&&x<600) )
-      {//e1e3 && x
+      mass = ((e[0]+e[2])*t*t)/1.0e4;
+      if ( cut_e1e3_scan[0]->IsInside(e[2],e[0])
+      && (x>-600&&x<600)
+      && cut_mg_good->IsInside(mass,gAddBack[gebMultNum])
+      && cut_mx_good->IsInside(mass,x)
+    )
+      {//e1e3 && x && mass
         if ( cut_dtge_feb10->IsInside(genergy[gebMultNum],dtime[gebMultNum]) )
         {//dtime
           he0x->Fill(x,e[0]) ;
@@ -324,6 +355,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
               he2Vg->Fill(e[2],crysTotAddBack[gebMultNum]);
               hdtge->Fill(crysTotAddBack[gebMultNum],dtime[gebMultNum]);
               hmVx->Fill(x,mass);
+              isGoodEvent = 1;
             }
           }
           hgNoDopVsAngle[nTreeNum]->Fill(crysTotE[gebMultNum],modCCang[gebMultNum]*180./TMath::Pi());
@@ -375,13 +407,9 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       }
     }
   } //gebMultNum
+  if (isGoodEvent == 1) tree->Fill();
   }//entry loop
 }
-
-//Pull the TTrees of interest
-fileName.Form("gamProc.root");
-gamFileOut = new TFile(fileName,"RECREATE");
-gDirectory->ls();
 
   for (Int_t i=0;i<numRecoilProcess;i++) {
     hg[i]->Write();
@@ -400,6 +428,7 @@ gDirectory->ls();
 
   he0x->Write(); he1e3->Write(); hdtge->Write();
   he1e2->Write(); he2e3->Write(); hmVx->Write();
+  tree->Write();
 
 //Cleanup
 gamFileIn->Close();
