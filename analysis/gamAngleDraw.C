@@ -23,6 +23,14 @@ void gamAngleDraw(void) {
     {1.630528,0.021915},
     {0.860033,0.005352}
   };
+  // Float_t norm6[20][2] = {
+  //   {1.154699,0.341173},
+  //   {2.666674,0.688640},
+  //   {3.473243,0.914716},
+  //   {4.218334,1.074772},
+  //   {3.301057,0.841096},
+  //   {1.985993,0.522295}
+  // };
   Float_t norm10[20][2] = {
     {0.347027,0.018562},
     {0.728425,0.062301},
@@ -95,7 +103,7 @@ Float_t binHigh;
 char * name("misc");
 
 Int_t numAngles=5;
-const int  numGam=8;
+const int  numGam=3;
 FILE * fitFileOut;
 TCanvas *cfit;
 TCanvas *crat;
@@ -115,11 +123,11 @@ Double_t yAveErr[100],yAve2Err[100],yAve3Err[100],yAve4Err[100];
 // Int_t rebinFactor[10]={4,4,4,4,4,4,4};
 // Float_t maxGraphY[10]={200,200,200,200,200,40,200};
 
-Double_t mean[10]={1292.0,1535.0,849.0,2668.0,1575,1610.0,384.5,2322.0};
-Double_t fitLow[10]={1270.0,1520.0,840.0,2640.0,1555,1600.0,375.0,2314.0};
-Double_t fitHigh[10]={1320.0,1550.0,860.0,2700.0,1590,1620.0,390.0,2334.0};
-Int_t fitType[10]={1,1,1,1,1,1,1,0};
-Int_t rebinFactor[10]={1,1,1,4,3,4,2,4};
+Double_t mean[10]={1292.0,1535.0,850.0,2668.0,1575,1610.0,384.5,2322.0};
+Double_t fitLow[10]={1270.0,1528.0,846.0,2640.0,1555,1600.0,375.0,2314.0};
+Double_t fitHigh[10]={1320.0,1543.0,854.0,2700.0,1590,1620.0,390.0,2334.0};
+Int_t fitType[10]={1,0,0,1,1,1,1,0};
+Int_t rebinFactor[10]={2,4,3,8,3,4,2,4};
 Float_t maxGraphY[10]={100,80,80,25,50,50,50,30};
 Double_t mean2[10]={0,0,0,0,0,0,0,0};
 
@@ -145,6 +153,10 @@ for (Int_t i=0;i<numAngles;i++) {
   } else if (numAngles==5) {
     norm[i][0] = norm5[i][0];
     norm[i][1] = norm5[i][1];
+  // } else if (numAngles==6) {
+  //   norm[i][0] = norm6[i][0];
+  //   norm[i][1] = norm6[i][1];
+  // }
   } else if (numAngles==10) {
     norm[i][0] = norm10[i][0];
     norm[i][1] = norm10[i][1];
@@ -197,8 +209,13 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
     }
     if (rebinFactor[whichGam]>1) hgndva0[i]->Rebin(rebinFactor[whichGam]);
 
-    if (fitType[whichGam]==0)
-      fitGauss(hgndva0[i],mean[whichGam],3,fitLow[whichGam],fitHigh[whichGam],fitFileOut);
+    if (fitType[whichGam]==0) {
+      if (i==0 && whichGam==2) {
+        fitGaussP1(hgndva0[i],mean[whichGam],3,fitLow[whichGam]-5,fitHigh[whichGam]+5,fitFileOut);
+      } else {
+        fitGauss(hgndva0[i],mean[whichGam],3,fitLow[whichGam],fitHigh[whichGam],fitFileOut);
+      }
+    }
 
     if (fitType[whichGam]==1)
       fitGaussP1(hgndva0[i],mean[whichGam],3,fitLow[whichGam],fitHigh[whichGam],fitFileOut);
@@ -208,7 +225,7 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
       fit2GaussP1(hgndva0[i],mean[whichGam],5,mean2[whichGam],5,fitLow[whichGam],
       fitHigh[whichGam],tempCan,fitFileOut);
 
-    hgndva0[i]->GetXaxis()->SetRangeUser(fitLow[whichGam]-50,fitHigh[whichGam]+50);
+    hgndva0[i]->GetXaxis()->SetRangeUser(fitLow[whichGam]-7,fitHigh[whichGam]+7);
     hgndva0[i]->GetYaxis()->SetRangeUser(0,maxGraphY[whichGam]);
     hgndva0[i]->Draw("same");
   }
@@ -240,7 +257,7 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
       xerr[index] = 0.001;
       tempErr1 = (Double_t)((angleData[index][2]/angleData[index][1])*(angleData[index][2]/angleData[index][1]));
       tempErr2 = (Double_t)((norm[index][1]/norm[index][0])*(norm[index][1]/norm[index][0]));
-      yerr[index] = y[index] * TMath::Sqrt(tempErr1 + tempErr2) / 2.0;
+      yerr[index] = y[index] * TMath::Sqrt(tempErr1 + tempErr2) / 1.0;
       average+=angleData[index][1];
       printf("%f %f\n",angleData[index][0],angleData[index][1]/norm[index][0]);
       index++;

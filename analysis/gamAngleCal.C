@@ -22,7 +22,7 @@ TH1D *hg[50];
 Float_t binLow;
 Float_t binHigh;
 char * name("Cal");
-Int_t numAngles=10;
+Int_t numAngles=6;
 Double_t maxYvalue=0;
 FILE * fitFileOut;
 TH2F *hgg;
