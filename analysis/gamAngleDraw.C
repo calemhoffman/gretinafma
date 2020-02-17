@@ -103,7 +103,7 @@ Float_t binHigh;
 char * name("misc");
 
 Int_t numAngles=5;
-const int  numGam=3;
+const int  numGam=6;
 FILE * fitFileOut;
 TCanvas *cfit;
 TCanvas *crat;
@@ -123,11 +123,11 @@ Double_t yAveErr[100],yAve2Err[100],yAve3Err[100],yAve4Err[100];
 // Int_t rebinFactor[10]={4,4,4,4,4,4,4};
 // Float_t maxGraphY[10]={200,200,200,200,200,40,200};
 
-Double_t mean[10]={1292.0,1535.0,850.0,2668.0,1575,1610.0,384.5,2322.0};
-Double_t fitLow[10]={1270.0,1528.0,846.0,2640.0,1555,1600.0,375.0,2314.0};
-Double_t fitHigh[10]={1320.0,1543.0,854.0,2700.0,1590,1620.0,390.0,2334.0};
-Int_t fitType[10]={1,0,0,1,1,1,1,0};
-Int_t rebinFactor[10]={2,4,3,8,3,4,2,4};
+Double_t mean[10]={1292.0,1535.0,850.0,2668.0,2322,1576,1610.0,384.5};
+Double_t fitLow[10]={1270.0,1528.0,846.0,2655.0/*2640*/,2290,1550,1600.0,375.0};
+Double_t fitHigh[10]={1320.0,1543.0,854.0,2680.0/*2700*/,2350,1597,1620.0,390.0};
+Int_t fitType[10]={1,0,0,0/*1*/,1,1,1,0};
+Int_t rebinFactor[10]={2,4,3,14,14,11,2,4};
 Float_t maxGraphY[10]={100,80,80,25,50,50,50,30};
 Double_t mean2[10]={0,0,0,0,0,0,0,0};
 
@@ -225,7 +225,7 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
       fit2GaussP1(hgndva0[i],mean[whichGam],5,mean2[whichGam],5,fitLow[whichGam],
       fitHigh[whichGam],tempCan,fitFileOut);
 
-    hgndva0[i]->GetXaxis()->SetRangeUser(fitLow[whichGam]-7,fitHigh[whichGam]+7);
+    hgndva0[i]->GetXaxis()->SetRangeUser(fitLow[whichGam]-20,fitHigh[whichGam]+20);
     hgndva0[i]->GetYaxis()->SetRangeUser(0,maxGraphY[whichGam]);
     hgndva0[i]->Draw("same");
   }
@@ -257,7 +257,7 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
       xerr[index] = 0.001;
       tempErr1 = (Double_t)((angleData[index][2]/angleData[index][1])*(angleData[index][2]/angleData[index][1]));
       tempErr2 = (Double_t)((norm[index][1]/norm[index][0])*(norm[index][1]/norm[index][0]));
-      yerr[index] = y[index] * TMath::Sqrt(tempErr1 + tempErr2) / 1.0;
+      yerr[index] = y[index] * TMath::Sqrt(tempErr1 + tempErr2) / 2.0;
       average+=angleData[index][1];
       printf("%f %f\n",angleData[index][0],angleData[index][1]/norm[index][0]);
       index++;
@@ -309,34 +309,36 @@ for (Int_t i=0;i<index-1;i++) {
   const Double_t* para2E = l2fit->GetParErrors();
   const Double_t* para2A = l2fit->GetParameters();
   l2fit->GetXaxis()->SetRangeUser(-1,1);
+//from here
+//   Double_t * para4 = new Double_t[3];
+//   para4[0] = 200.0;
+//   para4[1] = 0.2;
+//   para4[2] = -0.1;
+//
+//   TF1 * l4fit = new TF1("l4fit", "[0]*(1 + [1]*ROOT::Math::legendre(2,x) + [2]*ROOT::Math::legendre(4,x))",-1,1);//+ROOT::Math::legendre([2],x))",-1,1);
+//   l4fit->SetParameters(para4);
+//   gr[whichGam]->Fit(l4fit);
+//
+//   const Double_t* para4E = l4fit->GetParErrors();
+//   const Double_t* para4A = l4fit->GetParameters();
+//   l4fit->SetLineColor(kRed);
+//   l4fit->GetYaxis()->SetRangeUser(0,2);
+//   l4fit->GetXaxis()->SetRangeUser(-1,1);
+// gr[whichGam]->Draw("ALP");
+//   l4fit->Draw("same");
+//to here
 
-  // Double_t * para4 = new Double_t[3];
-  // para4[0] = 200.0;
-  // para4[1] = 0.5;
-  // para4[2] = 0.1;
-  //
-  // TF1 * l4fit = new TF1("l4fit", "[0]*(1 + [1]*ROOT::Math::legendre(2,x) + [2]*ROOT::Math::legendre(4,x))",-1,1);//+ROOT::Math::legendre([2],x))",-1,1);
-  // l4fit->SetParameters(para4);
-  // gr[whichGam]->Fit(l4fit);
-  //
-  // const Double_t* para4E = l4fit->GetParErrors();
-  // const Double_t* para4A = l4fit->GetParameters();
-  // l4fit->SetLineColor(kRed);
-  // l4fit->GetYaxis()->SetRangeUser(0,2);
-  // l4fit->GetXaxis()->SetRangeUser(-1,1);
-// printf("average %f\n",average);
-//gr[whichGam]->Draw("ALP");
   l2fit->Draw("same");
-  //l4fit->Draw("same");
+
   cfit->Update();
   cfit->cd();
 
   if (numAngles==4 || numAngles==5) {
     xAve[whichGam] = (Double_t)mean[whichGam];//(/3.;
-    yAve[whichGam] = (y[numAngles-1])/(y[0]);
+    yAve[whichGam] = (y[numAngles-2])/(y[2]);
     xAveErr[whichGam] = 0.0001;
     yAveErr[whichGam] =
-    TMath::Sqrt(yerr[numAngles-1]*yerr[numAngles-1]+yerr[0]*yerr[0])/2.;
+    TMath::Sqrt(yerr[numAngles-2]*yerr[numAngles-2]+yerr[2]*yerr[2])/2.;
     xAve2[whichGam] = (Double_t)mean[whichGam];//(/3.;
     yAve2[whichGam] = (y[numAngles-1])/(y[1]);
     xAve2Err[whichGam] = 0.0001;
@@ -349,7 +351,7 @@ for (Int_t i=0;i<index-1;i++) {
     TMath::Sqrt(yerr[numAngles-1]*yerr[numAngles-1]+yerr[2]*yerr[2])/2.;
 
     grAve[0] = new TGraphErrors(numGam,xAve,yAve,xAveErr,yAveErr);
-    grAve[0]->SetMarkerStyle(20);
+    grAve[0]->SetMarkerStyle(24);
     grAve[0]->SetMarkerSize(2);
     grAve[1] = new TGraphErrors(numGam,xAve2,yAve2,xAve2Err,yAve2Err);
     grAve[1]->SetMarkerStyle(21);
@@ -367,7 +369,7 @@ for (Int_t i=0;i<index-1;i++) {
       yAve4Err[whichGam] =
       TMath::Sqrt(yerr[numAngles-1]*yerr[numAngles-1]+yerr[3]*yerr[3])/2.;
       grAve[3] = new TGraphErrors(numGam,xAve4,yAve4,xAve4Err,yAve4Err);
-      grAve[3]->SetMarkerStyle(23);
+      grAve[3]->SetMarkerStyle(25);
       grAve[3]->SetMarkerColor(kGreen+2);
       grAve[3]->SetMarkerSize(2);
     }
@@ -387,20 +389,31 @@ for (Int_t i=0;i<index-1;i++) {
     +yerr[low1]*yerr[low1]+yerr[low1+1]*yerr[low1+1]
     +yerr[low1+2]*yerr[low1+2])/6.;
     grAve[0] = new TGraphErrors(numGam,xAve,yAve,xAveErr,yAveErr);
-    grAve[0]->SetMarkerStyle(20);
+    grAve[0]->SetMarkerStyle(24);
     grAve[0]->SetMarkerSize(2);
   }
 }
+TLegend *leg;
   crat->cd();
   if (numAngles==4 || numAngles==5 || numAngles==10) {
-    grAve[0]->GetYaxis()->SetRangeUser(0.5,2);
-    grAve[0]->GetXaxis()->SetRangeUser(0,4000);
-    grAve[0]->SetTitle("Yield Ratios");
-    grAve[0]->Draw("AP");
+    grAve[1]->GetYaxis()->SetRangeUser(0,2);
+    grAve[1]->GetXaxis()->SetRangeUser(0,4000);
+    grAve[1]->SetTitle("Yield Ratios");
+    grAve[1]->Draw("AP");
+    grAve[0]->Draw("P");
+    leg = new TLegend(0.1,0.7,0.48,0.9);
+    leg->AddEntry(grAve[1],"4/1","p");
+    leg->AddEntry(grAve[2],"4/2","p");
+    leg->AddEntry(grAve[3],"4/3","p");
+    leg->AddEntry(grAve[0],"3/2","p");
+    leg->Draw();
     if (numAngles==4 || numAngles==5) {
-      grAve[1]->Draw("P");
       grAve[2]->Draw("P");
+//      grAve[2]->Draw("P");
     }
     if (numAngles==5) {grAve[3]->Draw("P");}
   }
+
+
+
 }
