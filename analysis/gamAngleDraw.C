@@ -102,8 +102,8 @@ Float_t binLow;
 Float_t binHigh;
 char * name("misc");
 
-Int_t numAngles=5;
-const int  numGam=6;
+Int_t numAngles=4;
+const int  numGam=7;
 FILE * fitFileOut;
 TCanvas *cfit;
 TCanvas *crat;
@@ -123,13 +123,13 @@ Double_t yAveErr[100],yAve2Err[100],yAve3Err[100],yAve4Err[100];
 // Int_t rebinFactor[10]={4,4,4,4,4,4,4};
 // Float_t maxGraphY[10]={200,200,200,200,200,40,200};
 
-Double_t mean[10]={1292.0,1535.0,850.0,2668.0,2322,1576,1610.0,384.5};
-Double_t fitLow[10]={1270.0,1528.0,846.0,2655.0/*2640*/,2290,1550,1600.0,375.0};
-Double_t fitHigh[10]={1320.0,1543.0,854.0,2680.0/*2700*/,2350,1597,1620.0,390.0};
-Int_t fitType[10]={1,0,0,0/*1*/,1,1,1,0};
-Int_t rebinFactor[10]={2,4,3,14,14,11,2,4};
-Float_t maxGraphY[10]={100,80,80,25,50,50,50,30};
-Double_t mean2[10]={0,0,0,0,0,0,0,0};
+Double_t mean[10]={1292.0,1535.0,850.0,2668.0,2322,1576,384.5};
+Double_t fitLow[10]={1270.0,1528.0,846.0,2655.0/*2640*/,2290,1550,360.0};
+Double_t fitHigh[10]={1320.0,1543.0,854.0,2680.0/*2700*/,2350,1597,410.0};
+Int_t fitType[10]={1,0,0,0/*1*/,1,1,1};
+Int_t rebinFactor[10]={2,4,3,14,14,4,6};
+Float_t maxGraphY[10]={100,80,80,25,50,50,50};
+Double_t mean2[10]={0,0,0,0,0,0,0};
 
 //Double_t mean[10]={1412,1432};
 // Double_t fitLow[10]={1400,1420};
@@ -404,6 +404,7 @@ TLegend *leg;
     leg = new TLegend(0.1,0.7,0.48,0.9);
     leg->AddEntry(grAve[1],"4/1","p");
     leg->AddEntry(grAve[2],"4/2","p");
+    if (numAngles==5)
     leg->AddEntry(grAve[3],"4/3","p");
     leg->AddEntry(grAve[0],"3/2","p");
     leg->Draw();
