@@ -226,15 +226,15 @@ void fitGaussP0(TH1 * hist, double mean, double sigma,
   fit->SetLineColor(2);
   fit->SetNpx(1000);
   fit->SetParameters(para);
-  fit->SetParLimits(0,0,1e5);
-  fit->SetParLimits(2,0,100);
+  fit->SetParLimits(0,0.1,1e5);
+  fit->SetParLimits(2,0.1,100);
   if (fixWidth==1) {
     printf("inside fix\n");
     fit->FixParameter(2,sigma);
   }
 
   hist->Fit("fit", "R");
-
+  fit->Draw("same");
   const Double_t*paraE = fit->GetParErrors();
   const Double_t*paraA = fit->GetParameters();
 

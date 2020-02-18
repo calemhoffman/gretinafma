@@ -103,13 +103,13 @@ Float_t binHigh;
 char * name("misc");
 
 Int_t numAngles=5;
-const int  numGam=7;
+const int  numGam=13;
 FILE * fitFileOut;
 TCanvas *cfit;
 TCanvas *crat;
-TCanvas *cc[10];
-TGraphErrors * gr[10];
-TGraphErrors *grAve[10];
+TCanvas *cc[100];
+TGraphErrors * gr[100];
+TGraphErrors *grAve[100];
 Double_t xAve[100],xAve2[100],xAve3[100],xAve4[100];
 Double_t yAve[100],yAve2[100],yAve3[100],yAve4[100];
 Double_t xAveErr[100],xAve2Err[100],xAve3Err[100],xAve4Err[100];
@@ -123,16 +123,33 @@ Double_t yAveErr[100],yAve2Err[100],yAve3Err[100],yAve4Err[100];
 // Int_t rebinFactor[10]={4,4,4,4,4,4,4};
 // Float_t maxGraphY[10]={200,200,200,200,200,40,200};
 
-Double_t mean[10]={1293.0,1534.0,850.0,2668.0,2322,1576,383.5};
-Double_t sigma[10]={2.5,2.6,2,6,5,3.0,2.2};
-Double_t offset[10]={1,1,1,1,1,1,1};
-Double_t fitLow[10]={1270.0,1520.0,846.0,2640.0,2290,1555,350.0};
-Double_t fitHigh[10]={1320.0,1550.0,854.0,2700.0,2350,1595,420.0};
-Double_t fixWidth[10]={0,1,0,0,1,1,1,0,0,0};
-Int_t fitType[10]={1,1,0,1,1,1,1};
-Int_t rebinFactor[10]={2,4,3,14,12,14,10};
-Float_t maxGraphY[10]={100,80,80,25,50,50,50};
-Double_t mean2[10]={0,0,0,0,0,0,0};
+//5 bin data - Beta root file
+// Double_t mean[10]={1293.0,1534.0,850.0,2668.0,2322,1576,383.5};
+// Double_t sigma[10]={2.5,2.6,2,6,5,3.0,2.2};
+// Double_t offset[10]={1,1,1,1,1,1,1};
+// Double_t fitLow[10]={1270.0,1520.0,846.0,2640.0,2290,1555,350.0};
+// Double_t fitHigh[10]={1320.0,1550.0,854.0,2700.0,2350,1595,420.0};
+// Double_t fixWidth[10]={0,1,0,0,1,1,1,0,0,0};
+// Int_t fitType[10]={1,1,0,1,1,1,1};
+// Int_t rebinFactor[10]={2,4,3,14,12,14,10};//4=1keV,8=2keV
+// Float_t maxGraphY[10]={100,80,80,25,50,50,50};
+// Double_t mean2[10]={0,0,0,0,0,0,0};
+
+//second set of data...
+Double_t mean[100]={1293.0,1534.0,850.0,2668.0,2322,1576,383.5,
+                    438.0,779.0,1018.0,1067.0,1456.0,1951.0};
+Double_t sigma[100]={2.5,2.6,2,6,5,3.0,2.2,
+                      2,1.5,1.2,2.5,2.2,2.5};
+Double_t offset[100]={1,1,1,1,1,1,1,1,1,1,1,1,1};
+Double_t fitLow[100]={1270.0,1520.0,846.0,2640.0,2290,1555,350.0,
+  420,775,1000,1060,1448,1935.0};
+Double_t fitHigh[100]={1320.0,1550.0,854.0,2700.0,2350,1595,420.0,
+  460,785,1040,1080,1480,1965.0};
+Double_t fixWidth[100]={0,1,0,0,1,1,1,1,1,1,1,1,1};
+Int_t fitType[100]={1,1,0,1,1,1,1,1,1,1,1,1,1};
+Int_t rebinFactor[100]={2,4,3,14,12,14,10,10,6,4,6,8,10};//4=1keV,8=2keV
+Float_t maxGraphY[100]={100,80,80,25,50,50,50,30,30,30,30,30,20};
+Double_t mean2[100]={0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 //Double_t mean[10]={1412,1432};
 // Double_t fitLow[10]={1400,1420};
@@ -170,8 +187,8 @@ for (Int_t i=0;i<numAngles;i++) {
 }
 
 /*********************************************/
-cfit = new TCanvas("cfit","cfit",1400,700);
-if (numAngles<10) {cfit->Divide(4,2);}
+cfit = new TCanvas("cfit","cfit",1400,900);
+if (numAngles<10) {cfit->Divide(4,4);}
 else if (numAngles==10) {cfit->Divide(5,2);}
 else if (numAngles>10) {cfit->Divide(5,4);}
 
@@ -207,7 +224,7 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
     cc[whichGam]->cd(i+1);
     if (numAngles!=10) {
       hgndva0[i]->Scale(1./norm[i][0]);
-      if (whichGam==6 && i==0)
+      if ( (whichGam==8||whichGam==6) && i==0)
         hgndva0[i]->Scale(1./norm[i][0]);
     } else {
       hgndva0[i]->Scale(1./normNew[whichGam][i][0]);
@@ -295,7 +312,7 @@ for (Int_t i=0;i<index-1;i++) {
   }
   gr[whichGam]->SetTitle(Form("%.0f keV",mean[whichGam]));
   gr[whichGam]->GetXaxis()->SetRangeUser(-1,1);
-  gr[whichGam]->GetYaxis()->SetRangeUser(0,2);
+  gr[whichGam]->GetYaxis()->SetRangeUser(0.4,1.8);
   gr[whichGam]->Draw("ALP");
 
   Double_t * para2 = new Double_t[3];
