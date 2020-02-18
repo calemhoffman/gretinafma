@@ -102,7 +102,7 @@ Float_t binLow;
 Float_t binHigh;
 char * name("misc");
 
-Int_t numAngles=4;
+Int_t numAngles=5;
 const int  numGam=7;
 FILE * fitFileOut;
 TCanvas *cfit;
@@ -123,11 +123,14 @@ Double_t yAveErr[100],yAve2Err[100],yAve3Err[100],yAve4Err[100];
 // Int_t rebinFactor[10]={4,4,4,4,4,4,4};
 // Float_t maxGraphY[10]={200,200,200,200,200,40,200};
 
-Double_t mean[10]={1292.0,1535.0,850.0,2668.0,2322,1576,384.5};
-Double_t fitLow[10]={1270.0,1528.0,846.0,2655.0/*2640*/,2290,1550,360.0};
-Double_t fitHigh[10]={1320.0,1543.0,854.0,2680.0/*2700*/,2350,1597,410.0};
-Int_t fitType[10]={1,0,0,0/*1*/,1,1,1};
-Int_t rebinFactor[10]={2,4,3,14,14,4,6};
+Double_t mean[10]={1293.0,1534.0,850.0,2668.0,2322,1576,383.5};
+Double_t sigma[10]={2.5,2.6,2,6,5,3.0,2.2};
+Double_t offset[10]={1,1,1,1,1,1,1};
+Double_t fitLow[10]={1270.0,1520.0,846.0,2640.0,2290,1555,350.0};
+Double_t fitHigh[10]={1320.0,1550.0,854.0,2700.0,2350,1595,420.0};
+Double_t fixWidth[10]={0,1,0,0,1,1,1,0,0,0};
+Int_t fitType[10]={1,1,0,1,1,1,1};
+Int_t rebinFactor[10]={2,4,3,14,12,14,10};
 Float_t maxGraphY[10]={100,80,80,25,50,50,50};
 Double_t mean2[10]={0,0,0,0,0,0,0};
 
@@ -204,6 +207,8 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
     cc[whichGam]->cd(i+1);
     if (numAngles!=10) {
       hgndva0[i]->Scale(1./norm[i][0]);
+      if (whichGam==6 && i==0)
+        hgndva0[i]->Scale(1./norm[i][0]);
     } else {
       hgndva0[i]->Scale(1./normNew[whichGam][i][0]);
     }
@@ -211,14 +216,17 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
 
     if (fitType[whichGam]==0) {
       if (i==0 && whichGam==2) {
-        fitGaussP1(hgndva0[i],mean[whichGam],3,fitLow[whichGam]-5,fitHigh[whichGam]+5,fitFileOut);
+        fitGaussP1(hgndva0[i],mean[whichGam],3,fitLow[whichGam]-8,fitHigh[whichGam]+8,fitFileOut);
       } else {
         fitGauss(hgndva0[i],mean[whichGam],3,fitLow[whichGam],fitHigh[whichGam],fitFileOut);
       }
     }
 
     if (fitType[whichGam]==1)
-      fitGaussP1(hgndva0[i],mean[whichGam],3,fitLow[whichGam],fitHigh[whichGam],fitFileOut);
+      fitGaussP0(hgndva0[i],mean[whichGam],sigma[whichGam],
+                offset[whichGam],fitLow[whichGam],fitHigh[whichGam],
+                fixWidth[whichGam],
+                fitFileOut);
 
     TCanvas *tempCan;
     if (fitType[whichGam]==2)
@@ -251,7 +259,6 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
       if (!inFile.good()) break;
       inFile >> angleData[index][0] >> angleData[index][1] >> angleData[index][2] >> angleData[index][3] >>
       angleData[index][4] >> angleData[index][5] >> angleData[index][6];
-
       x[index] = (TMath::Cos(TMath::Pi()*angleData[index][0]/180.0));
       y[index] = (Double_t)angleData[index][1];///(Double_t)norm[index][0];
       xerr[index] = 0.001;
@@ -265,7 +272,7 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
   printf("... done reading fit file\n");
   } else { printf("... failed to read fit file\n");
   }
-  average/=(Double_t)index;
+  average/=((Double_t)index-1);
 //adding in averging to put all ang dist on same plot.
 for (Int_t i=0;i<index-1;i++) {
   y[i] = y[i]/average;

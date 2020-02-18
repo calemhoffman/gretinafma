@@ -202,6 +202,70 @@ void fitGaussP1(TH1 * hist, double mean, double sigma, double xMin, double xMax,
 //########################################
 //########################################
 //########################################
+void fitGaussP0(TH1 * hist, double mean, double sigma,
+  double offset=10, double xMin=0, double xMax=0,
+  double fixWidth=0,
+		FILE * fileOut=NULL, double x=0, double y=0){
+
+
+  //if( gROOT->FindObjectAny("cFitGaussP1") == NULL ){
+  //  TCanvas * cFitGaussP1 = new TCanvas("cFitGaussP1", "fit Gauss & P1", 800, 400);
+  // }
+  gStyle->SetOptStat("neiou");
+  hist->Draw("HIST E");
+  TF1 * fit = new TF1("fit", "[0] * TMath::Gaus(x, [1], [2], 1) + [3]", xMin, xMax);
+
+  double * para = new double[5];
+  para[0] = 100 * 0.05 * TMath::Sqrt(TMath::TwoPi());
+  para[1] = mean;
+  para[2] = sigma;
+  para[3] = offset;
+//  para[4] = 0;
+
+  fit->SetLineWidth(2);
+  fit->SetLineColor(2);
+  fit->SetNpx(1000);
+  fit->SetParameters(para);
+  fit->SetParLimits(0,0,1e5);
+  fit->SetParLimits(2,0,100);
+  if (fixWidth==1) {
+    printf("inside fix\n");
+    fit->FixParameter(2,sigma);
+  }
+
+  hist->Fit("fit", "R");
+
+  const Double_t*paraE = fit->GetParErrors();
+  const Double_t*paraA = fit->GetParameters();
+
+  double bw = hist->GetBinWidth(1);
+
+  printf("%s ====== counts: %8.0f(%3.0f), mean: %8.4f(%8.4f), sigma: %8.4f(%8.4f) \n",
+            hist->GetName(),
+            paraA[0] / bw,   paraE[0] /bw,
+            paraA[1], paraE[1],
+            paraA[2], paraE[2]);
+
+  /**///================================= print fit outputs to file
+  if (fileOut)  {
+    /* if (paraA[0]>10) { */
+      fprintf(fileOut, "%4.3f %4.3f %4.3f %4.3f %4.3f %4.3f",
+	      paraA[0] / bw,   paraE[0] /bw,
+	      paraA[1], paraE[1],
+	      paraA[2], paraE[2]);
+      if (x>0 && y>0)
+	fprintf(fileOut," %4.3f %4.3f",x,y);
+      fprintf(fileOut,"\n");
+    /* } */
+  }
+}
+
+//########################################
+//
+
+//########################################
+//########################################
+//########################################
 void fit2GaussP1(TH1 * hist, double mean1, double sigma1, double mean2,
   double sigma2, double xMin, double xMax, bool newCanvas, FILE * fileOut=NULL){
 
