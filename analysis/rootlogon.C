@@ -2,8 +2,9 @@
   printf("rootlogon.C\n");
   gROOT->ProcessLine(".L GSUtil_new_cc.so");
   printf("GSUtil_new_cc.so loaded\n");
+  gROOT->ProcessLine(".L AutoFit.C");
 
- 
+
   // Set ROOT defaults
   gStyle->SetLineWidth(2);
   gStyle->SetCanvasBorderMode(0);
@@ -31,7 +32,7 @@
   gStyle->SetPalette(53,0);
   gStyle->SetNumberContours(99);                     // pretty and useful palette
   gStyle->SetHistLineWidth(1);                    // a thicker histogram line
-  gStyle->SetFrameFillColor(10);                  // a different frame colour   
+  gStyle->SetFrameFillColor(10);                  // a different frame colour
   gStyle->SetTitleFillColor(33);                 // title colour to highlight it
   gStyle->SetTitleW(.46);                         // Title Width
   gStyle->SetTitleH(.07);                        // Title height
@@ -74,7 +75,7 @@
   gROOT->ProcessLine(".x cuts/cut_cl38_g1100.C"); cut_cl38_g1100;
   gROOT->ProcessLine(".x cuts/cut_cl38_g2600.C"); cut_cl38_g2600;
   gROOT->ProcessLine(".x cuts/cut_cl38_g3100.C"); cut_cl38_g3100;
-  
+
   /* gROOT->ProcessLine(".x cuts/cut_s38_dtge.C"); cut_s38_dtge; */
   /* gROOT->ProcessLine(".x cuts/cut_s38_e1e3.C"); cut_s38_e1e3; */
   /* gROOT->ProcessLine(".x cuts/cut_s38_e1e2.C"); cut_s38_e1e2;  */
@@ -85,18 +86,34 @@
   gROOT->ProcessLine(".x cuts/cut_lr_ar38.C"); cut_lr_ar38;
   gROOT->ProcessLine(".x cuts/cut_ud_ar38.C"); cut_ud_ar38;
   gROOT->ProcessLine(".x cuts/cut_dtge_ar38.C"); cut_dtge_ar38;
-  
+
   gROOT->ProcessLine(".x cuts/cut_e1e3_cl38.C"); cut_e1e3_cl38;
   gROOT->ProcessLine(".x cuts/cut_e0x_cl38.C"); cut_e0x_cl38;
   gROOT->ProcessLine(".x cuts/cut_lr_cl38.C"); cut_lr_cl38;
   gROOT->ProcessLine(".x cuts/cut_ud_cl38.C"); cut_ud_cl38;
   gROOT->ProcessLine(".x cuts/cut_dtge_cl38.C"); cut_dtge_cl38;
-  
+
   gROOT->ProcessLine(".x cuts/cut_e1e3_s38.C"); cut_e1e3_s38;
   gROOT->ProcessLine(".x cuts/cut_e0x_s38.C"); cut_e0x_s38;
   gROOT->ProcessLine(".x cuts/cut_lr_s38.C"); cut_lr_s38;
   gROOT->ProcessLine(".x cuts/cut_ud_s38.C"); cut_ud_s38;
   gROOT->ProcessLine(".x cuts/cut_dtge_s38.C"); cut_dtge_s38;
+  gROOT->ProcessLine(".x cuts/cut_dtge_feb10.C"); cut_dtge_feb10;
+  gROOT->ProcessLine(".x cuts/cut_e2e3_s38.C"); cut_e2e3_s38;
+  gROOT->ProcessLine(".x cuts/cut_e1e2_s38.C"); cut_e1e2_s38;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan0.C"); cut_e1e3_scan0;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan1.C"); cut_e1e3_scan1;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan2.C"); cut_e1e3_scan2;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan3.C"); cut_e1e3_scan3;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan4.C"); cut_e1e3_scan4;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan15.C"); cut_e1e3_scan15;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_scan25.C"); cut_e1e3_scan25;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_jan0.C"); cut_e1e3_jan0;
+  gROOT->ProcessLine(".x cuts/cut_mx_test.C"); cut_mx_test;
+  gROOT->ProcessLine(".x cuts/cut_mg_good.C"); cut_mg_good;
+  gROOT->ProcessLine(".x cuts/cut_mx_good.C"); cut_mx_good;
+  gROOT->ProcessLine(".x cuts/cut_mx_tight.C"); cut_mx_tight;
+
 
   gROOT->ProcessLine(".x cuts/cut_p33_g1400.C"); cut_p33_g1400;
   gROOT->ProcessLine(".x cuts/cut_p33_g1800.C"); cut_p33_g1800;
@@ -108,15 +125,15 @@
   gROOT->ProcessLine(".x cuts/cut_lr_p33.C"); cut_lr_p33;
   gROOT->ProcessLine(".x cuts/cut_ud_p33.C"); cut_ud_p33;
   gROOT->ProcessLine(".x cuts/cut_dtge_p33.C"); cut_dtge_p33;
-  
+
   gROOT->ProcessLine(".x cuts/cut_s38_g800.C"); cut_s38_g800;
   gROOT->ProcessLine(".x cuts/cut_s38_g1200.C"); cut_s38_g1200;
   gROOT->ProcessLine(".x cuts/cut_s38_g1500.C"); cut_s38_g1500;
-  
+
   gROOT->ProcessLine(".x cuts/all_aq_e0x.C"); all_aq_e0x;
   gROOT->ProcessLine(".x cuts/all_z_e1e3.C"); all_z_e1e3;
   gROOT->ProcessLine(".x cuts/all_tof_dtge.C"); all_tof_dtge;
- 
+
   //  TBrowser *b = new TBrowser()
 
 }

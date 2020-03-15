@@ -109,7 +109,7 @@ sup_mode3 ()
   tree->Branch("gammaEnergy",el->gammaEnergy,"gammaEnergy[gammaMult]/F");
   tree->Branch("gammaTimestamp",el->gammaTimestamp,"gammaTimestamp[gammaMult]/F");
   tree->Branch("deltaTime",el->deltaTime,"deltaTime[gammaMult]/F");
-  tree->Branch("gDeltaTime",el->gDeltaTime,"gDeltaTime[gammaMult]/I");
+  tree->Branch("gDeltaTime",el->gDeltaTime,"gDeltaTime[gammaMult][100]/I");
   tree->Branch("gebMult",&el->gebMult,"gebMult/I");
   tree->Branch("crysType",el->crysType,"crysType[gebMult]/I");
   tree->Branch("crysId",el->crysId,"crysId[gebMult]/I");
@@ -130,12 +130,12 @@ sup_mode3 ()
   /* tree->Branch("crysNormChisq",el->crysNormChisq,"crysNormChisq[gebMult]/F"); */
   /* tree->Branch("crysBaseline",el->crysBaseline,"crysBaseline[gebMult]/F"); */
   /* tree->Branch("crysTpad",el->crysTpad,"crysTpad[gebMult]/i"); */
-  tree->Branch("intX",el->intX,"intX[100][100]/F");
-  tree->Branch("intY",el->intY,"intY[100][100]/F");
-  tree->Branch("intZ",el->intZ,"intZ[100][100]/F");
-  tree->Branch("intE",el->intE,"intE[100][100]/F");
-  tree->Branch("intSeg",el->intSeg,"intSeg[100][100]/I");
-  tree->Branch("intSegEnergy",el->intSegEnergy,"intSegEnergy[100][100]/F");
+  // tree->Branch("intX",el->intX,"intX[100][100]/F");
+  // tree->Branch("intY",el->intY,"intY[100][100]/F");
+  // tree->Branch("intZ",el->intZ,"intZ[100][100]/F");
+  // tree->Branch("intE",el->intE,"intE[100][100]/F");
+  // tree->Branch("intSeg",el->intSeg,"intSeg[100][100]/I");
+  // tree->Branch("intSegEnergy",el->intSegEnergy,"intSegEnergy[100][100]/F");
   //May have incorrect data types for a few new branches crh 1.19
 
   TimestampTemp=0;
@@ -838,7 +838,7 @@ if (nCCenergies>1) {
       //printf("gDeltaTime[%d][%d]: %5.5d\n",i,j,el->gDeltaTime[i][j]);
       h1_gdelta_time->Fill(el->gDeltaTime[i][j]);
       if (TMath::Abs(el->gDeltaTime[i][j])>=0 && TMath::Abs(el->gDeltaTime[i][j]<40)) {
-        writeYN[1] = 1;
+        writeYN[1] = 1; //coincidence for gamma-gamma
         h1_event_type->Fill(2);
       }
     }
@@ -847,11 +847,11 @@ if (nCCenergies>1) {
 
 h1_event_type->Fill(3);
 //Singles if true
-writeYN[2] = 1;
+writeYN[2] = 0;
 
 
-  // Must go last of course
-  if (writeYN[0] == 1 || writeYN[1] == 1 || writeYN[2]==1) {
+  // Must go last of course //fma or g-g
+  if (writeYN[0] == 1 || writeYN[1] == 1) {
     //gamma tracking data
     el->gebMult = (Int_t)GEB_event->mult;
     for (Int_t ii=0;ii<el->gebMult; ii++) {
@@ -887,9 +887,9 @@ writeYN[2] = 1;
     if ( (ptinp->intpts[jj].e>0)
 	       && (ptinp->intpts[jj].e<1e4) ) {
            el->intX[ii][jj] = ptinp->intpts[jj].x;
-           el->intX[ii][jj] = ptinp->intpts[jj].y;
-           el->intX[ii][jj] = ptinp->intpts[jj].z;
-           el->intX[ii][jj] = ptinp->intpts[jj].e;
+           el->intY[ii][jj] = ptinp->intpts[jj].y;
+           el->intZ[ii][jj] = ptinp->intpts[jj].z;
+           el->intE[ii][jj] = ptinp->intpts[jj].e;
            el->intSeg[ii][jj] = ptinp->intpts[jj].seg;
            el->intSegEnergy[ii][jj] = ptinp->intpts[jj].seg_ener;
 	   if ( (ptinp->intpts[jj].e > tempMaxE) ) {

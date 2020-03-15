@@ -29,6 +29,7 @@ TH1F *hg[5];//original gamma
 TH1F *hgDop[5],*hgAddBack[5],*hgAdd2Back[5];
 TH2F *hgg[5];//og gamma-gamma
 TH2F *hggDop[5],*hggAddBack[5];
+TH2F *hgAddBackVsAngle[5];//best gam vs. angles
 TH1I *hMults[5];
 TH1I *hEventType[5];
 TString rName[5] = {"all"};
@@ -78,8 +79,8 @@ void gammaCalTree() {
   Float_t intMaxSegE[100];
 
   //Initialize items
-  Int_t ch=4096;
-  Int_t rg=ch;
+  Int_t ch=8192;
+  Int_t rg=ch/2;
   for (Int_t recNum = 0; recNum<2; recNum++) {
     hMults[recNum] = new TH1I(Form("hMults%d",recNum),Form("hMults%d",recNum),100,0,100);
     hEventType[recNum] = new TH1I(Form("hEventType%d",recNum),Form("hEventType%d",recNum),10,0,10);
@@ -110,6 +111,11 @@ void gammaCalTree() {
     hggAddBack[recNum] = new TH2F(Form("hggAddBack%d",recNum),
        	Form("%s hggAddBack%d; Gamma Energy [keV]; Gamma Energy [keV]",rName[recNum].Data(),recNum),
        	ch,0,rg,ch,0,rg);
+
+    hgAddBackVsAngle[recNum] = new TH2F(Form("hgAddBackVsAngle%d",recNum),
+        Form("%s hgAddBackVsAngle%d; Gamma Energy [keV]; Angle [degrees]",
+        rName[recNum].Data(),recNum),
+        ch,0,rg,180,0,180);
    }
 
   Int_t goodRun[2] = {0,0};//303 (152Eu), 304 (??)
@@ -119,7 +125,7 @@ void gammaCalTree() {
     printf("Starting sort of run number: %d\n",runN);
     if (goodRun[index]==SOURCE) {
       //TFile * fNameIn = new TFile(Form("/lcrc/project/HELIOS/gretinafma/data/run%d.root",runN));
-      TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/run%d.root",runN));
+      TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/source_data/run%d.root",runN));
 
       if (fNameIn == 0) printf("Error: file read in fail\n");
       TTree * tree = (TTree *) fNameIn->FindObjectAny("tree");
@@ -249,6 +255,8 @@ void gammaCalTree() {
               if (crysTotAddBack[gebMultNum] > 0) {
                 if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0) {
                   hgAddBack[index]->Fill(crysTotAddBack[gebMultNum]); //ab fill
+                  hgAddBackVsAngle[index]->Fill(crysTotAddBack[gebMultNum],
+                  modCCang[gebMultNum]*180./TMath::Pi());
                 }
               }
 
@@ -284,7 +292,7 @@ void gammaCalTree() {
     for (Int_t i=0;i<2;i++) {
       hg[i]->Write(); hgDop[i]->Write(); hgAddBack[i]->Write(); hgAdd2Back[i]->Write();
       hgg[i]->Write(); hggDop[i]->Write(); hggAddBack[i]->Write();
-      hMults[i]->Write(); hEventType[i]->Write();
+      hMults[i]->Write(); hEventType[i]->Write(); hgAddBackVsAngle[i]->Write();
     }
 
 }//gammaCalTree
