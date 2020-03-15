@@ -1,0 +1,89 @@
+chat file: <GEBMerge.chat> open
+
+will echo command lines
+chat->
+chat->#---------------------------------------
+chat-># max coincidence events to create, listing etc
+chat->
+chat->maxNoEvents 10000000000
+chat->TSlistelen 5000 1 1
+chat->#            |   | +-- last bigbuf
+chat->#            |   +-- first bigbuf
+chat->#            +-- max TS to write per file
+chat->
+chat->nprint 100
+will print information for first 100 events
+chat->
+chat->#---------------------------------------
+chat-># output chunck size
+chat->
+chat->chunksiz 2000000000
+chat->
+chat->#---------------------------------------
+chat-># wait for nn seconds for data to appear
+chat-># (meant for on-line merging and sorting)
+chat->
+chat->;waitfordata 600
+chat->
+chat->#---------------------------------------
+chat-># bigbuf size and wosize
+chat->#    +--- big size makes program slow;
+chat->#         but it may be necessary sometimes
+chat->
+chat->bigbufsize 4500
+sizeof(EVENT)= 16
+will use a bigbuffer size of 4500, or   0.086 MBytes
+chat->wosize     50
+will use a bigbuffer wosize of 2250
+chat->#  |
+chat->#  +--- in percent of bigbufsize
+chat->#       written out per buffer
+chat->
+chat->#---------------------------------------
+chat-># how often should we write 
+chat-># statistics to output
+chat->
+chat->reportinterval 100
+chat->
+chat->#---------------------------------------
+chat-># TS jump recovery trigger limits
+chat-># (if timestamps jumps outside these
+chat->#  limits GTMerge will read forward to 
+chat->#  try and recover, 0.1 to 1 sec seems to works)
+chat->#  100000000 ==  1 sec
+chat->#  100000    ==  1 ms
+chat->#  100       ==  1 us
+chat->#  1         == 10 ns
+chat->
+chat->dts_min  -10000000000
+control.dts_min=-10000000000
+chat->dts_max   10000000000
+control.dts_max=10000000000
+chat->
+chat->dtsfabort 50
+chat->dtsbabort 50
+chat->#         |
+chat->#         +----- abort recovery and accept TS
+chat->#                after this many tries in a row
+chat->
+chat->#---------------------------------------
+chat-># enable to zzip output data file
+chat-># does not work at the moment
+chat->
+chat->;zzipout
+chat->
+chat->#---------------------------------------
+chat-># TS manipulation
+chat->
+chat->#         +--- Apply to this GEB Id data
+chat->#         |     +--- range of board/channel IDs
+chat->#         |     |           +--- offset value
+chat->;TSoffset 16 2308-2324,2329 -10
+chat->#
+chat->#---------------------------------------
+chat->
+../GEBSort/GEBMerge: will produce a max of 1410065408 events
+../GEBSort/GEBMerge: will write combined data to file "/lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run300.gtd"
+../GEBSort/GEBMerge: we have 1 datafiles to combine
+../GEBSort/GEBMerge: will keep a pool of 1 events to combine from 
+could not open input data file [3] /lcrc/project/HELIOS/gretinafma/data/Run0300/Global.dat, quit!

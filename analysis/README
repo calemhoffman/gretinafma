@@ -1,0 +1,79 @@
+#!/bin/bash
+exit
+
+cd <your work directory>
+
+#---------------------------------------------------------------
+# setup as:
+
+git clone https://gitlab.phy.anl.gov/tlauritsen/trackMain.git 
+(cd trackMain; make -B)
+
+git clone https://gitlab.phy.anl.gov/tlauritsen/GEBSort.git 
+(cd GEBSort; make -B)
+
+# make links to the crmat files which we keep in trackMain
+# but are needed here as well for GEBSort
+
+(cd GEBSort; rm GANIL_AGATA_crmat.dat; ln -s ../trackMain/GANIL_AGATA_crmat.dat GANIL_AGATA_crmat.dat)
+(cd GEBSort; rm GSI_AGATA_crmat.dat; ln -s ../trackMain/GSI_AGATA_crmat.dat GSI_AGATA_crmat.dat)
+(cd GEBSort; rm crmat.LINUX; ln -s ../trackMain/crmat.LINUX crmat.LINUX)
+
+#---------------------------------------------------------------
+# update as:
+
+(cd trackMain; git pull; make -B)
+(cd GEBSort; git pull; make -B)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OLD OLD OLD OLD OLD OLD
+OLD OLD OLD OLD OLD OLD
+OLD OLD OLD OLD OLD OLD
+OLD OLD OLD OLD OLD OLD
+OLD OLD OLD OLD OLD OLD
+OLD OLD OLD OLD OLD OLD
+
+#---------------------------------------------------------------
+# setup as:
+
+git clone https://github.com/tlauritsen/trackMain.git 
+(cd trackMain; make -B)
+
+--> later:: git clone https://github.com/tlauritsen/GEBSort.git 
+(cd GEBSort; make -B)
+
+# make links to the crmat files which we keep in trackMain
+# but are needed here as well for GEBSort
+
+(cd GEBSort; ln -s ../trackMain/GANIL_AGATA_crmat.dat GANIL_AGATA_crmat.dat)
+(cd GEBSort; ln -s ../trackMain/GSI_AGATA_crmat.dat GSI_AGATA_crmat.dat)
+(cd GEBSort; ln -s ../trackMain/crmat.LINUX crmat.LINUX)
+
+#---------------------------------------------------------------
+# update as:
+
+(cd trackMain; git pull; make -B)
+(cd GEBSort; git pull; make -B)
+
+#---------------------------------------------------------------
+
