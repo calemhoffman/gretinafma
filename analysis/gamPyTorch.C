@@ -59,17 +59,19 @@ Float_t intMaxE[100];
 Int_t intMaxSeg[100];
 Float_t intMaxSegE[100];
 //new
-Float_t mass;
+Float_t mass[100];
 Float_t gAddBack[100];
 Float_t gAngle[100];
 
 Int_t nEntries[10];
 
-Float_t e0;
-Float_t e1;
-Float_t e2;
+Float_t e0,e1,e2,e3,e4,e5,e6;
 Float_t m;
-Float_t g0,g1,g2,g3,g4,g5;
+Float_t ge;
+Float_t gid;
+Float_t glabel;
+Int_t non38S = 0;
+Int_t pyTreeFill = 0;
 
 //Histograms
 TString rName[5] = {"s38","cl38","ar38","p33","all"};
@@ -244,15 +246,16 @@ pytree = new TTree("pytree","pytree");
 pytree->Branch("e0",&e0,"e0/F");
 pytree->Branch("e1",&e1,"e1/F");
 pytree->Branch("e2",&e2,"e2/F");
+pytree->Branch("e3",&e3,"e3/F");
+pytree->Branch("e4",&e4,"e4/F");
+pytree->Branch("e5",&e5,"e5/F");
+pytree->Branch("e6",&e6,"e6/F");
 pytree->Branch("x",&x,"x/F");
 pytree->Branch("m",&m,"m/F");
 pytree->Branch("gmult",&gmult,"gmult/I");
-pytree->Branch("g0",&g0,"g0/F");
-pytree->Branch("g1",&g1,"g1/F");
-pytree->Branch("g2",&g2,"g2/F");
-pytree->Branch("g3",&g3,"g3/F");
-pytree->Branch("g4",&g4,"g4/F");
-
+pytree->Branch("ge",&ge,"ge/F");
+pytree->Branch("gid",&gid,"gid/F");
+pytree->Branch("glabel",&glabel,"glabel/F");
 
 //User Ins
 //Int_t nTreeNum = 0; //only for s38 to start
@@ -278,7 +281,7 @@ Int_t addBackDopNum = 0;
 
 Int_t isGoodEvent = 0;
 //Loop to calculate everything
-maxEntries=1e6;
+
 for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   isGoodEvent=0;
   for (Int_t nTreeNum=0;nTreeNum<numRecoilProcess;nTreeNum++) {
@@ -342,13 +345,13 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
     {
       Double_t t = (Double_t)dtime[gebMultNum];
       if (t>0&&t<200){
-        mass = ((e[0]+e[2])*t*t)/1.0e4;
-      } else {mass = 0;}
-      if ( ( cut_e1e3_scan[0]->IsInside(e[2],e[0])
-      || cut_e1e3_scan[1]->IsInside(e[2],e[0]) )
+        mass[gebMultNum] = ((e[0]+e[2])*t*t)/1.0e4;
+      } else {mass[gebMultNum] = 0;}
+      if ( (cut_e1e3_scan[0]->IsInside(e[2],e[0])
+    || cut_e1e3_scan[1]->IsInside(e[2],e[0]))
       && (x>-600&&x<600)
-      && cut_mg_good->IsInside(mass,gAddBack[gebMultNum])
-      && cut_mx_good->IsInside(mass,x)
+      //&& cut_mg_good->IsInside(mass[gebMultNum],gAddBack[gebMultNum])
+      //&& cut_mx_good->IsInside(mass[gebMultNum],x)
     )
       {//e1e3 && x && mass
         if ( cut_dtge_feb10->IsInside(genergy[gebMultNum],dtime[gebMultNum]) )
@@ -369,7 +372,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
               he0Vg->Fill(e[0],crysTotAddBack[gebMultNum]);
               he2Vg->Fill(e[2],crysTotAddBack[gebMultNum]);
               hdtge->Fill(crysTotAddBack[gebMultNum],dtime[gebMultNum]);
-              hmVx->Fill(x,mass);
+              hmVx->Fill(x,mass[gebMultNum]);
               isGoodEvent = 1;
             }
           }
@@ -426,30 +429,50 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   e0=e[0];
   e1=e[1];
   e2=e[2];
-  m=mass;
-  if (gebMult>0 && gAddBack[0]>0) {
-    g0 = gAddBack[0];
-  } else {g0 = 0;}
-  if (gebMult>1 && gAddBack[1]>0) {
-    g1 = gAddBack[1];
-  } else {g1 = 0;}
-  if (gebMult>2 && gAddBack[2]>0) {
-    g2 = gAddBack[2];
-  } else {g2 = 0;}
-  if (gebMult>3 && gAddBack[3]>0) {
-    g3 = gAddBack[3];
-  } else {g3 = 0;}
-  if (gebMult>4 && gAddBack[4]>0) {
-    g4 = gAddBack[4];
-  } else {g4 = 0;}
-
+  e3=e[0]+e[1];
+  e4=e[0]+e[2];
+  e5=e[1]+e[2];
+  e6=e[0]+e[1]+e[2];
+  ge = 0;
+  gid = 0;
+  glabel = 0;
+  m = 0;
   if (isGoodEvent == 1) {
-    pytree->Fill();
+    for (Int_t i=0;i<gebMult; i++) {
+      ge = gAddBack[i];
+      gid = -1;
+      glabel = 0;
+      m = mass[i];
+      if ( (gAddBack[i]>1288 && gAddBack[i]<1298)
+        || (gAddBack[i]>1530 && gAddBack[i]<1540)
+        || (gAddBack[i]>847 && gAddBack[i]<851)
+        || (gAddBack[i]>380 && gAddBack[i]<386) ) {
+        gid = 1;
+        glabel = 1;
+      } else if ( (gAddBack[i]>633 && gAddBack[i]<641)
+        || (gAddBack[i]>290 && gAddBack[i]<294)
+        //|| (gAddBack[i]>2675 && gAddBack[i]<2685)
+        || (gAddBack[i]>2040 && gAddBack[i]<2048) ) {
+          gid = 0;
+          glabel = 2;
+      } else if ( (gAddBack[i]>1846 && gAddBack[i]<1850)
+        || (gAddBack[i]>1430 && gAddBack[i]<1434) ) {
+          gid = 0;
+          glabel = 3;
+      }
+      if (m!=0 && ge>200) {
+        if (gid>=-1/*0*/) {
+          pytree->Fill();
+          pyTreeFill++;
+        }
+      }
+    }
   }
   isGoodEvent=0;
   }//entry loop
 }
 
+  printf("%d\n\n",pyTreeFill);
   for (Int_t i=0;i<numRecoilProcess;i++) {
     hg[i]->Write();
     //hgDop[i]->Write()

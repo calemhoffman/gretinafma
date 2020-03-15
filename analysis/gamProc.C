@@ -331,8 +331,14 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       Double_t t = (Double_t)dtime[gebMultNum];
       mass = ((e[0]+e[2])*t*t)/1.0e4;
       if ( ( cut_e1e3_scan[0]->IsInside(e[2],e[0])
+<<<<<<< HEAD
+      // || cut_e1e3_scan[1]->IsInside(e[2],e[0])
+      // || cut_e1e3_scan[2]->IsInside(e[2],e[0])
+    )
+=======
       || cut_e1e3_scan[1]->IsInside(e[2],e[0])
       || cut_e1e3_scan[2]->IsInside(e[2],e[0]) )
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
       && (x>-600&&x<600)
       && cut_mg_good->IsInside(mass,gAddBack[gebMultNum])
       && cut_mx_good->IsInside(mass,x)

@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+#include "gamAngleDraw.h"
+
+void gamAngleDraw(void) {
+
+Float_t norm[20][2];
+=======
 void gamAngleDraw(void) {
 
   Float_t norm[20][2];
@@ -95,6 +102,7 @@ Float_t meanCal[20] = {121.5,
 3452.0,
 10000.0};
 
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
 Float_t normNew[20][20][2];
 
 TH1D *hgndva0[50];
@@ -103,17 +111,96 @@ Float_t binHigh;
 char * name("misc");
 
 Int_t numAngles=5;
+<<<<<<< HEAD
+const int  numGam=14;
+Double_t angMin = 65.0;
+Double_t angRange = 100.0;
+=======
 const int  numGam=13;
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
 FILE * fitFileOut;
 TCanvas *cfit;
 TCanvas *crat;
 TCanvas *cc[100];
 TGraphErrors * gr[100];
 TGraphErrors *grAve[100];
+<<<<<<< HEAD
+TGraphErrors *ga2a4;
+=======
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
 Double_t xAve[100],xAve2[100],xAve3[100],xAve4[100];
 Double_t yAve[100],yAve2[100],yAve3[100],yAve4[100];
 Double_t xAveErr[100],xAve2Err[100],xAve3Err[100],xAve4Err[100];
 Double_t yAveErr[100],yAve2Err[100],yAve3Err[100],yAve4Err[100];
+<<<<<<< HEAD
+Double_t a2[100];
+Double_t a2err[100];
+Double_t a4[100];
+Double_t a4err[100];
+
+//second set of data...
+Int_t nAngles[100] = {5,5,5,5,5,5,5,
+                        5,5,4,4,4,6,4,
+                        5,5,5,5,5,5,5};
+Double_t mean[100]={1293.0,1534.0,850.0,2668.0,2322,1576,383.5,
+                    438.0,779.0,1018.0,1067.0,1456.0,1951.0,830.0};
+Double_t sigma[100]={2.5,1.6,2,6,5,3.0,2.2,
+                      2,1.5,2.0,2.5,2.2,2.5,1.6};
+Double_t fitLow[100]={1270.0,1520.0,846.0,2640.0,2290,1555,350.0,
+  420,775,1000,1040,1448,1935.0,824};
+Double_t fitHigh[100]={1320.0,1550.0,854.0,2700.0,2350,1595,420.0,
+  460,785,1040,1090,1470,1965.0,838};
+Double_t fixWidth[100]={0,0,0,0,1,1,0,
+  1,1,1,1,1,1,1};
+Int_t fitType[100]={1,1,0,1,1,1,1,
+  1,1,1,1,1,1,1};
+Double_t offset[100]={1,1,1,1,1,1,1,
+  1,1,1,1,1,1,1};
+Int_t rebinFactor[100]={2,4,3,14,12,14,6,
+  10,6,8,8,8,14,6};//4=1keV,8=2keV
+Float_t maxGraphY[100]={100,80,80,25,50,50,50,
+  30,30,30,30,30,20,50};
+Double_t mean2[100]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+Float_t nfact[20];
+
+/*********************************************/
+cfit = new TCanvas("cfit","cfit",1400,900);
+cfit->Divide(4,4);
+crat = new TCanvas("crat","crat",1000,1000);
+
+for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
+  numAngles = nAngles[whichGam];
+
+  for (Int_t i=0;i<numAngles;i++) {
+    if (numAngles==0) {
+      norm[i][0] = 1.0;
+      norm[i][1] = 0.000001;
+    } else if (numAngles==2) {
+      norm[i][0] = norm2[i][0];
+      norm[i][1] = norm2[i][1];
+    } else if (numAngles==3) {
+      norm[i][0] = norm3[i][0];
+      norm[i][1] = norm3[i][1];
+    } else if (numAngles==4) {
+      norm[i][0] = norm4[i][0];
+      norm[i][1] = norm4[i][1];
+    } else if (numAngles==5) {
+      norm[i][0] = norm5[i][0];
+      norm[i][1] = norm5[i][1];
+    } else if (numAngles==6) {
+      norm[i][0] = norm6[i][0];
+      norm[i][1] = norm6[i][1];
+    } else if (numAngles==10) {
+      norm[i][0] = norm10[i][0];
+      norm[i][1] = norm10[i][1];
+    } else if (numAngles==20) {
+      norm[i][0] = norm20[i][0];
+      norm[i][1] = norm20[i][1];
+    }
+  }
+  //crat->cd();
+=======
 
 // Double_t mean[10]={755.0,292.0,1190.0,171.0,3142.0,2970.0,2680.0};
 // Double_t fitLow[10]={745.0,282.0,1175.0,155.0,3110.0,2950.0,2650};
@@ -194,6 +281,7 @@ else if (numAngles>10) {cfit->Divide(5,4);}
 
 crat = new TCanvas("crat","crat",1000,1000);
 for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
   for(Int_t k=0;k<12;k++) {//energy
     if (mean[whichGam]>=meanCal[k] &&
         mean[whichGam]<meanCal[k+1]) {
@@ -217,15 +305,25 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
   if (numAngles>10) {cc[whichGam]->Clear(); cc[whichGam]->Divide(4,5);}
   for (Int_t i = 0;i<numAngles; i++) {
     hgndva0[i] = new TH1D(Form("hgang%s_%d",name,i),Form("hgang%s_%d",name,i),4096,0,4096);
+<<<<<<< HEAD
+    binLow = angMin + (angRange/(Float_t)numAngles) * (Float_t)i;
+    binHigh = angMin + (angRange/(Float_t)numAngles) + (angRange/(Float_t)numAngles) * (Float_t)i;
+=======
     binLow = 65.0 + (100.0/(Float_t)numAngles) * (Float_t)i;
     binHigh = 65.0 + (100.0/(Float_t)numAngles) + (100.0/(Float_t)numAngles) * (Float_t)i;
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
     hgAddBackVsAngle0->ProjectionX(Form("hgang%s_%d",name,i),binLow,binHigh);
     fprintf(fitFileOut, "%f ", (binHigh+binLow)/2.0);
     cc[whichGam]->cd(i+1);
     if (numAngles!=10) {
       hgndva0[i]->Scale(1./norm[i][0]);
+<<<<<<< HEAD
+      //if ( (whichGam==8||whichGam==6) && i==0)
+        //hgndva0[i]->Scale(1./norm[i][0]);
+=======
       if ( (whichGam==8||whichGam==6) && i==0)
         hgndva0[i]->Scale(1./norm[i][0]);
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
     } else {
       hgndva0[i]->Scale(1./normNew[whichGam][i][0]);
     }
@@ -297,6 +395,10 @@ for (Int_t i=0;i<index-1;i++) {
 }
 
   cfit->cd();
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
   cfit->cd(whichGam+1);
   gr[whichGam] = new TGraphErrors(numAngles,x,y,xerr,yerr);
   //if (whichGam==0) {gr[whichGam]->Draw("ALP");}
@@ -334,6 +436,35 @@ for (Int_t i=0;i<index-1;i++) {
   const Double_t* para2A = l2fit->GetParameters();
   l2fit->GetXaxis()->SetRangeUser(-1,1);
 //from here
+<<<<<<< HEAD
+  Double_t * para4 = new Double_t[3];
+  para4[0] = 1.0;
+  para4[1] = 1;
+  para4[2] = -1;
+
+  TF1 * l4fit = new TF1("l4fit", "[0]*(1 + [1]*ROOT::Math::legendre(2,x) + [2]*ROOT::Math::legendre(4,x))",-1,1);//+ROOT::Math::legendre([2],x))",-1,1);
+  l4fit->SetParameters(para4);
+  gr[whichGam]->Fit(l4fit);
+
+  const Double_t* para4E = l4fit->GetParErrors();
+  const Double_t* para4A = l4fit->GetParameters();
+  if (a2[whichGam]>-5 && a2[whichGam]<5) {
+    a2[whichGam] = para4A[1];
+    a4[whichGam] = para4A[2];
+    a2err[whichGam] = para4E[1]/2.0;
+    a4err[whichGam] = para4E[2]/2.0;
+  } else {
+    a2[whichGam] = 0;//para4A[1];
+    a4[whichGam] = 0;//para4A[2];
+    a2err[whichGam] = 0;//para4E[1];
+    a4err[whichGam] = 0;//para4E[2];
+  }
+  l4fit->SetLineColor(kRed);
+  l4fit->GetYaxis()->SetRangeUser(0,2);
+  l4fit->GetXaxis()->SetRangeUser(-1,1);
+gr[whichGam]->Draw("ALP");
+  l4fit->Draw("same");
+=======
 //   Double_t * para4 = new Double_t[3];
 //   para4[0] = 200.0;
 //   para4[1] = 0.2;
@@ -350,6 +481,7 @@ for (Int_t i=0;i<index-1;i++) {
 //   l4fit->GetXaxis()->SetRangeUser(-1,1);
 // gr[whichGam]->Draw("ALP");
 //   l4fit->Draw("same");
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
 //to here
 
   l2fit->Draw("same");
@@ -357,7 +489,11 @@ for (Int_t i=0;i<index-1;i++) {
   cfit->Update();
   cfit->cd();
 
+<<<<<<< HEAD
+  if (numAngles==4 || numAngles==5 || numAngles==6) {
+=======
   if (numAngles==4 || numAngles==5) {
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
     xAve[whichGam] = (Double_t)mean[whichGam];//(/3.;
     yAve[whichGam] = (y[numAngles-2])/(y[2]);
     xAveErr[whichGam] = 0.0001;
@@ -386,7 +522,11 @@ for (Int_t i=0;i<index-1;i++) {
     grAve[2]->SetMarkerColor(kBlue);
     grAve[2]->SetMarkerSize(2);
 
+<<<<<<< HEAD
+    if (numAngles==5 || numAngles==6) {
+=======
     if (numAngles==5) {
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
       xAve4[whichGam] = (Double_t)mean[whichGam];//(/3.;
       yAve4[whichGam] = (y[numAngles-1])/(y[3]);
       xAve4Err[whichGam] = 0.0001;
@@ -419,7 +559,13 @@ for (Int_t i=0;i<index-1;i++) {
 }
 TLegend *leg;
   crat->cd();
+<<<<<<< HEAD
+  crat->Clear(); crat->Divide(1,2);
+  crat->cd(1);
+  if (numAngles==4 || numAngles==5 || numAngles==6) {
+=======
   if (numAngles==4 || numAngles==5 || numAngles==10) {
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
     grAve[1]->GetYaxis()->SetRangeUser(0,2);
     grAve[1]->GetXaxis()->SetRangeUser(0,4000);
     grAve[1]->SetTitle("Yield Ratios");
@@ -428,6 +574,32 @@ TLegend *leg;
     leg = new TLegend(0.1,0.7,0.48,0.9);
     leg->AddEntry(grAve[1],"4/1","p");
     leg->AddEntry(grAve[2],"4/2","p");
+<<<<<<< HEAD
+    if (numAngles==5 || numAngles==6)
+    leg->AddEntry(grAve[3],"4/3","p");
+    leg->AddEntry(grAve[0],"3/2","p");
+    leg->Draw();
+    if (numAngles==4 || numAngles==5 || numAngles==6) {
+      grAve[2]->Draw("P");
+//      grAve[2]->Draw("P");
+    }
+    if (numAngles==5 || numAngles==6) {grAve[3]->Draw("P");}
+    //if (numAngles==6) {grAve[4]->Draw("P");}
+  }
+  crat->cd(2);
+  ga2a4 = new TGraphErrors(numGam,a4,a2,a4err,a2err);
+  ga2a4->GetXaxis()->SetTitle("a4");
+  ga2a4->GetYaxis()->SetTitle("a2");
+  ga2a4->SetMarkerStyle(20);
+  ga2a4->SetMarkerColor(kRed);
+  ga2a4->Draw("AP");
+
+  printf("#energy a2 a2err a4 a4err\n");
+    for (Int_t i=0;i<numGam;i++) {
+      printf("%.0f %f %f %f %f\n",xAve[i],a2[i],a2err[i],a4[i],a4err[i]);
+
+    }
+=======
     if (numAngles==5)
     leg->AddEntry(grAve[3],"4/3","p");
     leg->AddEntry(grAve[0],"3/2","p");
@@ -441,4 +613,5 @@ TLegend *leg;
 
 
 
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
 }

@@ -22,11 +22,21 @@ TH1D *hg[50];
 Float_t binLow;
 Float_t binHigh;
 char * name("Cal");
+<<<<<<< HEAD
+Int_t numAngles=5;
+Double_t maxYvalue=0;
+Double_t angMin=65.0;
+Double_t angRange=110.0;
+FILE * fitFileOut;
+TH2F *hgg;
+int const gamN=12;//12;
+=======
 Int_t numAngles=6;
 Double_t maxYvalue=0;
 FILE * fitFileOut;
 TH2F *hgg;
 int const gamN=12;
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
 
 void gamAngleCal(void) {
   // TFile * inFile = new TFile("gamCalFile.root");
@@ -46,8 +56,13 @@ void gamAngleCal(void) {
 
   Double_t mean[20]={121.5,245,344,444.0,779.0,964.1,1112.0,1408,2598,3009,3202,3452};
   Double_t sig[20]={1,1.0,1.0,1.0,1.1,1.2,1.3,1.5,2,2,2,2.2};
+<<<<<<< HEAD
+  Double_t fitLow[20]={80,230,320,424.0,759.0,950,1092,1390,2578,2990,3170,3415};
+  Double_t fitHigh[20]={160,260,360,464.0,799.0,980,1132.0,1440,2618,3029,3225,3485};
+=======
   Double_t fitLow[20]={115,230,320,424.0,759.0,950,1092,1390,2578,2990,3170,3415};
   Double_t fitHigh[20]={130,260,360,464.0,799.0,980,1132.0,1440,2618,3029,3225,3485};
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
 
 
   for (Int_t whichGam=0;whichGam<gamN;whichGam++) {
@@ -59,8 +74,13 @@ void gamAngleCal(void) {
     for (Int_t i = 0;i<numAngles; i++) {
       cc[whichGam]->cd(i+1);
       hg[i] = new TH1D(Form("hg%s_%d",name,i),Form("hg%s_%d",name,i),4096,0,4096);
+<<<<<<< HEAD
+      binLow = angMin + (angRange/(Float_t)numAngles) * (Float_t)i;
+      binHigh = angMin + (angRange/(Float_t)numAngles) + (angRange/(Float_t)numAngles) * (Float_t)i;
+=======
       binLow = 65.0 + (100.0/(Float_t)numAngles) * (Float_t)i;
       binHigh = 65.0 + (100.0/(Float_t)numAngles) + (100.0/(Float_t)numAngles) * (Float_t)i;
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
       if (mean[whichGam]<1500) {
         hgAddBackVsAngle0->ProjectionX(Form("hg%s_%d",name,i),binLow,binHigh);
       } else {
@@ -68,10 +88,17 @@ void gamAngleCal(void) {
       }
       fprintf(fitFileOut, "%f ", (binHigh+binLow)/2.0);
       fitGaussP1(hg[i],mean[whichGam],sig[whichGam],fitLow[whichGam],fitHigh[whichGam],fitFileOut);
+<<<<<<< HEAD
+      //fitGaussP0(hg[i],mean[whichGam],3,100,fitLow[whichGam],fitHigh[whichGam],0,fitFileOut);
+
+      hg[i]->GetXaxis()->SetRangeUser(fitLow[whichGam]-50,fitHigh[whichGam]+50);
+      hg[i]->GetYaxis()->SetRangeUser(0,50000);
+=======
   //fitGauss(hgndva0[i],mean[whichGam],3,fitLow[whichGam],fitHigh[whichGam],fitFileOut);
 
       hg[i]->GetXaxis()->SetRangeUser(fitLow[whichGam]-50,fitHigh[whichGam]+50);
       hg[i]->GetYaxis()->SetRangeUser(0,300);
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
       hg[i]->Draw();
 
     }
@@ -106,14 +133,22 @@ void gamAngleCal(void) {
       printf("... failed to read fit file\n");
     }
 
+<<<<<<< HEAD
+    average/=((Double_t)index-1.0);
+=======
     average/=(Double_t)index;
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
 
     for (Int_t index2=0;index2<index-1;index2++) {
       x[index2] = angleData[index2][0];//(TMath::Cos(TMath::Pi()*angleData[index2][0]/180.0));
       y[index2] = (Double_t)angleData[index2][1]/average;//(Double_t)angleData[6][1];//average;
       xerr[index2] = 0.001;
       tempErr1 = (Double_t)((angleData[index2][2]/angleData[index2][1])*(angleData[index2][2]/angleData[index2][1]));
+<<<<<<< HEAD
+      tempErr2 = 0;//(Double_t)((normFactor[index2][1]/normFactor[index2][0])*(normFactor[index2][1]/normFactor[index2][0]));
+=======
       tempErr2 = (Double_t)((normFactor[index2][1]/normFactor[index2][0])*(normFactor[index2][1]/normFactor[index2][0]));
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
       yerr[index2] = y[index2] * TMath::Sqrt(tempErr1 + tempErr2);
       finalNorm[whichGam][index2] = y[index2];
       finalErr[whichGam][index2] = yerr[index2];
@@ -141,15 +176,25 @@ void gamAngleCal(void) {
       xdep[whichGam] = (Double_t)mean[whichGam];
       ydep[whichGam] = finalNorm[whichGam][angleN];
     }
+<<<<<<< HEAD
+    averageNorm[angleN]/=((Double_t)gamN);
+=======
     averageNorm[angleN]/=5.0;
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
     for (Int_t whichGam=0;whichGam<gamN;whichGam++) {
       averageNormErr[angleN] =
       (averageNorm[angleN] - finalNorm[whichGam][angleN])*
       (averageNorm[angleN] - finalNorm[whichGam][angleN]);
     }
+<<<<<<< HEAD
+    averageNormErr[angleN] = TMath::Sqrt(averageNormErr[angleN]/((Double_t)gamN));
+    if (angleN==0) {
+      printf("Float_t norm%d[20][2] = {\n{%f,%f},\n",numAngles,averageNorm[angleN],averageNormErr[angleN]);
+=======
     averageNormErr[angleN] = TMath::Sqrt(averageNormErr[angleN]/5.0);
     if (angleN==0) {
       printf("Float_t norm[20][2] = { {%f,%f},\n",averageNorm[angleN],averageNormErr[angleN]);
+>>>>>>> 6dc80c65791d66dcc6dfd8be97cd4af3819534d2
     } else {
     printf("{%f,%f},\n",averageNorm[angleN],averageNormErr[angleN]);
     }
