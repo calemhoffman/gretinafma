@@ -346,6 +346,10 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       Double_t t = (Double_t)dtime[gebMultNum];
       if (t>0&&t<200){
         mass[gebMultNum] = ((e[0]+e[2])*t*t)/1.0e4;
+        if (entryNumber<10) {
+          printf("dtime: %f, mass: %f, gebMult: %d, entry:%d\n",
+        dtime[gebMultNum], mass[gebMultNum], gebMultNum, entryNumber);
+        }
       } else {mass[gebMultNum] = 0;}
       if ( (cut_e1e3_scan[0]->IsInside(e[2],e[0])
     || cut_e1e3_scan[1]->IsInside(e[2],e[0]))
@@ -460,7 +464,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
           gid = 0;
           glabel = 3;
       }
-      if (m!=0 && ge>200) {
+      if (m!=0 && (ge>200&&ge<6000) {
         if (gid>=-1/*0*/) {
           pytree->Fill();
           pyTreeFill++;
