@@ -9,6 +9,7 @@ Float_t e5[10000000];
 Float_t e6[10000000];
 Float_t x[10000000];
 Float_t m[10000000];
+Float_t dt[10000000];
 Float_t ge[10000000];
 Float_t gid[10000000];
 Float_t glabel[10000000];
@@ -19,18 +20,23 @@ Int_t number = 0;
 
 TTree *pytree;
 
+TH2F *hgg;
+
+Float_t mlCutMin = 0.65;
+Float_t mlCutMax = 1.0;
+
 void pyTorchReader() {
 
+  hgg = new TH2F("hgg","hgg;ge;ge",4000,0,4000,4000,0,4000);
 
-
-inFile.open(Form("../machine_learning/code/total.csv"));
+inFile.open(Form("../machine_learning/code/test.csv"));
 
   if( inFile.is_open() ) {
     while (1) {
       if (!inFile.good()) break;
       inFile >> event[number] >> e0[number] >> e1[number] >> e2[number]
        >> e3[number] >> e4[number] >> e5[number] >> e6[number]
-       >> x[number] >> m[number] >> gmult[number] >> ge[number]
+       >> x[number] >> m[number] >> dt[number] >> gmult[number] >> ge[number]
        >> gid[number] >> glabel[number] >> mlreturn[number];
       if (number<1) { printf("%d[%d] %f %f %f\n",
        event[number],number,e0[number],e1[number],e2[number]);
@@ -53,6 +59,7 @@ inFile.open(Form("../machine_learning/code/total.csv"));
   Float_t py_x = 0;
   Int_t py_gmult = 0;
   Float_t py_m[100];
+  Float_t py_dt[100];
   Float_t py_ge[100];
   Float_t py_mlreturn[100];
 
@@ -61,6 +68,7 @@ inFile.open(Form("../machine_learning/code/total.csv"));
     py_m[i] = 0;
     py_ge[i] = 0;
     py_mlreturn[i] = 0;
+    py_dt[i] = 0;
   }
 
   TFile *fileOut = new TFile("pyTorchOut.root","RECREATE");
@@ -69,6 +77,7 @@ inFile.open(Form("../machine_learning/code/total.csv"));
   pytree->Branch("py_x",&py_x,"py_x/F");
   pytree->Branch("py_gmult",&py_gmult,"py_gmult/I");
   pytree->Branch("py_m",py_m,"py_m[py_gmult]/F");
+  pytree->Branch("py_dt",py_dt,"py_dt[py_gmult]/F");
   pytree->Branch("py_ge",py_ge,"py_ge[py_gmult]/F");
   pytree->Branch("py_mlreturn",py_mlreturn,"py_mlreturn[py_gmult]/F");
 
@@ -79,6 +88,7 @@ inFile.open(Form("../machine_learning/code/total.csv"));
     py_m[0] = m[i];
     py_ge[0] = ge[i];
     py_mlreturn[0] = mlreturn[i];
+    py_dt[0] = dt[i];
     py_gmult = 1;//gmult[i];
 
     for (Int_t j=i+1;j<i+gmult[i];j++) {
@@ -86,13 +96,27 @@ inFile.open(Form("../machine_learning/code/total.csv"));
         py_m[py_gmult] = m[j];
         py_ge[py_gmult] = ge[j];
         py_mlreturn[py_gmult] = mlreturn[j];
+        py_dt[py_gmult] = dt[j];
         py_gmult++;
       }
     }
     //fill tree and histograms
     pytree->Fill();
     //ADD gamma-gamma here
-
+    //TODO - may need to pass dtime here to get cleaer coincidence
+    //in root file now, so do TCUTG
+    if (py_gmult>1) {
+      for (Int_t i=0;i<py_gmult;i++){
+        if (py_mlreturn[i]>mlCutMin && py_mlreturn[i]<mlCutMax) {
+          for (Int_t j=i+1;j<py_gmult;j++) {
+            if (py_mlreturn[j]>mlCutMin && py_mlreturn[j]<mlCutMax) {
+              hgg->Fill(py_ge[i],py_ge[j]);
+              hgg->Fill(py_ge[j],py_ge[i]);
+            }
+          }
+        }
+      }
+    }
     //set event number
     i+=py_gmult-1;
     //cleanup
@@ -103,11 +127,13 @@ inFile.open(Form("../machine_learning/code/total.csv"));
       py_m[k] = 0;
       py_ge[k] = 0;
       py_mlreturn[k] = 0;
+      py_dt[k] = 0;
     }
     py_gmult=0;
   }
 
   pytree->Write();
+  hgg->Write();
   fileOut->Write();
   fileOut->Close();
 }

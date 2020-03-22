@@ -67,6 +67,7 @@ Int_t nEntries[10];
 
 Float_t e0,e1,e2,e3,e4,e5,e6;
 Float_t m;
+Float_t dt;
 Float_t ge;
 Float_t gid;
 Float_t glabel;
@@ -252,6 +253,7 @@ pytree->Branch("e5",&e5,"e5/F");
 pytree->Branch("e6",&e6,"e6/F");
 pytree->Branch("x",&x,"x/F");
 pytree->Branch("m",&m,"m/F");
+pytree->Branch("dt",&dt,"dt/F");
 pytree->Branch("gmult",&gmult,"gmult/I");
 pytree->Branch("ge",&ge,"ge/F");
 pytree->Branch("gid",&gid,"gid/F");
@@ -441,12 +443,14 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   gid = 0;
   glabel = 0;
   m = 0;
+  dt = 0;
   if (isGoodEvent == 1) {
     for (Int_t i=0;i<gebMult; i++) {
       ge = gAddBack[i];
       gid = -1;
       glabel = 0;
       m = mass[i];
+      dt = (Float_t)dtime[i];
       if ( (gAddBack[i]>1288 && gAddBack[i]<1298)
         || (gAddBack[i]>1530 && gAddBack[i]<1540)
         || (gAddBack[i]>847 && gAddBack[i]<851)
@@ -464,7 +468,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
           gid = 0;
           glabel = 3;
       }
-      if (m!=0 && (ge>200&&ge<6000) {
+      if (m!=0 && (ge>100&&ge<6000)) {
         if (gid>=-1/*0*/) {
           pytree->Fill();
           pyTreeFill++;
