@@ -30,6 +30,7 @@
 
 #define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
+#define TRAIN 1 //0 no, 1 yes
 
 TFile *gamFileIn;
 TFile *gamFileOut;
@@ -104,6 +105,7 @@ TCutG *cut_e1e3_s38;
 TCutG *cut_e1e3_jan0;
 TCutG *cut_e1e3_scan15;
 TCutG *cut_e1e3_scan25;
+TCutG *cut_e1e3_ml;
 TCutG *cut_dtge_feb10;
 TCutG *cut_mx_test,*cut_mg_good;
 TCutG *cut_mx_good;
@@ -119,6 +121,7 @@ void gamPyTorch(void) {
   cut_e1e3_jan0 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_jan0");
   cut_e1e3_scan15 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan15");
   cut_e1e3_scan25 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan25");
+  cut_e1e3_ml = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_ml");
   cut_mx_test = (TCutG *) gDirectory->FindObjectAny("cut_mx_test");
   cut_mg_good = (TCutG *) gDirectory->FindObjectAny("cut_mg_good");
   cut_mx_good = (TCutG *) gDirectory->FindObjectAny("cut_mx_good");
@@ -194,7 +197,7 @@ void gamPyTorch(void) {
 
 
   //Pull the TTrees of interest
-  fileName.Form("gamTree.root");
+  fileName.Form("gamTreeFat.root");
   gamFileIn = new TFile(fileName);
   gDirectory->ls();
 
@@ -239,7 +242,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTree.root");
+  fileName.Form("pyTreeFatFat_train.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -285,6 +288,8 @@ Int_t isGoodEvent = 0;
 //Loop to calculate everything
 
 for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
+  if ( (entryNumber%1000000) == 0) {printf("Entry %d of %d: %f \n",entryNumber,maxEntries,
+((float)entryNumber/(float)maxEntries));}
   isGoodEvent=0;
   for (Int_t nTreeNum=0;nTreeNum<numRecoilProcess;nTreeNum++) {
   if (entryNumber<nEntries[nTreeNum]) {
@@ -348,19 +353,21 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       Double_t t = (Double_t)dtime[gebMultNum];
       if (t>0&&t<200){
         mass[gebMultNum] = ((e[0]+e[2])*t*t)/1.0e4;
-        if (entryNumber<10) {
-          printf("dtime: %f, mass: %f, gebMult: %d, entry:%d\n",
-        dtime[gebMultNum], mass[gebMultNum], gebMultNum, entryNumber);
-        }
+        // if (entryNumber<10) {
+        //   printf("dtime: %f, mass: %f, gebMult: %d, entry:%d\n",
+        // dtime[gebMultNum], mass[gebMultNum], gebMultNum, entryNumber);
+        // }
       } else {mass[gebMultNum] = 0;}
-      if ( (cut_e1e3_scan[0]->IsInside(e[2],e[0])
-    || cut_e1e3_scan[1]->IsInside(e[2],e[0]))
-      && (x>-600&&x<600)
+      if ( ( (cut_e1e3_ml->IsInside(e[2],e[0]))
+    /*|| (cut_e1e3_scan[1]->IsInside(e[2],e[0]))*/ )
+      && (x>-1000&&x<1000)
       //&& cut_mg_good->IsInside(mass[gebMultNum],gAddBack[gebMultNum])
       //&& cut_mx_good->IsInside(mass[gebMultNum],x)
-    )
+      )
       {//e1e3 && x && mass
-        if ( cut_dtge_feb10->IsInside(genergy[gebMultNum],dtime[gebMultNum]) )
+        if ( /*cut_dtge_feb10->IsInside(genergy[gebMultNum],dtime[gebMultNum])*/
+        (dtime[gebMultNum]>60 && dtime[gebMultNum]<110)
+        )
         {//dtime
           he0x->Fill(x,e[0]) ;
           he1e3->Fill(e[2],e[0]);he1e2->Fill(e[1],e[0]);he2e3->Fill(e[2],e[1]);
@@ -444,6 +451,8 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   glabel = 0;
   m = 0;
   dt = 0;
+  Int_t trainVal = -1;
+  if (TRAIN == 1) trainVal = 0;
   if (isGoodEvent == 1) {
     for (Int_t i=0;i<gebMult; i++) {
       ge = gAddBack[i];
@@ -454,7 +463,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       if ( (gAddBack[i]>1288 && gAddBack[i]<1298)
         || (gAddBack[i]>1530 && gAddBack[i]<1540)
         || (gAddBack[i]>847 && gAddBack[i]<851)
-        || (gAddBack[i]>380 && gAddBack[i]<386) ) {
+        || (gAddBack[i]>381 && gAddBack[i]<385) ) {
         gid = 1;
         glabel = 1;
       } else if ( (gAddBack[i]>633 && gAddBack[i]<641)
@@ -469,7 +478,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
           glabel = 3;
       }
       if (m!=0 && (ge>100&&ge<6000)) {
-        if (gid>=-1/*0*/) {
+        if (gid>=trainVal) {
           pytree->Fill();
           pyTreeFill++;
         }
