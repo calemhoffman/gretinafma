@@ -29,7 +29,7 @@ void pyTorchReader() {
 
   hgg = new TH2F("hgg","hgg;ge;ge",4000,0,4000,4000,0,4000);
 
-inFile.open(Form("../machine_learning/code/test.csv"));
+inFile.open(Form("../machine_learning/code/PyTreeAverageSkinny_train.csv"));
 
   if( inFile.is_open() ) {
     while (1) {
@@ -62,6 +62,8 @@ inFile.open(Form("../machine_learning/code/test.csv"));
   Float_t py_dt[100];
   Float_t py_ge[100];
   Float_t py_mlreturn[100];
+  Float_t py_gid[100];
+  Float_t py_glabel[100];
 
   for (Int_t i=0;i<100;i++) {
     if (i<10) py_e[i]=0;
@@ -69,6 +71,8 @@ inFile.open(Form("../machine_learning/code/test.csv"));
     py_ge[i] = 0;
     py_mlreturn[i] = 0;
     py_dt[i] = 0;
+    py_gid[i] = -100;
+    py_glabel[i] = -100;
   }
 
   TFile *fileOut = new TFile("pyTorchOut.root","RECREATE");
@@ -80,6 +84,8 @@ inFile.open(Form("../machine_learning/code/test.csv"));
   pytree->Branch("py_dt",py_dt,"py_dt[py_gmult]/F");
   pytree->Branch("py_ge",py_ge,"py_ge[py_gmult]/F");
   pytree->Branch("py_mlreturn",py_mlreturn,"py_mlreturn[py_gmult]/F");
+  pytree->Branch("py_gid",py_gid,"py_gid[py_gmult]/F");
+  pytree->Branch("py_glabel",py_glabel,"py_glabel[py_gmult]/F");
 
   for (Int_t i=0;i<number-2;i++) {
     //fill all the zeros
@@ -90,6 +96,8 @@ inFile.open(Form("../machine_learning/code/test.csv"));
     py_mlreturn[0] = mlreturn[i];
     py_dt[0] = dt[i];
     py_gmult = 1;//gmult[i];
+    py_glabel[0] = glabel[i];
+    py_gid[0] = gid[i];
 
     for (Int_t j=i+1;j<i+gmult[i];j++) {
       if ( (TMath::Abs(py_e[0]-e0[j])<0.1) && (gmult[i]==gmult[j]) ) {
@@ -97,6 +105,8 @@ inFile.open(Form("../machine_learning/code/test.csv"));
         py_ge[py_gmult] = ge[j];
         py_mlreturn[py_gmult] = mlreturn[j];
         py_dt[py_gmult] = dt[j];
+        py_gid[py_gmult] = gid[j];
+        py_glabel[py_gmult] = glabel[j];
         py_gmult++;
       }
     }
@@ -128,12 +138,39 @@ inFile.open(Form("../machine_learning/code/test.csv"));
       py_ge[k] = 0;
       py_mlreturn[k] = 0;
       py_dt[k] = 0;
+      py_gid[k] = -100;
+      py_glabel[k] = -100;
     }
     py_gmult=0;
   }
 
+  //printf("%lld\n",pytree->GetEntries());
+  Int_t truepos=0;
+  Int_t falseneg=0;
+  Int_t falsepos=0;
+  Int_t trueneg=0;
+  ULong64_t pyEntryNumber = pytree->GetEntries();
+  printf("%lld entries\n",pyEntryNumber);
+  for (Int_t entry=0;entry<pyEntryNumber;entry++) {
+    pytree->GetEntry(entry);
+    for (Int_t entry2=0;entry2<py_gmult;entry2++) {
+      //printf("%f %f\n",py_gid[entry2],py_mlreturn[entry2]);
+      if ( (py_gid[entry2]==1) && (py_mlreturn[entry2]>=0.5) ) truepos++;
+      if ( (py_gid[entry2]==1) && (py_mlreturn[entry2]<0.5) ) falseneg++;
+      if ( (py_gid[entry2]==0) && (py_mlreturn[entry2]>=0.5) ) falsepos++;
+      if ( (py_gid[entry2]==0) && (py_mlreturn[entry2]<0.5) ) trueneg++;
+    }
+  }
+  printf("tp: %d, fn: %d, fp: %d, tn: %d\n",truepos,falseneg,falsepos,trueneg);
+  Float_t accuracy = 0;
+  accuracy = ( (Float_t)truepos+(Float_t)trueneg ) /
+  ( (Float_t)truepos+(Float_t)falseneg+(Float_t)falsepos+(Float_t)trueneg );
+  printf("accuracy: %f\n",accuracy);
   pytree->Write();
   hgg->Write();
   fileOut->Write();
   fileOut->Close();
+
+//  TFile *fIn = new TFile("")
+
 }
