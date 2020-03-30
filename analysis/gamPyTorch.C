@@ -30,7 +30,7 @@
 
 #define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
-#define TRAIN 1 //0 no, 1 yes
+#define TRAIN 0 //0 no, 1 yes
 
 TFile *gamFileIn;
 TFile *gamFileOut;
@@ -109,6 +109,7 @@ TCutG *cut_e1e3_ml;
 TCutG *cut_dtge_feb10;
 TCutG *cut_mx_test,*cut_mg_good;
 TCutG *cut_mx_good;
+TCutG *cut_e1e3_Ave;
 
 void gamPyTorch(void) {
   //Get preloaded stuff, i.e. cuts
@@ -122,6 +123,7 @@ void gamPyTorch(void) {
   cut_e1e3_scan15 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan15");
   cut_e1e3_scan25 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan25");
   cut_e1e3_ml = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_ml");
+  cut_e1e3_Ave = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Ave");
   cut_mx_test = (TCutG *) gDirectory->FindObjectAny("cut_mx_test");
   cut_mg_good = (TCutG *) gDirectory->FindObjectAny("cut_mg_good");
   cut_mx_good = (TCutG *) gDirectory->FindObjectAny("cut_mx_good");
@@ -197,7 +199,7 @@ void gamPyTorch(void) {
 
 
   //Pull the TTrees of interest
-  fileName.Form("gamTreeFat.root");
+  fileName.Form("gamTreeAverage.root");
   gamFileIn = new TFile(fileName);
   gDirectory->ls();
 
@@ -242,7 +244,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeFatFat_train.root");
+  fileName.Form("pyTreeAverageFat.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -358,7 +360,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         // dtime[gebMultNum], mass[gebMultNum], gebMultNum, entryNumber);
         // }
       } else {mass[gebMultNum] = 0;}
-      if ( ( (cut_e1e3_ml->IsInside(e[2],e[0]))
+      if ( ( (cut_e1e3_Ave->IsInside(e[2],e[0]))
     /*|| (cut_e1e3_scan[1]->IsInside(e[2],e[0]))*/ )
       && (x>-1000&&x<1000)
       //&& cut_mg_good->IsInside(mass[gebMultNum],gAddBack[gebMultNum])
@@ -460,20 +462,22 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       glabel = 0;
       m = mass[i];
       dt = (Float_t)dtime[i];
-      if ( (gAddBack[i]>1288 && gAddBack[i]<1298)
-        || (gAddBack[i]>1530 && gAddBack[i]<1540)
-        || (gAddBack[i]>847 && gAddBack[i]<851)
-        || (gAddBack[i]>381 && gAddBack[i]<385) ) {
+      if ( (gAddBack[i]>1288.5 && gAddBack[i]<1297.5)
+        || (gAddBack[i]>1531 && gAddBack[i]<1539)
+         /* || (gAddBack[i]>847 && gAddBack[i]<851) */
+        || (gAddBack[i]>382 && gAddBack[i]<385) ) {
         gid = 1;
         glabel = 1;
-      } else if ( (gAddBack[i]>633 && gAddBack[i]<641)
+      } else if ( (gAddBack[i]>635 && gAddBack[i]<641)
         || (gAddBack[i]>290 && gAddBack[i]<294)
-        //|| (gAddBack[i]>2675 && gAddBack[i]<2685)
-        || (gAddBack[i]>2040 && gAddBack[i]<2048) ) {
+        || (gAddBack[i]>1188 && gAddBack[i]<1194)
+        || (gAddBack[i]>2040 && gAddBack[i]<2048)
+        || (gAddBack[i]>3136 && gAddBack[i]<3151) ) {
           gid = 0;
           glabel = 2;
-      } else if ( (gAddBack[i]>1846 && gAddBack[i]<1850)
-        || (gAddBack[i]>1430 && gAddBack[i]<1434) ) {
+      } else if ( (gAddBack[i]>1841.5 && gAddBack[i]<1852)
+        || (gAddBack[i]>1426 && gAddBack[i]<1434)
+      || (gAddBack[i]>2372 && gAddBack[i]<2383) ) {
           gid = 0;
           glabel = 3;
       }

@@ -10,7 +10,8 @@ void mlPeakFitter(Int_t opt=1){
   for (Int_t j=0;j<20;j++) {
      mlcut = 1.0 - (Float_t)j*0.05;
     if (opt==0) {
-      tree->Draw(Form("ge>>hge%d",j),Form("py_mlreturn>%f",mlcut),"");
+      tree->Draw(Form("ge>>hge%d",j),"","");
+      j=20;
     } else {
       tree->Draw(Form("py_ge>>hge%d",j),Form("py_mlreturn>%f",mlcut),"");
     }
