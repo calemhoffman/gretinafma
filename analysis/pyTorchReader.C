@@ -22,14 +22,16 @@ TTree *pytree;
 
 TH2F *hgg;
 
-Float_t mlCutMin = 0.65;
+Float_t mlCutMin = 0.8;
 Float_t mlCutMax = 1.0;
+Float_t modelCheckValue = 0.8;
 
 void pyTorchReader() {
 
   hgg = new TH2F("hgg","hgg;ge;ge",4000,0,4000,4000,0,4000);
 
-inFile.open(Form("../machine_learning/code/PyTreeAverageSkinny_train.csv"));
+//inFile.open(Form("../machine_learning/code/PyTreeAverageSkinny_train.csv"));
+inFile.open(Form("../machine_learning/code/pyTreeAverageSkinny.csv"));
 
   if( inFile.is_open() ) {
     while (1) {
@@ -151,21 +153,48 @@ inFile.open(Form("../machine_learning/code/PyTreeAverageSkinny_train.csv"));
   Int_t trueneg=0;
   ULong64_t pyEntryNumber = pytree->GetEntries();
   printf("%lld entries\n",pyEntryNumber);
-  for (Int_t entry=0;entry<pyEntryNumber;entry++) {
-    pytree->GetEntry(entry);
-    for (Int_t entry2=0;entry2<py_gmult;entry2++) {
-      //printf("%f %f\n",py_gid[entry2],py_mlreturn[entry2]);
-      if ( (py_gid[entry2]==1) && (py_mlreturn[entry2]>=0.5) ) truepos++;
-      if ( (py_gid[entry2]==1) && (py_mlreturn[entry2]<0.5) ) falseneg++;
-      if ( (py_gid[entry2]==0) && (py_mlreturn[entry2]>=0.5) ) falsepos++;
-      if ( (py_gid[entry2]==0) && (py_mlreturn[entry2]<0.5) ) trueneg++;
+  printf("#modelcheck tp fn fp tn sum acc prec rec F1\n");
+  for (Int_t mlSlice=0;mlSlice<20;mlSlice++) {
+    // Float_t mlSliceMin = (Float_t)mlSlice*0.05;
+    // Float_t mlScliceMax = mlSliceMin+0.05;
+    modelCheckValue = 1.0 - (Float_t)mlSlice*0.05;
+    //printf("SliceLimit: %f\n",modelCheckValue);
+    printf("%.2f ",modelCheckValue);
+    truepos=0;
+    falseneg=0;
+    falsepos=0;
+    trueneg=0;
+    for (Int_t entry=0;entry<pyEntryNumber;entry++) {
+      pytree->GetEntry(entry);
+      for (Int_t entry2=0;entry2<py_gmult;entry2++) {
+        //printf("%f %f\n",py_gid[entry2],py_mlreturn[entry2]);
+        if ( (py_gid[entry2]==1) && (py_mlreturn[entry2]>=modelCheckValue) ) truepos++;
+        if ( (py_gid[entry2]==1) && (py_mlreturn[entry2]<modelCheckValue) ) falseneg++;
+        if ( (py_gid[entry2]==0) && (py_mlreturn[entry2]>=modelCheckValue) ) falsepos++;
+        if ( (py_gid[entry2]==0) && (py_mlreturn[entry2]<modelCheckValue) ) trueneg++;
+      }
     }
+    // printf("tp: %d, fn: %d, fp: %d, tn: %d\n",
+    //         truepos,falseneg,falsepos,trueneg);
+    printf("%d %d %d %d ",
+    truepos,falseneg,falsepos,trueneg);
+
+    Float_t accuracy = 0, precision = 0, recall=0, F1 = 0;
+    Float_t sum=(Float_t)truepos+(Float_t)falseneg+(Float_t)falsepos+(Float_t)trueneg;
+    accuracy = ( (Float_t)truepos+(Float_t)trueneg ) /
+    ( sum );
+    precision = ( (Float_t)truepos ) /
+    ( (Float_t)truepos+(Float_t)falsepos );
+    recall = ( (Float_t)truepos ) /
+    ( (Float_t)truepos+(Float_t)falseneg );
+    F1 = (2.0 * precision * recall) / (precision + recall);
+    // printf("sum: %.0f, accuracy: %.3f, precision: %.3f, recall: %.3f, F1: %.3f\n\n",
+    // sum,accuracy,precision,recall,F1);
+    printf("%.0f %.3f %.3f %.3f %.3f\n",
+    sum,accuracy,precision,recall,F1);
   }
-  printf("tp: %d, fn: %d, fp: %d, tn: %d\n",truepos,falseneg,falsepos,trueneg);
-  Float_t accuracy = 0;
-  accuracy = ( (Float_t)truepos+(Float_t)trueneg ) /
-  ( (Float_t)truepos+(Float_t)falseneg+(Float_t)falsepos+(Float_t)trueneg );
-  printf("accuracy: %f\n",accuracy);
+
+
   pytree->Write();
   hgg->Write();
   fileOut->Write();
