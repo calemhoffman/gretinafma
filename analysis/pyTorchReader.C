@@ -31,7 +31,7 @@ void pyTorchReader() {
   hgg = new TH2F("hgg","hgg;ge;ge",4000,0,4000,4000,0,4000);
 
 //inFile.open(Form("../machine_learning/code/PyTreeAverageSkinny_train.csv"));
-inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatB_tester.csv"));
+inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatD_tester.csv"));
 
   if( inFile.is_open() ) {
     while (1) {
@@ -77,7 +77,7 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatB_tester.csv")
     py_glabel[i] = -100;
   }
 
-  TFile *fileOut = new TFile("pyTorchOutAverageFatB.root","RECREATE");
+  TFile *fileOut = new TFile("pyTorchOutAverageFatD.root","RECREATE");
   pytree = new TTree("pytree","pytree");
   pytree->Branch("py_e",py_e,"py_e[10]/F");
   pytree->Branch("py_x",&py_x,"py_x/F");

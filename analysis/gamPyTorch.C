@@ -30,7 +30,7 @@
 
 #define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
-#define TRAIN 0 //0 no, 1 yes
+#define TRAIN 1 //0 no, 1 yes
 
 TFile *gamFileIn;
 TFile *gamFileOut;
@@ -244,7 +244,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeAverageFat.root");
+  fileName.Form("pyTreeAverageFatD_train.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -288,6 +288,10 @@ Int_t addBackDopNum = 0;
 
 Int_t isGoodEvent = 0;
 //Loop to calculate everything
+Int_t s38Counter=0;
+Int_t cl38Counter=0;
+Int_t p33Counter=0;
+Int_t taCounter=0;
 
 for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   if ( (entryNumber%1000000) == 0) {printf("Entry %d of %d: %f \n",entryNumber,maxEntries,
@@ -468,6 +472,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         || (gAddBack[i]>382 && gAddBack[i]<385) ) {
         gid = 1;
         glabel = 1;
+        s38Counter++;
       } else if ( (gAddBack[i]>635 && gAddBack[i]<641)
         || (gAddBack[i]>290 && gAddBack[i]<294)
         || (gAddBack[i]>1188 && gAddBack[i]<1194)
@@ -475,16 +480,34 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         || (gAddBack[i]>3136 && gAddBack[i]<3151) ) {
           gid = 0;
           glabel = 2;
+          cl38Counter++;
       } else if ( (gAddBack[i]>1841.5 && gAddBack[i]<1852)
         || (gAddBack[i]>1426 && gAddBack[i]<1434)
-      || (gAddBack[i]>2372 && gAddBack[i]<2383) ) {
+        || (gAddBack[i]>2372 && gAddBack[i]<2383) ) {
           gid = 0;
           glabel = 3;
+          p33Counter++;
+      } else if ( (gAddBack[i]>136 && gAddBack[i]<142)
+        || (gAddBack[i]>167 && gAddBack[i]<173) ) {
+          gid = 0;
+          glabel = 4;
+          taCounter++;
       }
       if (m!=0 && (ge>100&&ge<6000)) {
         if (gid>=trainVal) {
-          pytree->Fill();
-          pyTreeFill++;
+          if (TRAIN==0) {
+            pytree->Fill();
+            pyTreeFill++;
+          } else if (TRAIN==1) {
+            if (
+            ( (glabel==1) || (glabel==3) )
+            || ( (glabel==2) && ((cl38Counter%4)==0) )
+            || ( (glabel==4) && ((taCounter%4)==0) ) )
+            {
+              pytree->Fill();
+              pyTreeFill++;
+            }
+          }
         }
       }
     }
@@ -492,7 +515,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   isGoodEvent=0;
   }//entry loop
 }
-
+  printf("\n %d %d %d %d \n\n",s38Counter,cl38Counter,p33Counter,taCounter);
   printf("%d\n\n",pyTreeFill);
   for (Int_t i=0;i<numRecoilProcess;i++) {
     hg[i]->Write();
