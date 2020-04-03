@@ -244,7 +244,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeAverageFatG_train.root");
+  fileName.Form("pyTreeAverageFatH_train.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -502,9 +502,10 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
             pyTreeFill++;
           } else if (TRAIN==1) {
             if (
-            ( (glabel==1) || (glabel==3) )
-            || ( (glabel==2) && ((cl38Counter%5)==0) )
-            || ( (glabel==4) && ((taCounter%4)==0) ) )
+            ( (glabel==1) /* || (glabel==3) */)
+            || ( (glabel==2) && ((cl38Counter%20)==0) )
+            || ( (glabel==3) && ((cl38Counter%4)==0) )
+            || ( (glabel==4) && ((taCounter%16)==0) ) )
             {
               pytree->Fill();
               pyTreeFill++;
