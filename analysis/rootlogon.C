@@ -99,6 +99,7 @@
   gROOT->ProcessLine(".x cuts/cut_ud_s38.C"); cut_ud_s38;
   gROOT->ProcessLine(".x cuts/cut_dtge_s38.C"); cut_dtge_s38;
   gROOT->ProcessLine(".x cuts/cut_dtge_feb10.C"); cut_dtge_feb10;
+  gROOT->ProcessLine(".x cuts/cut_dtge_Ave.C"); cut_dtge_Ave;
   gROOT->ProcessLine(".x cuts/cut_e2e3_s38.C"); cut_e2e3_s38;
   gROOT->ProcessLine(".x cuts/cut_e1e2_s38.C"); cut_e1e2_s38;
   gROOT->ProcessLine(".x cuts/cut_e1e2_ml.C"); cut_e1e2_ml;
@@ -113,6 +114,8 @@
   gROOT->ProcessLine(".x cuts/cut_e1e3_jan0.C"); cut_e1e3_jan0;
   gROOT->ProcessLine(".x cuts/cut_e1e3_ml.C"); cut_e1e3_ml;
   gROOT->ProcessLine(".x cuts/cut_e1e3_Ave.C"); cut_e1e3_Ave;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_Skin.C"); cut_e1e3_Skin;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_Skinniest.C"); cut_e1e3_Skinniest;
   gROOT->ProcessLine(".x cuts/cut_mx_test.C"); cut_mx_test;
   gROOT->ProcessLine(".x cuts/cut_mg_good.C"); cut_mg_good;
   gROOT->ProcessLine(".x cuts/cut_mx_good.C"); cut_mx_good;

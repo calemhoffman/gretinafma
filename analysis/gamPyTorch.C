@@ -106,7 +106,10 @@ TCutG *cut_e1e3_jan0;
 TCutG *cut_e1e3_scan15;
 TCutG *cut_e1e3_scan25;
 TCutG *cut_e1e3_ml;
+TCutG *cut_e1e3_Skin;
+TCutG *cut_e1e3_Skinniest;
 TCutG *cut_dtge_feb10;
+TCutG *cut_dtge_Ave;
 TCutG *cut_mx_test,*cut_mg_good;
 TCutG *cut_mx_good;
 TCutG *cut_e1e3_Ave;
@@ -118,12 +121,15 @@ void gamPyTorch(void) {
   cut_dtge[2] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_ar38");
   cut_dtge[3] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
   cut_dtge_feb10 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_feb10");
+  cut_dtge_Ave = (TCutG *) gDirectory->FindObjectAny("cut_dtge_Ave");
   cut_e1e3_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_s38");
   cut_e1e3_jan0 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_jan0");
   cut_e1e3_scan15 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan15");
   cut_e1e3_scan25 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan25");
   cut_e1e3_ml = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_ml");
   cut_e1e3_Ave = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Ave");
+  cut_e1e3_Skin = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skin");
+  cut_e1e3_Skinniest = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skinniest");
   cut_mx_test = (TCutG *) gDirectory->FindObjectAny("cut_mx_test");
   cut_mg_good = (TCutG *) gDirectory->FindObjectAny("cut_mg_good");
   cut_mx_good = (TCutG *) gDirectory->FindObjectAny("cut_mx_good");
@@ -244,7 +250,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeAverageFatH_train.root");
+  fileName.Form("pyTreeAverageAverageJ_train.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -359,20 +365,16 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       Double_t t = (Double_t)dtime[gebMultNum];
       if (t>0&&t<200){
         mass[gebMultNum] = ((e[0]+e[2])*t*t)/1.0e4;
-        // if (entryNumber<10) {
-        //   printf("dtime: %f, mass: %f, gebMult: %d, entry:%d\n",
-        // dtime[gebMultNum], mass[gebMultNum], gebMultNum, entryNumber);
-        // }
       } else {mass[gebMultNum] = 0;}
-      if ( ( (cut_e1e3_Ave->IsInside(e[2],e[0]))
-    /*|| (cut_e1e3_scan[1]->IsInside(e[2],e[0]))*/ )
+      if ( ( (cut_e1e3_Skin->IsInside(e[2],e[0]))
+            )
       && (x>-1000&&x<1000)
       //&& cut_mg_good->IsInside(mass[gebMultNum],gAddBack[gebMultNum])
       //&& cut_mx_good->IsInside(mass[gebMultNum],x)
       )
       {//e1e3 && x && mass
-        if ( /*cut_dtge_feb10->IsInside(genergy[gebMultNum],dtime[gebMultNum])*/
-        (dtime[gebMultNum]>60 && dtime[gebMultNum]<110)
+        if ( cut_dtge_Ave->IsInside(genergy[gebMultNum],dtime[gebMultNum])
+        /*(dtime[gebMultNum]>60 && dtime[gebMultNum]<110)*/
         )
         {//dtime
           he0x->Fill(x,e[0]) ;
@@ -473,8 +475,8 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         gid = 1;
         glabel = 1;
         s38Counter++;
-      } else if ( (gAddBack[i]>290 && gAddBack[i]<294)
-        || (gAddBack[i]>635 && gAddBack[i]<641)
+      } else if ( /*(gAddBack[i]>290 && gAddBack[i]<294)*/
+        /* || */ (gAddBack[i]>635 && gAddBack[i]<641)
         || (gAddBack[i]>1188 && gAddBack[i]<1194)
         || (gAddBack[i]>2040 && gAddBack[i]<2048)
         || (gAddBack[i]>2269 && gAddBack[i]<2282)
@@ -503,9 +505,9 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
           } else if (TRAIN==1) {
             if (
             ( (glabel==1) /* || (glabel==3) */)
-            || ( (glabel==2) && ((cl38Counter%20)==0) )
-            || ( (glabel==3) && ((cl38Counter%4)==0) )
-            || ( (glabel==4) && ((taCounter%16)==0) ) )
+            || ( (glabel==2) && ((cl38Counter%2)==0) )
+            || ( (glabel==3) && ((cl38Counter%1)==0) )
+            || ( (glabel==4) && ((taCounter%3)==0) ) )
             {
               pytree->Fill();
               pyTreeFill++;
