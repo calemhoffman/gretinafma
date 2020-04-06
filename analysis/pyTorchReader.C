@@ -22,7 +22,7 @@ TTree *pytree;
 
 TH2F *hgg;
 
-Float_t mlCutMin = 0.8;
+Float_t mlCutMin = 0.64;
 Float_t mlCutMax = 1.0;
 Float_t modelCheckValue = 0.8;
 
@@ -31,7 +31,7 @@ void pyTorchReader() {
   hgg = new TH2F("hgg","hgg;ge;ge",4000,0,4000,4000,0,4000);
 
 //inFile.open(Form("../machine_learning/code/PyTreeAverageSkinny_train.csv"));
-inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatH_tester.csv"));
+inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatF_tester.csv"));
 
   if( inFile.is_open() ) {
     while (1) {
@@ -77,7 +77,7 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatH_tester.csv")
     py_glabel[i] = -100;
   }
 
-  TFile *fileOut = new TFile("pyTorchOutAverageFatH.root","RECREATE");
+  TFile *fileOut = new TFile("pyTorchOutAverageFatF.root","RECREATE");
   pytree = new TTree("pytree","pytree");
   pytree->Branch("py_e",py_e,"py_e[10]/F");
   pytree->Branch("py_x",&py_x,"py_x/F");

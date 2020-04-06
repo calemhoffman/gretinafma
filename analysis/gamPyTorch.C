@@ -506,7 +506,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
             if (
             ( (glabel==1) /* || (glabel==3) */)
             || ( (glabel==2) && ((cl38Counter%2)==0) )
-            || ( (glabel==3) && ((cl38Counter%1)==0) )
+            || ( (glabel==3) && ((p33Counter%1)==0) )
             || ( (glabel==4) && ((taCounter%3)==0) ) )
             {
               pytree->Fill();
