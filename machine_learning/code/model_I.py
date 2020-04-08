@@ -23,7 +23,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 import torch.optim as optim
 
-data_in = rnp.root2array("../data/pyTreeAverageAverageJ_train.root","pytree",
+data_in = rnp.root2array("../data/pyTreeAverageAverageI_train.root","pytree",
                          branches=['e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','gid','glabel'])
 assert_equal(data_in.dtype.names, ('e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','gid','glabel'))
 
@@ -152,7 +152,7 @@ for e in range(num_epochs):
 
 plt.plot(e_losses)
 #uncomment below for real python script save
-torch.save(net, "./model_saves/model_J.pt")
+torch.save(net, "./model_saves/model_I.pt")
 
 
 # In[ ]:
@@ -183,7 +183,7 @@ fig.show()
 
 
 #dump to csv
-result_df.to_csv("output/pyTreeAverageAverageJ_train.csv",sep=" ",header=False)
+result_df.to_csv("output/pyTreeAverageAverageI_train.csv",sep=" ",header=False)
 
 
 # In[ ]:

@@ -1,8 +1,28 @@
+April 8, 2020
+a) How do you choose the number of hidden layers and dropout fraction? Are there 'standard' practices or trial and error?
+
+There aren’t good standards here.  Some claim it is more art than science.  There are packages that try a lot of options (deephyper does a “Neural Architecture Search”) but in general, you need to balance:  too many layers with too many parameters will “overfit” – perfection on training data, but it’s garbage on the test set.  Not enough parameters will “underfit”: doesn’t work that well on the training set, but works equally not-that-well on the testing set.  A good practice is to try a few models and monitor for overfitting.  Check out things like “k-fold validation” and train/test/validation splits of data.  It’s important to reserve some data for this.
+
+b) I am using the 'Adam' optimizer with a learning rate of 1e-3, and betas=(0.9,0.999), are these reasonable or do I need to try a few values?
+
+Adam is really reasonable, it’s considered “state of the art” for most applications.  It’s meant to work out of the box, so if you get good results, just leave it as it is.
+
+c) Do you have recommendations on batch size and epoch number? Should I just run for as many epochs as I can?
+The losses plot seems to plateau after 100 epochs and batch size of 500, but if I use more epochs it does look a little better?
+
+For batch size: it depends on the network.  For big image processing models it’s something like 64, 128, etc.  For dense networks like you have, you’ll want more than O(10) and less than O(1000) probably, but you can play with this.  For epochs, the best option is to check after every epoch how well your model is doing on the test data (that it doesn’t train on).  Eventually, it will overfit and you should take the model from just before overfitting began as the best model.
+
+d) Finally, are there any metrics besides, accuracy, recall, precisions, F1, etc, that I can use to investigate my model? In the end, I have the real data and that is the best metric of course, it is just slow to post-process the data after each new model training.
+
+You’ve named a lot of good metrics.  Quick googling led me here: https://towardsdatascience.com/20-popular-machine-learning-metrics-part-1-classification-regression-evaluation-me…
+You are doing a selection, right?  If you can measure purity and efficiency, the ROC curve and it’s integral are likely good metrics for comparison.
+
+
+Feb/March 2020
 a) Inputs: At the moment I am forcing all of my inputs to be from 0 - 1, does this really matter? Also, I have generated labels based on known gamma-ray so that the interesting data is
 labeled as =1, everything else =0. I suspect, maybe I should instead break this down further into a multiple classes, e.g., 38S = 1, 38Cl = 2, 33P = 3, backgrounds = 4....
 
 Inputs generally do well when all scaled to roughly the same range.  0 to 1 is a good choice, though -1 to 1 might be better if that is something feasible.  It also depends on the problem, sometimes negative values make no sense.  Yes, if you can, break things down into multiple classes.
-
 
 b) Outputs: I have only 1 value coming out of the output and i calculate losses with the 0 or 1 values. Should I round this value first in analogy to getting the Max Value to choose between multiple labels?
 

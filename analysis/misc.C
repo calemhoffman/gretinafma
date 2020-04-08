@@ -1,5 +1,26 @@
 {
   TCanvas *cc = new TCanvas("cc","cc",1200,600);
+
+  // TFile fi("pyTorchOutAverageAverageI.root");
+  // TTree *ti = pytree;
+  // TH1F *hi = new TH1F("hi","hi",4000,0,4000);
+  // ti->Draw("py_ge>>hi","py_mlreturn>0.75","");
+  // hi->SetLineColor(kBlack); hi->SetLineWidth(2);
+
+  TFile fk("pyTorchOutAverageSkinK.root");
+  TTree *tk = pytree;
+  TH1F *hk = new TH1F("hk","hk",4000,0,4000);
+  tk->Draw("py_ge>>hk","py_mlreturn>0.2","");
+  hk->SetLineColor(kBlack); hk->SetLineWidth(2);
+fitGaussP0(hk,1190,3,10,1150,1225)
+
+  TFile fj("pyTorchOutAverageAverageJ.root");
+  TTree *tj = pytree;
+  TH1F *hj = new TH1F("hj","hj",4000,0,4000);
+  tj->Draw("py_ge>>hj","py_mlreturn>0.54","same");
+  hj->SetLineColor(kRed); hj->SetLineWidth(2);
+fitGaussP0(hj,1190,3,10,1150,1225)
+
   // TFile fd("pyTorchOutAverageFatD.root");
   // TTree *td = pytree;
   // TH1F *hd = new TH1F("hd","hd",4000,0,4000);
@@ -11,30 +32,32 @@
   // TH1F *hc = new TH1F("hc","hc",4000,0,4000);
   // tc->Draw("py_ge>>hc","py_mlreturn>0.55","same");
 
-  TFile fe("pyTorchOutAverageFatE.root");
-  TTree *te = pytree;
-  TH1F *he = new TH1F("he","he",4000,0,4000);
-  te->Draw("py_ge>>he","py_mlreturn>0.71","same");
-  he->SetLineColor(kBlack); he->SetLineWidth(2);
-
-
+  // TFile fe("pyTorchOutAverageFatE.root");
+  // TTree *te = pytree;
+  // TH1F *he = new TH1F("he","he",4000,0,4000);
+  // te->Draw("py_ge>>he","py_mlreturn>0.71","same");
+  // he->SetLineColor(kBlack); he->SetLineWidth(2);
+  //
+  //
   TFile ff("pyTorchOutAverageFatF.root");
   TTree *tf = pytree;
   TH1F *hf = new TH1F("hf","hf",4000,0,4000);
   tf->Draw("py_ge>>hf","py_mlreturn>0.64","same");
-  hf->SetLineColor(kRed); hf->SetLineWidth(2);
+  hf->SetLineColor(kGreen); hf->SetLineWidth(2);
+  fitGaussP0(hf,1190,3,10,1150,1225)
 
-  TFile fg("pyTorchOutAverageFatG.root");
-  TTree *tg = pytree;
-  TH1F *hg = new TH1F("hg","hg",4000,0,4000);
-  tg->Draw("py_ge>>hg","py_mlreturn>0.64","same");
-  hg->SetLineColor(kBlue); hg->SetLineWidth(2);
-
-  TFile fh("pyTorchOutAverageFatH.root");
-  TTree *th = pytree;
-  TH1F *hh = new TH1F("hh","hh",4000,0,4000);
-  th->Draw("py_ge>>hh","py_mlreturn>0.83","same");
-  hh->SetLineColor(kGreen+2); hh->SetLineWidth(2);
+  //
+  // TFile fg("pyTorchOutAverageFatG.root");
+  // TTree *tg = pytree;
+  // TH1F *hg = new TH1F("hg","hg",4000,0,4000);
+  // tg->Draw("py_ge>>hg","py_mlreturn>0.64","same");
+  // hg->SetLineColor(kBlue); hg->SetLineWidth(2);
+  //
+  // TFile fh("pyTorchOutAverageFatH.root");
+  // TTree *th = pytree;
+  // TH1F *hh = new TH1F("hh","hh",4000,0,4000);
+  // th->Draw("py_ge>>hh","py_mlreturn>0.83","same");
+  // hh->SetLineColor(kGreen+2); hh->SetLineWidth(2);
 
   // TFile fe("pyTorchOutAverageFatE.root");
   // TTree *te = pytree;

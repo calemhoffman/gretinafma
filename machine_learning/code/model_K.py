@@ -23,7 +23,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 import torch.optim as optim
 
-data_in = rnp.root2array("../data/pyTreeAverageAverageJ_train.root","pytree",
+data_in = rnp.root2array("../data/pyTreeAverageSkinK_train.root","pytree",
                          branches=['e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','gid','glabel'])
 assert_equal(data_in.dtype.names, ('e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','gid','glabel'))
 
@@ -142,7 +142,7 @@ def train_epoch(model, opt, criterion, batch_size=500):
 
 
 e_losses = []
-num_epochs = 200
+num_epochs = 500
 for e in range(num_epochs):
     e_losses += train_epoch(net, opt, criterion)
 
@@ -152,7 +152,7 @@ for e in range(num_epochs):
 
 plt.plot(e_losses)
 #uncomment below for real python script save
-torch.save(net, "./model_saves/model_J.pt")
+torch.save(net, "./model_saves/model_K.pt")
 
 
 # In[ ]:
@@ -178,16 +178,12 @@ fig = px.histogram(df_F,x="A",nbins=100)
 fig.update_xaxes(range=[0.0,1.0])
 fig.show()
 
-
 # In[ ]:
-
 
 #dump to csv
-result_df.to_csv("output/pyTreeAverageAverageJ_train.csv",sep=" ",header=False)
-
+result_df.to_csv("output/pyTreeAverageSkinK_train.csv",sep=" ",header=False)
 
 # In[ ]:
-
 
 #print("cut tot% g1293 % g1535 % g383 % g639 % g1190 % g2044 % g2279 % g2978 % g3142 % g1848 %")
 total = []
@@ -243,6 +239,14 @@ for cut_val in range(50):
     if (g3142_tot.size>0):
         g3142.append(g3142_counts.size/g3142_tot.size)
     g3142t.append(g3142_counts.size/15)
+#g848 stuff
+    g848_counts = result_df[(result_df['A'] > cut_low) & (result_df['ge'] >845)
+                   & (result_df['ge'] < 855) ]
+    g848_tot = result_df[(result_df['ge'] >845)
+                   & (result_df['ge'] < 855) ]
+    if (g848_tot.size>0):
+        g848.append(g848_counts.size/g848_tot.size)
+    g848t.append(g848_counts.size/15)
 
     #g2978 stuff
     g2978_counts = result_df[(result_df['A'] > cut_low) & (result_df['ge'] >2960)
@@ -371,6 +375,7 @@ print(df_tot)
 df1293=pd.DataFrame(g1293, columns=['1293'])
 df1535=pd.DataFrame(g1535, columns=['1535'])
 df383=pd.DataFrame(g383, columns=['383'])
+df848=pd.DataFrame(g848, columns=['848'])
 df639=pd.DataFrame(g639, columns=['639'])
 df1190=pd.DataFrame(g1190, columns=['1190'])
 df2044=pd.DataFrame(g2044, columns=['2044'])
@@ -386,6 +391,7 @@ df170=pd.DataFrame(g170, columns=['170'])
 df_frac = pd.concat([df_frac, df1293], axis=1)
 df_frac = pd.concat([df_frac, df1535], axis=1)
 df_frac = pd.concat([df_frac, df383], axis=1)
+df_frac = pd.concat([df_frac, df848], axis=1)
 df_frac = pd.concat([df_frac, df639], axis=1)
 df_frac = pd.concat([df_frac, df1190], axis=1)
 df_frac = pd.concat([df_frac, df2044], axis=1)

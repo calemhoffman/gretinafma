@@ -30,7 +30,7 @@
 
 #define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
-#define TRAIN 1 //0 no, 1 yes
+#define TRAIN 0 //0 no, 1 yes
 
 TFile *gamFileIn;
 TFile *gamFileOut;
@@ -108,11 +108,14 @@ TCutG *cut_e1e3_scan25;
 TCutG *cut_e1e3_ml;
 TCutG *cut_e1e3_Skin;
 TCutG *cut_e1e3_Skinniest;
+TCutG *cut_e1e3_Skinnier;
 TCutG *cut_dtge_feb10;
 TCutG *cut_dtge_Ave;
 TCutG *cut_mx_test,*cut_mg_good;
 TCutG *cut_mx_good;
 TCutG *cut_e1e3_Ave;
+TCutG *cut_dtge_Skin1;
+TCutG *cut_dtge_Skin2;
 
 void gamPyTorch(void) {
   //Get preloaded stuff, i.e. cuts
@@ -122,6 +125,8 @@ void gamPyTorch(void) {
   cut_dtge[3] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
   cut_dtge_feb10 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_feb10");
   cut_dtge_Ave = (TCutG *) gDirectory->FindObjectAny("cut_dtge_Ave");
+  cut_dtge_Skin1 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_Skin1");
+  cut_dtge_Skin2 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_Skin2");
   cut_e1e3_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_s38");
   cut_e1e3_jan0 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_jan0");
   cut_e1e3_scan15 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan15");
@@ -130,6 +135,7 @@ void gamPyTorch(void) {
   cut_e1e3_Ave = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Ave");
   cut_e1e3_Skin = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skin");
   cut_e1e3_Skinniest = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skinniest");
+  cut_e1e3_Skinnier = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skinnier");
   cut_mx_test = (TCutG *) gDirectory->FindObjectAny("cut_mx_test");
   cut_mg_good = (TCutG *) gDirectory->FindObjectAny("cut_mg_good");
   cut_mx_good = (TCutG *) gDirectory->FindObjectAny("cut_mx_good");
@@ -250,7 +256,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeAverageAverageJ_train.root");
+  fileName.Form("pyTreeAverageSkinK.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -366,14 +372,15 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       if (t>0&&t<200){
         mass[gebMultNum] = ((e[0]+e[2])*t*t)/1.0e4;
       } else {mass[gebMultNum] = 0;}
-      if ( ( (cut_e1e3_Skin->IsInside(e[2],e[0]))
+      if ( ( (cut_e1e3_Skinnier->IsInside(e[2],e[0]))
             )
       && (x>-1000&&x<1000)
       //&& cut_mg_good->IsInside(mass[gebMultNum],gAddBack[gebMultNum])
       //&& cut_mx_good->IsInside(mass[gebMultNum],x)
       )
       {//e1e3 && x && mass
-        if ( cut_dtge_Ave->IsInside(genergy[gebMultNum],dtime[gebMultNum])
+        if ( (cut_dtge_Skin1->IsInside(genergy[gebMultNum],dtime[gebMultNum]))
+        || (cut_dtge_Skin2->IsInside(genergy[gebMultNum],dtime[gebMultNum]))
         /*(dtime[gebMultNum]>60 && dtime[gebMultNum]<110)*/
         )
         {//dtime
@@ -470,13 +477,13 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       dt = (Float_t)dtime[i];
       if ( (gAddBack[i]>1288.5 && gAddBack[i]<1297.5)
         || (gAddBack[i]>1531 && gAddBack[i]<1539)
-         /* || (gAddBack[i]>847 && gAddBack[i]<851) */
+        || (gAddBack[i]>847 && gAddBack[i]<851)
         || (gAddBack[i]>382 && gAddBack[i]<385) ) {
         gid = 1;
         glabel = 1;
         s38Counter++;
-      } else if ( /*(gAddBack[i]>290 && gAddBack[i]<294)*/
-        /* || */ (gAddBack[i]>635 && gAddBack[i]<641)
+      } else if ( (gAddBack[i]>290 && gAddBack[i]<294)
+         || (gAddBack[i]>635 && gAddBack[i]<641)
         || (gAddBack[i]>1188 && gAddBack[i]<1194)
         || (gAddBack[i]>2040 && gAddBack[i]<2048)
         || (gAddBack[i]>2269 && gAddBack[i]<2282)
@@ -505,9 +512,9 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
           } else if (TRAIN==1) {
             if (
             ( (glabel==1) /* || (glabel==3) */)
-            || ( (glabel==2) && ((cl38Counter%2)==0) )
+            || ( (glabel==2) && ((cl38Counter%1)==0) )
             || ( (glabel==3) && ((p33Counter%1)==0) )
-            || ( (glabel==4) && ((taCounter%3)==0) ) )
+            || ( (glabel==4) && ((taCounter%1)==0) ) )
             {
               pytree->Fill();
               pyTreeFill++;
