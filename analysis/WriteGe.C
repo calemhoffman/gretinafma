@@ -17,19 +17,30 @@
     }
   }
   */
+  TH1F *hpx = new TH1F("hpx","X Projection",4096,0,4096);
+  TH1F *hpy = new TH1F("hpy","Y Projection",4096,0,4096);
+  hgg0->ProjectionX();
+  hgg0->ProjectionY();
+  hpx->Add(hgg0_px);
+  hpy->Add(hgg0_py);
+  wrspe("hpx","hgg0_px.spe");
+  wrspe("hpy","hgg0_py.spe");
+  TH1F *hgg0_tot = new TH1F("hgg0_tot","Total Projection",4096,0,4096);
+  hgg0_tot->Add(hgg0_px);
+  hgg0_tot->Add(hgg0_py);
+  wrspe("hgg0_tot","hgg0_pxpy.spe");
+  wrspe("hg0","hg0_gce.spe");
+  wrRadmat("hgg0");
 
-  //TString gate("0");
-  // TString name("s38")
-
-  hggAddBack0->ProjectionX();
-  hggAddBack0->ProjectionY();
-  wrspe("hggAddBack0_px","hgg_s38_px.spe");
-  wrspe("hggAddBack0_py","hgg_s38_py.spe");
-  TH1F *htotal_s38 = new TH1F("htotal_s38","Total Projection",4096,0,4096);
-  htotal_s38->Add(hggAddBack0_px);
-  htotal_s38->Add(hggAddBack0_py);
-  wrspe("htotal_s38","hggAddBack_s38_pxpy.spe");
-  wrspe("hg0","hg0_s38_gce.spe");
-  wrRadmat("hggAddBack0");
+  // hggAddBack0->ProjectionX();
+  // hggAddBack0->ProjectionY();
+  // wrspe("hggAddBack0_px","hgg_s38_px.spe");
+  // wrspe("hggAddBack0_py","hgg_s38_py.spe");
+  // TH1F *htotal_s38 = new TH1F("htotal_s38","Total Projection",4096,0,4096);
+  // htotal_s38->Add(hggAddBack0_px);
+  // htotal_s38->Add(hggAddBack0_py);
+  // wrspe("htotal_s38","hggAddBack_s38_pxpy.spe");
+  // wrspe("hg0","hg0_s38_gce.spe");
+  // wrRadmat("hggAddBack0");
 
 }

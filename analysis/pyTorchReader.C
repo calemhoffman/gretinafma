@@ -18,20 +18,29 @@ Float_t mlreturn[10000000];
 Int_t event[10000000];
 Int_t number = 0;
 
+#define TRAIN 0 //1 for training to spit out ml stuff
+
 TTree *pytree;
 
-TH2F *hgg;
+TH1F *hg[5];
+TH2F *hgg[5];
 
-Float_t mlCutMin = 0.64;
-Float_t mlCutMax = 1.0;
+// Float_t mlCutMin[5] = {0.25,0.5,0.7,0.81,0.875};//five cuts for AveFat
+//Float_t mlCutMin[5] = {0.22,0.25,0.6,0.765,0.805};//five cuts for AveSkin
+Float_t mlCutMin[5] = {0.0,0.1,0.2,0.3,0.4};//five cuts for base
+Float_t mlCutMax[5] = {1.0,1.0,1.0,1.0,1.0};
 Float_t modelCheckValue = 0.8;
 
 void pyTorchReader() {
-
-  hgg = new TH2F("hgg","hgg;ge;ge",4000,0,4000,4000,0,4000);
+for (Int_t ii=0;ii<5;ii++) {
+  hgg[ii] = new TH2F(Form("hgg%d",ii),Form("hgg%d [ml>%.3f];ge;ge",ii,mlCutMin[ii]),
+  4000,0,4000,4000,0,4000);
+  hg[ii] = new TH1F(Form("hg%d",ii),Form("hg%d [ml>%.3f];ge;ge",ii,mlCutMin[ii]),
+  4000,0,4000);
+}
 
 //inFile.open(Form("../machine_learning/code/PyTreeAverageSkinny_train.csv"));
-inFile.open(Form("../machine_learning/code/output/pyTreeAverageSkinK_train.csv"));
+inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatF_tester.csv"));
 
   if( inFile.is_open() ) {
     while (1) {
@@ -77,7 +86,7 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageSkinK_train.csv")
     py_glabel[i] = -100;
   }
 
-  TFile *fileOut = new TFile("pyTorchOutAverageSkinK_train.root","RECREATE");
+  TFile *fileOut = new TFile("pyTorchOutAverageFatF_base.root","RECREATE");
   pytree = new TTree("pytree","pytree");
   pytree->Branch("py_e",py_e,"py_e[10]/F");
   pytree->Branch("py_x",&py_x,"py_x/F");
@@ -117,13 +126,23 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageSkinK_train.csv")
     //ADD gamma-gamma here
     //TODO - may need to pass dtime here to get cleaer coincidence
     //in root file now, so do TCUTG
+    for (Int_t k=0;k<py_gmult;k++){
+      for (Int_t l=0;l<5;l++) {
+        if (py_mlreturn[k]>mlCutMin[l] && py_mlreturn[k]<mlCutMax[l]) {
+          hg[l]->Fill(py_ge[k]);
+        }
+      }
+    }
+
     if (py_gmult>1) {
-      for (Int_t i=0;i<py_gmult;i++){
-        if (py_mlreturn[i]>mlCutMin && py_mlreturn[i]<mlCutMax) {
-          for (Int_t j=i+1;j<py_gmult;j++) {
-            if (py_mlreturn[j]>mlCutMin && py_mlreturn[j]<mlCutMax) {
-              hgg->Fill(py_ge[i],py_ge[j]);
-              hgg->Fill(py_ge[j],py_ge[i]);
+      for (Int_t k=0;k<py_gmult;k++){
+        for (Int_t j=k+1;j<py_gmult;j++) {
+          for (Int_t l=0;l<5;l++) {
+            if (py_mlreturn[k]>mlCutMin[l] && py_mlreturn[k]<mlCutMax[l]) {
+              if (py_mlreturn[j]>mlCutMin[l] && py_mlreturn[j]<mlCutMax[l]) {
+                hgg[l]->Fill(py_ge[k],py_ge[j]);
+                hgg[l]->Fill(py_ge[j],py_ge[k]);
+              }
             }
           }
         }
@@ -146,6 +165,7 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageSkinK_train.csv")
     py_gmult=0;
   }
 
+if (TRAIN==1) {
   //printf("%lld\n",pytree->GetEntries());
   Int_t truepos=0;
   Int_t falseneg=0;
@@ -193,10 +213,13 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageSkinK_train.csv")
     printf("%.0f %.3f %.3f %.3f %.3f\n",
     sum,accuracy,precision,recall,F1);
   }
-
+}
 
   pytree->Write();
-  hgg->Write();
+  for (Int_t i=0;i<5;i++) {
+    hgg[i]->Write();
+    hg[i]->Write();
+  }
   fileOut->Write();
   fileOut->Close();
 
