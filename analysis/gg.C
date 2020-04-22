@@ -7,43 +7,95 @@ TH2F *hgg[5];
 TH1F *hg[5];
 TH1D *hg_px[5];
 TH1D *hg_py[5];
-TH1D *hg1293[5];
+//
+TH1D *hc[100];//coincidence 1-ds
+TH1D *hs[100];//summed spectra
+Float_t gates[100][3] =  //e, low, high
+{{1293,1286,1299},//0
+{1535,1529,1540},//1
+{850,845,854},//2
+{2668,2658,2680},//3
+{384,380,387},//4
+{438,435,442},//5
+{559,554,563},//6
+{760,756,762},//7 - may have cl contam
+{780,776,783},//8
+{810,804,814},//9 not sure about this One
+{822,819,824},//10 weak
+{830,826,834},//11
+{887,883,890},//12
+{1020,1014,1023},//13 doubled w/ 1013?cl38 1020 too
+{1067,1063,1072},//14 not sure about this one
+{1457,1452,1459},//15
+{1512,1505,1516},//16
+{1577,1572,1582},//17
+{1609,1605,1614},//18
+{1617,1614,1621},//19
+{1625,1621,1630},//20
+{1675,1664,1677},//21 centroid seems off for hg3
+{1950,1944,1959},//22
+{2057,2050,2061},//23
+{2323,2312,2330},//24
+{2365,2358,2371},//25
+{2385,2378,2392},//26
+{2804,2792,2806}//27
+}; //end gates
+Int_t coin = 28;//number of hc's
+Int_t sums = 1; //number of summed spectra
+Int_t hggID = 4;//which hgg
 
 for (Int_t i=0;i<5;i++) {
   //get hists
   hg_px[i] = new TH1D(Form("hg_px%d",i),Form("hg_px%d",i),4000,0,4000);
   hg_py[i] = new TH1D(Form("hg_py%d",i),Form("hg_py%d",i),4000,0,4000);
-  hg1293[i] = new TH1D(Form("hg1293_%d",i),Form("1293 hg1293_%d",i),4000,0,4000);
   hgg[i] = (TH2F *)gDirectory->FindObjectAny(Form("hgg%d",i));
   hg[i] = (TH1F *)gDirectory->FindObjectAny(Form("hg%d",i));
   hgg[i]->ProjectionX(Form("hg_px%d",i));
   hgg[i]->ProjectionY(Form("hg_py%d",i));
-  hgg[i]->ProjectionX(Form("hg1293_%d",i),1287,1298);
+
+  for (Int_t j=0;j<coin;j++) {
+    if (i==hggID){
+      hc[j] = new TH1D(Form("hc%.0f",gates[j][0]),Form("hc%.0f hgg%d",gates[j][0],i),4000,0,4000);
+
+      hgg[i]->ProjectionX(Form("hc%0.f",gates[j][0]),gates[j][1],gates[j][2]);
+      //
+      hc[j]->SetLineColor(40+j);hc[j]->SetFillColor(40+j);
+      hc[j]->SetFillStyle(1001);hc[j]->SetFillColorAlpha(40+j,0.2);
+      //
+    }
+  }
+
   hg[i]->SetLineColor(40+i); hg_py[i]->SetLineColor(40+i);
-  hg_px[i]->SetLineColor(40+i);hg1293[i]->SetLineColor(40+i);
+  hg_px[i]->SetLineColor(40+i);
   hg[i]->SetFillColor(40+i); hg_py[i]->SetFillColor(40+i);
-  hg_px[i]->SetFillColor(40+i);hg1293[i]->SetFillColor(40+i);
+  hg_px[i]->SetFillColor(40+i);
   hg[i]->SetFillStyle(1001); hg_py[i]->SetFillStyle(1001);
-  hg_px[i]->SetFillStyle(1001);hg1293[i]->SetFillStyle(1001);
+  hg_px[i]->SetFillStyle(1001);
   hg[i]->SetFillColorAlpha(40+i,0.3); hg_py[i]->SetFillColorAlpha(40+i,0.3);
-  hg_px[i]->SetFillColorAlpha(40+i,0.3);hg1293[i]->SetFillColorAlpha(40+i,0.3);
+  hg_px[i]->SetFillColorAlpha(40+i,0.3);
 }
 
 //fitting
-printf("--------Fitting of the full singles-------\n");
-for (Int_t i=0;i<5;i++) fitGaussP0(hg[i],1293,3,10,1250,1350);
-printf("--------Fitting of the px-------\n");
-for (Int_t i=0;i<5;i++) fitGaussP0(hg_px[i],1293,3,10,1250,1350);
-printf("--------Fitting of the 1293 proj-------\n");
-for (Int_t i=0;i<5;i++) fitGaussP0(hg1293[i],1535,3,1,1500,1560);
+// printf("--------Fitting of the full singles-------\n");
+// for (Int_t i=0;i<5;i++) fitGaussP0(hg[i],1293,3,10,1250,1350);
+// printf("--------Fitting of the px-------\n");
+// for (Int_t i=0;i<5;i++) fitGaussP0(hg_px[i],1293,3,10,1250,1350);
+//printf("--------Fitting of the 1293 proj-------\n");
+//for (Int_t i=0;i<5;i++) fitGaussP0(hg1293[i],1535,3,1,1500,1560);
 // printf("--------Fitting of the py-------\n");
 // for (Int_t i=0;i<5;i++) fitGaussP0(hg_py[i],1293,3,10,1250,1350);
 
+cc->Clear(); //cc->Divide(1,4);
+//hc[0]->Draw("hist");
+hs[0] = new TH1D("hs0","Sum 1293, 1535, 848",4000,0,4000);
+for (Int_t i=0;i<coin;i++) {hs[0]->Add(hc[i]);}
+hs[0]->Draw();
 
-hg1293[0]->Draw("hist");
-for (Int_t i=1;i<5;i++) hg1293[i]->Draw("same hist");
-
-//TCanvas *cfit = new TCanvas("cfit","cfit",1250,700);
-fitNGauss(hg[2],30,"fit_para.txt");
+hc[0]->Draw();
+for (Int_t i=0;i<coin;i++) {
+  //cc->cd(i+1);
+  hc[i]->Rebin(4);
+  hc[i]->Draw("hist same");
+}
 
 }
