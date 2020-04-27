@@ -30,7 +30,7 @@
 
 #define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
-#define TRAIN 0 //0 no, 1 yes
+#define TRAIN 1 //0 no, 1 yes
 
 TFile *gamFileIn;
 TFile *gamFileOut;
@@ -256,7 +256,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeAverageSkinK.root");
+  fileName.Form("pyTreeAverageSkinN_train.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -517,6 +517,10 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
             || ( (glabel==4) && ((taCounter%1)==0) ) )
             {
               pytree->Fill();
+              if (ge>2000) {
+                for (Int_t highEmult=0;highEmult<3;highEmult++)
+                  pytree->Fill();
+              }
               pyTreeFill++;
             }
           }
