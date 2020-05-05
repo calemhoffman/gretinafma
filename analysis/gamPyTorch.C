@@ -70,6 +70,7 @@ Float_t e0,e1,e2,e3,e4,e5,e6;
 Float_t m;
 Float_t dt;
 Float_t ge;
+Float_t ga;
 Float_t gid;
 Float_t glabel;
 Int_t non38S = 0;
@@ -256,7 +257,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeAverageFatP_train.root");
+  fileName.Form("pyTreeAverageFatTESTER_train.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -273,6 +274,7 @@ pytree->Branch("m",&m,"m/F");
 pytree->Branch("dt",&dt,"dt/F");
 pytree->Branch("gmult",&gmult,"gmult/I");
 pytree->Branch("ge",&ge,"ge/F");
+pytree->Branch("ga",&ga,"ga/F");
 pytree->Branch("gid",&gid,"gid/F");
 pytree->Branch("glabel",&glabel,"glabel/F");
 
@@ -461,6 +463,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   e4=e[0]+e[2];
   e5=e[1]+e[2];
   e6=e[0]+e[1]+e[2];
+  ga = 0;
   ge = 0;
   gid = 0;
   glabel = 0;
@@ -471,6 +474,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   if (isGoodEvent == 1) {
     for (Int_t i=0;i<gebMult; i++) {
       ge = gAddBack[i];
+      ga = gAngle[i];
       gid = -1;
       glabel = 0;
       m = mass[i];
@@ -505,7 +509,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
           glabel = 4;
           taCounter++;
       }
-      if (m!=0 && (ge>100&&ge<6000)) {
+      if (m!=0 && (ge>100&&ge<6000) && (ga>65.0 && ga<175.0))) {
         if (gid>=trainVal) {
           if (TRAIN==0) {
             pytree->Fill();
@@ -518,10 +522,10 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
             || ( (glabel==4) && ((taCounter%2)==0) ) )
             {
               pytree->Fill();
-              if (ge>2000) {
-                for (Int_t highEmult=0;highEmult<3;highEmult++)
-                  pytree->Fill();
-              }
+              // if (ge>2000) {
+              //   for (Int_t highEmult=0;highEmult<3;highEmult++)
+              //     pytree->Fill();
+              // }
               // if (glabel==1){
               //   for (Int_t highEmult=0;highEmult<10;highEmult++)
               //     pytree->Fill();
