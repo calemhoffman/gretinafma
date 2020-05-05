@@ -5,37 +5,47 @@
   //3k 0.765, 0.835,0.875
   //no backgrounds, >0.81, >0.85, >0.88
   TCanvas *cc = new TCanvas("cc","cc",1200,600);
-  TFile fk("pyTorchOutAverageSkinK.root");
-  TTree *tk = pytree;
-  TH1F *hk = new TH1F("hk","hk",4000,0,4000);
-  tk->Draw("py_ge>>hk","py_mlreturn>0.84","");
-  hk->SetLineColor(kBlack); hk->SetLineWidth(2);
-  fitGaussP0(hk,1293,3,10,1250,1350);
-  fitGaussP0(hk,1190,3,10,1150,1225);
-  fitGaussP0(hk,3142,6,5,3100,3200);
-  printf("Integral hk: %.0f\n",hk->Integral());
+  // TFile fk("pyTorchOutAverageSkinK.root");
+  // TTree *tk = pytree;
+  // TH1F *hk = new TH1F("hk","hk",4000,0,4000);
+  // tk->Draw("py_ge>>hk","py_mlreturn>0.22","");
+  // hk->SetLineColor(kBlack); hk->SetLineWidth(2);
+  // fitGaussP0(hk,1293,3,10,1250,1350);
+  // fitGaussP0(hk,1190,3,10,1150,1225);
+  // fitGaussP0(hk,3142,6,5,3100,3200);
+  // printf("Integral hk: %.0f\n",hk->Integral());
 
-  TFile fj("pyTorchOutAverageAverageJ.root");
-  TTree *tj = pytree;
-  TH1F *hj = new TH1F("hj","hj",4000,0,4000);
-  tj->Draw("py_ge>>hj","py_mlreturn>0.88","same");
-  hj->SetLineColor(kRed); hj->SetLineWidth(2);
-  fitGaussP0(hj,1293,3,10,1250,1350);
-  fitGaussP0(hj,1190,3,10,1150,1225);
-  fitGaussP0(hj,3142,6,5,3100,3200);
-  printf("Integral hj: %.0f\n",hj->Integral());
+  // TFile fj("pyTorchOutAverageAverageJ.root");
+  // TTree *tj = pytree;
+  // TH1F *hj = new TH1F("hj","hj",4000,0,4000);
+  // tj->Draw("py_ge>>hj","py_mlreturn>0.88","same");
+  // hj->SetLineColor(kRed); hj->SetLineWidth(2);
+  // fitGaussP0(hj,1293,3,10,1250,1350);
+  // fitGaussP0(hj,1190,3,10,1150,1225);
+  // fitGaussP0(hj,3142,6,5,3100,3200);
+  // printf("Integral hj: %.0f\n",hj->Integral());
+  TFile fn("pyTorchOutAverageFatN.root");
+  TTree *tn = pytree;
+  TH1F *hn = new TH1F("hn","hn",4000,0,4000);
+  tn->Draw("py_ge>>hn","py_mlreturn>0.4","same");
+  hn->SetLineColor(kRed); hn->SetLineWidth(2);
+  fitGaussP0(hn,1293,3,10,1250,1350);
+  fitGaussP0(hn,1190,3,10,1150,1225);
+  fitGaussP0(hn,3142,6,5,3100,3200);
+  printf("Integral hn: %.0f\n",hn->Integral());
 
   TFile ff("pyTorchOutAverageFatF.root");
   TTree *tf = pytree;
   TH1F *hf = new TH1F("hf","hf",4000,0,4000);
-  tf->Draw("py_ge>>hf","py_mlreturn>0.915","same");
+  tf->Draw("py_ge>>hf","py_mlreturn>0.6","same");
   hf->SetLineColor(kBlue); hf->SetLineWidth(2);
   fitGaussP0(hf,1293,3,10,1250,1350);
   fitGaussP0(hf,1190,3,10,1150,1225);
   fitGaussP0(hf,3142,6,5,3100,3200);
   printf("Integral hf: %.0f\n",hf->Integral());
 
-  hk->Draw("hist"); hj->Draw("same hist"); hf->Draw("same hist");
+  //hk->Draw("hist");
+  hn->Draw("hist"); hf->Draw("same hist");
 
   // TFile fi("pyTorchOutAverageAverageI.root");
   // TTree *ti = pytree;

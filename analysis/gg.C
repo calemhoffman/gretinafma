@@ -42,7 +42,7 @@ Float_t gates[100][3] =  //e, low, high
 }; //end gates
 Int_t coin = 28;//number of hc's
 Int_t sums = 1; //number of summed spectra
-Int_t hggID = 3;//which hgg
+Int_t hggID = 2;//which hgg
 
 for (Int_t i=0;i<5;i++) {
   //get hists
@@ -95,7 +95,12 @@ hs[1] = new TH1D("hs1","Sum of 1293,850,1535",4000,0,4000);
 for (Int_t i=0;i<3;i++) {hs[1]->Add(hc[i]);}
 hs[2] = new TH1D("hs2","Sum of 1293,850,1535,2668",4000,0,4000);
 for (Int_t i=0;i<4;i++) {hs[2]->Add(hc[i]);}
-
+hs[4] = new TH1D("hs4","Sum of 1609,1577,1950,1067",4000,0,4000);
+hs[4]->Add(hc[14]);hs[4]->Add(hc[17]);
+hs[4]->Add(hc[18]);hs[4]->Add(hc[22]);
+hs[3] = new TH1D("hs3","Sum of 1535,1609,1577,1950",4000,0,4000);
+hs[3]->Add(hc[1]);hs[3]->Add(hc[17]);
+hs[3]->Add(hc[18]);hs[3]->Add(hc[22]);
 
 //draws
 for (Int_t i=0;i<coin;i++) {

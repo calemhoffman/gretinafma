@@ -256,7 +256,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeAverageSkinN_train.root");
+  fileName.Form("pyTreeAverageFatP_train.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -372,16 +372,16 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
       if (t>0&&t<200){
         mass[gebMultNum] = ((e[0]+e[2])*t*t)/1.0e4;
       } else {mass[gebMultNum] = 0;}
-      if ( ( (cut_e1e3_Skinnier->IsInside(e[2],e[0]))
+      if ( ( (cut_e1e3_Ave->IsInside(e[2],e[0]))
             )
       && (x>-1000&&x<1000)
       //&& cut_mg_good->IsInside(mass[gebMultNum],gAddBack[gebMultNum])
       //&& cut_mx_good->IsInside(mass[gebMultNum],x)
       )
       {//e1e3 && x && mass
-        if ( (cut_dtge_Skin1->IsInside(genergy[gebMultNum],dtime[gebMultNum]))
-        || (cut_dtge_Skin2->IsInside(genergy[gebMultNum],dtime[gebMultNum]))
-        /*(dtime[gebMultNum]>60 && dtime[gebMultNum]<110)*/
+        if ( //(cut_dtge_Skin1->IsInside(genergy[gebMultNum],dtime[gebMultNum]))
+        //|| (cut_dtge_Skin2->IsInside(genergy[gebMultNum],dtime[gebMultNum]))
+        (dtime[gebMultNum]>60 && dtime[gebMultNum]<110)
         )
         {//dtime
           he0x->Fill(x,e[0]) ;
@@ -482,8 +482,9 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         gid = 1;
         glabel = 1;
         s38Counter++;
-      } else if ( (gAddBack[i]>290 && gAddBack[i]<294)
-         || (gAddBack[i]>635 && gAddBack[i]<641)
+      } else if ( //(gAddBack[i]>290 && gAddBack[i]<294)
+         //||
+         (gAddBack[i]>635 && gAddBack[i]<641)
         || (gAddBack[i]>1188 && gAddBack[i]<1194)
         || (gAddBack[i]>2040 && gAddBack[i]<2048)
         || (gAddBack[i]>2269 && gAddBack[i]<2282)
@@ -512,15 +513,19 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
           } else if (TRAIN==1) {
             if (
             ( (glabel==1) /* || (glabel==3) */)
-            || ( (glabel==2) && ((cl38Counter%1)==0) )
-            || ( (glabel==3) && ((p33Counter%1)==0) )
-            || ( (glabel==4) && ((taCounter%1)==0) ) )
+            || ( (glabel==2) && ((cl38Counter%10)==0) )
+            || ( (glabel==3) && ((p33Counter%2)==0) )
+            || ( (glabel==4) && ((taCounter%2)==0) ) )
             {
               pytree->Fill();
               if (ge>2000) {
                 for (Int_t highEmult=0;highEmult<3;highEmult++)
                   pytree->Fill();
               }
+              // if (glabel==1){
+              //   for (Int_t highEmult=0;highEmult<10;highEmult++)
+              //     pytree->Fill();
+              // }
               pyTreeFill++;
             }
           }
