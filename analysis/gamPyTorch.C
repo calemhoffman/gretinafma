@@ -30,7 +30,7 @@
 
 #define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
-#define TRAIN 1 //0 no, 1 yes
+#define TRAIN 0 //0 no, 1 yes
 
 TFile *gamFileIn;
 TFile *gamFileOut;
@@ -73,6 +73,10 @@ Float_t ge;
 Float_t ga;
 Float_t gid;
 Float_t glabel;
+Float_t cre;
+Float_t ix;
+Float_t iy;
+Float_t iz;
 Int_t non38S = 0;
 Int_t pyTreeFill = 0;
 
@@ -277,6 +281,10 @@ pytree->Branch("ge",&ge,"ge/F");
 pytree->Branch("ga",&ga,"ga/F");
 pytree->Branch("gid",&gid,"gid/F");
 pytree->Branch("glabel",&glabel,"glabel/F");
+pytree->Branch("cre",&cre,"cre/F");
+pytree->Branch("ix",&ix,"ix/F");
+pytree->Branch("iy",&iy,"iy/F");
+pytree->Branch("iz",&iz,"iz/F");
 
 //User Ins
 //Int_t nTreeNum = 0; //only for s38 to start
@@ -316,11 +324,13 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
     gtree[nTreeNum]->GetEntry(entryNumber); //One and only pull of entries ??
     hMults[nTreeNum]->Fill(gebMult);//histo mults
 //Loop over Segment Multiplicity
-    for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
+for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
 //PASS INFO
       crysTotE[gebMultNum] = crysTot_e[gebMultNum];
       //gEnergy[gebMultNum] = genergy[gebMultNum];
-
+    }
+    //Loop over Segment Multiplicity
+    for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
 //DOPPLER
       intRad[gebMultNum] = (intMaxZ[gebMultNum]) /
         (TMath::Sqrt(intMaxX[gebMultNum]*intMaxX[gebMultNum]
@@ -344,10 +354,11 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         +(intMaxZ[gebMultNum] - intMaxZ[j])*(intMaxZ[gebMultNum] - intMaxZ[j]);
         radDiff[gebMultNum][j] = TMath::Sqrt(r2);
 
-        // printf("I,J: %d,%d radDiff: %f e[i]: %f, e[j]: %f\n",
+        // printf("I,J: %d,%d radDiff: %f, e[i]: %f, e[j]: %f, E[i]: %f, E[j]: %f\n",
         // gebMultNum,j,
         // radDiff[gebMultNum][j],
-        // crysTot_e[gebMultNum], crysTot_e[j]);
+        // crysTot_e[gebMultNum], crysTot_e[j],
+        // crysTotE[gebMultNum], crysTotE[j]);
 
         if ( (radDiff[gebMultNum][j] <= radAddBackTest) && (gtime[gebMultNum][j]<40) )
         {
@@ -357,10 +368,12 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
           crysTot_e[j] = 0;
         } //radDiff if
       } //j++
-      //printf("** crysTotAddBack: %f\n\n",crysTotAddBack[gebMultNum]);
+      // printf("** crysTotAddBack[%d]: %f\n\n",gebMultNum,crysTotAddBack[gebMultNum]);
+      if (crysTotAddBack[gebMultNum]!=0) {
       crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum]/modCCdopfac[gebMultNum];//DOPPLER
       crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum] - (0.002*x);//X CORRECTION (from hxVg spectrum)
       crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum] + (e[0]-1625)*0.002488;//e[0] from he0Vg specrum
+      }
       gAddBack[gebMultNum] = crysTotAddBack[gebMultNum];
       gAngle[gebMultNum] = (modCCang[gebMultNum]*180./TMath::Pi());
       //printf("** crysTotAddBack w/ Dop: %f\n\n",crysTotAddBack[gebMultNum]);
@@ -386,12 +399,13 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         (dtime[gebMultNum]>60 && dtime[gebMultNum]<110)
         )
         {//dtime
+          isGoodEvent = 1;
           he0x->Fill(x,e[0]) ;
           he1e3->Fill(e[2],e[0]);he1e2->Fill(e[1],e[0]);he2e3->Fill(e[2],e[1]);
           //hdtge->Fill(genergy[gebMultNum],dtime[gebMultNum]);
           hg[nTreeNum]->Fill(genergy[gebMultNum]); //g fill
           //hgDop[nTreeNum]->Fill(crysTotDop[gebMultNum]); //dop fill
-          if (crysTotAddBack[gebMultNum] > 0)
+          if (crysTotAddBack[gebMultNum] >= 0)
           {
             if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0)
             {
@@ -403,7 +417,7 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
               he2Vg->Fill(e[2],crysTotAddBack[gebMultNum]);
               hdtge->Fill(crysTotAddBack[gebMultNum],dtime[gebMultNum]);
               hmVx->Fill(x,mass[gebMultNum]);
-              isGoodEvent = 1;
+
             }
           }
           hgNoDopVsAngle[nTreeNum]->Fill(crysTotE[gebMultNum],modCCang[gebMultNum]*180./TMath::Pi());
@@ -437,24 +451,24 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   } //nTreeNum
 
   //Loop over scans, either cuts or ranges
-  Int_t scanCounter=0;
-  Int_t xmin=0;
-  Int_t xmax=0;
-  nTreeNum=0;
-  for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
-    if ( cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum]) ) {
-      for (Int_t firstLoop=0;firstLoop<5;firstLoop++) {
-        if ( cut_e1e3_scan[firstLoop]->IsInside(e[2],e[0]) ) {
-          for (Int_t secondLoop=0; secondLoop<10; secondLoop++) {
-            xmin=-600 + (secondLoop*100); xmax=-500 + (secondLoop*100);
-            scanCounter = firstLoop*10 + secondLoop;
-            if ( (x>xmin) && (x<=xmax) )
-              hscan[scanCounter]->Fill(crysTotAddBack[gebMultNum]);
-          }
-        }
-      }
-    }
-  } //gebMultNum
+  // Int_t scanCounter=0;
+  // Int_t xmin=0;
+  // Int_t xmax=0;
+  // nTreeNum=0;
+  // for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
+  //   if ( cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum]) ) {
+  //     for (Int_t firstLoop=0;firstLoop<5;firstLoop++) {
+  //       if ( cut_e1e3_scan[firstLoop]->IsInside(e[2],e[0]) ) {
+  //         for (Int_t secondLoop=0; secondLoop<10; secondLoop++) {
+  //           xmin=-600 + (secondLoop*100); xmax=-500 + (secondLoop*100);
+  //           scanCounter = firstLoop*10 + secondLoop;
+  //           if ( (x>xmin) && (x<=xmax) )
+  //             hscan[scanCounter]->Fill(crysTotAddBack[gebMultNum]);
+  //         }
+  //       }
+  //     }
+  //   }
+  // } //gebMultNum
 
   e0=e[0];
   e1=e[1];
@@ -469,12 +483,21 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   glabel = 0;
   m = 0;
   dt = 0;
+  cre = 0;
+  ix = 0; iy = 0; iz = 0;
   Int_t trainVal = -1;
   if (TRAIN == 1) trainVal = 0;
   if (isGoodEvent == 1) {
     for (Int_t i=0;i<gebMult; i++) {
       ge = gAddBack[i];
       ga = gAngle[i];
+      cre = crysTotE[i];
+      if (TMath::Abs(intMaxX[i])<0.001) intMaxX[i]=0;
+      ix = intMaxX[i];
+      if (TMath::Abs(intMaxY[i])<0.001) intMaxY[i]=0;
+      iy = intMaxY[i];
+      if (TMath::Abs(intMaxZ[i])<0.001) intMaxZ[i]=0;
+      iz = intMaxZ[i];
       gid = -1;
       glabel = 0;
       m = mass[i];
@@ -509,10 +532,12 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
           glabel = 4;
           taCounter++;
       }
-      if (m!=0 && (ge>100&&ge<6000) && (ga>65.0 && ga<175.0))) {
+      if (m!=0 && (cre>0&&ge<6000) /*&& (ga>65.0 && ga<175.0)*/) {
         if (gid>=trainVal) {
           if (TRAIN==0) {
             pytree->Fill();
+            if (pyTreeFill<100)
+            printf("i: %d ge: %f, cre: %f\n",i,ge,cre);//
             pyTreeFill++;
           } else if (TRAIN==1) {
             if (

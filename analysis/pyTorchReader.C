@@ -11,10 +11,15 @@ Float_t x[10000000];
 Float_t m[10000000];
 Float_t dt[10000000];
 Float_t ge[10000000];
+Float_t ga[10000000];
 Float_t gid[10000000];
 Float_t glabel[10000000];
 Int_t gmult[10000000];
 Float_t mlreturn[10000000];
+Float_t cre[10000000];
+Float_t ix[10000000];
+Float_t iy[10000000];
+Float_t iz[10000000];
 Int_t event[10000000];
 Int_t number = 0;
 
@@ -29,7 +34,7 @@ TH2F *hgg[5];
 //Float_t mlCutMin[5] = {0.22,0.25,0.6,0.765,0.805};//five cuts for AveSkin
 Float_t mlCutMin[5] = {0.0,0.2,0.4,0.6,0.8};//five cuts for base
 Float_t mlCutMax[5] = {1.0,1.0,1.0,1.0,1.0};
-Float_t modelCheckValue = 0.8;
+Float_t modelCheckValue = 0.5;
 
 void pyTorchReader() {
 for (Int_t ii=0;ii<5;ii++) {
@@ -40,7 +45,7 @@ for (Int_t ii=0;ii<5;ii++) {
 }
 
 //inFile.open(Form("../machine_learning/code/PyTreeAverageSkinny_train.csv"));
-inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatN_tester.csv"));
+inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatTESTER_tester.csv"));
 
   if( inFile.is_open() ) {
     while (1) {
@@ -48,16 +53,17 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatN_tester.csv")
       inFile >> event[number] >> e0[number] >> e1[number] >> e2[number]
        >> e3[number] >> e4[number] >> e5[number] >> e6[number]
        >> x[number] >> m[number] >> dt[number] >> gmult[number] >> ge[number]
-       >> gid[number] >> glabel[number] >> mlreturn[number];
-      if (number<1) { printf("%d[%d] %f %f %f\n",
+       >> ga[number] >> gid[number] >> glabel[number] >> cre[number]
+       >> ix[number] >> iy[number] >> iz[number] >> mlreturn[number];
+      if (number<10) { printf("%d[%d] %f %f %f\n",
        event[number],number,e0[number],e1[number],e2[number]);
        printf("%f %f %f %f\n",
        e3[number],e4[number],e5[number],e6[number]);
-       printf("%f %f %d %f\n",
-       x[number],m[number],gmult[number],ge[number]);
-       printf("%f %f %f\n\n\n",gid[number],glabel[number],mlreturn[number]);
+       printf("%f %f %f %d %f\n",
+       x[number],m[number],dt[number], gmult[number],ge[number]);
+       printf("%f %f %f %f\n",ga[number],gid[number],glabel[number],cre[number]);
+       printf("%f %f %f %f\n\n\n",ix[number],iy[number],iz[number],mlreturn[number]);
       }
-
       number++;
   }
   printf("... done reading file\n");
@@ -72,21 +78,31 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatN_tester.csv")
   Float_t py_m[100];
   Float_t py_dt[100];
   Float_t py_ge[100];
+  Float_t py_ga[100];
   Float_t py_mlreturn[100];
   Float_t py_gid[100];
   Float_t py_glabel[100];
+  Float_t py_cre[100];
+  Float_t py_ix[100];
+  Float_t py_iy[100];
+  Float_t py_iz[100];
 
   for (Int_t i=0;i<100;i++) {
     if (i<10) py_e[i]=0;
     py_m[i] = 0;
     py_ge[i] = 0;
+    py_ga[i] = 0;
     py_mlreturn[i] = 0;
     py_dt[i] = 0;
     py_gid[i] = -100;
     py_glabel[i] = -100;
+    py_cre[i] = 0;
+    py_ix[i] = 0;
+    py_iy[i] = 0;
+    py_iz[i] = 0;
   }
 
-  TFile *fileOut = new TFile("pyTorchOutAverageFatN.root","RECREATE");
+  TFile *fileOut = new TFile("pyTorchOutAverageFatTESTER.root","RECREATE");
   pytree = new TTree("pytree","pytree");
   pytree->Branch("py_e",py_e,"py_e[10]/F");
   pytree->Branch("py_x",&py_x,"py_x/F");
@@ -94,9 +110,14 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatN_tester.csv")
   pytree->Branch("py_m",py_m,"py_m[py_gmult]/F");
   pytree->Branch("py_dt",py_dt,"py_dt[py_gmult]/F");
   pytree->Branch("py_ge",py_ge,"py_ge[py_gmult]/F");
+  pytree->Branch("py_ga",py_ga,"py_ga[py_gmult]/F");
   pytree->Branch("py_mlreturn",py_mlreturn,"py_mlreturn[py_gmult]/F");
   pytree->Branch("py_gid",py_gid,"py_gid[py_gmult]/F");
   pytree->Branch("py_glabel",py_glabel,"py_glabel[py_gmult]/F");
+  pytree->Branch("py_cre",py_cre,"py_cre[py_gmult]/F");
+  pytree->Branch("py_ix",py_ix,"py_ix[py_gmult]/F");
+  pytree->Branch("py_iy",py_iy,"py_iy[py_gmult]/F");
+  pytree->Branch("py_iz",py_iz,"py_iz[py_gmult]/F");
 
   for (Int_t i=0;i<number-2;i++) {
     //fill all the zeros
@@ -104,20 +125,30 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatN_tester.csv")
     py_x = x[i];
     py_m[0] = m[i];
     py_ge[0] = ge[i];
+    py_ga[0] = ga[i];
     py_mlreturn[0] = mlreturn[i];
     py_dt[0] = dt[i];
     py_gmult = 1;//gmult[i];
     py_glabel[0] = glabel[i];
     py_gid[0] = gid[i];
+    py_cre[0] = cre[i];
+    py_ix[0] = ix[i];
+    py_iy[0] = iy[i];
+    py_iz[0] = iz[i];
 
     for (Int_t j=i+1;j<i+gmult[i];j++) {
       if ( (TMath::Abs(py_e[0]-e0[j])<0.1) && (gmult[i]==gmult[j]) ) {
         py_m[py_gmult] = m[j];
         py_ge[py_gmult] = ge[j];
+        py_ga[py_gmult] = ga[j];
         py_mlreturn[py_gmult] = mlreturn[j];
         py_dt[py_gmult] = dt[j];
         py_gid[py_gmult] = gid[j];
         py_glabel[py_gmult] = glabel[j];
+        py_cre[py_gmult] = cre[j];
+        py_ix[py_gmult] = ix[j];
+        py_iy[py_gmult] = iy[j];
+        py_iz[py_gmult] = iz[j];
         py_gmult++;
       }
     }
@@ -157,10 +188,15 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatN_tester.csv")
       }
       py_m[k] = 0;
       py_ge[k] = 0;
+      py_ga[k] = 0;
       py_mlreturn[k] = 0;
       py_dt[k] = 0;
       py_gid[k] = -100;
       py_glabel[k] = -100;
+      py_cre[k] = 0;
+      py_ix[k] = 0;
+      py_iy[k] = 0;
+      py_iz[k] = 0;
     }
     py_gmult=0;
   }
