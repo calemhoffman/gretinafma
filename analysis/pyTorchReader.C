@@ -55,14 +55,14 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatTESTER_tester.
        >> x[number] >> m[number] >> dt[number] >> gmult[number] >> ge[number]
        >> ga[number] >> gid[number] >> glabel[number] >> cre[number]
        >> ix[number] >> iy[number] >> iz[number] >> mlreturn[number];
-      if (number<10) { printf("%d[%d] %f %f %f\n",
+      if (number<5) { printf("%d[%d] %f %f %f\n",
        event[number],number,e0[number],e1[number],e2[number]);
        printf("%f %f %f %f\n",
        e3[number],e4[number],e5[number],e6[number]);
        printf("%f %f %f %d %f\n",
        x[number],m[number],dt[number], gmult[number],ge[number]);
        printf("%f %f %f %f\n",ga[number],gid[number],glabel[number],cre[number]);
-       printf("%f %f %f %f\n\n\n",ix[number],iy[number],iz[number],mlreturn[number]);
+       printf("%f %f %f %f\n\n",ix[number],iy[number],iz[number],mlreturn[number]);
       }
       number++;
   }
@@ -86,6 +86,7 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatTESTER_tester.
   Float_t py_ix[100];
   Float_t py_iy[100];
   Float_t py_iz[100];
+  Float_t py_creab[100];
 
   for (Int_t i=0;i<100;i++) {
     if (i<10) py_e[i]=0;
@@ -100,6 +101,7 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatTESTER_tester.
     py_ix[i] = 0;
     py_iy[i] = 0;
     py_iz[i] = 0;
+    py_creab[i] = 0;
   }
 
   TFile *fileOut = new TFile("pyTorchOutAverageFatTESTER.root","RECREATE");
@@ -118,6 +120,7 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatTESTER_tester.
   pytree->Branch("py_ix",py_ix,"py_ix[py_gmult]/F");
   pytree->Branch("py_iy",py_iy,"py_iy[py_gmult]/F");
   pytree->Branch("py_iz",py_iz,"py_iz[py_gmult]/F");
+  pytree->Branch("py_creab",py_creab,"py_creab[py_gmult]/F");
 
   for (Int_t i=0;i<number-2;i++) {
     //fill all the zeros
@@ -151,6 +154,51 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatTESTER_tester.
         py_iz[py_gmult] = iz[j];
         py_gmult++;
       }
+    }
+    //ADDBACK - could add the py_mlreturn cut here and loop all addback
+    Float_t radAddBackTest = 10.0;//radius for AB
+    Int_t addBackDopNum = 0;
+    Float_t r2=0;
+    Float_t radDiff[100][100];
+    Float_t modCCdopfac[100];
+    Float_t beta = 0.03375; //s38 from Fits
+    //Float_t inRad[100];
+    //second gmult loop to calc addback
+    for (Int_t gebMultNum=0;gebMultNum<py_gmult;gebMultNum++) {
+      addBackDopNum = gebMultNum;
+      py_creab[gebMultNum] = py_cre[gebMultNum];
+      //DOPPLER calculate
+      // intRad[gebMultNum] = (py_iz[gebMultNum]) /
+      //   (TMath::Sqrt(py_ix[gebMultNum]*py_ix[gebMultNum]
+      //     + py_iy[gebMultNum]*py_iy[gebMultNum]
+      //     + py_iz[gebMultNum]*py_iz[gebMultNum]));
+      // modCCang[gebMultNum] = TMath::ACos(intRad[gebMultNum]);
+      modCCdopfac[gebMultNum] = TMath::Sqrt(1. - beta*beta) /
+      (1.0 - beta * TMath::Cos(py_ga[gebMultNum]/180.*TMath::Pi()));
+      //AB
+      for (Int_t j=gebMultNum+1; j < py_gmult; j++ ) {
+        r2 = (py_ix[gebMultNum] - py_ix[j])*(py_ix[gebMultNum] - py_ix[j])
+          +(py_iy[gebMultNum] - py_iy[j])*(py_iy[gebMultNum] - py_iy[j])
+          +(py_iz[gebMultNum] - py_iz[j])*(py_iz[gebMultNum] - py_iz[j]);
+        radDiff[gebMultNum][j] = TMath::Sqrt(r2);
+        // printf("I,J: %d,%d radDiff: %f, e[i]: %f, e[j]: %f\n",
+        // gebMultNum,j,
+        // radDiff[gebMultNum][j],
+        // py_cre[gebMultNum], py_cre[j]);
+        if ( (radDiff[gebMultNum][j] <= radAddBackTest) /*dtime check*/ )
+        {
+          py_creab[gebMultNum] += py_cre[j];
+          if (py_cre[j] > py_cre[gebMultNum]) addBackDopNum = j;
+          py_cre[j] = 0;
+        } //radDiff if
+      } //j++
+      //printf("** py_creab[%d,%d]: %f\n\n",gebMultNum,addBackDopNum,py_creab[gebMultNum]);
+        if (py_creab[gebMultNum]!=0) {
+        py_creab[gebMultNum] = py_creab[gebMultNum]/modCCdopfac[gebMultNum];//DOPPLER ** addBackDopNum should be used
+        //printf("** py_creab(dop)[%d,%d]: %f\n\n",gebMultNum,addBackDopNum,py_creab[gebMultNum]);
+        //crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum] - (0.002*x);//X CORRECTION (from hxVg spectrum)
+        //crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum] + (e[0]-1625)*0.002488;//e[0] from he0Vg specrum
+        }
     }
     //fill tree and histograms
     pytree->Fill();
@@ -197,6 +245,7 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatTESTER_tester.
       py_ix[k] = 0;
       py_iy[k] = 0;
       py_iz[k] = 0;
+      py_creab[k] = 0;
     }
     py_gmult=0;
   }
