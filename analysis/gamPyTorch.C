@@ -261,7 +261,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeAverageFatTESTER_train.root");
+  fileName.Form("pyTreeAverageFatQ.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 

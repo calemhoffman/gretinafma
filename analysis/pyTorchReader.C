@@ -30,9 +30,10 @@ TTree *pytree;
 TH1F *hg[5];
 TH2F *hgg[5];
 
-// Float_t mlCutMin[5] = {0.25,0.5,0.7,0.81,0.875};//five cuts for AveFat
+Float_t mlCutMin[5] = {0.25,0.3,0.5,0.81,0.875};//five cuts for AveFat
+//old 0.25,0.5,0.7,0.81,0.875
 //Float_t mlCutMin[5] = {0.22,0.25,0.6,0.765,0.805};//five cuts for AveSkin
-Float_t mlCutMin[5] = {0.0,0.2,0.4,0.6,0.8};//five cuts for base
+//Float_t mlCutMin[5] = {0.0,0.2,0.4,0.6,0.8};//five cuts for base
 Float_t mlCutMax[5] = {1.0,1.0,1.0,1.0,1.0};
 Float_t modelCheckValue = 0.5;
 
@@ -45,7 +46,7 @@ for (Int_t ii=0;ii<5;ii++) {
 }
 
 //inFile.open(Form("../machine_learning/code/PyTreeAverageSkinny_train.csv"));
-inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatTESTER_tester.csv"));
+inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatQ_tester.csv"));
 
   if( inFile.is_open() ) {
     while (1) {
@@ -104,7 +105,7 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatTESTER_tester.
     py_creab[i] = 0;
   }
 
-  TFile *fileOut = new TFile("pyTorchOutAverageFatTESTER.root","RECREATE");
+  TFile *fileOut = new TFile("pyTorchOutAverageFatQ.root","RECREATE");
   pytree = new TTree("pytree","pytree");
   pytree->Branch("py_e",py_e,"py_e[10]/F");
   pytree->Branch("py_x",&py_x,"py_x/F");

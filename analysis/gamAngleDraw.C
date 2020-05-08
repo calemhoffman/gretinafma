@@ -11,8 +11,8 @@ Float_t binLow;
 Float_t binHigh;
 char * name("misc");
 
-Int_t numAngles=5;
-const int  numGam=14;
+Int_t numAngles=10;
+const int  numGam=4;
 Double_t angMin = 65.0;
 Double_t angRange = 100.0;
 FILE * fitFileOut;
@@ -32,26 +32,26 @@ Double_t a4[100];
 Double_t a4err[100];
 
 //second set of data...
-Int_t nAngles[100] = {5,5,5,5,5,5,5,
+Int_t nAngles[100] = {6,6,6,6,5,5,5,
                         5,5,4,4,4,6,4,
                         5,5,5,5,5,5,5};
 Double_t mean[100]={1293.0,1534.0,850.0,2668.0,2322,1576,383.5,
                     438.0,779.0,1018.0,1067.0,1456.0,1951.0,830.0};
 Double_t sigma[100]={2.5,1.6,2,6,5,3.0,2.2,
                       2,1.5,2.0,2.5,2.2,2.5,1.6};
-Double_t fitLow[100]={1270.0,1520.0,846.0,2640.0,2290,1555,350.0,
+Double_t fitLow[100]={1270.0,1520.0,840.0,2640.0,2290,1555,350.0,
   420,775,1000,1040,1448,1935.0,824};
-Double_t fitHigh[100]={1320.0,1550.0,854.0,2700.0,2350,1595,420.0,
+Double_t fitHigh[100]={1320.0,1550.0,860.0,2700.0,2350,1595,420.0,
   460,785,1040,1090,1470,1965.0,838};
 Double_t fixWidth[100]={0,0,0,0,1,1,0,
   1,1,1,1,1,1,1};
-Int_t fitType[100]={1,1,0,1,1,1,1,
+Int_t fitType[100]={1,1,1,1,1,1,1,
   1,1,1,1,1,1,1};
 Double_t offset[100]={1,1,1,1,1,1,1,
   1,1,1,1,1,1,1};
-Int_t rebinFactor[100]={2,4,3,14,12,14,6,
+Int_t rebinFactor[100]={2,2,2,8,12,14,6,
   10,6,8,8,8,14,6};//4=1keV,8=2keV
-Float_t maxGraphY[100]={100,80,80,25,50,50,50,
+Float_t maxGraphY[100]={250,200,200,200,50,50,50,
   30,30,30,30,30,20,50};
 Double_t mean2[100]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
@@ -132,7 +132,7 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
     if (rebinFactor[whichGam]>1) hgndva0[i]->Rebin(rebinFactor[whichGam]);
 
     if (fitType[whichGam]==0) {
-      if (i==0 && whichGam==2) {
+      if (i==0 && whichGam==20) {
         fitGaussP1(hgndva0[i],mean[whichGam],3,fitLow[whichGam]-8,fitHigh[whichGam]+8,fitFileOut);
       } else {
         fitGauss(hgndva0[i],mean[whichGam],3,fitLow[whichGam],fitHigh[whichGam],fitFileOut);

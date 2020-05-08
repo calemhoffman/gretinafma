@@ -1,6 +1,7 @@
 {
   TCanvas *cc = new TCanvas("cc","cc",1200,700);
-TFile f("pyTorchOutAverageFatF.root");
+  TFile f("pyTorchOutAverageFatQ.root");
+//TFile f("pyTorchOutAverageFatF.root");
 //TFile f("pyTorchOutAverageSkinK.root");
 //TFile f("pyTorchOutAverageFatF_base.root");
 TH2F *hgg[5];
@@ -52,6 +53,8 @@ for (Int_t i=0;i<5;i++) {
   hg[i] = (TH1F *)gDirectory->FindObjectAny(Form("hg%d",i));
   hgg[i]->ProjectionX(Form("hg_px%d",i));
   hgg[i]->ProjectionY(Form("hg_py%d",i));
+  hg_px[i]->GetXaxis()->SetRangeUser(10,4000);
+  hg_py[i]->GetXaxis()->SetRangeUser(10,4000);
 
   for (Int_t j=0;j<coin;j++) {
     if (i==hggID){
@@ -61,6 +64,7 @@ for (Int_t i=0;i<5;i++) {
       //
       hc[j]->SetLineColor(40+j);hc[j]->SetFillColor(40+j);
       hc[j]->SetFillStyle(1001);hc[j]->SetFillColorAlpha(40+j,0.2);
+      hc[j]->GetXaxis()->SetRangeUser(10,4000);
       //
     }
   }
@@ -90,6 +94,7 @@ cc->Clear(); //cc->Divide(1,4);
 //Sum spectra
 hs[0] = new TH1D("hs0","Sum of All",4000,0,4000);
 for (Int_t i=0;i<coin;i++) {hs[0]->Add(hc[i]);}
+hs[0]->GetXaxis()->SetRangeUser(10,4000);
 hs[0]->Draw();
 hs[1] = new TH1D("hs1","Sum of 1293,850,1535",4000,0,4000);
 for (Int_t i=0;i<3;i++) {hs[1]->Add(hc[i]);}
