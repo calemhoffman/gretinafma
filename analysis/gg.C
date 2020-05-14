@@ -43,7 +43,7 @@ Float_t gates[100][3] =  //e, low, high
 }; //end gates
 Int_t coin = 28;//number of hc's
 Int_t sums = 1; //number of summed spectra
-Int_t hggID = 2;//which hgg
+Int_t hggID = 3;//which hgg
 
 for (Int_t i=0;i<5;i++) {
   //get hists
