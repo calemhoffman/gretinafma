@@ -11,9 +11,9 @@ Float_t binLow;
 Float_t binHigh;
 char * name("misc");
 
-Int_t numAngles=10;
-const int  numGam=4;
-Double_t angMin = 70.0;
+Int_t numAngles=5;
+const int  numGam=7;
+Double_t angMin = 65.0;
 Double_t angRange = 100.0;
 FILE * fitFileOut;
 TCanvas *cfit;
@@ -33,7 +33,7 @@ Double_t a4err[100];
 
 //second set of data...
 Int_t nAngles[100] = {5,5,5,5,5,5,5,
-                        5,5,4,4,4,6,4,
+                        5,5,5,5,5,5,5,
                         5,5,5,5,5,5,5};
 Double_t mean[100]={1293.0,1534.0,850.0,2668.0,2322,1576,383.5,
                     438.0,779.0,1018.0,1067.0,1456.0,1951.0,830.0};
@@ -43,15 +43,15 @@ Double_t fitLow[100]={1270.0,1520.0,840.0,2640.0,2290,1555,350.0,
   420,775,1000,1040,1448,1935.0,824};
 Double_t fitHigh[100]={1320.0,1550.0,860.0,2700.0,2350,1595,420.0,
   460,785,1040,1090,1470,1965.0,838};
-Double_t fixWidth[100]={0,0,0,1,1,1,0,
+Double_t fixWidth[100]={0,0,0,1,1,0,0,
   1,1,1,1,1,1,1};
 Int_t fitType[100]={1,1,1,1,1,1,1,
   1,1,1,1,1,1,1};
 Double_t offset[100]={1,1,1,1,1,1,1,
   1,1,1,1,1,1,1};
-Int_t rebinFactor[100]={1,1,1,4,12,14,6,
+Int_t rebinFactor[100]={1,1,1,4,4,2,1,
   10,6,8,8,8,14,6};//4=1keV,8=2keV
-Float_t maxGraphY[100]={250,200,200,200,50,50,50,
+Float_t maxGraphY[100]={250,200,200,200,100,100,100,
   30,30,30,30,30,20,50};
 Double_t mean2[100]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
@@ -93,6 +93,7 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
     }
   }
   //crat->cd();
+  Double_t angVal[20] = {75,105,121,133,143,165};
 
   for(Int_t k=0;k<12;k++) {//energy
     if (mean[whichGam]>=meanCal[k] &&
@@ -117,8 +118,8 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
   if (numAngles>10) {cc[whichGam]->Clear(); cc[whichGam]->Divide(4,5);}
   for (Int_t i = 0;i<numAngles; i++) {
     hgndva0[i] = new TH1D(Form("hgang%s_%d",name,i),Form("hgang%s_%d",name,i),4096,0,4096);
-    binLow = angMin + (angRange/(Float_t)numAngles) * (Float_t)i;
-    binHigh = angMin + (angRange/(Float_t)numAngles) + (angRange/(Float_t)numAngles) * (Float_t)i;
+    binLow = angVal[i];//angMin + (angRange/(Float_t)numAngles) * (Float_t)i;
+    binHigh = angVal[i+1];//angMin + (angRange/(Float_t)numAngles) + (angRange/(Float_t)numAngles) * (Float_t)i;
     hgAddBackVsAngle0->ProjectionX(Form("hgang%s_%d",name,i),binLow,binHigh);
     fprintf(fitFileOut, "%f ", (binHigh+binLow)/2.0);
     cc[whichGam]->cd(i+1);
@@ -130,7 +131,8 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
       hgndva0[i]->Scale(1./normNew[whichGam][i][0]);
     }
     if (rebinFactor[whichGam]>1) hgndva0[i]->Rebin(rebinFactor[whichGam]);
-
+//full fitNGauss only once
+    //if (whichGam==3) fitNGauss(hgndva0[i]);
     if (fitType[whichGam]==0) {
       if (i==0 && whichGam==20) {
         fitGaussP1(hgndva0[i],mean[whichGam],3,fitLow[whichGam]-8,fitHigh[whichGam]+8,fitFileOut);
@@ -181,7 +183,7 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
       xerr[index] = 0.001;
       tempErr1 = (Double_t)((angleData[index][2]/angleData[index][1])*(angleData[index][2]/angleData[index][1]));
       tempErr2 = (Double_t)((norm[index][1]/norm[index][0])*(norm[index][1]/norm[index][0]));
-      yerr[index] = y[index] * TMath::Sqrt(tempErr1 + tempErr2) / 2.0;
+      yerr[index] = y[index] * TMath::Sqrt(tempErr1 + tempErr2) / 1.0;
       average+=angleData[index][1];
       printf("%f %f\n",angleData[index][0],angleData[index][1]/norm[index][0]);
       index++;
@@ -190,6 +192,7 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
   } else { printf("... failed to read fit file\n");
   }
   average/=((Double_t)index-1);
+  printf("Average: %f\n",average);
 //adding in averging to put all ang dist on same plot.
 for (Int_t i=0;i<index-1;i++) {
   y[i] = y[i]/average;
@@ -218,14 +221,14 @@ for (Int_t i=0;i<index-1;i++) {
 
   Double_t * para2 = new Double_t[3];
   para2[0] = 100.0;
-  para2[1] = 0.5;
+  para2[1] = -0.1;
   para2[3] = 2;
 
 // func->SetParameters(0,3.1,1.e-6,-1.5,0,100);
 // func->SetParLimits(3,-10,4);
 // func->FixParameter(4,0);
 
-  TF1 * l2fit = new TF1("l2fit", "[0]*(1 + [1]*ROOT::Math::legendre([2],x))",-1,1);//+ROOT::Math::legendre([2],x))",-1,1);
+  TF1 * l2fit = new TF1("l2fit", "[0]*(1 + [1]*ROOT::Math::legendre([2],x))",-1,-1);//+ROOT::Math::legendre([2],x))",-1,1);
   l2fit->SetParameters(para2);
   l2fit->FixParameter(2,2);
   l2fit->SetParLimits(1,-1,1);
@@ -235,33 +238,35 @@ for (Int_t i=0;i<index-1;i++) {
   const Double_t* para2A = l2fit->GetParameters();
   l2fit->GetXaxis()->SetRangeUser(-1,1);
 //from here
-  Double_t * para4 = new Double_t[3];
-  para4[0] = 1.0;
-  para4[1] = 1;
-  para4[2] = -1;
-
-  TF1 * l4fit = new TF1("l4fit", "[0]*(1 + [1]*ROOT::Math::legendre(2,x) + [2]*ROOT::Math::legendre(4,x))",-1,1);//+ROOT::Math::legendre([2],x))",-1,1);
-  l4fit->SetParameters(para4);
-  gr[whichGam]->Fit(l4fit);
-
-  const Double_t* para4E = l4fit->GetParErrors();
-  const Double_t* para4A = l4fit->GetParameters();
-  if (a2[whichGam]>-5 && a2[whichGam]<5) {
-    a2[whichGam] = para4A[1];
-    a4[whichGam] = para4A[2];
-    a2err[whichGam] = para4E[1]/2.0;
-    a4err[whichGam] = para4E[2]/2.0;
-  } else {
-    a2[whichGam] = 0;//para4A[1];
-    a4[whichGam] = 0;//para4A[2];
-    a2err[whichGam] = 0;//para4E[1];
-    a4err[whichGam] = 0;//para4E[2];
-  }
-  l4fit->SetLineColor(kRed);
-  l4fit->GetYaxis()->SetRangeUser(0,2);
-  l4fit->GetXaxis()->SetRangeUser(-1,1);
-gr[whichGam]->Draw("ALP");
-  l4fit->Draw("same");
+//   Double_t * para4 = new Double_t[3];
+//   para4[0] = 1.0;
+//   para4[1] = 0.2;
+//   para4[2] = -0.2;
+//
+//   TF1 * l4fit = new TF1("l4fit", "[0]*(1 + [1]*ROOT::Math::legendre(2,x) + [2]*ROOT::Math::legendre(4,x))",-1,1);//+ROOT::Math::legendre([2],x))",-1,1);
+//   l4fit->SetParameters(para4);
+//   l4fit->SetParLimits(1,0.2,0.4);
+//   l4fit->SetParLimits(1,-0.1,0.1);
+//   gr[whichGam]->Fit(l4fit);
+//
+//   const Double_t* para4E = l4fit->GetParErrors();
+//   const Double_t* para4A = l4fit->GetParameters();
+//   if (a2[whichGam]>-5 && a2[whichGam]<5) {
+//     a2[whichGam] = para4A[1];
+//     a4[whichGam] = para4A[2];
+//     a2err[whichGam] = para4E[1]/1.0;
+//     a4err[whichGam] = para4E[2]/1.0;
+//   } else {
+//     a2[whichGam] = 0;//para4A[1];
+//     a4[whichGam] = 0;//para4A[2];
+//     a2err[whichGam] = 0;//para4E[1];
+//     a4err[whichGam] = 0;//para4E[2];
+//   }
+//   l4fit->SetLineColor(kRed);
+//   l4fit->GetYaxis()->SetRangeUser(0,2);
+//   l4fit->GetXaxis()->SetRangeUser(-1,1);
+// gr[whichGam]->Draw("ALP");
+//   l4fit->Draw("same");
 
 //to here
 

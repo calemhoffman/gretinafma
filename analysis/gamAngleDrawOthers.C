@@ -11,7 +11,7 @@ Float_t binHigh;
 char * name("misc");
 
 Int_t numAngles=5;
-const int  numGam = 10;
+const int  numGam = 8;
 Double_t angMin = 65.0;
 Double_t angRange = 100.0;
 FILE * fitFileOut;
@@ -70,6 +70,7 @@ for (Int_t i=0;i<numAngles;i++) {
     norm[i][1] = norm20[i][1];
   }
 }
+Double_t angVal[20] = {75,105,121,133,143,165};
 
 /*********************************************/
 cfit = new TCanvas("cfit","cfit",1400,900);
@@ -102,8 +103,8 @@ for (Int_t whichGam=0;whichGam<numGam;whichGam++) {
   if (numAngles>10) {cc[whichGam]->Clear(); cc[whichGam]->Divide(4,5);}
   for (Int_t i = 0;i<numAngles; i++) {
     hgndva0[i] = new TH1D(Form("hgang%s_%d",name,i),Form("hgang%s_%d",name,i),4096,0,4096);
-    binLow = angMin + (angRange/(Float_t)numAngles) * (Float_t)i;
-    binHigh = angMin + (angRange/(Float_t)numAngles) + (angRange/(Float_t)numAngles) * (Float_t)i;
+    binLow = angVal[i];//angMin + (angRange/(Float_t)numAngles) * (Float_t)i;
+    binHigh = angVal[i+1];//angMin + (angRange/(Float_t)numAngles) + (angRange/(Float_t)numAngles) * (Float_t)i;
     hgAddBackVsAngle0->ProjectionX(Form("hgang%s_%d",name,i),binLow,binHigh);
     fprintf(fitFileOut, "%f ", (binHigh+binLow)/2.0);
     cc[whichGam]->cd(i+1);
