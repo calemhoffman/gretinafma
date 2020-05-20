@@ -12,7 +12,7 @@ Float_t binHigh;
 char * name("misc");
 
 Int_t numAngles=5;
-const int  numGam=7;
+const int  numGam=10;
 Double_t angMin = 65.0;
 Double_t angRange = 100.0;
 FILE * fitFileOut;
@@ -238,35 +238,35 @@ for (Int_t i=0;i<index-1;i++) {
   const Double_t* para2A = l2fit->GetParameters();
   l2fit->GetXaxis()->SetRangeUser(-1,1);
 //from here
-//   Double_t * para4 = new Double_t[3];
-//   para4[0] = 1.0;
-//   para4[1] = 0.2;
-//   para4[2] = -0.2;
-//
-//   TF1 * l4fit = new TF1("l4fit", "[0]*(1 + [1]*ROOT::Math::legendre(2,x) + [2]*ROOT::Math::legendre(4,x))",-1,1);//+ROOT::Math::legendre([2],x))",-1,1);
-//   l4fit->SetParameters(para4);
-//   l4fit->SetParLimits(1,0.2,0.4);
-//   l4fit->SetParLimits(1,-0.1,0.1);
-//   gr[whichGam]->Fit(l4fit);
-//
-//   const Double_t* para4E = l4fit->GetParErrors();
-//   const Double_t* para4A = l4fit->GetParameters();
-//   if (a2[whichGam]>-5 && a2[whichGam]<5) {
-//     a2[whichGam] = para4A[1];
-//     a4[whichGam] = para4A[2];
-//     a2err[whichGam] = para4E[1]/1.0;
-//     a4err[whichGam] = para4E[2]/1.0;
-//   } else {
-//     a2[whichGam] = 0;//para4A[1];
-//     a4[whichGam] = 0;//para4A[2];
-//     a2err[whichGam] = 0;//para4E[1];
-//     a4err[whichGam] = 0;//para4E[2];
-//   }
-//   l4fit->SetLineColor(kRed);
-//   l4fit->GetYaxis()->SetRangeUser(0,2);
-//   l4fit->GetXaxis()->SetRangeUser(-1,1);
-// gr[whichGam]->Draw("ALP");
-//   l4fit->Draw("same");
+  Double_t * para4 = new Double_t[3];
+  para4[0] = 1.0;
+  para4[1] = 0.2;
+  para4[2] = -0.2;
+
+  TF1 * l4fit = new TF1("l4fit", "[0]*(1 + [1]*ROOT::Math::legendre(2,x) + [2]*ROOT::Math::legendre(4,x))",-1,1);//+ROOT::Math::legendre([2],x))",-1,1);
+  l4fit->SetParameters(para4);
+  //l4fit->SetParLimits(1,0.2,0.4);
+  //l4fit->SetParLimits(1,-0.1,0.1);
+  gr[whichGam]->Fit(l4fit);
+
+  const Double_t* para4E = l4fit->GetParErrors();
+  const Double_t* para4A = l4fit->GetParameters();
+  if (a2[whichGam]>-5 && a2[whichGam]<5) {
+    a2[whichGam] = para4A[1];
+    a4[whichGam] = para4A[2];
+    a2err[whichGam] = para4E[1]/1.0;
+    a4err[whichGam] = para4E[2]/1.0;
+  } else {
+    a2[whichGam] = 0;//para4A[1];
+    a4[whichGam] = 0;//para4A[2];
+    a2err[whichGam] = 0;//para4E[1];
+    a4err[whichGam] = 0;//para4E[2];
+  }
+  l4fit->SetLineColor(kRed);
+  l4fit->GetYaxis()->SetRangeUser(0,2);
+  l4fit->GetXaxis()->SetRangeUser(-1,1);
+gr[whichGam]->Draw("ALP");
+  l4fit->Draw("same");
 
 //to here
 
