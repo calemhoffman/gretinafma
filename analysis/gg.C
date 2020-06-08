@@ -44,8 +44,8 @@ Float_t gates[100][3] =  //e, low, high
 }; //end gates
 Int_t coin = 29;//number of hc's
 Int_t sums = 1; //number of summed spectra
-Int_t hggID = 1;//which hgg 0.25,0.3,0.6,0.81,0.875
-Int_t mlval=25;
+Int_t hggID =2;//which hgg 0.25,0.3,0.6,0.81,0.875
+Int_t mlval=60;
 
 for (Int_t i=0;i<5;i++) {
   //get hists
@@ -67,8 +67,8 @@ for (Int_t i=0;i<5;i++) {
       hc[j]->SetLineColor(40+j);hc[j]->SetFillColor(40+j);
       hc[j]->SetFillStyle(1001);hc[j]->SetFillColorAlpha(40+j,0.2);
       hc[j]->GetXaxis()->SetRangeUser(10,4000);
-      write_ascii(Form("hc%.0f",gates[j][0]));
-      gROOT->ProcessLine(Form(".! mv hc%.0f.ascii ascii/hc%.0f_ml%d_1keV.ascii",gates[j][0],gates[j][0],mlval));
+      //write_ascii(Form("hc%.0f",gates[j][0]));
+      //gROOT->ProcessLine(Form(".! mv hc%.0f.ascii ascii/hc%.0f_ml%d_1keV.ascii",gates[j][0],gates[j][0],mlval));
       //
     }
   }
@@ -113,21 +113,78 @@ hs[0] = new TH1D("hs0","Sum of All",4000,0,4000);
 for (Int_t i=0;i<coin;i++) {hs[0]->Add(hc[i]);}
 hs[0]->GetXaxis()->SetRangeUser(10,4000);
 hs[0]->Draw();
-hs[1] = new TH1D("hs1","Sum of 1293,850,1535",4000,0,4000);
-for (Int_t i=0;i<3;i++) {hs[1]->Add(hc[i]);}
-hs[2] = new TH1D("hs2","Sum of 1293,850,1535,2668",4000,0,4000);
-for (Int_t i=0;i<4;i++) {hs[2]->Add(hc[i]);}
-hs[4] = new TH1D("hs4","Sum of 1609,1577,1950,1067",4000,0,4000);
-hs[4]->Add(hc[14]);hs[4]->Add(hc[17]);
-hs[4]->Add(hc[18]);hs[4]->Add(hc[22]);
-hs[3] = new TH1D("hs3","Sum of 1535,1609,1577,1950",4000,0,4000);
-hs[3]->Add(hc[1]);hs[3]->Add(hc[17]);
-hs[3]->Add(hc[18]);hs[3]->Add(hc[22]);
+
+hs[1] = new TH1D("hs1","Sum of 1293,1535",4000,0,4000);
+for (Int_t i=0;i<2;i++) {hs[1]->Add(hc[i]);}
+// write_ascii(Form("hs1"));
+// gROOT->ProcessLine(Form(".! mv hs1.ascii ascii/hs1_ml%d_1keV.ascii",mlval));
+// hs[1]->Rebin();
+// write_ascii(Form("hs1"));
+// gROOT->ProcessLine(Form(".! mv hs1.ascii ascii/hs1_ml%d_2keV.ascii",mlval));
+// hs[1]->Rebin();
+// write_ascii(Form("hs1"));
+// gROOT->ProcessLine(Form(".! mv hs1.ascii ascii/hs1_ml%d_4keV.ascii",mlval));
+//
+hs[2] = new TH1D("hs2","Sum of 1293,850,1535",4000,0,4000);
+for (Int_t i=0;i<3;i++) {hs[2]->Add(hc[i]);}
+// write_ascii(Form("hs2"));
+// gROOT->ProcessLine(Form(".! mv hs2.ascii ascii/hs2_ml%d_1keV.ascii",mlval));
+// hs[2]->Rebin();
+// write_ascii(Form("hs2"));
+// gROOT->ProcessLine(Form(".! mv hs2.ascii ascii/hs2_ml%d_2keV.ascii",mlval));
+// hs[2]->Rebin();
+// write_ascii(Form("hs2"));
+// gROOT->ProcessLine(Form(".! mv hs2.ascii ascii/hs2_ml%d_4keV.ascii",mlval));
+
+hs[3] = new TH1D("hs3","Sum of 1293,850,1535,2668",4000,0,4000);
+for (Int_t i=0;i<4;i++) {hs[3]->Add(hc[i]);}
+// write_ascii(Form("hs3"));
+// gROOT->ProcessLine(Form(".! mv hs3.ascii ascii/hs3_ml%d_1keV.ascii",mlval));
+// hs[3]->Rebin();
+// write_ascii(Form("hs3"));
+// gROOT->ProcessLine(Form(".! mv hs3.ascii ascii/hs3_ml%d_2keV.ascii",mlval));
+// hs[3]->Rebin();
+// write_ascii(Form("hs3"));
+// gROOT->ProcessLine(Form(".! mv hs3.ascii ascii/hs3_ml%d_4keV.ascii",mlval));
+
+hs[4] = new TH1D("hs4","Sum of 1293,850,1535,2668,1617,2385",4000,0,4000);
+for (Int_t i=0;i<4;i++) {hs[4]->Add(hc[i]);}
+hs[4]->Add(hc[19]); hs[4]->Add(hc[26]);
+// write_ascii(Form("hs4"));
+// gROOT->ProcessLine(Form(".! mv hs4.ascii ascii/hs4_ml%d_1keV.ascii",mlval));
+// hs[4]->Rebin();
+// write_ascii(Form("hs4"));
+// gROOT->ProcessLine(Form(".! mv hs4.ascii ascii/hs4_ml%d_2keV.ascii",mlval));
+// hs[4]->Rebin();
+// write_ascii(Form("hs4"));
+// gROOT->ProcessLine(Form(".! mv hs4.ascii ascii/hs4_ml%d_4keV.ascii",mlval));
+
+//look at 850+2668 for 1617 2385
+hs[5] = new TH1D("hs5","Sum of 850,2668",4000,0,4000);
+hs[5]->Add(hc[2]); hs[5]->Add(hc[3]);
+// write_ascii(Form("hs5"));
+// gROOT->ProcessLine(Form(".! mv hs5.ascii ascii/hs5_ml%d_1keV.ascii",mlval));
+// hs[5]->Rebin();
+// write_ascii(Form("hs5"));
+// gROOT->ProcessLine(Form(".! mv hs5.ascii ascii/hs5_ml%d_2keV.ascii",mlval));
+// hs[5]->Rebin();
+// write_ascii(Form("hs5"));
+// gROOT->ProcessLine(Form(".! mv hs5.ascii ascii/hs5_ml%d_4keV.ascii",mlval));
+
+//look at 1577,1950,1019,559,1625 for 4437 level (1067 possible too)
+hs[6] = new TH1D("hs6","Sum 1577,1950,1019,559,1625",4000,0,4000);
+hs[6]->Add(hc[17]); hs[6]->Add(hc[22]); hs[6]->Add(hc[13]);
+hs[6]->Add(hc[6]); hs[6]->Add(hc[20]);
+
+//780,1609,760,438out of 4437 level
+hs[7] = new TH1D("hs7","Sum 1609,780,760,438",4000,0,4000);
+hs[7]->Add(hc[18]); hs[6]->Add(hc[8]); hs[6]->Add(hc[7]);
+hs[7]->Add(hc[5]);
 
 //draws
 for (Int_t i=0;i<coin;i++) {
   //cc->cd(i+1);
-  hc[i]->Rebin(2);
+  //hc[i]->Rebin(2);
   hc[i]->Draw("hist same");
 }
 
