@@ -1,4 +1,4 @@
-set term post enhance color "Helvetica,26" lw 1.0
+set term post enhance color "Helvetica,20" lw 1.0
 set out "|ps2pdf - plot.pdf"
 set lmargin 0
 set tmargin 0
@@ -81,31 +81,74 @@ plot [-90:90][0.001:10] 'g2365_3pt.dat' u 1:2 every ::5::180 w lines tit '4->2',
                 '' u 1:2 every ::370::540 w lines tit '2->2',\
                 '' u 1:($2/4.0) every ::550::720 w lines lt 14 notit
 unset multiplot
-
+############
+set out "|ps2pdf - ad1.pdf"
 set multiplot layout 2,2
-set label 1 '2668-keV (5pt)' at -80,50
-plot [-90:90][0.01:100] 'g2668_5pt.dat' u 1:2 every ::5::180 w lines tit '8->6',\
-                '' u 1:2 every ::185::360 w lines tit '7->6',\
-                '' u 1:2 every ::370::540 w lines tit '6->6',\
-                '' u 1:($2) every ::550::720 w lines lt 14 notit
-set label 1 '850-keV (5pt)' at -80,50
-plot [-90:90][0.1:100] 'g850_5pt.dat' u 1:2 every ::5::180 w lines tit '6->4',\
-                '' u 1:2 every ::185::360 w lines tit '5->4',\
-                '' u 1:2 every ::370::540 w lines tit '4->4',\
-                '' u 1:($2) every ::550::720 w lines lt 14 notit
-set label 1 '1535-keV (5pt)' at -80,0.1
-plot [-90:90][0.01:100] 'g1535_5pt.dat' u 1:2 every ::5::180 w lines tit '4->2',\
-                '' u 1:2 every ::185::360 w lines tit '3->2',\
-                '' u 1:2 every ::370::540 w lines tit '2->2',\
-                '' u 1:($2/2.0) every ::550::720 w lines lt 14 notit
-
-set label 1 '1293-keV (5pt)' at -80,0.1
-plot [-90:90][0.01:100] 'g1293_5pt.dat' u 1:2 every ::5::180 w lines tit '2->0',\
+set lmargin 1
+set bmargin 0
+set tmargin 0
+set rmargin 0
+ylow=0.01
+yhigh=100.0
+set format y "  10^{%T}"
+set ylabel ""
+set label 3 "{/Symbol c}^{2}/NDF" at -115,1 center rotate
+set format x "%.0f"
+set label 1 '1293-keV (5pt)' at -80,50
+set xtics
+set for [i=0:9] xtics (""i*30-90)
+set ytics offset 0.75,0
+plot [-90:90][ylow:yhigh] 'g1293_5pt.dat' u 1:2 every ::5::180 w lines tit '2->0',\
 '' u 1:2 every ::185::360 w lines tit '1->0',\
 '' u 1:2 every ::370::540 w lines tit '0->0',\
 '' u 1:($2/2.0) every ::550::720 w lines lt 14 notit
+
+set lmargin 0
+set bmargin 0
+set tmargin 0
+set rmargin 1
+set label 1 '1535-keV (5pt)' at -80,50
+set ytics
+#set for [i=1:5] ytics ("" 10^{i})
+set ytics (""0.001,""0.01,""0.1,""1.0,""10,""100)
+unset label 3
+plot [-90:90][ylow:yhigh] 'g1535_5pt.dat' u 1:2 every ::5::180 w lines tit '4->2',\
+'' u 1:2 every ::185::360 w lines tit '3->2',\
+'' u 1:2 every ::370::540 w lines tit '2->2',\
+'' u 1:($2/2.0) every ::550::720 w lines lt 14 notit
+
+set lmargin 1
+set bmargin 0
+set tmargin 0
+set rmargin 0
+set label 1 '850-keV (5pt)' at -80,50
+set xtics -90,30,89
+set ytics 0.001,10,9e1
+set label 2 "arctan({/Symbol d})" at 0,0.0025 center
+set label 3 "{/Symbol c}^{2}/NDF" at -115,1 center rotate
+
+plot [-90:90][ylow:yhigh] 'g850_5pt.dat' u 1:2 every ::5::180 w lines tit '6->4',\
+'' u 1:2 every ::185::360 w lines tit '5->4',\
+'' u 1:2 every ::370::540 w lines tit '4->4',\
+'' u 1:($2/2.0) every ::550::720 w lines lt 14 notit
+
+set lmargin 0
+set bmargin 0
+set tmargin 0
+set rmargin 1
+set label 1 '2668-keV (5pt)' at -80,50
+unset label 3
+set xtics -90,30,90
+set ytics (""0.001,""0.01,""0.1,""1.0,""10,""100)
+plot [-90:90][ylow:yhigh] 'g2668_5pt.dat' u 1:2 every ::5::180 w lines tit '8->6',\
+'' u 1:2 every ::185::360 w lines tit '7->6',\
+'' u 1:2 every ::370::540 w lines tit '6->6',\
+'' u 1:($2/2.0) every ::550::720 w lines lt 14 notit
+
 unset multiplot
 
+######
+set out "|ps2pdf - plot.pdf"
 set multiplot layout 2,2
 set label 1 '1950-keV (3pt)' at -80,0.1
 plot [-90:90][0.001:10] 'g1950_3pt.dat' u 1:2 every ::5::180 w lines tit '9->7',\
