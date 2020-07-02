@@ -5,9 +5,9 @@ run=1; x=$($cmd $run);
 
 
 GammaE=830
-aligment=1.5
+aligment=2.2
 
-J1=6
+J1=2
 J2=4
 
 # counts measured under total projection.

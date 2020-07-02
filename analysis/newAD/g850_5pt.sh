@@ -4,11 +4,11 @@ cmd=tools/num_to_letter
 run=1; x=$($cmd $run);
 
 
-GammaE=850
+GammaE=2668
 aligment=2.2
 
-J1=2
-J2=0
+J1=6
+J2=4
 
 # counts measured under total projection.
 #-------------------------------------------------------

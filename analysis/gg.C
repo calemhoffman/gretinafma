@@ -40,12 +40,12 @@ Float_t gates[100][3] =  //e, low, high
 {2365,2358,2371},//25
 {2385,2378,2392},//26
 {2804,2792,2806},//27
-{240,237,243}//28 doubtful
+{238,235,241}//28 doubtful
 }; //end gates
 Int_t coin = 29;//number of hc's
 Int_t sums = 1; //number of summed spectra
-Int_t hggID =0;//which hgg 0.25,0.3,0.6,0.81,0.875
-Int_t mlval=25;
+Int_t hggID =2;//which hgg 0.25,0.3,0.6,0.81,0.875
+Int_t mlval=60;
 
 for (Int_t i=0;i<5;i++) {
   //get hists
@@ -62,7 +62,7 @@ for (Int_t i=0;i<5;i++) {
     if (i==hggID){
       hc[j] = new TH1D(Form("hc%.0f",gates[j][0]),Form("hc%.0f hgg%d",gates[j][0],i),4000,0,4000);
 
-      hgg[i]->ProjectionX(Form("hc%.0f",gates[j][0]),gates[j][1],gates[j][2]);
+      hgg[i]->ProjectionX(Form("hc%.0f",gates[j][0]),gates[j][1]+0.0,gates[j][2]-0.0);
       //
       hc[j]->SetLineColor(40+j);hc[j]->SetFillColor(40+j);
       hc[j]->SetFillStyle(1001);hc[j]->SetFillColorAlpha(40+j,0.2);
