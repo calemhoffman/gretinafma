@@ -44,8 +44,8 @@ Float_t gates[100][3] =  //e, low, high
 }; //end gates
 Int_t coin = 29;//number of hc's
 Int_t sums = 1; //number of summed spectra
-Int_t hggID =2;//which hgg 0.25,0.3,0.6,0.81,0.875
-Int_t mlval=60;
+Int_t hggID =3;//which hgg 0.25,0.3,0.6,0.81,0.875
+Int_t mlval=81;
 
 for (Int_t i=0;i<5;i++) {
   //get hists
@@ -185,7 +185,9 @@ hs[7]->Add(hc[5]);
 for (Int_t i=0;i<coin;i++) {
   //cc->cd(i+1);
   //hc[i]->Rebin(2);
-  hc[i]->Draw("hist same");
+  //hc[i]->Draw("hist same");
 }
+
+for (Int_t i=0;i<coin;i++) hc[i]->Rebin(2);
 
 }
