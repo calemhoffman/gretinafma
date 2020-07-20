@@ -40,12 +40,12 @@ Float_t gates[100][3] =  //e, low, high
 {2365,2358,2371},//25
 {2385,2378,2392},//26
 {2804,2792,2806},//27
-{238,235,241}//28 doubtful
+{720,718,722}//28 doubtful
 }; //end gates
 Int_t coin = 29;//number of hc's
 Int_t sums = 1; //number of summed spectra
-Int_t hggID =3;//which hgg 0.25,0.3,0.6,0.81,0.875
-Int_t mlval=81;
+Int_t hggID =2;//which hgg 0.25,0.3,0.6,0.81,0.875
+Int_t mlval=60;
 
 for (Int_t i=0;i<5;i++) {
   //get hists
