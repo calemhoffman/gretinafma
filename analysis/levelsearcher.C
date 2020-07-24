@@ -51,7 +51,7 @@ Float_t diff=0;
   }
 
   diff=0;
-  Float_t test=4323;
+  Float_t test=1293+2055+2015;
     for (Int_t i=0;i<numlevels+1;i++) {
         diff = TMath::Abs(test-levels[i]);
         //for (Int_t k=0;k<29;k++) {

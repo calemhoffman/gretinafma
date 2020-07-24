@@ -40,9 +40,11 @@ Float_t gates[100][3] =  //e, low, high
 {2365,2358,2371},//25
 {2385,2378,2392},//26
 {2804,2792,2806},//27
-{720,718,722}//28 doubtful
+{720,718,722},//28 doubtful
+{2015,2105,2125},
+{2224,2220,2230}
 }; //end gates
-Int_t coin = 29;//number of hc's
+Int_t coin = 31;//number of hc's
 Int_t sums = 1; //number of summed spectra
 Int_t hggID =2;//which hgg 0.25,0.3,0.6,0.81,0.875
 Int_t mlval=60;
@@ -172,10 +174,14 @@ hs[5]->Add(hc[2]); hs[5]->Add(hc[3]);
 // gROOT->ProcessLine(Form(".! mv hs5.ascii ascii/hs5_ml%d_4keV.ascii",mlval));
 
 //look at 1577,1950,1019,559,1625 for 4437 level (1067 possible too)
-hs[6] = new TH1D("hs6","Sum 1577,1950,1019,559,1625",4000,0,4000);
-hs[6]->Add(hc[17]); hs[6]->Add(hc[22]); hs[6]->Add(hc[13]);
-hs[6]->Add(hc[6]); hs[6]->Add(hc[20]);
-
+hs[6] = new TH1D("hs6","Sum 1577,1950",4000,0,4000);
+hs[6]->Add(hc[17]); hs[6]->Add(hc[22]);
+hs[8] = new TH1D("hs8","1019,559,1625",4000,0,4000);
+hs[8]->Add(hc[13]);
+hs[8]->Add(hc[6]); hs[8]->Add(hc[20]);
+hs[10] = new TH1D("hs10","Sum 1577,1950,1019,559,1625",4000,0,4000);
+hs[10]->Add(hc[17]); hs[10]->Add(hc[22]); hs[10]->Add(hc[13]);
+hs[10]->Add(hc[6]); hs[10]->Add(hc[20]);
 //780,1609,760,438out of 4437 level
 hs[7] = new TH1D("hs7","Sum 1609,780,760,438",4000,0,4000);
 hs[7]->Add(hc[18]); hs[6]->Add(hc[8]); hs[6]->Add(hc[7]);
