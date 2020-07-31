@@ -17,8 +17,9 @@ cat<<EOF
  Gamma-ray energy = ${GammaE}
  Theta    Yexp    Yerr
  -----------------------
-90.0 64 14
-149.0 41 14
+90.0 32   7
+119.0         20.5  6
+149.0         20.5  6
 
 EOF
 ) > ${GammaE}${x}.0
