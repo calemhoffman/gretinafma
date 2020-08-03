@@ -111,6 +111,8 @@ TCutG *cut_e1e3_jan0;
 TCutG *cut_e1e3_scan15;
 TCutG *cut_e1e3_scan25;
 TCutG *cut_e1e3_ml;
+TCutG *cut_e1e3_NEW;
+TCutG *cut_e2e3_NEW;
 TCutG *cut_e1e3_Skin;
 TCutG *cut_e1e3_Skinniest;
 TCutG *cut_e1e3_Skinnier;
@@ -137,6 +139,8 @@ void gamPyTorch(void) {
   cut_e1e3_scan15 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan15");
   cut_e1e3_scan25 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan25");
   cut_e1e3_ml = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_ml");
+  cut_e1e3_NEW = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_NEW");
+  cut_e2e3_NEW = (TCutG *) gDirectory->FindObjectAny("cut_e2e3_NEW");
   cut_e1e3_Ave = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Ave");
   cut_e1e3_Skin = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skin");
   cut_e1e3_Skinniest = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skinniest");
@@ -216,7 +220,7 @@ void gamPyTorch(void) {
 
 
   //Pull the TTrees of interest
-  fileName.Form("gamTreeAverage.root");
+  fileName.Form("gamTreeNew.root");
   gamFileIn = new TFile(fileName);
   gDirectory->ls();
 
@@ -261,7 +265,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeAverageFatQ.root");
+  fileName.Form("pyTreeNew.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -387,9 +391,11 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
       if (t>0&&t<200){
         mass[gebMultNum] = ((e[0]+e[2])*t*t)/1.0e4;
       } else {mass[gebMultNum] = 0;}
-      if ( ( (cut_e1e3_Ave->IsInside(e[2],e[0]))
-            )
-      && (x>-1000&&x<1000)
+      if ( (cut_e1e3_Ave->IsInside(e[2],e[0]))
+      &&
+      (x>-1000&&x<1000)
+      &&
+      (e[1]>250&&e[2]>250)
       //&& cut_mg_good->IsInside(mass[gebMultNum],gAddBack[gebMultNum])
       //&& cut_mx_good->IsInside(mass[gebMultNum],x)
       )

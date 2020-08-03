@@ -44,7 +44,7 @@ void calTree() {
   // Int_t lowRunNumber=50;
   // Int_t highRunNumber=295;
   Int_t lowRunNumber=280;
-  Int_t highRunNumber=295;
+  Int_t highRunNumber=289;
   Int_t runN;
 
   Int_t runNumber;
@@ -139,7 +139,8 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
     runN=index;
     if (goodRun[runN]==1) {
     printf("Starting sort of run number: %d\n",runN);
-  TFile * fNameIn = new TFile(Form("/lcrc/project/HELIOS/gretinafma/root_data/run%d.root",runN));
+  //TFile * fNameIn = new TFile(Form("/lcrc/project/HELIOS/gretinafma/root_data/run%d.root",runN));
+  TFile * fNameIn = new TFile(Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/run%d.root",runN));
 
   if (fNameIn == 0) printf("Error: file read in fail\n");
   TTree * tree = (TTree *) fNameIn->FindObjectAny("tree");
@@ -178,7 +179,7 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
   tree->SetBranchAddress("crysTrigtime",crysTrigtime);
   tree->SetBranchAddress("crysT0",crysT0);
 
-  TFile * calFile = new TFile(Form("/lcrc/project/HELIOS/gretinafma/root_data/cal_%d.root",runN),"RECREATE");
+  TFile * calFile = new TFile(Form("cal_%d.root",runN),"RECREATE");
   TTree * ctree = new TTree("ctree", "Cal Tree");
 
   Int_t run;
@@ -369,10 +370,10 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
      //     if ( cut_ar38_e1x->IsInside(x,e[0]) || /* basic eVx cut first */
      //	  cut_cl38_e1x->IsInside(x,e[0]) ||
      //	  cut_s38_e1x->IsInside(x,e[0])) {
-     if ( all_aq_e0x->IsInside(x,e[0])
-	  && all_z_e1e3->IsInside(e[2],e[0]) ) {
+    //  if ( all_aq_e0x->IsInside(x,e[0])
+	  // && all_z_e1e3->IsInside(e[2],e[0]) ) {
        ctree->Fill();
-     }
+     // }
 
   } //entryNumber Loop
   ctree->Write();

@@ -46,7 +46,7 @@ for (Int_t ii=0;ii<5;ii++) {
 }
 
 //inFile.open(Form("../machine_learning/code/PyTreeAverageSkinny_train.csv"));
-inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatQ_tester.csv"));
+inFile.open(Form("../machine_learning/code/output/pyTreeNew_tester.csv"));
 
   if( inFile.is_open() ) {
     while (1) {
@@ -105,7 +105,7 @@ inFile.open(Form("../machine_learning/code/output/pyTreeAverageFatQ_tester.csv")
     py_creab[i] = 0;
   }
 
-  TFile *fileOut = new TFile("pyTorchOutAverageFatQb.root","RECREATE");
+  TFile *fileOut = new TFile("pyTorchOutNew.root","RECREATE");
   pytree = new TTree("pytree","pytree");
   pytree->Branch("py_e",py_e,"py_e[10]/F");
   pytree->Branch("py_x",&py_x,"py_x/F");

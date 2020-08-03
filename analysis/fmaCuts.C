@@ -27,13 +27,20 @@
 
 TChain *chain;
 TString fileName;
+// Int_t goodRun[30] =
+// 				{0,0,0,0,0,
+// 		     0,0,1,1,1,
+// 		     1,1,1,1,1,
+// 		     1,1,1,0,1,
+// 		     1,1,1,1,1,
+// 		     1,1,1,1,1};
 Int_t goodRun[30] =
 				{0,0,0,0,0,
-		     0,0,1,1,1,
-		     1,1,1,1,1,
-		     1,1,1,0,1,
-		     1,1,1,1,1,
-		     1,1,1,1,1};
+		     0,0,0,0,0,
+		     0,0,0,0,0,
+		     0,0,0,0,0,
+		     0,0,0,0,0,
+		     0,0,0,1,0};
 TCanvas *c2;
 
 //list stuff
@@ -102,16 +109,18 @@ void fmaCuts(void) {
 
   //TwoChains!
   chain = new TChain("ctree");
-  for (Int_t rn = 7; rn<30; rn++) {
-    if (goodRun[rn]==1) {
-			if (LCRC == 1) {
-				fileName.Form("/lcrc/project/HELIOS/gretinafma/root_data/cal_%d.root",rn);
-			} else {
-				fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
-			}
-			chain->Add(fileName);
-    }
-  }
+  // for (Int_t rn = 7; rn<30; rn++) {
+  //   if (goodRun[rn]==1) {
+	// 		if (LCRC == 1) {
+	// 			fileName.Form("/lcrc/project/HELIOS/gretinafma/root_data/cal_%d.root",rn);
+	// 		} else {
+	// 			fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
+	// 		}
+	// 		chain->Add(fileName);
+  //   }
+  // }
+	chain->Add("/Users/calemhoffman/Research/anl/gretinafma/git/gretinafma/analysis/cal28new.root");
+	//chain->Add("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_28.root");
   chain->GetListOfFiles()->Print();
 
 
@@ -264,12 +273,13 @@ void fmaCuts(void) {
   printf("nEntries: %d\n",nEntries);
   Float_t counter=0;
 
-  for (Int_t entryNumber=0;entryNumber<numElistEntries; entryNumber++) {
-  //for (Int_t entryNumber=0;entryNumber<nEntries; entryNumber++) {
-    chain->GetEntry(elist_all->GetEntry(entryNumber));
-    //chain->GetEntry(entryNumber);
+  //for (Int_t entryNumber=0;entryNumber<numElistEntries; entryNumber++) {
+  for (Int_t entryNumber=0;entryNumber<nEntries; entryNumber++) {
+    //chain->GetEntry(elist_all->GetEntry(entryNumber));
+    chain->GetEntry(entryNumber);
 
-    if (((Float_t)entryNumber/(Float_t)numElistEntries)>counter)
+    //if (((Float_t)entryNumber/(Float_t)numElistEntries)>counter)
+		if (((Float_t)entryNumber/(Float_t)nEntries)>counter)
       {
 				printf("^_^_^_%4.1f_^_^_^\n",counter*100);
 				counter=counter+0.1;
@@ -345,7 +355,7 @@ void fmaCuts(void) {
     //   }
     // }
 
-		if (recoilID[0]==0)
+		//if (recoilID[0]==0)
 			gtree[0]->Fill();
 
   }//end entry loop
