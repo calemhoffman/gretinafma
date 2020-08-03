@@ -119,7 +119,7 @@ void fmaCuts(void) {
 	// 		chain->Add(fileName);
   //   }
   // }
-	chain->Add("/Users/calemhoffman/Research/anl/gretinafma/git/gretinafma/analysis/cal28new.root");
+	chain->Add("/Users/calemhoffman/Research/anl/gretinafma/git/gretinafma/analysis/cal28cuts.root");
 	//chain->Add("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_28.root");
   chain->GetListOfFiles()->Print();
 
@@ -356,8 +356,12 @@ void fmaCuts(void) {
     // }
 
 		//if (recoilID[0]==0)
+		/* s38 */
+    if ( (cut_lr_s38->IsInside(r,l))
+	 	&& (cut_ud_s38->IsInside(d,u))
+	&& (e[1]>200) ) {
 			gtree[0]->Fill();
-
+		}
   }//end entry loop
 
 

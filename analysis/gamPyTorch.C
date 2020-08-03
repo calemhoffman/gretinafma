@@ -391,11 +391,11 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
       if (t>0&&t<200){
         mass[gebMultNum] = ((e[0]+e[2])*t*t)/1.0e4;
       } else {mass[gebMultNum] = 0;}
-      if ( (cut_e1e3_Ave->IsInside(e[2],e[0]))
+      if ( (cut_e1e3_NEW->IsInside(e[2],e[0]))
       &&
       (x>-1000&&x<1000)
       &&
-      (e[1]>250&&e[2]>250)
+      (e[1]>200)
       //&& cut_mg_good->IsInside(mass[gebMultNum],gAddBack[gebMultNum])
       //&& cut_mx_good->IsInside(mass[gebMultNum],x)
       )

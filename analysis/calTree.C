@@ -39,6 +39,8 @@ TCutG *cut_s38_e1e2;
 TCutG *cut_s38_e2e3;
 TCutG *all_aq_e0x;
 TCutG *all_z_e1e3;
+TCutG *cut_all_aq;
+TCutG *cut_all_z;
 
 void calTree() {
   // Int_t lowRunNumber=50;
@@ -134,6 +136,8 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
   cut_s38_e2e3 = (TCutG *) gDirectory->FindObjectAny("cut_s38_e2e3");
   all_z_e1e3 = (TCutG *) gDirectory->FindObjectAny("all_z_e1e3");
   all_aq_e0x = (TCutG *) gDirectory->FindObjectAny("all_aq_e0x");
+  cut_all_z = (TCutG *) gDirectory->FindObjectAny("cut_all_z");
+  cut_all_aq = (TCutG *) gDirectory->FindObjectAny("cut_all_aq");
 
    for (Int_t index=lowRunNumber;index<=highRunNumber;index++) {
     runN=index;
@@ -370,10 +374,11 @@ Int_t goodRun[300] = {0,0,0,0,0,0,0,0,0,0,//0
      //     if ( cut_ar38_e1x->IsInside(x,e[0]) || /* basic eVx cut first */
      //	  cut_cl38_e1x->IsInside(x,e[0]) ||
      //	  cut_s38_e1x->IsInside(x,e[0])) {
-    //  if ( all_aq_e0x->IsInside(x,e[0])
-	  // && all_z_e1e3->IsInside(e[2],e[0]) ) {
+    if ( cut_all_aq->IsInside(x,e[0])
+	  && cut_all_z->IsInside(e[2],e[0])
+   && (e[1]>200) ) {
        ctree->Fill();
-     // }
+    }
 
   } //entryNumber Loop
   ctree->Write();
