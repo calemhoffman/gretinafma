@@ -1,0 +1,2977 @@
+started GEBSort at we have 9 arguments
+1... -input
+will take input from disk
+file size is 17452373972 bytes or 17043 MBytes
+
+4... -rootfile
+rootfile name specified on command line
+__will store spectra in rootfile: /lcrc/project/HELIOS/gretinafma/root_data/run94.root
+will recreate root file
+7... -chat
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 510311
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) 128769024
+open files                      (-n) 51200
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 4096
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+will read sorting instructions from chatfile: GEBSort.chat
+
+executing UserDeclare.h code
+
+
+GEBsort running on: 
+
+initializing
+
+crmat.LINUX is open (input) binary format
+read 7936 bytes into Pars.crmat
+chat file: <GEBSort.chat> open
+
+will sort a max of 1410065408 events
+will sort 86400 minutes of data
+will print details of the first 10 events
+will use Pars.Beta (v/c) correction of 0.033000
+will sort using a time window of 150
+Pars.do_bin_mode2=1
+Pars.do_bin_mode3=1
+will accept second interaction range between 10.000000 and 500.000000 mm
+"1-200"
+detector   1 is ENABLED
+detector   2 is ENABLED
+detector   3 is ENABLED
+detector   4 is ENABLED
+detector   5 is ENABLED
+detector   6 is ENABLED
+detector   7 is ENABLED
+detector   8 is ENABLED
+detector   9 is ENABLED
+detector  10 is ENABLED
+detector  11 is ENABLED
+detector  12 is ENABLED
+detector  13 is ENABLED
+detector  14 is ENABLED
+detector  15 is ENABLED
+detector  16 is ENABLED
+detector  17 is ENABLED
+detector  18 is ENABLED
+detector  19 is ENABLED
+detector  20 is ENABLED
+detector  21 is ENABLED
+detector  22 is ENABLED
+detector  23 is ENABLED
+detector  24 is ENABLED
+detector  25 is ENABLED
+detector  26 is ENABLED
+detector  27 is ENABLED
+detector  28 is ENABLED
+detector  29 is ENABLED
+detector  30 is ENABLED
+detector  31 is ENABLED
+detector  32 is ENABLED
+detector  33 is ENABLED
+detector  34 is ENABLED
+detector  35 is ENABLED
+detector  36 is ENABLED
+detector  37 is ENABLED
+detector  38 is ENABLED
+detector  39 is ENABLED
+detector  40 is ENABLED
+detector  41 is ENABLED
+detector  42 is ENABLED
+detector  43 is ENABLED
+detector  44 is ENABLED
+detector  45 is ENABLED
+detector  46 is ENABLED
+detector  47 is ENABLED
+detector  48 is ENABLED
+detector  49 is ENABLED
+detector  50 is ENABLED
+detector  51 is ENABLED
+detector  52 is ENABLED
+detector  53 is ENABLED
+detector  54 is ENABLED
+detector  55 is ENABLED
+detector  56 is ENABLED
+detector  57 is ENABLED
+detector  58 is ENABLED
+detector  59 is ENABLED
+detector  60 is ENABLED
+detector  61 is ENABLED
+detector  62 is ENABLED
+detector  63 is ENABLED
+detector  64 is ENABLED
+detector  65 is ENABLED
+detector  66 is ENABLED
+detector  67 is ENABLED
+detector  68 is ENABLED
+detector  69 is ENABLED
+detector  70 is ENABLED
+detector  71 is ENABLED
+detector  72 is ENABLED
+detector  73 is ENABLED
+detector  74 is ENABLED
+detector  75 is ENABLED
+detector  76 is ENABLED
+detector  77 is ENABLED
+detector  78 is ENABLED
+detector  79 is ENABLED
+detector  80 is ENABLED
+detector  81 is ENABLED
+detector  82 is ENABLED
+detector  83 is ENABLED
+detector  84 is ENABLED
+detector  85 is ENABLED
+detector  86 is ENABLED
+detector  87 is ENABLED
+detector  88 is ENABLED
+detector  89 is ENABLED
+detector  90 is ENABLED
+detector  91 is ENABLED
+detector  92 is ENABLED
+detector  93 is ENABLED
+detector  94 is ENABLED
+detector  95 is ENABLED
+detector  96 is ENABLED
+detector  97 is ENABLED
+detector  98 is ENABLED
+detector  99 is ENABLED
+detector 100 is ENABLED
+detector 101 is ENABLED
+detector 102 is ENABLED
+detector 103 is ENABLED
+detector 104 is ENABLED
+detector 105 is ENABLED
+detector 106 is ENABLED
+detector 107 is ENABLED
+detector 108 is ENABLED
+detector 109 is ENABLED
+detector 110 is ENABLED
+detector 111 is ENABLED
+detector 112 is ENABLED
+detector 113 is ENABLED
+detector 114 is ENABLED
+detector 115 is ENABLED
+detector 116 is ENABLED
+detector 117 is ENABLED
+detector 118 is ENABLED
+detector 119 is ENABLED
+detector 120 is ENABLED
+detector 121 is ENABLED
+detector 122 is ENABLED
+detector 123 is ENABLED
+detector 124 is ENABLED
+detector 125 is ENABLED
+detector 126 is ENABLED
+detector 127 is ENABLED
+detector 128 is ENABLED
+detector 129 is ENABLED
+detector 130 is ENABLED
+detector 131 is ENABLED
+detector 132 is ENABLED
+detector 133 is ENABLED
+detector 134 is ENABLED
+detector 135 is ENABLED
+detector 136 is ENABLED
+detector 137 is ENABLED
+detector 138 is ENABLED
+detector 139 is ENABLED
+detector 140 is ENABLED
+detector 141 is ENABLED
+detector 142 is ENABLED
+detector 143 is ENABLED
+detector 144 is ENABLED
+detector 145 is ENABLED
+detector 146 is ENABLED
+detector 147 is ENABLED
+detector 148 is ENABLED
+detector 149 is ENABLED
+detector 150 is ENABLED
+detector 151 is ENABLED
+detector 152 is ENABLED
+detector 153 is ENABLED
+detector 154 is ENABLED
+detector 155 is ENABLED
+detector 156 is ENABLED
+detector 157 is ENABLED
+detector 158 is ENABLED
+detector 159 is ENABLED
+detector 160 is ENABLED
+detector 161 is ENABLED
+detector 162 is ENABLED
+detector 163 is ENABLED
+detector 164 is ENABLED
+detector 165 is ENABLED
+detector 166 is ENABLED
+detector 167 is ENABLED
+detector 168 is ENABLED
+detector 169 is ENABLED
+detector 170 is ENABLED
+detector 171 is ENABLED
+detector 172 is ENABLED
+detector 173 is ENABLED
+detector 174 is ENABLED
+detector 175 is ENABLED
+detector 176 is ENABLED
+detector 177 is ENABLED
+detector 178 is ENABLED
+detector 179 is ENABLED
+detector 180 is ENABLED
+detector 181 is ENABLED
+detector 182 is ENABLED
+detector 183 is ENABLED
+detector 184 is ENABLED
+detector 185 is ENABLED
+detector 186 is ENABLED
+detector 187 is ENABLED
+detector 188 is ENABLED
+detector 189 is ENABLED
+detector 190 is ENABLED
+detector 191 is ENABLED
+detector 192 is ENABLED
+detector 193 is ENABLED
+detector 194 is ENABLED
+detector 195 is ENABLED
+detector 196 is ENABLED
+detector 197 is ENABLED
+detector 198 is ENABLED
+detector 199 is ENABLED
+WARNING: could not open CCcal file "CCenergy.cal", quit
+will use beam direction 0.000000 0.000000 1.000000
+vector length= 1.000000, normalizing
+will use beam direction 0.000000 0.000000 1.000000
+Pars.ndetlimlo=1,Pars.ndetlimhi=8
+will require mult bt: 1 20
+fomlimits, 1, 0.00 ..to.. 0.80
+fomlimits, 2, 0.00 ..to.. 0.80
+fomlimits, 3, 0.00 ..to.. 0.80
+fomlimits, 4, 0.00 ..to.. 0.80
+fomlimits, 5, 0.00 ..to.. 0.80
+fomlimits, 6, 0.00 ..to.. 0.80
+fomlimits, 7, 0.00 ..to.. 0.80
+will use M= 350.000000 in bin_dgs
+will use PZ file "dgs_pz.cal" in bin_dgs
+will use ecal file "dgs_ehi.cal" in bin_dgs
+will skip rest of chat file
+
+chat file: <GEBSort.chat> closed
+processed 38 sort instructions and 197 lines
+
+
+sorting this:
+Pars.do_bin_mode3 = 1
+Pars.do_bin_mode2 = 1
+Pars.do_bin_mode1 = 0
+Pars.do_bin_dgs = 0
+Pars.do_bin_dfma = 0
+Pars.do_bin_gtcal = 0
+Pars.do_bin_template = 0
+Pars.do_bin_final = 0
+Pars.do_bin_angcor = 0
+Pars.do_bin_angdis = 0
+checking proper input of chat file...
+input file "/lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run94.gtd_000" is open, inData=0x26414440
+file size is 272504788 bytes or 266 MBs 
+input source is set up, supposedly
+
+xyz offset values:
+
+executing ShareMemFileUserInit.h code
+
+deleted \rm -f GEBSort.command
+root file </lcrc/project/HELIOS/gretinafma/root_data/run94.root>
+base=</lcrc/project/HELIOS/gretinafma/root_data/run94.root:/>
+TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run94.root, title=, option=CREATE
+
+executing UserInit.h code
+
+Created Object "dtbtev", 0x274699c0
+Created Object "T0", 0x27469dd0
+, "T0"Created Object "hitpat", 0x2746a1c0
+, "hitpat"Created Object "numHitArray2", 0x2746ac10
+, "numHitArray2"Created Object "CCmult", 0x2746b660
+, "CC Multiplicity"Created Object "CCsum", 0x2773d470
+, "CCsum"Created Object "hit2", 0x2774d280
+, "hit2"Created Object "hit3", 0x2775d090
+, "hit3"Created Object "hit4", 0x2776cea0
+, "hit4"Created Object "CCsum_nodop", 0x2777ccb0
+, "CCsum_nodop"Created Object "CCadd", 0x2778cac0
+, "CCadd"Created Object "SEGadd_FPGA", 0x2779c8d0
+Created Object "SEGadd_PSA", 0x2779cce0
+Created Object "SEGsum_FPGA", 0x2779d0f0
+Created Object "SEGsum_PSA", 0x2779d500
+Created Object "radius_all", 0x2779d910
+, "radius (all points)"Created Object "rate_mode2_min", 0x277a5d20
+, "rate_mode2_min headers"Created Object "rate_mode2_sec", 0x277a8e30
+, "rate_mode2_sec headers"Created Object "rate_mode2_intp", 0x277abf40
+, "rate_mode2 interaction points"Created Object "cdtbtev", 0x277af050
+Created Object "evsr_all", 0x27874f00
+Created Object "SMAP_allhits", 0x27875440
+Created Object "SMAP_allhits_sq", 0x27974dd0
+Created Object "seghitpat", 0x27a74760
+Created Object "CCe", 0x27a7cb60
+Created Object "ggCC", 0x27a7d110
+Created Object "z_plot", 0x27a7d6c0
+Created Object "crystal_hit", 0x27b30d90
+Created Object "SegE", 0x27b31360
+Created Object "crXcr", 0x27b318a0
+MAXDETPOS=180
+Created Object "eCC_a", 0x27c25ff0
+Created Object "eCC_b", 0x27c26400
+Created Object "eCC_c", 0x27c268d0
+Created Object "eCC_d", 0x27c26e50
+Created Object "eSeg", 0x27c27390
+Created Object "mode3_hitpat", 0x27c27940
+, "mode3_hitpat"Created Object "mode3_hitpat_chan", 0x27c282b0
+, "mode3_hitpat_chan"Created Object "chan0", 0x27c289f0
+, "chan0"Created Object "module", 0x27c3c820
+, "module"Created Object "chan", 0x27c50650
+Created Object "l", 0x27cc5f70
+, "l"Created Object "r", 0x27cd9da0
+, "r"Created Object "up", 0x27cedb60
+, "up"Created Object "down", 0x27d01920
+, "down"Created Object "sumlr", 0x27d15750
+, "sumlr"Created Object "sumud", 0x27d29580
+, "sumud"Created Object "x", 0x27d3d3b0
+, "x"Created Object "y", 0x27d511e0
+, "y"Created Object "de1", 0x27d65010
+, "de1"Created Object "de2", 0x27d78dd0
+, "de2"Created Object "de3", 0x27d8cb90
+, "de3"Created Object "de12", 0x27da09c0
+, "de12"Created Object "etot", 0x27db47f0
+, "etot"Created Object "rftof", 0x27dc85b0
+, "rftof"Created Object "lr", 0x27ddc370
+Created Object "ud", 0x27ddc8b0
+Created Object "ede1", 0x27ddcdf0
+Created Object "ede1g", 0x27ddd330
+Created Object "ede2", 0x27ddd8e0
+Created Object "ede12", 0x27ddde90
+Created Object "xde1", 0x27dde440
+Created Object "erftof", 0x27dde980
+Created Object "erftofg", 0x27ddeec0
+Created Object "sumehi", 0x27ddf470
+, "sumehi"Created Object "tgppac", 0x27df3230
+, "tgppac"Created Object "tgppacg", 0x27e1a8e0
+, "tgppacg"Created Object "xehi1", 0x27e41f90
+Created Object "xehi1g", 0x27e424d0
+Created Object "de1ehi", 0x27e42a80
+Created Object "de1ehig", 0x27e42fc0
+Created Object "ng", 0x27e43500
+, "ng"Created Object "ehiz1", 0x27e572c0
+, "ehiz1"Created Object "ehiz2", 0x27e6b080
+, "ehiz2"Created Object "ehiz3", 0x27e7eeb0
+, "ehiz3"Created Object "ehiz4", 0x27e92ce0
+, "ehiz4"Created Object "ehiz5", 0x27ea6b10
+, "ehiz5"Created Object "gg_dt", 0x27eba8d0
+, "gg_dt"Created Object "gg", 0x27ebed00
+Created Object "gg_z1", 0x27ebf2b0
+Created Object "gg_z2", 0x27ebf860
+Created Object "gg_z3", 0x27ebfe10
+Created Object "gg_z4", 0x27ec03c0
+Created Object "gg_z5", 0x27ec0900
+we have define the following ROOT spectra:
+Collection name='THashList', class='THashList', size=84
+ TH1.Print Name  = dtbtev, Entries= 0, Total sum= 0
+ TH1.Print Name  = T0, Entries= 0, Total sum= 0
+ TH1.Print Name  = hitpat, Entries= 0, Total sum= 0
+ TH1.Print Name  = numHitArray2, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCmult, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCsum, Entries= 0, Total sum= 0
+ TH1.Print Name  = hit2, Entries= 0, Total sum= 0
+ TH1.Print Name  = hit3, Entries= 0, Total sum= 0
+ TH1.Print Name  = hit4, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCsum_nodop, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCadd, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGadd_FPGA, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGadd_PSA, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGsum_FPGA, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGsum_PSA, Entries= 0, Total sum= 0
+ TH1.Print Name  = radius_all, Entries= 0, Total sum= 0
+ TH1.Print Name  = rate_mode2_min, Entries= 0, Total sum= 0
+ TH1.Print Name  = rate_mode2_sec, Entries= 0, Total sum= 0
+ TH1.Print Name  = rate_mode2_intp, Entries= 0, Total sum= 0
+ TH1.Print Name  = cdtbtev, Entries= 0, Total sum= 0
+ TH1.Print Name  = evsr_all, Entries= 0, Total sum= 0
+ TH1.Print Name  = SMAP_allhits, Entries= 0, Total sum= 0
+ TH1.Print Name  = SMAP_allhits_sq, Entries= 0, Total sum= 0
+ TH1.Print Name  = seghitpat, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCe, Entries= 0, Total sum= 0
+ TH1.Print Name  = ggCC, Entries= 0, Total sum= 0
+ TH1.Print Name  = z_plot, Entries= 0, Total sum= 0
+ TH1.Print Name  = crystal_hit, Entries= 0, Total sum= 0
+ TH1.Print Name  = SegE, Entries= 0, Total sum= 0
+ TH1.Print Name  = crXcr, Entries= 0, Total sum= 0
+ ******************************************************************************
+*Tree    :tree      : tree                                                   *
+*Entries :        0 : Total =           16301 bytes  File  Size =          0 *
+*        :          : Tree compression factor =   1.00                       *
+******************************************************************************
+*Br    0 :runNumber : runNumber/I                                            *
+*Entries :        0 : Total  Size=        501 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    1 :numHits   : numHits/I                                              *
+*Entries :        0 : Total  Size=        493 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    2 :left      : left[numHits]/F                                        *
+*Entries :        0 : Total  Size=        580 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    3 :right     : right[numHits]/F                                       *
+*Entries :        0 : Total  Size=        584 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    4 :up        : up[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    5 :down      : down[numHits]/F                                        *
+*Entries :        0 : Total  Size=        580 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    6 :e1        : e1[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    7 :e2        : e2[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    8 :e3        : e3[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    9 :tac       : tac[numHits]/F                                         *
+*Entries :        0 : Total  Size=        576 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   10 :fmaDeltaTime : fmaDeltaTime[numHits]/F                             *
+*Entries :        0 : Total  Size=        612 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   11 :fmaMult   : fmaMult[10]/I                                          *
+*Entries :        0 : Total  Size=        501 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   12 :gammaMult : gammaMult/I                                            *
+*Entries :        0 : Total  Size=        501 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   13 :gammaEnergy : gammaEnergy[gammaMult]/F                             *
+*Entries :        0 : Total  Size=        616 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   14 :gammaTimestamp : gammaTimestamp[gammaMult]/F                       *
+*Entries :        0 : Total  Size=        628 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   15 :deltaTime : deltaTime[gammaMult]/F                                 *
+*Entries :        0 : Total  Size=        608 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   16 :gebMult   : gebMult/I                                              *
+*Entries :        0 : Total  Size=        493 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   17 :crysType  : crysType[gebMult]/I                                    *
+*Entries :        0 : Total  Size=        589 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   18 :crysId    : crysId[gebMult]/I                                      *
+*Entries :        0 : Total  Size=        581 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   19 :crysNum   : crysNum[gebMult]/I                                     *
+*Entries :        0 : Total  Size=        585 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   20 :crysTot_e : crysTot_e[gebMult]/F                                   *
+*Entries :        0 : Total  Size=        600 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   21 :crysPolAngle : crysPolAngle[gebMult]/F                             *
+*Entries :        0 : Total  Size=        612 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   22 :intMaxX   : intMaxX[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   23 :intMaxY   : intMaxY[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   24 :intMaxZ   : intMaxZ[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   25 :intMaxE   : intMaxE[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   26 :intMaxSeg : intMaxSeg[gebMult]/I                                   *
+*Entries :        0 : Total  Size=        593 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   27 :intMaxSegE : intMaxSegE[gebMult]/F                                 *
+*Entries :        0 : Total  Size=        604 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   28 :crysTimestamp : crysTimestamp[gebMult]/L                           *
+*Entries :        0 : Total  Size=        624 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   29 :crysTrigtime : crysTrigtime[gebMult]/D                             *
+*Entries :        0 : Total  Size=        620 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   30 :crysT0    : crysT0[gebMult]/F                                      *
+*Entries :        0 : Total  Size=        588 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+ TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
+ TH1.Print Name  = eCC_b, Entries= 0, Total sum= 0
+ TH1.Print Name  = eCC_c, Entries= 0, Total sum= 0
+ TH1.Print Name  = eCC_d, Entries= 0, Total sum= 0
+ TH1.Print Name  = eSeg, Entries= 0, Total sum= 0
+ TH1.Print Name  = mode3_hitpat, Entries= 0, Total sum= 0
+ TH1.Print Name  = mode3_hitpat_chan, Entries= 0, Total sum= 0
+ TH1.Print Name  = chan0, Entries= 0, Total sum= 0
+ TH1.Print Name  = module, Entries= 0, Total sum= 0
+ TH1.Print Name  = chan, Entries= 0, Total sum= 0
+ TH1.Print Name  = l, Entries= 0, Total sum= 0
+ TH1.Print Name  = r, Entries= 0, Total sum= 0
+ TH1.Print Name  = up, Entries= 0, Total sum= 0
+ TH1.Print Name  = down, Entries= 0, Total sum= 0
+ TH1.Print Name  = sumlr, Entries= 0, Total sum= 0
+ TH1.Print Name  = sumud, Entries= 0, Total sum= 0
+ TH1.Print Name  = x, Entries= 0, Total sum= 0
+ TH1.Print Name  = y, Entries= 0, Total sum= 0
+ TH1.Print Name  = de1, Entries= 0, Total sum= 0
+ TH1.Print Name  = de2, Entries= 0, Total sum= 0
+ TH1.Print Name  = de3, Entries= 0, Total sum= 0
+ TH1.Print Name  = de12, Entries= 0, Total sum= 0
+ TH1.Print Name  = etot, Entries= 0, Total sum= 0
+ TH1.Print Name  = rftof, Entries= 0, Total sum= 0
+ TH1.Print Name  = lr, Entries= 0, Total sum= 0
+ TH1.Print Name  = ud, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede1, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede1g, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede2, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede12, Entries= 0, Total sum= 0
+ TH1.Print Name  = xde1, Entries= 0, Total sum= 0
+ TH1.Print Name  = erftof, Entries= 0, Total sum= 0
+ TH1.Print Name  = erftofg, Entries= 0, Total sum= 0
+ TH1.Print Name  = sumehi, Entries= 0, Total sum= 0
+ TH1.Print Name  = tgppac, Entries= 0, Total sum= 0
+ TH1.Print Name  = tgppacg, Entries= 0, Total sum= 0
+ TH1.Print Name  = xehi1, Entries= 0, Total sum= 0
+ TH1.Print Name  = xehi1g, Entries= 0, Total sum= 0
+ TH1.Print Name  = de1ehi, Entries= 0, Total sum= 0
+ TH1.Print Name  = de1ehig, Entries= 0, Total sum= 0
+ TH1.Print Name  = ng, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz1, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz2, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz3, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz4, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz5, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_dt, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z1, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z2, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z3, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z4, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z5, Entries= 0, Total sum= 0
+GRETINA detector angles
+mod  1, crystal 0 [  4]: ( 10.07   3.58  15.10) pol   35.30 ,  azi   13.35; pol   35.30 ,  azi   19.58; modCCdopfac[4] 1.0271
+mod  1, crystal 1 [  5]: ( 10.11   9.19  12.47) pol   47.60 ,  azi   36.39; pol   47.60 ,  azi   42.30; modCCdopfac[5] 1.0222
+mod  1, crystal 2 [  6]: (  5.44   7.69  15.92) pol   30.60 ,  azi   25.77; pol   30.60 ,  azi   54.72; modCCdopfac[6] 1.0287
+mod  1, crystal 3 [  7]: (  4.99   1.78  17.72) pol   16.65 ,  azi    5.72; pol   16.65 ,  azi   19.58; modCCdopfac[7] 1.0321
+mod  2, crystal 0 [  8]: ( -0.29  10.69  15.10) pol   35.30 ,  azi   35.29; pol   35.30 ,  azi   91.58; modCCdopfac[8] 1.0271
+mod  2, crystal 1 [  9]: ( -5.62  12.45  12.47) pol   47.60 ,  azi   44.95; pol   47.60 ,  azi  114.30; modCCdopfac[9] 1.0222
+mod  2, crystal 2 [ 10]: ( -5.63   7.55  15.92) pol   30.60 ,  azi   25.36; pol   30.60 ,  azi  126.72; modCCdopfac[10] 1.0287
+mod  2, crystal 3 [ 11]: ( -0.15   5.30  17.72) pol   16.65 ,  azi   16.64; pol   16.65 ,  azi   91.58; modCCdopfac[11] 1.0321
+mod  3, crystal 0 [ 12]: (-10.25   3.02  15.10) pol   35.30 ,  azi   11.32; pol   35.30 ,  azi  163.58; modCCdopfac[12] 1.0271
+mod  3, crystal 1 [ 13]: (-13.58  -1.50  12.47) pol   47.60 ,  azi   -6.85; pol   47.60 ,  azi -173.70; modCCdopfac[13] 1.0222
+mod  3, crystal 2 [ 14]: ( -8.92  -3.02  15.92) pol   30.60 ,  azi  -10.75; pol   30.60 ,  azi -161.28; modCCdopfac[14] 1.0287
+mod  3, crystal 3 [ 15]: ( -5.08   1.50  17.72) pol   16.65 ,  azi    4.83; pol   16.65 ,  azi  163.58; modCCdopfac[15] 1.0321
+mod  4, crystal 0 [ 16]: ( -6.04  -8.82  15.10) pol   35.30 ,  azi  -30.29; pol   35.30 ,  azi -124.42; modCCdopfac[16] 1.0271
+mod  4, crystal 1 [ 17]: ( -2.77 -13.38  12.47) pol   47.60 ,  azi  -47.00; pol   47.60 ,  azi -101.70; modCCdopfac[17] 1.0222
+mod  4, crystal 2 [ 18]: (  0.12  -9.42  15.92) pol   30.60 ,  azi  -30.60; pol   30.60 ,  azi  -89.28; modCCdopfac[18] 1.0287
+mod  4, crystal 3 [ 19]: ( -3.00  -4.37  17.72) pol   16.65 ,  azi  -13.86; pol   16.65 ,  azi -124.42; modCCdopfac[19] 1.0321
+mod  5, crystal 0 [ 20]: (  6.52  -8.47  15.10) pol   35.30 ,  azi  -29.30; pol   35.30 ,  azi  -52.42; modCCdopfac[20] 1.0271
+mod  5, crystal 1 [ 21]: ( 11.87  -6.77  12.47) pol   47.60 ,  azi  -28.49; pol   47.60 ,  azi  -29.70; modCCdopfac[21] 1.0222
+mod  5, crystal 2 [ 22]: (  8.99  -2.80  15.92) pol   30.60 ,  azi   -9.96; pol   30.60 ,  azi  -17.28; modCCdopfac[22] 1.0287
+mod  5, crystal 3 [ 23]: (  3.23  -4.20  17.72) pol   16.65 ,  azi  -13.33; pol   16.65 ,  azi  -52.42; modCCdopfac[23] 1.0321
+mod  6, crystal 0 [ 24]: (  4.54  16.51   7.02) pol   67.71 ,  azi   66.97; pol   67.71 ,  azi   74.63; modCCdopfac[24] 1.0121
+mod  6, crystal 1 [ 25]: ( -0.33  15.15  10.61) pol   55.02 ,  azi   55.01; pol   55.02 ,  azi   91.23; modCCdopfac[25] 1.0187
+mod  6, crystal 2 [ 26]: (  5.05  13.00  12.16) pol   48.92 ,  azi   46.92; pol   48.92 ,  azi   68.77; modCCdopfac[26] 1.0216
+mod  6, crystal 3 [ 27]: (  9.66  13.57   8.06) pol   64.18 ,  azi   59.29; pol   64.18 ,  azi   54.55; modCCdopfac[27] 1.0140
+mod  7, crystal 0 [ 28]: (-14.30   9.42   7.02) pol   67.71 ,  azi   53.31; pol   67.71 ,  azi  146.63; modCCdopfac[28] 1.0121
+mod  7, crystal 1 [ 29]: (-14.51   4.37  10.61) pol   55.02 ,  azi   22.40; pol   55.02 ,  azi  163.23; modCCdopfac[29] 1.0187
+mod  7, crystal 2 [ 30]: (-10.80   8.82  12.16) pol   48.92 ,  azi   35.96; pol   48.92 ,  azi  140.77; modCCdopfac[30] 1.0216
+mod  7, crystal 3 [ 31]: ( -9.92  13.38   8.06) pol   64.18 ,  azi   58.94; pol   64.18 ,  azi  126.55; modCCdopfac[31] 1.0140
+mod  8, crystal 0 [ 32]: (-13.37 -10.69   7.02) pol   67.71 ,  azi  -56.71; pol   67.71 ,  azi -141.37; modCCdopfac[32] 1.0121
+mod  8, crystal 1 [ 33]: ( -8.64 -12.45  10.61) pol   55.02 ,  azi  -49.58; pol   55.02 ,  azi -124.77; modCCdopfac[33] 1.0187
+mod  8, crystal 2 [ 34]: (-11.73  -7.55  12.16) pol   48.92 ,  azi  -31.84; pol   48.92 ,  azi -147.23; modCCdopfac[34] 1.0216
+mod  8, crystal 3 [ 35]: (-15.79  -5.30   8.06) pol   64.18 ,  azi  -33.33; pol   64.18 ,  azi -161.45; modCCdopfac[35] 1.0140
+mod  9, crystal 0 [ 36]: (  6.03 -16.02   7.02) pol   67.71 ,  azi  -66.35; pol   67.71 ,  azi  -69.37; modCCdopfac[36] 1.0121
+mod  9, crystal 1 [ 37]: (  9.17 -12.07  10.61) pol   55.02 ,  azi  -48.69; pol   55.02 ,  azi  -52.77; modCCdopfac[37] 1.0187
+mod  9, crystal 2 [ 38]: (  3.56 -13.48  12.16) pol   48.92 ,  azi  -47.96; pol   48.92 ,  azi  -75.23; modCCdopfac[38] 1.0216
+mod  9, crystal 3 [ 39]: (  0.16 -16.65   8.06) pol   64.18 ,  azi  -64.18; pol   64.18 ,  azi  -89.45; modCCdopfac[39] 1.0140
+mod 10, crystal 0 [ 40]: ( 17.10   0.79   7.02) pol   67.71 ,  azi    6.39; pol   67.71 ,  azi    2.63; modCCdopfac[40] 1.0121
+mod 10, crystal 1 [ 41]: ( 14.31   4.99  10.61) pol   55.02 ,  azi   25.21; pol   55.02 ,  azi   19.23; modCCdopfac[41] 1.0187
+mod 10, crystal 2 [ 42]: ( 13.92  -0.79  12.16) pol   48.92 ,  azi   -3.70; pol   48.92 ,  azi   -3.23; modCCdopfac[42] 1.0216
+mod 10, crystal 3 [ 43]: ( 15.89  -4.99   8.06) pol   64.18 ,  azi  -31.79; pol   64.18 ,  azi  -17.45; modCCdopfac[43] 1.0140
+mod 11, crystal 0 [ 44]: ( 18.26   2.80   0.92) pol   87.15 ,  azi   71.78; pol   87.15 ,  azi    8.71; modCCdopfac[44] 1.0011
+mod 11, crystal 1 [ 45]: ( 17.30   4.20  -5.04) pol  105.79 ,  azi  140.16; pol  105.79 ,  azi   13.65; modCCdopfac[45] 0.9906
+mod 11, crystal 2 [ 46]: ( 16.42   8.47  -0.92) pol   92.85 ,  azi   96.20; pol   92.85 ,  azi   27.29; modCCdopfac[46] 0.9978
+mod 11, crystal 3 [ 47]: ( 16.46   6.77   5.04) pol   74.21 ,  azi   53.36; pol   74.21 ,  azi   22.35; modCCdopfac[47] 1.0085
+mod 12, crystal 0 [ 48]: ( 12.46  13.48  -2.26) pol   97.01 ,  azi   99.50; pol   97.01 ,  azi   47.25; modCCdopfac[48] 0.9954
+mod 12, crystal 1 [ 49]: (  7.28  16.65  -3.46) pol  100.78 ,  azi  101.74; pol  100.78 ,  azi   66.39; modCCdopfac[49] 0.9933
+mod 12, crystal 2 [ 50]: (  8.97  16.02   2.26) pol   82.99 ,  azi   81.98; pol   82.99 ,  azi   60.75; modCCdopfac[50] 1.0035
+mod 12, crystal 3 [ 51]: ( 13.59  12.07   3.46) pol   79.22 ,  azi   74.00; pol   79.22 ,  azi   41.61; modCCdopfac[51] 1.0057
+mod 13, crystal 0 [ 52]: (  2.98  18.23   0.92) pol   87.15 ,  azi   87.11; pol   87.15 ,  azi   80.71; modCCdopfac[52] 1.0011
+mod 13, crystal 1 [ 53]: (  1.35  17.75  -5.04) pol  105.79 ,  azi  105.84; pol  105.79 ,  azi   85.65; modCCdopfac[53] 0.9906
+mod 13, crystal 2 [ 54]: ( -2.98  18.23  -0.92) pol   92.85 ,  azi   92.89; pol   92.85 ,  azi   99.29; modCCdopfac[54] 0.9978
+mod 13, crystal 3 [ 55]: ( -1.35  17.75   5.04) pol   74.21 ,  azi   74.16; pol   74.21 ,  azi   94.35; modCCdopfac[55] 1.0085
+mod 14, crystal 0 [ 56]: ( -8.97  16.02  -2.26) pol   97.01 ,  azi   98.02; pol   97.01 ,  azi  119.25; modCCdopfac[56] 0.9954
+mod 14, crystal 1 [ 57]: (-13.59  12.07  -3.46) pol  100.78 ,  azi  106.00; pol  100.78 ,  azi  138.39; modCCdopfac[57] 0.9933
+mod 14, crystal 2 [ 58]: (-12.46  13.48   2.26) pol   82.99 ,  azi   80.50; pol   82.99 ,  azi  132.75; modCCdopfac[58] 1.0035
+mod 14, crystal 3 [ 59]: ( -7.28  16.65   3.46) pol   79.22 ,  azi   78.26; pol   79.22 ,  azi  113.61; modCCdopfac[59] 1.0057
+mod 15, crystal 0 [ 60]: (-16.42   8.47   0.92) pol   87.15 ,  azi   83.80; pol   87.15 ,  azi  152.71; modCCdopfac[60] 1.0011
+mod 15, crystal 1 [ 61]: (-16.46   6.77  -5.04) pol  105.79 ,  azi  126.64; pol  105.79 ,  azi  157.65; modCCdopfac[61] 0.9906
+mod 15, crystal 2 [ 62]: (-18.26   2.80  -0.92) pol   92.85 ,  azi  108.22; pol   92.85 ,  azi  171.29; modCCdopfac[62] 0.9978
+mod 15, crystal 3 [ 63]: (-17.30   4.20   5.04) pol   74.21 ,  azi   39.84; pol   74.21 ,  azi  166.35; modCCdopfac[63] 1.0085
+mod 16, crystal 0 [ 64]: (-18.01  -3.58  -2.26) pol   97.01 ,  azi -122.21; pol   97.01 ,  azi -168.75; modCCdopfac[64] 0.9954
+mod 16, crystal 1 [ 65]: (-15.68  -9.19  -3.46) pol  100.78 ,  azi -110.62; pol  100.78 ,  azi -149.61; modCCdopfac[65] 0.9933
+mod 16, crystal 2 [ 66]: (-16.68  -7.69   2.26) pol   82.99 ,  azi  -73.64; pol   82.99 ,  azi -155.25; modCCdopfac[66] 1.0035
+mod 16, crystal 3 [ 67]: (-18.09  -1.78   3.46) pol   79.22 ,  azi  -27.18; pol   79.22 ,  azi -174.39; modCCdopfac[67] 1.0057
+mod 17, crystal 0 [ 68]: (-13.13 -13.00   0.92) pol   87.15 ,  azi  -85.95; pol   87.15 ,  azi -135.29; modCCdopfac[68] 1.0011
+mod 17, crystal 1 [ 69]: (-11.53 -13.57  -5.04) pol  105.79 ,  azi -110.36; pol  105.79 ,  azi -130.35; modCCdopfac[69] 0.9906
+mod 17, crystal 2 [ 70]: ( -8.30 -16.51  -0.92) pol   92.85 ,  azi  -93.19; pol   92.85 ,  azi -116.71; modCCdopfac[70] 0.9978
+mod 17, crystal 3 [ 71]: ( -9.34 -15.15   5.04) pol   74.21 ,  azi  -71.62; pol   74.21 ,  azi -121.65; modCCdopfac[71] 1.0085
+mod 18, crystal 0 [ 72]: ( -2.16 -18.23  -2.26) pol   97.01 ,  azi  -97.05; pol   97.01 ,  azi  -96.75; modCCdopfac[72] 0.9954
+mod 18, crystal 1 [ 73]: (  3.90 -17.75  -3.46) pol  100.78 ,  azi -101.03; pol  100.78 ,  azi  -77.61; modCCdopfac[73] 0.9933
+mod 18, crystal 2 [ 74]: (  2.16 -18.23   2.26) pol   82.99 ,  azi  -82.95; pol   82.99 ,  azi  -83.25; modCCdopfac[74] 1.0035
+mod 18, crystal 3 [ 75]: ( -3.90 -17.75   3.46) pol   79.22 ,  azi  -78.97; pol   79.22 ,  azi -102.39; modCCdopfac[75] 1.0057
+mod 19, crystal 0 [ 76]: (  8.30 -16.51   0.92) pol   87.15 ,  azi  -86.81; pol   87.15 ,  azi  -63.29; modCCdopfac[76] 1.0011
+mod 19, crystal 1 [ 77]: (  9.34 -15.15  -5.04) pol  105.79 ,  azi -108.38; pol  105.79 ,  azi  -58.35; modCCdopfac[77] 0.9906
+mod 19, crystal 2 [ 78]: ( 13.13 -13.00  -0.92) pol   92.85 ,  azi  -94.05; pol   92.85 ,  azi  -44.71; modCCdopfac[78] 0.9978
+mod 19, crystal 3 [ 79]: ( 11.53 -13.57   5.04) pol   74.21 ,  azi  -69.64; pol   74.21 ,  azi  -49.65; modCCdopfac[79] 1.0085
+mod 20, crystal 0 [ 80]: ( 16.68  -7.69  -2.26) pol   97.01 ,  azi -106.36; pol   97.01 ,  azi  -24.75; modCCdopfac[80] 0.9954
+mod 20, crystal 1 [ 81]: ( 18.09  -1.78  -3.46) pol  100.78 ,  azi -152.82; pol  100.78 ,  azi   -5.61; modCCdopfac[81] 0.9933
+mod 20, crystal 2 [ 82]: ( 18.01  -3.58   2.26) pol   82.99 ,  azi  -57.79; pol   82.99 ,  azi  -11.25; modCCdopfac[82] 1.0035
+mod 20, crystal 3 [ 83]: ( 15.68  -9.19   3.46) pol   79.22 ,  azi  -69.38; pol   79.22 ,  azi  -30.39; modCCdopfac[83] 1.0057
+mod 21, crystal 0 [ 84]: ( 14.30   9.42  -7.02) pol  112.29 ,  azi  126.69; pol  112.29 ,  azi   33.37; modCCdopfac[84] 0.9871
+mod 21, crystal 1 [ 85]: ( 14.51   4.37 -10.61) pol  124.98 ,  azi  157.60; pol  124.98 ,  azi   16.77; modCCdopfac[85] 0.9809
+mod 21, crystal 2 [ 86]: ( 10.80   8.82 -12.16) pol  131.08 ,  azi  144.04; pol  131.08 ,  azi   39.23; modCCdopfac[86] 0.9782
+mod 21, crystal 3 [ 87]: (  9.92  13.38  -8.06) pol  115.82 ,  azi  121.06; pol  115.82 ,  azi   53.45; modCCdopfac[87] 0.9853
+mod 22, crystal 0 [ 88]: ( -4.54  16.51  -7.02) pol  112.29 ,  azi  113.03; pol  112.29 ,  azi  105.37; modCCdopfac[88] 0.9871
+mod 22, crystal 1 [ 89]: (  0.33  15.15 -10.61) pol  124.98 ,  azi  124.99; pol  124.98 ,  azi   88.77; modCCdopfac[89] 0.9809
+mod 22, crystal 2 [ 90]: ( -5.05  13.00 -12.16) pol  131.08 ,  azi  133.08; pol  131.08 ,  azi  111.23; modCCdopfac[90] 0.9782
+mod 22, crystal 3 [ 91]: ( -9.66  13.57  -8.06) pol  115.82 ,  azi  120.71; pol  115.82 ,  azi  125.45; modCCdopfac[91] 0.9853
+mod 23, crystal 0 [ 92]: (-17.10   0.79  -7.02) pol  112.29 ,  azi  173.61; pol  112.29 ,  azi  177.37; modCCdopfac[92] 0.9871
+mod 23, crystal 1 [ 93]: (-14.31   4.99 -10.61) pol  124.98 ,  azi  154.79; pol  124.98 ,  azi  160.77; modCCdopfac[93] 0.9809
+mod 23, crystal 2 [ 94]: (-13.92  -0.79 -12.16) pol  131.08 ,  azi -176.30; pol  131.08 ,  azi -176.77; modCCdopfac[94] 0.9782
+mod 23, crystal 3 [ 95]: (-15.89  -4.99  -8.06) pol  115.82 ,  azi -148.21; pol  115.82 ,  azi -162.55; modCCdopfac[95] 0.9853
+mod 24, crystal 0 [ 96]: ( -6.03 -16.02  -7.02) pol  112.29 ,  azi -113.65; pol  112.29 ,  azi -110.63; modCCdopfac[96] 0.9871
+mod 24, crystal 1 [ 97]: ( -9.17 -12.07 -10.61) pol  124.98 ,  azi -131.31; pol  124.98 ,  azi -127.23; modCCdopfac[97] 0.9809
+mod 24, crystal 2 [ 98]: ( -3.56 -13.48 -12.16) pol  131.08 ,  azi -132.04; pol  131.08 ,  azi -104.77; modCCdopfac[98] 0.9782
+mod 24, crystal 3 [ 99]: ( -0.16 -16.65  -8.06) pol  115.82 ,  azi -115.82; pol  115.82 ,  azi  -90.55; modCCdopfac[99] 0.9853
+mod 25, crystal 0 [100]: ( 13.37 -10.69  -7.02) pol  112.29 ,  azi -123.29; pol  112.29 ,  azi  -38.63; modCCdopfac[100] 0.9871
+mod 25, crystal 1 [101]: (  8.64 -12.45 -10.61) pol  124.98 ,  azi -130.42; pol  124.98 ,  azi  -55.23; modCCdopfac[101] 0.9809
+mod 25, crystal 2 [102]: ( 11.73  -7.55 -12.16) pol  131.08 ,  azi -148.16; pol  131.08 ,  azi  -32.77; modCCdopfac[102] 0.9782
+mod 25, crystal 3 [103]: ( 15.79  -5.30  -8.06) pol  115.82 ,  azi -146.67; pol  115.82 ,  azi  -18.55; modCCdopfac[103] 0.9853
+mod 26, crystal 0 [104]: (  0.29  10.69 -15.10) pol  144.70 ,  azi  144.71; pol  144.70 ,  azi   88.42; modCCdopfac[104] 0.9732
+mod 26, crystal 1 [105]: (  5.62  12.45 -12.47) pol  132.40 ,  azi  135.05; pol  132.40 ,  azi   65.70; modCCdopfac[105] 0.9777
+mod 26, crystal 2 [106]: (  5.63   7.55 -15.92) pol  149.40 ,  azi  154.64; pol  149.40 ,  azi   53.28; modCCdopfac[106] 0.9718
+mod 26, crystal 3 [107]: (  0.15   5.30 -17.72) pol  163.35 ,  azi  163.36; pol  163.35 ,  azi   88.42; modCCdopfac[107] 0.9688
+mod 27, crystal 0 [108]: (-10.07   3.58 -15.10) pol  144.70 ,  azi  166.65; pol  144.70 ,  azi  160.42; modCCdopfac[108] 0.9732
+mod 27, crystal 1 [109]: (-10.11   9.19 -12.47) pol  132.40 ,  azi  143.61; pol  132.40 ,  azi  137.70; modCCdopfac[109] 0.9777
+mod 27, crystal 2 [110]: ( -5.44   7.69 -15.92) pol  149.40 ,  azi  154.23; pol  149.40 ,  azi  125.28; modCCdopfac[110] 0.9718
+mod 27, crystal 3 [111]: ( -4.99   1.78 -17.72) pol  163.35 ,  azi  174.28; pol  163.35 ,  azi  160.42; modCCdopfac[111] 0.9688
+mod 28, crystal 0 [112]: ( -6.52  -8.47 -15.10) pol  144.70 ,  azi -150.70; pol  144.70 ,  azi -127.58; modCCdopfac[112] 0.9732
+mod 28, crystal 1 [113]: (-11.87  -6.77 -12.47) pol  132.40 ,  azi -151.51; pol  132.40 ,  azi -150.30; modCCdopfac[113] 0.9777
+mod 28, crystal 2 [114]: ( -8.99  -2.80 -15.92) pol  149.40 ,  azi -170.04; pol  149.40 ,  azi -162.72; modCCdopfac[114] 0.9718
+mod 28, crystal 3 [115]: ( -3.23  -4.20 -17.72) pol  163.35 ,  azi -166.67; pol  163.35 ,  azi -127.58; modCCdopfac[115] 0.9688
+mod 29, crystal 0 [116]: (  6.04  -8.82 -15.10) pol  144.70 ,  azi -149.71; pol  144.70 ,  azi  -55.58; modCCdopfac[116] 0.9732
+mod 29, crystal 1 [117]: (  2.77 -13.38 -12.47) pol  132.40 ,  azi -133.00; pol  132.40 ,  azi  -78.30; modCCdopfac[117] 0.9777
+mod 29, crystal 2 [118]: ( -0.12  -9.42 -15.92) pol  149.40 ,  azi -149.40; pol  149.40 ,  azi  -90.72; modCCdopfac[118] 0.9718
+mod 29, crystal 3 [119]: (  3.00  -4.37 -17.72) pol  163.35 ,  azi -166.14; pol  163.35 ,  azi  -55.58; modCCdopfac[119] 0.9688
+mod 30, crystal 0 [120]: ( 10.25   3.02 -15.10) pol  144.70 ,  azi  168.68; pol  144.70 ,  azi   16.42; modCCdopfac[120] 0.9732
+mod 30, crystal 1 [121]: ( 13.58  -1.50 -12.47) pol  132.40 ,  azi -173.15; pol  132.40 ,  azi   -6.30; modCCdopfac[121] 0.9777
+mod 30, crystal 2 [122]: (  8.92  -3.02 -15.92) pol  149.40 ,  azi -169.25; pol  149.40 ,  azi  -18.72; modCCdopfac[122] 0.9718
+mod 30, crystal 3 [123]: (  5.08   1.50 -17.72) pol  163.35 ,  azi  175.17; pol  163.35 ,  azi   16.42; modCCdopfac[123] 0.9688
+setup signal catcher
+started sorting... from disk...
+
+Pars.maxTS=4611686018427387904
+got initial header, TS=1722978157401 ID: 1 length: 464
+read initial payload of siz=464 into event position 1
+__ptgd[0]->type= 0; ptgd[0]->length=   0; ptgd[0]->timestamp=0
+initial ii=1, nn=1
+ev#     0 GEB_TYPE_DECOMP        464Bytes TS=1722978195123 curTS=1722978157401 dTS= 37722
+t0=1722978157401
+first event: GEB_event.mult=1
+   0/ 0: ( 1,GEB_TYPE_DECOMP      ) TS=       1722978157401; dT=0
+maxTS=10362978157401
+that is 86400.0 seconds or 24h0m0s minutes of sorting
+GEBGetEv returned st=0
+we have read 960 bytes; CurEvNo=1
+
++++++++++++++++++++++++++++++++
+*start event # 1 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=1722978157401
+entered bin_mode2: 1/10
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 1 
+exit bin_mode3
+*end of event # 1
++++++++++++++++++++++++++++++++
+ev#     1 GEB_TYPE_DECOMP        464Bytes TS=1722978195129 curTS=1722978195123 dTS= 6
+ev#     1 GEB_TYPE_DECOMP        464Bytes TS=1722978209347 curTS=1722978195123 dTS= 14224
+GEBGetEv returned st=0
+we have read 1920 bytes; CurEvNo=2
+
++++++++++++++++++++++++++++++++
+*start event # 2 with multiplicity 2 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=1722978195123
+ 1>  1, GEB_TYPE_DECOMP      , TS=1722978195129
+entered bin_mode2: 2/10
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 2 
+exit bin_mode3
+*end of event # 2
++++++++++++++++++++++++++++++++
+ev#     2 GEB_TYPE_GT_MOD29      132Bytes TS=1722978268777 curTS=1722978209347 dTS= 59430
+GEBGetEv returned st=0
+we have read 2068 bytes; CurEvNo=3
+
++++++++++++++++++++++++++++++++
+*start event # 3 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=1722978209347
+entered bin_mode2: 3/10
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 3 
+exit bin_mode3
+*end of event # 3
++++++++++++++++++++++++++++++++
+ev#     3 GEB_TYPE_DECOMP        464Bytes TS=1722978333653 curTS=1722978268777 dTS= 64876
+GEBGetEv returned st=0
+we have read 2548 bytes; CurEvNo=4
+
++++++++++++++++++++++++++++++++
+*start event # 4 with multiplicity 1 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=1722978268777
+entered bin_mode2: 4/10
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 4 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=1722978268777, 0x1912981f669; payload length: 132 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf669,  63081
+Event.hdr[ 3]=0x2981,  10625
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x3611,  13841
+Event.hdr[ 6]=0x0e04,   3588
+Event.hdr[ 7]=0x0000,      0
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0xf9ef,  63983
+Event.hdr[10]=0xec02,  60418
+Event.hdr[11]=0x06f6,   1782
+Event.hdr[12]=0x5058,  20568
+Event.hdr[13]=0x000d,     13
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+open superpulse_004_00_01.xy at Event.chan_id = 6
+open CCpulse_004_00_01.xy at Event.chan_id = 6
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::     275985     275985 0x00043611 |0000|0000|0000|0100|0011|0110|0001|0001|
+rawE              ::     275985     275985 0x00043611 |0000|0000|0000|0100|0011|0110|0001|0001|
+rawE (sign change)::     275985     275985 0x00043611 |0000|0000|0000|0100|0011|0110|0001|0001|
+Event.ehi=            8624 0x000021b0
+Event.ehi=862 (gain changed)
+Event.LEDts =        1722978268777
+Event.CFDts =      281316060430348
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf669,  63081
+Event.hdr[ 3]=0x2981,  10625
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x90c9,  37065
+Event.hdr[ 6]=0x0e01,   3585
+Event.hdr[ 7]=0x0000,      0
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0xc4f6,  50422
+Event.hdr[10]=0x5000,  20480
+Event.hdr[11]=0x023a,    570
+Event.hdr[12]=0xed48,  60744
+Event.hdr[13]=0x0004,      4
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::     102601     102601 0x000190c9 |0000|0000|0000|0001|1001|0000|1100|1001|
+rawE              ::     102601     102601 0x000190c9 |0000|0000|0000|0001|1001|0000|1100|1001|
+rawE (sign change)::     102601     102601 0x000190c9 |0000|0000|0000|0001|1001|0000|1100|1001|
+Event.ehi=            3206 0x00000c86
+Event.ehi=320 (gain changed)
+Event.LEDts =        1722978268777
+Event.CFDts =          73015623692
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf669,  63081
+Event.hdr[ 3]=0x2981,  10625
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x8cee,  36078
+Event.hdr[ 6]=0x1ff9,   8185
+Event.hdr[ 7]=0x0000,      0
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0xc8f2,  51442
+Event.hdr[10]=0xfbfc,  64508
+Event.hdr[11]=0xf9a8,  63912
+Event.hdr[12]=0x8a13,  35347
+Event.hdr[13]=0x07f3,   2035
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::   16354542   16354542 0x00f98cee |0000|0000|1111|1001|1000|1100|1110|1110|
+rawE              :: 4294544622    -422674 0xfff98cee |1111|1111|1111|1001|1000|1100|1110|1110|
+rawE (sign change)::     422674     422674 0x00067312 |0000|0000|0000|0110|0111|0011|0001|0010|
+Event.ehi=           13208 0x00003398
+Event.ehi=1320 (gain changed)
+Event.LEDts =        1722978268777
+Event.CFDts =         481046233100
+exit bin_mode3
+*end of event # 4
++++++++++++++++++++++++++++++++
+ev#     4 GEB_TYPE_DECOMP        464Bytes TS=1722978333991 curTS=1722978333653 dTS= 338
+GEBGetEv returned st=0
+we have read 3028 bytes; CurEvNo=5
+
++++++++++++++++++++++++++++++++
+*start event # 5 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=1722978333653
+entered bin_mode2: 5/10
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 5 
+exit bin_mode3
+*end of event # 5
++++++++++++++++++++++++++++++++
+ev#     5 GEB_TYPE_GT_MOD29      440Bytes TS=1722978334219 curTS=1722978333991 dTS= 228
+GEBGetEv returned st=0
+we have read 3484 bytes; CurEvNo=6
+
++++++++++++++++++++++++++++++++
+*start event # 6 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=1722978333991
+entered bin_mode2: 6/10
+ptinp->pad= 128, (ptinp->pad&0x000000ff)= 128
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 6 
+exit bin_mode3
+*end of event # 6
++++++++++++++++++++++++++++++++
+ev#     6 GEB_TYPE_DECOMP        464Bytes TS=1722978387919 curTS=1722978334219 dTS= 53700
+GEBGetEv returned st=0
+we have read 3964 bytes; CurEvNo=7
+
++++++++++++++++++++++++++++++++
+*start event # 7 with multiplicity 1 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=1722978334219
+entered bin_mode2: 7/10
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 7 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=1722978334219, 0x1912982f60b; payload length: 440 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf60b,  62987
+Event.hdr[ 3]=0x2982,  10626
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x1cc6,   7366
+Event.hdr[ 6]=0x9ff3,  40947
+Event.hdr[ 7]=0xffa1,  65441
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x724d,  29261
+Event.hdr[10]=0xe5f6,  58870
+Event.hdr[11]=0xf991,  63889
+Event.hdr[12]=0x51f7,  20983
+Event.hdr[13]=0x07f3,   2035
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+open superpulse_007_00_01.xy at Event.chan_id = 8
+open CCpulse_007_00_01.xy at Event.chan_id = 8
+ncrystal=1
+wrote trace to CCpulse_007_00_01.xy
+two's comp tempE  ::   15932614   15932614 0x00f31cc6 |0000|0000|1111|0011|0001|1100|1100|0110|
+rawE              :: 4294122694    -844602 0xfff31cc6 |1111|1111|1111|0011|0001|1100|1100|0110|
+rawE (sign change)::     844602     844602 0x000ce33a |0000|0000|0000|1100|1110|0011|0011|1010|
+Event.ehi=           26393 0x00006719
+Event.ehi=2639 (gain changed)
+Event.LEDts =        1722978334219
+Event.CFDts =         369374724108
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f39,   7993
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf60b,  62987
+Event.hdr[ 3]=0x2982,  10626
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x52fc,  21244
+Event.hdr[ 6]=0x0e0f,   3599
+Event.hdr[ 7]=0xffa1,  65441
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x3337,  13111
+Event.hdr[10]=0x7008,  28680
+Event.hdr[11]=0xfff1,  65521
+Event.hdr[12]=0xe2eb,  58091
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f39 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 9 ge_id = 124 channel = 39  -> is CC
+ncrystal=1
+wrote trace to CCpulse_007_00_01.xy
+two's comp tempE  ::    1004284    1004284 0x000f52fc |0000|0000|0000|1111|0101|0010|1111|1100|
+rawE              ::    1004284    1004284 0x000f52fc |0000|0000|0000|1111|0101|0010|1111|1100|
+rawE (sign change)::    1004284    1004284 0x000f52fc |0000|0000|0000|1111|0101|0010|1111|1100|
+Event.ehi=           31383 0x00007a97
+Event.ehi=3138 (gain changed)
+Event.LEDts =        1722978334219
+Event.CFDts =         261997133836
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f30,   7984
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf60b,  62987
+Event.hdr[ 3]=0x2982,  10626
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x4140,  16704
+Event.hdr[ 6]=0x4e0b,  19979
+Event.hdr[ 7]=0xffa1,  65441
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x40ef,  16623
+Event.hdr[10]=0xe00b,  57355
+Event.hdr[11]=0x1638,   5688
+Event.hdr[12]=0x9538,  38200
+Event.hdr[13]=0x0033,     51
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 132
+0x1f30 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 0 ge_id = 124 channel = 30  -> is segment
+ncrystal=1
+wrote trace to CCpulse_007_00_01.xy
+two's comp tempE  ::     737600     737600 0x000b4140 |0000|0000|0000|1011|0100|0001|0100|0000|
+rawE              ::     737600     737600 0x000b4140 |0000|0000|0000|1011|0100|0001|0100|0000|
+rawE (sign change)::     737600     737600 0x000b4140 |0000|0000|0000|1011|0100|0001|0100|0000|
+Event.ehi=           23050 0x00005a0a
+Event.ehi=2305 (gain changed)
+Event.LEDts =        1722978334219
+Event.CFDts =      265991383416844
+
+---------
+new GTheader at pos=132 or 66 words (74):
+Event.hdr[ 0]=0x1f31,   7985
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf60b,  62987
+Event.hdr[ 3]=0x2982,  10626
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x3b82,  15234
+Event.hdr[ 6]=0x4e09,  19977
+Event.hdr[ 7]=0xffa1,  65441
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x3b17,  15127
+Event.hdr[10]=0xc809,  51209
+Event.hdr[11]=0x11bb,   4539
+Event.hdr[12]=0x81d0,  33232
+Event.hdr[13]=0x0023,     35
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 176
+0x1f31 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 1 ge_id = 124 channel = 31  -> is segment
+ncrystal=1
+wrote trace to CCpulse_007_00_01.xy
+two's comp tempE  ::     605058     605058 0x00093b82 |0000|0000|0000|1001|0011|1011|1000|0010|
+rawE              ::     605058     605058 0x00093b82 |0000|0000|0000|1001|0011|1011|1000|0010|
+rawE (sign change)::     605058     605058 0x00093b82 |0000|0000|0000|1001|0011|1011|1000|0010|
+Event.ehi=           18908 0x000049dc
+Event.ehi=1890 (gain changed)
+Event.LEDts =        1722978334219
+Event.CFDts =      268963546071052
+
+---------
+new GTheader at pos=176 or 88 words (96):
+Event.hdr[ 0]=0x1f32,   7986
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf60b,  62987
+Event.hdr[ 3]=0x2982,  10626
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x3a6b,  14955
+Event.hdr[ 6]=0x8e06,  36358
+Event.hdr[ 7]=0xffa1,  65441
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x30f8,  12536
+Event.hdr[10]=0xcc00,  52224
+Event.hdr[11]=0x0086,    134
+Event.hdr[12]=0x4d6c,  19820
+Event.hdr[13]=0x0001,      1
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 220
+0x1f32 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 2 ge_id = 124 channel = 32  -> is segment
+ncrystal=1
+wrote trace to CCpulse_007_00_01.xy
+two's comp tempE  ::     408171     408171 0x00063a6b |0000|0000|0000|0110|0011|1010|0110|1011|
+rawE              ::     408171     408171 0x00063a6b |0000|0000|0000|0110|0011|1010|0110|1011|
+rawE (sign change)::     408171     408171 0x00063a6b |0000|0000|0000|0110|0011|1010|0110|1011|
+Event.ehi=           12755 0x000031d3
+Event.ehi=1275 (gain changed)
+Event.LEDts =        1722978334219
+Event.CFDts =          25770197004
+
+---------
+new GTheader at pos=220 or 110 words (118):
+Event.hdr[ 0]=0x1f33,   7987
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf60b,  62987
+Event.hdr[ 3]=0x2982,  10626
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0xb1b9,  45497
+Event.hdr[ 6]=0x4e0b,  19979
+Event.hdr[ 7]=0xffa1,  65441
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0xb156,  45398
+Event.hdr[10]=0x200b,   8203
+Event.hdr[11]=0x179b,   6043
+Event.hdr[12]=0x153c,   5436
+Event.hdr[13]=0x002a,     42
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 264
+0x1f33 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 3 ge_id = 124 channel = 33  -> is segment
+ncrystal=1
+wrote trace to CCpulse_007_00_01.xy
+two's comp tempE  ::     766393     766393 0x000bb1b9 |0000|0000|0000|1011|1011|0001|1011|1001|
+rawE              ::     766393     766393 0x000bb1b9 |0000|0000|0000|1011|1011|0001|1011|1001|
+rawE (sign change)::     766393     766393 0x000bb1b9 |0000|0000|0000|1011|1011|0001|1011|1001|
+Event.ehi=           23949 0x00005d8d
+Event.ehi=2394 (gain changed)
+Event.LEDts =        1722978334219
+Event.CFDts =      265411553984524
+
+---------
+new GTheader at pos=264 or 132 words (140):
+Event.hdr[ 0]=0x1f34,   7988
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf60b,  62987
+Event.hdr[ 3]=0x2982,  10626
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x0035,     53
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xffa1,  65441
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x0000,      0
+Event.hdr[10]=0xc400,  50176
+Event.hdr[11]=0xffff,  65535
+Event.hdr[12]=0xffb7,  65463
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 308
+0x1f34 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 4 ge_id = 124 channel = 34  -> is segment
+ncrystal=1
+wrote trace to CCpulse_007_00_01.xy
+two's comp tempE  ::         53         53 0x00000035 |0000|0000|0000|0000|0000|0000|0011|0101|
+rawE              ::         53         53 0x00000035 |0000|0000|0000|0000|0000|0000|0011|0101|
+rawE (sign change)::         53         53 0x00000035 |0000|0000|0000|0000|0000|0000|0011|0101|
+Event.ehi=               1 0x00000001
+Event.ehi=0 (gain changed)
+Event.LEDts =        1722978334219
+Event.CFDts =         253407002636
+
+---------
+new GTheader at pos=308 or 154 words (162):
+Event.hdr[ 0]=0x1f35,   7989
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf60b,  62987
+Event.hdr[ 3]=0x2982,  10626
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0xe89c,  59548
+Event.hdr[ 6]=0x4e08,  19976
+Event.hdr[ 7]=0xffa1,  65441
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0xe708,  59144
+Event.hdr[10]=0x8808,  34824
+Event.hdr[11]=0x125a,   4698
+Event.hdr[12]=0xe874,  59508
+Event.hdr[13]=0x0024,     36
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 352
+0x1f35 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 5 ge_id = 124 channel = 35  -> is segment
+ncrystal=1
+wrote trace to CCpulse_007_00_01.xy
+two's comp tempE  ::     583836     583836 0x0008e89c |0000|0000|0000|1000|1110|1000|1001|1100|
+rawE              ::     583836     583836 0x0008e89c |0000|0000|0000|1000|1110|1000|1001|1100|
+rawE (sign change)::     583836     583836 0x0008e89c |0000|0000|0000|1000|1110|1000|1001|1100|
+Event.ehi=           18244 0x00004744
+Event.ehi=1824 (gain changed)
+Event.LEDts =        1722978334219
+Event.CFDts =      269096692154380
+
+---------
+new GTheader at pos=352 or 176 words (184):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf60b,  62987
+Event.hdr[ 3]=0x2982,  10626
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x1207,   4615
+Event.hdr[ 6]=0x4e0a,  19978
+Event.hdr[ 7]=0xffa1,  65441
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x66cb,  26315
+Event.hdr[10]=0xde03,  56835
+Event.hdr[11]=0x05f3,   1523
+Event.hdr[12]=0xedd8,  60888
+Event.hdr[13]=0x000d,     13
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 396
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+ncrystal=1
+wrote trace to CCpulse_007_00_01.xy
+two's comp tempE  ::     659975     659975 0x000a1207 |0000|0000|0000|1010|0001|0010|0000|0111|
+rawE              ::     659975     659975 0x000a1207 |0000|0000|0000|1010|0001|0010|0000|0111|
+rawE (sign change)::     659975     659975 0x000a1207 |0000|0000|0000|1010|0001|0010|0000|0111|
+Event.ehi=           20624 0x00005090
+Event.ehi=2062 (gain changed)
+Event.LEDts =        1722978334219
+Event.CFDts =      281346125856780
+
+---------
+new GTheader at pos=396 or 198 words (206):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf60b,  62987
+Event.hdr[ 3]=0x2982,  10626
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0xa330,  41776
+Event.hdr[ 6]=0x8e05,  36357
+Event.hdr[ 7]=0xffa1,  65441
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x1e63,   7779
+Event.hdr[10]=0xec01,  60417
+Event.hdr[11]=0x0189,    393
+Event.hdr[12]=0x74a0,  29856
+Event.hdr[13]=0x0004,      4
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+ncrystal=1
+wrote trace to CCpulse_007_00_01.xy
+two's comp tempE  ::     369456     369456 0x0005a330 |0000|0000|0000|0101|1010|0011|0011|0000|
+rawE              ::     369456     369456 0x0005a330 |0000|0000|0000|0101|1010|0011|0011|0000|
+rawE (sign change)::     369456     369456 0x0005a330 |0000|0000|0000|0101|1010|0011|0011|0000|
+Event.ehi=           11545 0x00002d19
+Event.ehi=1154 (gain changed)
+Event.LEDts =        1722978334219
+Event.CFDts =      281449206317068
+exit bin_mode3
+*end of event # 7
++++++++++++++++++++++++++++++++
+ev#     7 GEB_TYPE_GT_MOD29      440Bytes TS=1722978388285 curTS=1722978387919 dTS= 366
+GEBGetEv returned st=0
+we have read 4420 bytes; CurEvNo=8
+
++++++++++++++++++++++++++++++++
+*start event # 8 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=1722978387919
+entered bin_mode2: 8/10
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 8 
+exit bin_mode3
+*end of event # 8
++++++++++++++++++++++++++++++++
+ev#     8 GEB_TYPE_GT_MOD29      440Bytes TS=1722978422305 curTS=1722978388285 dTS= 34020
+GEBGetEv returned st=0
+we have read 4876 bytes; CurEvNo=9
+
++++++++++++++++++++++++++++++++
+*start event # 9 with multiplicity 1 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=1722978388285
+entered bin_mode2: 9/10
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 9 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=1722978388285, 0x1912983c93d; payload length: 440 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f39,   7993
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xc93d,  51517
+Event.hdr[ 3]=0x2983,  10627
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x5da8,  23976
+Event.hdr[ 6]=0x4e0d,  19981
+Event.hdr[ 7]=0xd229,  53801
+Event.hdr[ 8]=0x0107,    263
+Event.hdr[ 9]=0x5c9f,  23711
+Event.hdr[10]=0x3a0d,  14861
+Event.hdr[11]=0x1ea6,   7846
+Event.hdr[12]=0xccdc,  52444
+Event.hdr[13]=0x0020,     32
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f39 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 9 ge_id = 124 channel = 39  -> is CC
+open superpulse_009_00_01.xy at Event.chan_id = 9
+open CCpulse_009_00_01.xy at Event.chan_id = 9
+ncrystal=1
+wrote trace to CCpulse_009_00_01.xy
+two's comp tempE  ::     875944     875944 0x000d5da8 |0000|0000|0000|1101|0101|1101|1010|1000|
+rawE              ::     875944     875944 0x000d5da8 |0000|0000|0000|1101|0101|1101|1010|1000|
+rawE (sign change)::     875944     875944 0x000d5da8 |0000|0000|0000|1101|0101|1101|1010|1000|
+Event.ehi=           27373 0x00006aed
+Event.ehi=2737 (gain changed)
+Event.LEDts =        1722978388285
+Event.CFDts =       18159398879244
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f30,   7984
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xc93d,  51517
+Event.hdr[ 3]=0x2983,  10627
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x08e8,   2280
+Event.hdr[ 6]=0x4e0c,  19980
+Event.hdr[ 7]=0xd229,  53801
+Event.hdr[ 8]=0x0107,    263
+Event.hdr[ 9]=0x0840,   2112
+Event.hdr[10]=0x8c0c,  35852
+Event.hdr[11]=0xea0d,  59917
+Event.hdr[12]=0x03bf,    959
+Event.hdr[13]=0x002d,     45
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f30 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 0 ge_id = 124 channel = 30  -> is segment
+ncrystal=1
+wrote trace to CCpulse_009_00_01.xy
+two's comp tempE  ::     788712     788712 0x000c08e8 |0000|0000|0000|1100|0000|1000|1110|1000|
+rawE              ::     788712     788712 0x000c08e8 |0000|0000|0000|1100|0000|1000|1110|1000|
+rawE (sign change)::     788712     788712 0x000c08e8 |0000|0000|0000|1100|0000|1000|1110|1000|
+Event.ehi=           24647 0x00006047
+Event.ehi=2464 (gain changed)
+Event.LEDts =        1722978388285
+Event.CFDts =      264960575864844
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f31,   7985
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xc93d,  51517
+Event.hdr[ 3]=0x2983,  10627
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x0000,      0
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xd229,  53801
+Event.hdr[ 8]=0x0107,    263
+Event.hdr[ 9]=0xf183,  61827
+Event.hdr[10]=0x6fff,  28671
+Event.hdr[11]=0xee1a,  60954
+Event.hdr[12]=0xec5f,  60511
+Event.hdr[13]=0x0024,     36
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 132
+0x1f31 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 1 ge_id = 124 channel = 31  -> is segment
+ncrystal=1
+wrote trace to CCpulse_009_00_01.xy
+two's comp tempE  ::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+rawE              ::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+rawE (sign change)::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+Event.ehi=               0 0x00000000
+Event.ehi=0 (gain changed)
+Event.LEDts =        1722978388285
+Event.CFDts =      281251635003404
+
+---------
+new GTheader at pos=132 or 66 words (74):
+Event.hdr[ 0]=0x1f32,   7986
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xc93d,  51517
+Event.hdr[ 3]=0x2983,  10627
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x0483,   1155
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xd229,  53801
+Event.hdr[ 8]=0x0107,    263
+Event.hdr[ 9]=0xdfd6,  57302
+Event.hdr[10]=0xebff,  60415
+Event.hdr[11]=0x1198,   4504
+Event.hdr[12]=0xc3e0,  50144
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 176
+0x1f32 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 2 ge_id = 124 channel = 32  -> is segment
+ncrystal=1
+wrote trace to CCpulse_009_00_01.xy
+two's comp tempE  ::       1155       1155 0x00000483 |0000|0000|0000|0000|0000|0100|1000|0011|
+rawE              ::       1155       1155 0x00000483 |0000|0000|0000|0000|0000|0100|1000|0011|
+rawE (sign change)::       1155       1155 0x00000483 |0000|0000|0000|0000|0000|0100|1000|0011|
+Event.ehi=              36 0x00000024
+Event.ehi=3 (gain changed)
+Event.LEDts =        1722978388285
+Event.CFDts =      281449206317068
+
+---------
+new GTheader at pos=176 or 88 words (96):
+Event.hdr[ 0]=0x1f33,   7987
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xc93d,  51517
+Event.hdr[ 3]=0x2983,  10627
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0xed5f,  60767
+Event.hdr[ 6]=0x4e09,  19977
+Event.hdr[ 7]=0xd229,  53801
+Event.hdr[ 8]=0x0107,    263
+Event.hdr[ 9]=0xecfe,  60670
+Event.hdr[10]=0xde09,  56841
+Event.hdr[11]=0xe909,  59657
+Event.hdr[12]=0xc55b,  50523
+Event.hdr[13]=0x002e,     46
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 220
+0x1f33 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 3 ge_id = 124 channel = 33  -> is segment
+ncrystal=1
+wrote trace to CCpulse_009_00_01.xy
+two's comp tempE  ::     650591     650591 0x0009ed5f |0000|0000|0000|1001|1110|1101|0101|1111|
+rawE              ::     650591     650591 0x0009ed5f |0000|0000|0000|1001|1110|1101|0101|1111|
+rawE (sign change)::     650591     650591 0x0009ed5f |0000|0000|0000|1001|1110|1101|0101|1111|
+Event.ehi=           20330 0x00004f6a
+Event.ehi=2033 (gain changed)
+Event.LEDts =        1722978388285
+Event.CFDts =      267838247600140
+
+---------
+new GTheader at pos=220 or 110 words (118):
+Event.hdr[ 0]=0x1f34,   7988
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xc93d,  51517
+Event.hdr[ 3]=0x2983,  10627
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x0030,     48
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xd229,  53801
+Event.hdr[ 8]=0x0107,    263
+Event.hdr[ 9]=0xffd2,  65490
+Event.hdr[10]=0xd3ff,  54271
+Event.hdr[11]=0xffff,  65535
+Event.hdr[12]=0x0003,      3
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 264
+0x1f34 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 4 ge_id = 124 channel = 34  -> is segment
+ncrystal=1
+wrote trace to CCpulse_009_00_01.xy
+two's comp tempE  ::         48         48 0x00000030 |0000|0000|0000|0000|0000|0000|0011|0000|
+rawE              ::         48         48 0x00000030 |0000|0000|0000|0000|0000|0000|0011|0000|
+rawE (sign change)::         48         48 0x00000030 |0000|0000|0000|0000|0000|0000|0011|0000|
+Event.ehi=               1 0x00000001
+Event.ehi=0 (gain changed)
+Event.LEDts =        1722978388285
+Event.CFDts =         244817199116
+
+---------
+new GTheader at pos=264 or 132 words (140):
+Event.hdr[ 0]=0x1f35,   7989
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xc93d,  51517
+Event.hdr[ 3]=0x2983,  10627
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x0000,      0
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xd229,  53801
+Event.hdr[ 8]=0x0107,    263
+Event.hdr[ 9]=0xf60a,  62986
+Event.hdr[10]=0xebff,  60415
+Event.hdr[11]=0xee6c,  61036
+Event.hdr[12]=0x9c23,  39971
+Event.hdr[13]=0x0023,     35
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 308
+0x1f35 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 5 ge_id = 124 channel = 35  -> is segment
+ncrystal=1
+wrote trace to CCpulse_009_00_01.xy
+two's comp tempE  ::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+rawE              ::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+rawE (sign change)::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+Event.ehi=               0 0x00000000
+Event.ehi=0 (gain changed)
+Event.LEDts =        1722978388285
+Event.CFDts =      281264520101900
+
+---------
+new GTheader at pos=308 or 154 words (162):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xc93d,  51517
+Event.hdr[ 3]=0x2983,  10627
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x2006,   8198
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xd229,  53801
+Event.hdr[ 8]=0x0107,    263
+Event.hdr[ 9]=0xff11,  65297
+Event.hdr[10]=0xabff,  44031
+Event.hdr[11]=0x1617,   5655
+Event.hdr[12]=0x9b2c,  39724
+Event.hdr[13]=0x000d,     13
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 352
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+ncrystal=1
+wrote trace to CCpulse_009_00_01.xy
+two's comp tempE  ::       8198       8198 0x00002006 |0000|0000|0000|0000|0010|0000|0000|0110|
+rawE              ::       8198       8198 0x00002006 |0000|0000|0000|0000|0010|0000|0000|0110|
+rawE (sign change)::       8198       8198 0x00002006 |0000|0000|0000|0000|0010|0000|0000|0110|
+Event.ehi=             256 0x00000100
+Event.ehi=25 (gain changed)
+Event.LEDts =        1722978388285
+Event.CFDts =           4294836236
+
+---------
+new GTheader at pos=352 or 176 words (184):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xc93d,  51517
+Event.hdr[ 3]=0x2983,  10627
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x0000,      0
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xd229,  53801
+Event.hdr[ 8]=0x0107,    263
+Event.hdr[ 9]=0xf3ee,  62446
+Event.hdr[10]=0xd1ff,  53759
+Event.hdr[11]=0x0e44,   3652
+Event.hdr[12]=0x798c,  31116
+Event.hdr[13]=0x0004,      4
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 396
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+ncrystal=1
+wrote trace to CCpulse_009_00_01.xy
+two's comp tempE  ::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+rawE              ::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+rawE (sign change)::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+Event.ehi=               0 0x00000000
+Event.ehi=0 (gain changed)
+Event.LEDts =        1722978388285
+Event.CFDts =      281462091481100
+
+---------
+new GTheader at pos=396 or 198 words (206):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xc93d,  51517
+Event.hdr[ 3]=0x2983,  10627
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x8a03,  35331
+Event.hdr[ 6]=0x1ff9,   8185
+Event.hdr[ 7]=0xd229,  53801
+Event.hdr[ 8]=0x0107,    263
+Event.hdr[ 9]=0xc089,  49289
+Event.hdr[10]=0xd1fc,  53756
+Event.hdr[11]=0x063b,   1595
+Event.hdr[12]=0xc934,  51508
+Event.hdr[13]=0x07d9,   2009
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+ncrystal=1
+wrote trace to CCpulse_009_00_01.xy
+two's comp tempE  ::   16353795   16353795 0x00f98a03 |0000|0000|1111|1001|1000|1010|0000|0011|
+rawE              :: 4294543875    -423421 0xfff98a03 |1111|1111|1111|1001|1000|1010|0000|0011|
+rawE (sign change)::     423421     423421 0x000675fd |0000|0000|0000|0110|0111|0101|1111|1101|
+Event.ehi=           13231 0x000033af
+Event.ehi=1323 (gain changed)
+Event.LEDts =        1722978388285
+Event.CFDts =         523997216780
+exit bin_mode3
+*end of event # 9
++++++++++++++++++++++++++++++++
+ev#     9 GEB_TYPE_GT_MOD29      440Bytes TS=1722978468181 curTS=1722978422305 dTS= 45876
+GEBGetEv returned st=0
+we have read 5332 bytes; CurEvNo=10
+
++++++++++++++++++++++++++++++++
+*start event # 10 with multiplicity 1 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=1722978422305
+entered bin_mode2: 10/10
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 10 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=1722978422305, 0x19129844e21; payload length: 440 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f39,   7993
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x4e21,  20001
+Event.hdr[ 3]=0x2984,  10628
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x9ea5,  40613
+Event.hdr[ 6]=0x4e0f,  19983
+Event.hdr[ 7]=0x84e3,  34019
+Event.hdr[ 8]=0xd229,  53801
+Event.hdr[ 9]=0x9d59,  40281
+Event.hdr[10]=0x3e0f,  15887
+Event.hdr[11]=0x1ab9,   6841
+Event.hdr[12]=0x4c74,  19572
+Event.hdr[13]=0x003d,     61
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f39 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 9 ge_id = 124 channel = 39  -> is CC
+open superpulse_010_00_01.xy at Event.chan_id = 9
+open CCpulse_010_00_01.xy at Event.chan_id = 9
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::    1023653    1023653 0x000f9ea5 |0000|0000|0000|1111|1001|1110|1010|0101|
+rawE              ::    1023653    1023653 0x000f9ea5 |0000|0000|0000|1111|1001|1110|1010|0101|
+rawE (sign change)::    1023653    1023653 0x000f9ea5 |0000|0000|0000|1111|1001|1110|1010|0101|
+Event.ehi=           31989 0x00007cf5
+Event.ehi=3198 (gain changed)
+Event.LEDts =        1722978422305
+Event.CFDts =       21178806566924
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f30,   7984
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x4e21,  20001
+Event.hdr[ 3]=0x2984,  10628
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0xeaf8,  60152
+Event.hdr[ 6]=0x4e0a,  19978
+Event.hdr[ 7]=0x84e3,  34019
+Event.hdr[ 8]=0xd229,  53801
+Event.hdr[ 9]=0xeaa9,  60073
+Event.hdr[10]=0x800a,  32778
+Event.hdr[11]=0x1810,   6160
+Event.hdr[12]=0x1b18,   6936
+Event.hdr[13]=0x07d4,   2004
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f30 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 0 ge_id = 124 channel = 30  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::     715512     715512 0x000aeaf8 |0000|0000|0000|1010|1110|1010|1111|1000|
+rawE              ::     715512     715512 0x000aeaf8 |0000|0000|0000|1010|1110|1010|1111|1000|
+rawE (sign change)::     715512     715512 0x000aeaf8 |0000|0000|0000|1010|1110|1010|1111|1000|
+Event.ehi=           22359 0x00005757
+Event.ehi=2235 (gain changed)
+Event.LEDts =        1722978422305
+Event.CFDts =      266528262258700
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f31,   7985
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x4e21,  20001
+Event.hdr[ 3]=0x2984,  10628
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x0007,      7
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x84e3,  34019
+Event.hdr[ 8]=0xd229,  53801
+Event.hdr[ 9]=0xeea5,  61093
+Event.hdr[10]=0x07ff,   2047
+Event.hdr[11]=0xffe3,  65507
+Event.hdr[12]=0x34df,  13535
+Event.hdr[13]=0x07dc,   2012
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 132
+0x1f31 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 1 ge_id = 124 channel = 31  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::          7          7 0x00000007 |0000|0000|0000|0000|0000|0000|0000|0111|
+rawE              ::          7          7 0x00000007 |0000|0000|0000|0000|0000|0000|0000|0111|
+rawE (sign change)::          7          7 0x00000007 |0000|0000|0000|0000|0000|0000|0000|0111|
+Event.ehi=               0 0x00000000
+Event.ehi=0 (gain changed)
+Event.LEDts =        1722978422305
+Event.CFDts =      281285994938380
+
+---------
+new GTheader at pos=132 or 66 words (74):
+Event.hdr[ 0]=0x1f32,   7986
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x4e21,  20001
+Event.hdr[ 3]=0x2984,  10628
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x1dc1,   7617
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x84e3,  34019
+Event.hdr[ 8]=0xd229,  53801
+Event.hdr[ 9]=0xffad,  65453
+Event.hdr[10]=0xadff,  44543
+Event.hdr[11]=0xffbf,  65471
+Event.hdr[12]=0x31d7,  12759
+Event.hdr[13]=0x0023,     35
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 176
+0x1f32 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 2 ge_id = 124 channel = 32  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::       7617       7617 0x00001dc1 |0000|0000|0000|0000|0001|1101|1100|0001|
+rawE              ::       7617       7617 0x00001dc1 |0000|0000|0000|0000|0001|1101|1100|0001|
+rawE (sign change)::       7617       7617 0x00001dc1 |0000|0000|0000|0000|0001|1101|1100|0001|
+Event.ehi=             238 0x000000ee
+Event.ehi=23 (gain changed)
+Event.LEDts =        1722978422305
+Event.CFDts =      281444911415308
+
+---------
+new GTheader at pos=176 or 88 words (96):
+Event.hdr[ 0]=0x1f33,   7987
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x4e21,  20001
+Event.hdr[ 3]=0x2984,  10628
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0xc6d7,  50903
+Event.hdr[ 6]=0x4e0b,  19979
+Event.hdr[ 7]=0x84e3,  34019
+Event.hdr[ 8]=0xd229,  53801
+Event.hdr[ 9]=0xc676,  50806
+Event.hdr[10]=0xfc0b,  64523
+Event.hdr[11]=0x13d9,   5081
+Event.hdr[12]=0x13bc,   5052
+Event.hdr[13]=0x07d2,   2002
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 220
+0x1f33 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 3 ge_id = 124 channel = 33  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::     771799     771799 0x000bc6d7 |0000|0000|0000|1011|1100|0110|1101|0111|
+rawE              ::     771799     771799 0x000bc6d7 |0000|0000|0000|1011|1100|0110|1101|0111|
+rawE (sign change)::     771799     771799 0x000bc6d7 |0000|0000|0000|1011|1100|0110|1101|0111|
+Event.ehi=           24118 0x00005e36
+Event.ehi=2411 (gain changed)
+Event.LEDts =        1722978422305
+Event.CFDts =      265312768032780
+
+---------
+new GTheader at pos=220 or 110 words (118):
+Event.hdr[ 0]=0x1f34,   7988
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x4e21,  20001
+Event.hdr[ 3]=0x2984,  10628
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x0054,     84
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x84e3,  34019
+Event.hdr[ 8]=0xd229,  53801
+Event.hdr[ 9]=0x001f,     31
+Event.hdr[10]=0xa400,  41984
+Event.hdr[11]=0xffff,  65535
+Event.hdr[12]=0xffa7,  65447
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 264
+0x1f34 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 4 ge_id = 124 channel = 34  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::         84         84 0x00000054 |0000|0000|0000|0000|0000|0000|0101|0100|
+rawE              ::         84         84 0x00000054 |0000|0000|0000|0000|0000|0000|0101|0100|
+rawE (sign change)::         84         84 0x00000054 |0000|0000|0000|0000|0000|0000|0101|0100|
+Event.ehi=               2 0x00000002
+Event.ehi=0 (gain changed)
+Event.LEDts =        1722978422305
+Event.CFDts =         270587133964
+
+---------
+new GTheader at pos=264 or 132 words (140):
+Event.hdr[ 0]=0x1f35,   7989
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x4e21,  20001
+Event.hdr[ 3]=0x2984,  10628
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x3995,  14741
+Event.hdr[ 6]=0x4e0a,  19978
+Event.hdr[ 7]=0x84e3,  34019
+Event.hdr[ 8]=0xd229,  53801
+Event.hdr[ 9]=0x38bf,  14527
+Event.hdr[10]=0x140a,   5130
+Event.hdr[11]=0xffec,  65516
+Event.hdr[12]=0xd9d7,  55767
+Event.hdr[13]=0x07dc,   2012
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 308
+0x1f35 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 5 ge_id = 124 channel = 35  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::     670101     670101 0x000a3995 |0000|0000|0000|1010|0011|1001|1001|0101|
+rawE              ::     670101     670101 0x000a3995 |0000|0000|0000|1010|0011|1001|1001|0101|
+rawE (sign change)::     670101     670101 0x000a3995 |0000|0000|0000|1010|0011|1001|1001|0101|
+Event.ehi=           20940 0x000051cc
+Event.ehi=2094 (gain changed)
+Event.LEDts =        1722978422305
+Event.CFDts =      267331433660428
+
+---------
+new GTheader at pos=308 or 154 words (162):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x4e21,  20001
+Event.hdr[ 3]=0x2984,  10628
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x22ba,   8890
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x84e3,  34019
+Event.hdr[ 8]=0xd229,  53801
+Event.hdr[ 9]=0x0455,   1109
+Event.hdr[10]=0x2200,   8704
+Event.hdr[11]=0xfffe,  65534
+Event.hdr[12]=0x2f57,  12119
+Event.hdr[13]=0x002c,     44
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 352
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::       8890       8890 0x000022ba |0000|0000|0000|0000|0010|0010|1011|1010|
+rawE              ::       8890       8890 0x000022ba |0000|0000|0000|0000|0010|0010|1011|1010|
+rawE (sign change)::       8890       8890 0x000022ba |0000|0000|0000|0000|0010|0010|1011|1010|
+Event.ehi=             277 0x00000115
+Event.ehi=27 (gain changed)
+Event.LEDts =        1722978422305
+Event.CFDts =      281247339839500
+
+---------
+new GTheader at pos=352 or 176 words (184):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x4e21,  20001
+Event.hdr[ 3]=0x2984,  10628
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x18ef,   6383
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x84e3,  34019
+Event.hdr[ 8]=0xd229,  53801
+Event.hdr[ 9]=0xedd6,  60886
+Event.hdr[10]=0xddff,  56831
+Event.hdr[11]=0xffe7,  65511
+Event.hdr[12]=0x89a3,  35235
+Event.hdr[13]=0x001c,     28
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 396
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::       6383       6383 0x000018ef |0000|0000|0000|0000|0001|1000|1110|1111|
+rawE              ::       6383       6383 0x000018ef |0000|0000|0000|0000|0001|1000|1110|1111|
+rawE (sign change)::       6383       6383 0x000018ef |0000|0000|0000|0000|0001|1000|1110|1111|
+Event.ehi=             199 0x000000c7
+Event.ehi=19 (gain changed)
+Event.LEDts =        1722978422305
+Event.CFDts =          12885098508
+
+---------
+new GTheader at pos=396 or 198 words (206):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x4e21,  20001
+Event.hdr[ 3]=0x2984,  10628
+Event.hdr[ 4]=0x0191,    401
+Event.hdr[ 5]=0x8e4c,  36428
+Event.hdr[ 6]=0x1ff9,   8185
+Event.hdr[ 7]=0x84e3,  34019
+Event.hdr[ 8]=0xd229,  53801
+Event.hdr[ 9]=0xaf58,  44888
+Event.hdr[10]=0x13fc,   5116
+Event.hdr[11]=0xf981,  63873
+Event.hdr[12]=0x77a3,  30627
+Event.hdr[13]=0x000c,     12
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::   16354892   16354892 0x00f98e4c |0000|0000|1111|1001|1000|1110|0100|1100|
+rawE              :: 4294544972    -422324 0xfff98e4c |1111|1111|1111|1001|1000|1110|0100|1100|
+rawE (sign change)::     422324     422324 0x000671b4 |0000|0000|0000|0110|0111|0001|1011|0100|
+Event.ehi=           13197 0x0000338d
+Event.ehi=1319 (gain changed)
+Event.LEDts =        1722978422305
+Event.CFDts =         605602906124
+exit bin_mode3
+*end of event # 10
++++++++++++++++++++++++++++++++
+ev#    10 GEB_TYPE_DECOMP        464Bytes TS=1722978468283 curTS=1722978468181 dTS= 102
+ev#    10 GEB_TYPE_DECOMP        464Bytes TS=1722978468303 curTS=1722978468181 dTS= 122
+ev#    10 GEB_TYPE_GT_MOD29      440Bytes TS=1722978575223 curTS=1722978468181 dTS= 107042
+ev# 50000 GEB_TYPE_DECOMP        464Bytes TS=1723998894191 curTS=1723998894153 dTS= 38
+ev# 50000 GEB_TYPE_DECOMP        464Bytes TS=1723998894201 curTS=1723998894153 dTS= 48
+ev# 50000 GEB_TYPE_GT_MOD29      440Bytes TS=1723998902799 curTS=1723998894153 dTS= 8646
+ev# 100000 GEB_TYPE_DECOMP        464Bytes TS=1725070741461 curTS=1725070723829 dTS= 17632
+ev# 150000 GEB_TYPE_GT_MOD29      440Bytes TS=1726103304019 curTS=1726103268061 dTS= 35958
+ev# 200000 GEB_TYPE_DECOMP        464Bytes TS=1727168047291 curTS=1727168047273 dTS= 18
+ev# 200000 GEB_TYPE_DECOMP        464Bytes TS=1727168047559 curTS=1727168047273 dTS= 286
+ev# 250000 GEB_TYPE_GT_MOD29      440Bytes TS=1728214578687 curTS=1728214578433 dTS= 254
+ev# 300000 GEB_TYPE_DECOMP        464Bytes TS=1729254327315 curTS=1729254327311 dTS= 4
+ev# 300000 GEB_TYPE_DECOMP        464Bytes TS=1729254327393 curTS=1729254327311 dTS= 82
+ev# 300000 GEB_TYPE_DECOMP        464Bytes TS=1729254327395 curTS=1729254327311 dTS= 84
+ev# 300000 GEB_TYPE_DECOMP        464Bytes TS=1729254327567 curTS=1729254327311 dTS= 256
+ev# 350000 GEB_TYPE_DECOMP        464Bytes TS=1730267338197 curTS=1730267338029 dTS= 168
+ev# 400000 GEB_TYPE_GT_MOD29      440Bytes TS=1731291713233 curTS=1731291713145 dTS= 88
+ev# 400000 GEB_TYPE_DECOMP        464Bytes TS=1731291720399 curTS=1731291713145 dTS= 7254
+ev# 450000 GEB_TYPE_DECOMP        464Bytes TS=1732328448431 curTS=1732328448431 dTS= 0
+ev# 450000 GEB_TYPE_GT_MOD29      440Bytes TS=1732328455041 curTS=1732328448431 dTS= 6610
+ev# 500000 GEB_TYPE_DECOMP        464Bytes TS=1733363938135 curTS=1733363938135 dTS= 0
+ev# 500000 GEB_TYPE_DECOMP        464Bytes TS=1733363938145 curTS=1733363938135 dTS= 10
+ev# 500000 GEB_TYPE_DECOMP        464Bytes TS=1733363938153 curTS=1733363938135 dTS= 18
+ev# 500000 GEB_TYPE_GT_MOD29      440Bytes TS=1733363938447 curTS=1733363938135 dTS= 312
+ev# 550000 GEB_TYPE_GT_MOD29      440Bytes TS=1734385168297 curTS=1734385168151 dTS= 146
+ev# 550000 GEB_TYPE_DECOMP        464Bytes TS=1734385168345 curTS=1734385168151 dTS= 194
+ev# 600000 GEB_TYPE_DECOMP        464Bytes TS=1735429284093 curTS=1735429283897 dTS= 196
+ev# 650000 GEB_TYPE_DECOMP        464Bytes TS=1736451782525 curTS=1736451782349 dTS= 176
+ev# 700000 GEB_TYPE_GT_MOD29      440Bytes TS=1737476303969 curTS=1737476293371 dTS= 10598
+ev# 750000 GEB_TYPE_DECOMP        464Bytes TS=1738477182539 curTS=1738477098341 dTS= 84198
+ev# 800000 GEB_TYPE_DECOMP        464Bytes TS=1739446663393 curTS=1739446663349 dTS= 44
+ev# 800000 GEB_TYPE_GT_MOD29      440Bytes TS=1739446663601 curTS=1739446663349 dTS= 252
+ev# 850000 GEB_TYPE_DECOMP        464Bytes TS=1740481633337 curTS=1740481633039 dTS= 298
+ev# 900000 GEB_TYPE_DECOMP        464Bytes TS=1741493147245 curTS=1741493147241 dTS= 4
+ev# 900000 GEB_TYPE_GT_MOD29      440Bytes TS=1741493147443 curTS=1741493147241 dTS= 202
+ev# 950000 GEB_TYPE_DECOMP        464Bytes TS=1742486805759 curTS=1742486805757 dTS= 2
+ev# 950000 GEB_TYPE_DECOMP        464Bytes TS=1742486805759 curTS=1742486805757 dTS= 2
+ev# 950000 GEB_TYPE_DECOMP        464Bytes TS=1742486805761 curTS=1742486805757 dTS= 4
+ev# 950000 GEB_TYPE_DECOMP        464Bytes TS=1742486805765 curTS=1742486805757 dTS= 8
+ev# 950000 GEB_TYPE_GT_MOD29      440Bytes TS=1742486806351 curTS=1742486805757 dTS= 594
+ev# 1000000 GEB_TYPE_DECOMP        464Bytes TS=1743468651903 curTS=1743468629261 dTS= 22642
+ev# 1050000 GEB_TYPE_DECOMP        464Bytes TS=1744451927041 curTS=1744451927037 dTS= 4
+ev# 1050000 GEB_TYPE_DECOMP        464Bytes TS=1744451927041 curTS=1744451927037 dTS= 4
+ev# 1050000 GEB_TYPE_DECOMP        464Bytes TS=1744451927097 curTS=1744451927037 dTS= 60
+ev# 1050000 GEB_TYPE_GT_MOD29      440Bytes TS=1744451927345 curTS=1744451927037 dTS= 308
+ev# 1100000 GEB_TYPE_GT_MOD29      440Bytes TS=1745446713175 curTS=1745446712717 dTS= 458
+ev# 1150000 GEB_TYPE_GT_MOD29      440Bytes TS=1746430214923 curTS=1746430204233 dTS= 10690
+ev# 1200000 GEB_TYPE_DECOMP        464Bytes TS=1747407207027 curTS=1747406964357 dTS= 242670
+ev# 1250000 GEB_TYPE_DECOMP        464Bytes TS=1748376247791 curTS=1748376247645 dTS= 146
+ev# 1250000 GEB_TYPE_DECOMP        464Bytes TS=1748376247791 curTS=1748376247645 dTS= 146
+ev# 1250000 GEB_TYPE_DECOMP        464Bytes TS=1748376247797 curTS=1748376247645 dTS= 152
+ev# 1300000 GEB_TYPE_DECOMP        464Bytes TS=1749366746987 curTS=1749366746985 dTS= 2
+ev# 1300000 GEB_TYPE_DECOMP        464Bytes TS=1749366746995 curTS=1749366746985 dTS= 10
+ev# 1300000 GEB_TYPE_GT_MOD29      440Bytes TS=1749366747125 curTS=1749366746985 dTS= 140
+ev# 1300000 GEB_TYPE_DECOMP        464Bytes TS=1749366789623 curTS=1749366746985 dTS= 42638
+ev# 1350000 GEB_TYPE_DECOMP        464Bytes TS=1750362292497 curTS=1750362292493 dTS= 4
+ev# 1350000 GEB_TYPE_DECOMP        464Bytes TS=1750362395573 curTS=1750362292493 dTS= 103080
+ev# 1400000 GEB_TYPE_GT_MOD29      440Bytes TS=1751345385987 curTS=1751345385847 dTS= 140
+ev# 1400000 GEB_TYPE_DECOMP        464Bytes TS=1751345385995 curTS=1751345385847 dTS= 148
+ev# 1400000 GEB_TYPE_DECOMP        464Bytes TS=1751345414765 curTS=1751345385847 dTS= 28918
+ev# 1450000 GEB_TYPE_DECOMP        464Bytes TS=1752310525705 curTS=1752310523507 dTS= 2198
+ev# 1500000 GEB_TYPE_DECOMP        464Bytes TS=1753284948021 curTS=1753284948019 dTS= 2
+ev# 1500000 GEB_TYPE_GT_MOD29      440Bytes TS=1753284948413 curTS=1753284948019 dTS= 394
+ev# 1550000 GEB_TYPE_DECOMP        464Bytes TS=1754246442403 curTS=1754246409025 dTS= 33378
+ev# 1600000 GEB_TYPE_DECOMP        464Bytes TS=1755219076485 curTS=1755219076351 dTS= 134
+ev# 1600000 GEB_TYPE_GT_MOD29      440Bytes TS=1755219076701 curTS=1755219076351 dTS= 350
+ev# 1650000 GEB_TYPE_DECOMP        464Bytes TS=1756196299977 curTS=1756196299717 dTS= 260
+ev# 1700000 GEB_TYPE_DECOMP        464Bytes TS=1757156950677 curTS=1757156903849 dTS= 46828
+ev# 1750000 GEB_TYPE_DECOMP        464Bytes TS=1758148886919 curTS=1758148886915 dTS= 4
+ev# 1750000 GEB_TYPE_GT_MOD29      440Bytes TS=1758148887007 curTS=1758148886915 dTS= 92
+ev# 1750000 GEB_TYPE_DECOMP        464Bytes TS=1758148924863 curTS=1758148886915 dTS= 37948
+ev# 1800000 GEB_TYPE_DECOMP        464Bytes TS=1759132382199 curTS=1759132249623 dTS= 132576
+ev# 1850000 GEB_TYPE_GT_MOD29       44Bytes TS=1760090375843 curTS=1760090375843 dTS= 0
+ev# 1850000 GEB_TYPE_DECOMP        464Bytes TS=1760090376025 curTS=1760090375843 dTS= 182
+ev# 1900000 GEB_TYPE_DECOMP        464Bytes TS=1761062557119 curTS=1761062557091 dTS= 28
+ev# 1900000 GEB_TYPE_DECOMP        464Bytes TS=1761062557385 curTS=1761062557091 dTS= 294
+ev# 1950000 GEB_TYPE_DECOMP        464Bytes TS=1762043894735 curTS=1762043894473 dTS= 262
+ev# 2000000 GEB_TYPE_DECOMP        464Bytes TS=1763031705181 curTS=1763031637899 dTS= 67282
+ev# 2050000 GEB_TYPE_DECOMP        464Bytes TS=1763994104833 curTS=1763994104661 dTS= 172
+ev# 2100000 GEB_TYPE_GT_MOD29      440Bytes TS=1764959043817 curTS=1764959043643 dTS= 174
+ev# 2150000 GEB_TYPE_DECOMP        464Bytes TS=1765927640751 curTS=1765927640707 dTS= 44
+ev# 2150000 GEB_TYPE_GT_MOD29      440Bytes TS=1765927641091 curTS=1765927640707 dTS= 384
+ev# 2200000 GEB_TYPE_DECOMP        464Bytes TS=1766902814411 curTS=1766902814409 dTS= 2
+ev# 2200000 GEB_TYPE_DECOMP        464Bytes TS=1766902814411 curTS=1766902814409 dTS= 2
+ev# 2200000 GEB_TYPE_DECOMP        464Bytes TS=1766902814607 curTS=1766902814409 dTS= 198
+ev# 2250000 GEB_TYPE_DECOMP        464Bytes TS=1767876484233 curTS=1767876483919 dTS= 314
+ev# 2300000 GEB_TYPE_DECOMP        464Bytes TS=1768842394333 curTS=1768842393449 dTS= 884
+ev# 2350000 GEB_TYPE_GT_MOD29      440Bytes TS=1769814305791 curTS=1769814305789 dTS= 2
+ev# 2350000 GEB_TYPE_GT_MOD29      440Bytes TS=1769814361703 curTS=1769814305789 dTS= 55914
+ev# 2400000 GEB_TYPE_DECOMP        464Bytes TS=1770793647877 curTS=1770793647869 dTS= 8
+ev# 2400000 GEB_TYPE_GT_MOD29      440Bytes TS=1770793670087 curTS=1770793647869 dTS= 22218
+ev# 2450000 GEB_TYPE_DECOMP        464Bytes TS=1771776861931 curTS=1771776861597 dTS= 334
+ev# 2500000 GEB_TYPE_DECOMP        464Bytes TS=1772752600303 curTS=1772752580931 dTS= 19372
+ev# 2550000 GEB_TYPE_GT_MOD29      440Bytes TS=1773742576887 curTS=1773742576829 dTS= 58
+ev# 2550000 GEB_TYPE_GT_MOD29      440Bytes TS=1773742603119 curTS=1773742576829 dTS= 26290
+ev# 2600000 GEB_TYPE_GT_MOD29      440Bytes TS=1774749368741 curTS=1774749368635 dTS= 106
+ev# 2600000 GEB_TYPE_DECOMP        464Bytes TS=1774749377673 curTS=1774749368635 dTS= 9038
+ev# 2650000 GEB_TYPE_DECOMP        464Bytes TS=1775739387629 curTS=1775739387625 dTS= 4
+ev# 2650000 GEB_TYPE_DECOMP        464Bytes TS=1775739399419 curTS=1775739387625 dTS= 11794
+ev# 2700000 GEB_TYPE_GT_MOD29      440Bytes TS=1776719299527 curTS=1776719243969 dTS= 55558
+ev# 2750000 GEB_TYPE_DECOMP        464Bytes TS=1777684653969 curTS=1777684645547 dTS= 8422
+ev# 2800000 GEB_TYPE_DECOMP        464Bytes TS=1778701976405 curTS=1778701976113 dTS= 292
+ev# 2850000 GEB_TYPE_DECOMP        464Bytes TS=1779725358529 curTS=1779725317229 dTS= 41300
+ev# 2900000 GEB_TYPE_GT_MOD29      440Bytes TS=1780705656137 curTS=1780705656025 dTS= 112
+ev# 2900000 GEB_TYPE_DECOMP        464Bytes TS=1780705656149 curTS=1780705656025 dTS= 124
+ev# 2900000 GEB_TYPE_DECOMP        464Bytes TS=1780705657625 curTS=1780705656025 dTS= 1600
+ev# 2950000 GEB_TYPE_GT_MOD29      440Bytes TS=1781686874187 curTS=1781686798151 dTS= 76036
+ev# 3000000 GEB_TYPE_DECOMP        464Bytes TS=1782681781045 curTS=1782681780875 dTS= 170
+ev# 3050000 GEB_TYPE_DECOMP        464Bytes TS=1783664758913 curTS=1783664697513 dTS= 61400
+ev# 3100000 GEB_TYPE_DECOMP        464Bytes TS=1784668204573 curTS=1784668204569 dTS= 4
+ev# 3100000 GEB_TYPE_GT_MOD29      440Bytes TS=1784668204957 curTS=1784668204569 dTS= 388
+ev# 3150000 GEB_TYPE_DECOMP        464Bytes TS=1785683446129 curTS=1785683415269 dTS= 30860
+ev# 3200000 GEB_TYPE_GT_MOD29      440Bytes TS=1786744732983 curTS=1786744693059 dTS= 39924
+ev# 3250000 GEB_TYPE_DECOMP        464Bytes TS=1787801096649 curTS=1787801096609 dTS= 40
+ev# 3250000 GEB_TYPE_DECOMP        464Bytes TS=1787801096675 curTS=1787801096609 dTS= 66
+ev# 3250000 GEB_TYPE_GT_MOD29      440Bytes TS=1787801096739 curTS=1787801096609 dTS= 130
+ev# 3250000 GEB_TYPE_DECOMP        464Bytes TS=1787801096919 curTS=1787801096609 dTS= 310
+ev# 3300000 GEB_TYPE_DECOMP        464Bytes TS=1788843558241 curTS=1788843558241 dTS= 0
+ev# 3300000 GEB_TYPE_DECOMP        464Bytes TS=1788843558241 curTS=1788843558241 dTS= 0
+ev# 3300000 GEB_TYPE_DECOMP        464Bytes TS=1788843558243 curTS=1788843558241 dTS= 2
+ev# 3300000 GEB_TYPE_DECOMP        464Bytes TS=1788843558247 curTS=1788843558241 dTS= 6
+ev# 3300000 GEB_TYPE_DECOMP        464Bytes TS=1788843558387 curTS=1788843558241 dTS= 146
+ev# 3300000 GEB_TYPE_DECOMP        464Bytes TS=1788843558391 curTS=1788843558241 dTS= 150
+ev# 3350000 GEB_TYPE_DECOMP        464Bytes TS=1789890333447 curTS=1789890304707 dTS= 28740
+ev# 3400000 GEB_TYPE_DECOMP        464Bytes TS=1790911589577 curTS=1790911430231 dTS= 159346
+ev# 3450000 GEB_TYPE_DECOMP        464Bytes TS=1791958564267 curTS=1791958563865 dTS= 402
+ev# 3500000 GEB_TYPE_DECOMP        464Bytes TS=1792996196021 curTS=1792996187777 dTS= 8244
+ev# 3550000 GEB_TYPE_DECOMP        464Bytes TS=1794055190089 curTS=1794055190081 dTS= 8
+ev# 3550000 GEB_TYPE_GT_MOD29      440Bytes TS=1794055190219 curTS=1794055190081 dTS= 138
+ev# 3550000 GEB_TYPE_DECOMP        464Bytes TS=1794055206431 curTS=1794055190081 dTS= 16350
+ev# 3600000 GEB_TYPE_GT_MOD29      440Bytes TS=1795112709955 curTS=1795112697797 dTS= 12158
+ev# 3650000 GEB_TYPE_GT_MOD29      440Bytes TS=1796181081491 curTS=1796181056363 dTS= 25128
+ev# 3700000 GEB_TYPE_DECOMP        464Bytes TS=1797227718223 curTS=1797227718221 dTS= 2
+ev# 3700000 GEB_TYPE_DECOMP        464Bytes TS=1797227718225 curTS=1797227718221 dTS= 4
+ev# 3700000 GEB_TYPE_DECOMP        464Bytes TS=1797227718235 curTS=1797227718221 dTS= 14
+ev# 3700000 GEB_TYPE_GT_MOD29      440Bytes TS=1797227718289 curTS=1797227718221 dTS= 68
+ev# 3700000 GEB_TYPE_DECOMP        464Bytes TS=1797227781585 curTS=1797227718221 dTS= 63364
+ev# 3750000 GEB_TYPE_DECOMP        464Bytes TS=1798260567579 curTS=1798260567537 dTS= 42
+ev# 3750000 GEB_TYPE_DECOMP        464Bytes TS=1798260593847 curTS=1798260567537 dTS= 26310
+ev# 3800000 GEB_TYPE_DECOMP        464Bytes TS=1799285725125 curTS=1799285725121 dTS= 4
+ev# 3800000 GEB_TYPE_GT_MOD29      440Bytes TS=1799285725315 curTS=1799285725121 dTS= 194
+ev# 3850000 GEB_TYPE_GT_MOD29      440Bytes TS=1800306393925 curTS=1800306355491 dTS= 38434
+ev# 3900000 GEB_TYPE_DECOMP        464Bytes TS=1801345787083 curTS=1801345727839 dTS= 59244
+ev# 3950000 GEB_TYPE_DECOMP        464Bytes TS=1802390542693 curTS=1802390498333 dTS= 44360
+ev# 4000000 GEB_TYPE_DECOMP        464Bytes TS=1803433808875 curTS=1803433808875 dTS= 0
+ev# 4000000 GEB_TYPE_DECOMP        464Bytes TS=1803433920293 curTS=1803433808875 dTS= 111418
+ev# 4050000 GEB_TYPE_DECOMP        464Bytes TS=1804459332977 curTS=1804459279785 dTS= 53192
+ev# 4100000 GEB_TYPE_DECOMP        464Bytes TS=1805497271823 curTS=1805497271817 dTS= 6
+ev# 4100000 GEB_TYPE_DECOMP        464Bytes TS=1805497271825 curTS=1805497271817 dTS= 8
+ev# 4100000 GEB_TYPE_DECOMP        464Bytes TS=1805497272461 curTS=1805497271817 dTS= 644
+ev# 4150000 GEB_TYPE_DECOMP        464Bytes TS=1806509097365 curTS=1806509097325 dTS= 40
+ev# 4150000 GEB_TYPE_DECOMP        464Bytes TS=1806509097369 curTS=1806509097325 dTS= 44
+ev# 4150000 GEB_TYPE_DECOMP        464Bytes TS=1806509106777 curTS=1806509097325 dTS= 9452
+ev# 4200000 GEB_TYPE_DECOMP        464Bytes TS=1807549164909 curTS=1807549091761 dTS= 73148
+ev# 4250000 GEB_TYPE_DECOMP        464Bytes TS=1808581611117 curTS=1808581466415 dTS= 144702
+ev# 4300000 GEB_TYPE_GT_MOD29      440Bytes TS=1809620546331 curTS=1809620454067 dTS= 92264
+ev# 4350000 GEB_TYPE_DECOMP        464Bytes TS=1810664471653 curTS=1810664467501 dTS= 4152
+ev# 4400000 GEB_TYPE_DECOMP        464Bytes TS=1811739735981 curTS=1811739735921 dTS= 60
+ev# 4400000 GEB_TYPE_GT_MOD29      440Bytes TS=1811739742423 curTS=1811739735921 dTS= 6502
+ev# 4450000 GEB_TYPE_GT_MOD29      440Bytes TS=1812775588531 curTS=1812775588321 dTS= 210
+ev# 4500000 GEB_TYPE_DECOMP        464Bytes TS=1813838321799 curTS=1813838219469 dTS= 102330
+ev# 4550000 GEB_TYPE_DECOMP        464Bytes TS=1814849025081 curTS=1814849000097 dTS= 24984
+ev# 4600000 GEB_TYPE_DECOMP        464Bytes TS=1815872346375 curTS=1815872346313 dTS= 62
+ev# 4600000 GEB_TYPE_GT_MOD29      440Bytes TS=1815872346635 curTS=1815872346313 dTS= 322
+ev# 4650000 GEB_TYPE_GT_MOD29      440Bytes TS=1816900180207 curTS=1816900165771 dTS= 14436
+ev# 4700000 GEB_TYPE_GT_MOD29      440Bytes TS=1817915467279 curTS=1817915467101 dTS= 178
+ev# 4750000 GEB_TYPE_DECOMP        464Bytes TS=1818947715425 curTS=1818947715163 dTS= 262
+ev# 4800000 GEB_TYPE_DECOMP        464Bytes TS=1819979643901 curTS=1819979551029 dTS= 92872
+ev# 4850000 GEB_TYPE_DECOMP        464Bytes TS=1821021597109 curTS=1821021597109 dTS= 0
+ev# 4850000 GEB_TYPE_DECOMP        464Bytes TS=1821021597113 curTS=1821021597109 dTS= 4
+ev# 4850000 GEB_TYPE_DECOMP        464Bytes TS=1821021597115 curTS=1821021597109 dTS= 6
+ev# 4850000 GEB_TYPE_DECOMP        464Bytes TS=1821021597125 curTS=1821021597109 dTS= 16
+ev# 4850000 GEB_TYPE_DECOMP        464Bytes TS=1821021734411 curTS=1821021597109 dTS= 137302
+ev# 4900000 GEB_TYPE_DECOMP        464Bytes TS=1822086470133 curTS=1822086470129 dTS= 4
+ev# 4900000 GEB_TYPE_DECOMP        464Bytes TS=1822086482691 curTS=1822086470129 dTS= 12562
+ev# 4950000 GEB_TYPE_DECOMP        464Bytes TS=1823138414817 curTS=1823138414693 dTS= 124
+ev# 4950000 GEB_TYPE_GT_MOD29      440Bytes TS=1823138434407 curTS=1823138414693 dTS= 19714
+ev# 5000000 GEB_TYPE_GT_MOD29      440Bytes TS=1824197245159 curTS=1824197244663 dTS= 496
+ev# 5050000 GEB_TYPE_DECOMP        464Bytes TS=1825238274857 curTS=1825238274713 dTS= 144
+ev# 5050000 GEB_TYPE_DECOMP        464Bytes TS=1825238344221 curTS=1825238274713 dTS= 69508
+ev# 5100000 GEB_TYPE_DECOMP        464Bytes TS=1826266201575 curTS=1826266201219 dTS= 356
+ev# 5150000 GEB_TYPE_DECOMP        464Bytes TS=1827294308447 curTS=1827294282899 dTS= 25548
+ev# 5200000 GEB_TYPE_GT_MOD29      440Bytes TS=1828324046675 curTS=1828323986247 dTS= 60428
+ev# 5250000 GEB_TYPE_DECOMP        464Bytes TS=1829346931443 curTS=1829346879119 dTS= 52324
+ev# 5300000 GEB_TYPE_DECOMP        464Bytes TS=1830388832523 curTS=1830388832497 dTS= 26
+ev# 5300000 GEB_TYPE_GT_MOD29      440Bytes TS=1830388832639 curTS=1830388832497 dTS= 142
+ev# 5300000 GEB_TYPE_GT_MOD29      440Bytes TS=1830388917767 curTS=1830388832497 dTS= 85270
+ev# 5350000 GEB_TYPE_DECOMP        464Bytes TS=1831416714725 curTS=1831416714509 dTS= 216
+ev# 5400000 GEB_TYPE_DECOMP        464Bytes TS=1832450346297 curTS=1832450343341 dTS= 2956
+ev# 5450000 GEB_TYPE_DECOMP        464Bytes TS=1833465424529 curTS=1833465423947 dTS= 582
+ev# 5500000 GEB_TYPE_GT_MOD29      440Bytes TS=1834499216667 curTS=1834499216079 dTS= 588
+ev# 5550000 GEB_TYPE_DECOMP        464Bytes TS=1835532412361 curTS=1835532395027 dTS= 17334
+ev# 5600000 GEB_TYPE_DECOMP        464Bytes TS=1836554257625 curTS=1836554252027 dTS= 5598
+ev# 5650000 GEB_TYPE_DECOMP        464Bytes TS=1837579040385 curTS=1837579001511 dTS= 38874
+ev# 5700000 GEB_TYPE_DECOMP        464Bytes TS=1838589478259 curTS=1838589420781 dTS= 57478
+ev# 5750000 GEB_TYPE_GT_MOD29      440Bytes TS=1839594214361 curTS=1839594214093 dTS= 268
+ev# 5800000 GEB_TYPE_DECOMP        464Bytes TS=1840613942619 curTS=1840613942619 dTS= 0
+ev# 5800000 GEB_TYPE_DECOMP        464Bytes TS=1840613942621 curTS=1840613942619 dTS= 2
+ev# 5800000 GEB_TYPE_DECOMP        464Bytes TS=1840613942621 curTS=1840613942619 dTS= 2
+ev# 5800000 GEB_TYPE_GT_MOD29      440Bytes TS=1840613942695 curTS=1840613942619 dTS= 76
+ev# 5800000 GEB_TYPE_DECOMP        464Bytes TS=1840613942849 curTS=1840613942619 dTS= 230
+ev# 5850000 GEB_TYPE_DECOMP        464Bytes TS=1841622603023 curTS=1841622602781 dTS= 242
+ev# 5900000 GEB_TYPE_DECOMP        464Bytes TS=1842620996317 curTS=1842620996029 dTS= 288
+ev# 5950000 GEB_TYPE_DECOMP        464Bytes TS=1843618725335 curTS=1843618665473 dTS= 59862
+ev# 6000000 GEB_TYPE_GT_MOD29      440Bytes TS=1844618342301 curTS=1844618320603 dTS= 21698
+ev# 6050000 GEB_TYPE_GT_MOD29      440Bytes TS=1845639050567 curTS=1845639050045 dTS= 522
+ev# 6100000 GEB_TYPE_DECOMP        464Bytes TS=1846661061751 curTS=1846661061589 dTS= 162
+ev# 6150000 GEB_TYPE_DECOMP        464Bytes TS=1847676483055 curTS=1847676428403 dTS= 54652
+ev# 6200000 GEB_TYPE_DECOMP        464Bytes TS=1848694744007 curTS=1848694744001 dTS= 6
+ev# 6200000 GEB_TYPE_DECOMP        464Bytes TS=1848694845133 curTS=1848694744001 dTS= 101132
+ev# 6250000 GEB_TYPE_DECOMP        464Bytes TS=1849700304719 curTS=1849700304671 dTS= 48
+ev# 6250000 GEB_TYPE_GT_MOD29      440Bytes TS=1849700309599 curTS=1849700304671 dTS= 4928
+ev# 6300000 GEB_TYPE_DECOMP        464Bytes TS=1850703135535 curTS=1850703127025 dTS= 8510
+ev# 6350000 GEB_TYPE_DECOMP        464Bytes TS=1851717531601 curTS=1851717531371 dTS= 230
+ev# 6400000 GEB_TYPE_DECOMP        464Bytes TS=1852746219433 curTS=1852746219401 dTS= 32
+ev# 6400000 GEB_TYPE_DECOMP        464Bytes TS=1852746244099 curTS=1852746219401 dTS= 24698
+ev# 6450000 GEB_TYPE_DECOMP        464Bytes TS=1853797845559 curTS=1853797842775 dTS= 2784
+ev# 6500000 GEB_TYPE_DECOMP        464Bytes TS=1854831579227 curTS=1854831579159 dTS= 68
+ev# 6500000 GEB_TYPE_DECOMP        464Bytes TS=1854831579309 curTS=1854831579159 dTS= 150
+ev# 6550000 GEB_TYPE_DECOMP        464Bytes TS=1855833796607 curTS=1855833796559 dTS= 48
+ev# 6550000 GEB_TYPE_DECOMP        464Bytes TS=1855833908151 curTS=1855833796559 dTS= 111592
+ev# 6600000 GEB_TYPE_DECOMP        464Bytes TS=1856859830407 curTS=1856859830407 dTS= 0
+ev# 6600000 GEB_TYPE_DECOMP        464Bytes TS=1856859830409 curTS=1856859830407 dTS= 2
+ev# 6600000 GEB_TYPE_DECOMP        464Bytes TS=1856859830409 curTS=1856859830407 dTS= 2
+ev# 6600000 GEB_TYPE_DECOMP        464Bytes TS=1856859830415 curTS=1856859830407 dTS= 8
+ev# 6600000 GEB_TYPE_DECOMP        464Bytes TS=1856859830633 curTS=1856859830407 dTS= 226
+ev# 6650000 GEB_TYPE_DECOMP        464Bytes TS=1857844762507 curTS=1857844762503 dTS= 4
+ev# 6650000 GEB_TYPE_DECOMP        464Bytes TS=1857844762507 curTS=1857844762503 dTS= 4
+ev# 6650000 GEB_TYPE_DECOMP        464Bytes TS=1857844762507 curTS=1857844762503 dTS= 4
+ev# 6650000 GEB_TYPE_DECOMP        464Bytes TS=1857844762633 curTS=1857844762503 dTS= 130
+ev# 6650000 GEB_TYPE_GT_MOD29      440Bytes TS=1857844762713 curTS=1857844762503 dTS= 210
+ev# 6700000 GEB_TYPE_GT_MOD29      440Bytes TS=1858829833271 curTS=1858829832889 dTS= 382
+ev# 6750000 GEB_TYPE_GT_MOD29      440Bytes TS=1859797753283 curTS=1859797753253 dTS= 30
+ev# 6750000 GEB_TYPE_DECOMP        464Bytes TS=1859797753455 curTS=1859797753253 dTS= 202
+ev# 6800000 GEB_TYPE_DECOMP        464Bytes TS=1860741458073 curTS=1860741457893 dTS= 180
+ev# 6850000 GEB_TYPE_DECOMP        464Bytes TS=1861707099873 curTS=1861707099837 dTS= 36
+ev# 6850000 GEB_TYPE_DECOMP        464Bytes TS=1861707270051 curTS=1861707099837 dTS= 170214
+ev# 6900000 GEB_TYPE_DECOMP        464Bytes TS=1862689095651 curTS=1862689061269 dTS= 34382
+ev# 6950000 GEB_TYPE_DECOMP        464Bytes TS=1863673762529 curTS=1863673762463 dTS= 66
+ev# 6950000 GEB_TYPE_DECOMP        464Bytes TS=1863673762597 curTS=1863673762463 dTS= 134
+ev# 6950000 GEB_TYPE_DECOMP        464Bytes TS=1863673762601 curTS=1863673762463 dTS= 138
+ev# 6950000 GEB_TYPE_GT_MOD29      440Bytes TS=1863673762637 curTS=1863673762463 dTS= 174
+ev# 7000000 GEB_TYPE_GT_MOD29      440Bytes TS=1864670977555 curTS=1864670945825 dTS= 31730
+ev# 7050000 GEB_TYPE_DECOMP        464Bytes TS=1865680345563 curTS=1865680345379 dTS= 184
+ev# 7100000 GEB_TYPE_DECOMP        464Bytes TS=1866690510613 curTS=1866690441569 dTS= 69044
+ev# 7150000 GEB_TYPE_DECOMP        464Bytes TS=1867724726907 curTS=1867724705593 dTS= 21314
+ev# 7200000 GEB_TYPE_GT_MOD29      440Bytes TS=1868735784107 curTS=1868735784057 dTS= 50
+ev# 7200000 GEB_TYPE_DECOMP        464Bytes TS=1868735784255 curTS=1868735784057 dTS= 198
+ev# 7250000 GEB_TYPE_GT_MOD29      440Bytes TS=1869759176425 curTS=1869759159213 dTS= 17212
+ev# 7300000 GEB_TYPE_DECOMP        464Bytes TS=1870824253013 curTS=1870824252929 dTS= 84
+ev# 7300000 GEB_TYPE_GT_MOD29      440Bytes TS=1870824257117 curTS=1870824252929 dTS= 4188
+ev# 7350000 GEB_TYPE_DECOMP        464Bytes TS=1871864350209 curTS=1871864341803 dTS= 8406
+ev# 7400000 GEB_TYPE_DECOMP        464Bytes TS=1872936167383 curTS=1872936167383 dTS= 0
+ev# 7400000 GEB_TYPE_DECOMP        464Bytes TS=1872936167383 curTS=1872936167383 dTS= 0
+ev# 7400000 GEB_TYPE_DECOMP        464Bytes TS=1872936167659 curTS=1872936167383 dTS= 276
+ev# 7450000 GEB_TYPE_GT_MOD29      440Bytes TS=1873971703009 curTS=1873971702843 dTS= 166
+ev# 7500000 GEB_TYPE_DECOMP        464Bytes TS=1874999299633 curTS=1874999299115 dTS= 518
+ev# 7550000 GEB_TYPE_GT_MOD29      440Bytes TS=1876025560603 curTS=1876025560563 dTS= 40
+ev# 7550000 GEB_TYPE_DECOMP        464Bytes TS=1876025573885 curTS=1876025560563 dTS= 13322
+ev# 7600000 GEB_TYPE_DECOMP        464Bytes TS=1877038304203 curTS=1877038303589 dTS= 614
+ev# 7650000 GEB_TYPE_DECOMP        464Bytes TS=1878050237183 curTS=1878050136433 dTS= 100750
+ev# 7700000 GEB_TYPE_DECOMP        464Bytes TS=1879052460233 curTS=1879052459997 dTS= 236
+ev# 7750000 GEB_TYPE_DECOMP        464Bytes TS=1880076878983 curTS=1880076878845 dTS= 138
+ev# 7750000 GEB_TYPE_DECOMP        464Bytes TS=1880076949549 curTS=1880076878845 dTS= 70704
+ev# 7800000 GEB_TYPE_GT_MOD29      440Bytes TS=1881060791237 curTS=1881060697875 dTS= 93362
+ev# 7850000 GEB_TYPE_DECOMP        464Bytes TS=1882096594243 curTS=1882096586409 dTS= 7834
+ev# 7900000 GEB_TYPE_DECOMP        464Bytes TS=1883137060403 curTS=1883137060177 dTS= 226
+ev# 7950000 GEB_TYPE_DECOMP        464Bytes TS=1884183431019 curTS=1884183372945 dTS= 58074
+ev# 8000000 GEB_TYPE_DECOMP        464Bytes TS=1885187212465 curTS=1885187212455 dTS= 10
+ev# 8000000 GEB_TYPE_GT_MOD29      440Bytes TS=1885187212537 curTS=1885187212455 dTS= 82
+ev# 8000000 GEB_TYPE_DECOMP        464Bytes TS=1885187212541 curTS=1885187212455 dTS= 86
+ev# 8000000 GEB_TYPE_DECOMP        464Bytes TS=1885187212593 curTS=1885187212455 dTS= 138
+ev# 8000000 GEB_TYPE_DECOMP        464Bytes TS=1885187212611 curTS=1885187212455 dTS= 156
+ev# 8050000 GEB_TYPE_DECOMP        464Bytes TS=1886280381713 curTS=1886280381707 dTS= 6
+ev# 8050000 GEB_TYPE_DECOMP        464Bytes TS=1886280381749 curTS=1886280381707 dTS= 42
+ev# 8050000 GEB_TYPE_DECOMP        464Bytes TS=1886280381749 curTS=1886280381707 dTS= 42
+ev# 8050000 GEB_TYPE_DECOMP        464Bytes TS=1886280381751 curTS=1886280381707 dTS= 44
+ev# 8050000 GEB_TYPE_DECOMP        464Bytes TS=1886280381973 curTS=1886280381707 dTS= 266
+ev# 8100000 GEB_TYPE_DECOMP        464Bytes TS=1887846095667 curTS=1887846089883 dTS= 5784
+ev# 8150000 GEB_TYPE_GT_MOD29      440Bytes TS=1888941791227 curTS=1888941778847 dTS= 12380
+ev# 8200000 GEB_TYPE_DECOMP        464Bytes TS=1889980943441 curTS=1889980943229 dTS= 212
+ev# 8250000 GEB_TYPE_DECOMP        464Bytes TS=1891014564705 curTS=1891014547345 dTS= 17360
+ev# 8300000 GEB_TYPE_DECOMP        464Bytes TS=1892051634273 curTS=1892051633843 dTS= 430
+ev# 8350000 GEB_TYPE_DECOMP        464Bytes TS=1893090094779 curTS=1893090094017 dTS= 762
+ev# 8400000 GEB_TYPE_DECOMP        464Bytes TS=1894085658909 curTS=1894085658739 dTS= 170
+ev# 8450000 GEB_TYPE_DECOMP        464Bytes TS=1895047550601 curTS=1895047550601 dTS= 0
+ev# 8450000 GEB_TYPE_DECOMP        464Bytes TS=1895047550603 curTS=1895047550601 dTS= 2
+ev# 8450000 GEB_TYPE_DECOMP        464Bytes TS=1895047550689 curTS=1895047550601 dTS= 88
+ev# 8450000 GEB_TYPE_DECOMP        464Bytes TS=1895047550767 curTS=1895047550601 dTS= 166
+ev# 8500000 GEB_TYPE_GT_MOD29      440Bytes TS=1896038361037 curTS=1896038357307 dTS= 3730
+ev# 8550000 GEB_TYPE_DECOMP        464Bytes TS=1897013267721 curTS=1897013254859 dTS= 12862
+ev# 8600000 GEB_TYPE_DECOMP        464Bytes TS=1898014496417 curTS=1898014496411 dTS= 6
+ev# 8600000 GEB_TYPE_DECOMP        464Bytes TS=1898014496647 curTS=1898014496411 dTS= 236
+ev# 8650000 GEB_TYPE_DECOMP        464Bytes TS=1899024288967 curTS=1899024288695 dTS= 272
+ev# 8700000 GEB_TYPE_DECOMP        464Bytes TS=1900033703993 curTS=1900033703949 dTS= 44
+ev# 8700000 GEB_TYPE_DECOMP        464Bytes TS=1900033704061 curTS=1900033703949 dTS= 112
+ev# 8700000 GEB_TYPE_DECOMP        464Bytes TS=1900033704251 curTS=1900033703949 dTS= 302
+ev# 8750000 GEB_TYPE_DECOMP        464Bytes TS=1901038984999 curTS=1901038984721 dTS= 278
+ev# 8800000 GEB_TYPE_DECOMP        464Bytes TS=1902018922771 curTS=1902018922769 dTS= 2
+ev# 8800000 GEB_TYPE_GT_MOD29      440Bytes TS=1902018925373 curTS=1902018922769 dTS= 2604
+ev# 8850000 GEB_TYPE_DECOMP        464Bytes TS=1902972016187 curTS=1902972015881 dTS= 306
+ev# 8900000 GEB_TYPE_DECOMP        464Bytes TS=1903964009735 curTS=1903964002007 dTS= 7728
+ev# 8950000 GEB_TYPE_DECOMP        464Bytes TS=1904952072917 curTS=1904951994821 dTS= 78096
+ev# 9000000 GEB_TYPE_DECOMP        464Bytes TS=1905944478429 curTS=1905944478241 dTS= 188
+ev# 9050000 GEB_TYPE_DECOMP        464Bytes TS=1906952860073 curTS=1906952860025 dTS= 48
+ev# 9050000 GEB_TYPE_DECOMP        464Bytes TS=1906952860161 curTS=1906952860025 dTS= 136
+ev# 9050000 GEB_TYPE_DECOMP        464Bytes TS=1906952860243 curTS=1906952860025 dTS= 218
+ev# 9100000 GEB_TYPE_DECOMP        464Bytes TS=1907980865079 curTS=1907980864701 dTS= 378
+ev# 9150000 GEB_TYPE_DECOMP        464Bytes TS=1908997246201 curTS=1908997246171 dTS= 30
+ev# 9150000 GEB_TYPE_GT_MOD29      440Bytes TS=1908997319633 curTS=1908997246171 dTS= 73462
+ev# 9200000 GEB_TYPE_GT_MOD29      440Bytes TS=1910023971855 curTS=1910023950423 dTS= 21432
+ev# 9250000 GEB_TYPE_GT_MOD29      440Bytes TS=1911036993805 curTS=1911036988315 dTS= 5490
+ev# 9300000 GEB_TYPE_DECOMP        464Bytes TS=1912059064039 curTS=1912059064037 dTS= 2
+ev# 9300000 GEB_TYPE_DECOMP        464Bytes TS=1912059064039 curTS=1912059064037 dTS= 2
+ev# 9300000 GEB_TYPE_GT_MOD29      440Bytes TS=1912059064111 curTS=1912059064037 dTS= 74
+ev# 9300000 GEB_TYPE_DECOMP        464Bytes TS=1912059093139 curTS=1912059064037 dTS= 29102
+ev# 9350000 GEB_TYPE_DECOMP        464Bytes TS=1913073791485 curTS=1913073791183 dTS= 302
+ev# 9400000 GEB_TYPE_DECOMP        464Bytes TS=1914079212773 curTS=1914079212767 dTS= 6
+ev# 9400000 GEB_TYPE_DECOMP        464Bytes TS=1914079212775 curTS=1914079212767 dTS= 8
+ev# 9400000 GEB_TYPE_GT_MOD29      440Bytes TS=1914079213075 curTS=1914079212767 dTS= 308
+ev# 9450000 GEB_TYPE_DECOMP        464Bytes TS=1915125326945 curTS=1915125318539 dTS= 8406
+ev# 9500000 GEB_TYPE_GT_MOD29      440Bytes TS=1916162973117 curTS=1916162953219 dTS= 19898
+ev# 9550000 GEB_TYPE_DECOMP        464Bytes TS=1917174990799 curTS=1917174990795 dTS= 4
+ev# 9550000 GEB_TYPE_DECOMP        464Bytes TS=1917174990799 curTS=1917174990795 dTS= 4
+ev# 9550000 GEB_TYPE_DECOMP        464Bytes TS=1917174991001 curTS=1917174990795 dTS= 206
+ev# 9600000 GEB_TYPE_DECOMP        464Bytes TS=1918208796939 curTS=1918208559775 dTS= 237164
+ev# 9650000 GEB_TYPE_DECOMP        464Bytes TS=1919229490431 curTS=1919229382003 dTS= 108428
+ev# 9700000 GEB_TYPE_GT_MOD29      440Bytes TS=1920237443931 curTS=1920237443391 dTS= 540
+ev# 9750000 GEB_TYPE_GT_MOD29      440Bytes TS=1921284102629 curTS=1921284102511 dTS= 118
+ev# 9750000 GEB_TYPE_DECOMP        464Bytes TS=1921284102645 curTS=1921284102511 dTS= 134
+ev# 9750000 GEB_TYPE_DECOMP        464Bytes TS=1921284102647 curTS=1921284102511 dTS= 136
+ev# 9750000 GEB_TYPE_DECOMP        464Bytes TS=1921284102687 curTS=1921284102511 dTS= 176
+ev# 9800000 GEB_TYPE_DECOMP        464Bytes TS=1922323358471 curTS=1922323358319 dTS= 152
+ev# 9850000 GEB_TYPE_DECOMP        464Bytes TS=1923387987303 curTS=1923387987077 dTS= 226
+ev# 9900000 GEB_TYPE_DECOMP        464Bytes TS=1924422808151 curTS=1924422808149 dTS= 2
+ev# 9900000 GEB_TYPE_DECOMP        464Bytes TS=1924422829155 curTS=1924422808149 dTS= 21006
+ev# 9950000 GEB_TYPE_DECOMP        464Bytes TS=1925447666563 curTS=1925447666561 dTS= 2
+ev# 9950000 GEB_TYPE_DECOMP        464Bytes TS=1925447666565 curTS=1925447666561 dTS= 4
+ev# 9950000 GEB_TYPE_DECOMP        464Bytes TS=1925447666567 curTS=1925447666561 dTS= 6
+ev# 9950000 GEB_TYPE_DECOMP        464Bytes TS=1925447666683 curTS=1925447666561 dTS= 122
+ev# 9950000 GEB_TYPE_GT_MOD29      440Bytes TS=1925447667251 curTS=1925447666561 dTS= 690
+ev# 10000000 GEB_TYPE_GT_MOD29      440Bytes TS=1926460761517 curTS=1926460760981 dTS= 536
+ev# 10050000 GEB_TYPE_DECOMP        464Bytes TS=1927478868051 curTS=1927478868049 dTS= 2
+ev# 10050000 GEB_TYPE_DECOMP        464Bytes TS=1927478868053 curTS=1927478868049 dTS= 4
+ev# 10050000 GEB_TYPE_DECOMP        464Bytes TS=1927478868285 curTS=1927478868049 dTS= 236
+ev# 10100000 GEB_TYPE_DECOMP        464Bytes TS=1928486708187 curTS=1928486707949 dTS= 238
+ev# 10150000 GEB_TYPE_GT_MOD29      440Bytes TS=1929493946005 curTS=1929493945853 dTS= 152
+ev# 10200000 GEB_TYPE_GT_MOD29      440Bytes TS=1930532327917 curTS=1930532321495 dTS= 6422
+ev# 10250000 GEB_TYPE_DECOMP        464Bytes TS=1931561251841 curTS=1931561240011 dTS= 11830
+ev# 10300000 GEB_TYPE_DECOMP        464Bytes TS=1932550441911 curTS=1932550401713 dTS= 40198
+ev# 10350000 GEB_TYPE_DECOMP        464Bytes TS=1933555661305 curTS=1933555642469 dTS= 18836
+ev# 10400000 GEB_TYPE_GT_MOD29      440Bytes TS=1934570064939 curTS=1934570054305 dTS= 10634
+ev# 10450000 GEB_TYPE_GT_MOD29      440Bytes TS=1935587687161 curTS=1935587686863 dTS= 298
+ev# 10500000 GEB_TYPE_GT_MOD29      440Bytes TS=1936607670321 curTS=1936607650539 dTS= 19782
+ev# 10550000 GEB_TYPE_DECOMP        464Bytes TS=1937625985197 curTS=1937625970861 dTS= 14336
+ev# 10600000 GEB_TYPE_DECOMP        464Bytes TS=1938697169455 curTS=1938697169283 dTS= 172
+"GEBSort.command" was not found
+time since last dump: 10 minute(s)
+*---------------------------------
+* you cannot update a disk file.  
+  you must wait for sort to finish
+  or stop the sort! Ignoring you...
+*---------------------------------
+continuing the sort...
+ev# 10650000 GEB_TYPE_DECOMP        464Bytes TS=1939692718789 curTS=1939692718769 dTS= 20
+ev# 10650000 GEB_TYPE_GT_MOD29      440Bytes TS=1939692719027 curTS=1939692718769 dTS= 258
+ev# 10700000 GEB_TYPE_DECOMP        464Bytes TS=1940702917833 curTS=1940702917831 dTS= 2
+ev# 10700000 GEB_TYPE_DECOMP        464Bytes TS=1940702917833 curTS=1940702917831 dTS= 2
+ev# 10700000 GEB_TYPE_DECOMP        464Bytes TS=1940702917835 curTS=1940702917831 dTS= 4
+ev# 10700000 GEB_TYPE_DECOMP        464Bytes TS=1940702917841 curTS=1940702917831 dTS= 10
+ev# 10700000 GEB_TYPE_GT_MOD29      440Bytes TS=1940702918017 curTS=1940702917831 dTS= 186
+ev# 10750000 GEB_TYPE_DECOMP        464Bytes TS=1941743844677 curTS=1941743844331 dTS= 346
+ev# 10800000 GEB_TYPE_DECOMP        464Bytes TS=1942773162567 curTS=1942773158901 dTS= 3666
+ev# 10850000 GEB_TYPE_DECOMP        464Bytes TS=1943815365125 curTS=1943815365121 dTS= 4
+ev# 10850000 GEB_TYPE_DECOMP        464Bytes TS=1943815365129 curTS=1943815365121 dTS= 8
+ev# 10850000 GEB_TYPE_GT_MOD29      440Bytes TS=1943815365397 curTS=1943815365121 dTS= 276
+ev# 10900000 GEB_TYPE_DECOMP        464Bytes TS=1944852966745 curTS=1944852966457 dTS= 288
+ev# 10950000 GEB_TYPE_GT_MOD29      440Bytes TS=1945899820973 curTS=1945899737991 dTS= 82982
+ev# 11000000 GEB_TYPE_GT_MOD29      440Bytes TS=1946969598275 curTS=1946969596629 dTS= 1646
+ev# 11050000 GEB_TYPE_DECOMP        464Bytes TS=1947997503071 curTS=1947997456221 dTS= 46850
+ev# 11100000 GEB_TYPE_DECOMP        464Bytes TS=1948997184405 curTS=1948997184403 dTS= 2
+ev# 11100000 GEB_TYPE_GT_MOD29      440Bytes TS=1948997185067 curTS=1948997184403 dTS= 664
+ev# 11150000 GEB_TYPE_DECOMP        464Bytes TS=1950031103935 curTS=1950031103933 dTS= 2
+ev# 11150000 GEB_TYPE_DECOMP        464Bytes TS=1950031103939 curTS=1950031103933 dTS= 6
+ev# 11150000 GEB_TYPE_GT_MOD29      440Bytes TS=1950031104027 curTS=1950031103933 dTS= 94
+ev# 11150000 GEB_TYPE_DECOMP        464Bytes TS=1950031139309 curTS=1950031103933 dTS= 35376
+ev# 11200000 GEB_TYPE_GT_MOD29      440Bytes TS=1951017445711 curTS=1951017445629 dTS= 82
+ev# 11200000 GEB_TYPE_DECOMP        464Bytes TS=1951017446001 curTS=1951017445629 dTS= 372
+ev# 11250000 GEB_TYPE_DECOMP        464Bytes TS=1952028363599 curTS=1952028360661 dTS= 2938
+ev# 11300000 GEB_TYPE_DECOMP        464Bytes TS=1953065973759 curTS=1953065973451 dTS= 308
+ev# 11350000 GEB_TYPE_GT_MOD29      440Bytes TS=1954091197435 curTS=1954091197325 dTS= 110
+ev# 11350000 GEB_TYPE_DECOMP        464Bytes TS=1954091197471 curTS=1954091197325 dTS= 146
+ev# 11350000 GEB_TYPE_DECOMP        464Bytes TS=1954091233133 curTS=1954091197325 dTS= 35808
+ev# 11400000 GEB_TYPE_DECOMP        464Bytes TS=1955099924359 curTS=1955099924121 dTS= 238
+ev# 11450000 GEB_TYPE_DECOMP        464Bytes TS=1956081017715 curTS=1956080990799 dTS= 26916
+ev# 11500000 GEB_TYPE_DECOMP        464Bytes TS=1957085743929 curTS=1957085743929 dTS= 0
+ev# 11500000 GEB_TYPE_DECOMP        464Bytes TS=1957085743931 curTS=1957085743929 dTS= 2
+ev# 11500000 GEB_TYPE_DECOMP        464Bytes TS=1957085743963 curTS=1957085743929 dTS= 34
+ev# 11500000 GEB_TYPE_DECOMP        464Bytes TS=1957085743965 curTS=1957085743929 dTS= 36
+ev# 11500000 GEB_TYPE_GT_MOD29      396Bytes TS=1957085786035 curTS=1957085743929 dTS= 42106
+ev# 11550000 GEB_TYPE_DECOMP        464Bytes TS=1958070511831 curTS=1958070511779 dTS= 52
+ev# 11550000 GEB_TYPE_DECOMP        464Bytes TS=1958070543611 curTS=1958070511779 dTS= 31832
+ev# 11600000 GEB_TYPE_DECOMP        464Bytes TS=1959067479707 curTS=1959067422173 dTS= 57534
+ev# 11650000 GEB_TYPE_GT_MOD29      440Bytes TS=1960079027983 curTS=1960078916143 dTS= 111840
+ev# 11700000 GEB_TYPE_DECOMP        464Bytes TS=1961122621079 curTS=1961122611945 dTS= 9134
+ev# 11750000 GEB_TYPE_DECOMP        464Bytes TS=1962175069579 curTS=1962175069105 dTS= 474
+ev# 11800000 GEB_TYPE_DECOMP        464Bytes TS=1963182886799 curTS=1963182886795 dTS= 4
+ev# 11800000 GEB_TYPE_GT_MOD29      440Bytes TS=1963182886873 curTS=1963182886795 dTS= 78
+ev# 11800000 GEB_TYPE_DECOMP        464Bytes TS=1963182908809 curTS=1963182886795 dTS= 22014
+ev# 11850000 GEB_TYPE_DECOMP        464Bytes TS=1964236959055 curTS=1964236906303 dTS= 52752
+ev# 11900000 GEB_TYPE_DECOMP        464Bytes TS=1965259374155 curTS=1965259373907 dTS= 248
+ev# 11950000 GEB_TYPE_DECOMP        464Bytes TS=1966252575693 curTS=1966252569915 dTS= 5778
+ev# 12000000 GEB_TYPE_DECOMP        464Bytes TS=1967230161729 curTS=1967230161615 dTS= 114
+ev# 12000000 GEB_TYPE_DECOMP        464Bytes TS=1967230213305 curTS=1967230161615 dTS= 51690
+ev# 12050000 GEB_TYPE_DECOMP        464Bytes TS=1968212856013 curTS=1968212805937 dTS= 50076
+ev# 12100000 GEB_TYPE_DECOMP        464Bytes TS=1969187316673 curTS=1969187316669 dTS= 4
+ev# 12100000 GEB_TYPE_DECOMP        464Bytes TS=1969187316673 curTS=1969187316669 dTS= 4
+ev# 12100000 GEB_TYPE_GT_MOD29      440Bytes TS=1969187317249 curTS=1969187316669 dTS= 580
+ev# 12150000 GEB_TYPE_DECOMP        464Bytes TS=1970192814809 curTS=1970192814771 dTS= 38
+ev# 12150000 GEB_TYPE_DECOMP        464Bytes TS=1970192814809 curTS=1970192814771 dTS= 38
+ev# 12150000 GEB_TYPE_DECOMP        464Bytes TS=1970192814817 curTS=1970192814771 dTS= 46
+ev# 12150000 GEB_TYPE_DECOMP        464Bytes TS=1970192814955 curTS=1970192814771 dTS= 184
+ev# 12200000 GEB_TYPE_DECOMP        464Bytes TS=1971224769207 curTS=1971224763597 dTS= 5610
+ev# 12250000 GEB_TYPE_DECOMP        464Bytes TS=1972217193949 curTS=1972217193659 dTS= 290
+ev# 12300000 GEB_TYPE_DECOMP        464Bytes TS=1973213416455 curTS=1973213416381 dTS= 74
+ev# 12300000 GEB_TYPE_GT_MOD29      440Bytes TS=1973213430967 curTS=1973213416381 dTS= 14586
+ev# 12350000 GEB_TYPE_DECOMP        464Bytes TS=1974203447249 curTS=1974203415407 dTS= 31842
+ev# 12400000 GEB_TYPE_DECOMP        464Bytes TS=1975179848527 curTS=1975179848497 dTS= 30
+ev# 12400000 GEB_TYPE_DECOMP        464Bytes TS=1975179850603 curTS=1975179848497 dTS= 2106
+ev# 12450000 GEB_TYPE_GT_MOD29      440Bytes TS=1976163826167 curTS=1976163825725 dTS= 442
+ev# 12500000 GEB_TYPE_DECOMP        464Bytes TS=1977155162527 curTS=1977155152511 dTS= 10016
+ev# 12550000 GEB_TYPE_DECOMP        464Bytes TS=1978184360399 curTS=1978184360285 dTS= 114
+ev# 12550000 GEB_TYPE_DECOMP        464Bytes TS=1978184360721 curTS=1978184360285 dTS= 436
+ev# 12600000 GEB_TYPE_DECOMP        464Bytes TS=1979168219365 curTS=1979168209091 dTS= 10274
+ev# 12650000 GEB_TYPE_DECOMP        464Bytes TS=1980181963863 curTS=1980181963799 dTS= 64
+ev# 12650000 GEB_TYPE_DECOMP        464Bytes TS=1980181963865 curTS=1980181963799 dTS= 66
+ev# 12650000 GEB_TYPE_DECOMP        464Bytes TS=1980181963955 curTS=1980181963799 dTS= 156
+ev# 12700000 GEB_TYPE_DECOMP        464Bytes TS=1981143689009 curTS=1981143669863 dTS= 19146
+ev# 12750000 GEB_TYPE_DECOMP        464Bytes TS=1982113161353 curTS=1982113161133 dTS= 220
+ev# 12800000 GEB_TYPE_DECOMP        464Bytes TS=1983092003867 curTS=1983092003713 dTS= 154
+ev# 12850000 GEB_TYPE_GT_MOD29      440Bytes TS=1984060300625 curTS=1984060158613 dTS= 142012
+ev# 12900000 GEB_TYPE_DECOMP        464Bytes TS=1985040685835 curTS=1985040685833 dTS= 2
+ev# 12900000 GEB_TYPE_DECOMP        464Bytes TS=1985040685837 curTS=1985040685833 dTS= 4
+ev# 12900000 GEB_TYPE_GT_MOD29      440Bytes TS=1985040686145 curTS=1985040685833 dTS= 312
+ev# 12950000 GEB_TYPE_DECOMP        464Bytes TS=1986029468603 curTS=1986029468601 dTS= 2
+ev# 12950000 GEB_TYPE_GT_MOD29      440Bytes TS=1986029469011 curTS=1986029468601 dTS= 410
+ev# 13000000 GEB_TYPE_DECOMP        464Bytes TS=1987021751577 curTS=1987021698941 dTS= 52636
+ev# 13050000 GEB_TYPE_DECOMP        464Bytes TS=1988008366471 curTS=1988008366307 dTS= 164
+ev# 13100000 GEB_TYPE_DECOMP        464Bytes TS=1988989080599 curTS=1988989080489 dTS= 110
+ev# 13100000 GEB_TYPE_DECOMP        464Bytes TS=1988989080599 curTS=1988989080489 dTS= 110
+ev# 13100000 GEB_TYPE_DECOMP        464Bytes TS=1988989080601 curTS=1988989080489 dTS= 112
+ev# 13100000 GEB_TYPE_DECOMP        464Bytes TS=1988989080615 curTS=1988989080489 dTS= 126
+ev# 13100000 GEB_TYPE_GT_MOD29      440Bytes TS=1988989081115 curTS=1988989080489 dTS= 626
+ev# 13150000 GEB_TYPE_DECOMP        464Bytes TS=1989941554825 curTS=1989941554823 dTS= 2
+ev# 13150000 GEB_TYPE_DECOMP        464Bytes TS=1989941602147 curTS=1989941554823 dTS= 47324
+ev# 13200000 GEB_TYPE_DECOMP        464Bytes TS=1990902132391 curTS=1990902132127 dTS= 264
+ev# 13250000 GEB_TYPE_DECOMP        464Bytes TS=1991843553319 curTS=1991843509893 dTS= 43426
+ev# 13300000 GEB_TYPE_DECOMP        464Bytes TS=1992786647877 curTS=1992786647875 dTS= 2
+ev# 13300000 GEB_TYPE_GT_MOD29      440Bytes TS=1992786648583 curTS=1992786647875 dTS= 708
+ev# 13350000 GEB_TYPE_GT_MOD29      440Bytes TS=1993754244307 curTS=1993754205227 dTS= 39080
+ev# 13400000 GEB_TYPE_DECOMP        464Bytes TS=1994716915973 curTS=1994716915459 dTS= 514
+ev# 13450000 GEB_TYPE_DECOMP        464Bytes TS=1995670913515 curTS=1995670805677 dTS= 107838
+ev# 13500000 GEB_TYPE_DECOMP        464Bytes TS=1996624168575 curTS=1996624168371 dTS= 204
+ev# 13550000 GEB_TYPE_DECOMP        464Bytes TS=1997551291411 curTS=1997551290191 dTS= 1220
+ev# 13600000 GEB_TYPE_DECOMP        464Bytes TS=1998514959589 curTS=1998514947685 dTS= 11904
+ev# 13650000 GEB_TYPE_DECOMP        464Bytes TS=1999486887701 curTS=1999486872779 dTS= 14922
+ev# 13700000 GEB_TYPE_DECOMP        464Bytes TS=2000454424069 curTS=2000454400935 dTS= 23134
+ev# 13750000 GEB_TYPE_DECOMP        464Bytes TS=2001374948461 curTS=2001374932157 dTS= 16304
+ev# 13800000 GEB_TYPE_GT_MOD29      440Bytes TS=2002315316355 curTS=2002315271999 dTS= 44356
+ev# 13850000 GEB_TYPE_GT_MOD29      440Bytes TS=2003262073861 curTS=2003262073269 dTS= 592
+ev# 13900000 GEB_TYPE_DECOMP        464Bytes TS=2004235032213 curTS=2004235032197 dTS= 16
+ev# 13900000 GEB_TYPE_DECOMP        464Bytes TS=2004235032215 curTS=2004235032197 dTS= 18
+ev# 13900000 GEB_TYPE_DECOMP        464Bytes TS=2004235032215 curTS=2004235032197 dTS= 18
+ev# 13900000 GEB_TYPE_DECOMP        464Bytes TS=2004235032223 curTS=2004235032197 dTS= 26
+ev# 13900000 GEB_TYPE_DECOMP        464Bytes TS=2004235132051 curTS=2004235032197 dTS= 99854
+ev# 13950000 GEB_TYPE_DECOMP        464Bytes TS=2005183643567 curTS=2005183551385 dTS= 92182
+ev# 14000000 GEB_TYPE_DECOMP        464Bytes TS=2006145726707 curTS=2006145726695 dTS= 12
+ev# 14000000 GEB_TYPE_DECOMP        464Bytes TS=2006145789595 curTS=2006145726695 dTS= 62900
+ev# 14050000 GEB_TYPE_GT_MOD29      440Bytes TS=2007117299631 curTS=2007117256511 dTS= 43120
+ev# 14100000 GEB_TYPE_DECOMP        464Bytes TS=2008094966843 curTS=2008094966817 dTS= 26
+ev# 14100000 GEB_TYPE_DECOMP        464Bytes TS=2008094967025 curTS=2008094966817 dTS= 208
+ev# 14150000 GEB_TYPE_GT_MOD29      440Bytes TS=2009035735935 curTS=2009035735777 dTS= 158
+ev# 14200000 GEB_TYPE_DECOMP        464Bytes TS=2009981136685 curTS=2009981136611 dTS= 74
+ev# 14200000 GEB_TYPE_GT_MOD29      440Bytes TS=2009981136749 curTS=2009981136611 dTS= 138
+ev# 14200000 GEB_TYPE_DECOMP        464Bytes TS=2009981136911 curTS=2009981136611 dTS= 300
+ev# 14250000 GEB_TYPE_DECOMP        464Bytes TS=2010948654989 curTS=2010948654987 dTS= 2
+ev# 14250000 GEB_TYPE_GT_MOD29      440Bytes TS=2010948655251 curTS=2010948654987 dTS= 264
+ev# 14300000 GEB_TYPE_GT_MOD29      440Bytes TS=2011931816499 curTS=2011931816341 dTS= 158
+ev# 14350000 GEB_TYPE_GT_MOD29      440Bytes TS=2012886938019 curTS=2012886937819 dTS= 200
+ev# 14400000 GEB_TYPE_DECOMP        464Bytes TS=2013813811553 curTS=2013813811397 dTS= 156
+ev# 14450000 GEB_TYPE_GT_MOD29      440Bytes TS=2014750458459 curTS=2014750410561 dTS= 47898
+ev# 14500000 GEB_TYPE_DECOMP        464Bytes TS=2015715027671 curTS=2015714993975 dTS= 33696
+ev# 14550000 GEB_TYPE_DECOMP        464Bytes TS=2016679170801 curTS=2016679170797 dTS= 4
+ev# 14550000 GEB_TYPE_GT_MOD29      440Bytes TS=2016679171203 curTS=2016679170797 dTS= 406
+ev# 14600000 GEB_TYPE_DECOMP        464Bytes TS=2017635277581 curTS=2017635277561 dTS= 20
+ev# 14600000 GEB_TYPE_GT_MOD29      440Bytes TS=2017635278029 curTS=2017635277561 dTS= 468
+ev# 14650000 GEB_TYPE_GT_MOD29      440Bytes TS=2018587930631 curTS=2018587930519 dTS= 112
+ev# 14650000 GEB_TYPE_DECOMP        464Bytes TS=2018587930891 curTS=2018587930519 dTS= 372
+ev# 14700000 GEB_TYPE_GT_MOD29      440Bytes TS=2019564250383 curTS=2019564188267 dTS= 62116
+ev# 14750000 GEB_TYPE_GT_MOD29      440Bytes TS=2020520512087 curTS=2020520511417 dTS= 670
+ev# 14800000 GEB_TYPE_DECOMP        464Bytes TS=2021503505477 curTS=2021503494041 dTS= 11436
+ev# 14850000 GEB_TYPE_DECOMP        464Bytes TS=2022482231161 curTS=2022482231161 dTS= 0
+ev# 14850000 GEB_TYPE_GT_MOD29      440Bytes TS=2022482231547 curTS=2022482231161 dTS= 386
+ev# 14900000 GEB_TYPE_DECOMP        464Bytes TS=2023474359657 curTS=2023474359655 dTS= 2
+ev# 14900000 GEB_TYPE_DECOMP        464Bytes TS=2023474359657 curTS=2023474359655 dTS= 2
+ev# 14900000 GEB_TYPE_GT_MOD29      440Bytes TS=2023474359901 curTS=2023474359655 dTS= 246
+ev# 14950000 GEB_TYPE_GT_MOD29      440Bytes TS=2024423847131 curTS=2024423846997 dTS= 134
+ev# 14950000 GEB_TYPE_DECOMP        464Bytes TS=2024423847393 curTS=2024423846997 dTS= 396
+ev# 15000000 GEB_TYPE_DECOMP        464Bytes TS=2025390707951 curTS=2025390707571 dTS= 380
+ev# 15050000 GEB_TYPE_DECOMP        464Bytes TS=2026347649263 curTS=2026347649127 dTS= 136
+ev# 15050000 GEB_TYPE_DECOMP        464Bytes TS=2026347679399 curTS=2026347649127 dTS= 30272
+ev# 15100000 GEB_TYPE_DECOMP        464Bytes TS=2027297164199 curTS=2027297164015 dTS= 184
+ev# 15150000 GEB_TYPE_DECOMP        464Bytes TS=2028258182201 curTS=2028258169655 dTS= 12546
+ev# 15200000 GEB_TYPE_DECOMP        464Bytes TS=2029241169471 curTS=2029241169339 dTS= 132
+ev# 15200000 GEB_TYPE_DECOMP        464Bytes TS=2029241169525 curTS=2029241169339 dTS= 186
+ev# 15250000 GEB_TYPE_DECOMP        464Bytes TS=2030250183589 curTS=2030250172959 dTS= 10630
+ev# 15300000 GEB_TYPE_DECOMP        464Bytes TS=2031252431587 curTS=2031252431213 dTS= 374
+ev# 15350000 GEB_TYPE_DECOMP        464Bytes TS=2032316904879 curTS=2032316904873 dTS= 6
+ev# 15350000 GEB_TYPE_DECOMP        464Bytes TS=2032316904897 curTS=2032316904873 dTS= 24
+ev# 15350000 GEB_TYPE_DECOMP        464Bytes TS=2032316904901 curTS=2032316904873 dTS= 28
+ev# 15350000 GEB_TYPE_GT_MOD29      440Bytes TS=2032316905553 curTS=2032316904873 dTS= 680
+ev# 15400000 GEB_TYPE_DECOMP        464Bytes TS=2033383932953 curTS=2033383913405 dTS= 19548
+ev# 15450000 GEB_TYPE_DECOMP        464Bytes TS=2034419696485 curTS=2034419614911 dTS= 81574
+ev# 15500000 GEB_TYPE_DECOMP        464Bytes TS=2035481393309 curTS=2035481392557 dTS= 752
+ev# 15550000 GEB_TYPE_DECOMP        464Bytes TS=2036538300209 curTS=2036538275425 dTS= 24784
+ev# 15600000 GEB_TYPE_DECOMP        464Bytes TS=2037587217557 curTS=2037587217405 dTS= 152
+ev# 15650000 GEB_TYPE_DECOMP        464Bytes TS=2038596949497 curTS=2038596870889 dTS= 78608
+ev# 15700000 GEB_TYPE_GT_MOD29      440Bytes TS=2039653778345 curTS=2039653777715 dTS= 630
+ev# 15750000 GEB_TYPE_DECOMP        464Bytes TS=2040728114581 curTS=2040728106085 dTS= 8496
+ev# 15800000 GEB_TYPE_GT_MOD29      440Bytes TS=2041765062283 curTS=2041765061965 dTS= 318
+ev# 15850000 GEB_TYPE_GT_MOD29      440Bytes TS=2042810442609 curTS=2042810442189 dTS= 420
+ev# 15900000 GEB_TYPE_GT_MOD29      440Bytes TS=2043782004541 curTS=2043781986283 dTS= 18258
+ev# 15950000 GEB_TYPE_GT_MOD29      440Bytes TS=2044804930855 curTS=2044804930473 dTS= 382
+ev# 16000000 GEB_TYPE_DECOMP        464Bytes TS=2045850255369 curTS=2045850255107 dTS= 262
+ev# 16050000 GEB_TYPE_DECOMP        464Bytes TS=2046843651117 curTS=2046843650899 dTS= 218
+ev# 16100000 GEB_TYPE_DECOMP        464Bytes TS=2047831847143 curTS=2047831845745 dTS= 1398
+ev# 16150000 GEB_TYPE_DECOMP        464Bytes TS=2048847665099 curTS=2048847665097 dTS= 2
+ev# 16150000 GEB_TYPE_DECOMP        464Bytes TS=2048847665101 curTS=2048847665097 dTS= 4
+ev# 16150000 GEB_TYPE_DECOMP        464Bytes TS=2048847665101 curTS=2048847665097 dTS= 4
+ev# 16150000 GEB_TYPE_DECOMP        464Bytes TS=2048847665103 curTS=2048847665097 dTS= 6
+ev# 16150000 GEB_TYPE_DECOMP        464Bytes TS=2048847711529 curTS=2048847665097 dTS= 46432
+ev# 16200000 GEB_TYPE_DECOMP        464Bytes TS=2049866410947 curTS=2049866410651 dTS= 296
+ev# 16250000 GEB_TYPE_DECOMP        464Bytes TS=2050879462441 curTS=2050879454681 dTS= 7760
+ev# 16300000 GEB_TYPE_GT_MOD29      440Bytes TS=2051909191341 curTS=2051909190621 dTS= 720
+ev# 16350000 GEB_TYPE_DECOMP        464Bytes TS=2052909620545 curTS=2052909620515 dTS= 30
+ev# 16350000 GEB_TYPE_DECOMP        464Bytes TS=2052909620631 curTS=2052909620515 dTS= 116
+ev# 16350000 GEB_TYPE_DECOMP        464Bytes TS=2052909620633 curTS=2052909620515 dTS= 118
+ev# 16350000 GEB_TYPE_DECOMP        464Bytes TS=2052909620635 curTS=2052909620515 dTS= 120
+ev# 16350000 GEB_TYPE_GT_MOD29      440Bytes TS=2052909620967 curTS=2052909620515 dTS= 452
+ev# 16400000 GEB_TYPE_DECOMP        464Bytes TS=2053931957111 curTS=2053931957111 dTS= 0
+ev# 16400000 GEB_TYPE_DECOMP        464Bytes TS=2053931957119 curTS=2053931957111 dTS= 8
+ev# 16400000 GEB_TYPE_DECOMP        464Bytes TS=2053931957231 curTS=2053931957111 dTS= 120
+ev# 16400000 GEB_TYPE_GT_MOD29      440Bytes TS=2053931957273 curTS=2053931957111 dTS= 162
+ev# 16450000 GEB_TYPE_DECOMP        464Bytes TS=2054935691191 curTS=2054935684147 dTS= 7044
+ev# 16500000 GEB_TYPE_DECOMP        464Bytes TS=2055971684969 curTS=2055971646209 dTS= 38760
+ev# 16550000 GEB_TYPE_DECOMP        464Bytes TS=2056963460953 curTS=2056963460951 dTS= 2
+ev# 16550000 GEB_TYPE_DECOMP        464Bytes TS=2056963460959 curTS=2056963460951 dTS= 8
+ev# 16550000 GEB_TYPE_GT_MOD29      440Bytes TS=2056963461215 curTS=2056963460951 dTS= 264
+ev# 16600000 GEB_TYPE_DECOMP        464Bytes TS=2057999996299 curTS=2057999966095 dTS= 30204
+ev# 16650000 GEB_TYPE_DECOMP        464Bytes TS=2059072024869 curTS=2059072019317 dTS= 5552
+ev# 16700000 GEB_TYPE_DECOMP        464Bytes TS=2060137292029 curTS=2060137264843 dTS= 27186
+ev# 16750000 GEB_TYPE_DECOMP        464Bytes TS=2061210569901 curTS=2061210569727 dTS= 174
+ev# 16800000 GEB_TYPE_GT_MOD29      440Bytes TS=2062275288997 curTS=2062275228749 dTS= 60248
+ev# 16850000 GEB_TYPE_DECOMP        464Bytes TS=2063314077035 curTS=2063314067617 dTS= 9418
+ev# 16900000 GEB_TYPE_GT_MOD29      440Bytes TS=2064330812947 curTS=2064330812767 dTS= 180
+ev# 16950000 GEB_TYPE_DECOMP        464Bytes TS=2065347478889 curTS=2065347478887 dTS= 2
+ev# 16950000 GEB_TYPE_DECOMP        464Bytes TS=2065347478951 curTS=2065347478887 dTS= 64
+ev# 16950000 GEB_TYPE_DECOMP        464Bytes TS=2065347479101 curTS=2065347478887 dTS= 214
+ev# 17000000 GEB_TYPE_DECOMP        464Bytes TS=2066409722605 curTS=2066409722597 dTS= 8
+ev# 17000000 GEB_TYPE_DECOMP        464Bytes TS=2066409722711 curTS=2066409722597 dTS= 114
+ev# 17000000 GEB_TYPE_DECOMP        464Bytes TS=2066409723063 curTS=2066409722597 dTS= 466
+ev# 17050000 GEB_TYPE_DECOMP        464Bytes TS=2067483102097 curTS=2067483102093 dTS= 4
+ev# 17050000 GEB_TYPE_DECOMP        464Bytes TS=2067483102097 curTS=2067483102093 dTS= 4
+ev# 17050000 GEB_TYPE_DECOMP        464Bytes TS=2067483102211 curTS=2067483102093 dTS= 118
+ev# 17050000 GEB_TYPE_DECOMP        464Bytes TS=2067483102211 curTS=2067483102093 dTS= 118
+ev# 17050000 GEB_TYPE_GT_MOD29      440Bytes TS=2067483102459 curTS=2067483102093 dTS= 366
+ev# 17100000 GEB_TYPE_DECOMP        464Bytes TS=2068535377945 curTS=2068535349153 dTS= 28792
+ev# 17150000 GEB_TYPE_DECOMP        464Bytes TS=2069544001013 curTS=2069544001011 dTS= 2
+ev# 17150000 GEB_TYPE_DECOMP        464Bytes TS=2069544001017 curTS=2069544001011 dTS= 6
+ev# 17150000 GEB_TYPE_DECOMP        464Bytes TS=2069544001017 curTS=2069544001011 dTS= 6
+ev# 17150000 GEB_TYPE_DECOMP        464Bytes TS=2069544001023 curTS=2069544001011 dTS= 12
+ev# 17150000 GEB_TYPE_GT_MOD29      440Bytes TS=2069544001211 curTS=2069544001011 dTS= 200
+ev# 17200000 GEB_TYPE_DECOMP        464Bytes TS=2070530392403 curTS=2070530391861 dTS= 542
+ev# 17250000 GEB_TYPE_GT_MOD29      440Bytes TS=2071573556743 curTS=2071573535621 dTS= 21122
+ev# 17300000 GEB_TYPE_DECOMP        464Bytes TS=2072629825343 curTS=2072629825343 dTS= 0
+ev# 17300000 GEB_TYPE_DECOMP        464Bytes TS=2072629825347 curTS=2072629825343 dTS= 4
+ev# 17300000 GEB_TYPE_DECOMP        464Bytes TS=2072629825375 curTS=2072629825343 dTS= 32
+ev# 17300000 GEB_TYPE_GT_MOD29      440Bytes TS=2072629838603 curTS=2072629825343 dTS= 13260
+ev# 17350000 GEB_TYPE_DECOMP        464Bytes TS=2073690494977 curTS=2073690494283 dTS= 694
+ev# 17400000 GEB_TYPE_DECOMP        464Bytes TS=2074775001753 curTS=2074774997759 dTS= 3994
+ev# 17450000 GEB_TYPE_GT_MOD29      440Bytes TS=2075862515817 curTS=2075862515201 dTS= 616
+ev# 17500000 GEB_TYPE_DECOMP        464Bytes TS=2076945333071 curTS=2076945333065 dTS= 6
+ev# 17500000 GEB_TYPE_DECOMP        464Bytes TS=2076945354991 curTS=2076945333065 dTS= 21926
+ev# 17550000 GEB_TYPE_GT_MOD29      440Bytes TS=2077988413713 curTS=2077988413059 dTS= 654
+ev# 17600000 GEB_TYPE_DECOMP        464Bytes TS=2079017255539 curTS=2079017255363 dTS= 176
+ev# 17650000 GEB_TYPE_GT_MOD29      440Bytes TS=2080058733335 curTS=2080058709865 dTS= 23470
+ev# 17700000 GEB_TYPE_DECOMP        464Bytes TS=2081098448933 curTS=2081098448801 dTS= 132
+ev# 17700000 GEB_TYPE_GT_MOD29      440Bytes TS=2081098456547 curTS=2081098448801 dTS= 7746
+ev# 17750000 GEB_TYPE_DECOMP        464Bytes TS=2082104418217 curTS=2082104417941 dTS= 276
+ev# 17800000 GEB_TYPE_DECOMP        464Bytes TS=2083107983037 curTS=2083107964023 dTS= 19014
+ev# 17850000 GEB_TYPE_GT_MOD29      440Bytes TS=2084113463257 curTS=2084113424273 dTS= 38984
+ev# 17900000 GEB_TYPE_DECOMP        464Bytes TS=2085116932911 curTS=2085116894527 dTS= 38384
+ev# 17950000 GEB_TYPE_DECOMP        464Bytes TS=2086117019957 curTS=2086116987823 dTS= 32134
+ev# 18000000 GEB_TYPE_GT_MOD29      440Bytes TS=2087104361091 curTS=2087104356305 dTS= 4786
+ev# 18050000 GEB_TYPE_DECOMP        464Bytes TS=2088088544907 curTS=2088088539741 dTS= 5166
+ev# 18100000 GEB_TYPE_GT_MOD29      440Bytes TS=2089081882903 curTS=2089081852605 dTS= 30298
+ev# 18150000 GEB_TYPE_DECOMP        464Bytes TS=2090062434809 curTS=2090062434717 dTS= 92
+ev# 18150000 GEB_TYPE_DECOMP        464Bytes TS=2090062434811 curTS=2090062434717 dTS= 94
+ev# 18150000 GEB_TYPE_DECOMP        464Bytes TS=2090062434951 curTS=2090062434717 dTS= 234
+ev# 18200000 GEB_TYPE_DECOMP        464Bytes TS=2091062270493 curTS=2091062229219 dTS= 41274
+ev# 18250000 GEB_TYPE_DECOMP        464Bytes TS=2092081163729 curTS=2092081163725 dTS= 4
+ev# 18250000 GEB_TYPE_DECOMP        464Bytes TS=2092081163785 curTS=2092081163725 dTS= 60
+ev# 18250000 GEB_TYPE_GT_MOD29      440Bytes TS=2092081164259 curTS=2092081163725 dTS= 534
+ev# 18300000 GEB_TYPE_GT_MOD29      440Bytes TS=2093078789889 curTS=2093078732735 dTS= 57154
+ev# 18350000 GEB_TYPE_GT_MOD29      440Bytes TS=2094125846297 curTS=2094125845649 dTS= 648
+ev# 18400000 GEB_TYPE_DECOMP        464Bytes TS=2095239109231 curTS=2095239109227 dTS= 4
+ev# 18400000 GEB_TYPE_GT_MOD29      440Bytes TS=2095239109823 curTS=2095239109227 dTS= 596
+ev# 18450000 GEB_TYPE_DECOMP        464Bytes TS=2096312347705 curTS=2096312347703 dTS= 2
+ev# 18450000 GEB_TYPE_GT_MOD29      440Bytes TS=2096312347991 curTS=2096312347703 dTS= 288
+ev# 18500000 GEB_TYPE_DECOMP        464Bytes TS=2097381651579 curTS=2097381538917 dTS= 112662
+ev# 18550000 GEB_TYPE_DECOMP        464Bytes TS=2098382927097 curTS=2098382927095 dTS= 2
+ev# 18550000 GEB_TYPE_GT_MOD29      440Bytes TS=2098382927499 curTS=2098382927095 dTS= 404
+ev# 18600000 GEB_TYPE_DECOMP        464Bytes TS=2099381905753 curTS=2099381825395 dTS= 80358
+ev# 18650000 GEB_TYPE_DECOMP        464Bytes TS=2100384245747 curTS=2100384245515 dTS= 232
+ev# 18700000 GEB_TYPE_DECOMP        464Bytes TS=2101427552185 curTS=2101427552185 dTS= 0
+ev# 18700000 GEB_TYPE_GT_MOD29      440Bytes TS=2101427552255 curTS=2101427552185 dTS= 70
+ev# 18700000 GEB_TYPE_DECOMP        464Bytes TS=2101427571061 curTS=2101427552185 dTS= 18876
+ev# 18750000 GEB_TYPE_GT_MOD29      440Bytes TS=2102411716045 curTS=2102411710583 dTS= 5462
+ev# 18800000 GEB_TYPE_GT_MOD29      440Bytes TS=2103397720709 curTS=2103397720685 dTS= 24
+ev# 18800000 GEB_TYPE_GT_MOD29      440Bytes TS=2103397745189 curTS=2103397720685 dTS= 24504
+ev# 18850000 GEB_TYPE_DECOMP        464Bytes TS=2104381164415 curTS=2104381164355 dTS= 60
+ev# 18850000 GEB_TYPE_DECOMP        464Bytes TS=2104381164415 curTS=2104381164355 dTS= 60
+ev# 18850000 GEB_TYPE_DECOMP        464Bytes TS=2104381164425 curTS=2104381164355 dTS= 70
+ev# 18850000 GEB_TYPE_GT_MOD29      440Bytes TS=2104381194025 curTS=2104381164355 dTS= 29670
+ev# 18900000 GEB_TYPE_GT_MOD29      440Bytes TS=2105350498935 curTS=2105350498847 dTS= 88
+ev# 18900000 GEB_TYPE_DECOMP        464Bytes TS=2105350499049 curTS=2105350498847 dTS= 202
+ev# 18950000 GEB_TYPE_DECOMP        464Bytes TS=2106318068569 curTS=2106318068485 dTS= 84
+ev# 18950000 GEB_TYPE_GT_MOD29      440Bytes TS=2106318178015 curTS=2106318068485 dTS= 109530
+ev# 19000000 GEB_TYPE_DECOMP        464Bytes TS=2107294510335 curTS=2107294510333 dTS= 2
+ev# 19000000 GEB_TYPE_GT_MOD29      440Bytes TS=2107294529069 curTS=2107294510333 dTS= 18736
+error: sX,sY= (        -nan ,        -nan )
+error: sX,sY= (        -nan ,        -nan )
+ev# 19050000 GEB_TYPE_DECOMP        464Bytes TS=2108259915895 curTS=2108259915697 dTS= 198
+ev# 19100000 GEB_TYPE_DECOMP        464Bytes TS=2109238858947 curTS=2109238858437 dTS= 510
+ev# 19150000 GEB_TYPE_DECOMP        464Bytes TS=2110210282047 curTS=2110210239565 dTS= 42482
+ev# 19200000 GEB_TYPE_GT_MOD29      440Bytes TS=2111189906713 curTS=2111189818797 dTS= 87916
+ev# 19250000 GEB_TYPE_DECOMP        464Bytes TS=2112169605689 curTS=2112169605689 dTS= 0
+ev# 19250000 GEB_TYPE_DECOMP        464Bytes TS=2112169605689 curTS=2112169605689 dTS= 0
+ev# 19250000 GEB_TYPE_DECOMP        464Bytes TS=2112169605691 curTS=2112169605689 dTS= 2
+ev# 19250000 GEB_TYPE_DECOMP        464Bytes TS=2112169605691 curTS=2112169605689 dTS= 2
+ev# 19250000 GEB_TYPE_DECOMP        464Bytes TS=2112169605693 curTS=2112169605689 dTS= 4
+ev# 19250000 GEB_TYPE_DECOMP        464Bytes TS=2112169605701 curTS=2112169605689 dTS= 12
+ev# 19250000 GEB_TYPE_GT_MOD29      440Bytes TS=2112169613815 curTS=2112169605689 dTS= 8126
+ev# 19300000 GEB_TYPE_GT_MOD29      440Bytes TS=2113149129291 curTS=2113149117041 dTS= 12250
+ev# 19350000 GEB_TYPE_DECOMP        464Bytes TS=2114122029981 curTS=2114122029763 dTS= 218
+ev# 19400000 GEB_TYPE_DECOMP        464Bytes TS=2115085511249 curTS=2115085511233 dTS= 16
+ev# 19400000 GEB_TYPE_DECOMP        464Bytes TS=2115085511261 curTS=2115085511233 dTS= 28
+ev# 19400000 GEB_TYPE_DECOMP        464Bytes TS=2115085511263 curTS=2115085511233 dTS= 30
+ev# 19400000 GEB_TYPE_DECOMP        464Bytes TS=2115085511265 curTS=2115085511233 dTS= 32
+ev# 19400000 GEB_TYPE_DECOMP        464Bytes TS=2115085511267 curTS=2115085511233 dTS= 34
+ev# 19400000 GEB_TYPE_DECOMP        464Bytes TS=2115085511539 curTS=2115085511233 dTS= 306
+ev# 19450000 GEB_TYPE_GT_MOD29      440Bytes TS=2116045882109 curTS=2116045882045 dTS= 64
+ev# 19450000 GEB_TYPE_GT_MOD29      440Bytes TS=2116045967211 curTS=2116045882045 dTS= 85166
+ev# 19500000 GEB_TYPE_DECOMP        464Bytes TS=2117027960017 curTS=2117027959951 dTS= 66
+ev# 19500000 GEB_TYPE_DECOMP        464Bytes TS=2117027960053 curTS=2117027959951 dTS= 102
+ev# 19500000 GEB_TYPE_GT_MOD29      440Bytes TS=2117027996015 curTS=2117027959951 dTS= 36064
+ev# 19550000 GEB_TYPE_GT_MOD29      440Bytes TS=2118044752133 curTS=2118044751457 dTS= 676
+ev# 19600000 GEB_TYPE_DECOMP        464Bytes TS=2119050025517 curTS=2119050025515 dTS= 2
+ev# 19600000 GEB_TYPE_GT_MOD29      440Bytes TS=2119050025639 curTS=2119050025515 dTS= 124
+ev# 19600000 GEB_TYPE_GT_MOD29      396Bytes TS=2119050058463 curTS=2119050025515 dTS= 32948
+ev# 19650000 GEB_TYPE_DECOMP        464Bytes TS=2120061783093 curTS=2120061782927 dTS= 166
+ev# 19700000 GEB_TYPE_DECOMP        464Bytes TS=2121051975715 curTS=2121051975181 dTS= 534
+ev# 19750000 GEB_TYPE_GT_MOD29      440Bytes TS=2122069598673 curTS=2122069598527 dTS= 146
+ev# 19750000 GEB_TYPE_DECOMP        464Bytes TS=2122069598839 curTS=2122069598527 dTS= 312
+ev# 19800000 GEB_TYPE_DECOMP        464Bytes TS=2123056695907 curTS=2123056695903 dTS= 4
+ev# 19800000 GEB_TYPE_GT_MOD29      440Bytes TS=2123056695989 curTS=2123056695903 dTS= 86
+ev# 19800000 GEB_TYPE_GT_MOD29      440Bytes TS=2123056709439 curTS=2123056695903 dTS= 13536
+ev# 19850000 GEB_TYPE_GT_MOD29      440Bytes TS=2124093136197 curTS=2124093135619 dTS= 578
+ev# 19900000 GEB_TYPE_GT_MOD29      440Bytes TS=2125143721057 curTS=2125143720781 dTS= 276
+ev# 19950000 GEB_TYPE_DECOMP        464Bytes TS=2126151831085 curTS=2126151830921 dTS= 164
+ev# 20000000 GEB_TYPE_DECOMP        464Bytes TS=2127127798963 curTS=2127127798925 dTS= 38
+ev# 20000000 GEB_TYPE_DECOMP        464Bytes TS=2127127845315 curTS=2127127798925 dTS= 46390
+ev# 20050000 GEB_TYPE_GT_MOD29      440Bytes TS=2128089051229 curTS=2128089051171 dTS= 58
+ev# 20050000 GEB_TYPE_DECOMP        464Bytes TS=2128089089793 curTS=2128089051171 dTS= 38622
+ev# 20100000 GEB_TYPE_GT_MOD29      440Bytes TS=2129071765087 curTS=2129071728809 dTS= 36278
+ev# 20150000 GEB_TYPE_DECOMP        464Bytes TS=2130035245961 curTS=2130035188243 dTS= 57718
+ev# 20200000 GEB_TYPE_DECOMP        464Bytes TS=2131024180097 curTS=2131024100525 dTS= 79572
+batflag:: TS<Pars.curTS, reset it at event # 20228989
+TS=2131573851967, Pars.curTS=2131605757665, DT=-31905698
+new Pars.curTS=2131573851967
+we have read 17451206964 bytes so far
+failed to read 16 bytes for header, got 0
+ GEBGetEv returned 1
+we have read 17452373972 bytes; CurEvNo=20231166
+
+Sorting is done
+attempting to save root or map file
+
+
+
+mean observed polar and azimuth angles
+for the detectors we saw (module,crystal)
+
+------------------------------------------
+mean pol/azi angle for detector  56 are   96.72/ 119.49
+mean pol/azi angle for detector  57 are  100.41/ 138.28
+mean pol/azi angle for detector  58 are   83.29/ 132.65
+mean pol/azi angle for detector  59 are   79.69/ 114.03
+mean pol/azi angle for detector  60 are   87.19/ 152.69
+mean pol/azi angle for detector  61 are  105.25/ 157.65
+mean pol/azi angle for detector  62 are   92.96/ 168.67
+mean pol/azi angle for detector  63 are   74.08/ 165.94
+mean pol/azi angle for detector  68 are   87.18/-134.94
+mean pol/azi angle for detector  69 are  105.28/-130.01
+mean pol/azi angle for detector  70 are   92.91/-116.91
+mean pol/azi angle for detector  71 are   74.17/-121.83
+mean pol/azi angle for detector  76 are   87.35/ -63.18
+mean pol/azi angle for detector  77 are  105.29/ -58.09
+mean pol/azi angle for detector  78 are   92.97/ -45.00
+mean pol/azi angle for detector  79 are   74.30/ -49.84
+mean pol/azi angle for detector  84 are  112.28/  33.64
+mean pol/azi angle for detector  85 are  125.17/  17.39
+mean pol/azi angle for detector  86 are  130.65/  39.24
+mean pol/azi angle for detector  87 are  115.90/  52.95
+mean pol/azi angle for detector  88 are  112.39/ 105.50
+mean pol/azi angle for detector  89 are  124.94/  89.33
+mean pol/azi angle for detector  90 are  130.77/ 111.15
+mean pol/azi angle for detector  91 are  115.77/ 125.01
+mean pol/azi angle for detector  96 are  112.62/-110.66
+mean pol/azi angle for detector  97 are  124.83/-126.62
+mean pol/azi angle for detector  98 are  130.91/-104.92
+mean pol/azi angle for detector  99 are  115.83/ -91.00
+mean pol/azi angle for detector 100 are  112.40/ -38.57
+mean pol/azi angle for detector 101 are  124.72/ -55.04
+mean pol/azi angle for detector 102 are  130.66/ -32.99
+mean pol/azi angle for detector 103 are  115.78/ -19.05
+mean pol/azi angle for detector 104 are  144.43/  88.26
+mean pol/azi angle for detector 105 are    -nan/   -nan
+mean pol/azi angle for detector 106 are  148.85/  53.90
+mean pol/azi angle for detector 107 are  162.33/  88.29
+mean pol/azi angle for detector 108 are  144.75/ 160.15
+mean pol/azi angle for detector 109 are  132.72/ 138.00
+mean pol/azi angle for detector 110 are  149.57/ 125.46
+mean pol/azi angle for detector 111 are  162.27/ 111.61
+mean pol/azi angle for detector 116 are  144.41/ -55.87
+mean pol/azi angle for detector 117 are  132.57/ -78.28
+mean pol/azi angle for detector 118 are  148.97/ -90.29
+mean pol/azi angle for detector 119 are  162.41/ -56.04
+we found 44 crystals
+------------------------------------------
+
+minimum pol angle between crystals is  18.65
+compactness =  64.39%, 85 of 264
+module hit statistics
+module  14, crystal 0 was hit    1528045 times
+module  14, crystal 1 was hit    1649254 times
+module  14, crystal 2 was hit    1660995 times
+module  14, crystal 3 was hit    1453040 times
+module  15, crystal 0 was hit    1688613 times
+module  15, crystal 1 was hit    1491207 times
+module  15, crystal 2 was hit    1441435 times
+module  15, crystal 3 was hit    1383585 times
+module  17, crystal 0 was hit    1201482 times
+module  17, crystal 1 was hit    1172010 times
+module  17, crystal 2 was hit    1173910 times
+module  17, crystal 3 was hit    1213916 times
+module  19, crystal 0 was hit    1131984 times
+module  19, crystal 1 was hit    1163022 times
+module  19, crystal 2 was hit    1374599 times
+module  19, crystal 3 was hit    1364998 times
+module  21, crystal 0 was hit    1383674 times
+module  21, crystal 1 was hit    1207342 times
+module  21, crystal 2 was hit    1434518 times
+module  21, crystal 3 was hit    1380727 times
+module  22, crystal 0 was hit    1511922 times
+module  22, crystal 1 was hit    1403680 times
+module  22, crystal 2 was hit    1577257 times
+module  22, crystal 3 was hit    1473057 times
+module  24, crystal 0 was hit    1241164 times
+module  24, crystal 1 was hit    1199990 times
+module  24, crystal 2 was hit    1252534 times
+module  24, crystal 3 was hit    1153345 times
+module  25, crystal 0 was hit    1190649 times
+module  25, crystal 1 was hit    1223562 times
+module  25, crystal 2 was hit    1184974 times
+module  25, crystal 3 was hit    1170382 times
+module  26, crystal 0 was hit    1383970 times
+module  26, crystal 1 was hit    1355070 times
+module  26, crystal 2 was hit    1341868 times
+module  26, crystal 3 was hit    1264089 times
+module  27, crystal 0 was hit    1429260 times
+module  27, crystal 1 was hit    1395700 times
+module  27, crystal 2 was hit    1425172 times
+module  27, crystal 3 was hit    1298705 times
+module  29, crystal 0 was hit    1168036 times
+module  29, crystal 1 was hit    1157555 times
+module  29, crystal 2 was hit    1266294 times
+module  29, crystal 3 was hit    1152610 times
+
+bin_mode2: pad distribution
+__id   0,     25387449, 95.27%
+__id   2,         2847,  0.01%
+__id   3,         7497,  0.03%
+__id   4,         8356,  0.03%
+__id   5,        47126,  0.18%
+__id   6,        68718,  0.26%
+__id 128,      1124611,  4.22%
+__id 133,         1934,  0.01%
+
+bin_mode2 calculated mean CCsum energy to be  763.789 keV
+bin_mode2 calculated mean CCadd energy to be  971.567 keV
+attempting to close root file...
+Pars.f1->Write();
+Pars.f1->Print();
+TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run94.root, title=, option=CREATE
+TH1.Print Name  = dtbtev, Entries= 36916023, Total sum= 3.6916e+07
+TH1.Print Name  = T0, Entries= 0, Total sum= 0
+TH1.Print Name  = hitpat, Entries= 25387449, Total sum= 2.53874e+07
+TH1.Print Name  = numHitArray2, Entries= 20231166, Total sum= 1.32678e+07
+TH1.Print Name  = CCmult, Entries= 20231166, Total sum= 2.02312e+07
+TH1.Print Name  = CCsum, Entries= 58716745, Total sum= 2.5387e+07
+TH1.Print Name  = hit2, Entries= 2868545, Total sum= 2.86493e+06
+TH1.Print Name  = hit3, Entries= 1511044, Total sum= 1.49988e+06
+TH1.Print Name  = hit4, Entries= 810904, Total sum= 791779
+TH1.Print Name  = CCsum_nodop, Entries= 58716745, Total sum= 2.5387e+07
+TH1.Print Name  = CCadd, Entries= 20231166, Total sum= 1.31357e+07
+TH1.Print Name  = SEGadd_FPGA, Entries= -2147483648, Total sum= 2.5375e+07
+TH1.Print Name  = SEGadd_PSA, Entries= -2147483648, Total sum= 2.52578e+07
+TH1.Print Name  = SEGsum_FPGA, Entries= 39451696, Total sum= 3.94422e+07
+TH1.Print Name  = SEGsum_PSA, Entries= 58719201, Total sum= 5.82946e+07
+TH1.Print Name  = radius_all, Entries= 58719172, Total sum= 5.87192e+07
+TH1.Print Name  = rate_mode2_min, Entries= 25387448, Total sum= 423124
+TH1.Print Name  = rate_mode2_sec, Entries= 8918436, Total sum= 8.91844e+06
+TH1.Print Name  = rate_mode2_intp, Entries= 25387448, Total sum= 978653
+TH1.Print Name  = cdtbtev, Entries= 3478575, Total sum= 3.47858e+06
+TH1.Print Name  = evsr_all, Entries= 58719172, Total sum= 5.73939e+07
+TH1.Print Name  = SMAP_allhits, Entries= 58719199, Total sum= 5.87192e+07
+TH1.Print Name  = SMAP_allhits_sq, Entries= 58719201, Total sum= 5.87192e+07
+TH1.Print Name  = seghitpat, Entries= 58719201, Total sum= 5.87192e+07
+TH1.Print Name  = CCe, Entries= 58716745, Total sum= 2.5387e+07
+TH1.Print Name  = ggCC, Entries= 47879938, Total sum= 4.18636e+07
+TH1.Print Name  = z_plot, Entries= 58719201, Total sum= 5.86681e+07
+TH1.Print Name  = crystal_hit, Entries= 0, Total sum= 0
+TH1.Print Name  = SegE, Entries= 58704911, Total sum= 5.87049e+07
+TH1.Print Name  = crXcr, Entries= 23942654, Total sum= 2.39427e+07
+******************************************************************************
+*Tree    :tree      : tree                                                   *
+*Entries :  1311969 : Total =       481626743 bytes  File  Size =  209513192 *
+*        :          : Tree compression factor =   2.30                       *
+******************************************************************************
+*Br    0 :runNumber : runNumber/I                                            *
+*Entries :  1311969 : Total  Size=    5251201 bytes  File Size  =      28792 *
+*Baskets :       30 : Basket Size=     721920 bytes  Compression= 182.35     *
+*............................................................................*
+*Br    1 :numHits   : numHits/I                                              *
+*Entries :  1311969 : Total  Size=    5251133 bytes  File Size  =      28733 *
+*Baskets :       30 : Basket Size=     721920 bytes  Compression= 182.72     *
+*............................................................................*
+*Br    2 :left      : left[numHits]/F                                        *
+*Entries :  1311969 : Total  Size=   10503881 bytes  File Size  =    4226486 *
+*Baskets :       75 : Basket Size=    2884608 bytes  Compression=   2.48     *
+*............................................................................*
+*Br    3 :right     : right[numHits]/F                                       *
+*Entries :  1311969 : Total  Size=   10503960 bytes  File Size  =    4227733 *
+*Baskets :       75 : Basket Size=    2884608 bytes  Compression=   2.48     *
+*............................................................................*
+*Br    4 :up        : up[numHits]/F                                          *
+*Entries :  1311969 : Total  Size=   10503723 bytes  File Size  =    4217909 *
+*Baskets :       75 : Basket Size=    2884608 bytes  Compression=   2.49     *
+*............................................................................*
+*Br    5 :down      : down[numHits]/F                                        *
+*Entries :  1311969 : Total  Size=   10503881 bytes  File Size  =    4258258 *
+*Baskets :       75 : Basket Size=    2884608 bytes  Compression=   2.47     *
+*............................................................................*
+*Br    6 :e1        : e1[numHits]/F                                          *
+*Entries :  1311969 : Total  Size=   10503723 bytes  File Size  =    4379389 *
+*Baskets :       75 : Basket Size=    2884608 bytes  Compression=   2.40     *
+*............................................................................*
+*Br    7 :e2        : e2[numHits]/F                                          *
+*Entries :  1311969 : Total  Size=   10503723 bytes  File Size  =    4309867 *
+*Baskets :       75 : Basket Size=    2884608 bytes  Compression=   2.44     *
+*............................................................................*
+*Br    8 :e3        : e3[numHits]/F                                          *
+*Entries :  1311969 : Total  Size=   10503723 bytes  File Size  =    4210626 *
+*Baskets :       75 : Basket Size=    2884608 bytes  Compression=   2.49     *
+*............................................................................*
+*Br    9 :tac       : tac[numHits]/F                                         *
+*Entries :  1311969 : Total  Size=   10503802 bytes  File Size  =    3589771 *
+*Baskets :       75 : Basket Size=    2884608 bytes  Compression=   2.93     *
+*............................................................................*
+*Br   10 :fmaDeltaTime : fmaDeltaTime[numHits]/F                             *
+*Entries :  1311969 : Total  Size=   10504513 bytes  File Size  =    4049268 *
+*Baskets :       75 : Basket Size=    2885120 bytes  Compression=   2.59     *
+*............................................................................*
+*Br   11 :fmaMult   : fmaMult[10]/I                                          *
+*Entries :  1311969 : Total  Size=   52501919 bytes  File Size  =     576570 *
+*Baskets :      233 : Basket Size=    7214592 bytes  Compression=  91.05     *
+*............................................................................*
+*Br   12 :gammaMult : gammaMult/I                                            *
+*Entries :  1311969 : Total  Size=    5251201 bytes  File Size  =     840034 *
+*Baskets :       30 : Basket Size=     721920 bytes  Compression=   6.25     *
+*............................................................................*
+*Br   13 :gammaEnergy : gammaEnergy[gammaMult]/F                             *
+*Entries :  1311969 : Total  Size=   16785108 bytes  File Size  =   12608273 *
+*Baskets :      102 : Basket Size=    3748864 bytes  Compression=   1.33     *
+*............................................................................*
+*Br   14 :gammaTimestamp : gammaTimestamp[gammaMult]/F                       *
+*Entries :  1311969 : Total  Size=   16785426 bytes  File Size  =    5157493 *
+*Baskets :      102 : Basket Size=    3748864 bytes  Compression=   3.25     *
+*............................................................................*
+*Br   15 :deltaTime : deltaTime[gammaMult]/F                                 *
+*Entries :  1311969 : Total  Size=   16784896 bytes  File Size  =    5955828 *
+*Baskets :      102 : Basket Size=    3748352 bytes  Compression=   2.82     *
+*............................................................................*
+*Br   16 :gebMult   : gebMult/I                                              *
+*Entries :  1311969 : Total  Size=    5251133 bytes  File Size  =     852979 *
+*Baskets :       30 : Basket Size=     721920 bytes  Compression=   6.16     *
+*............................................................................*
+*Br   17 :crysType  : crysType[gebMult]/I                                    *
+*Entries :  1311969 : Total  Size=   17108578 bytes  File Size  =    2587152 *
+*Baskets :      103 : Basket Size=    3792896 bytes  Compression=   6.61     *
+*............................................................................*
+*Br   18 :crysId    : crysId[gebMult]/I                                      *
+*Entries :  1311969 : Total  Size=   17108364 bytes  File Size  =    6061577 *
+*Baskets :      103 : Basket Size=    3792896 bytes  Compression=   2.82     *
+*............................................................................*
+*Br   19 :crysNum   : crysNum[gebMult]/I                                     *
+*Entries :  1311969 : Total  Size=   17108471 bytes  File Size  =    4434032 *
+*Baskets :      103 : Basket Size=    3792896 bytes  Compression=   3.86     *
+*............................................................................*
+*Br   20 :crysTot_e : crysTot_e[gebMult]/F                                   *
+*Entries :  1311969 : Total  Size=   17108800 bytes  File Size  =   12696592 *
+*Baskets :      104 : Basket Size=    3792896 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   21 :crysPolAngle : crysPolAngle[gebMult]/F                             *
+*Entries :  1311969 : Total  Size=   17109124 bytes  File Size  =    5528479 *
+*Baskets :      104 : Basket Size=    3793408 bytes  Compression=   3.09     *
+*............................................................................*
+*Br   22 :intMaxX   : intMaxX[gebMult]/F                                     *
+*Entries :  1311969 : Total  Size=   17108478 bytes  File Size  =   12812342 *
+*Baskets :      103 : Basket Size=    3792896 bytes  Compression=   1.34     *
+*............................................................................*
+*Br   23 :intMaxY   : intMaxY[gebMult]/F                                     *
+*Entries :  1311969 : Total  Size=   17108478 bytes  File Size  =   12671846 *
+*Baskets :      103 : Basket Size=    3792896 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   24 :intMaxZ   : intMaxZ[gebMult]/F                                     *
+*Entries :  1311969 : Total  Size=   17108478 bytes  File Size  =   12728640 *
+*Baskets :      103 : Basket Size=    3792896 bytes  Compression=   1.34     *
+*............................................................................*
+*Br   25 :intMaxE   : intMaxE[gebMult]/F                                     *
+*Entries :  1311969 : Total  Size=   17108478 bytes  File Size  =   12683305 *
+*Baskets :      103 : Basket Size=    3792896 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   26 :intMaxSeg : intMaxSeg[gebMult]/I                                   *
+*Entries :  1311969 : Total  Size=   17108793 bytes  File Size  =    5835352 *
+*Baskets :      104 : Basket Size=    3792896 bytes  Compression=   2.93     *
+*............................................................................*
+*Br   27 :intMaxSegE : intMaxSegE[gebMult]/F                                 *
+*Entries :  1311969 : Total  Size=   17108908 bytes  File Size  =   12690370 *
+*Baskets :      104 : Basket Size=    3793408 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   28 :crysTimestamp : crysTimestamp[gebMult]/L                           *
+*Entries :  1311969 : Total  Size=   28964108 bytes  File Size  =   11986262 *
+*Baskets :      154 : Basket Size=    5423104 bytes  Compression=   2.42     *
+*............................................................................*
+*Br   29 :crysTrigtime : crysTrigtime[gebMult]/D                             *
+*Entries :  1311969 : Total  Size=   28963950 bytes  File Size  =   21542768 *
+*Baskets :      154 : Basket Size=    5423104 bytes  Compression=   1.34     *
+*............................................................................*
+*Br   30 :crysT0    : crysT0[gebMult]/F                                      *
+*Entries :  1311969 : Total  Size=   17108371 bytes  File Size  =   11710174 *
+*Baskets :      103 : Basket Size=    3792896 bytes  Compression=   1.46     *
+*............................................................................*
+TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_b, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_c, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_d, Entries= 3050248, Total sum= 0
+TH1.Print Name  = eSeg, Entries= 0, Total sum= 0
+TH1.Print Name  = mode3_hitpat, Entries= 102199897, Total sum= 0
+TH1.Print Name  = mode3_hitpat_chan, Entries= 102199897, Total sum= 1.022e+08
+TH1.Print Name  = chan0, Entries= 0, Total sum= 0
+TH1.Print Name  = module, Entries= 102199897, Total sum= 1.022e+08
+TH1.Print Name  = chan, Entries= 102199897, Total sum= 1.02128e+08
+TH1.Print Name  = l, Entries= 10219987, Total sum= 1.02191e+07
+TH1.Print Name  = r, Entries= 10219989, Total sum= 1.02196e+07
+TH1.Print Name  = up, Entries= 10219989, Total sum= 1.022e+07
+TH1.Print Name  = down, Entries= 10219988, Total sum= 1.02199e+07
+TH1.Print Name  = sumlr, Entries= 10051640, Total sum= 1.00516e+07
+TH1.Print Name  = sumud, Entries= 9554744, Total sum= 9.55474e+06
+TH1.Print Name  = x, Entries= 10051640, Total sum= 1.00516e+07
+TH1.Print Name  = y, Entries= 9554744, Total sum= 9.55474e+06
+TH1.Print Name  = de1, Entries= 10219991, Total sum= 1.02196e+07
+TH1.Print Name  = de2, Entries= 10219989, Total sum= 1.022e+07
+TH1.Print Name  = de3, Entries= 10219990, Total sum= 1.02031e+07
+TH1.Print Name  = de12, Entries= 8879877, Total sum= 8.87988e+06
+TH1.Print Name  = etot, Entries= 8879877, Total sum= 8.87988e+06
+TH1.Print Name  = rftof, Entries= 10219991, Total sum= 1.01735e+07
+TH1.Print Name  = lr, Entries= 20231166, Total sum= 2.02299e+07
+TH1.Print Name  = ud, Entries= 20231166, Total sum= 2.02311e+07
+TH1.Print Name  = ede1, Entries= 8879877, Total sum= 8.87988e+06
+TH1.Print Name  = ede1g, Entries= 1235721, Total sum= 1.23564e+06
+TH1.Print Name  = ede2, Entries= 8879877, Total sum= 8.87988e+06
+TH1.Print Name  = ede12, Entries= 8879877, Total sum= 8.87988e+06
+TH1.Print Name  = xde1, Entries= 8879877, Total sum= 8.87988e+06
+TH1.Print Name  = erftof, Entries= 20231166, Total sum= 2.01847e+07
+TH1.Print Name  = erftofg, Entries= 421521, Total sum= 420775
+TH1.Print Name  = sumehi, Entries= 25387449, Total sum= 2.53872e+07
+TH1.Print Name  = tgppac, Entries= 25387449, Total sum= 6.83969e+06
+TH1.Print Name  = tgppacg, Entries= 1235721, Total sum= 1.23572e+06
+TH1.Print Name  = xehi1, Entries= 25387449, Total sum= 2.53872e+07
+TH1.Print Name  = xehi1g, Entries= 1235721, Total sum= 1.23572e+06
+TH1.Print Name  = de1ehi, Entries= 25387449, Total sum= 2.53869e+07
+TH1.Print Name  = de1ehig, Entries= 1235721, Total sum= 1.23564e+06
+TH1.Print Name  = ng, Entries= 20231166, Total sum= 2.02312e+07
+TH1.Print Name  = ehiz1, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz2, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz3, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz4, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz5, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_dt, Entries= 1405667, Total sum= 1.40567e+06
+TH1.Print Name  = gg, Entries= 2811334, Total sum= 2.77203e+06
+TH1.Print Name  = gg_z1, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z2, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z3, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z4, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z5, Entries= 0, Total sum= 0
+Pars.f1->Close();
+done saving rootfile "/lcrc/project/HELIOS/gretinafma/root_data/run94.root
+
+
+read 20231166 events; Pars.beta=0.0330; time since last update 8 minutes
+CommandFileName="GEBSort.command"
+
+sorted timestamp range 1722978157401-->2131676196891: 408698039490
+that is 4087.0 seconds or 1h8m6s
+^^^^^ any timestamp jumps will upset this accounting
+
+hit statistics per type
+ 1 GEB_TYPE_DECOMP         26648538 ;   6520.35 Hz 
+ 8 GEB_TYPE_GT_MOD29       10267488 ;   2512.24 Hz 
+read a total of              36916026 ; header/payloads
+
+
+nn1=0
+nn2=36916027
+nn3=36916027
+
+nok_validate= 20231166, ntot_validate=20231166; validate fraction 100.00%
+
+bytes read=17452373972, 16643.880817 MB
+
+boniva sancta! ...GEBSort (unexpectedly) did not crash!
+
+ ** GEBSort is done at 

@@ -1,0 +1,3576 @@
+started GEBSort at we have 9 arguments
+1... -input
+will take input from disk
+file size is 180180588 bytes or 175 MBytes
+
+4... -rootfile
+rootfile name specified on command line
+__will store spectra in rootfile: /lcrc/project/HELIOS/gretinafma/root_data/run118.root
+will recreate root file
+7... -chat
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 510311
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) 128769024
+open files                      (-n) 51200
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 4096
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+will read sorting instructions from chatfile: GEBSort.chat
+
+executing UserDeclare.h code
+
+
+GEBsort running on: 
+
+initializing
+
+crmat.LINUX is open (input) binary format
+read 7936 bytes into Pars.crmat
+chat file: <GEBSort.chat> open
+
+will sort a max of 1410065408 events
+will sort 86400 minutes of data
+will print details of the first 10 events
+will use Pars.Beta (v/c) correction of 0.033000
+will sort using a time window of 150
+Pars.do_bin_mode2=1
+Pars.do_bin_mode3=1
+will accept second interaction range between 10.000000 and 500.000000 mm
+"1-200"
+detector   1 is ENABLED
+detector   2 is ENABLED
+detector   3 is ENABLED
+detector   4 is ENABLED
+detector   5 is ENABLED
+detector   6 is ENABLED
+detector   7 is ENABLED
+detector   8 is ENABLED
+detector   9 is ENABLED
+detector  10 is ENABLED
+detector  11 is ENABLED
+detector  12 is ENABLED
+detector  13 is ENABLED
+detector  14 is ENABLED
+detector  15 is ENABLED
+detector  16 is ENABLED
+detector  17 is ENABLED
+detector  18 is ENABLED
+detector  19 is ENABLED
+detector  20 is ENABLED
+detector  21 is ENABLED
+detector  22 is ENABLED
+detector  23 is ENABLED
+detector  24 is ENABLED
+detector  25 is ENABLED
+detector  26 is ENABLED
+detector  27 is ENABLED
+detector  28 is ENABLED
+detector  29 is ENABLED
+detector  30 is ENABLED
+detector  31 is ENABLED
+detector  32 is ENABLED
+detector  33 is ENABLED
+detector  34 is ENABLED
+detector  35 is ENABLED
+detector  36 is ENABLED
+detector  37 is ENABLED
+detector  38 is ENABLED
+detector  39 is ENABLED
+detector  40 is ENABLED
+detector  41 is ENABLED
+detector  42 is ENABLED
+detector  43 is ENABLED
+detector  44 is ENABLED
+detector  45 is ENABLED
+detector  46 is ENABLED
+detector  47 is ENABLED
+detector  48 is ENABLED
+detector  49 is ENABLED
+detector  50 is ENABLED
+detector  51 is ENABLED
+detector  52 is ENABLED
+detector  53 is ENABLED
+detector  54 is ENABLED
+detector  55 is ENABLED
+detector  56 is ENABLED
+detector  57 is ENABLED
+detector  58 is ENABLED
+detector  59 is ENABLED
+detector  60 is ENABLED
+detector  61 is ENABLED
+detector  62 is ENABLED
+detector  63 is ENABLED
+detector  64 is ENABLED
+detector  65 is ENABLED
+detector  66 is ENABLED
+detector  67 is ENABLED
+detector  68 is ENABLED
+detector  69 is ENABLED
+detector  70 is ENABLED
+detector  71 is ENABLED
+detector  72 is ENABLED
+detector  73 is ENABLED
+detector  74 is ENABLED
+detector  75 is ENABLED
+detector  76 is ENABLED
+detector  77 is ENABLED
+detector  78 is ENABLED
+detector  79 is ENABLED
+detector  80 is ENABLED
+detector  81 is ENABLED
+detector  82 is ENABLED
+detector  83 is ENABLED
+detector  84 is ENABLED
+detector  85 is ENABLED
+detector  86 is ENABLED
+detector  87 is ENABLED
+detector  88 is ENABLED
+detector  89 is ENABLED
+detector  90 is ENABLED
+detector  91 is ENABLED
+detector  92 is ENABLED
+detector  93 is ENABLED
+detector  94 is ENABLED
+detector  95 is ENABLED
+detector  96 is ENABLED
+detector  97 is ENABLED
+detector  98 is ENABLED
+detector  99 is ENABLED
+detector 100 is ENABLED
+detector 101 is ENABLED
+detector 102 is ENABLED
+detector 103 is ENABLED
+detector 104 is ENABLED
+detector 105 is ENABLED
+detector 106 is ENABLED
+detector 107 is ENABLED
+detector 108 is ENABLED
+detector 109 is ENABLED
+detector 110 is ENABLED
+detector 111 is ENABLED
+detector 112 is ENABLED
+detector 113 is ENABLED
+detector 114 is ENABLED
+detector 115 is ENABLED
+detector 116 is ENABLED
+detector 117 is ENABLED
+detector 118 is ENABLED
+detector 119 is ENABLED
+detector 120 is ENABLED
+detector 121 is ENABLED
+detector 122 is ENABLED
+detector 123 is ENABLED
+detector 124 is ENABLED
+detector 125 is ENABLED
+detector 126 is ENABLED
+detector 127 is ENABLED
+detector 128 is ENABLED
+detector 129 is ENABLED
+detector 130 is ENABLED
+detector 131 is ENABLED
+detector 132 is ENABLED
+detector 133 is ENABLED
+detector 134 is ENABLED
+detector 135 is ENABLED
+detector 136 is ENABLED
+detector 137 is ENABLED
+detector 138 is ENABLED
+detector 139 is ENABLED
+detector 140 is ENABLED
+detector 141 is ENABLED
+detector 142 is ENABLED
+detector 143 is ENABLED
+detector 144 is ENABLED
+detector 145 is ENABLED
+detector 146 is ENABLED
+detector 147 is ENABLED
+detector 148 is ENABLED
+detector 149 is ENABLED
+detector 150 is ENABLED
+detector 151 is ENABLED
+detector 152 is ENABLED
+detector 153 is ENABLED
+detector 154 is ENABLED
+detector 155 is ENABLED
+detector 156 is ENABLED
+detector 157 is ENABLED
+detector 158 is ENABLED
+detector 159 is ENABLED
+detector 160 is ENABLED
+detector 161 is ENABLED
+detector 162 is ENABLED
+detector 163 is ENABLED
+detector 164 is ENABLED
+detector 165 is ENABLED
+detector 166 is ENABLED
+detector 167 is ENABLED
+detector 168 is ENABLED
+detector 169 is ENABLED
+detector 170 is ENABLED
+detector 171 is ENABLED
+detector 172 is ENABLED
+detector 173 is ENABLED
+detector 174 is ENABLED
+detector 175 is ENABLED
+detector 176 is ENABLED
+detector 177 is ENABLED
+detector 178 is ENABLED
+detector 179 is ENABLED
+detector 180 is ENABLED
+detector 181 is ENABLED
+detector 182 is ENABLED
+detector 183 is ENABLED
+detector 184 is ENABLED
+detector 185 is ENABLED
+detector 186 is ENABLED
+detector 187 is ENABLED
+detector 188 is ENABLED
+detector 189 is ENABLED
+detector 190 is ENABLED
+detector 191 is ENABLED
+detector 192 is ENABLED
+detector 193 is ENABLED
+detector 194 is ENABLED
+detector 195 is ENABLED
+detector 196 is ENABLED
+detector 197 is ENABLED
+detector 198 is ENABLED
+detector 199 is ENABLED
+WARNING: could not open CCcal file "CCenergy.cal", quit
+will use beam direction 0.000000 0.000000 1.000000
+vector length= 1.000000, normalizing
+will use beam direction 0.000000 0.000000 1.000000
+Pars.ndetlimlo=1,Pars.ndetlimhi=8
+will require mult bt: 1 20
+fomlimits, 1, 0.00 ..to.. 0.80
+fomlimits, 2, 0.00 ..to.. 0.80
+fomlimits, 3, 0.00 ..to.. 0.80
+fomlimits, 4, 0.00 ..to.. 0.80
+fomlimits, 5, 0.00 ..to.. 0.80
+fomlimits, 6, 0.00 ..to.. 0.80
+fomlimits, 7, 0.00 ..to.. 0.80
+will use M= 350.000000 in bin_dgs
+will use PZ file "dgs_pz.cal" in bin_dgs
+will use ecal file "dgs_ehi.cal" in bin_dgs
+will skip rest of chat file
+
+chat file: <GEBSort.chat> closed
+processed 38 sort instructions and 197 lines
+
+
+sorting this:
+Pars.do_bin_mode3 = 1
+Pars.do_bin_mode2 = 1
+Pars.do_bin_mode1 = 0
+Pars.do_bin_dgs = 0
+Pars.do_bin_dfma = 0
+Pars.do_bin_gtcal = 0
+Pars.do_bin_template = 0
+Pars.do_bin_final = 0
+Pars.do_bin_angcor = 0
+Pars.do_bin_angdis = 0
+checking proper input of chat file...
+input file "/lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run118.gtd_000" is open, inData=0x25ea5440
+file size is 180180588 bytes or 175 MBs 
+input source is set up, supposedly
+
+xyz offset values:
+
+executing ShareMemFileUserInit.h code
+
+deleted \rm -f GEBSort.command
+root file </lcrc/project/HELIOS/gretinafma/root_data/run118.root>
+base=</lcrc/project/HELIOS/gretinafma/root_data/run118.root:/>
+TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run118.root, title=, option=CREATE
+
+executing UserInit.h code
+
+Created Object "dtbtev", 0x26efaaa0
+Created Object "T0", 0x26efaeb0
+, "T0"Created Object "hitpat", 0x26efb2a0
+, "hitpat"Created Object "numHitArray2", 0x26efbcf0
+, "numHitArray2"Created Object "CCmult", 0x26efc820
+, "CC Multiplicity"Created Object "CCsum", 0x271ce460
+, "CCsum"Created Object "hit2", 0x271de270
+, "hit2"Created Object "hit3", 0x271ee080
+, "hit3"Created Object "hit4", 0x271fde90
+, "hit4"Created Object "CCsum_nodop", 0x2720dca0
+, "CCsum_nodop"Created Object "CCadd", 0x2721dab0
+, "CCadd"Created Object "SEGadd_FPGA", 0x2722d8c0
+Created Object "SEGadd_PSA", 0x2722dcd0
+Created Object "SEGsum_FPGA", 0x2722e0e0
+Created Object "SEGsum_PSA", 0x2722e4f0
+Created Object "radius_all", 0x2722e900
+, "radius (all points)"Created Object "rate_mode2_min", 0x27236d10
+, "rate_mode2_min headers"Created Object "rate_mode2_sec", 0x27239e20
+, "rate_mode2_sec headers"Created Object "rate_mode2_intp", 0x2723cf30
+, "rate_mode2 interaction points"Created Object "cdtbtev", 0x27240040
+Created Object "evsr_all", 0x27305fb0
+Created Object "SMAP_allhits", 0x273064f0
+Created Object "SMAP_allhits_sq", 0x27405e80
+Created Object "seghitpat", 0x27505810
+Created Object "CCe", 0x2750dc10
+Created Object "ggCC", 0x2750e1c0
+Created Object "z_plot", 0x2750e770
+Created Object "crystal_hit", 0x275c1e40
+Created Object "SegE", 0x275c2410
+Created Object "crXcr", 0x275c2950
+MAXDETPOS=180
+Created Object "eCC_a", 0x276b7020
+Created Object "eCC_b", 0x276b7430
+Created Object "eCC_c", 0x276b7900
+Created Object "eCC_d", 0x276b7e80
+Created Object "eSeg", 0x276b83c0
+Created Object "mode3_hitpat", 0x276b8970
+, "mode3_hitpat"Created Object "mode3_hitpat_chan", 0x276b92e0
+, "mode3_hitpat_chan"Created Object "chan0", 0x276b9a20
+, "chan0"Created Object "module", 0x276cd850
+, "module"Created Object "chan", 0x276e1680
+Created Object "l", 0x27756fa0
+, "l"Created Object "r", 0x2776add0
+, "r"Created Object "up", 0x2777eb90
+, "up"Created Object "down", 0x27792950
+, "down"Created Object "sumlr", 0x277a6780
+, "sumlr"Created Object "sumud", 0x277ba5b0
+, "sumud"Created Object "x", 0x277ce3e0
+, "x"Created Object "y", 0x277e2210
+, "y"Created Object "de1", 0x277f6040
+, "de1"Created Object "de2", 0x27809e00
+, "de2"Created Object "de3", 0x2781dbc0
+, "de3"Created Object "de12", 0x278319f0
+, "de12"Created Object "etot", 0x27845820
+, "etot"Created Object "rftof", 0x278595e0
+, "rftof"Created Object "lr", 0x2786d3a0
+Created Object "ud", 0x2786d8e0
+Created Object "ede1", 0x2786de20
+Created Object "ede1g", 0x2786e360
+Created Object "ede2", 0x2786e910
+Created Object "ede12", 0x2786eec0
+Created Object "xde1", 0x2786f470
+Created Object "erftof", 0x2786f9b0
+Created Object "erftofg", 0x2786fef0
+Created Object "sumehi", 0x278704a0
+, "sumehi"Created Object "tgppac", 0x27884260
+, "tgppac"Created Object "tgppacg", 0x278ab910
+, "tgppacg"Created Object "xehi1", 0x278d2fc0
+Created Object "xehi1g", 0x278d3500
+Created Object "de1ehi", 0x278d3ab0
+Created Object "de1ehig", 0x278d3ff0
+Created Object "ng", 0x278d4530
+, "ng"Created Object "ehiz1", 0x278e82f0
+, "ehiz1"Created Object "ehiz2", 0x278fc0b0
+, "ehiz2"Created Object "ehiz3", 0x2790fee0
+, "ehiz3"Created Object "ehiz4", 0x27923d10
+, "ehiz4"Created Object "ehiz5", 0x27937b40
+, "ehiz5"Created Object "gg_dt", 0x2794b900
+, "gg_dt"Created Object "gg", 0x2794fd30
+Created Object "gg_z1", 0x279502e0
+Created Object "gg_z2", 0x27950890
+Created Object "gg_z3", 0x27950e40
+Created Object "gg_z4", 0x279513f0
+Created Object "gg_z5", 0x27951930
+we have define the following ROOT spectra:
+Collection name='THashList', class='THashList', size=84
+ TH1.Print Name  = dtbtev, Entries= 0, Total sum= 0
+ TH1.Print Name  = T0, Entries= 0, Total sum= 0
+ TH1.Print Name  = hitpat, Entries= 0, Total sum= 0
+ TH1.Print Name  = numHitArray2, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCmult, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCsum, Entries= 0, Total sum= 0
+ TH1.Print Name  = hit2, Entries= 0, Total sum= 0
+ TH1.Print Name  = hit3, Entries= 0, Total sum= 0
+ TH1.Print Name  = hit4, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCsum_nodop, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCadd, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGadd_FPGA, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGadd_PSA, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGsum_FPGA, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGsum_PSA, Entries= 0, Total sum= 0
+ TH1.Print Name  = radius_all, Entries= 0, Total sum= 0
+ TH1.Print Name  = rate_mode2_min, Entries= 0, Total sum= 0
+ TH1.Print Name  = rate_mode2_sec, Entries= 0, Total sum= 0
+ TH1.Print Name  = rate_mode2_intp, Entries= 0, Total sum= 0
+ TH1.Print Name  = cdtbtev, Entries= 0, Total sum= 0
+ TH1.Print Name  = evsr_all, Entries= 0, Total sum= 0
+ TH1.Print Name  = SMAP_allhits, Entries= 0, Total sum= 0
+ TH1.Print Name  = SMAP_allhits_sq, Entries= 0, Total sum= 0
+ TH1.Print Name  = seghitpat, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCe, Entries= 0, Total sum= 0
+ TH1.Print Name  = ggCC, Entries= 0, Total sum= 0
+ TH1.Print Name  = z_plot, Entries= 0, Total sum= 0
+ TH1.Print Name  = crystal_hit, Entries= 0, Total sum= 0
+ TH1.Print Name  = SegE, Entries= 0, Total sum= 0
+ TH1.Print Name  = crXcr, Entries= 0, Total sum= 0
+ ******************************************************************************
+*Tree    :tree      : tree                                                   *
+*Entries :        0 : Total =           16301 bytes  File  Size =          0 *
+*        :          : Tree compression factor =   1.00                       *
+******************************************************************************
+*Br    0 :runNumber : runNumber/I                                            *
+*Entries :        0 : Total  Size=        501 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    1 :numHits   : numHits/I                                              *
+*Entries :        0 : Total  Size=        493 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    2 :left      : left[numHits]/F                                        *
+*Entries :        0 : Total  Size=        580 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    3 :right     : right[numHits]/F                                       *
+*Entries :        0 : Total  Size=        584 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    4 :up        : up[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    5 :down      : down[numHits]/F                                        *
+*Entries :        0 : Total  Size=        580 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    6 :e1        : e1[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    7 :e2        : e2[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    8 :e3        : e3[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    9 :tac       : tac[numHits]/F                                         *
+*Entries :        0 : Total  Size=        576 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   10 :fmaDeltaTime : fmaDeltaTime[numHits]/F                             *
+*Entries :        0 : Total  Size=        612 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   11 :fmaMult   : fmaMult[10]/I                                          *
+*Entries :        0 : Total  Size=        501 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   12 :gammaMult : gammaMult/I                                            *
+*Entries :        0 : Total  Size=        501 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   13 :gammaEnergy : gammaEnergy[gammaMult]/F                             *
+*Entries :        0 : Total  Size=        616 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   14 :gammaTimestamp : gammaTimestamp[gammaMult]/F                       *
+*Entries :        0 : Total  Size=        628 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   15 :deltaTime : deltaTime[gammaMult]/F                                 *
+*Entries :        0 : Total  Size=        608 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   16 :gebMult   : gebMult/I                                              *
+*Entries :        0 : Total  Size=        493 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   17 :crysType  : crysType[gebMult]/I                                    *
+*Entries :        0 : Total  Size=        589 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   18 :crysId    : crysId[gebMult]/I                                      *
+*Entries :        0 : Total  Size=        581 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   19 :crysNum   : crysNum[gebMult]/I                                     *
+*Entries :        0 : Total  Size=        585 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   20 :crysTot_e : crysTot_e[gebMult]/F                                   *
+*Entries :        0 : Total  Size=        600 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   21 :crysPolAngle : crysPolAngle[gebMult]/F                             *
+*Entries :        0 : Total  Size=        612 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   22 :intMaxX   : intMaxX[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   23 :intMaxY   : intMaxY[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   24 :intMaxZ   : intMaxZ[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   25 :intMaxE   : intMaxE[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   26 :intMaxSeg : intMaxSeg[gebMult]/I                                   *
+*Entries :        0 : Total  Size=        593 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   27 :intMaxSegE : intMaxSegE[gebMult]/F                                 *
+*Entries :        0 : Total  Size=        604 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   28 :crysTimestamp : crysTimestamp[gebMult]/L                           *
+*Entries :        0 : Total  Size=        624 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   29 :crysTrigtime : crysTrigtime[gebMult]/D                             *
+*Entries :        0 : Total  Size=        620 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   30 :crysT0    : crysT0[gebMult]/F                                      *
+*Entries :        0 : Total  Size=        588 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+ TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
+ TH1.Print Name  = eCC_b, Entries= 0, Total sum= 0
+ TH1.Print Name  = eCC_c, Entries= 0, Total sum= 0
+ TH1.Print Name  = eCC_d, Entries= 0, Total sum= 0
+ TH1.Print Name  = eSeg, Entries= 0, Total sum= 0
+ TH1.Print Name  = mode3_hitpat, Entries= 0, Total sum= 0
+ TH1.Print Name  = mode3_hitpat_chan, Entries= 0, Total sum= 0
+ TH1.Print Name  = chan0, Entries= 0, Total sum= 0
+ TH1.Print Name  = module, Entries= 0, Total sum= 0
+ TH1.Print Name  = chan, Entries= 0, Total sum= 0
+ TH1.Print Name  = l, Entries= 0, Total sum= 0
+ TH1.Print Name  = r, Entries= 0, Total sum= 0
+ TH1.Print Name  = up, Entries= 0, Total sum= 0
+ TH1.Print Name  = down, Entries= 0, Total sum= 0
+ TH1.Print Name  = sumlr, Entries= 0, Total sum= 0
+ TH1.Print Name  = sumud, Entries= 0, Total sum= 0
+ TH1.Print Name  = x, Entries= 0, Total sum= 0
+ TH1.Print Name  = y, Entries= 0, Total sum= 0
+ TH1.Print Name  = de1, Entries= 0, Total sum= 0
+ TH1.Print Name  = de2, Entries= 0, Total sum= 0
+ TH1.Print Name  = de3, Entries= 0, Total sum= 0
+ TH1.Print Name  = de12, Entries= 0, Total sum= 0
+ TH1.Print Name  = etot, Entries= 0, Total sum= 0
+ TH1.Print Name  = rftof, Entries= 0, Total sum= 0
+ TH1.Print Name  = lr, Entries= 0, Total sum= 0
+ TH1.Print Name  = ud, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede1, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede1g, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede2, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede12, Entries= 0, Total sum= 0
+ TH1.Print Name  = xde1, Entries= 0, Total sum= 0
+ TH1.Print Name  = erftof, Entries= 0, Total sum= 0
+ TH1.Print Name  = erftofg, Entries= 0, Total sum= 0
+ TH1.Print Name  = sumehi, Entries= 0, Total sum= 0
+ TH1.Print Name  = tgppac, Entries= 0, Total sum= 0
+ TH1.Print Name  = tgppacg, Entries= 0, Total sum= 0
+ TH1.Print Name  = xehi1, Entries= 0, Total sum= 0
+ TH1.Print Name  = xehi1g, Entries= 0, Total sum= 0
+ TH1.Print Name  = de1ehi, Entries= 0, Total sum= 0
+ TH1.Print Name  = de1ehig, Entries= 0, Total sum= 0
+ TH1.Print Name  = ng, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz1, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz2, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz3, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz4, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz5, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_dt, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z1, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z2, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z3, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z4, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z5, Entries= 0, Total sum= 0
+GRETINA detector angles
+mod  1, crystal 0 [  4]: ( 10.07   3.58  15.10) pol   35.30 ,  azi   13.35; pol   35.30 ,  azi   19.58; modCCdopfac[4] 1.0271
+mod  1, crystal 1 [  5]: ( 10.11   9.19  12.47) pol   47.60 ,  azi   36.39; pol   47.60 ,  azi   42.30; modCCdopfac[5] 1.0222
+mod  1, crystal 2 [  6]: (  5.44   7.69  15.92) pol   30.60 ,  azi   25.77; pol   30.60 ,  azi   54.72; modCCdopfac[6] 1.0287
+mod  1, crystal 3 [  7]: (  4.99   1.78  17.72) pol   16.65 ,  azi    5.72; pol   16.65 ,  azi   19.58; modCCdopfac[7] 1.0321
+mod  2, crystal 0 [  8]: ( -0.29  10.69  15.10) pol   35.30 ,  azi   35.29; pol   35.30 ,  azi   91.58; modCCdopfac[8] 1.0271
+mod  2, crystal 1 [  9]: ( -5.62  12.45  12.47) pol   47.60 ,  azi   44.95; pol   47.60 ,  azi  114.30; modCCdopfac[9] 1.0222
+mod  2, crystal 2 [ 10]: ( -5.63   7.55  15.92) pol   30.60 ,  azi   25.36; pol   30.60 ,  azi  126.72; modCCdopfac[10] 1.0287
+mod  2, crystal 3 [ 11]: ( -0.15   5.30  17.72) pol   16.65 ,  azi   16.64; pol   16.65 ,  azi   91.58; modCCdopfac[11] 1.0321
+mod  3, crystal 0 [ 12]: (-10.25   3.02  15.10) pol   35.30 ,  azi   11.32; pol   35.30 ,  azi  163.58; modCCdopfac[12] 1.0271
+mod  3, crystal 1 [ 13]: (-13.58  -1.50  12.47) pol   47.60 ,  azi   -6.85; pol   47.60 ,  azi -173.70; modCCdopfac[13] 1.0222
+mod  3, crystal 2 [ 14]: ( -8.92  -3.02  15.92) pol   30.60 ,  azi  -10.75; pol   30.60 ,  azi -161.28; modCCdopfac[14] 1.0287
+mod  3, crystal 3 [ 15]: ( -5.08   1.50  17.72) pol   16.65 ,  azi    4.83; pol   16.65 ,  azi  163.58; modCCdopfac[15] 1.0321
+mod  4, crystal 0 [ 16]: ( -6.04  -8.82  15.10) pol   35.30 ,  azi  -30.29; pol   35.30 ,  azi -124.42; modCCdopfac[16] 1.0271
+mod  4, crystal 1 [ 17]: ( -2.77 -13.38  12.47) pol   47.60 ,  azi  -47.00; pol   47.60 ,  azi -101.70; modCCdopfac[17] 1.0222
+mod  4, crystal 2 [ 18]: (  0.12  -9.42  15.92) pol   30.60 ,  azi  -30.60; pol   30.60 ,  azi  -89.28; modCCdopfac[18] 1.0287
+mod  4, crystal 3 [ 19]: ( -3.00  -4.37  17.72) pol   16.65 ,  azi  -13.86; pol   16.65 ,  azi -124.42; modCCdopfac[19] 1.0321
+mod  5, crystal 0 [ 20]: (  6.52  -8.47  15.10) pol   35.30 ,  azi  -29.30; pol   35.30 ,  azi  -52.42; modCCdopfac[20] 1.0271
+mod  5, crystal 1 [ 21]: ( 11.87  -6.77  12.47) pol   47.60 ,  azi  -28.49; pol   47.60 ,  azi  -29.70; modCCdopfac[21] 1.0222
+mod  5, crystal 2 [ 22]: (  8.99  -2.80  15.92) pol   30.60 ,  azi   -9.96; pol   30.60 ,  azi  -17.28; modCCdopfac[22] 1.0287
+mod  5, crystal 3 [ 23]: (  3.23  -4.20  17.72) pol   16.65 ,  azi  -13.33; pol   16.65 ,  azi  -52.42; modCCdopfac[23] 1.0321
+mod  6, crystal 0 [ 24]: (  4.54  16.51   7.02) pol   67.71 ,  azi   66.97; pol   67.71 ,  azi   74.63; modCCdopfac[24] 1.0121
+mod  6, crystal 1 [ 25]: ( -0.33  15.15  10.61) pol   55.02 ,  azi   55.01; pol   55.02 ,  azi   91.23; modCCdopfac[25] 1.0187
+mod  6, crystal 2 [ 26]: (  5.05  13.00  12.16) pol   48.92 ,  azi   46.92; pol   48.92 ,  azi   68.77; modCCdopfac[26] 1.0216
+mod  6, crystal 3 [ 27]: (  9.66  13.57   8.06) pol   64.18 ,  azi   59.29; pol   64.18 ,  azi   54.55; modCCdopfac[27] 1.0140
+mod  7, crystal 0 [ 28]: (-14.30   9.42   7.02) pol   67.71 ,  azi   53.31; pol   67.71 ,  azi  146.63; modCCdopfac[28] 1.0121
+mod  7, crystal 1 [ 29]: (-14.51   4.37  10.61) pol   55.02 ,  azi   22.40; pol   55.02 ,  azi  163.23; modCCdopfac[29] 1.0187
+mod  7, crystal 2 [ 30]: (-10.80   8.82  12.16) pol   48.92 ,  azi   35.96; pol   48.92 ,  azi  140.77; modCCdopfac[30] 1.0216
+mod  7, crystal 3 [ 31]: ( -9.92  13.38   8.06) pol   64.18 ,  azi   58.94; pol   64.18 ,  azi  126.55; modCCdopfac[31] 1.0140
+mod  8, crystal 0 [ 32]: (-13.37 -10.69   7.02) pol   67.71 ,  azi  -56.71; pol   67.71 ,  azi -141.37; modCCdopfac[32] 1.0121
+mod  8, crystal 1 [ 33]: ( -8.64 -12.45  10.61) pol   55.02 ,  azi  -49.58; pol   55.02 ,  azi -124.77; modCCdopfac[33] 1.0187
+mod  8, crystal 2 [ 34]: (-11.73  -7.55  12.16) pol   48.92 ,  azi  -31.84; pol   48.92 ,  azi -147.23; modCCdopfac[34] 1.0216
+mod  8, crystal 3 [ 35]: (-15.79  -5.30   8.06) pol   64.18 ,  azi  -33.33; pol   64.18 ,  azi -161.45; modCCdopfac[35] 1.0140
+mod  9, crystal 0 [ 36]: (  6.03 -16.02   7.02) pol   67.71 ,  azi  -66.35; pol   67.71 ,  azi  -69.37; modCCdopfac[36] 1.0121
+mod  9, crystal 1 [ 37]: (  9.17 -12.07  10.61) pol   55.02 ,  azi  -48.69; pol   55.02 ,  azi  -52.77; modCCdopfac[37] 1.0187
+mod  9, crystal 2 [ 38]: (  3.56 -13.48  12.16) pol   48.92 ,  azi  -47.96; pol   48.92 ,  azi  -75.23; modCCdopfac[38] 1.0216
+mod  9, crystal 3 [ 39]: (  0.16 -16.65   8.06) pol   64.18 ,  azi  -64.18; pol   64.18 ,  azi  -89.45; modCCdopfac[39] 1.0140
+mod 10, crystal 0 [ 40]: ( 17.10   0.79   7.02) pol   67.71 ,  azi    6.39; pol   67.71 ,  azi    2.63; modCCdopfac[40] 1.0121
+mod 10, crystal 1 [ 41]: ( 14.31   4.99  10.61) pol   55.02 ,  azi   25.21; pol   55.02 ,  azi   19.23; modCCdopfac[41] 1.0187
+mod 10, crystal 2 [ 42]: ( 13.92  -0.79  12.16) pol   48.92 ,  azi   -3.70; pol   48.92 ,  azi   -3.23; modCCdopfac[42] 1.0216
+mod 10, crystal 3 [ 43]: ( 15.89  -4.99   8.06) pol   64.18 ,  azi  -31.79; pol   64.18 ,  azi  -17.45; modCCdopfac[43] 1.0140
+mod 11, crystal 0 [ 44]: ( 18.26   2.80   0.92) pol   87.15 ,  azi   71.78; pol   87.15 ,  azi    8.71; modCCdopfac[44] 1.0011
+mod 11, crystal 1 [ 45]: ( 17.30   4.20  -5.04) pol  105.79 ,  azi  140.16; pol  105.79 ,  azi   13.65; modCCdopfac[45] 0.9906
+mod 11, crystal 2 [ 46]: ( 16.42   8.47  -0.92) pol   92.85 ,  azi   96.20; pol   92.85 ,  azi   27.29; modCCdopfac[46] 0.9978
+mod 11, crystal 3 [ 47]: ( 16.46   6.77   5.04) pol   74.21 ,  azi   53.36; pol   74.21 ,  azi   22.35; modCCdopfac[47] 1.0085
+mod 12, crystal 0 [ 48]: ( 12.46  13.48  -2.26) pol   97.01 ,  azi   99.50; pol   97.01 ,  azi   47.25; modCCdopfac[48] 0.9954
+mod 12, crystal 1 [ 49]: (  7.28  16.65  -3.46) pol  100.78 ,  azi  101.74; pol  100.78 ,  azi   66.39; modCCdopfac[49] 0.9933
+mod 12, crystal 2 [ 50]: (  8.97  16.02   2.26) pol   82.99 ,  azi   81.98; pol   82.99 ,  azi   60.75; modCCdopfac[50] 1.0035
+mod 12, crystal 3 [ 51]: ( 13.59  12.07   3.46) pol   79.22 ,  azi   74.00; pol   79.22 ,  azi   41.61; modCCdopfac[51] 1.0057
+mod 13, crystal 0 [ 52]: (  2.98  18.23   0.92) pol   87.15 ,  azi   87.11; pol   87.15 ,  azi   80.71; modCCdopfac[52] 1.0011
+mod 13, crystal 1 [ 53]: (  1.35  17.75  -5.04) pol  105.79 ,  azi  105.84; pol  105.79 ,  azi   85.65; modCCdopfac[53] 0.9906
+mod 13, crystal 2 [ 54]: ( -2.98  18.23  -0.92) pol   92.85 ,  azi   92.89; pol   92.85 ,  azi   99.29; modCCdopfac[54] 0.9978
+mod 13, crystal 3 [ 55]: ( -1.35  17.75   5.04) pol   74.21 ,  azi   74.16; pol   74.21 ,  azi   94.35; modCCdopfac[55] 1.0085
+mod 14, crystal 0 [ 56]: ( -8.97  16.02  -2.26) pol   97.01 ,  azi   98.02; pol   97.01 ,  azi  119.25; modCCdopfac[56] 0.9954
+mod 14, crystal 1 [ 57]: (-13.59  12.07  -3.46) pol  100.78 ,  azi  106.00; pol  100.78 ,  azi  138.39; modCCdopfac[57] 0.9933
+mod 14, crystal 2 [ 58]: (-12.46  13.48   2.26) pol   82.99 ,  azi   80.50; pol   82.99 ,  azi  132.75; modCCdopfac[58] 1.0035
+mod 14, crystal 3 [ 59]: ( -7.28  16.65   3.46) pol   79.22 ,  azi   78.26; pol   79.22 ,  azi  113.61; modCCdopfac[59] 1.0057
+mod 15, crystal 0 [ 60]: (-16.42   8.47   0.92) pol   87.15 ,  azi   83.80; pol   87.15 ,  azi  152.71; modCCdopfac[60] 1.0011
+mod 15, crystal 1 [ 61]: (-16.46   6.77  -5.04) pol  105.79 ,  azi  126.64; pol  105.79 ,  azi  157.65; modCCdopfac[61] 0.9906
+mod 15, crystal 2 [ 62]: (-18.26   2.80  -0.92) pol   92.85 ,  azi  108.22; pol   92.85 ,  azi  171.29; modCCdopfac[62] 0.9978
+mod 15, crystal 3 [ 63]: (-17.30   4.20   5.04) pol   74.21 ,  azi   39.84; pol   74.21 ,  azi  166.35; modCCdopfac[63] 1.0085
+mod 16, crystal 0 [ 64]: (-18.01  -3.58  -2.26) pol   97.01 ,  azi -122.21; pol   97.01 ,  azi -168.75; modCCdopfac[64] 0.9954
+mod 16, crystal 1 [ 65]: (-15.68  -9.19  -3.46) pol  100.78 ,  azi -110.62; pol  100.78 ,  azi -149.61; modCCdopfac[65] 0.9933
+mod 16, crystal 2 [ 66]: (-16.68  -7.69   2.26) pol   82.99 ,  azi  -73.64; pol   82.99 ,  azi -155.25; modCCdopfac[66] 1.0035
+mod 16, crystal 3 [ 67]: (-18.09  -1.78   3.46) pol   79.22 ,  azi  -27.18; pol   79.22 ,  azi -174.39; modCCdopfac[67] 1.0057
+mod 17, crystal 0 [ 68]: (-13.13 -13.00   0.92) pol   87.15 ,  azi  -85.95; pol   87.15 ,  azi -135.29; modCCdopfac[68] 1.0011
+mod 17, crystal 1 [ 69]: (-11.53 -13.57  -5.04) pol  105.79 ,  azi -110.36; pol  105.79 ,  azi -130.35; modCCdopfac[69] 0.9906
+mod 17, crystal 2 [ 70]: ( -8.30 -16.51  -0.92) pol   92.85 ,  azi  -93.19; pol   92.85 ,  azi -116.71; modCCdopfac[70] 0.9978
+mod 17, crystal 3 [ 71]: ( -9.34 -15.15   5.04) pol   74.21 ,  azi  -71.62; pol   74.21 ,  azi -121.65; modCCdopfac[71] 1.0085
+mod 18, crystal 0 [ 72]: ( -2.16 -18.23  -2.26) pol   97.01 ,  azi  -97.05; pol   97.01 ,  azi  -96.75; modCCdopfac[72] 0.9954
+mod 18, crystal 1 [ 73]: (  3.90 -17.75  -3.46) pol  100.78 ,  azi -101.03; pol  100.78 ,  azi  -77.61; modCCdopfac[73] 0.9933
+mod 18, crystal 2 [ 74]: (  2.16 -18.23   2.26) pol   82.99 ,  azi  -82.95; pol   82.99 ,  azi  -83.25; modCCdopfac[74] 1.0035
+mod 18, crystal 3 [ 75]: ( -3.90 -17.75   3.46) pol   79.22 ,  azi  -78.97; pol   79.22 ,  azi -102.39; modCCdopfac[75] 1.0057
+mod 19, crystal 0 [ 76]: (  8.30 -16.51   0.92) pol   87.15 ,  azi  -86.81; pol   87.15 ,  azi  -63.29; modCCdopfac[76] 1.0011
+mod 19, crystal 1 [ 77]: (  9.34 -15.15  -5.04) pol  105.79 ,  azi -108.38; pol  105.79 ,  azi  -58.35; modCCdopfac[77] 0.9906
+mod 19, crystal 2 [ 78]: ( 13.13 -13.00  -0.92) pol   92.85 ,  azi  -94.05; pol   92.85 ,  azi  -44.71; modCCdopfac[78] 0.9978
+mod 19, crystal 3 [ 79]: ( 11.53 -13.57   5.04) pol   74.21 ,  azi  -69.64; pol   74.21 ,  azi  -49.65; modCCdopfac[79] 1.0085
+mod 20, crystal 0 [ 80]: ( 16.68  -7.69  -2.26) pol   97.01 ,  azi -106.36; pol   97.01 ,  azi  -24.75; modCCdopfac[80] 0.9954
+mod 20, crystal 1 [ 81]: ( 18.09  -1.78  -3.46) pol  100.78 ,  azi -152.82; pol  100.78 ,  azi   -5.61; modCCdopfac[81] 0.9933
+mod 20, crystal 2 [ 82]: ( 18.01  -3.58   2.26) pol   82.99 ,  azi  -57.79; pol   82.99 ,  azi  -11.25; modCCdopfac[82] 1.0035
+mod 20, crystal 3 [ 83]: ( 15.68  -9.19   3.46) pol   79.22 ,  azi  -69.38; pol   79.22 ,  azi  -30.39; modCCdopfac[83] 1.0057
+mod 21, crystal 0 [ 84]: ( 14.30   9.42  -7.02) pol  112.29 ,  azi  126.69; pol  112.29 ,  azi   33.37; modCCdopfac[84] 0.9871
+mod 21, crystal 1 [ 85]: ( 14.51   4.37 -10.61) pol  124.98 ,  azi  157.60; pol  124.98 ,  azi   16.77; modCCdopfac[85] 0.9809
+mod 21, crystal 2 [ 86]: ( 10.80   8.82 -12.16) pol  131.08 ,  azi  144.04; pol  131.08 ,  azi   39.23; modCCdopfac[86] 0.9782
+mod 21, crystal 3 [ 87]: (  9.92  13.38  -8.06) pol  115.82 ,  azi  121.06; pol  115.82 ,  azi   53.45; modCCdopfac[87] 0.9853
+mod 22, crystal 0 [ 88]: ( -4.54  16.51  -7.02) pol  112.29 ,  azi  113.03; pol  112.29 ,  azi  105.37; modCCdopfac[88] 0.9871
+mod 22, crystal 1 [ 89]: (  0.33  15.15 -10.61) pol  124.98 ,  azi  124.99; pol  124.98 ,  azi   88.77; modCCdopfac[89] 0.9809
+mod 22, crystal 2 [ 90]: ( -5.05  13.00 -12.16) pol  131.08 ,  azi  133.08; pol  131.08 ,  azi  111.23; modCCdopfac[90] 0.9782
+mod 22, crystal 3 [ 91]: ( -9.66  13.57  -8.06) pol  115.82 ,  azi  120.71; pol  115.82 ,  azi  125.45; modCCdopfac[91] 0.9853
+mod 23, crystal 0 [ 92]: (-17.10   0.79  -7.02) pol  112.29 ,  azi  173.61; pol  112.29 ,  azi  177.37; modCCdopfac[92] 0.9871
+mod 23, crystal 1 [ 93]: (-14.31   4.99 -10.61) pol  124.98 ,  azi  154.79; pol  124.98 ,  azi  160.77; modCCdopfac[93] 0.9809
+mod 23, crystal 2 [ 94]: (-13.92  -0.79 -12.16) pol  131.08 ,  azi -176.30; pol  131.08 ,  azi -176.77; modCCdopfac[94] 0.9782
+mod 23, crystal 3 [ 95]: (-15.89  -4.99  -8.06) pol  115.82 ,  azi -148.21; pol  115.82 ,  azi -162.55; modCCdopfac[95] 0.9853
+mod 24, crystal 0 [ 96]: ( -6.03 -16.02  -7.02) pol  112.29 ,  azi -113.65; pol  112.29 ,  azi -110.63; modCCdopfac[96] 0.9871
+mod 24, crystal 1 [ 97]: ( -9.17 -12.07 -10.61) pol  124.98 ,  azi -131.31; pol  124.98 ,  azi -127.23; modCCdopfac[97] 0.9809
+mod 24, crystal 2 [ 98]: ( -3.56 -13.48 -12.16) pol  131.08 ,  azi -132.04; pol  131.08 ,  azi -104.77; modCCdopfac[98] 0.9782
+mod 24, crystal 3 [ 99]: ( -0.16 -16.65  -8.06) pol  115.82 ,  azi -115.82; pol  115.82 ,  azi  -90.55; modCCdopfac[99] 0.9853
+mod 25, crystal 0 [100]: ( 13.37 -10.69  -7.02) pol  112.29 ,  azi -123.29; pol  112.29 ,  azi  -38.63; modCCdopfac[100] 0.9871
+mod 25, crystal 1 [101]: (  8.64 -12.45 -10.61) pol  124.98 ,  azi -130.42; pol  124.98 ,  azi  -55.23; modCCdopfac[101] 0.9809
+mod 25, crystal 2 [102]: ( 11.73  -7.55 -12.16) pol  131.08 ,  azi -148.16; pol  131.08 ,  azi  -32.77; modCCdopfac[102] 0.9782
+mod 25, crystal 3 [103]: ( 15.79  -5.30  -8.06) pol  115.82 ,  azi -146.67; pol  115.82 ,  azi  -18.55; modCCdopfac[103] 0.9853
+mod 26, crystal 0 [104]: (  0.29  10.69 -15.10) pol  144.70 ,  azi  144.71; pol  144.70 ,  azi   88.42; modCCdopfac[104] 0.9732
+mod 26, crystal 1 [105]: (  5.62  12.45 -12.47) pol  132.40 ,  azi  135.05; pol  132.40 ,  azi   65.70; modCCdopfac[105] 0.9777
+mod 26, crystal 2 [106]: (  5.63   7.55 -15.92) pol  149.40 ,  azi  154.64; pol  149.40 ,  azi   53.28; modCCdopfac[106] 0.9718
+mod 26, crystal 3 [107]: (  0.15   5.30 -17.72) pol  163.35 ,  azi  163.36; pol  163.35 ,  azi   88.42; modCCdopfac[107] 0.9688
+mod 27, crystal 0 [108]: (-10.07   3.58 -15.10) pol  144.70 ,  azi  166.65; pol  144.70 ,  azi  160.42; modCCdopfac[108] 0.9732
+mod 27, crystal 1 [109]: (-10.11   9.19 -12.47) pol  132.40 ,  azi  143.61; pol  132.40 ,  azi  137.70; modCCdopfac[109] 0.9777
+mod 27, crystal 2 [110]: ( -5.44   7.69 -15.92) pol  149.40 ,  azi  154.23; pol  149.40 ,  azi  125.28; modCCdopfac[110] 0.9718
+mod 27, crystal 3 [111]: ( -4.99   1.78 -17.72) pol  163.35 ,  azi  174.28; pol  163.35 ,  azi  160.42; modCCdopfac[111] 0.9688
+mod 28, crystal 0 [112]: ( -6.52  -8.47 -15.10) pol  144.70 ,  azi -150.70; pol  144.70 ,  azi -127.58; modCCdopfac[112] 0.9732
+mod 28, crystal 1 [113]: (-11.87  -6.77 -12.47) pol  132.40 ,  azi -151.51; pol  132.40 ,  azi -150.30; modCCdopfac[113] 0.9777
+mod 28, crystal 2 [114]: ( -8.99  -2.80 -15.92) pol  149.40 ,  azi -170.04; pol  149.40 ,  azi -162.72; modCCdopfac[114] 0.9718
+mod 28, crystal 3 [115]: ( -3.23  -4.20 -17.72) pol  163.35 ,  azi -166.67; pol  163.35 ,  azi -127.58; modCCdopfac[115] 0.9688
+mod 29, crystal 0 [116]: (  6.04  -8.82 -15.10) pol  144.70 ,  azi -149.71; pol  144.70 ,  azi  -55.58; modCCdopfac[116] 0.9732
+mod 29, crystal 1 [117]: (  2.77 -13.38 -12.47) pol  132.40 ,  azi -133.00; pol  132.40 ,  azi  -78.30; modCCdopfac[117] 0.9777
+mod 29, crystal 2 [118]: ( -0.12  -9.42 -15.92) pol  149.40 ,  azi -149.40; pol  149.40 ,  azi  -90.72; modCCdopfac[118] 0.9718
+mod 29, crystal 3 [119]: (  3.00  -4.37 -17.72) pol  163.35 ,  azi -166.14; pol  163.35 ,  azi  -55.58; modCCdopfac[119] 0.9688
+mod 30, crystal 0 [120]: ( 10.25   3.02 -15.10) pol  144.70 ,  azi  168.68; pol  144.70 ,  azi   16.42; modCCdopfac[120] 0.9732
+mod 30, crystal 1 [121]: ( 13.58  -1.50 -12.47) pol  132.40 ,  azi -173.15; pol  132.40 ,  azi   -6.30; modCCdopfac[121] 0.9777
+mod 30, crystal 2 [122]: (  8.92  -3.02 -15.92) pol  149.40 ,  azi -169.25; pol  149.40 ,  azi  -18.72; modCCdopfac[122] 0.9718
+mod 30, crystal 3 [123]: (  5.08   1.50 -17.72) pol  163.35 ,  azi  175.17; pol  163.35 ,  azi   16.42; modCCdopfac[123] 0.9688
+setup signal catcher
+started sorting... from disk...
+
+Pars.maxTS=4611686018427387904
+got initial header, TS=3279749017519 ID: 8 length: 264
+read initial payload of siz=264 into event position 1
+__ptgd[0]->type= 0; ptgd[0]->length=   0; ptgd[0]->timestamp=0
+initial ii=1, nn=1
+ev#     0 GEB_TYPE_GT_MOD29      352Bytes TS=3279749021505 curTS=3279749017519 dTS= 3986
+t0=3279749017519
+first event: GEB_event.mult=1
+   0/ 0: ( 8,GEB_TYPE_GT_MOD29    ) TS=       3279749017519; dT=0
+maxTS=11919749017519
+that is 86400.0 seconds or 24h0m0s minutes of sorting
+GEBGetEv returned st=0
+we have read 648 bytes; CurEvNo=1
+
++++++++++++++++++++++++++++++++
+*start event # 1 with multiplicity 1 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=3279749017519
+entered bin_mode2: 1/10
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 1 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=3279749017519, 0x2fba0466faf; payload length: 264 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x6faf,  28591
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x46c5,  18117
+Event.hdr[ 6]=0x0e01,   3585
+Event.hdr[ 7]=0x0000,      0
+Event.hdr[ 8]=0xe797,  59287
+Event.hdr[ 9]=0xa335,  41781
+Event.hdr[10]=0x7800,  30720
+Event.hdr[11]=0x01a0,    416
+Event.hdr[12]=0xee88,  61064
+Event.hdr[13]=0x0005,      5
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+open superpulse_001_00_01.xy at Event.chan_id = 7
+open CCpulse_001_00_01.xy at Event.chan_id = 7
+ncrystal=1
+wrote trace to CCpulse_001_00_01.xy
+two's comp tempE  ::      83653      83653 0x000146c5 |0000|0000|0000|0001|0100|0110|1100|0101|
+rawE              ::      83653      83653 0x000146c5 |0000|0000|0000|0001|0100|0110|1100|0101|
+rawE (sign change)::      83653      83653 0x000146c5 |0000|0000|0000|0001|0100|0110|1100|0101|
+Event.ehi=            2614 0x00000a36
+Event.ehi=261 (gain changed)
+Event.LEDts =        3279749017519
+Event.CFDts =         180391444492
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x6faf,  28591
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8d00,  36096
+Event.hdr[ 6]=0x1ff9,   8185
+Event.hdr[ 7]=0x0000,      0
+Event.hdr[ 8]=0xe797,  59287
+Event.hdr[ 9]=0xaa4a,  43594
+Event.hdr[10]=0xedfc,  60924
+Event.hdr[11]=0xf99b,  63899
+Event.hdr[12]=0x1e17,   7703
+Event.hdr[13]=0x07f3,   2035
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+ncrystal=1
+wrote trace to CCpulse_001_00_01.xy
+two's comp tempE  ::   16354560   16354560 0x00f98d00 |0000|0000|1111|1001|1000|1101|0000|0000|
+rawE              :: 4294544640    -422656 0xfff98d00 |1111|1111|1111|1001|1000|1101|0000|0000|
+rawE (sign change)::     422656     422656 0x00067300 |0000|0000|0000|0110|0111|0011|0000|0000|
+Event.ehi=           13208 0x00003398
+Event.ehi=1320 (gain changed)
+Event.LEDts =        3279749017519
+Event.CFDts =         584128069644
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f33,   7987
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x6faf,  28591
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xf19a,  61850
+Event.hdr[ 6]=0x4e0b,  19979
+Event.hdr[ 7]=0x0000,      0
+Event.hdr[ 8]=0xe797,  59287
+Event.hdr[ 9]=0xf0c6,  61638
+Event.hdr[10]=0xe80b,  59403
+Event.hdr[11]=0x1a16,   6678
+Event.hdr[12]=0x3f78,  16248
+Event.hdr[13]=0x002f,     47
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 132
+0x1f33 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 3 ge_id = 124 channel = 33  -> is segment
+ncrystal=1
+wrote trace to CCpulse_001_00_01.xy
+two's comp tempE  ::     782746     782746 0x000bf19a |0000|0000|0000|1011|1111|0001|1001|1010|
+rawE              ::     782746     782746 0x000bf19a |0000|0000|0000|1011|1111|0001|1001|1010|
+rawE (sign change)::     782746     782746 0x000bf19a |0000|0000|0000|1011|1111|0001|1001|1010|
+Event.ehi=           24460 0x00005f8c
+Event.ehi=2446 (gain changed)
+Event.LEDts =        3279749017519
+Event.CFDts =      265209687244812
+
+---------
+new GTheader at pos=132 or 66 words (74):
+Event.hdr[ 0]=0x1f34,   7988
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x6faf,  28591
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x008b,    139
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x0000,      0
+Event.hdr[ 8]=0xe797,  59287
+Event.hdr[ 9]=0x002f,     47
+Event.hdr[10]=0xf400,  62464
+Event.hdr[11]=0xffff,  65535
+Event.hdr[12]=0x00cb,    203
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 176
+0x1f34 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 4 ge_id = 124 channel = 34  -> is segment
+ncrystal=1
+wrote trace to CCpulse_001_00_01.xy
+two's comp tempE  ::        139        139 0x0000008b |0000|0000|0000|0000|0000|0000|1000|1011|
+rawE              ::        139        139 0x0000008b |0000|0000|0000|0000|0000|0000|1000|1011|
+rawE (sign change)::        139        139 0x0000008b |0000|0000|0000|0000|0000|0000|1000|1011|
+Event.ehi=               4 0x00000004
+Event.ehi=0 (gain changed)
+Event.LEDts =        3279749017519
+Event.CFDts =         253407395852
+
+---------
+new GTheader at pos=176 or 88 words (96):
+Event.hdr[ 0]=0x1f35,   7989
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x6faf,  28591
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xc443,  50243
+Event.hdr[ 6]=0x4e09,  19977
+Event.hdr[ 7]=0x0000,      0
+Event.hdr[ 8]=0xe797,  59287
+Event.hdr[ 9]=0xc28a,  49802
+Event.hdr[10]=0xc009,  49161
+Event.hdr[11]=0x1425,   5157
+Event.hdr[12]=0x9734,  38708
+Event.hdr[13]=0x0023,     35
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 220
+0x1f35 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 5 ge_id = 124 channel = 35  -> is segment
+ncrystal=1
+wrote trace to CCpulse_001_00_01.xy
+two's comp tempE  ::     640067     640067 0x0009c443 |0000|0000|0000|1001|1100|0100|0100|0011|
+rawE              ::     640067     640067 0x0009c443 |0000|0000|0000|1001|1100|0100|0100|0011|
+rawE (sign change)::     640067     640067 0x0009c443 |0000|0000|0000|1001|1100|0100|0100|0011|
+Event.ehi=           20002 0x00004e22
+Event.ehi=2000 (gain changed)
+Event.LEDts =        3279749017519
+Event.CFDts =      268048704208908
+
+---------
+new GTheader at pos=220 or 110 words (118):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x6faf,  28591
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x616b,  24939
+Event.hdr[ 6]=0x0e03,   3587
+Event.hdr[ 7]=0x0000,      0
+Event.hdr[ 8]=0xe797,  59287
+Event.hdr[ 9]=0x33ea,  13290
+Event.hdr[10]=0x3002,  12290
+Event.hdr[11]=0x04ce,   1230
+Event.hdr[12]=0x3050,  12368
+Event.hdr[13]=0x0010,     16
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+ncrystal=1
+wrote trace to CCpulse_001_00_01.xy
+two's comp tempE  ::     221547     221547 0x0003616b |0000|0000|0000|0011|0110|0001|0110|1011|
+rawE              ::     221547     221547 0x0003616b |0000|0000|0000|0011|0110|0001|0110|1011|
+rawE (sign change)::     221547     221547 0x0003616b |0000|0000|0000|0011|0110|0001|0110|1011|
+Event.ehi=            6923 0x00001b0b
+Event.ehi=692 (gain changed)
+Event.LEDts =        3279749017519
+Event.CFDts =      281436321153036
+exit bin_mode3
+*end of event # 1
++++++++++++++++++++++++++++++++
+ev#     1 GEB_TYPE_GT_MOD29      440Bytes TS=3279749060987 curTS=3279749021505 dTS= 39482
+GEBGetEv returned st=0
+we have read 1104 bytes; CurEvNo=2
+
++++++++++++++++++++++++++++++++
+*start event # 2 with multiplicity 1 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=3279749021505
+entered bin_mode2: 2/10
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 2 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=3279749021505, 0x2fba0467f41; payload length: 352 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f31,   7985
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7f41,  32577
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xabf2,  44018
+Event.hdr[ 6]=0x4e09,  19977
+Event.hdr[ 7]=0x0f91,   3985
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0xaa0f,  43535
+Event.hdr[10]=0xb609,  46601
+Event.hdr[11]=0x107f,   4223
+Event.hdr[12]=0xc630,  50736
+Event.hdr[13]=0x001f,     31
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f31 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 1 ge_id = 124 channel = 31  -> is segment
+open superpulse_002_00_01.xy at Event.chan_id = 1
+open CCpulse_002_00_01.xy at Event.chan_id = 1
+ncrystal=1
+wrote trace to CCpulse_002_00_01.xy
+two's comp tempE  ::     633842     633842 0x0009abf2 |0000|0000|0000|1001|1010|1011|1111|0010|
+rawE              ::     633842     633842 0x0009abf2 |0000|0000|0000|1001|1010|1011|1111|0010|
+rawE (sign change)::     633842     633842 0x0009abf2 |0000|0000|0000|1001|1010|1011|1111|0010|
+Event.ehi=           19807 0x00004d5f
+Event.ehi=1980 (gain changed)
+Event.LEDts =        3279749021505
+Event.CFDts =      268684368805900
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f32,   7986
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7f41,  32577
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x41b9,  16825
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x0f91,   3985
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x31ce,  12750
+Event.hdr[10]=0x0800,   2048
+Event.hdr[11]=0x0048,     72
+Event.hdr[12]=0x480c,  18444
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f32 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 2 ge_id = 124 channel = 32  -> is segment
+ncrystal=1
+wrote trace to CCpulse_002_00_01.xy
+two's comp tempE  ::      16825      16825 0x000041b9 |0000|0000|0000|0000|0100|0001|1011|1001|
+rawE              ::      16825      16825 0x000041b9 |0000|0000|0000|0000|0100|0001|1011|1001|
+rawE (sign change)::      16825      16825 0x000041b9 |0000|0000|0000|0000|0100|0001|1011|1001|
+Event.ehi=             525 0x0000020d
+Event.ehi=52 (gain changed)
+Event.LEDts =        3279749021505
+Event.CFDts =      281453501349900
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f33,   7987
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7f41,  32577
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x2291,   8849
+Event.hdr[ 6]=0x4e0c,  19980
+Event.hdr[ 7]=0x0f91,   3985
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x21ea,   8682
+Event.hdr[10]=0x8c0c,  35852
+Event.hdr[11]=0x17e1,   6113
+Event.hdr[12]=0x2dd0,  11728
+Event.hdr[13]=0x0034,     52
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 132
+0x1f33 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 3 ge_id = 124 channel = 33  -> is segment
+ncrystal=1
+wrote trace to CCpulse_002_00_01.xy
+two's comp tempE  ::     795281     795281 0x000c2291 |0000|0000|0000|1100|0010|0010|1001|0001|
+rawE              ::     795281     795281 0x000c2291 |0000|0000|0000|1100|0010|0010|1001|0001|
+rawE (sign change)::     795281     795281 0x000c2291 |0000|0000|0000|1100|0010|0010|1001|0001|
+Event.ehi=           24852 0x00006114
+Event.ehi=2485 (gain changed)
+Event.LEDts =        3279749021505
+Event.CFDts =      264973460701196
+
+---------
+new GTheader at pos=132 or 66 words (74):
+Event.hdr[ 0]=0x1f34,   7988
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7f41,  32577
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x0016,     22
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x0f91,   3985
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x0011,     17
+Event.hdr[10]=0x5e00,  24064
+Event.hdr[11]=0x0000,      0
+Event.hdr[12]=0xffe8,  65512
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 176
+0x1f34 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 4 ge_id = 124 channel = 34  -> is segment
+ncrystal=1
+wrote trace to CCpulse_002_00_01.xy
+two's comp tempE  ::         22         22 0x00000016 |0000|0000|0000|0000|0000|0000|0001|0110|
+rawE              ::         22         22 0x00000016 |0000|0000|0000|0000|0000|0000|0001|0110|
+rawE (sign change)::         22         22 0x00000016 |0000|0000|0000|0000|0000|0000|0001|0110|
+Event.ehi=               0 0x00000000
+Event.ehi=0 (gain changed)
+Event.LEDts =        3279749021505
+Event.CFDts =         266291838988
+
+---------
+new GTheader at pos=176 or 88 words (96):
+Event.hdr[ 0]=0x1f35,   7989
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7f41,  32577
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x63ca,  25546
+Event.hdr[ 6]=0x4e08,  19976
+Event.hdr[ 7]=0x0f91,   3985
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x6225,  25125
+Event.hdr[10]=0x1408,   5128
+Event.hdr[11]=0x1385,   4997
+Event.hdr[12]=0x4b80,  19328
+Event.hdr[13]=0x0028,     40
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 220
+0x1f35 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 5 ge_id = 124 channel = 35  -> is segment
+ncrystal=1
+wrote trace to CCpulse_002_00_01.xy
+two's comp tempE  ::     549834     549834 0x000863ca |0000|0000|0000|1000|0110|0011|1100|1010|
+rawE              ::     549834     549834 0x000863ca |0000|0000|0000|1000|0110|0011|1100|1010|
+rawE (sign change)::     549834     549834 0x000863ca |0000|0000|0000|1000|0110|0011|1100|1010|
+Event.ehi=           17182 0x0000431e
+Event.ehi=1718 (gain changed)
+Event.LEDts =        3279749021505
+Event.CFDts =      269904158195724
+
+---------
+new GTheader at pos=220 or 110 words (118):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7f41,  32577
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xde49,  56905
+Event.hdr[ 6]=0x0e02,   3586
+Event.hdr[ 7]=0x0f91,   3985
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0x8c15,  35861
+Event.hdr[10]=0xd402,  54274
+Event.hdr[11]=0x0467,   1127
+Event.hdr[12]=0x9c60,  40032
+Event.hdr[13]=0x0009,      9
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 264
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+ncrystal=1
+wrote trace to CCpulse_002_00_01.xy
+two's comp tempE  ::     187977     187977 0x0002de49 |0000|0000|0000|0010|1101|1110|0100|1001|
+rawE              ::     187977     187977 0x0002de49 |0000|0000|0000|0010|1101|1110|0100|1001|
+rawE (sign change)::     187977     187977 0x0002de49 |0000|0000|0000|0010|1101|1110|0100|1001|
+Event.ehi=            5874 0x000016f2
+Event.ehi=587 (gain changed)
+Event.LEDts =        3279749021505
+Event.CFDts =      281084128722956
+
+---------
+new GTheader at pos=264 or 132 words (140):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7f41,  32577
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x1d3d,   7485
+Event.hdr[ 6]=0x0e01,   3585
+Event.hdr[ 7]=0x0f91,   3985
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0xed94,  60820
+Event.hdr[10]=0x6a00,  27136
+Event.hdr[11]=0x0146,    326
+Event.hdr[12]=0x40f0,  16624
+Event.hdr[13]=0x0003,      3
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 308
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+ncrystal=1
+wrote trace to CCpulse_002_00_01.xy
+two's comp tempE  ::      73021      73021 0x00011d3d |0000|0000|0000|0001|0001|1101|0011|1101|
+rawE              ::      73021      73021 0x00011d3d |0000|0000|0000|0001|0001|1101|0011|1101|
+rawE (sign change)::      73021      73021 0x00011d3d |0000|0000|0000|0001|0001|1101|0011|1101|
+Event.ehi=            2281 0x000008e9
+Event.ehi=228 (gain changed)
+Event.LEDts =        3279749021505
+Event.CFDts =      281453501415436
+
+---------
+new GTheader at pos=308 or 154 words (162):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7f41,  32577
+Event.hdr[ 3]=0xa046,  41030
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8c82,  35970
+Event.hdr[ 6]=0x1ff9,   8185
+Event.hdr[ 7]=0x0f91,   3985
+Event.hdr[ 8]=0x0000,      0
+Event.hdr[ 9]=0xa8ab,  43179
+Event.hdr[10]=0x95fc,  38396
+Event.hdr[11]=0xf954,  63828
+Event.hdr[12]=0x37db,  14299
+Event.hdr[13]=0x07f3,   2035
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+ncrystal=1
+wrote trace to CCpulse_002_00_01.xy
+two's comp tempE  ::   16354434   16354434 0x00f98c82 |0000|0000|1111|1001|1000|1100|1000|0010|
+rawE              :: 4294544514    -422782 0xfff98c82 |1111|1111|1111|1001|1000|1100|1000|0010|
+rawE (sign change)::     422782     422782 0x0006737e |0000|0000|0000|0110|0111|0011|0111|1110|
+Event.ehi=           13211 0x0000339b
+Event.ehi=1321 (gain changed)
+Event.LEDts =        3279749021505
+Event.CFDts =         597013495820
+exit bin_mode3
+*end of event # 2
++++++++++++++++++++++++++++++++
+ev#     2 GEB_TYPE_DECOMP        464Bytes TS=3279749061135 curTS=3279749060987 dTS= 148
+ev#     2 GEB_TYPE_GT_MOD29      440Bytes TS=3279749085781 curTS=3279749060987 dTS= 24794
+GEBGetEv returned st=0
+we have read 2040 bytes; CurEvNo=3
+
++++++++++++++++++++++++++++++++
+*start event # 3 with multiplicity 2 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=3279749060987
+ 1>  1, GEB_TYPE_DECOMP      , TS=3279749061135
+entered bin_mode2: 3/10
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 3 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=3279749060987, 0x2fba047197b; payload length: 440 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x197b,   6523
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x26e6,   9958
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x9a39,  39481
+Event.hdr[ 8]=0x0f91,   3985
+Event.hdr[ 9]=0x24e0,   9440
+Event.hdr[10]=0x2800,  10240
+Event.hdr[11]=0x01db,    475
+Event.hdr[12]=0x8cd4,  36052
+Event.hdr[13]=0x0002,      2
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+open superpulse_003_00_01.xy at Event.chan_id = 7
+open CCpulse_003_00_01.xy at Event.chan_id = 7
+ncrystal=1
+wrote trace to CCpulse_003_00_01.xy
+two's comp tempE  ::       9958       9958 0x000026e6 |0000|0000|0000|0000|0010|0110|1110|0110|
+rawE              ::       9958       9958 0x000026e6 |0000|0000|0000|0000|0010|0110|1110|0110|
+rawE (sign change)::       9958       9958 0x000026e6 |0000|0000|0000|0000|0010|0110|1110|0110|
+Event.ehi=             311 0x00000137
+Event.ehi=31 (gain changed)
+Event.LEDts =        3279749060987
+Event.CFDts =      281350420365324
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x197b,   6523
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8c65,  35941
+Event.hdr[ 6]=0x1ff9,   8185
+Event.hdr[ 7]=0x9a39,  39481
+Event.hdr[ 8]=0x0f91,   3985
+Event.hdr[ 9]=0xbe0c,  48652
+Event.hdr[10]=0x57fc,  22524
+Event.hdr[11]=0xf951,  63825
+Event.hdr[12]=0xa92b,  43307
+Event.hdr[13]=0x07f2,   2034
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+ncrystal=1
+wrote trace to CCpulse_003_00_01.xy
+two's comp tempE  ::   16354405   16354405 0x00f98c65 |0000|0000|1111|1001|1000|1100|0110|0101|
+rawE              :: 4294544485    -422811 0xfff98c65 |1111|1111|1111|1001|1000|1100|0110|0101|
+rawE (sign change)::     422811     422811 0x0006739b |0000|0000|0000|0110|0111|0011|1001|1011|
+Event.ehi=           13212 0x0000339c
+Event.ehi=1321 (gain changed)
+Event.LEDts =        3279749060987
+Event.CFDts =         472456495116
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f39,   7993
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x197b,   6523
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x07a2,   1954
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x9a39,  39481
+Event.hdr[ 8]=0x0f91,   3985
+Event.hdr[ 9]=0xfa2d,  64045
+Event.hdr[10]=0x59ff,  23039
+Event.hdr[11]=0xffec,  65516
+Event.hdr[12]=0xe877,  59511
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 132
+0x1f39 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 9 ge_id = 124 channel = 39  -> is CC
+ncrystal=1
+wrote trace to CCpulse_003_00_01.xy
+two's comp tempE  ::       1954       1954 0x000007a2 |0000|0000|0000|0000|0000|0111|1010|0010|
+rawE              ::       1954       1954 0x000007a2 |0000|0000|0000|0000|0000|0111|1010|0010|
+rawE (sign change)::       1954       1954 0x000007a2 |0000|0000|0000|0000|0000|0111|1010|0010|
+Event.ehi=              61 0x0000003d
+Event.ehi=6 (gain changed)
+Event.LEDts =        3279749060987
+Event.CFDts =         167506083852
+
+---------
+new GTheader at pos=132 or 66 words (74):
+Event.hdr[ 0]=0x1f30,   7984
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x197b,   6523
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x6f49,  28489
+Event.hdr[ 6]=0x4e0b,  19979
+Event.hdr[ 7]=0x9a39,  39481
+Event.hdr[ 8]=0x0f91,   3985
+Event.hdr[ 9]=0x6ede,  28382
+Event.hdr[10]=0x2a0b,  10763
+Event.hdr[11]=0x15ea,   5610
+Event.hdr[12]=0x3370,  13168
+Event.hdr[13]=0x002c,     44
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 176
+0x1f30 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 0 ge_id = 124 channel = 30  -> is segment
+ncrystal=1
+wrote trace to CCpulse_003_00_01.xy
+two's comp tempE  ::     749385     749385 0x000b6f49 |0000|0000|0000|1011|0110|1111|0100|1001|
+rawE              ::     749385     749385 0x000b6f49 |0000|0000|0000|1011|0110|1111|0100|1001|
+rawE (sign change)::     749385     749385 0x000b6f49 |0000|0000|0000|1011|0110|1111|0100|1001|
+Event.ehi=           23418 0x00005b7a
+Event.ehi=2341 (gain changed)
+Event.LEDts =        3279749060987
+Event.CFDts =      265944138252300
+
+---------
+new GTheader at pos=176 or 88 words (96):
+Event.hdr[ 0]=0x1f31,   7985
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x197b,   6523
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x9819,  38937
+Event.hdr[ 6]=0x4e09,  19977
+Event.hdr[ 7]=0x9a39,  39481
+Event.hdr[ 8]=0x0f91,   3985
+Event.hdr[ 9]=0x9646,  38470
+Event.hdr[10]=0x1e09,   7689
+Event.hdr[11]=0x1354,   4948
+Event.hdr[12]=0xff6c,  65388
+Event.hdr[13]=0x0020,     32
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 220
+0x1f31 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 1 ge_id = 124 channel = 31  -> is segment
+ncrystal=1
+wrote trace to CCpulse_003_00_01.xy
+two's comp tempE  ::     628761     628761 0x00099819 |0000|0000|0000|1001|1001|1000|0001|1001|
+rawE              ::     628761     628761 0x00099819 |0000|0000|0000|1001|1001|1000|0001|1001|
+rawE (sign change)::     628761     628761 0x00099819 |0000|0000|0000|1001|1001|1000|0001|1001|
+Event.ehi=           19648 0x00004cc0
+Event.ehi=1964 (gain changed)
+Event.LEDts =        3279749060987
+Event.CFDts =      268735909330956
+
+---------
+new GTheader at pos=220 or 110 words (118):
+Event.hdr[ 0]=0x1f32,   7986
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x197b,   6523
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x24e0,   9440
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x9a39,  39481
+Event.hdr[ 8]=0x0f91,   3985
+Event.hdr[ 9]=0x09f5,   2549
+Event.hdr[10]=0x9c00,  39936
+Event.hdr[11]=0x0063,     99
+Event.hdr[12]=0x9010,  36880
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 264
+0x1f32 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 2 ge_id = 124 channel = 32  -> is segment
+ncrystal=1
+wrote trace to CCpulse_003_00_01.xy
+two's comp tempE  ::       9440       9440 0x000024e0 |0000|0000|0000|0000|0010|0100|1110|0000|
+rawE              ::       9440       9440 0x000024e0 |0000|0000|0000|0000|0010|0100|1110|0000|
+rawE (sign change)::       9440       9440 0x000024e0 |0000|0000|0000|0000|0010|0100|1110|0000|
+Event.ehi=             295 0x00000127
+Event.ehi=29 (gain changed)
+Event.LEDts =        3279749060987
+Event.CFDts =      281389075922956
+
+---------
+new GTheader at pos=264 or 132 words (140):
+Event.hdr[ 0]=0x1f33,   7987
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x197b,   6523
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xc476,  50294
+Event.hdr[ 6]=0x4e0b,  19979
+Event.hdr[ 7]=0x9a39,  39481
+Event.hdr[ 8]=0x0f91,   3985
+Event.hdr[ 9]=0xc372,  50034
+Event.hdr[10]=0xd40b,  54283
+Event.hdr[11]=0x1843,   6211
+Event.hdr[12]=0xc318,  49944
+Event.hdr[13]=0x002f,     47
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 308
+0x1f33 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 3 ge_id = 124 channel = 33  -> is segment
+ncrystal=1
+wrote trace to CCpulse_003_00_01.xy
+two's comp tempE  ::     771190     771190 0x000bc476 |0000|0000|0000|1011|1100|0100|0111|0110|
+rawE              ::     771190     771190 0x000bc476 |0000|0000|0000|1011|1100|0100|0111|0110|
+rawE (sign change)::     771190     771190 0x000bc476 |0000|0000|0000|1011|1100|0100|0111|0110|
+Event.ehi=           24099 0x00005e23
+Event.ehi=2409 (gain changed)
+Event.LEDts =        3279749060987
+Event.CFDts =      265428734246924
+
+---------
+new GTheader at pos=308 or 154 words (162):
+Event.hdr[ 0]=0x1f34,   7988
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x197b,   6523
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x003c,     60
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x9a39,  39481
+Event.hdr[ 8]=0x0f91,   3985
+Event.hdr[ 9]=0x002c,     44
+Event.hdr[10]=0x2200,   8704
+Event.hdr[11]=0x0000,      0
+Event.hdr[12]=0x00bc,    188
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 352
+0x1f34 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 4 ge_id = 124 channel = 34  -> is segment
+ncrystal=1
+wrote trace to CCpulse_003_00_01.xy
+two's comp tempE  ::         60         60 0x0000003c |0000|0000|0000|0000|0000|0000|0011|1100|
+rawE              ::         60         60 0x0000003c |0000|0000|0000|0000|0000|0000|0011|1100|
+rawE (sign change)::         60         60 0x0000003c |0000|0000|0000|0000|0000|0000|0011|1100|
+Event.ehi=               1 0x00000001
+Event.ehi=0 (gain changed)
+Event.LEDts =        3279749060987
+Event.CFDts =         270586937356
+
+---------
+new GTheader at pos=352 or 176 words (184):
+Event.hdr[ 0]=0x1f35,   7989
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x197b,   6523
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8621,  34337
+Event.hdr[ 6]=0x4e08,  19976
+Event.hdr[ 7]=0x9a39,  39481
+Event.hdr[ 8]=0x0f91,   3985
+Event.hdr[ 9]=0x845f,  33887
+Event.hdr[10]=0x4a08,  18952
+Event.hdr[11]=0x10c4,   4292
+Event.hdr[12]=0x0a28,   2600
+Event.hdr[13]=0x0027,     39
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 396
+0x1f35 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 5 ge_id = 124 channel = 35  -> is segment
+ncrystal=1
+wrote trace to CCpulse_003_00_01.xy
+two's comp tempE  ::     558625     558625 0x00088621 |0000|0000|0000|1000|1000|0110|0010|0001|
+rawE              ::     558625     558625 0x00088621 |0000|0000|0000|1000|1000|0110|0010|0001|
+rawE (sign change)::     558625     558625 0x00088621 |0000|0000|0000|1000|1000|0110|0010|0001|
+Event.ehi=           17457 0x00004431
+Event.ehi=1745 (gain changed)
+Event.LEDts =        3279749060987
+Event.CFDts =      269723766816780
+
+---------
+new GTheader at pos=396 or 198 words (206):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x197b,   6523
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x355d,  13661
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x9a39,  39481
+Event.hdr[ 8]=0x0f91,   3985
+Event.hdr[ 9]=0x2a4e,  10830
+Event.hdr[10]=0x2a00,  10752
+Event.hdr[11]=0x0518,   1304
+Event.hdr[12]=0xcfa8,  53160
+Event.hdr[13]=0x0008,      8
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+ncrystal=1
+wrote trace to CCpulse_003_00_01.xy
+two's comp tempE  ::      13661      13661 0x0000355d |0000|0000|0000|0000|0011|0101|0101|1101|
+rawE              ::      13661      13661 0x0000355d |0000|0000|0000|0000|0011|0101|0101|1101|
+rawE (sign change)::      13661      13661 0x0000355d |0000|0000|0000|0000|0011|0101|0101|1101|
+Event.ehi=             426 0x000001aa
+Event.ehi=42 (gain changed)
+Event.LEDts =        3279749060987
+Event.CFDts =      281273109905420
+exit bin_mode3
+*end of event # 3
++++++++++++++++++++++++++++++++
+ev#     3 GEB_TYPE_GT_MOD29      440Bytes TS=3279749100493 curTS=3279749085781 dTS= 14712
+GEBGetEv returned st=0
+we have read 2496 bytes; CurEvNo=4
+
++++++++++++++++++++++++++++++++
+*start event # 4 with multiplicity 1 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=3279749085781
+entered bin_mode2: 4/10
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 4 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=3279749085781, 0x2fba0477a55; payload length: 440 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f39,   7993
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7a55,  31317
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x04c4,   1220
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x60d9,  24793
+Event.hdr[ 8]=0x9a39,  39481
+Event.hdr[ 9]=0xf8da,  63706
+Event.hdr[10]=0x5bff,  23551
+Event.hdr[11]=0xfff4,  65524
+Event.hdr[12]=0xd8b3,  55475
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f39 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 9 ge_id = 124 channel = 39  -> is CC
+open superpulse_004_00_01.xy at Event.chan_id = 9
+open CCpulse_004_00_01.xy at Event.chan_id = 9
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::       1220       1220 0x000004c4 |0000|0000|0000|0000|0000|0100|1100|0100|
+rawE              ::       1220       1220 0x000004c4 |0000|0000|0000|0000|0000|0100|1100|0100|
+rawE (sign change)::       1220       1220 0x000004c4 |0000|0000|0000|0000|0000|0100|1100|0100|
+Event.ehi=              38 0x00000026
+Event.ehi=3 (gain changed)
+Event.LEDts =        3279749085781
+Event.CFDts =         150326345740
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f30,   7984
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7a55,  31317
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x9d50,  40272
+Event.hdr[ 6]=0x4e0c,  19980
+Event.hdr[ 7]=0x60d9,  24793
+Event.hdr[ 8]=0x9a39,  39481
+Event.hdr[ 9]=0x9ce5,  40165
+Event.hdr[10]=0xbc0c,  48140
+Event.hdr[11]=0x16dd,   5853
+Event.hdr[12]=0xd454,  54356
+Event.hdr[13]=0x002b,     43
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f30 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 0 ge_id = 124 channel = 30  -> is segment
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::     826704     826704 0x000c9d50 |0000|0000|0000|1100|1001|1101|0101|0000|
+rawE              ::     826704     826704 0x000c9d50 |0000|0000|0000|1100|1001|1101|0101|0000|
+rawE (sign change)::     826704     826704 0x000c9d50 |0000|0000|0000|1100|1001|1101|0101|0000|
+Event.ehi=           25834 0x000064ea
+Event.ehi=2583 (gain changed)
+Event.LEDts =        3279749085781
+Event.CFDts =      264260485251084
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f31,   7985
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7a55,  31317
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x3283,  12931
+Event.hdr[ 6]=0x4e08,  19976
+Event.hdr[ 7]=0x60d9,  24793
+Event.hdr[ 8]=0x9a39,  39481
+Event.hdr[ 9]=0x3149,  12617
+Event.hdr[10]=0x8c08,  35848
+Event.hdr[11]=0x132c,   4908
+Event.hdr[12]=0xa83c,  43068
+Event.hdr[13]=0x0026,     38
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 132
+0x1f31 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 1 ge_id = 124 channel = 31  -> is segment
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::     537219     537219 0x00083283 |0000|0000|0000|1000|0011|0010|1000|0011|
+rawE              ::     537219     537219 0x00083283 |0000|0000|0000|1000|0011|0010|1000|0011|
+rawE (sign change)::     537219     537219 0x00083283 |0000|0000|0000|1000|0011|0010|1000|0011|
+Event.ehi=           16788 0x00004194
+Event.ehi=1678 (gain changed)
+Event.LEDts =        3279749085781
+Event.CFDts =      270552708349964
+
+---------
+new GTheader at pos=132 or 66 words (74):
+Event.hdr[ 0]=0x1f32,   7986
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7a55,  31317
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x0ee8,   3816
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x60d9,  24793
+Event.hdr[ 8]=0x9a39,  39481
+Event.hdr[ 9]=0xdd93,  56723
+Event.hdr[10]=0xebff,  60415
+Event.hdr[11]=0x0013,     19
+Event.hdr[12]=0xc738,  51000
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 176
+0x1f32 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 2 ge_id = 124 channel = 32  -> is segment
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::       3816       3816 0x00000ee8 |0000|0000|0000|0000|0000|1110|1110|1000|
+rawE              ::       3816       3816 0x00000ee8 |0000|0000|0000|0000|0000|1110|1110|1000|
+rawE (sign change)::       3816       3816 0x00000ee8 |0000|0000|0000|0000|0000|1110|1110|1000|
+Event.ehi=             119 0x00000077
+Event.ehi=11 (gain changed)
+Event.LEDts =        3279749085781
+Event.CFDts =          90195492876
+
+---------
+new GTheader at pos=176 or 88 words (96):
+Event.hdr[ 0]=0x1f33,   7987
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7a55,  31317
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x90f1,  37105
+Event.hdr[ 6]=0x4e0a,  19978
+Event.hdr[ 7]=0x60d9,  24793
+Event.hdr[ 8]=0x9a39,  39481
+Event.hdr[ 9]=0x8fc8,  36808
+Event.hdr[10]=0xe40a,  58378
+Event.hdr[11]=0x1786,   6022
+Event.hdr[12]=0x87a8,  34728
+Event.hdr[13]=0x0030,     48
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 220
+0x1f33 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 3 ge_id = 124 channel = 33  -> is segment
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::     692465     692465 0x000a90f1 |0000|0000|0000|1010|1001|0000|1111|0001|
+rawE              ::     692465     692465 0x000a90f1 |0000|0000|0000|1010|1001|0000|1111|0001|
+rawE (sign change)::     692465     692465 0x000a90f1 |0000|0000|0000|1010|1001|0000|1111|0001|
+Event.ehi=           21639 0x00005487
+Event.ehi=2163 (gain changed)
+Event.LEDts =        3279749085781
+Event.CFDts =      267095206789132
+
+---------
+new GTheader at pos=220 or 110 words (118):
+Event.hdr[ 0]=0x1f34,   7988
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7a55,  31317
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x005c,     92
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x60d9,  24793
+Event.hdr[ 8]=0x9a39,  39481
+Event.hdr[ 9]=0xffa3,  65443
+Event.hdr[10]=0x59ff,  23039
+Event.hdr[11]=0x0000,      0
+Event.hdr[12]=0x0044,     68
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 264
+0x1f34 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 4 ge_id = 124 channel = 34  -> is segment
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::         92         92 0x0000005c |0000|0000|0000|0000|0000|0000|0101|1100|
+rawE              ::         92         92 0x0000005c |0000|0000|0000|0000|0000|0000|0101|1100|
+rawE (sign change)::         92         92 0x0000005c |0000|0000|0000|0000|0000|0000|0101|1100|
+Event.ehi=               2 0x00000002
+Event.ehi=0 (gain changed)
+Event.LEDts =        3279749085781
+Event.CFDts =         270586937356
+
+---------
+new GTheader at pos=264 or 132 words (140):
+Event.hdr[ 0]=0x1f35,   7989
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7a55,  31317
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xcb9d,  52125
+Event.hdr[ 6]=0x4e09,  19977
+Event.hdr[ 7]=0x60d9,  24793
+Event.hdr[ 8]=0x9a39,  39481
+Event.hdr[ 9]=0xca05,  51717
+Event.hdr[10]=0xbe09,  48649
+Event.hdr[11]=0x1108,   4360
+Event.hdr[12]=0x8894,  34964
+Event.hdr[13]=0x0021,     33
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 308
+0x1f35 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 5 ge_id = 124 channel = 35  -> is segment
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::     641949     641949 0x0009cb9d |0000|0000|0000|1001|1100|1011|1001|1101|
+rawE              ::     641949     641949 0x0009cb9d |0000|0000|0000|1001|1100|1011|1001|1101|
+rawE (sign change)::     641949     641949 0x0009cb9d |0000|0000|0000|1001|1100|1011|1001|1101|
+Event.ehi=           20060 0x00004e5c
+Event.ehi=2006 (gain changed)
+Event.LEDts =        3279749085781
+Event.CFDts =      267988573683724
+
+---------
+new GTheader at pos=308 or 154 words (162):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7a55,  31317
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x190c,   6412
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x60d9,  24793
+Event.hdr[ 8]=0x9a39,  39481
+Event.hdr[ 9]=0x1303,   4867
+Event.hdr[10]=0x9c00,  39936
+Event.hdr[11]=0x0054,     84
+Event.hdr[12]=0x3054,  12372
+Event.hdr[13]=0x000a,     10
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 352
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::       6412       6412 0x0000190c |0000|0000|0000|0000|0001|1001|0000|1100|
+rawE              ::       6412       6412 0x0000190c |0000|0000|0000|0000|0001|1001|0000|1100|
+rawE (sign change)::       6412       6412 0x0000190c |0000|0000|0000|0000|0001|1001|0000|1100|
+Event.ehi=             200 0x000000c8
+Event.ehi=20 (gain changed)
+Event.LEDts =        3279749085781
+Event.CFDts =      281389076185100
+
+---------
+new GTheader at pos=352 or 176 words (184):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7a55,  31317
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x185f,   6239
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x60d9,  24793
+Event.hdr[ 8]=0x9a39,  39481
+Event.hdr[ 9]=0x0f3d,   3901
+Event.hdr[10]=0xc000,  49152
+Event.hdr[11]=0x0049,     73
+Event.hdr[12]=0xb650,  46672
+Event.hdr[13]=0x0003,      3
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 396
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::       6239       6239 0x0000185f |0000|0000|0000|0000|0001|1000|0101|1111|
+rawE              ::       6239       6239 0x0000185f |0000|0000|0000|0000|0001|1000|0101|1111|
+rawE (sign change)::       6239       6239 0x0000185f |0000|0000|0000|0000|0001|1000|0101|1111|
+Event.ehi=             194 0x000000c2
+Event.ehi=19 (gain changed)
+Event.LEDts =        3279749085781
+Event.CFDts =      281354715725836
+
+---------
+new GTheader at pos=396 or 198 words (206):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0x7a55,  31317
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8b3f,  35647
+Event.hdr[ 6]=0x1ff9,   8185
+Event.hdr[ 7]=0x60d9,  24793
+Event.hdr[ 8]=0x9a39,  39481
+Event.hdr[ 9]=0xc48e,  50318
+Event.hdr[10]=0x19fc,   6652
+Event.hdr[11]=0xf97c,  63868
+Event.hdr[12]=0xa2af,  41647
+Event.hdr[13]=0x07f2,   2034
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+ncrystal=1
+wrote trace to CCpulse_004_00_01.xy
+two's comp tempE  ::   16354111   16354111 0x00f98b3f |0000|0000|1111|1001|1000|1011|0011|1111|
+rawE              :: 4294544191    -423105 0xfff98b3f |1111|1111|1111|1001|1000|1011|0011|1111|
+rawE (sign change)::     423105     423105 0x000674c1 |0000|0000|0000|0110|0111|0100|1100|0001|
+Event.ehi=           13222 0x000033a6
+Event.ehi=1322 (gain changed)
+Event.LEDts =        3279749085781
+Event.CFDts =         438096035852
+exit bin_mode3
+*end of event # 4
++++++++++++++++++++++++++++++++
+ev#     4 GEB_TYPE_GT_MOD29      440Bytes TS=3279749119277 curTS=3279749100493 dTS= 18784
+GEBGetEv returned st=0
+we have read 2952 bytes; CurEvNo=5
+
++++++++++++++++++++++++++++++++
+*start event # 5 with multiplicity 1 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=3279749100493
+entered bin_mode2: 5/10
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 5 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=3279749100493, 0x2fba047b3cd; payload length: 440 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f31,   7985
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xb3cd,  46029
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x4113,  16659
+Event.hdr[ 6]=0x4e09,  19977
+Event.hdr[ 7]=0x3977,  14711
+Event.hdr[ 8]=0x60d9,  24793
+Event.hdr[ 9]=0x3f07,  16135
+Event.hdr[10]=0x9209,  37385
+Event.hdr[11]=0x1062,   4194
+Event.hdr[12]=0x5918,  22808
+Event.hdr[13]=0x0026,     38
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f31 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 1 ge_id = 124 channel = 31  -> is segment
+open superpulse_005_00_01.xy at Event.chan_id = 1
+open CCpulse_005_00_01.xy at Event.chan_id = 1
+ncrystal=1
+wrote trace to CCpulse_005_00_01.xy
+two's comp tempE  ::     606483     606483 0x00094113 |0000|0000|0000|1001|0100|0001|0001|0011|
+rawE              ::     606483     606483 0x00094113 |0000|0000|0000|1001|0100|0001|0001|0011|
+rawE (sign change)::     606483     606483 0x00094113 |0000|0000|0000|1001|0100|0001|0001|0011|
+Event.ehi=           18952 0x00004a08
+Event.ehi=1895 (gain changed)
+Event.LEDts =        3279749100493
+Event.CFDts =      269195477975052
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f32,   7986
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xb3cd,  46029
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x0c4c,   3148
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x3977,  14711
+Event.hdr[ 8]=0x60d9,  24793
+Event.hdr[ 9]=0x0234,    564
+Event.hdr[10]=0x2600,   9728
+Event.hdr[11]=0xffbb,  65467
+Event.hdr[12]=0x27d7,  10199
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f32 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 2 ge_id = 124 channel = 32  -> is segment
+ncrystal=1
+wrote trace to CCpulse_005_00_01.xy
+two's comp tempE  ::       3148       3148 0x00000c4c |0000|0000|0000|0000|0000|1100|0100|1100|
+rawE              ::       3148       3148 0x00000c4c |0000|0000|0000|0000|0000|1100|0100|1100|
+rawE (sign change)::       3148       3148 0x00000c4c |0000|0000|0000|0000|0000|1100|0100|1100|
+Event.ehi=              98 0x00000062
+Event.ehi=9 (gain changed)
+Event.LEDts =        3279749100493
+Event.CFDts =      281436321480716
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f33,   7987
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xb3cd,  46029
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x25c7,   9671
+Event.hdr[ 6]=0x4e0c,  19980
+Event.hdr[ 7]=0x3977,  14711
+Event.hdr[ 8]=0x60d9,  24793
+Event.hdr[ 9]=0x252f,   9519
+Event.hdr[10]=0x900c,  36876
+Event.hdr[11]=0x151f,   5407
+Event.hdr[12]=0x0dc8,   3528
+Event.hdr[13]=0x002f,     47
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 132
+0x1f33 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 3 ge_id = 124 channel = 33  -> is segment
+ncrystal=1
+wrote trace to CCpulse_005_00_01.xy
+two's comp tempE  ::     796103     796103 0x000c25c7 |0000|0000|0000|1100|0010|0101|1100|0111|
+rawE              ::     796103     796103 0x000c25c7 |0000|0000|0000|1100|0010|0101|1100|0111|
+rawE (sign change)::     796103     796103 0x000c25c7 |0000|0000|0000|1100|0010|0101|1100|0111|
+Event.ehi=           24878 0x0000612e
+Event.ehi=2487 (gain changed)
+Event.LEDts =        3279749100493
+Event.CFDts =      264951985537036
+
+---------
+new GTheader at pos=132 or 66 words (74):
+Event.hdr[ 0]=0x1f34,   7988
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xb3cd,  46029
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x0068,    104
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x3977,  14711
+Event.hdr[ 8]=0x60d9,  24793
+Event.hdr[ 9]=0x0002,      2
+Event.hdr[10]=0x4600,  17920
+Event.hdr[11]=0xffff,  65535
+Event.hdr[12]=0x00b3,    179
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 176
+0x1f34 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 4 ge_id = 124 channel = 34  -> is segment
+ncrystal=1
+wrote trace to CCpulse_005_00_01.xy
+two's comp tempE  ::        104        104 0x00000068 |0000|0000|0000|0000|0000|0000|0110|1000|
+rawE              ::        104        104 0x00000068 |0000|0000|0000|0000|0000|0000|0110|1000|
+rawE (sign change)::        104        104 0x00000068 |0000|0000|0000|0000|0000|0000|0110|1000|
+Event.ehi=               3 0x00000003
+Event.ehi=0 (gain changed)
+Event.LEDts =        3279749100493
+Event.CFDts =         266291773452
+
+---------
+new GTheader at pos=176 or 88 words (96):
+Event.hdr[ 0]=0x1f35,   7989
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xb3cd,  46029
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xb83f,  47167
+Event.hdr[ 6]=0x4e08,  19976
+Event.hdr[ 7]=0x3977,  14711
+Event.hdr[ 8]=0x60d9,  24793
+Event.hdr[ 9]=0xb72d,  46893
+Event.hdr[10]=0x0a08,   2568
+Event.hdr[11]=0x1394,   5012
+Event.hdr[12]=0x117c,   4476
+Event.hdr[13]=0x0022,     34
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 220
+0x1f35 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 5 ge_id = 124 channel = 35  -> is segment
+ncrystal=1
+wrote trace to CCpulse_005_00_01.xy
+two's comp tempE  ::     571455     571455 0x0008b83f |0000|0000|0000|1000|1011|1000|0011|1111|
+rawE              ::     571455     571455 0x0008b83f |0000|0000|0000|1000|1011|1000|0011|1111|
+rawE (sign change)::     571455     571455 0x0008b83f |0000|0000|0000|1000|1011|1000|0011|1111|
+Event.ehi=           17857 0x000045c1
+Event.ehi=1785 (gain changed)
+Event.LEDts =        3279749100493
+Event.CFDts =      269474654846988
+
+---------
+new GTheader at pos=220 or 110 words (118):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xb3cd,  46029
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x0c29,   3113
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x3977,  14711
+Event.hdr[ 8]=0x60d9,  24793
+Event.hdr[ 9]=0xe206,  57862
+Event.hdr[10]=0x07ff,   2047
+Event.hdr[11]=0x0026,     38
+Event.hdr[12]=0xa938,  43320
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 264
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+ncrystal=1
+wrote trace to CCpulse_005_00_01.xy
+two's comp tempE  ::       3113       3113 0x00000c29 |0000|0000|0000|0000|0000|1100|0010|1001|
+rawE              ::       3113       3113 0x00000c29 |0000|0000|0000|0000|0000|1100|0010|1001|
+rawE (sign change)::       3113       3113 0x00000c29 |0000|0000|0000|0000|0000|1100|0010|1001|
+Event.ehi=              97 0x00000061
+Event.ehi=9 (gain changed)
+Event.LEDts =        3279749100493
+Event.CFDts =      281466386382860
+
+---------
+new GTheader at pos=264 or 132 words (140):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xb3cd,  46029
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x0a9b,   2715
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x3977,  14711
+Event.hdr[ 8]=0x60d9,  24793
+Event.hdr[ 9]=0x064e,   1614
+Event.hdr[10]=0x7a00,  31232
+Event.hdr[11]=0x001e,     30
+Event.hdr[12]=0x9380,  37760
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 308
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+ncrystal=1
+wrote trace to CCpulse_005_00_01.xy
+two's comp tempE  ::       2715       2715 0x00000a9b |0000|0000|0000|0000|0000|1010|1001|1011|
+rawE              ::       2715       2715 0x00000a9b |0000|0000|0000|0000|0000|1010|1001|1011|
+rawE (sign change)::       2715       2715 0x00000a9b |0000|0000|0000|0000|0000|1010|1001|1011|
+Event.ehi=              84 0x00000054
+Event.ehi=8 (gain changed)
+Event.LEDts =        3279749100493
+Event.CFDts =      281449206448140
+
+---------
+new GTheader at pos=308 or 154 words (162):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xb3cd,  46029
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8a4a,  35402
+Event.hdr[ 6]=0x1ff9,   8185
+Event.hdr[ 7]=0x3977,  14711
+Event.hdr[ 8]=0x60d9,  24793
+Event.hdr[ 9]=0xbd2a,  48426
+Event.hdr[10]=0x1dfc,   7676
+Event.hdr[11]=0xf989,  63881
+Event.hdr[12]=0xf833,  63539
+Event.hdr[13]=0x07f2,   2034
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 352
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+ncrystal=1
+wrote trace to CCpulse_005_00_01.xy
+two's comp tempE  ::   16353866   16353866 0x00f98a4a |0000|0000|1111|1001|1000|1010|0100|1010|
+rawE              :: 4294543946    -423350 0xfff98a4a |1111|1111|1111|1001|1000|1010|0100|1010|
+rawE (sign change)::     423350     423350 0x000675b6 |0000|0000|0000|0110|0111|0101|1011|0110|
+Event.ehi=           13229 0x000033ad
+Event.ehi=1322 (gain changed)
+Event.LEDts =        3279749100493
+Event.CFDts =         485341659148
+
+---------
+new GTheader at pos=352 or 176 words (184):
+Event.hdr[ 0]=0x1f39,   7993
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xb3cd,  46029
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x0000,      0
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x3977,  14711
+Event.hdr[ 8]=0x60d9,  24793
+Event.hdr[ 9]=0xf07f,  61567
+Event.hdr[10]=0xb5ff,  46591
+Event.hdr[11]=0xfff1,  65521
+Event.hdr[12]=0xe8b7,  59575
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 396
+0x1f39 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 9 ge_id = 124 channel = 39  -> is CC
+ncrystal=1
+wrote trace to CCpulse_005_00_01.xy
+two's comp tempE  ::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+rawE              ::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+rawE (sign change)::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+Event.ehi=               0 0x00000000
+Event.ehi=0 (gain changed)
+Event.LEDts =        3279749100493
+Event.CFDts =         115965952012
+
+---------
+new GTheader at pos=396 or 198 words (206):
+Event.hdr[ 0]=0x1f30,   7984
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xb3cd,  46029
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xfe70,  65136
+Event.hdr[ 6]=0x4e0a,  19978
+Event.hdr[ 7]=0x3977,  14711
+Event.hdr[ 8]=0x60d9,  24793
+Event.hdr[ 9]=0xfc1a,  64538
+Event.hdr[10]=0xca0a,  51722
+Event.hdr[11]=0x1939,   6457
+Event.hdr[12]=0xbb78,  47992
+Event.hdr[13]=0x002d,     45
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f30 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 0 ge_id = 124 channel = 30  -> is segment
+ncrystal=1
+wrote trace to CCpulse_005_00_01.xy
+two's comp tempE  ::     720496     720496 0x000afe70 |0000|0000|0000|1010|1111|1110|0111|0000|
+rawE              ::     720496     720496 0x000afe70 |0000|0000|0000|1010|1111|1110|0111|0000|
+rawE (sign change)::     720496     720496 0x000afe70 |0000|0000|0000|1010|1111|1110|0111|0000|
+Event.ehi=           22515 0x000057f3
+Event.ehi=2251 (gain changed)
+Event.LEDts =        3279749100493
+Event.CFDts =      266592688078860
+exit bin_mode3
+*end of event # 5
++++++++++++++++++++++++++++++++
+ev#     5 GEB_TYPE_DECOMP        464Bytes TS=3279749119327 curTS=3279749119277 dTS= 50
+ev#     5 GEB_TYPE_DECOMP        464Bytes TS=3279749176051 curTS=3279749119277 dTS= 56774
+GEBGetEv returned st=0
+we have read 3912 bytes; CurEvNo=6
+
++++++++++++++++++++++++++++++++
+*start event # 6 with multiplicity 2 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=3279749119277
+ 1>  1, GEB_TYPE_DECOMP      , TS=3279749119327
+entered bin_mode2: 6/10
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 6 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=3279749119277, 0x2fba047fd2d; payload length: 440 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f31,   7985
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xfd2d,  64813
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xbace,  47822
+Event.hdr[ 6]=0x4e09,  19977
+Event.hdr[ 7]=0x495f,  18783
+Event.hdr[ 8]=0x3977,  14711
+Event.hdr[ 9]=0xb8d2,  47314
+Event.hdr[10]=0x0e09,   3593
+Event.hdr[11]=0x127e,   4734
+Event.hdr[12]=0xc524,  50468
+Event.hdr[13]=0x0020,     32
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f31 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 1 ge_id = 124 channel = 31  -> is segment
+open superpulse_006_00_01.xy at Event.chan_id = 1
+open CCpulse_006_00_01.xy at Event.chan_id = 1
+ncrystal=1
+wrote trace to CCpulse_006_00_01.xy
+two's comp tempE  ::     637646     637646 0x0009bace |0000|0000|0000|1001|1011|1010|1100|1110|
+rawE              ::     637646     637646 0x0009bace |0000|0000|0000|1001|1011|1010|1100|1110|
+rawE (sign change)::     637646     637646 0x0009bace |0000|0000|0000|1001|1011|1010|1100|1110|
+Event.ehi=           19926 0x00004dd6
+Event.ehi=1992 (gain changed)
+Event.LEDts =        3279749119277
+Event.CFDts =      268585583116300
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f32,   7986
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xfd2d,  64813
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x1569,   5481
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x495f,  18783
+Event.hdr[ 8]=0x3977,  14711
+Event.hdr[ 9]=0xd62a,  54826
+Event.hdr[10]=0x69ff,  27135
+Event.hdr[11]=0x0004,      4
+Event.hdr[12]=0x764c,  30284
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f32 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 2 ge_id = 124 channel = 32  -> is segment
+ncrystal=1
+wrote trace to CCpulse_006_00_01.xy
+two's comp tempE  ::       5481       5481 0x00001569 |0000|0000|0000|0000|0001|0101|0110|1001|
+rawE              ::       5481       5481 0x00001569 |0000|0000|0000|0000|0001|0101|0110|1001|
+rawE (sign change)::       5481       5481 0x00001569 |0000|0000|0000|0000|0001|0101|0110|1001|
+Event.ehi=             171 0x000000ab
+Event.ehi=17 (gain changed)
+Event.LEDts =        3279749119277
+Event.CFDts =          81605296140
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f33,   7987
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xfd2d,  64813
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x23b8,   9144
+Event.hdr[ 6]=0x4e0d,  19981
+Event.hdr[ 7]=0x495f,  18783
+Event.hdr[ 8]=0x3977,  14711
+Event.hdr[ 9]=0x2317,   8983
+Event.hdr[10]=0x5e0d,  24077
+Event.hdr[11]=0x184a,   6218
+Event.hdr[12]=0x3f20,  16160
+Event.hdr[13]=0x002a,     42
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 132
+0x1f33 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 3 ge_id = 124 channel = 33  -> is segment
+ncrystal=1
+wrote trace to CCpulse_006_00_01.xy
+two's comp tempE  ::     861112     861112 0x000d23b8 |0000|0000|0000|1101|0010|0011|1011|1000|
+rawE              ::     861112     861112 0x000d23b8 |0000|0000|0000|1101|0010|0011|1011|1000|
+rawE (sign change)::     861112     861112 0x000d23b8 |0000|0000|0000|1101|0010|0011|1011|1000|
+Event.ehi=           26909 0x0000691d
+Event.ehi=2690 (gain changed)
+Event.LEDts =        3279749119277
+Event.CFDts =      263568984899596
+
+---------
+new GTheader at pos=132 or 66 words (74):
+Event.hdr[ 0]=0x1f34,   7988
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xfd2d,  64813
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x002f,     47
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x495f,  18783
+Event.hdr[ 8]=0x3977,  14711
+Event.hdr[ 9]=0x0027,     39
+Event.hdr[10]=0x0400,   1024
+Event.hdr[11]=0x0000,      0
+Event.hdr[12]=0xfe8c,  65164
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 176
+0x1f34 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 4 ge_id = 124 channel = 34  -> is segment
+ncrystal=1
+wrote trace to CCpulse_006_00_01.xy
+two's comp tempE  ::         47         47 0x0000002f |0000|0000|0000|0000|0000|0000|0010|1111|
+rawE              ::         47         47 0x0000002f |0000|0000|0000|0000|0000|0000|0010|1111|
+rawE (sign change)::         47         47 0x0000002f |0000|0000|0000|0000|0000|0000|0010|1111|
+Event.ehi=               1 0x00000001
+Event.ehi=0 (gain changed)
+Event.LEDts =        3279749119277
+Event.CFDts =         261996937228
+
+---------
+new GTheader at pos=176 or 88 words (96):
+Event.hdr[ 0]=0x1f35,   7989
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xfd2d,  64813
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x837e,  33662
+Event.hdr[ 6]=0x4e08,  19976
+Event.hdr[ 7]=0x495f,  18783
+Event.hdr[ 8]=0x3977,  14711
+Event.hdr[ 9]=0x8221,  33313
+Event.hdr[10]=0x5a08,  23048
+Event.hdr[11]=0x116e,   4462
+Event.hdr[12]=0x2814,  10260
+Event.hdr[13]=0x0027,     39
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 220
+0x1f35 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 5 ge_id = 124 channel = 35  -> is segment
+ncrystal=1
+wrote trace to CCpulse_006_00_01.xy
+two's comp tempE  ::     557950     557950 0x0008837e |0000|0000|0000|1000|1000|0011|0111|1110|
+rawE              ::     557950     557950 0x0008837e |0000|0000|0000|1000|1000|0011|0111|1110|
+rawE (sign change)::     557950     557950 0x0008837e |0000|0000|0000|1000|1000|0011|0111|1110|
+Event.ehi=           17435 0x0000441b
+Event.ehi=1743 (gain changed)
+Event.LEDts =        3279749119277
+Event.CFDts =      269766716751884
+
+---------
+new GTheader at pos=220 or 110 words (118):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xfd2d,  64813
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x20f1,   8433
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x495f,  18783
+Event.hdr[ 8]=0x3977,  14711
+Event.hdr[ 9]=0x106e,   4206
+Event.hdr[10]=0x0c00,   3072
+Event.hdr[11]=0xffc4,  65476
+Event.hdr[12]=0x4c0f,  19471
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 264
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+ncrystal=1
+wrote trace to CCpulse_006_00_01.xy
+two's comp tempE  ::       8433       8433 0x000020f1 |0000|0000|0000|0000|0010|0000|1111|0001|
+rawE              ::       8433       8433 0x000020f1 |0000|0000|0000|0000|0010|0000|1111|0001|
+rawE (sign change)::       8433       8433 0x000020f1 |0000|0000|0000|0000|0010|0000|1111|0001|
+Event.ehi=             263 0x00000107
+Event.ehi=26 (gain changed)
+Event.LEDts =        3279749119277
+Event.CFDts =      281401961152524
+
+---------
+new GTheader at pos=264 or 132 words (140):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xfd2d,  64813
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x0000,      0
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x495f,  18783
+Event.hdr[ 8]=0x3977,  14711
+Event.hdr[ 9]=0xfc9f,  64671
+Event.hdr[10]=0x9dff,  40447
+Event.hdr[11]=0x000c,     12
+Event.hdr[12]=0x3cf4,  15604
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 308
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+ncrystal=1
+wrote trace to CCpulse_006_00_01.xy
+two's comp tempE  ::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+rawE              ::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+rawE (sign change)::          0          0 0x00000000 |0000|0000|0000|0000|0000|0000|0000|0000|
+Event.ehi=               0 0x00000000
+Event.ehi=0 (gain changed)
+Event.LEDts =        3279749119277
+Event.CFDts =          30065164300
+
+---------
+new GTheader at pos=308 or 154 words (162):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xfd2d,  64813
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8ce1,  36065
+Event.hdr[ 6]=0x1ff9,   8185
+Event.hdr[ 7]=0x495f,  18783
+Event.hdr[ 8]=0x3977,  14711
+Event.hdr[ 9]=0xa8eb,  43243
+Event.hdr[10]=0x55fc,  22012
+Event.hdr[11]=0xf97a,  63866
+Event.hdr[12]=0x123b,   4667
+Event.hdr[13]=0x07f3,   2035
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 352
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+ncrystal=1
+wrote trace to CCpulse_006_00_01.xy
+two's comp tempE  ::   16354529   16354529 0x00f98ce1 |0000|0000|1111|1001|1000|1100|1110|0001|
+rawE              :: 4294544609    -422687 0xfff98ce1 |1111|1111|1111|1001|1000|1100|1110|0001|
+rawE (sign change)::     422687     422687 0x0006731f |0000|0000|0000|0110|0111|0011|0001|1111|
+Event.ehi=           13208 0x00003398
+Event.ehi=1320 (gain changed)
+Event.LEDts =        3279749119277
+Event.CFDts =         575538266124
+
+---------
+new GTheader at pos=352 or 176 words (184):
+Event.hdr[ 0]=0x1f39,   7993
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xfd2d,  64813
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x023f,    575
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x495f,  18783
+Event.hdr[ 8]=0x3977,  14711
+Event.hdr[ 9]=0xf90f,  63759
+Event.hdr[10]=0xffff,  65535
+Event.hdr[11]=0xffe0,  65504
+Event.hdr[12]=0xe36b,  58219
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 396
+0x1f39 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 9 ge_id = 124 channel = 39  -> is CC
+ncrystal=1
+wrote trace to CCpulse_006_00_01.xy
+two's comp tempE  ::        575        575 0x0000023f |0000|0000|0000|0000|0000|0010|0011|1111|
+rawE              ::        575        575 0x0000023f |0000|0000|0000|0000|0000|0010|0011|1111|
+rawE (sign change)::        575        575 0x0000023f |0000|0000|0000|0000|0000|0010|0011|1111|
+Event.ehi=              17 0x00000011
+Event.ehi=1 (gain changed)
+Event.LEDts =        3279749119277
+Event.CFDts =         146031116300
+
+---------
+new GTheader at pos=396 or 198 words (206):
+Event.hdr[ 0]=0x1f30,   7984
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xfd2d,  64813
+Event.hdr[ 3]=0xa047,  41031
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x4866,  18534
+Event.hdr[ 6]=0x4e0a,  19978
+Event.hdr[ 7]=0x495f,  18783
+Event.hdr[ 8]=0x3977,  14711
+Event.hdr[ 9]=0x4808,  18440
+Event.hdr[10]=0x340a,  13322
+Event.hdr[11]=0x15f8,   5624
+Event.hdr[12]=0x7394,  29588
+Event.hdr[13]=0x0032,     50
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f30 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 0 ge_id = 124 channel = 30  -> is segment
+ncrystal=1
+wrote trace to CCpulse_006_00_01.xy
+two's comp tempE  ::     673894     673894 0x000a4866 |0000|0000|0000|1010|0100|1000|0110|0110|
+rawE              ::     673894     673894 0x000a4866 |0000|0000|0000|1010|0100|1000|0110|0110|
+rawE (sign change)::     673894     673894 0x000a4866 |0000|0000|0000|1010|0100|1000|0110|0110|
+Event.ehi=           21059 0x00005243
+Event.ehi=2105 (gain changed)
+Event.LEDts =        3279749119277
+Event.CFDts =      267494644908044
+exit bin_mode3
+*end of event # 6
++++++++++++++++++++++++++++++++
+ev#     6 GEB_TYPE_GT_MOD29      440Bytes TS=3279749176763 curTS=3279749176051 dTS= 712
+GEBGetEv returned st=0
+we have read 4368 bytes; CurEvNo=7
+
++++++++++++++++++++++++++++++++
+*start event # 7 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=3279749176051
+entered bin_mode2: 7/10
+ptinp->pad= 0, (ptinp->pad&0x000000ff)= 0
+good pad value
+mode2 data:  0>  1, GEB_TYPE_DECOMP      , TS=3279749176051
+number of hits: 2
+* 0/1, is GEB_TYPE_DECOMP: num=2
+__detno: 63, module: 15, crystalNumber: 3
+CCenergies[0]=  92.07
+* 0:  -30.28,   2.86,   4.24 --> GT:  -17.20,   3.05,   7.88
+* 1:  -28.27,   3.32,   8.54 --> GT:  -17.66,   3.18,   7.80
+updated CCadd with   92.07
+total number of hits in array: 2
+exit bin_mode2
+entered bin_mode3 @ event number: 7 
+exit bin_mode3
+*end of event # 7
++++++++++++++++++++++++++++++++
+ev#     7 GEB_TYPE_DECOMP        464Bytes TS=3279749182225 curTS=3279749176763 dTS= 5462
+GEBGetEv returned st=0
+we have read 4848 bytes; CurEvNo=8
+
++++++++++++++++++++++++++++++++
+*start event # 8 with multiplicity 1 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=3279749176763
+entered bin_mode2: 8/10
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 8 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=3279749176763, 0x2fba048ddbb; payload length: 440 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xddbb,  56763
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8fb0,  36784
+Event.hdr[ 6]=0x1ff9,   8185
+Event.hdr[ 7]=0xe08d,  57485
+Event.hdr[ 8]=0x495f,  18783
+Event.hdr[ 9]=0xc236,  49718
+Event.hdr[10]=0xd7fc,  55292
+Event.hdr[11]=0xf951,  63825
+Event.hdr[12]=0xf4ab,  62635
+Event.hdr[13]=0x07f2,   2034
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+open superpulse_008_00_01.xy at Event.chan_id = 8
+open CCpulse_008_00_01.xy at Event.chan_id = 8
+ncrystal=1
+wrote trace to CCpulse_008_00_01.xy
+two's comp tempE  ::   16355248   16355248 0x00f98fb0 |0000|0000|1111|1001|1000|1111|1011|0000|
+rawE              :: 4294545328    -421968 0xfff98fb0 |1111|1111|1111|1001|1000|1111|1011|0000|
+rawE (sign change)::     421968     421968 0x00067050 |0000|0000|0000|0110|0111|0000|0101|0000|
+Event.ehi=           13186 0x00003382
+Event.ehi=1318 (gain changed)
+Event.LEDts =        3279749176763
+Event.CFDts =         420916363276
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f39,   7993
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xddbb,  56763
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x0195,    405
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xe08d,  57485
+Event.hdr[ 8]=0x495f,  18783
+Event.hdr[ 9]=0xf69e,  63134
+Event.hdr[10]=0x1fff,   8191
+Event.hdr[11]=0xfff2,  65522
+Event.hdr[12]=0xc1ff,  49663
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f39 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 9 ge_id = 124 channel = 39  -> is CC
+ncrystal=1
+wrote trace to CCpulse_008_00_01.xy
+two's comp tempE  ::        405        405 0x00000195 |0000|0000|0000|0000|0000|0001|1001|0101|
+rawE              ::        405        405 0x00000195 |0000|0000|0000|0000|0000|0001|1001|0101|
+rawE (sign change)::        405        405 0x00000195 |0000|0000|0000|0000|0000|0001|1001|0101|
+Event.ehi=              12 0x0000000c
+Event.ehi=1 (gain changed)
+Event.LEDts =        3279749176763
+Event.CFDts =         124555886604
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f30,   7984
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xddbb,  56763
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x11f5,   4597
+Event.hdr[ 6]=0x4e0a,  19978
+Event.hdr[ 7]=0xe08d,  57485
+Event.hdr[ 8]=0x495f,  18783
+Event.hdr[ 9]=0x111d,   4381
+Event.hdr[10]=0x100a,   4106
+Event.hdr[11]=0x1490,   5264
+Event.hdr[12]=0xf068,  61544
+Event.hdr[13]=0x002b,     43
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 132
+0x1f30 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 0 ge_id = 124 channel = 30  -> is segment
+ncrystal=1
+wrote trace to CCpulse_008_00_01.xy
+two's comp tempE  ::     659957     659957 0x000a11f5 |0000|0000|0000|1010|0001|0001|1111|0101|
+rawE              ::     659957     659957 0x000a11f5 |0000|0000|0000|1010|0001|0001|1111|0101|
+rawE (sign change)::     659957     659957 0x000a11f5 |0000|0000|0000|1010|0001|0001|1111|0101|
+Event.ehi=           20623 0x0000508f
+Event.ehi=2062 (gain changed)
+Event.LEDts =        3279749176763
+Event.CFDts =      267765231976460
+
+---------
+new GTheader at pos=132 or 66 words (74):
+Event.hdr[ 0]=0x1f31,   7985
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xddbb,  56763
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x4b38,  19256
+Event.hdr[ 6]=0xce08,  52744
+Event.hdr[ 7]=0xe08d,  57485
+Event.hdr[ 8]=0x495f,  18783
+Event.hdr[ 9]=0x49e5,  18917
+Event.hdr[10]=0xa408,  41992
+Event.hdr[11]=0x1371,   4977
+Event.hdr[12]=0xfc1c,  64540
+Event.hdr[13]=0x0024,     36
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 176
+0x1f31 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 1 ge_id = 124 channel = 31  -> is segment
+ncrystal=1
+wrote trace to CCpulse_008_00_01.xy
+two's comp tempE  ::     543544     543544 0x00084b38 |0000|0000|0000|1000|0100|1011|0011|1000|
+rawE              ::     543544     543544 0x00084b38 |0000|0000|0000|1000|0100|1011|0011|1000|
+rawE (sign change)::     543544     543544 0x00084b38 |0000|0000|0000|1000|0100|1011|0011|1000|
+Event.ehi=           16985 0x00004259
+Event.ehi=1698 (gain changed)
+Event.LEDts =        3279749176763
+Event.CFDts =      270453922267148
+
+---------
+new GTheader at pos=176 or 88 words (96):
+Event.hdr[ 0]=0x1f32,   7986
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xddbb,  56763
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x175f,   5983
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xe08d,  57485
+Event.hdr[ 8]=0x495f,  18783
+Event.hdr[ 9]=0x067e,   1662
+Event.hdr[10]=0x5400,  21504
+Event.hdr[11]=0xffac,  65452
+Event.hdr[12]=0x08d3,   2259
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 220
+0x1f32 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 2 ge_id = 124 channel = 32  -> is segment
+ncrystal=1
+wrote trace to CCpulse_008_00_01.xy
+two's comp tempE  ::       5983       5983 0x0000175f |0000|0000|0000|0000|0001|0111|0101|1111|
+rawE              ::       5983       5983 0x0000175f |0000|0000|0000|0000|0001|0111|0101|1111|
+rawE (sign change)::       5983       5983 0x0000175f |0000|0000|0000|0000|0001|0111|0101|1111|
+Event.ehi=             186 0x000000ba
+Event.ehi=18 (gain changed)
+Event.LEDts =        3279749176763
+Event.CFDts =           8589869068
+
+---------
+new GTheader at pos=220 or 110 words (118):
+Event.hdr[ 0]=0x1f33,   7987
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xddbb,  56763
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xedf8,  60920
+Event.hdr[ 6]=0x4e0c,  19980
+Event.hdr[ 7]=0xe08d,  57485
+Event.hdr[ 8]=0x495f,  18783
+Event.hdr[ 9]=0xed75,  60789
+Event.hdr[10]=0x2e0c,  11788
+Event.hdr[11]=0x1a46,   6726
+Event.hdr[12]=0x94bc,  38076
+Event.hdr[13]=0x0030,     48
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 264
+0x1f33 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 3 ge_id = 124 channel = 33  -> is segment
+ncrystal=1
+wrote trace to CCpulse_008_00_01.xy
+two's comp tempE  ::     847352     847352 0x000cedf8 |0000|0000|0000|1100|1110|1101|1111|1000|
+rawE              ::     847352     847352 0x000cedf8 |0000|0000|0000|1100|1110|1101|1111|1000|
+rawE (sign change)::     847352     847352 0x000cedf8 |0000|0000|0000|1100|1110|1101|1111|1000|
+Event.ehi=           26479 0x0000676f
+Event.ehi=2647 (gain changed)
+Event.LEDts =        3279749176763
+Event.CFDts =      263852457066508
+
+---------
+new GTheader at pos=264 or 132 words (140):
+Event.hdr[ 0]=0x1f34,   7988
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xddbb,  56763
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x0036,     54
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xe08d,  57485
+Event.hdr[ 8]=0x495f,  18783
+Event.hdr[ 9]=0xfff7,  65527
+Event.hdr[10]=0x4fff,  20479
+Event.hdr[11]=0x0000,      0
+Event.hdr[12]=0x0008,      8
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 308
+0x1f34 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 4 ge_id = 124 channel = 34  -> is segment
+ncrystal=1
+wrote trace to CCpulse_008_00_01.xy
+two's comp tempE  ::         54         54 0x00000036 |0000|0000|0000|0000|0000|0000|0011|0110|
+rawE              ::         54         54 0x00000036 |0000|0000|0000|0000|0000|0000|0011|0110|
+rawE (sign change)::         54         54 0x00000036 |0000|0000|0000|0000|0000|0000|0011|0110|
+Event.ehi=               1 0x00000001
+Event.ehi=0 (gain changed)
+Event.LEDts =        3279749176763
+Event.CFDts =         244817264652
+
+---------
+new GTheader at pos=308 or 154 words (162):
+Event.hdr[ 0]=0x1f35,   7989
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xddbb,  56763
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xe70c,  59148
+Event.hdr[ 6]=0x4e09,  19977
+Event.hdr[ 7]=0xe08d,  57485
+Event.hdr[ 8]=0x495f,  18783
+Event.hdr[ 9]=0xe59d,  58781
+Event.hdr[10]=0x4209,  16905
+Event.hdr[11]=0x1104,   4356
+Event.hdr[12]=0xdcb4,  56500
+Event.hdr[13]=0x0022,     34
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 352
+0x1f35 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 5 ge_id = 124 channel = 35  -> is segment
+ncrystal=1
+wrote trace to CCpulse_008_00_01.xy
+two's comp tempE  ::     648972     648972 0x0009e70c |0000|0000|0000|1001|1110|0111|0000|1100|
+rawE              ::     648972     648972 0x0009e70c |0000|0000|0000|1001|1110|0111|0000|1100|
+rawE (sign change)::     648972     648972 0x0009e70c |0000|0000|0000|1001|1110|0111|0000|1100|
+Event.ehi=           20280 0x00004f38
+Event.ehi=2028 (gain changed)
+Event.LEDts =        3279749176763
+Event.CFDts =      267851132698636
+
+---------
+new GTheader at pos=352 or 176 words (184):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xddbb,  56763
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x129b,   4763
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xe08d,  57485
+Event.hdr[ 8]=0x495f,  18783
+Event.hdr[ 9]=0x047b,   1147
+Event.hdr[10]=0xdc00,  56320
+Event.hdr[11]=0x0020,     32
+Event.hdr[12]=0x8818,  34840
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 396
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+ncrystal=1
+wrote trace to CCpulse_008_00_01.xy
+two's comp tempE  ::       4763       4763 0x0000129b |0000|0000|0000|0000|0001|0010|1001|1011|
+rawE              ::       4763       4763 0x0000129b |0000|0000|0000|0000|0001|0010|1001|1011|
+rawE (sign change)::       4763       4763 0x0000129b |0000|0000|0000|0000|0001|0010|1001|1011|
+Event.ehi=             148 0x00000094
+Event.ehi=14 (gain changed)
+Event.LEDts =        3279749176763
+Event.CFDts =      281371895595020
+
+---------
+new GTheader at pos=396 or 198 words (206):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xddbb,  56763
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x1196,   4502
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0xe08d,  57485
+Event.hdr[ 8]=0x495f,  18783
+Event.hdr[ 9]=0x1113,   4371
+Event.hdr[10]=0x3e00,  15872
+Event.hdr[11]=0xfff9,  65529
+Event.hdr[12]=0x193b,   6459
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+ncrystal=1
+wrote trace to CCpulse_008_00_01.xy
+two's comp tempE  ::       4502       4502 0x00001196 |0000|0000|0000|0000|0001|0001|1001|0110|
+rawE              ::       4502       4502 0x00001196 |0000|0000|0000|0000|0001|0001|1001|0110|
+rawE (sign change)::       4502       4502 0x00001196 |0000|0000|0000|0000|0001|0001|1001|0110|
+Event.ehi=             140 0x0000008c
+Event.ehi=14 (gain changed)
+Event.LEDts =        3279749176763
+Event.CFDts =           8590065676
+exit bin_mode3
+*end of event # 8
++++++++++++++++++++++++++++++++
+ev#     8 GEB_TYPE_GT_MOD29      440Bytes TS=3279749182679 curTS=3279749182225 dTS= 454
+GEBGetEv returned st=0
+we have read 5304 bytes; CurEvNo=9
+
++++++++++++++++++++++++++++++++
+*start event # 9 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=3279749182225
+entered bin_mode2: 9/10
+ptinp->pad= 0, (ptinp->pad&0x000000ff)= 0
+good pad value
+mode2 data:  0>  1, GEB_TYPE_DECOMP      , TS=3279749182225
+number of hits: 4
+* 0/1, is GEB_TYPE_DECOMP: num=4
+__detno: 77, module: 19, crystalNumber: 1
+CCenergies[0]=2139.56
+* 0:  -16.07,   8.43,   8.42 --> GT:    8.52, -16.19,  -6.54
+* 1:   -6.11,   6.39,   1.37 --> GT:    8.69, -15.58,  -5.47
+* 2:   -2.71, -12.85,  10.78 --> GT:   10.79, -15.29,  -5.91
+* 3:   -3.44,  -7.20,  30.31 --> GT:   11.31, -17.20,  -6.37
+updated CCadd with 2139.56
+total number of hits in array: 4
+exit bin_mode2
+entered bin_mode3 @ event number: 9 
+exit bin_mode3
+*end of event # 9
++++++++++++++++++++++++++++++++
+ev#     9 GEB_TYPE_GT_MOD29      440Bytes TS=3279749210063 curTS=3279749182679 dTS= 27384
+GEBGetEv returned st=0
+we have read 5760 bytes; CurEvNo=10
+
++++++++++++++++++++++++++++++++
+*start event # 10 with multiplicity 1 looks like this:
+ 0>  8, GEB_TYPE_GT_MOD29    , TS=3279749182679
+entered bin_mode2: 10/10
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 10 
+
+bin_mode3:  0>  8, GEB_TYPE_GT_MOD29    , TS=3279749182679, 0x2fba048f4d7; payload length: 440 bytes
+
+---------
+new GTheader at pos=0 or 0 words (8):
+Event.hdr[ 0]=0x1f39,   7993
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf4d7,  62679
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x4263,  16995
+Event.hdr[ 6]=0x4e0e,  19982
+Event.hdr[ 7]=0x171b,   5915
+Event.hdr[ 8]=0xe08d,  57485
+Event.hdr[ 9]=0x4076,  16502
+Event.hdr[10]=0x3c0e,  15374
+Event.hdr[11]=0xffed,  65517
+Event.hdr[12]=0xe43f,  58431
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 44
+0x1f39 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 9 ge_id = 124 channel = 39  -> is CC
+open superpulse_010_00_01.xy at Event.chan_id = 9
+open CCpulse_010_00_01.xy at Event.chan_id = 9
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::     934499     934499 0x000e4263 |0000|0000|0000|1110|0100|0010|0110|0011|
+rawE              ::     934499     934499 0x000e4263 |0000|0000|0000|1110|0100|0010|0110|0011|
+rawE (sign change)::     934499     934499 0x000e4263 |0000|0000|0000|1110|0100|0010|0110|0011|
+Event.ehi=           29203 0x00007213
+Event.ehi=2920 (gain changed)
+Event.LEDts =        3279749182679
+Event.CFDts =       19211681529868
+
+---------
+new GTheader at pos=44 or 22 words (30):
+Event.hdr[ 0]=0x1f30,   7984
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf4d7,  62679
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8113,  33043
+Event.hdr[ 6]=0x4e0c,  19980
+Event.hdr[ 7]=0x171b,   5915
+Event.hdr[ 8]=0xe08d,  57485
+Event.hdr[ 9]=0x80cd,  32973
+Event.hdr[10]=0x3a0c,  14860
+Event.hdr[11]=0x1422,   5154
+Event.hdr[12]=0x2020,   8224
+Event.hdr[13]=0x0029,     41
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 88
+0x1f30 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 0 ge_id = 124 channel = 30  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::     819475     819475 0x000c8113 |0000|0000|0000|1100|1000|0001|0001|0011|
+rawE              ::     819475     819475 0x000c8113 |0000|0000|0000|1100|1000|0001|0001|0011|
+rawE (sign change)::     819475     819475 0x000c8113 |0000|0000|0000|1100|1000|0001|0001|0011|
+Event.ehi=           25608 0x00006408
+Event.ehi=2560 (gain changed)
+Event.LEDts =        3279749182679
+Event.CFDts =      264513892057100
+
+---------
+new GTheader at pos=88 or 44 words (52):
+Event.hdr[ 0]=0x1f31,   7985
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf4d7,  62679
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8e50,  36432
+Event.hdr[ 6]=0xce09,  52745
+Event.hdr[ 7]=0x171b,   5915
+Event.hdr[ 8]=0xe08d,  57485
+Event.hdr[ 9]=0x8c6c,  35948
+Event.hdr[10]=0xca09,  51721
+Event.hdr[11]=0x1093,   4243
+Event.hdr[12]=0xe348,  58184
+Event.hdr[13]=0x0026,     38
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 132
+0x1f31 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 1 ge_id = 124 channel = 31  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::     626256     626256 0x00098e50 |0000|0000|0000|1001|1000|1110|0101|0000|
+rawE              ::     626256     626256 0x00098e50 |0000|0000|0000|1001|1000|1110|0101|0000|
+rawE (sign change)::     626256     626256 0x00098e50 |0000|0000|0000|1001|1000|1110|0101|0000|
+Event.ehi=           19570 0x00004c72
+Event.ehi=1957 (gain changed)
+Event.LEDts =        3279749182679
+Event.CFDts =      268796039593996
+
+---------
+new GTheader at pos=132 or 66 words (74):
+Event.hdr[ 0]=0x1f32,   7986
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf4d7,  62679
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x1167,   4455
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x171b,   5915
+Event.hdr[ 8]=0xe08d,  57485
+Event.hdr[ 9]=0xed35,  60725
+Event.hdr[10]=0xfdff,  65023
+Event.hdr[11]=0x000c,     12
+Event.hdr[12]=0x58a8,  22696
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 176
+0x1f32 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 2 ge_id = 124 channel = 32  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::       4455       4455 0x00001167 |0000|0000|0000|0000|0001|0001|0110|0111|
+rawE              ::       4455       4455 0x00001167 |0000|0000|0000|0000|0001|0001|0110|0111|
+rawE (sign change)::       4455       4455 0x00001167 |0000|0000|0000|0000|0001|0001|0110|0111|
+Event.ehi=             139 0x0000008b
+Event.ehi=13 (gain changed)
+Event.LEDts =        3279749182679
+Event.CFDts =      281462091808780
+
+---------
+new GTheader at pos=176 or 88 words (96):
+Event.hdr[ 0]=0x1f33,   7987
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf4d7,  62679
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0xaebe,  44734
+Event.hdr[ 6]=0x4e0a,  19978
+Event.hdr[ 7]=0x171b,   5915
+Event.hdr[ 8]=0xe08d,  57485
+Event.hdr[ 9]=0xae5c,  44636
+Event.hdr[10]=0xea0a,  59914
+Event.hdr[11]=0x19da,   6618
+Event.hdr[12]=0x8c5c,  35932
+Event.hdr[13]=0x0034,     52
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 220
+0x1f33 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 3 ge_id = 124 channel = 33  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::     700094     700094 0x000aaebe |0000|0000|0000|1010|1010|1110|1011|1110|
+rawE              ::     700094     700094 0x000aaebe |0000|0000|0000|1010|1010|1110|1011|1110|
+rawE (sign change)::     700094     700094 0x000aaebe |0000|0000|0000|1010|1010|1110|1011|1110|
+Event.ehi=           21877 0x00005575
+Event.ehi=2187 (gain changed)
+Event.LEDts =        3279749182679
+Event.CFDts =      266957765738508
+
+---------
+new GTheader at pos=220 or 110 words (118):
+Event.hdr[ 0]=0x1f34,   7988
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf4d7,  62679
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x0011,     17
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x171b,   5915
+Event.hdr[ 8]=0xe08d,  57485
+Event.hdr[ 9]=0xffa4,  65444
+Event.hdr[10]=0xefff,  61439
+Event.hdr[11]=0xffff,  65535
+Event.hdr[12]=0x009f,    159
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 264
+0x1f34 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 4 ge_id = 124 channel = 34  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::         17         17 0x00000011 |0000|0000|0000|0000|0000|0000|0001|0001|
+rawE              ::         17         17 0x00000011 |0000|0000|0000|0000|0000|0000|0001|0001|
+rawE (sign change)::         17         17 0x00000011 |0000|0000|0000|0000|0000|0000|0001|0001|
+Event.ehi=               0 0x00000000
+Event.ehi=0 (gain changed)
+Event.LEDts =        3279749182679
+Event.CFDts =         249112035340
+
+---------
+new GTheader at pos=264 or 132 words (140):
+Event.hdr[ 0]=0x1f35,   7989
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf4d7,  62679
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8795,  34709
+Event.hdr[ 6]=0x4e08,  19976
+Event.hdr[ 7]=0x171b,   5915
+Event.hdr[ 8]=0xe08d,  57485
+Event.hdr[ 9]=0x85d8,  34264
+Event.hdr[10]=0x3a08,  14856
+Event.hdr[11]=0x13cb,   5067
+Event.hdr[12]=0x0884,   2180
+Event.hdr[13]=0x0022,     34
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 308
+0x1f35 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 5 ge_id = 124 channel = 35  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::     558997     558997 0x00088795 |0000|0000|0000|1000|1000|0111|1001|0101|
+rawE              ::     558997     558997 0x00088795 |0000|0000|0000|1000|1000|0111|1001|0101|
+rawE (sign change)::     558997     558997 0x00088795 |0000|0000|0000|1000|1000|0111|1001|0101|
+Event.ehi=           17468 0x0000443c
+Event.ehi=1746 (gain changed)
+Event.LEDts =        3279749182679
+Event.CFDts =      269702291652620
+
+---------
+new GTheader at pos=308 or 154 words (162):
+Event.hdr[ 0]=0x1f36,   7990
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf4d7,  62679
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x17f5,   6133
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x171b,   5915
+Event.hdr[ 8]=0xe08d,  57485
+Event.hdr[ 9]=0xdae2,  56034
+Event.hdr[10]=0xf7ff,  63487
+Event.hdr[11]=0x0008,      8
+Event.hdr[12]=0x41b8,  16824
+Event.hdr[13]=0x0000,      0
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 352
+0x1f36 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 6 ge_id = 124 channel = 36  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::       6133       6133 0x000017f5 |0000|0000|0000|0000|0001|0111|1111|0101|
+rawE              ::       6133       6133 0x000017f5 |0000|0000|0000|0000|0001|0111|1111|0101|
+rawE (sign change)::       6133       6133 0x000017f5 |0000|0000|0000|0000|0001|0111|1111|0101|
+Event.ehi=             191 0x000000bf
+Event.ehi=19 (gain changed)
+Event.LEDts =        3279749182679
+Event.CFDts =          42950328332
+
+---------
+new GTheader at pos=352 or 176 words (184):
+Event.hdr[ 0]=0x1f37,   7991
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf4d7,  62679
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x222a,   8746
+Event.hdr[ 6]=0x0e00,   3584
+Event.hdr[ 7]=0x171b,   5915
+Event.hdr[ 8]=0xe08d,  57485
+Event.hdr[ 9]=0x0935,   2357
+Event.hdr[10]=0x2600,   9728
+Event.hdr[11]=0x0022,     34
+Event.hdr[12]=0xf27c,  62076
+Event.hdr[13]=0x07ff,   2047
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+next start: 0xaaaaaaaa, pos= 396
+0x1f37 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 7 ge_id = 124 channel = 37  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::       8746       8746 0x0000222a |0000|0000|0000|0000|0010|0010|0010|1010|
+rawE              ::       8746       8746 0x0000222a |0000|0000|0000|0000|0010|0010|0010|1010|
+rawE (sign change)::       8746       8746 0x0000222a |0000|0000|0000|0000|0010|0010|0010|1010|
+Event.ehi=             273 0x00000111
+Event.ehi=27 (gain changed)
+Event.LEDts =        3279749182679
+Event.CFDts =      281298880561164
+
+---------
+new GTheader at pos=396 or 198 words (206):
+Event.hdr[ 0]=0x1f38,   7992
+Event.hdr[ 1]=0x300a,  12298
+Event.hdr[ 2]=0xf4d7,  62679
+Event.hdr[ 3]=0xa048,  41032
+Event.hdr[ 4]=0x02fb,    763
+Event.hdr[ 5]=0x8efc,  36604
+Event.hdr[ 6]=0x1ff9,   8185
+Event.hdr[ 7]=0x171b,   5915
+Event.hdr[ 8]=0xe08d,  57485
+Event.hdr[ 9]=0xad0c,  44300
+Event.hdr[10]=0x6dfc,  28156
+Event.hdr[11]=0xf984,  63876
+Event.hdr[12]=0xa3af,  41903
+Event.hdr[13]=0x07f2,   2034
+Event.len=  44, Event.traceLen=  12 (in Bytes)
+Event.len=  22, Event.traceLen=   6 (in 16 bit words)
+Event.len=  11, Event.traceLen=   3 (in 32 bit words)
+0x1f38 module_id = 31 crystal_id = 0 digitizer_id = 3 chan_id = 8 ge_id = 124 channel = 38  -> is segment
+ncrystal=1
+wrote trace to CCpulse_010_00_01.xy
+two's comp tempE  ::   16355068   16355068 0x00f98efc |0000|0000|1111|1001|1000|1110|1111|1100|
+rawE              :: 4294545148    -422148 0xfff98efc |1111|1111|1111|1001|1000|1110|1111|1100|
+rawE (sign change)::     422148     422148 0x00067104 |0000|0000|0000|0110|0111|0001|0000|0100|
+Event.ehi=           13192 0x00003388
+Event.ehi=1319 (gain changed)
+Event.LEDts =        3279749182679
+Event.CFDts =         571243102220
+exit bin_mode3
+*end of event # 10
++++++++++++++++++++++++++++++++
+ev#    10 GEB_TYPE_DECOMP        464Bytes TS=3279749269967 curTS=3279749210063 dTS= 59904
+ev# 50000 GEB_TYPE_DECOMP        464Bytes TS=3280430826387 curTS=3280430826277 dTS= 110
+ev# 50000 GEB_TYPE_DECOMP        464Bytes TS=3280430826527 curTS=3280430826277 dTS= 250
+ev# 100000 GEB_TYPE_GT_MOD29      440Bytes TS=3281099913183 curTS=3281099906859 dTS= 6324
+ev# 150000 GEB_TYPE_DECOMP        464Bytes TS=3281758504995 curTS=3281758504881 dTS= 114
+ev# 150000 GEB_TYPE_DECOMP        464Bytes TS=3281758504999 curTS=3281758504881 dTS= 118
+ev# 150000 GEB_TYPE_GT_MOD29      440Bytes TS=3281758505111 curTS=3281758504881 dTS= 230
+ev# 200000 GEB_TYPE_DECOMP        464Bytes TS=3282455723593 curTS=3282455677699 dTS= 45894
+batflag:: TS<Pars.curTS, reset it at event # 219808
+TS=3282683845969, Pars.curTS=3282734362067, DT=-50516098
+new Pars.curTS=3282683845969
+we have read 178524812 bytes so far
+failed to read 16 bytes for header, got 0
+ GEBGetEv returned 1
+we have read 180180588 bytes; CurEvNo=222514
+
+Sorting is done
+attempting to save root or map file
+
+
+
+mean observed polar and azimuth angles
+for the detectors we saw (module,crystal)
+
+------------------------------------------
+mean pol/azi angle for detector  56 are   96.77/ 119.35
+mean pol/azi angle for detector  57 are  100.48/ 138.33
+mean pol/azi angle for detector  58 are   83.36/ 132.69
+mean pol/azi angle for detector  59 are   79.63/ 114.10
+mean pol/azi angle for detector  60 are   87.35/ 152.65
+mean pol/azi angle for detector  61 are  105.27/ 157.69
+mean pol/azi angle for detector  62 are   93.16/ 168.49
+mean pol/azi angle for detector  63 are   73.72/ 166.01
+mean pol/azi angle for detector  68 are   87.16/-134.87
+mean pol/azi angle for detector  69 are  105.36/-129.91
+mean pol/azi angle for detector  70 are   92.89/-116.91
+mean pol/azi angle for detector  71 are   74.12/-121.84
+mean pol/azi angle for detector  76 are   87.43/ -63.09
+mean pol/azi angle for detector  77 are  105.31/ -58.17
+mean pol/azi angle for detector  78 are   92.96/ -44.94
+mean pol/azi angle for detector  79 are   74.19/ -49.83
+mean pol/azi angle for detector  84 are  112.24/  33.61
+mean pol/azi angle for detector  85 are  125.13/  17.36
+mean pol/azi angle for detector  86 are  130.65/  39.29
+mean pol/azi angle for detector  87 are  115.91/  52.83
+mean pol/azi angle for detector  88 are  112.41/ 105.52
+mean pol/azi angle for detector  89 are  124.93/  89.36
+mean pol/azi angle for detector  90 are  130.73/ 111.16
+mean pol/azi angle for detector  91 are  115.73/ 125.21
+mean pol/azi angle for detector 104 are  144.45/  88.24
+mean pol/azi angle for detector 105 are  132.69/  66.00
+mean pol/azi angle for detector 106 are  148.91/  53.95
+mean pol/azi angle for detector 107 are  162.27/  88.10
+mean pol/azi angle for detector 108 are  144.72/ 160.18
+mean pol/azi angle for detector 109 are  132.70/ 138.05
+mean pol/azi angle for detector 110 are  149.61/ 125.30
+mean pol/azi angle for detector 111 are  162.32/ 108.68
+mean pol/azi angle for detector 118 are  148.93/ -90.33
+we found 33 crystals
+------------------------------------------
+
+minimum pol angle between crystals is  18.65
+compactness =  58.59%, 58 of 198
+module hit statistics
+module  14, crystal 0 was hit      19249 times
+module  14, crystal 1 was hit      20229 times
+module  14, crystal 2 was hit      20462 times
+module  14, crystal 3 was hit      17857 times
+module  15, crystal 0 was hit      20433 times
+module  15, crystal 1 was hit      18953 times
+module  15, crystal 2 was hit      17497 times
+module  15, crystal 3 was hit      17953 times
+module  17, crystal 0 was hit      15190 times
+module  17, crystal 1 was hit      14882 times
+module  17, crystal 2 was hit      15110 times
+module  17, crystal 3 was hit      15619 times
+module  19, crystal 0 was hit      14176 times
+module  19, crystal 1 was hit      14727 times
+module  19, crystal 2 was hit      17730 times
+module  19, crystal 3 was hit      16844 times
+module  21, crystal 0 was hit      17331 times
+module  21, crystal 1 was hit      15377 times
+module  21, crystal 2 was hit      18114 times
+module  21, crystal 3 was hit      17284 times
+module  22, crystal 0 was hit      19261 times
+module  22, crystal 1 was hit      17949 times
+module  22, crystal 2 was hit      19956 times
+module  22, crystal 3 was hit      18571 times
+module  26, crystal 0 was hit      17596 times
+module  26, crystal 1 was hit      17550 times
+module  26, crystal 2 was hit      17086 times
+module  26, crystal 3 was hit      16256 times
+module  27, crystal 0 was hit      18411 times
+module  27, crystal 1 was hit      17702 times
+module  27, crystal 2 was hit      18124 times
+module  27, crystal 3 was hit      16694 times
+module  29, crystal 2 was hit      16013 times
+
+bin_mode2: pad distribution
+__id   0,       253204, 94.03%
+__id   2,           62,  0.02%
+__id   3,          415,  0.15%
+__id   4,           89,  0.03%
+__id   5,          551,  0.20%
+__id   6,         1539,  0.57%
+__id 128,        13400,  4.98%
+__id 133,           27,  0.01%
+
+bin_mode2 calculated mean CCsum energy to be  729.571 keV
+bin_mode2 calculated mean CCadd energy to be  839.962 keV
+attempting to close root file...
+Pars.f1->Write();
+Pars.f1->Print();
+TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run118.root, title=, option=CREATE
+TH1.Print Name  = dtbtev, Entries= 381549, Total sum= 381549
+TH1.Print Name  = T0, Entries= 0, Total sum= 0
+TH1.Print Name  = hitpat, Entries= 253204, Total sum= 253204
+TH1.Print Name  = numHitArray2, Entries= 222514, Total sum= 145717
+TH1.Print Name  = CCmult, Entries= 222514, Total sum= 222514
+TH1.Print Name  = CCsum, Entries= 576169, Total sum= 253202
+TH1.Print Name  = hit2, Entries= 31921, Total sum= 31879
+TH1.Print Name  = hit3, Entries= 14774, Total sum= 14651
+TH1.Print Name  = hit4, Entries= 6983, Total sum= 6814
+TH1.Print Name  = CCsum_nodop, Entries= 576169, Total sum= 253202
+TH1.Print Name  = CCadd, Entries= 222514, Total sum= 144769
+TH1.Print Name  = SEGadd_FPGA, Entries= 44502800, Total sum= 253074
+TH1.Print Name  = SEGadd_PSA, Entries= 44502800, Total sum= 251710
+TH1.Print Name  = SEGsum_FPGA, Entries= 386893, Total sum= 386796
+TH1.Print Name  = SEGsum_PSA, Entries= 576186, Total sum= 571426
+TH1.Print Name  = radius_all, Entries= 576186, Total sum= 576186
+TH1.Print Name  = rate_mode2_min, Entries= 253203, Total sum= 4220.05
+TH1.Print Name  = rate_mode2_sec, Entries= 253203, Total sum= 253203
+TH1.Print Name  = rate_mode2_intp, Entries= 253203, Total sum= 9603.07
+TH1.Print Name  = cdtbtev, Entries= 58473, Total sum= 58473
+TH1.Print Name  = evsr_all, Entries= 576186, Total sum= 562633
+TH1.Print Name  = SMAP_allhits, Entries= 576186, Total sum= 576186
+TH1.Print Name  = SMAP_allhits_sq, Entries= 576186, Total sum= 576186
+TH1.Print Name  = seghitpat, Entries= 576186, Total sum= 576186
+TH1.Print Name  = CCe, Entries= 576169, Total sum= 253202
+TH1.Print Name  = ggCC, Entries= 383920, Total sum= 336018
+TH1.Print Name  = z_plot, Entries= 576186, Total sum= 575572
+TH1.Print Name  = crystal_hit, Entries= 0, Total sum= 0
+TH1.Print Name  = SegE, Entries= 576048, Total sum= 576048
+TH1.Print Name  = crXcr, Entries= 191960, Total sum= 191960
+******************************************************************************
+*Tree    :tree      : tree                                                   *
+*Entries :    15039 : Total =         5339407 bytes  File  Size =    2402417 *
+*        :          : Tree compression factor =   2.22                       *
+******************************************************************************
+*Br    0 :runNumber : runNumber/I                                            *
+*Entries :    15039 : Total  Size=      60821 bytes  File Size  =        516 *
+*Baskets :        2 : Basket Size=      32000 bytes  Compression= 116.88     *
+*............................................................................*
+*Br    1 :numHits   : numHits/I                                              *
+*Entries :    15039 : Total  Size=      60809 bytes  File Size  =        512 *
+*Baskets :        2 : Basket Size=      32000 bytes  Compression= 117.78     *
+*............................................................................*
+*Br    2 :left      : left[numHits]/F                                        *
+*Entries :    15039 : Total  Size=     121394 bytes  File Size  =      53461 *
+*Baskets :        6 : Basket Size=      32000 bytes  Compression=   2.26     *
+*............................................................................*
+*Br    3 :right     : right[numHits]/F                                       *
+*Entries :    15039 : Total  Size=     121404 bytes  File Size  =      53312 *
+*Baskets :        6 : Basket Size=      32000 bytes  Compression=   2.27     *
+*............................................................................*
+*Br    4 :up        : up[numHits]/F                                          *
+*Entries :    15039 : Total  Size=     121374 bytes  File Size  =      53123 *
+*Baskets :        6 : Basket Size=      32000 bytes  Compression=   2.27     *
+*............................................................................*
+*Br    5 :down      : down[numHits]/F                                        *
+*Entries :    15039 : Total  Size=     121394 bytes  File Size  =      53723 *
+*Baskets :        6 : Basket Size=      32000 bytes  Compression=   2.25     *
+*............................................................................*
+*Br    6 :e1        : e1[numHits]/F                                          *
+*Entries :    15039 : Total  Size=     121374 bytes  File Size  =      55713 *
+*Baskets :        6 : Basket Size=      32000 bytes  Compression=   2.17     *
+*............................................................................*
+*Br    7 :e2        : e2[numHits]/F                                          *
+*Entries :    15039 : Total  Size=     121374 bytes  File Size  =      54702 *
+*Baskets :        6 : Basket Size=      32000 bytes  Compression=   2.21     *
+*............................................................................*
+*Br    8 :e3        : e3[numHits]/F                                          *
+*Entries :    15039 : Total  Size=     121374 bytes  File Size  =      54024 *
+*Baskets :        6 : Basket Size=      32000 bytes  Compression=   2.24     *
+*............................................................................*
+*Br    9 :tac       : tac[numHits]/F                                         *
+*Entries :    15039 : Total  Size=     121384 bytes  File Size  =      46509 *
+*Baskets :        6 : Basket Size=      32000 bytes  Compression=   2.60     *
+*............................................................................*
+*Br   10 :fmaDeltaTime : fmaDeltaTime[numHits]/F                             *
+*Entries :    15039 : Total  Size=     121474 bytes  File Size  =      54115 *
+*Baskets :        6 : Basket Size=      32000 bytes  Compression=   2.23     *
+*............................................................................*
+*Br   11 :fmaMult   : fmaMult[10]/I                                          *
+*Entries :    15039 : Total  Size=     603747 bytes  File Size  =       9220 *
+*Baskets :       19 : Basket Size=      32000 bytes  Compression=  65.40     *
+*............................................................................*
+*Br   12 :gammaMult : gammaMult/I                                            *
+*Entries :    15039 : Total  Size=      60821 bytes  File Size  =       9369 *
+*Baskets :        2 : Basket Size=      32000 bytes  Compression=   6.44     *
+*............................................................................*
+*Br   13 :gammaEnergy : gammaEnergy[gammaMult]/F                             *
+*Entries :    15039 : Total  Size=     182080 bytes  File Size  =     135767 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   1.34     *
+*............................................................................*
+*Br   14 :gammaTimestamp : gammaTimestamp[gammaMult]/F                       *
+*Entries :    15039 : Total  Size=     182116 bytes  File Size  =      62160 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   2.92     *
+*............................................................................*
+*Br   15 :deltaTime : deltaTime[gammaMult]/F                                 *
+*Entries :    15039 : Total  Size=     182056 bytes  File Size  =      67807 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   2.68     *
+*............................................................................*
+*Br   16 :gebMult   : gebMult/I                                              *
+*Entries :    15039 : Total  Size=      60809 bytes  File Size  =       9534 *
+*Baskets :        2 : Basket Size=      32000 bytes  Compression=   6.33     *
+*............................................................................*
+*Br   17 :crysType  : crysType[gebMult]/I                                    *
+*Entries :    15039 : Total  Size=     186065 bytes  File Size  =      31480 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   5.89     *
+*............................................................................*
+*Br   18 :crysId    : crysId[gebMult]/I                                      *
+*Entries :    15039 : Total  Size=     186041 bytes  File Size  =      70914 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   2.61     *
+*............................................................................*
+*Br   19 :crysNum   : crysNum[gebMult]/I                                     *
+*Entries :    15039 : Total  Size=     186053 bytes  File Size  =      54875 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   3.38     *
+*............................................................................*
+*Br   20 :crysTot_e : crysTot_e[gebMult]/F                                   *
+*Entries :    15039 : Total  Size=     186084 bytes  File Size  =     137829 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   21 :crysPolAngle : crysPolAngle[gebMult]/F                             *
+*Entries :    15039 : Total  Size=     186120 bytes  File Size  =      67999 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   2.73     *
+*............................................................................*
+*Br   22 :intMaxX   : intMaxX[gebMult]/F                                     *
+*Entries :    15039 : Total  Size=     186060 bytes  File Size  =     138960 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   1.33     *
+*............................................................................*
+*Br   23 :intMaxY   : intMaxY[gebMult]/F                                     *
+*Entries :    15039 : Total  Size=     186060 bytes  File Size  =     137299 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   24 :intMaxZ   : intMaxZ[gebMult]/F                                     *
+*Entries :    15039 : Total  Size=     186060 bytes  File Size  =     138950 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   1.33     *
+*............................................................................*
+*Br   25 :intMaxE   : intMaxE[gebMult]/F                                     *
+*Entries :    15039 : Total  Size=     186060 bytes  File Size  =     137876 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   1.34     *
+*............................................................................*
+*Br   26 :intMaxSeg : intMaxSeg[gebMult]/I                                   *
+*Entries :    15039 : Total  Size=     186077 bytes  File Size  =      70371 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   2.64     *
+*............................................................................*
+*Br   27 :intMaxSegE : intMaxSegE[gebMult]/F                                 *
+*Entries :    15039 : Total  Size=     186096 bytes  File Size  =     137983 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   1.34     *
+*............................................................................*
+*Br   28 :crysTimestamp : crysTimestamp[gebMult]/L                           *
+*Entries :    15039 : Total  Size=     311188 bytes  File Size  =     138672 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   2.24     *
+*............................................................................*
+*Br   29 :crysTrigtime : crysTrigtime[gebMult]/D                             *
+*Entries :    15039 : Total  Size=     311172 bytes  File Size  =     229710 *
+*Baskets :       12 : Basket Size=      32000 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   30 :crysT0    : crysT0[gebMult]/F                                      *
+*Entries :    15039 : Total  Size=     186048 bytes  File Size  =     131505 *
+*Baskets :        8 : Basket Size=      32000 bytes  Compression=   1.41     *
+*............................................................................*
+TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_b, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_c, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_d, Entries= 32823, Total sum= 0
+TH1.Print Name  = eSeg, Entries= 0, Total sum= 0
+TH1.Print Name  = mode3_hitpat, Entries= 1116503, Total sum= 0
+TH1.Print Name  = mode3_hitpat_chan, Entries= 1116503, Total sum= 1.1165e+06
+TH1.Print Name  = chan0, Entries= 0, Total sum= 0
+TH1.Print Name  = module, Entries= 1116503, Total sum= 1.1165e+06
+TH1.Print Name  = chan, Entries= 1116503, Total sum= 1.11564e+06
+TH1.Print Name  = l, Entries= 111651, Total sum= 111634
+TH1.Print Name  = r, Entries= 111648, Total sum= 111647
+TH1.Print Name  = up, Entries= 111650, Total sum= 111650
+TH1.Print Name  = down, Entries= 111651, Total sum= 111651
+TH1.Print Name  = sumlr, Entries= 108432, Total sum= 108432
+TH1.Print Name  = sumud, Entries= 103867, Total sum= 103867
+TH1.Print Name  = x, Entries= 108432, Total sum= 108432
+TH1.Print Name  = y, Entries= 103867, Total sum= 103867
+TH1.Print Name  = de1, Entries= 111651, Total sum= 111647
+TH1.Print Name  = de2, Entries= 111651, Total sum= 111651
+TH1.Print Name  = de3, Entries= 111650, Total sum= 111379
+TH1.Print Name  = de12, Entries= 96348, Total sum= 96348
+TH1.Print Name  = etot, Entries= 96348, Total sum= 96348
+TH1.Print Name  = rftof, Entries= 111649, Total sum= 111166
+TH1.Print Name  = lr, Entries= 222514, Total sum= 222496
+TH1.Print Name  = ud, Entries= 222514, Total sum= 222514
+TH1.Print Name  = ede1, Entries= 96348, Total sum= 96348
+TH1.Print Name  = ede1g, Entries= 13228, Total sum= 13228
+TH1.Print Name  = ede2, Entries= 96348, Total sum= 96348
+TH1.Print Name  = ede12, Entries= 96348, Total sum= 96348
+TH1.Print Name  = xde1, Entries= 96348, Total sum= 96348
+TH1.Print Name  = erftof, Entries= 222514, Total sum= 222031
+TH1.Print Name  = erftofg, Entries= 7334, Total sum= 7319
+TH1.Print Name  = sumehi, Entries= 253204, Total sum= 253203
+TH1.Print Name  = tgppac, Entries= 253204, Total sum= 68955
+TH1.Print Name  = tgppacg, Entries= 13228, Total sum= 13228
+TH1.Print Name  = xehi1, Entries= 253204, Total sum= 253203
+TH1.Print Name  = xehi1g, Entries= 13228, Total sum= 13227
+TH1.Print Name  = de1ehi, Entries= 253204, Total sum= 253200
+TH1.Print Name  = de1ehig, Entries= 13228, Total sum= 13227
+TH1.Print Name  = ng, Entries= 222514, Total sum= 222514
+TH1.Print Name  = ehiz1, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz2, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz3, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz4, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz5, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_dt, Entries= 12822, Total sum= 12822
+TH1.Print Name  = gg, Entries= 25644, Total sum= 25210
+TH1.Print Name  = gg_z1, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z2, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z3, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z4, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z5, Entries= 0, Total sum= 0
+Pars.f1->Close();
+done saving rootfile "/lcrc/project/HELIOS/gretinafma/root_data/run118.root
+
+
+read 222514 events; Pars.beta=0.0330; time since last update 0 minutes
+CommandFileName="GEBSort.command"
+
+sorted timestamp range 3279749017519-->3282785967989: 3036950470
+that is 30.4 seconds or 0h0m30s
+^^^^^ any timestamp jumps will upset this accounting
+
+hit statistics per type
+ 1 GEB_TYPE_DECOMP           269287 ;   8867.02 Hz 
+ 8 GEB_TYPE_GT_MOD29         112265 ;   3696.64 Hz 
+read a total of              381552 ; header/payloads
+
+
+nn1=0
+nn2=381553
+nn3=381553
+
+nok_validate= 222514, ntot_validate=222514; validate fraction 100.00%
+
+bytes read=180180588, 171.833599 MB
+
+boniva sancta! ...GEBSort (unexpectedly) did not crash!
+
+ ** GEBSort is done at 

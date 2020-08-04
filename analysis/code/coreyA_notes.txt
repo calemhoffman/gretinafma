@@ -1,0 +1,14 @@
+a) Inputs: At the moment I am forcing all of my inputs to be from 0 - 1, does this really matter? Also, I have generated labels based on known gamma-ray so that the interesting data is
+labeled as =1, everything else =0. I suspect, maybe I should instead break this down further into a multiple classes, e.g., 38S = 1, 38Cl = 2, 33P = 3, backgrounds = 4....
+
+Inputs generally do well when all scaled to roughly the same range.  0 to 1 is a good choice, though -1 to 1 might be better if that is something feasible.  It also depends on the problem, sometimes negative values make no sense.  Yes, if you can, break things down into multiple classes.
+
+
+b) Outputs: I have only 1 value coming out of the output and i calculate losses with the 0 or 1 values. Should I round this value first in analogy to getting the Max Value to choose between multiple labels?
+
+If you have everything in just one output, there is a binary_cross_entropy technique that works well.  If you have multiple classes, you want cross_entropy.  This is opposed to something like mean-squared-error.  In classification tasks, using a cross entropy technique provides a much stronger gradient than mean squared error, which means your models train better.
+
+c) Model etc: I am using various layers, loss calculations, and optimizers that I am very well versed in. I am reading some to try and catch up, but honestly, just using ones I find from examples on line. 
+I suspect there are good, better, best, types I should be using. Any suggestions and where I could look for the best options on these, or just trial and error?
+
+You probably want to stick with Dense layers now, as opposed to convolutional layers.  Dense = linear, depending on the framework.  You will need to include non-linearities between each layer to enable the model to find non linear patterns.  The main choices are sigmoid and relu/leaky_relu.  If your model is not very deep, it won’t matter.  For very deep models, ReLU and leaky ReLU are king.

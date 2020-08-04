@@ -27,13 +27,20 @@
 
 TChain *chain;
 TString fileName;
+// Int_t goodRun[30] =
+// 				{0,0,0,0,0,
+// 		     0,0,1,1,1,
+// 		     1,1,1,1,1,
+// 		     1,1,1,0,1,
+// 		     1,1,1,1,1,
+// 		     1,1,1,1,1};
 Int_t goodRun[30] =
 				{0,0,0,0,0,
-		     0,0,1,1,1,
-		     1,1,1,1,1,
-		     1,1,1,0,1,
-		     1,1,1,1,1,
-		     1,1,1,1,1};
+		     0,0,0,0,0,
+		     0,0,0,0,0,
+		     0,0,0,0,0,
+		     0,0,0,0,0,
+		     0,0,0,1,0};
 TCanvas *c2;
 
 //list stuff
@@ -88,6 +95,7 @@ TCutG *cut_e2e3_s38,*cut_e1e2_s38;
 TCutG *cut_e1e3_cl38,*cut_e0x_cl38,*cut_lr_cl38,*cut_ud_cl38,*cut_dtge_cl38;
 TCutG *cut_e1e3_ar38,*cut_e0x_ar38,*cut_lr_ar38,*cut_ud_ar38,*cut_dtge_ar38;
 TCutG *cut_e1e3_p33,*cut_e0x_p33,*cut_lr_p33,*cut_ud_p33,*cut_dtge_p33;
+TCutG *cut_e1e2_ml,*cut_e2e3_ml;
 //Histos
 TH2F *he0x,*he1e3;
 TH2F *hdtge,*hlr,*hud;
@@ -101,16 +109,18 @@ void fmaCuts(void) {
 
   //TwoChains!
   chain = new TChain("ctree");
-  for (Int_t rn = 7; rn<30; rn++) {
-    if (goodRun[rn]==1) {
-			if (LCRC == 1) {
-				fileName.Form("/lcrc/project/HELIOS/gretinafma/root_data/cal_%d.root",rn);
-			} else {
-				fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
-			}
-			chain->Add(fileName);
-    }
-  }
+  // for (Int_t rn = 7; rn<30; rn++) {
+  //   if (goodRun[rn]==1) {
+	// 		if (LCRC == 1) {
+	// 			fileName.Form("/lcrc/project/HELIOS/gretinafma/root_data/cal_%d.root",rn);
+	// 		} else {
+	// 			fileName.Form("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_%d.root",rn);
+	// 		}
+	// 		chain->Add(fileName);
+  //   }
+  // }
+	chain->Add("/Users/calemhoffman/Research/anl/gretinafma/git/gretinafma/analysis/cal28cuts.root");
+	//chain->Add("/Users/calemhoffman/Research/anl/gretinafma/data/root_data/cal_28.root");
   chain->GetListOfFiles()->Print();
 
 
@@ -161,6 +171,8 @@ void fmaCuts(void) {
   cut_ud_s38 = (TCutG *) gDirectory->FindObjectAny("cut_ud_s38");
 	cut_e1e2_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e2_s38");
 	cut_e2e3_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e2e3_s38");
+	cut_e1e2_ml = (TCutG *) gDirectory->FindObjectAny("cut_e1e2_ml");
+	cut_e2e3_ml = (TCutG *) gDirectory->FindObjectAny("cut_e2e3_ml");
 
   cut_s38_g1200 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1200");
   cut_s38_g1500 = (TCutG *) gDirectory->FindObjectAny("cut_s38_g1500");
@@ -261,12 +273,13 @@ void fmaCuts(void) {
   printf("nEntries: %d\n",nEntries);
   Float_t counter=0;
 
-  for (Int_t entryNumber=0;entryNumber<numElistEntries; entryNumber++) {
-  //for (Int_t entryNumber=0;entryNumber<nEntries; entryNumber++) {
-    chain->GetEntry(elist_all->GetEntry(entryNumber));
-    //chain->GetEntry(entryNumber);
+  //for (Int_t entryNumber=0;entryNumber<numElistEntries; entryNumber++) {
+  for (Int_t entryNumber=0;entryNumber<nEntries; entryNumber++) {
+    //chain->GetEntry(elist_all->GetEntry(entryNumber));
+    chain->GetEntry(entryNumber);
 
-    if (((Float_t)entryNumber/(Float_t)numElistEntries)>counter)
+    //if (((Float_t)entryNumber/(Float_t)numElistEntries)>counter)
+		if (((Float_t)entryNumber/(Float_t)nEntries)>counter)
       {
 				printf("^_^_^_%4.1f_^_^_^\n",counter*100);
 				counter=counter+0.1;
@@ -275,9 +288,10 @@ void fmaCuts(void) {
       recoilID[tempI]=-1;
 
     /* s38 */
-    if ( (cut_e1e2_s38->IsInside(e[1],e[0]))
-		&& (cut_e2e3_s38->IsInside(e[2],e[1]))
-	 	&& (cut_e0x_s38->IsInside(x,e[0]))
+    if ( (cut_e1e2_ml->IsInside(e[1],e[0]))
+		&& (cut_e2e3_ml->IsInside(e[2],e[1]))
+	 	/*&& (cut_e0x_s38->IsInside(x,e[0]))*/
+		&& (x>-1000 && x<1000)
 	 	&& (cut_lr_s38->IsInside(r,l))
 	 	&& (cut_ud_s38->IsInside(d,u)) ) {
       recoilID[0]=0;
@@ -341,9 +355,13 @@ void fmaCuts(void) {
     //   }
     // }
 
-		if (recoilID[0]==0)
+		//if (recoilID[0]==0)
+		/* s38 */
+    if ( (cut_lr_s38->IsInside(r,l))
+	 	&& (cut_ud_s38->IsInside(d,u))
+	&& (e[1]>200) ) {
 			gtree[0]->Fill();
-
+		}
   }//end entry loop
 
 

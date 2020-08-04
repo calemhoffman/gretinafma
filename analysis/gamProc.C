@@ -185,7 +185,7 @@ void gamProc(void) {
 
 
   //Pull the TTrees of interest
-  fileName.Form("gamTree.root");
+  fileName.Form("gamTreeNew.root");
   gamFileIn = new TFile(fileName);
   gDirectory->ls();
 
@@ -230,7 +230,7 @@ void gamProc(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("gamProc.root");
+  fileName.Form("gamProcNew.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 

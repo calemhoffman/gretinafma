@@ -30,6 +30,7 @@
 
 #define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
+#define TRAIN 0 //0 no, 1 yes
 
 TFile *gamFileIn;
 TFile *gamFileOut;
@@ -59,17 +60,25 @@ Float_t intMaxE[100];
 Int_t intMaxSeg[100];
 Float_t intMaxSegE[100];
 //new
-Float_t mass;
+Float_t mass[100];
 Float_t gAddBack[100];
 Float_t gAngle[100];
 
 Int_t nEntries[10];
 
-Float_t e0;
-Float_t e1;
-Float_t e2;
+Float_t e0,e1,e2,e3,e4,e5,e6;
 Float_t m;
-Float_t g0,g1,g2,g3,g4,g5;
+Float_t dt;
+Float_t ge;
+Float_t ga;
+Float_t gid;
+Float_t glabel;
+Float_t cre;
+Float_t ix;
+Float_t iy;
+Float_t iz;
+Int_t non38S = 0;
+Int_t pyTreeFill = 0;
 
 //Histograms
 TString rName[5] = {"s38","cl38","ar38","p33","all"};
@@ -101,9 +110,19 @@ TCutG *cut_e1e3_s38;
 TCutG *cut_e1e3_jan0;
 TCutG *cut_e1e3_scan15;
 TCutG *cut_e1e3_scan25;
+TCutG *cut_e1e3_ml;
+TCutG *cut_e1e3_NEW;
+TCutG *cut_e2e3_NEW;
+TCutG *cut_e1e3_Skin;
+TCutG *cut_e1e3_Skinniest;
+TCutG *cut_e1e3_Skinnier;
 TCutG *cut_dtge_feb10;
+TCutG *cut_dtge_Ave;
 TCutG *cut_mx_test,*cut_mg_good;
 TCutG *cut_mx_good;
+TCutG *cut_e1e3_Ave;
+TCutG *cut_dtge_Skin1;
+TCutG *cut_dtge_Skin2;
 
 void gamPyTorch(void) {
   //Get preloaded stuff, i.e. cuts
@@ -112,10 +131,20 @@ void gamPyTorch(void) {
   cut_dtge[2] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_ar38");
   cut_dtge[3] = (TCutG *) gDirectory->FindObjectAny("cut_dtge_p33");
   cut_dtge_feb10 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_feb10");
+  cut_dtge_Ave = (TCutG *) gDirectory->FindObjectAny("cut_dtge_Ave");
+  cut_dtge_Skin1 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_Skin1");
+  cut_dtge_Skin2 = (TCutG *) gDirectory->FindObjectAny("cut_dtge_Skin2");
   cut_e1e3_s38 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_s38");
   cut_e1e3_jan0 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_jan0");
   cut_e1e3_scan15 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan15");
   cut_e1e3_scan25 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan25");
+  cut_e1e3_ml = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_ml");
+  cut_e1e3_NEW = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_NEW");
+  cut_e2e3_NEW = (TCutG *) gDirectory->FindObjectAny("cut_e2e3_NEW");
+  cut_e1e3_Ave = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Ave");
+  cut_e1e3_Skin = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skin");
+  cut_e1e3_Skinniest = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skinniest");
+  cut_e1e3_Skinnier = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skinnier");
   cut_mx_test = (TCutG *) gDirectory->FindObjectAny("cut_mx_test");
   cut_mg_good = (TCutG *) gDirectory->FindObjectAny("cut_mg_good");
   cut_mx_good = (TCutG *) gDirectory->FindObjectAny("cut_mx_good");
@@ -191,7 +220,7 @@ void gamPyTorch(void) {
 
 
   //Pull the TTrees of interest
-  fileName.Form("gamTree.root");
+  fileName.Form("gamTreeNew.root");
   gamFileIn = new TFile(fileName);
   gDirectory->ls();
 
@@ -236,7 +265,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTree.root");
+  fileName.Form("pyTreeNew.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -244,15 +273,22 @@ pytree = new TTree("pytree","pytree");
 pytree->Branch("e0",&e0,"e0/F");
 pytree->Branch("e1",&e1,"e1/F");
 pytree->Branch("e2",&e2,"e2/F");
+pytree->Branch("e3",&e3,"e3/F");
+pytree->Branch("e4",&e4,"e4/F");
+pytree->Branch("e5",&e5,"e5/F");
+pytree->Branch("e6",&e6,"e6/F");
 pytree->Branch("x",&x,"x/F");
 pytree->Branch("m",&m,"m/F");
+pytree->Branch("dt",&dt,"dt/F");
 pytree->Branch("gmult",&gmult,"gmult/I");
-pytree->Branch("g0",&g0,"g0/F");
-pytree->Branch("g1",&g1,"g1/F");
-pytree->Branch("g2",&g2,"g2/F");
-pytree->Branch("g3",&g3,"g3/F");
-pytree->Branch("g4",&g4,"g4/F");
-
+pytree->Branch("ge",&ge,"ge/F");
+pytree->Branch("ga",&ga,"ga/F");
+pytree->Branch("gid",&gid,"gid/F");
+pytree->Branch("glabel",&glabel,"glabel/F");
+pytree->Branch("cre",&cre,"cre/F");
+pytree->Branch("ix",&ix,"ix/F");
+pytree->Branch("iy",&iy,"iy/F");
+pytree->Branch("iz",&iz,"iz/F");
 
 //User Ins
 //Int_t nTreeNum = 0; //only for s38 to start
@@ -278,19 +314,27 @@ Int_t addBackDopNum = 0;
 
 Int_t isGoodEvent = 0;
 //Loop to calculate everything
-maxEntries=1e6;
+Int_t s38Counter=0;
+Int_t cl38Counter=0;
+Int_t p33Counter=0;
+Int_t taCounter=0;
+
 for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
+  if ( (entryNumber%1000000) == 0) {printf("Entry %d of %d: %f \n",entryNumber,maxEntries,
+((float)entryNumber/(float)maxEntries));}
   isGoodEvent=0;
   for (Int_t nTreeNum=0;nTreeNum<numRecoilProcess;nTreeNum++) {
   if (entryNumber<nEntries[nTreeNum]) {
     gtree[nTreeNum]->GetEntry(entryNumber); //One and only pull of entries ??
     hMults[nTreeNum]->Fill(gebMult);//histo mults
 //Loop over Segment Multiplicity
-    for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
+for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
 //PASS INFO
       crysTotE[gebMultNum] = crysTot_e[gebMultNum];
       //gEnergy[gebMultNum] = genergy[gebMultNum];
-
+    }
+    //Loop over Segment Multiplicity
+    for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
 //DOPPLER
       intRad[gebMultNum] = (intMaxZ[gebMultNum]) /
         (TMath::Sqrt(intMaxX[gebMultNum]*intMaxX[gebMultNum]
@@ -314,10 +358,11 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
         +(intMaxZ[gebMultNum] - intMaxZ[j])*(intMaxZ[gebMultNum] - intMaxZ[j]);
         radDiff[gebMultNum][j] = TMath::Sqrt(r2);
 
-        // printf("I,J: %d,%d radDiff: %f e[i]: %f, e[j]: %f\n",
+        // printf("I,J: %d,%d radDiff: %f, e[i]: %f, e[j]: %f, E[i]: %f, E[j]: %f\n",
         // gebMultNum,j,
         // radDiff[gebMultNum][j],
-        // crysTot_e[gebMultNum], crysTot_e[j]);
+        // crysTot_e[gebMultNum], crysTot_e[j],
+        // crysTotE[gebMultNum], crysTotE[j]);
 
         if ( (radDiff[gebMultNum][j] <= radAddBackTest) && (gtime[gebMultNum][j]<40) )
         {
@@ -327,10 +372,12 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
           crysTot_e[j] = 0;
         } //radDiff if
       } //j++
-      //printf("** crysTotAddBack: %f\n\n",crysTotAddBack[gebMultNum]);
+      // printf("** crysTotAddBack[%d]: %f\n\n",gebMultNum,crysTotAddBack[gebMultNum]);
+      if (crysTotAddBack[gebMultNum]!=0) {
       crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum]/modCCdopfac[gebMultNum];//DOPPLER
       crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum] - (0.002*x);//X CORRECTION (from hxVg spectrum)
       crysTotAddBack[gebMultNum] = crysTotAddBack[gebMultNum] + (e[0]-1625)*0.002488;//e[0] from he0Vg specrum
+      }
       gAddBack[gebMultNum] = crysTotAddBack[gebMultNum];
       gAngle[gebMultNum] = (modCCang[gebMultNum]*180./TMath::Pi());
       //printf("** crysTotAddBack w/ Dop: %f\n\n",crysTotAddBack[gebMultNum]);
@@ -342,23 +389,29 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
     {
       Double_t t = (Double_t)dtime[gebMultNum];
       if (t>0&&t<200){
-        mass = ((e[0]+e[2])*t*t)/1.0e4;
-      } else {mass = 0;}
-      if ( ( cut_e1e3_scan[0]->IsInside(e[2],e[0])
-      || cut_e1e3_scan[1]->IsInside(e[2],e[0]) )
-      && (x>-600&&x<600)
-      && cut_mg_good->IsInside(mass,gAddBack[gebMultNum])
-      && cut_mx_good->IsInside(mass,x)
-    )
+        mass[gebMultNum] = ((e[0]+e[2])*t*t)/1.0e4;
+      } else {mass[gebMultNum] = 0;}
+      if ( (cut_e1e3_NEW->IsInside(e[2],e[0]))
+      &&
+      (x>-1000&&x<1000)
+      &&
+      (e[1]>200)
+      //&& cut_mg_good->IsInside(mass[gebMultNum],gAddBack[gebMultNum])
+      //&& cut_mx_good->IsInside(mass[gebMultNum],x)
+      )
       {//e1e3 && x && mass
-        if ( cut_dtge_feb10->IsInside(genergy[gebMultNum],dtime[gebMultNum]) )
+        if ( //(cut_dtge_Skin1->IsInside(genergy[gebMultNum],dtime[gebMultNum]))
+        //|| (cut_dtge_Skin2->IsInside(genergy[gebMultNum],dtime[gebMultNum]))
+        (dtime[gebMultNum]>60 && dtime[gebMultNum]<110)
+        )
         {//dtime
+          isGoodEvent = 1;
           he0x->Fill(x,e[0]) ;
           he1e3->Fill(e[2],e[0]);he1e2->Fill(e[1],e[0]);he2e3->Fill(e[2],e[1]);
           //hdtge->Fill(genergy[gebMultNum],dtime[gebMultNum]);
           hg[nTreeNum]->Fill(genergy[gebMultNum]); //g fill
           //hgDop[nTreeNum]->Fill(crysTotDop[gebMultNum]); //dop fill
-          if (crysTotAddBack[gebMultNum] > 0)
+          if (crysTotAddBack[gebMultNum] >= 0)
           {
             if ((modCCang[gebMultNum]*180./TMath::Pi())>60.0 && (modCCang[gebMultNum]*180./TMath::Pi())<180.0)
             {
@@ -369,8 +422,8 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
               he0Vg->Fill(e[0],crysTotAddBack[gebMultNum]);
               he2Vg->Fill(e[2],crysTotAddBack[gebMultNum]);
               hdtge->Fill(crysTotAddBack[gebMultNum],dtime[gebMultNum]);
-              hmVx->Fill(x,mass);
-              isGoodEvent = 1;
+              hmVx->Fill(x,mass[gebMultNum]);
+
             }
           }
           hgNoDopVsAngle[nTreeNum]->Fill(crysTotE[gebMultNum],modCCang[gebMultNum]*180./TMath::Pi());
@@ -404,52 +457,122 @@ for (Int_t entryNumber=0;entryNumber<maxEntries; entryNumber++) {
   } //nTreeNum
 
   //Loop over scans, either cuts or ranges
-  Int_t scanCounter=0;
-  Int_t xmin=0;
-  Int_t xmax=0;
-  nTreeNum=0;
-  for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
-    if ( cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum]) ) {
-      for (Int_t firstLoop=0;firstLoop<5;firstLoop++) {
-        if ( cut_e1e3_scan[firstLoop]->IsInside(e[2],e[0]) ) {
-          for (Int_t secondLoop=0; secondLoop<10; secondLoop++) {
-            xmin=-600 + (secondLoop*100); xmax=-500 + (secondLoop*100);
-            scanCounter = firstLoop*10 + secondLoop;
-            if ( (x>xmin) && (x<=xmax) )
-              hscan[scanCounter]->Fill(crysTotAddBack[gebMultNum]);
-          }
-        }
-      }
-    }
-  } //gebMultNum
+  // Int_t scanCounter=0;
+  // Int_t xmin=0;
+  // Int_t xmax=0;
+  // nTreeNum=0;
+  // for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
+  //   if ( cut_dtge[nTreeNum]->IsInside(genergy[gebMultNum],dtime[gebMultNum]) ) {
+  //     for (Int_t firstLoop=0;firstLoop<5;firstLoop++) {
+  //       if ( cut_e1e3_scan[firstLoop]->IsInside(e[2],e[0]) ) {
+  //         for (Int_t secondLoop=0; secondLoop<10; secondLoop++) {
+  //           xmin=-600 + (secondLoop*100); xmax=-500 + (secondLoop*100);
+  //           scanCounter = firstLoop*10 + secondLoop;
+  //           if ( (x>xmin) && (x<=xmax) )
+  //             hscan[scanCounter]->Fill(crysTotAddBack[gebMultNum]);
+  //         }
+  //       }
+  //     }
+  //   }
+  // } //gebMultNum
 
   e0=e[0];
   e1=e[1];
   e2=e[2];
-  m=mass;
-  if (gebMult>0 && gAddBack[0]>0) {
-    g0 = gAddBack[0];
-  } else {g0 = 0;}
-  if (gebMult>1 && gAddBack[1]>0) {
-    g1 = gAddBack[1];
-  } else {g1 = 0;}
-  if (gebMult>2 && gAddBack[2]>0) {
-    g2 = gAddBack[2];
-  } else {g2 = 0;}
-  if (gebMult>3 && gAddBack[3]>0) {
-    g3 = gAddBack[3];
-  } else {g3 = 0;}
-  if (gebMult>4 && gAddBack[4]>0) {
-    g4 = gAddBack[4];
-  } else {g4 = 0;}
-
+  e3=e[0]+e[1];
+  e4=e[0]+e[2];
+  e5=e[1]+e[2];
+  e6=e[0]+e[1]+e[2];
+  ga = 0;
+  ge = 0;
+  gid = 0;
+  glabel = 0;
+  m = 0;
+  dt = 0;
+  cre = 0;
+  ix = 0; iy = 0; iz = 0;
+  Int_t trainVal = -1;
+  if (TRAIN == 1) trainVal = 0;
   if (isGoodEvent == 1) {
-    pytree->Fill();
+    for (Int_t i=0;i<gebMult; i++) {
+      ge = gAddBack[i];
+      ga = gAngle[i];
+      cre = crysTotE[i];
+      if (TMath::Abs(intMaxX[i])<0.001) intMaxX[i]=0;
+      ix = intMaxX[i];
+      if (TMath::Abs(intMaxY[i])<0.001) intMaxY[i]=0;
+      iy = intMaxY[i];
+      if (TMath::Abs(intMaxZ[i])<0.001) intMaxZ[i]=0;
+      iz = intMaxZ[i];
+      gid = -1;
+      glabel = 0;
+      m = mass[i];
+      dt = (Float_t)dtime[i];
+      if ( (gAddBack[i]>1288.5 && gAddBack[i]<1297.5)
+        || (gAddBack[i]>1531 && gAddBack[i]<1539)
+        || (gAddBack[i]>847 && gAddBack[i]<851)
+        || (gAddBack[i]>382 && gAddBack[i]<385) ) {
+        gid = 1;
+        glabel = 1;
+        s38Counter++;
+      } else if ( //(gAddBack[i]>290 && gAddBack[i]<294)
+         //||
+         (gAddBack[i]>635 && gAddBack[i]<641)
+        || (gAddBack[i]>1188 && gAddBack[i]<1194)
+        || (gAddBack[i]>2040 && gAddBack[i]<2048)
+        || (gAddBack[i]>2269 && gAddBack[i]<2282)
+        || (gAddBack[i]>2966 && gAddBack[i]<2982)
+        || (gAddBack[i]>3136 && gAddBack[i]<3151) ) {
+          gid = 0;
+          glabel = 2;
+          cl38Counter++;
+      } else if ( (gAddBack[i]>1841.5 && gAddBack[i]<1852)
+        || (gAddBack[i]>1426 && gAddBack[i]<1434)
+        || (gAddBack[i]>2372 && gAddBack[i]<2383) ) {
+          gid = 0;
+          glabel = 3;
+          p33Counter++;
+      } else if ( (gAddBack[i]>136 && gAddBack[i]<142)
+    /* || (gAddBack[i]>167 && gAddBack[i]<173) cl?? */ ) {
+          gid = 0;
+          glabel = 4;
+          taCounter++;
+      }
+      if (m!=0 && (cre>0&&ge<6000) /*&& (ga>65.0 && ga<175.0)*/) {
+        if (gid>=trainVal) {
+          if (TRAIN==0) {
+            pytree->Fill();
+            if (pyTreeFill<100)
+            printf("i: %d ge: %f, cre: %f\n",i,ge,cre);//
+            pyTreeFill++;
+          } else if (TRAIN==1) {
+            if (
+            ( (glabel==1) /* || (glabel==3) */)
+            || ( (glabel==2) && ((cl38Counter%10)==0) )
+            || ( (glabel==3) && ((p33Counter%2)==0) )
+            || ( (glabel==4) && ((taCounter%2)==0) ) )
+            {
+              pytree->Fill();
+              // if (ge>2000) {
+              //   for (Int_t highEmult=0;highEmult<3;highEmult++)
+              //     pytree->Fill();
+              // }
+              // if (glabel==1){
+              //   for (Int_t highEmult=0;highEmult<10;highEmult++)
+              //     pytree->Fill();
+              // }
+              pyTreeFill++;
+            }
+          }
+        }
+      }
+    }
   }
   isGoodEvent=0;
   }//entry loop
 }
-
+  printf("\n %d %d %d %d \n\n",s38Counter,cl38Counter,p33Counter,taCounter);
+  printf("%d\n\n",pyTreeFill);
   for (Int_t i=0;i<numRecoilProcess;i++) {
     hg[i]->Write();
     //hgDop[i]->Write()

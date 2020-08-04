@@ -29,9 +29,9 @@
   gStyle->SetOptFit(1111);                        // the results of the fits
   //gStyle->SetPadGridX(kTRUE);                     // draw horizontal and vertical grids
   //gStyle->SetPadGridY(kTRUE);
-  gStyle->SetPalette(53,0);
-  gStyle->SetNumberContours(99);                     // pretty and useful palette
-  gStyle->SetHistLineWidth(1);                    // a thicker histogram line
+  gStyle->SetPalette(1,0);
+  gStyle->SetNumberContours(50);                     // pretty and useful palette
+  gStyle->SetHistLineWidth(2);                    // a thicker histogram line
   gStyle->SetFrameFillColor(10);                  // a different frame colour
   gStyle->SetTitleFillColor(33);                 // title colour to highlight it
   gStyle->SetTitleW(.46);                         // Title Width
@@ -99,8 +99,13 @@
   gROOT->ProcessLine(".x cuts/cut_ud_s38.C"); cut_ud_s38;
   gROOT->ProcessLine(".x cuts/cut_dtge_s38.C"); cut_dtge_s38;
   gROOT->ProcessLine(".x cuts/cut_dtge_feb10.C"); cut_dtge_feb10;
+  gROOT->ProcessLine(".x cuts/cut_dtge_Ave.C"); cut_dtge_Ave;
+  gROOT->ProcessLine(".x cuts/cut_dtge_Skin1.C"); cut_dtge_Skin1;
+  gROOT->ProcessLine(".x cuts/cut_dtge_Skin2.C"); cut_dtge_Skin2;
   gROOT->ProcessLine(".x cuts/cut_e2e3_s38.C"); cut_e2e3_s38;
   gROOT->ProcessLine(".x cuts/cut_e1e2_s38.C"); cut_e1e2_s38;
+  gROOT->ProcessLine(".x cuts/cut_e1e2_ml.C"); cut_e1e2_ml;
+  gROOT->ProcessLine(".x cuts/cut_e2e3_ml.C"); cut_e2e3_ml;
   gROOT->ProcessLine(".x cuts/cut_e1e3_scan0.C"); cut_e1e3_scan0;
   gROOT->ProcessLine(".x cuts/cut_e1e3_scan1.C"); cut_e1e3_scan1;
   gROOT->ProcessLine(".x cuts/cut_e1e3_scan2.C"); cut_e1e3_scan2;
@@ -109,6 +114,13 @@
   gROOT->ProcessLine(".x cuts/cut_e1e3_scan15.C"); cut_e1e3_scan15;
   gROOT->ProcessLine(".x cuts/cut_e1e3_scan25.C"); cut_e1e3_scan25;
   gROOT->ProcessLine(".x cuts/cut_e1e3_jan0.C"); cut_e1e3_jan0;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_ml.C"); cut_e1e3_ml;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_NEW.C"); cut_e1e3_NEW;
+  // gROOT->ProcessLine(".x cuts/cut_e2e3_NEW.C"); cut_e2e3_NEW;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_Ave.C"); cut_e1e3_Ave;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_Skin.C"); cut_e1e3_Skin;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_Skinniest.C"); cut_e1e3_Skinniest;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_Skinnier.C"); cut_e1e3_Skinnier;
   gROOT->ProcessLine(".x cuts/cut_mx_test.C"); cut_mx_test;
   gROOT->ProcessLine(".x cuts/cut_mg_good.C"); cut_mg_good;
   gROOT->ProcessLine(".x cuts/cut_mx_good.C"); cut_mx_good;
@@ -133,6 +145,8 @@
   gROOT->ProcessLine(".x cuts/all_aq_e0x.C"); all_aq_e0x;
   gROOT->ProcessLine(".x cuts/all_z_e1e3.C"); all_z_e1e3;
   gROOT->ProcessLine(".x cuts/all_tof_dtge.C"); all_tof_dtge;
+  gROOT->ProcessLine(".x cuts/cut_all_aq.C"); cut_all_aq;
+  gROOT->ProcessLine(".x cuts/cut_all_z.C"); cut_all_z;
 
   //  TBrowser *b = new TBrowser()
 

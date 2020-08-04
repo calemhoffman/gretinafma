@@ -1,0 +1,2094 @@
+started GEBSort at we have 9 arguments
+1... -input
+will take input from disk
+file size is 17183640588 bytes or 16780 MBytes
+
+4... -rootfile
+rootfile name specified on command line
+__will store spectra in rootfile: /lcrc/project/HELIOS/gretinafma/root_data/run92.root
+will recreate root file
+7... -chat
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 510311
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) 128769024
+open files                      (-n) 51200
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 4096
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+will read sorting instructions from chatfile: GEBSort.chat
+
+executing UserDeclare.h code
+
+
+GEBsort running on: 
+
+initializing
+
+crmat.LINUX is open (input) binary format
+read 7936 bytes into Pars.crmat
+chat file: <GEBSort.chat> open
+
+will sort a max of 1410065408 events
+will sort 86400 minutes of data
+will print details of the first 10 events
+will use Pars.Beta (v/c) correction of 0.033000
+will sort using a time window of 150
+Pars.do_bin_mode2=1
+Pars.do_bin_mode3=1
+will accept second interaction range between 10.000000 and 500.000000 mm
+"1-200"
+detector   1 is ENABLED
+detector   2 is ENABLED
+detector   3 is ENABLED
+detector   4 is ENABLED
+detector   5 is ENABLED
+detector   6 is ENABLED
+detector   7 is ENABLED
+detector   8 is ENABLED
+detector   9 is ENABLED
+detector  10 is ENABLED
+detector  11 is ENABLED
+detector  12 is ENABLED
+detector  13 is ENABLED
+detector  14 is ENABLED
+detector  15 is ENABLED
+detector  16 is ENABLED
+detector  17 is ENABLED
+detector  18 is ENABLED
+detector  19 is ENABLED
+detector  20 is ENABLED
+detector  21 is ENABLED
+detector  22 is ENABLED
+detector  23 is ENABLED
+detector  24 is ENABLED
+detector  25 is ENABLED
+detector  26 is ENABLED
+detector  27 is ENABLED
+detector  28 is ENABLED
+detector  29 is ENABLED
+detector  30 is ENABLED
+detector  31 is ENABLED
+detector  32 is ENABLED
+detector  33 is ENABLED
+detector  34 is ENABLED
+detector  35 is ENABLED
+detector  36 is ENABLED
+detector  37 is ENABLED
+detector  38 is ENABLED
+detector  39 is ENABLED
+detector  40 is ENABLED
+detector  41 is ENABLED
+detector  42 is ENABLED
+detector  43 is ENABLED
+detector  44 is ENABLED
+detector  45 is ENABLED
+detector  46 is ENABLED
+detector  47 is ENABLED
+detector  48 is ENABLED
+detector  49 is ENABLED
+detector  50 is ENABLED
+detector  51 is ENABLED
+detector  52 is ENABLED
+detector  53 is ENABLED
+detector  54 is ENABLED
+detector  55 is ENABLED
+detector  56 is ENABLED
+detector  57 is ENABLED
+detector  58 is ENABLED
+detector  59 is ENABLED
+detector  60 is ENABLED
+detector  61 is ENABLED
+detector  62 is ENABLED
+detector  63 is ENABLED
+detector  64 is ENABLED
+detector  65 is ENABLED
+detector  66 is ENABLED
+detector  67 is ENABLED
+detector  68 is ENABLED
+detector  69 is ENABLED
+detector  70 is ENABLED
+detector  71 is ENABLED
+detector  72 is ENABLED
+detector  73 is ENABLED
+detector  74 is ENABLED
+detector  75 is ENABLED
+detector  76 is ENABLED
+detector  77 is ENABLED
+detector  78 is ENABLED
+detector  79 is ENABLED
+detector  80 is ENABLED
+detector  81 is ENABLED
+detector  82 is ENABLED
+detector  83 is ENABLED
+detector  84 is ENABLED
+detector  85 is ENABLED
+detector  86 is ENABLED
+detector  87 is ENABLED
+detector  88 is ENABLED
+detector  89 is ENABLED
+detector  90 is ENABLED
+detector  91 is ENABLED
+detector  92 is ENABLED
+detector  93 is ENABLED
+detector  94 is ENABLED
+detector  95 is ENABLED
+detector  96 is ENABLED
+detector  97 is ENABLED
+detector  98 is ENABLED
+detector  99 is ENABLED
+detector 100 is ENABLED
+detector 101 is ENABLED
+detector 102 is ENABLED
+detector 103 is ENABLED
+detector 104 is ENABLED
+detector 105 is ENABLED
+detector 106 is ENABLED
+detector 107 is ENABLED
+detector 108 is ENABLED
+detector 109 is ENABLED
+detector 110 is ENABLED
+detector 111 is ENABLED
+detector 112 is ENABLED
+detector 113 is ENABLED
+detector 114 is ENABLED
+detector 115 is ENABLED
+detector 116 is ENABLED
+detector 117 is ENABLED
+detector 118 is ENABLED
+detector 119 is ENABLED
+detector 120 is ENABLED
+detector 121 is ENABLED
+detector 122 is ENABLED
+detector 123 is ENABLED
+detector 124 is ENABLED
+detector 125 is ENABLED
+detector 126 is ENABLED
+detector 127 is ENABLED
+detector 128 is ENABLED
+detector 129 is ENABLED
+detector 130 is ENABLED
+detector 131 is ENABLED
+detector 132 is ENABLED
+detector 133 is ENABLED
+detector 134 is ENABLED
+detector 135 is ENABLED
+detector 136 is ENABLED
+detector 137 is ENABLED
+detector 138 is ENABLED
+detector 139 is ENABLED
+detector 140 is ENABLED
+detector 141 is ENABLED
+detector 142 is ENABLED
+detector 143 is ENABLED
+detector 144 is ENABLED
+detector 145 is ENABLED
+detector 146 is ENABLED
+detector 147 is ENABLED
+detector 148 is ENABLED
+detector 149 is ENABLED
+detector 150 is ENABLED
+detector 151 is ENABLED
+detector 152 is ENABLED
+detector 153 is ENABLED
+detector 154 is ENABLED
+detector 155 is ENABLED
+detector 156 is ENABLED
+detector 157 is ENABLED
+detector 158 is ENABLED
+detector 159 is ENABLED
+detector 160 is ENABLED
+detector 161 is ENABLED
+detector 162 is ENABLED
+detector 163 is ENABLED
+detector 164 is ENABLED
+detector 165 is ENABLED
+detector 166 is ENABLED
+detector 167 is ENABLED
+detector 168 is ENABLED
+detector 169 is ENABLED
+detector 170 is ENABLED
+detector 171 is ENABLED
+detector 172 is ENABLED
+detector 173 is ENABLED
+detector 174 is ENABLED
+detector 175 is ENABLED
+detector 176 is ENABLED
+detector 177 is ENABLED
+detector 178 is ENABLED
+detector 179 is ENABLED
+detector 180 is ENABLED
+detector 181 is ENABLED
+detector 182 is ENABLED
+detector 183 is ENABLED
+detector 184 is ENABLED
+detector 185 is ENABLED
+detector 186 is ENABLED
+detector 187 is ENABLED
+detector 188 is ENABLED
+detector 189 is ENABLED
+detector 190 is ENABLED
+detector 191 is ENABLED
+detector 192 is ENABLED
+detector 193 is ENABLED
+detector 194 is ENABLED
+detector 195 is ENABLED
+detector 196 is ENABLED
+detector 197 is ENABLED
+detector 198 is ENABLED
+detector 199 is ENABLED
+WARNING: could not open CCcal file "CCenergy.cal", quit
+will use beam direction 0.000000 0.000000 1.000000
+vector length= 1.000000, normalizing
+will use beam direction 0.000000 0.000000 1.000000
+Pars.ndetlimlo=1,Pars.ndetlimhi=8
+will require mult bt: 1 20
+fomlimits, 1, 0.00 ..to.. 0.80
+fomlimits, 2, 0.00 ..to.. 0.80
+fomlimits, 3, 0.00 ..to.. 0.80
+fomlimits, 4, 0.00 ..to.. 0.80
+fomlimits, 5, 0.00 ..to.. 0.80
+fomlimits, 6, 0.00 ..to.. 0.80
+fomlimits, 7, 0.00 ..to.. 0.80
+will use M= 350.000000 in bin_dgs
+will use PZ file "dgs_pz.cal" in bin_dgs
+will use ecal file "dgs_ehi.cal" in bin_dgs
+will skip rest of chat file
+
+chat file: <GEBSort.chat> closed
+processed 38 sort instructions and 197 lines
+
+
+sorting this:
+Pars.do_bin_mode3 = 1
+Pars.do_bin_mode2 = 1
+Pars.do_bin_mode1 = 0
+Pars.do_bin_dgs = 0
+Pars.do_bin_dfma = 0
+Pars.do_bin_gtcal = 0
+Pars.do_bin_template = 0
+Pars.do_bin_final = 0
+Pars.do_bin_angcor = 0
+Pars.do_bin_angdis = 0
+checking proper input of chat file...
+input file "/lcrc/project/HELIOS/gretinafma/merged_data/GEBMerged_run92.gtd_000" is open, inData=0x26916440
+file size is 3771404 bytes or 3 MBs 
+input source is set up, supposedly
+
+xyz offset values:
+
+executing ShareMemFileUserInit.h code
+
+deleted \rm -f GEBSort.command
+root file </lcrc/project/HELIOS/gretinafma/root_data/run92.root>
+base=</lcrc/project/HELIOS/gretinafma/root_data/run92.root:/>
+TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run92.root, title=, option=CREATE
+
+executing UserInit.h code
+
+Created Object "dtbtev", 0x2796bc60
+Created Object "T0", 0x2796c070
+, "T0"Created Object "hitpat", 0x2796c460
+, "hitpat"Created Object "numHitArray2", 0x2796ceb0
+, "numHitArray2"Created Object "CCmult", 0x2796d970
+, "CC Multiplicity"Created Object "CCsum", 0x27c3f280
+, "CCsum"Created Object "hit2", 0x27c4f090
+, "hit2"Created Object "hit3", 0x27c5eea0
+, "hit3"Created Object "hit4", 0x27c6ecb0
+, "hit4"Created Object "CCsum_nodop", 0x27c7eac0
+, "CCsum_nodop"Created Object "CCadd", 0x27c8e8d0
+, "CCadd"Created Object "SEGadd_FPGA", 0x27c9e6e0
+Created Object "SEGadd_PSA", 0x27c9eaf0
+Created Object "SEGsum_FPGA", 0x27c9ef00
+Created Object "SEGsum_PSA", 0x27c9f310
+Created Object "radius_all", 0x27c9f720
+, "radius (all points)"Created Object "rate_mode2_min", 0x27ca7b30
+, "rate_mode2_min headers"Created Object "rate_mode2_sec", 0x27caac40
+, "rate_mode2_sec headers"Created Object "rate_mode2_intp", 0x27cadd50
+, "rate_mode2 interaction points"Created Object "cdtbtev", 0x27cb1000
+Created Object "evsr_all", 0x27d76fe0
+Created Object "SMAP_allhits", 0x27d77520
+Created Object "SMAP_allhits_sq", 0x27e76eb0
+Created Object "seghitpat", 0x27f76840
+Created Object "CCe", 0x27f7ec40
+Created Object "ggCC", 0x27f7f1f0
+Created Object "z_plot", 0x27f7f7a0
+Created Object "crystal_hit", 0x28032e70
+Created Object "SegE", 0x28033440
+Created Object "crXcr", 0x28033980
+MAXDETPOS=180
+Created Object "eCC_a", 0x28128030
+Created Object "eCC_b", 0x28128440
+Created Object "eCC_c", 0x28128910
+Created Object "eCC_d", 0x28128e90
+Created Object "eSeg", 0x281293d0
+Created Object "mode3_hitpat", 0x28129980
+, "mode3_hitpat"Created Object "mode3_hitpat_chan", 0x2812a2f0
+, "mode3_hitpat_chan"Created Object "chan0", 0x2812aa30
+, "chan0"Created Object "module", 0x2813e860
+, "module"Created Object "chan", 0x28152690
+Created Object "l", 0x281c7fb0
+, "l"Created Object "r", 0x281dbde0
+, "r"Created Object "up", 0x281efba0
+, "up"Created Object "down", 0x28203960
+, "down"Created Object "sumlr", 0x28217790
+, "sumlr"Created Object "sumud", 0x2822b5c0
+, "sumud"Created Object "x", 0x2823f3f0
+, "x"Created Object "y", 0x28253220
+, "y"Created Object "de1", 0x28267050
+, "de1"Created Object "de2", 0x2827ae10
+, "de2"Created Object "de3", 0x2828ebd0
+, "de3"Created Object "de12", 0x282a2a00
+, "de12"Created Object "etot", 0x282b6830
+, "etot"Created Object "rftof", 0x282ca5f0
+, "rftof"Created Object "lr", 0x282de3b0
+Created Object "ud", 0x282de8f0
+Created Object "ede1", 0x282dee30
+Created Object "ede1g", 0x282df370
+Created Object "ede2", 0x282df920
+Created Object "ede12", 0x282dfed0
+Created Object "xde1", 0x282e0480
+Created Object "erftof", 0x282e09c0
+Created Object "erftofg", 0x282e0f00
+Created Object "sumehi", 0x282e14b0
+, "sumehi"Created Object "tgppac", 0x282f5270
+, "tgppac"Created Object "tgppacg", 0x2831c920
+, "tgppacg"Created Object "xehi1", 0x28343fd0
+Created Object "xehi1g", 0x28344510
+Created Object "de1ehi", 0x28344ac0
+Created Object "de1ehig", 0x28345000
+Created Object "ng", 0x28345540
+, "ng"Created Object "ehiz1", 0x28359300
+, "ehiz1"Created Object "ehiz2", 0x2836d0c0
+, "ehiz2"Created Object "ehiz3", 0x28380ef0
+, "ehiz3"Created Object "ehiz4", 0x28394d20
+, "ehiz4"Created Object "ehiz5", 0x283a8b50
+, "ehiz5"Created Object "gg_dt", 0x283bc910
+, "gg_dt"Created Object "gg", 0x283c0d40
+Created Object "gg_z1", 0x283c12f0
+Created Object "gg_z2", 0x283c18a0
+Created Object "gg_z3", 0x283c1e50
+Created Object "gg_z4", 0x283c2400
+Created Object "gg_z5", 0x283c2940
+we have define the following ROOT spectra:
+Collection name='THashList', class='THashList', size=84
+ TH1.Print Name  = dtbtev, Entries= 0, Total sum= 0
+ TH1.Print Name  = T0, Entries= 0, Total sum= 0
+ TH1.Print Name  = hitpat, Entries= 0, Total sum= 0
+ TH1.Print Name  = numHitArray2, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCmult, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCsum, Entries= 0, Total sum= 0
+ TH1.Print Name  = hit2, Entries= 0, Total sum= 0
+ TH1.Print Name  = hit3, Entries= 0, Total sum= 0
+ TH1.Print Name  = hit4, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCsum_nodop, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCadd, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGadd_FPGA, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGadd_PSA, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGsum_FPGA, Entries= 0, Total sum= 0
+ TH1.Print Name  = SEGsum_PSA, Entries= 0, Total sum= 0
+ TH1.Print Name  = radius_all, Entries= 0, Total sum= 0
+ TH1.Print Name  = rate_mode2_min, Entries= 0, Total sum= 0
+ TH1.Print Name  = rate_mode2_sec, Entries= 0, Total sum= 0
+ TH1.Print Name  = rate_mode2_intp, Entries= 0, Total sum= 0
+ TH1.Print Name  = cdtbtev, Entries= 0, Total sum= 0
+ TH1.Print Name  = evsr_all, Entries= 0, Total sum= 0
+ TH1.Print Name  = SMAP_allhits, Entries= 0, Total sum= 0
+ TH1.Print Name  = SMAP_allhits_sq, Entries= 0, Total sum= 0
+ TH1.Print Name  = seghitpat, Entries= 0, Total sum= 0
+ TH1.Print Name  = CCe, Entries= 0, Total sum= 0
+ TH1.Print Name  = ggCC, Entries= 0, Total sum= 0
+ TH1.Print Name  = z_plot, Entries= 0, Total sum= 0
+ TH1.Print Name  = crystal_hit, Entries= 0, Total sum= 0
+ TH1.Print Name  = SegE, Entries= 0, Total sum= 0
+ TH1.Print Name  = crXcr, Entries= 0, Total sum= 0
+ ******************************************************************************
+*Tree    :tree      : tree                                                   *
+*Entries :        0 : Total =           16301 bytes  File  Size =          0 *
+*        :          : Tree compression factor =   1.00                       *
+******************************************************************************
+*Br    0 :runNumber : runNumber/I                                            *
+*Entries :        0 : Total  Size=        501 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    1 :numHits   : numHits/I                                              *
+*Entries :        0 : Total  Size=        493 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    2 :left      : left[numHits]/F                                        *
+*Entries :        0 : Total  Size=        580 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    3 :right     : right[numHits]/F                                       *
+*Entries :        0 : Total  Size=        584 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    4 :up        : up[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    5 :down      : down[numHits]/F                                        *
+*Entries :        0 : Total  Size=        580 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    6 :e1        : e1[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    7 :e2        : e2[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    8 :e3        : e3[numHits]/F                                          *
+*Entries :        0 : Total  Size=        572 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br    9 :tac       : tac[numHits]/F                                         *
+*Entries :        0 : Total  Size=        576 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   10 :fmaDeltaTime : fmaDeltaTime[numHits]/F                             *
+*Entries :        0 : Total  Size=        612 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   11 :fmaMult   : fmaMult[10]/I                                          *
+*Entries :        0 : Total  Size=        501 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   12 :gammaMult : gammaMult/I                                            *
+*Entries :        0 : Total  Size=        501 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   13 :gammaEnergy : gammaEnergy[gammaMult]/F                             *
+*Entries :        0 : Total  Size=        616 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   14 :gammaTimestamp : gammaTimestamp[gammaMult]/F                       *
+*Entries :        0 : Total  Size=        628 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   15 :deltaTime : deltaTime[gammaMult]/F                                 *
+*Entries :        0 : Total  Size=        608 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   16 :gebMult   : gebMult/I                                              *
+*Entries :        0 : Total  Size=        493 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   17 :crysType  : crysType[gebMult]/I                                    *
+*Entries :        0 : Total  Size=        589 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   18 :crysId    : crysId[gebMult]/I                                      *
+*Entries :        0 : Total  Size=        581 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   19 :crysNum   : crysNum[gebMult]/I                                     *
+*Entries :        0 : Total  Size=        585 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   20 :crysTot_e : crysTot_e[gebMult]/F                                   *
+*Entries :        0 : Total  Size=        600 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   21 :crysPolAngle : crysPolAngle[gebMult]/F                             *
+*Entries :        0 : Total  Size=        612 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   22 :intMaxX   : intMaxX[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   23 :intMaxY   : intMaxY[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   24 :intMaxZ   : intMaxZ[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   25 :intMaxE   : intMaxE[gebMult]/F                                     *
+*Entries :        0 : Total  Size=        592 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   26 :intMaxSeg : intMaxSeg[gebMult]/I                                   *
+*Entries :        0 : Total  Size=        593 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   27 :intMaxSegE : intMaxSegE[gebMult]/F                                 *
+*Entries :        0 : Total  Size=        604 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   28 :crysTimestamp : crysTimestamp[gebMult]/L                           *
+*Entries :        0 : Total  Size=        624 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   29 :crysTrigtime : crysTrigtime[gebMult]/D                             *
+*Entries :        0 : Total  Size=        620 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+*Br   30 :crysT0    : crysT0[gebMult]/F                                      *
+*Entries :        0 : Total  Size=        588 bytes  One basket in memory    *
+*Baskets :        0 : Basket Size=      32000 bytes  Compression=   1.00     *
+*............................................................................*
+ TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
+ TH1.Print Name  = eCC_b, Entries= 0, Total sum= 0
+ TH1.Print Name  = eCC_c, Entries= 0, Total sum= 0
+ TH1.Print Name  = eCC_d, Entries= 0, Total sum= 0
+ TH1.Print Name  = eSeg, Entries= 0, Total sum= 0
+ TH1.Print Name  = mode3_hitpat, Entries= 0, Total sum= 0
+ TH1.Print Name  = mode3_hitpat_chan, Entries= 0, Total sum= 0
+ TH1.Print Name  = chan0, Entries= 0, Total sum= 0
+ TH1.Print Name  = module, Entries= 0, Total sum= 0
+ TH1.Print Name  = chan, Entries= 0, Total sum= 0
+ TH1.Print Name  = l, Entries= 0, Total sum= 0
+ TH1.Print Name  = r, Entries= 0, Total sum= 0
+ TH1.Print Name  = up, Entries= 0, Total sum= 0
+ TH1.Print Name  = down, Entries= 0, Total sum= 0
+ TH1.Print Name  = sumlr, Entries= 0, Total sum= 0
+ TH1.Print Name  = sumud, Entries= 0, Total sum= 0
+ TH1.Print Name  = x, Entries= 0, Total sum= 0
+ TH1.Print Name  = y, Entries= 0, Total sum= 0
+ TH1.Print Name  = de1, Entries= 0, Total sum= 0
+ TH1.Print Name  = de2, Entries= 0, Total sum= 0
+ TH1.Print Name  = de3, Entries= 0, Total sum= 0
+ TH1.Print Name  = de12, Entries= 0, Total sum= 0
+ TH1.Print Name  = etot, Entries= 0, Total sum= 0
+ TH1.Print Name  = rftof, Entries= 0, Total sum= 0
+ TH1.Print Name  = lr, Entries= 0, Total sum= 0
+ TH1.Print Name  = ud, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede1, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede1g, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede2, Entries= 0, Total sum= 0
+ TH1.Print Name  = ede12, Entries= 0, Total sum= 0
+ TH1.Print Name  = xde1, Entries= 0, Total sum= 0
+ TH1.Print Name  = erftof, Entries= 0, Total sum= 0
+ TH1.Print Name  = erftofg, Entries= 0, Total sum= 0
+ TH1.Print Name  = sumehi, Entries= 0, Total sum= 0
+ TH1.Print Name  = tgppac, Entries= 0, Total sum= 0
+ TH1.Print Name  = tgppacg, Entries= 0, Total sum= 0
+ TH1.Print Name  = xehi1, Entries= 0, Total sum= 0
+ TH1.Print Name  = xehi1g, Entries= 0, Total sum= 0
+ TH1.Print Name  = de1ehi, Entries= 0, Total sum= 0
+ TH1.Print Name  = de1ehig, Entries= 0, Total sum= 0
+ TH1.Print Name  = ng, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz1, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz2, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz3, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz4, Entries= 0, Total sum= 0
+ TH1.Print Name  = ehiz5, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_dt, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z1, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z2, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z3, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z4, Entries= 0, Total sum= 0
+ TH1.Print Name  = gg_z5, Entries= 0, Total sum= 0
+GRETINA detector angles
+mod  1, crystal 0 [  4]: ( 10.07   3.58  15.10) pol   35.30 ,  azi   13.35; pol   35.30 ,  azi   19.58; modCCdopfac[4] 1.0271
+mod  1, crystal 1 [  5]: ( 10.11   9.19  12.47) pol   47.60 ,  azi   36.39; pol   47.60 ,  azi   42.30; modCCdopfac[5] 1.0222
+mod  1, crystal 2 [  6]: (  5.44   7.69  15.92) pol   30.60 ,  azi   25.77; pol   30.60 ,  azi   54.72; modCCdopfac[6] 1.0287
+mod  1, crystal 3 [  7]: (  4.99   1.78  17.72) pol   16.65 ,  azi    5.72; pol   16.65 ,  azi   19.58; modCCdopfac[7] 1.0321
+mod  2, crystal 0 [  8]: ( -0.29  10.69  15.10) pol   35.30 ,  azi   35.29; pol   35.30 ,  azi   91.58; modCCdopfac[8] 1.0271
+mod  2, crystal 1 [  9]: ( -5.62  12.45  12.47) pol   47.60 ,  azi   44.95; pol   47.60 ,  azi  114.30; modCCdopfac[9] 1.0222
+mod  2, crystal 2 [ 10]: ( -5.63   7.55  15.92) pol   30.60 ,  azi   25.36; pol   30.60 ,  azi  126.72; modCCdopfac[10] 1.0287
+mod  2, crystal 3 [ 11]: ( -0.15   5.30  17.72) pol   16.65 ,  azi   16.64; pol   16.65 ,  azi   91.58; modCCdopfac[11] 1.0321
+mod  3, crystal 0 [ 12]: (-10.25   3.02  15.10) pol   35.30 ,  azi   11.32; pol   35.30 ,  azi  163.58; modCCdopfac[12] 1.0271
+mod  3, crystal 1 [ 13]: (-13.58  -1.50  12.47) pol   47.60 ,  azi   -6.85; pol   47.60 ,  azi -173.70; modCCdopfac[13] 1.0222
+mod  3, crystal 2 [ 14]: ( -8.92  -3.02  15.92) pol   30.60 ,  azi  -10.75; pol   30.60 ,  azi -161.28; modCCdopfac[14] 1.0287
+mod  3, crystal 3 [ 15]: ( -5.08   1.50  17.72) pol   16.65 ,  azi    4.83; pol   16.65 ,  azi  163.58; modCCdopfac[15] 1.0321
+mod  4, crystal 0 [ 16]: ( -6.04  -8.82  15.10) pol   35.30 ,  azi  -30.29; pol   35.30 ,  azi -124.42; modCCdopfac[16] 1.0271
+mod  4, crystal 1 [ 17]: ( -2.77 -13.38  12.47) pol   47.60 ,  azi  -47.00; pol   47.60 ,  azi -101.70; modCCdopfac[17] 1.0222
+mod  4, crystal 2 [ 18]: (  0.12  -9.42  15.92) pol   30.60 ,  azi  -30.60; pol   30.60 ,  azi  -89.28; modCCdopfac[18] 1.0287
+mod  4, crystal 3 [ 19]: ( -3.00  -4.37  17.72) pol   16.65 ,  azi  -13.86; pol   16.65 ,  azi -124.42; modCCdopfac[19] 1.0321
+mod  5, crystal 0 [ 20]: (  6.52  -8.47  15.10) pol   35.30 ,  azi  -29.30; pol   35.30 ,  azi  -52.42; modCCdopfac[20] 1.0271
+mod  5, crystal 1 [ 21]: ( 11.87  -6.77  12.47) pol   47.60 ,  azi  -28.49; pol   47.60 ,  azi  -29.70; modCCdopfac[21] 1.0222
+mod  5, crystal 2 [ 22]: (  8.99  -2.80  15.92) pol   30.60 ,  azi   -9.96; pol   30.60 ,  azi  -17.28; modCCdopfac[22] 1.0287
+mod  5, crystal 3 [ 23]: (  3.23  -4.20  17.72) pol   16.65 ,  azi  -13.33; pol   16.65 ,  azi  -52.42; modCCdopfac[23] 1.0321
+mod  6, crystal 0 [ 24]: (  4.54  16.51   7.02) pol   67.71 ,  azi   66.97; pol   67.71 ,  azi   74.63; modCCdopfac[24] 1.0121
+mod  6, crystal 1 [ 25]: ( -0.33  15.15  10.61) pol   55.02 ,  azi   55.01; pol   55.02 ,  azi   91.23; modCCdopfac[25] 1.0187
+mod  6, crystal 2 [ 26]: (  5.05  13.00  12.16) pol   48.92 ,  azi   46.92; pol   48.92 ,  azi   68.77; modCCdopfac[26] 1.0216
+mod  6, crystal 3 [ 27]: (  9.66  13.57   8.06) pol   64.18 ,  azi   59.29; pol   64.18 ,  azi   54.55; modCCdopfac[27] 1.0140
+mod  7, crystal 0 [ 28]: (-14.30   9.42   7.02) pol   67.71 ,  azi   53.31; pol   67.71 ,  azi  146.63; modCCdopfac[28] 1.0121
+mod  7, crystal 1 [ 29]: (-14.51   4.37  10.61) pol   55.02 ,  azi   22.40; pol   55.02 ,  azi  163.23; modCCdopfac[29] 1.0187
+mod  7, crystal 2 [ 30]: (-10.80   8.82  12.16) pol   48.92 ,  azi   35.96; pol   48.92 ,  azi  140.77; modCCdopfac[30] 1.0216
+mod  7, crystal 3 [ 31]: ( -9.92  13.38   8.06) pol   64.18 ,  azi   58.94; pol   64.18 ,  azi  126.55; modCCdopfac[31] 1.0140
+mod  8, crystal 0 [ 32]: (-13.37 -10.69   7.02) pol   67.71 ,  azi  -56.71; pol   67.71 ,  azi -141.37; modCCdopfac[32] 1.0121
+mod  8, crystal 1 [ 33]: ( -8.64 -12.45  10.61) pol   55.02 ,  azi  -49.58; pol   55.02 ,  azi -124.77; modCCdopfac[33] 1.0187
+mod  8, crystal 2 [ 34]: (-11.73  -7.55  12.16) pol   48.92 ,  azi  -31.84; pol   48.92 ,  azi -147.23; modCCdopfac[34] 1.0216
+mod  8, crystal 3 [ 35]: (-15.79  -5.30   8.06) pol   64.18 ,  azi  -33.33; pol   64.18 ,  azi -161.45; modCCdopfac[35] 1.0140
+mod  9, crystal 0 [ 36]: (  6.03 -16.02   7.02) pol   67.71 ,  azi  -66.35; pol   67.71 ,  azi  -69.37; modCCdopfac[36] 1.0121
+mod  9, crystal 1 [ 37]: (  9.17 -12.07  10.61) pol   55.02 ,  azi  -48.69; pol   55.02 ,  azi  -52.77; modCCdopfac[37] 1.0187
+mod  9, crystal 2 [ 38]: (  3.56 -13.48  12.16) pol   48.92 ,  azi  -47.96; pol   48.92 ,  azi  -75.23; modCCdopfac[38] 1.0216
+mod  9, crystal 3 [ 39]: (  0.16 -16.65   8.06) pol   64.18 ,  azi  -64.18; pol   64.18 ,  azi  -89.45; modCCdopfac[39] 1.0140
+mod 10, crystal 0 [ 40]: ( 17.10   0.79   7.02) pol   67.71 ,  azi    6.39; pol   67.71 ,  azi    2.63; modCCdopfac[40] 1.0121
+mod 10, crystal 1 [ 41]: ( 14.31   4.99  10.61) pol   55.02 ,  azi   25.21; pol   55.02 ,  azi   19.23; modCCdopfac[41] 1.0187
+mod 10, crystal 2 [ 42]: ( 13.92  -0.79  12.16) pol   48.92 ,  azi   -3.70; pol   48.92 ,  azi   -3.23; modCCdopfac[42] 1.0216
+mod 10, crystal 3 [ 43]: ( 15.89  -4.99   8.06) pol   64.18 ,  azi  -31.79; pol   64.18 ,  azi  -17.45; modCCdopfac[43] 1.0140
+mod 11, crystal 0 [ 44]: ( 18.26   2.80   0.92) pol   87.15 ,  azi   71.78; pol   87.15 ,  azi    8.71; modCCdopfac[44] 1.0011
+mod 11, crystal 1 [ 45]: ( 17.30   4.20  -5.04) pol  105.79 ,  azi  140.16; pol  105.79 ,  azi   13.65; modCCdopfac[45] 0.9906
+mod 11, crystal 2 [ 46]: ( 16.42   8.47  -0.92) pol   92.85 ,  azi   96.20; pol   92.85 ,  azi   27.29; modCCdopfac[46] 0.9978
+mod 11, crystal 3 [ 47]: ( 16.46   6.77   5.04) pol   74.21 ,  azi   53.36; pol   74.21 ,  azi   22.35; modCCdopfac[47] 1.0085
+mod 12, crystal 0 [ 48]: ( 12.46  13.48  -2.26) pol   97.01 ,  azi   99.50; pol   97.01 ,  azi   47.25; modCCdopfac[48] 0.9954
+mod 12, crystal 1 [ 49]: (  7.28  16.65  -3.46) pol  100.78 ,  azi  101.74; pol  100.78 ,  azi   66.39; modCCdopfac[49] 0.9933
+mod 12, crystal 2 [ 50]: (  8.97  16.02   2.26) pol   82.99 ,  azi   81.98; pol   82.99 ,  azi   60.75; modCCdopfac[50] 1.0035
+mod 12, crystal 3 [ 51]: ( 13.59  12.07   3.46) pol   79.22 ,  azi   74.00; pol   79.22 ,  azi   41.61; modCCdopfac[51] 1.0057
+mod 13, crystal 0 [ 52]: (  2.98  18.23   0.92) pol   87.15 ,  azi   87.11; pol   87.15 ,  azi   80.71; modCCdopfac[52] 1.0011
+mod 13, crystal 1 [ 53]: (  1.35  17.75  -5.04) pol  105.79 ,  azi  105.84; pol  105.79 ,  azi   85.65; modCCdopfac[53] 0.9906
+mod 13, crystal 2 [ 54]: ( -2.98  18.23  -0.92) pol   92.85 ,  azi   92.89; pol   92.85 ,  azi   99.29; modCCdopfac[54] 0.9978
+mod 13, crystal 3 [ 55]: ( -1.35  17.75   5.04) pol   74.21 ,  azi   74.16; pol   74.21 ,  azi   94.35; modCCdopfac[55] 1.0085
+mod 14, crystal 0 [ 56]: ( -8.97  16.02  -2.26) pol   97.01 ,  azi   98.02; pol   97.01 ,  azi  119.25; modCCdopfac[56] 0.9954
+mod 14, crystal 1 [ 57]: (-13.59  12.07  -3.46) pol  100.78 ,  azi  106.00; pol  100.78 ,  azi  138.39; modCCdopfac[57] 0.9933
+mod 14, crystal 2 [ 58]: (-12.46  13.48   2.26) pol   82.99 ,  azi   80.50; pol   82.99 ,  azi  132.75; modCCdopfac[58] 1.0035
+mod 14, crystal 3 [ 59]: ( -7.28  16.65   3.46) pol   79.22 ,  azi   78.26; pol   79.22 ,  azi  113.61; modCCdopfac[59] 1.0057
+mod 15, crystal 0 [ 60]: (-16.42   8.47   0.92) pol   87.15 ,  azi   83.80; pol   87.15 ,  azi  152.71; modCCdopfac[60] 1.0011
+mod 15, crystal 1 [ 61]: (-16.46   6.77  -5.04) pol  105.79 ,  azi  126.64; pol  105.79 ,  azi  157.65; modCCdopfac[61] 0.9906
+mod 15, crystal 2 [ 62]: (-18.26   2.80  -0.92) pol   92.85 ,  azi  108.22; pol   92.85 ,  azi  171.29; modCCdopfac[62] 0.9978
+mod 15, crystal 3 [ 63]: (-17.30   4.20   5.04) pol   74.21 ,  azi   39.84; pol   74.21 ,  azi  166.35; modCCdopfac[63] 1.0085
+mod 16, crystal 0 [ 64]: (-18.01  -3.58  -2.26) pol   97.01 ,  azi -122.21; pol   97.01 ,  azi -168.75; modCCdopfac[64] 0.9954
+mod 16, crystal 1 [ 65]: (-15.68  -9.19  -3.46) pol  100.78 ,  azi -110.62; pol  100.78 ,  azi -149.61; modCCdopfac[65] 0.9933
+mod 16, crystal 2 [ 66]: (-16.68  -7.69   2.26) pol   82.99 ,  azi  -73.64; pol   82.99 ,  azi -155.25; modCCdopfac[66] 1.0035
+mod 16, crystal 3 [ 67]: (-18.09  -1.78   3.46) pol   79.22 ,  azi  -27.18; pol   79.22 ,  azi -174.39; modCCdopfac[67] 1.0057
+mod 17, crystal 0 [ 68]: (-13.13 -13.00   0.92) pol   87.15 ,  azi  -85.95; pol   87.15 ,  azi -135.29; modCCdopfac[68] 1.0011
+mod 17, crystal 1 [ 69]: (-11.53 -13.57  -5.04) pol  105.79 ,  azi -110.36; pol  105.79 ,  azi -130.35; modCCdopfac[69] 0.9906
+mod 17, crystal 2 [ 70]: ( -8.30 -16.51  -0.92) pol   92.85 ,  azi  -93.19; pol   92.85 ,  azi -116.71; modCCdopfac[70] 0.9978
+mod 17, crystal 3 [ 71]: ( -9.34 -15.15   5.04) pol   74.21 ,  azi  -71.62; pol   74.21 ,  azi -121.65; modCCdopfac[71] 1.0085
+mod 18, crystal 0 [ 72]: ( -2.16 -18.23  -2.26) pol   97.01 ,  azi  -97.05; pol   97.01 ,  azi  -96.75; modCCdopfac[72] 0.9954
+mod 18, crystal 1 [ 73]: (  3.90 -17.75  -3.46) pol  100.78 ,  azi -101.03; pol  100.78 ,  azi  -77.61; modCCdopfac[73] 0.9933
+mod 18, crystal 2 [ 74]: (  2.16 -18.23   2.26) pol   82.99 ,  azi  -82.95; pol   82.99 ,  azi  -83.25; modCCdopfac[74] 1.0035
+mod 18, crystal 3 [ 75]: ( -3.90 -17.75   3.46) pol   79.22 ,  azi  -78.97; pol   79.22 ,  azi -102.39; modCCdopfac[75] 1.0057
+mod 19, crystal 0 [ 76]: (  8.30 -16.51   0.92) pol   87.15 ,  azi  -86.81; pol   87.15 ,  azi  -63.29; modCCdopfac[76] 1.0011
+mod 19, crystal 1 [ 77]: (  9.34 -15.15  -5.04) pol  105.79 ,  azi -108.38; pol  105.79 ,  azi  -58.35; modCCdopfac[77] 0.9906
+mod 19, crystal 2 [ 78]: ( 13.13 -13.00  -0.92) pol   92.85 ,  azi  -94.05; pol   92.85 ,  azi  -44.71; modCCdopfac[78] 0.9978
+mod 19, crystal 3 [ 79]: ( 11.53 -13.57   5.04) pol   74.21 ,  azi  -69.64; pol   74.21 ,  azi  -49.65; modCCdopfac[79] 1.0085
+mod 20, crystal 0 [ 80]: ( 16.68  -7.69  -2.26) pol   97.01 ,  azi -106.36; pol   97.01 ,  azi  -24.75; modCCdopfac[80] 0.9954
+mod 20, crystal 1 [ 81]: ( 18.09  -1.78  -3.46) pol  100.78 ,  azi -152.82; pol  100.78 ,  azi   -5.61; modCCdopfac[81] 0.9933
+mod 20, crystal 2 [ 82]: ( 18.01  -3.58   2.26) pol   82.99 ,  azi  -57.79; pol   82.99 ,  azi  -11.25; modCCdopfac[82] 1.0035
+mod 20, crystal 3 [ 83]: ( 15.68  -9.19   3.46) pol   79.22 ,  azi  -69.38; pol   79.22 ,  azi  -30.39; modCCdopfac[83] 1.0057
+mod 21, crystal 0 [ 84]: ( 14.30   9.42  -7.02) pol  112.29 ,  azi  126.69; pol  112.29 ,  azi   33.37; modCCdopfac[84] 0.9871
+mod 21, crystal 1 [ 85]: ( 14.51   4.37 -10.61) pol  124.98 ,  azi  157.60; pol  124.98 ,  azi   16.77; modCCdopfac[85] 0.9809
+mod 21, crystal 2 [ 86]: ( 10.80   8.82 -12.16) pol  131.08 ,  azi  144.04; pol  131.08 ,  azi   39.23; modCCdopfac[86] 0.9782
+mod 21, crystal 3 [ 87]: (  9.92  13.38  -8.06) pol  115.82 ,  azi  121.06; pol  115.82 ,  azi   53.45; modCCdopfac[87] 0.9853
+mod 22, crystal 0 [ 88]: ( -4.54  16.51  -7.02) pol  112.29 ,  azi  113.03; pol  112.29 ,  azi  105.37; modCCdopfac[88] 0.9871
+mod 22, crystal 1 [ 89]: (  0.33  15.15 -10.61) pol  124.98 ,  azi  124.99; pol  124.98 ,  azi   88.77; modCCdopfac[89] 0.9809
+mod 22, crystal 2 [ 90]: ( -5.05  13.00 -12.16) pol  131.08 ,  azi  133.08; pol  131.08 ,  azi  111.23; modCCdopfac[90] 0.9782
+mod 22, crystal 3 [ 91]: ( -9.66  13.57  -8.06) pol  115.82 ,  azi  120.71; pol  115.82 ,  azi  125.45; modCCdopfac[91] 0.9853
+mod 23, crystal 0 [ 92]: (-17.10   0.79  -7.02) pol  112.29 ,  azi  173.61; pol  112.29 ,  azi  177.37; modCCdopfac[92] 0.9871
+mod 23, crystal 1 [ 93]: (-14.31   4.99 -10.61) pol  124.98 ,  azi  154.79; pol  124.98 ,  azi  160.77; modCCdopfac[93] 0.9809
+mod 23, crystal 2 [ 94]: (-13.92  -0.79 -12.16) pol  131.08 ,  azi -176.30; pol  131.08 ,  azi -176.77; modCCdopfac[94] 0.9782
+mod 23, crystal 3 [ 95]: (-15.89  -4.99  -8.06) pol  115.82 ,  azi -148.21; pol  115.82 ,  azi -162.55; modCCdopfac[95] 0.9853
+mod 24, crystal 0 [ 96]: ( -6.03 -16.02  -7.02) pol  112.29 ,  azi -113.65; pol  112.29 ,  azi -110.63; modCCdopfac[96] 0.9871
+mod 24, crystal 1 [ 97]: ( -9.17 -12.07 -10.61) pol  124.98 ,  azi -131.31; pol  124.98 ,  azi -127.23; modCCdopfac[97] 0.9809
+mod 24, crystal 2 [ 98]: ( -3.56 -13.48 -12.16) pol  131.08 ,  azi -132.04; pol  131.08 ,  azi -104.77; modCCdopfac[98] 0.9782
+mod 24, crystal 3 [ 99]: ( -0.16 -16.65  -8.06) pol  115.82 ,  azi -115.82; pol  115.82 ,  azi  -90.55; modCCdopfac[99] 0.9853
+mod 25, crystal 0 [100]: ( 13.37 -10.69  -7.02) pol  112.29 ,  azi -123.29; pol  112.29 ,  azi  -38.63; modCCdopfac[100] 0.9871
+mod 25, crystal 1 [101]: (  8.64 -12.45 -10.61) pol  124.98 ,  azi -130.42; pol  124.98 ,  azi  -55.23; modCCdopfac[101] 0.9809
+mod 25, crystal 2 [102]: ( 11.73  -7.55 -12.16) pol  131.08 ,  azi -148.16; pol  131.08 ,  azi  -32.77; modCCdopfac[102] 0.9782
+mod 25, crystal 3 [103]: ( 15.79  -5.30  -8.06) pol  115.82 ,  azi -146.67; pol  115.82 ,  azi  -18.55; modCCdopfac[103] 0.9853
+mod 26, crystal 0 [104]: (  0.29  10.69 -15.10) pol  144.70 ,  azi  144.71; pol  144.70 ,  azi   88.42; modCCdopfac[104] 0.9732
+mod 26, crystal 1 [105]: (  5.62  12.45 -12.47) pol  132.40 ,  azi  135.05; pol  132.40 ,  azi   65.70; modCCdopfac[105] 0.9777
+mod 26, crystal 2 [106]: (  5.63   7.55 -15.92) pol  149.40 ,  azi  154.64; pol  149.40 ,  azi   53.28; modCCdopfac[106] 0.9718
+mod 26, crystal 3 [107]: (  0.15   5.30 -17.72) pol  163.35 ,  azi  163.36; pol  163.35 ,  azi   88.42; modCCdopfac[107] 0.9688
+mod 27, crystal 0 [108]: (-10.07   3.58 -15.10) pol  144.70 ,  azi  166.65; pol  144.70 ,  azi  160.42; modCCdopfac[108] 0.9732
+mod 27, crystal 1 [109]: (-10.11   9.19 -12.47) pol  132.40 ,  azi  143.61; pol  132.40 ,  azi  137.70; modCCdopfac[109] 0.9777
+mod 27, crystal 2 [110]: ( -5.44   7.69 -15.92) pol  149.40 ,  azi  154.23; pol  149.40 ,  azi  125.28; modCCdopfac[110] 0.9718
+mod 27, crystal 3 [111]: ( -4.99   1.78 -17.72) pol  163.35 ,  azi  174.28; pol  163.35 ,  azi  160.42; modCCdopfac[111] 0.9688
+mod 28, crystal 0 [112]: ( -6.52  -8.47 -15.10) pol  144.70 ,  azi -150.70; pol  144.70 ,  azi -127.58; modCCdopfac[112] 0.9732
+mod 28, crystal 1 [113]: (-11.87  -6.77 -12.47) pol  132.40 ,  azi -151.51; pol  132.40 ,  azi -150.30; modCCdopfac[113] 0.9777
+mod 28, crystal 2 [114]: ( -8.99  -2.80 -15.92) pol  149.40 ,  azi -170.04; pol  149.40 ,  azi -162.72; modCCdopfac[114] 0.9718
+mod 28, crystal 3 [115]: ( -3.23  -4.20 -17.72) pol  163.35 ,  azi -166.67; pol  163.35 ,  azi -127.58; modCCdopfac[115] 0.9688
+mod 29, crystal 0 [116]: (  6.04  -8.82 -15.10) pol  144.70 ,  azi -149.71; pol  144.70 ,  azi  -55.58; modCCdopfac[116] 0.9732
+mod 29, crystal 1 [117]: (  2.77 -13.38 -12.47) pol  132.40 ,  azi -133.00; pol  132.40 ,  azi  -78.30; modCCdopfac[117] 0.9777
+mod 29, crystal 2 [118]: ( -0.12  -9.42 -15.92) pol  149.40 ,  azi -149.40; pol  149.40 ,  azi  -90.72; modCCdopfac[118] 0.9718
+mod 29, crystal 3 [119]: (  3.00  -4.37 -17.72) pol  163.35 ,  azi -166.14; pol  163.35 ,  azi  -55.58; modCCdopfac[119] 0.9688
+mod 30, crystal 0 [120]: ( 10.25   3.02 -15.10) pol  144.70 ,  azi  168.68; pol  144.70 ,  azi   16.42; modCCdopfac[120] 0.9732
+mod 30, crystal 1 [121]: ( 13.58  -1.50 -12.47) pol  132.40 ,  azi -173.15; pol  132.40 ,  azi   -6.30; modCCdopfac[121] 0.9777
+mod 30, crystal 2 [122]: (  8.92  -3.02 -15.92) pol  149.40 ,  azi -169.25; pol  149.40 ,  azi  -18.72; modCCdopfac[122] 0.9718
+mod 30, crystal 3 [123]: (  5.08   1.50 -17.72) pol  163.35 ,  azi  175.17; pol  163.35 ,  azi   16.42; modCCdopfac[123] 0.9688
+setup signal catcher
+started sorting... from disk...
+
+Pars.maxTS=4611686018427387904
+got initial header, TS=994506521887 ID: 1 length: 464
+read initial payload of siz=464 into event position 1
+__ptgd[0]->type= 0; ptgd[0]->length=   0; ptgd[0]->timestamp=0
+initial ii=1, nn=1
+ev#     0 GEB_TYPE_DECOMP        464Bytes TS=994506521887 curTS=994506521887 dTS= 0
+ev#     0 GEB_TYPE_DECOMP        464Bytes TS=994506531237 curTS=994506521887 dTS= 9350
+t0=994506521887
+first event: GEB_event.mult=2
+   0/ 0: ( 1,GEB_TYPE_DECOMP      ) TS=        994506521887; dT=0
+   0/ 1: ( 1,GEB_TYPE_DECOMP      ) TS=        994506521887; dT=0
+maxTS=9634506521887
+that is 86400.0 seconds or 24h0m0s minutes of sorting
+GEBGetEv returned st=0
+we have read 1440 bytes; CurEvNo=1
+
++++++++++++++++++++++++++++++++
+*start event # 1 with multiplicity 2 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=994506521887
+ 1>  1, GEB_TYPE_DECOMP      , TS=994506521887
+entered bin_mode2: 1/10
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 1 
+exit bin_mode3
+*end of event # 1
++++++++++++++++++++++++++++++++
+ev#     1 GEB_TYPE_DECOMP        464Bytes TS=994506531591 curTS=994506531237 dTS= 354
+GEBGetEv returned st=0
+we have read 1920 bytes; CurEvNo=2
+
++++++++++++++++++++++++++++++++
+*start event # 2 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=994506531237
+entered bin_mode2: 2/10
+ptinp->pad= 0, (ptinp->pad&0x000000ff)= 0
+good pad value
+mode2 data:  0>  1, GEB_TYPE_DECOMP      , TS=994506531237
+number of hits: 2
+* 0/1, is GEB_TYPE_DECOMP: num=2
+__detno: 57, module: 14, crystalNumber: 1
+CCenergies[0]=  65.42
+* 0:   11.83, -12.30,   5.08 --> GT:  -14.13,  12.69,  -1.88
+* 1:    1.19,  -7.93,  13.48 --> GT:  -14.95,  12.72,  -3.04
+updated CCadd with   65.42
+total number of hits in array: 2
+exit bin_mode2
+entered bin_mode3 @ event number: 2 
+exit bin_mode3
+*end of event # 2
++++++++++++++++++++++++++++++++
+ev#     2 GEB_TYPE_DECOMP        464Bytes TS=994506570547 curTS=994506531591 dTS= 38956
+GEBGetEv returned st=0
+we have read 2400 bytes; CurEvNo=3
+
++++++++++++++++++++++++++++++++
+*start event # 3 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=994506531591
+entered bin_mode2: 3/10
+ptinp->pad= 0, (ptinp->pad&0x000000ff)= 0
+good pad value
+mode2 data:  0>  1, GEB_TYPE_DECOMP      , TS=994506531591
+number of hits: 4
+* 0/1, is GEB_TYPE_DECOMP: num=4
+__detno: 99, module: 24, crystalNumber: 3
+CCenergies[0]=3154.24
+* 0:   -8.12,  -0.22,   8.36 --> GT:    0.56, -17.57,  -8.09
+* 1:   -6.65,   3.91,   2.07 --> GT:    0.61, -16.82,  -8.21
+* 2:  -12.95,  12.44,   8.70 --> GT:    1.54, -17.20,  -8.95
+* 3:  -16.01, -23.99,  35.28 --> GT:    0.23, -21.07,  -7.03
+updated CCadd with 3154.24
+total number of hits in array: 4
+exit bin_mode2
+entered bin_mode3 @ event number: 3 
+exit bin_mode3
+*end of event # 3
++++++++++++++++++++++++++++++++
+ev#     3 GEB_TYPE_DECOMP        464Bytes TS=994506592119 curTS=994506570547 dTS= 21572
+GEBGetEv returned st=0
+we have read 2880 bytes; CurEvNo=4
+
++++++++++++++++++++++++++++++++
+*start event # 4 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=994506570547
+entered bin_mode2: 4/10
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 4 
+exit bin_mode3
+*end of event # 4
++++++++++++++++++++++++++++++++
+ev#     4 GEB_TYPE_DECOMP        464Bytes TS=994506592763 curTS=994506592119 dTS= 644
+GEBGetEv returned st=0
+we have read 3360 bytes; CurEvNo=5
+
++++++++++++++++++++++++++++++++
+*start event # 5 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=994506592119
+entered bin_mode2: 5/10
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 5 
+exit bin_mode3
+*end of event # 5
++++++++++++++++++++++++++++++++
+ev#     5 GEB_TYPE_DECOMP        464Bytes TS=994506592767 curTS=994506592763 dTS= 4
+ev#     5 GEB_TYPE_DECOMP        464Bytes TS=994506616485 curTS=994506592763 dTS= 23722
+GEBGetEv returned st=0
+we have read 4320 bytes; CurEvNo=6
+
++++++++++++++++++++++++++++++++
+*start event # 6 with multiplicity 2 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=994506592763
+ 1>  1, GEB_TYPE_DECOMP      , TS=994506592767
+entered bin_mode2: 6/10
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with    0.00
+total number of hits in array: 0
+exit bin_mode2
+entered bin_mode3 @ event number: 6 
+exit bin_mode3
+*end of event # 6
++++++++++++++++++++++++++++++++
+ev#     6 GEB_TYPE_DECOMP        464Bytes TS=994506666355 curTS=994506616485 dTS= 49870
+GEBGetEv returned st=0
+we have read 4800 bytes; CurEvNo=7
+
++++++++++++++++++++++++++++++++
+*start event # 7 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=994506616485
+entered bin_mode2: 7/10
+ptinp->pad= 0, (ptinp->pad&0x000000ff)= 0
+good pad value
+mode2 data:  0>  1, GEB_TYPE_DECOMP      , TS=994506616485
+number of hits: 1
+* 0/1, is GEB_TYPE_DECOMP: num=1
+__detno: 111, module: 27, crystalNumber: 3
+CCenergies[0]=  57.34
+* 0:   -1.01, -20.52,   0.05 --> GT:   -6.50,   0.40, -17.44
+updated CCadd with   57.34
+total number of hits in array: 1
+exit bin_mode2
+entered bin_mode3 @ event number: 7 
+exit bin_mode3
+*end of event # 7
++++++++++++++++++++++++++++++++
+ev#     7 GEB_TYPE_DECOMP        464Bytes TS=994506666379 curTS=994506666355 dTS= 24
+ev#     7 GEB_TYPE_DECOMP        464Bytes TS=994506666381 curTS=994506666355 dTS= 26
+ev#     7 GEB_TYPE_DECOMP        464Bytes TS=994506666381 curTS=994506666355 dTS= 26
+ev#     7 GEB_TYPE_DECOMP        464Bytes TS=994506667001 curTS=994506666355 dTS= 646
+GEBGetEv returned st=0
+we have read 6720 bytes; CurEvNo=8
+
++++++++++++++++++++++++++++++++
+*start event # 8 with multiplicity 4 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=994506666355
+ 1>  1, GEB_TYPE_DECOMP      , TS=994506666379
+ 2>  1, GEB_TYPE_DECOMP      , TS=994506666381
+ 3>  1, GEB_TYPE_DECOMP      , TS=994506666381
+entered bin_mode2: 8/10
+ptinp->pad= 0, (ptinp->pad&0x000000ff)= 0
+good pad value
+mode2 data:  0>  1, GEB_TYPE_DECOMP      , TS=994506666355
+number of hits: 3
+* 0/4, is GEB_TYPE_DECOMP: num=3
+__detno: 57, module: 14, crystalNumber: 1
+CCenergies[0]= 451.29
+* 0:    6.37,  29.73,  14.98 --> GT:  -12.83,  14.62,  -5.56
+* 1:   14.04,  21.42,  15.47 --> GT:  -12.99,  14.83,  -4.46
+* 2:   11.69,  17.99,  15.48 --> GT:  -13.27,  14.54,  -4.35
+ptinp->pad= 0, (ptinp->pad&0x000000ff)= 0
+good pad value
+mode2 data:  1>  1, GEB_TYPE_DECOMP      , TS=994506666379
+number of hits: 5
+* 1/4, is GEB_TYPE_DECOMP: num=5
+__detno: 109, module: 27, crystalNumber: 1
+CCenergies[1]= 626.17
+* 0:  -24.92,  24.98,  46.67 --> GT:  -15.43,  11.42, -13.44
+* 1:   -8.32,  22.69,  39.66 --> GT:  -14.29,  10.23, -14.20
+* 2:   -1.26,  14.81,  88.24 --> GT:  -16.10,  12.72, -18.11
+* 3:   -9.30,  36.69,  88.93 --> GT:  -18.08,  11.85, -17.24
+* 4:  -24.78,   1.64,  40.36 --> GT:  -13.30,  12.57, -13.38
+ptinp->pad= 0, (ptinp->pad&0x000000ff)= 0
+good pad value
+mode2 data:  2>  1, GEB_TYPE_DECOMP      , TS=994506666381
+number of hits: 2
+* 2/4, is GEB_TYPE_DECOMP: num=2
+__detno: 108, module: 27, crystalNumber: 0
+CCenergies[2]= 284.25
+* 0:   38.60,  -3.75,  48.42 --> GT:  -10.36,   7.48, -19.92
+* 1:   27.10, -13.68,  54.66 --> GT:  -11.97,   7.48, -19.61
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with 1361.71
+total number of hits in array: 10
+exit bin_mode2
+entered bin_mode3 @ event number: 8 
+exit bin_mode3
+*end of event # 8
++++++++++++++++++++++++++++++++
+ev#     8 GEB_TYPE_DECOMP        464Bytes TS=994506667109 curTS=994506667001 dTS= 108
+ev#     8 GEB_TYPE_DECOMP        464Bytes TS=994506667187 curTS=994506667001 dTS= 186
+GEBGetEv returned st=0
+we have read 7680 bytes; CurEvNo=9
+
++++++++++++++++++++++++++++++++
+*start event # 9 with multiplicity 2 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=994506667001
+ 1>  1, GEB_TYPE_DECOMP      , TS=994506667109
+entered bin_mode2: 9/10
+ptinp->pad= 0, (ptinp->pad&0x000000ff)= 0
+good pad value
+mode2 data:  0>  1, GEB_TYPE_DECOMP      , TS=994506667001
+number of hits: 2
+* 0/2, is GEB_TYPE_DECOMP: num=2
+__detno: 60, module: 15, crystalNumber: 0
+CCenergies[0]= 135.14
+* 0:  -28.83,  17.61,  19.70 --> GT:  -17.03,  11.31,   3.54
+* 1:  -18.99,  10.73,  19.69 --> GT:  -17.41,  10.67,   2.60
+ptinp->pad= 6, (ptinp->pad&0x000000ff)= 6
+updated CCadd with  135.14
+total number of hits in array: 2
+exit bin_mode2
+entered bin_mode3 @ event number: 9 
+exit bin_mode3
+*end of event # 9
++++++++++++++++++++++++++++++++
+ev#     9 GEB_TYPE_DECOMP        464Bytes TS=994506777813 curTS=994506667187 dTS= 110626
+GEBGetEv returned st=0
+we have read 8160 bytes; CurEvNo=10
+
++++++++++++++++++++++++++++++++
+*start event # 10 with multiplicity 1 looks like this:
+ 0>  1, GEB_TYPE_DECOMP      , TS=994506667187
+entered bin_mode2: 10/10
+ptinp->pad= 0, (ptinp->pad&0x000000ff)= 0
+good pad value
+mode2 data:  0>  1, GEB_TYPE_DECOMP      , TS=994506667187
+number of hits: 3
+* 0/1, is GEB_TYPE_DECOMP: num=3
+__detno: 90, module: 22, crystalNumber: 2
+CCenergies[0]=1687.54
+* 0:  -21.79, -13.49,  60.75 --> GT:   -8.08,  15.53, -17.44
+* 1:  -10.20,  -5.84,  66.10 --> GT:   -7.45,  16.84, -17.11
+* 2:   14.80,  -2.16,  57.02 --> GT:   -6.76,  17.99, -14.79
+updated CCadd with 1687.54
+total number of hits in array: 3
+exit bin_mode2
+entered bin_mode3 @ event number: 10 
+exit bin_mode3
+*end of event # 10
++++++++++++++++++++++++++++++++
+ev#    10 GEB_TYPE_DECOMP        464Bytes TS=994506778267 curTS=994506777813 dTS= 454
+ev# 50000 GEB_TYPE_DECOMP        464Bytes TS=995464538811 curTS=995464538725 dTS= 86
+ev# 50000 GEB_TYPE_GT_MOD29      440Bytes TS=995464538867 curTS=995464538725 dTS= 142
+ev# 50000 GEB_TYPE_DECOMP        464Bytes TS=995464595989 curTS=995464538725 dTS= 57264
+ev# 100000 GEB_TYPE_DECOMP        464Bytes TS=996417794871 curTS=996417794871 dTS= 0
+ev# 100000 GEB_TYPE_GT_MOD29      440Bytes TS=996417794893 curTS=996417794871 dTS= 22
+ev# 100000 GEB_TYPE_DECOMP        464Bytes TS=996417812597 curTS=996417794871 dTS= 17726
+ev# 150000 GEB_TYPE_GT_MOD29      440Bytes TS=997383633383 curTS=997383633329 dTS= 54
+ev# 150000 GEB_TYPE_GT_MOD29      440Bytes TS=997383658899 curTS=997383633329 dTS= 25570
+ev# 200000 GEB_TYPE_DECOMP        464Bytes TS=998334900241 curTS=998334900239 dTS= 2
+ev# 200000 GEB_TYPE_DECOMP        464Bytes TS=998334910869 curTS=998334900239 dTS= 10630
+ev# 250000 GEB_TYPE_GT_MOD29      440Bytes TS=999339260629 curTS=999339260387 dTS= 242
+ev# 300000 GEB_TYPE_DECOMP        464Bytes TS=1000344483593 curTS=1000344483587 dTS= 6
+ev# 300000 GEB_TYPE_GT_MOD29      440Bytes TS=1000344484139 curTS=1000344483587 dTS= 552
+ev# 350000 GEB_TYPE_DECOMP        464Bytes TS=1001334701487 curTS=1001334701485 dTS= 2
+ev# 350000 GEB_TYPE_DECOMP        464Bytes TS=1001334702021 curTS=1001334701485 dTS= 536
+ev# 400000 GEB_TYPE_DECOMP        464Bytes TS=1002323811955 curTS=1002323811701 dTS= 254
+ev# 450000 GEB_TYPE_GT_MOD29      440Bytes TS=1003310074409 curTS=1003310073965 dTS= 444
+ev# 500000 GEB_TYPE_DECOMP        464Bytes TS=1004261189121 curTS=1004261146577 dTS= 42544
+ev# 550000 GEB_TYPE_GT_MOD29      440Bytes TS=1005212875545 curTS=1005212856615 dTS= 18930
+ev# 600000 GEB_TYPE_GT_MOD29      440Bytes TS=1006166534451 curTS=1006166534167 dTS= 284
+ev# 650000 GEB_TYPE_GT_MOD29      440Bytes TS=1007113032711 curTS=1007112938551 dTS= 94160
+ev# 700000 GEB_TYPE_GT_MOD29      440Bytes TS=1008066482171 curTS=1008066481603 dTS= 568
+ev# 750000 GEB_TYPE_DECOMP        464Bytes TS=1009024973423 curTS=1009024973421 dTS= 2
+ev# 750000 GEB_TYPE_DECOMP        464Bytes TS=1009024973425 curTS=1009024973421 dTS= 4
+ev# 750000 GEB_TYPE_GT_MOD29      440Bytes TS=1009024973591 curTS=1009024973421 dTS= 170
+ev# 800000 GEB_TYPE_DECOMP        464Bytes TS=1009987882299 curTS=1009987882175 dTS= 124
+ev# 800000 GEB_TYPE_DECOMP        464Bytes TS=1009987896533 curTS=1009987882175 dTS= 14358
+ev# 850000 GEB_TYPE_GT_MOD29      440Bytes TS=1010950484179 curTS=1010950483997 dTS= 182
+ev# 900000 GEB_TYPE_GT_MOD29      440Bytes TS=1011911423281 curTS=1011911423279 dTS= 2
+ev# 900000 GEB_TYPE_GT_MOD29      440Bytes TS=1011911468181 curTS=1011911423279 dTS= 44902
+ev# 950000 GEB_TYPE_GT_MOD29      440Bytes TS=1012867668557 curTS=1012867668297 dTS= 260
+ev# 1000000 GEB_TYPE_GT_MOD29      440Bytes TS=1013812438953 curTS=1013812401979 dTS= 36974
+ev# 1050000 GEB_TYPE_GT_MOD29      440Bytes TS=1014785814711 curTS=1014785814497 dTS= 214
+ev# 1100000 GEB_TYPE_GT_MOD29      440Bytes TS=1015738456889 curTS=1015738456363 dTS= 526
+ev# 1150000 GEB_TYPE_GT_MOD29      440Bytes TS=1016675904343 curTS=1016675904161 dTS= 182
+ev# 1200000 GEB_TYPE_DECOMP        464Bytes TS=1017625565021 curTS=1017625538179 dTS= 26842
+ev# 1250000 GEB_TYPE_GT_MOD29      440Bytes TS=1018565823103 curTS=1018565822687 dTS= 416
+ev# 1300000 GEB_TYPE_GT_MOD29      440Bytes TS=1019490022919 curTS=1019490022873 dTS= 46
+ev# 1300000 GEB_TYPE_DECOMP        464Bytes TS=1019490033701 curTS=1019490022873 dTS= 10828
+ev# 1350000 GEB_TYPE_GT_MOD29      440Bytes TS=1020423112029 curTS=1020423111791 dTS= 238
+ev# 1400000 GEB_TYPE_DECOMP        464Bytes TS=1021373371643 curTS=1021373244775 dTS= 126868
+ev# 1450000 GEB_TYPE_DECOMP        464Bytes TS=1022325345589 curTS=1022325345585 dTS= 4
+ev# 1450000 GEB_TYPE_GT_MOD29      440Bytes TS=1022325346249 curTS=1022325345585 dTS= 664
+ev# 1500000 GEB_TYPE_DECOMP        464Bytes TS=1023281466391 curTS=1023281466303 dTS= 88
+ev# 1500000 GEB_TYPE_DECOMP        464Bytes TS=1023281466405 curTS=1023281466303 dTS= 102
+ev# 1500000 GEB_TYPE_DECOMP        464Bytes TS=1023281466541 curTS=1023281466303 dTS= 238
+ev# 1550000 GEB_TYPE_GT_MOD29      440Bytes TS=1024242101817 curTS=1024242101687 dTS= 130
+ev# 1550000 GEB_TYPE_DECOMP        464Bytes TS=1024242101925 curTS=1024242101687 dTS= 238
+ev# 1600000 GEB_TYPE_DECOMP        464Bytes TS=1025195651625 curTS=1025195651303 dTS= 322
+ev# 1650000 GEB_TYPE_DECOMP        464Bytes TS=1026151903125 curTS=1026151874815 dTS= 28310
+ev# 1700000 GEB_TYPE_GT_MOD29      440Bytes TS=1027080768767 curTS=1027080752341 dTS= 16426
+ev# 1750000 GEB_TYPE_DECOMP        464Bytes TS=1028016171193 curTS=1028016128343 dTS= 42850
+ev# 1800000 GEB_TYPE_DECOMP        464Bytes TS=1028966297585 curTS=1028966297583 dTS= 2
+ev# 1800000 GEB_TYPE_DECOMP        464Bytes TS=1028966297591 curTS=1028966297583 dTS= 8
+ev# 1800000 GEB_TYPE_GT_MOD29      440Bytes TS=1028966302677 curTS=1028966297583 dTS= 5094
+ev# 1850000 GEB_TYPE_GT_MOD29      440Bytes TS=1029922044177 curTS=1029922021413 dTS= 22764
+ev# 1900000 GEB_TYPE_GT_MOD29      440Bytes TS=1030872141415 curTS=1030872141161 dTS= 254
+ev# 1950000 GEB_TYPE_GT_MOD29      440Bytes TS=1031841040281 curTS=1031841039823 dTS= 458
+ev# 2000000 GEB_TYPE_DECOMP        464Bytes TS=1032776022673 curTS=1032776022629 dTS= 44
+ev# 2000000 GEB_TYPE_DECOMP        464Bytes TS=1032776022673 curTS=1032776022629 dTS= 44
+ev# 2000000 GEB_TYPE_DECOMP        464Bytes TS=1032776022921 curTS=1032776022629 dTS= 292
+ev# 2050000 GEB_TYPE_DECOMP        464Bytes TS=1033750842825 curTS=1033750842823 dTS= 2
+ev# 2050000 GEB_TYPE_DECOMP        464Bytes TS=1033750843385 curTS=1033750842823 dTS= 562
+ev# 2100000 GEB_TYPE_GT_MOD29      440Bytes TS=1034682714721 curTS=1034682706615 dTS= 8106
+ev# 2150000 GEB_TYPE_GT_MOD29      440Bytes TS=1035644816131 curTS=1035644701657 dTS= 114474
+ev# 2200000 GEB_TYPE_DECOMP        464Bytes TS=1036593985445 curTS=1036593904115 dTS= 81330
+ev# 2250000 GEB_TYPE_DECOMP        464Bytes TS=1037525289689 curTS=1037525289687 dTS= 2
+ev# 2250000 GEB_TYPE_DECOMP        464Bytes TS=1037525289807 curTS=1037525289687 dTS= 120
+ev# 2250000 GEB_TYPE_DECOMP        464Bytes TS=1037525289809 curTS=1037525289687 dTS= 122
+ev# 2250000 GEB_TYPE_GT_MOD29      440Bytes TS=1037525289907 curTS=1037525289687 dTS= 220
+ev# 2300000 GEB_TYPE_DECOMP        464Bytes TS=1038457815823 curTS=1038457779703 dTS= 36120
+ev# 2350000 GEB_TYPE_DECOMP        464Bytes TS=1039428035411 curTS=1039427996535 dTS= 38876
+ev# 2400000 GEB_TYPE_DECOMP        464Bytes TS=1040412927653 curTS=1040412927003 dTS= 650
+ev# 2450000 GEB_TYPE_DECOMP        464Bytes TS=1041391309547 curTS=1041391309537 dTS= 10
+ev# 2450000 GEB_TYPE_GT_MOD29      440Bytes TS=1041391309597 curTS=1041391309537 dTS= 60
+ev# 2450000 GEB_TYPE_DECOMP        464Bytes TS=1041391309727 curTS=1041391309537 dTS= 190
+ev# 2500000 GEB_TYPE_DECOMP        464Bytes TS=1042396982535 curTS=1042396982533 dTS= 2
+ev# 2500000 GEB_TYPE_DECOMP        464Bytes TS=1042396982541 curTS=1042396982533 dTS= 8
+ev# 2500000 GEB_TYPE_GT_MOD29      440Bytes TS=1042396983061 curTS=1042396982533 dTS= 528
+ev# 2550000 GEB_TYPE_GT_MOD29      440Bytes TS=1043389667189 curTS=1043389666473 dTS= 716
+ev# 2600000 GEB_TYPE_GT_MOD29      440Bytes TS=1044371150957 curTS=1044371150721 dTS= 236
+ev# 2650000 GEB_TYPE_GT_MOD29      440Bytes TS=1045296493695 curTS=1045296493283 dTS= 412
+ev# 2700000 GEB_TYPE_DECOMP        464Bytes TS=1046246802701 curTS=1046246802697 dTS= 4
+ev# 2700000 GEB_TYPE_DECOMP        464Bytes TS=1046246802701 curTS=1046246802697 dTS= 4
+ev# 2700000 GEB_TYPE_DECOMP        464Bytes TS=1046246802719 curTS=1046246802697 dTS= 22
+ev# 2700000 GEB_TYPE_GT_MOD29      440Bytes TS=1046246802785 curTS=1046246802697 dTS= 88
+ev# 2700000 GEB_TYPE_GT_MOD29      440Bytes TS=1046246806119 curTS=1046246802697 dTS= 3422
+ev# 2750000 GEB_TYPE_DECOMP        464Bytes TS=1047219672755 curTS=1047219672755 dTS= 0
+ev# 2750000 GEB_TYPE_DECOMP        464Bytes TS=1047219672755 curTS=1047219672755 dTS= 0
+ev# 2750000 GEB_TYPE_GT_MOD29      440Bytes TS=1047219673015 curTS=1047219672755 dTS= 260
+ev# 2800000 GEB_TYPE_DECOMP        464Bytes TS=1048175885229 curTS=1048175885009 dTS= 220
+ev# 2850000 GEB_TYPE_GT_MOD29      440Bytes TS=1049156521413 curTS=1049156509279 dTS= 12134
+ev# 2900000 GEB_TYPE_DECOMP        464Bytes TS=1050145373295 curTS=1050145350959 dTS= 22336
+ev# 2950000 GEB_TYPE_GT_MOD29      440Bytes TS=1051118761955 curTS=1051118761793 dTS= 162
+ev# 3000000 GEB_TYPE_DECOMP        464Bytes TS=1052098170815 curTS=1052098144725 dTS= 26090
+ev# 3050000 GEB_TYPE_DECOMP        464Bytes TS=1053055850967 curTS=1053055850669 dTS= 298
+ev# 3100000 GEB_TYPE_DECOMP        464Bytes TS=1054025958537 curTS=1054025934313 dTS= 24224
+ev# 3150000 GEB_TYPE_DECOMP        464Bytes TS=1055008552561 curTS=1055008552559 dTS= 2
+ev# 3150000 GEB_TYPE_DECOMP        464Bytes TS=1055008552561 curTS=1055008552559 dTS= 2
+ev# 3150000 GEB_TYPE_DECOMP        464Bytes TS=1055008593403 curTS=1055008552559 dTS= 40844
+ev# 3200000 GEB_TYPE_DECOMP        464Bytes TS=1055987527073 curTS=1055987527015 dTS= 58
+ev# 3200000 GEB_TYPE_DECOMP        464Bytes TS=1055987538113 curTS=1055987527015 dTS= 11098
+ev# 3250000 GEB_TYPE_GT_MOD29      440Bytes TS=1056997944719 curTS=1056997882375 dTS= 62344
+ev# 3300000 GEB_TYPE_DECOMP        464Bytes TS=1057990138211 curTS=1057990138039 dTS= 172
+ev# 3350000 GEB_TYPE_DECOMP        464Bytes TS=1059022690845 curTS=1059022690685 dTS= 160
+ev# 3400000 GEB_TYPE_GT_MOD29      440Bytes TS=1060071656277 curTS=1060071655573 dTS= 704
+ev# 3450000 GEB_TYPE_DECOMP        464Bytes TS=1061096942291 curTS=1061096942223 dTS= 68
+ev# 3450000 GEB_TYPE_DECOMP        464Bytes TS=1061096942551 curTS=1061096942223 dTS= 328
+ev# 3500000 GEB_TYPE_DECOMP        464Bytes TS=1062113013265 curTS=1062112944031 dTS= 69234
+ev# 3550000 GEB_TYPE_GT_MOD29      440Bytes TS=1063120732969 curTS=1063120732639 dTS= 330
+ev# 3600000 GEB_TYPE_DECOMP        464Bytes TS=1064136926133 curTS=1064136925751 dTS= 382
+ev# 3650000 GEB_TYPE_DECOMP        464Bytes TS=1065141818853 curTS=1065141579845 dTS= 239008
+ev# 3700000 GEB_TYPE_DECOMP        464Bytes TS=1066143855893 curTS=1066143855893 dTS= 0
+ev# 3700000 GEB_TYPE_GT_MOD29      440Bytes TS=1066143870315 curTS=1066143855893 dTS= 14422
+ev# 3750000 GEB_TYPE_GT_MOD29      440Bytes TS=1067155543687 curTS=1067155505463 dTS= 38224
+ev# 3800000 GEB_TYPE_DECOMP        464Bytes TS=1068142608247 curTS=1068142608085 dTS= 162
+ev# 3850000 GEB_TYPE_DECOMP        464Bytes TS=1069108633331 curTS=1069108633331 dTS= 0
+ev# 3850000 GEB_TYPE_DECOMP        464Bytes TS=1069108633331 curTS=1069108633331 dTS= 0
+ev# 3850000 GEB_TYPE_DECOMP        464Bytes TS=1069108633335 curTS=1069108633331 dTS= 4
+ev# 3850000 GEB_TYPE_DECOMP        464Bytes TS=1069108633353 curTS=1069108633331 dTS= 22
+ev# 3850000 GEB_TYPE_DECOMP        464Bytes TS=1069108633545 curTS=1069108633331 dTS= 214
+ev# 3900000 GEB_TYPE_GT_MOD29      440Bytes TS=1070070433399 curTS=1070070433181 dTS= 218
+ev# 3950000 GEB_TYPE_DECOMP        464Bytes TS=1071050968965 curTS=1071050968963 dTS= 2
+ev# 3950000 GEB_TYPE_DECOMP        464Bytes TS=1071050968967 curTS=1071050968963 dTS= 4
+ev# 3950000 GEB_TYPE_GT_MOD29      440Bytes TS=1071050969687 curTS=1071050968963 dTS= 724
+ev# 4000000 GEB_TYPE_DECOMP        464Bytes TS=1072039476419 curTS=1072039476223 dTS= 196
+ev# 4050000 GEB_TYPE_DECOMP        464Bytes TS=1073026751989 curTS=1073026727333 dTS= 24656
+ev# 4100000 GEB_TYPE_GT_MOD29      440Bytes TS=1074036537449 curTS=1074036536935 dTS= 514
+ev# 4150000 GEB_TYPE_GT_MOD29      440Bytes TS=1075025017019 curTS=1075025016907 dTS= 112
+ev# 4150000 GEB_TYPE_DECOMP        464Bytes TS=1075025017095 curTS=1075025016907 dTS= 188
+ev# 4200000 GEB_TYPE_DECOMP        464Bytes TS=1076053630525 curTS=1076053619733 dTS= 10792
+ev# 4250000 GEB_TYPE_GT_MOD29      440Bytes TS=1077038839835 curTS=1077038839821 dTS= 14
+ev# 4250000 GEB_TYPE_DECOMP        464Bytes TS=1077038839925 curTS=1077038839821 dTS= 104
+ev# 4250000 GEB_TYPE_DECOMP        464Bytes TS=1077038864507 curTS=1077038839821 dTS= 24686
+ev# 4300000 GEB_TYPE_DECOMP        464Bytes TS=1077995796507 curTS=1077995796483 dTS= 24
+ev# 4300000 GEB_TYPE_DECOMP        464Bytes TS=1077995796511 curTS=1077995796483 dTS= 28
+ev# 4300000 GEB_TYPE_DECOMP        464Bytes TS=1077995796773 curTS=1077995796483 dTS= 290
+ev# 4350000 GEB_TYPE_GT_MOD29      440Bytes TS=1078953394211 curTS=1078953394195 dTS= 16
+ev# 4350000 GEB_TYPE_DECOMP        464Bytes TS=1078953431493 curTS=1078953394195 dTS= 37298
+ev# 4400000 GEB_TYPE_DECOMP        464Bytes TS=1079922206695 curTS=1079922206689 dTS= 6
+ev# 4400000 GEB_TYPE_DECOMP        464Bytes TS=1079922207109 curTS=1079922206689 dTS= 420
+ev# 4450000 GEB_TYPE_DECOMP        464Bytes TS=1080947177091 curTS=1080947168219 dTS= 8872
+ev# 4500000 GEB_TYPE_DECOMP        464Bytes TS=1081961846879 curTS=1081961846849 dTS= 30
+ev# 4500000 GEB_TYPE_DECOMP        464Bytes TS=1081961847085 curTS=1081961846849 dTS= 236
+ev# 4550000 GEB_TYPE_DECOMP        464Bytes TS=1082955798869 curTS=1082955798787 dTS= 82
+ev# 4550000 GEB_TYPE_DECOMP        464Bytes TS=1082955813911 curTS=1082955798787 dTS= 15124
+ev# 4600000 GEB_TYPE_DECOMP        464Bytes TS=1083923730293 curTS=1083923725315 dTS= 4978
+ev# 4650000 GEB_TYPE_DECOMP        464Bytes TS=1084920222199 curTS=1084920222199 dTS= 0
+ev# 4650000 GEB_TYPE_DECOMP        464Bytes TS=1084920222203 curTS=1084920222199 dTS= 4
+ev# 4650000 GEB_TYPE_DECOMP        464Bytes TS=1084920222205 curTS=1084920222199 dTS= 6
+ev# 4650000 GEB_TYPE_GT_MOD29      440Bytes TS=1084920222307 curTS=1084920222199 dTS= 108
+ev# 4650000 GEB_TYPE_DECOMP        464Bytes TS=1084920236437 curTS=1084920222199 dTS= 14238
+ev# 4700000 GEB_TYPE_GT_MOD29      440Bytes TS=1085893344503 curTS=1085893331709 dTS= 12794
+ev# 4750000 GEB_TYPE_DECOMP        464Bytes TS=1086855401301 curTS=1086855383597 dTS= 17704
+ev# 4800000 GEB_TYPE_DECOMP        464Bytes TS=1087843974839 curTS=1087843974837 dTS= 2
+ev# 4800000 GEB_TYPE_DECOMP        464Bytes TS=1087843974839 curTS=1087843974837 dTS= 2
+ev# 4800000 GEB_TYPE_DECOMP        464Bytes TS=1087843974839 curTS=1087843974837 dTS= 2
+ev# 4800000 GEB_TYPE_DECOMP        464Bytes TS=1087843974839 curTS=1087843974837 dTS= 2
+ev# 4800000 GEB_TYPE_GT_MOD29      440Bytes TS=1087844035871 curTS=1087843974837 dTS= 61034
+ev# 4850000 GEB_TYPE_DECOMP        464Bytes TS=1088810372187 curTS=1088810372187 dTS= 0
+ev# 4850000 GEB_TYPE_DECOMP        464Bytes TS=1088810372193 curTS=1088810372187 dTS= 6
+ev# 4850000 GEB_TYPE_DECOMP        464Bytes TS=1088810372639 curTS=1088810372187 dTS= 452
+ev# 4900000 GEB_TYPE_GT_MOD29      440Bytes TS=1089767816845 curTS=1089767816385 dTS= 460
+ev# 4950000 GEB_TYPE_DECOMP        464Bytes TS=1090729472847 curTS=1090729452101 dTS= 20746
+ev# 5000000 GEB_TYPE_GT_MOD29      440Bytes TS=1091687998015 curTS=1091687997297 dTS= 718
+ev# 5050000 GEB_TYPE_DECOMP        464Bytes TS=1092658327827 curTS=1092658290663 dTS= 37164
+ev# 5100000 GEB_TYPE_DECOMP        464Bytes TS=1093609141217 curTS=1093609136937 dTS= 4280
+ev# 5150000 GEB_TYPE_DECOMP        464Bytes TS=1094584418193 curTS=1094584384899 dTS= 33294
+ev# 5200000 GEB_TYPE_DECOMP        464Bytes TS=1095575142583 curTS=1095575125851 dTS= 16732
+ev# 5250000 GEB_TYPE_DECOMP        464Bytes TS=1096571817961 curTS=1096571756287 dTS= 61674
+ev# 5300000 GEB_TYPE_DECOMP        464Bytes TS=1097543603459 curTS=1097543603231 dTS= 228
+ev# 5350000 GEB_TYPE_DECOMP        464Bytes TS=1098522743099 curTS=1098522742305 dTS= 794
+ev# 5400000 GEB_TYPE_DECOMP        464Bytes TS=1099485938661 curTS=1099485938659 dTS= 2
+ev# 5400000 GEB_TYPE_DECOMP        464Bytes TS=1099485938669 curTS=1099485938659 dTS= 10
+ev# 5400000 GEB_TYPE_GT_MOD29      440Bytes TS=1099485938767 curTS=1099485938659 dTS= 108
+ev# 5400000 GEB_TYPE_DECOMP        464Bytes TS=1099485938907 curTS=1099485938659 dTS= 248
+ev# 5450000 GEB_TYPE_GT_MOD29      440Bytes TS=1100516319853 curTS=1100516319437 dTS= 416
+ev# 5500000 GEB_TYPE_DECOMP        464Bytes TS=1101512026441 curTS=1101511981259 dTS= 45182
+ev# 5550000 GEB_TYPE_DECOMP        464Bytes TS=1102526520795 curTS=1102526520793 dTS= 2
+ev# 5550000 GEB_TYPE_DECOMP        464Bytes TS=1102526520795 curTS=1102526520793 dTS= 2
+ev# 5550000 GEB_TYPE_DECOMP        464Bytes TS=1102526520797 curTS=1102526520793 dTS= 4
+ev# 5550000 GEB_TYPE_DECOMP        464Bytes TS=1102526520797 curTS=1102526520793 dTS= 4
+ev# 5550000 GEB_TYPE_DECOMP        464Bytes TS=1102526520799 curTS=1102526520793 dTS= 6
+ev# 5550000 GEB_TYPE_DECOMP        464Bytes TS=1102526520813 curTS=1102526520793 dTS= 20
+ev# 5550000 GEB_TYPE_GT_MOD29      440Bytes TS=1102526521481 curTS=1102526520793 dTS= 688
+ev# 5600000 GEB_TYPE_DECOMP        464Bytes TS=1103533351125 curTS=1103533351051 dTS= 74
+ev# 5600000 GEB_TYPE_DECOMP        464Bytes TS=1103533351125 curTS=1103533351051 dTS= 74
+ev# 5600000 GEB_TYPE_DECOMP        464Bytes TS=1103533351127 curTS=1103533351051 dTS= 76
+ev# 5600000 GEB_TYPE_DECOMP        464Bytes TS=1103533351129 curTS=1103533351051 dTS= 78
+ev# 5600000 GEB_TYPE_DECOMP        464Bytes TS=1103533351407 curTS=1103533351051 dTS= 356
+ev# 5650000 GEB_TYPE_DECOMP        464Bytes TS=1104529831523 curTS=1104529831519 dTS= 4
+ev# 5650000 GEB_TYPE_GT_MOD29      440Bytes TS=1104529831591 curTS=1104529831519 dTS= 72
+ev# 5650000 GEB_TYPE_DECOMP        464Bytes TS=1104529837557 curTS=1104529831519 dTS= 6038
+ev# 5700000 GEB_TYPE_GT_MOD29      440Bytes TS=1105488677601 curTS=1105488677475 dTS= 126
+ev# 5700000 GEB_TYPE_DECOMP        464Bytes TS=1105488677709 curTS=1105488677475 dTS= 234
+ev# 5750000 GEB_TYPE_GT_MOD29      440Bytes TS=1106473629355 curTS=1106473598325 dTS= 31030
+ev# 5800000 GEB_TYPE_DECOMP        464Bytes TS=1107455790475 curTS=1107455790473 dTS= 2
+ev# 5800000 GEB_TYPE_DECOMP        464Bytes TS=1107455790479 curTS=1107455790473 dTS= 6
+ev# 5800000 GEB_TYPE_DECOMP        464Bytes TS=1107455790659 curTS=1107455790473 dTS= 186
+ev# 5850000 GEB_TYPE_DECOMP        464Bytes TS=1108408094971 curTS=1108407918513 dTS= 176458
+ev# 5900000 GEB_TYPE_GT_MOD29      440Bytes TS=1109357991879 curTS=1109357991675 dTS= 204
+ev# 5950000 GEB_TYPE_DECOMP        464Bytes TS=1110314009383 curTS=1110314009075 dTS= 308
+ev# 6000000 GEB_TYPE_DECOMP        464Bytes TS=1111267444027 curTS=1111267444025 dTS= 2
+ev# 6000000 GEB_TYPE_DECOMP        464Bytes TS=1111267444519 curTS=1111267444025 dTS= 494
+ev# 6050000 GEB_TYPE_GT_MOD29      440Bytes TS=1112262524863 curTS=1112262524483 dTS= 380
+ev# 6100000 GEB_TYPE_DECOMP        464Bytes TS=1113242243545 curTS=1113242142753 dTS= 100792
+ev# 6150000 GEB_TYPE_GT_MOD29      440Bytes TS=1114228962941 curTS=1114228962697 dTS= 244
+ev# 6200000 GEB_TYPE_DECOMP        464Bytes TS=1115209993547 curTS=1115209972421 dTS= 21126
+ev# 6250000 GEB_TYPE_GT_MOD29      440Bytes TS=1116192380559 curTS=1116192358863 dTS= 21696
+ev# 6300000 GEB_TYPE_DECOMP        464Bytes TS=1117160965825 curTS=1117160950835 dTS= 14990
+ev# 6350000 GEB_TYPE_GT_MOD29      440Bytes TS=1118146318691 curTS=1118146318637 dTS= 54
+ev# 6350000 GEB_TYPE_DECOMP        464Bytes TS=1118146318835 curTS=1118146318637 dTS= 198
+ev# 6400000 GEB_TYPE_GT_MOD29      440Bytes TS=1119110633593 curTS=1119110633583 dTS= 10
+ev# 6400000 GEB_TYPE_DECOMP        464Bytes TS=1119110633647 curTS=1119110633583 dTS= 64
+ev# 6400000 GEB_TYPE_DECOMP        464Bytes TS=1119110633829 curTS=1119110633583 dTS= 246
+ev# 6450000 GEB_TYPE_DECOMP        464Bytes TS=1120062087505 curTS=1120062040411 dTS= 47094
+ev# 6500000 GEB_TYPE_GT_MOD29      440Bytes TS=1121043532097 curTS=1121043498321 dTS= 33776
+ev# 6550000 GEB_TYPE_DECOMP        464Bytes TS=1122026620359 curTS=1122026620271 dTS= 88
+ev# 6550000 GEB_TYPE_DECOMP        464Bytes TS=1122026620361 curTS=1122026620271 dTS= 90
+ev# 6550000 GEB_TYPE_GT_MOD29      440Bytes TS=1122026622503 curTS=1122026620271 dTS= 2232
+ev# 6600000 GEB_TYPE_DECOMP        464Bytes TS=1123004824043 curTS=1123004824039 dTS= 4
+ev# 6600000 GEB_TYPE_DECOMP        464Bytes TS=1123004824255 curTS=1123004824039 dTS= 216
+ev# 6650000 GEB_TYPE_DECOMP        464Bytes TS=1123989550155 curTS=1123989493681 dTS= 56474
+ev# 6700000 GEB_TYPE_DECOMP        464Bytes TS=1124964928631 curTS=1124964928609 dTS= 22
+ev# 6700000 GEB_TYPE_DECOMP        464Bytes TS=1124964928791 curTS=1124964928609 dTS= 182
+ev# 6750000 GEB_TYPE_DECOMP        464Bytes TS=1125945896317 curTS=1125945896315 dTS= 2
+ev# 6750000 GEB_TYPE_DECOMP        464Bytes TS=1125945896321 curTS=1125945896315 dTS= 6
+ev# 6750000 GEB_TYPE_DECOMP        464Bytes TS=1125945896967 curTS=1125945896315 dTS= 652
+ev# 6800000 GEB_TYPE_DECOMP        464Bytes TS=1126884016053 curTS=1126884016051 dTS= 2
+ev# 6800000 GEB_TYPE_DECOMP        464Bytes TS=1126884016149 curTS=1126884016051 dTS= 98
+ev# 6800000 GEB_TYPE_GT_MOD29      440Bytes TS=1126884016231 curTS=1126884016051 dTS= 180
+ev# 6850000 GEB_TYPE_DECOMP        464Bytes TS=1127840281275 curTS=1127840281273 dTS= 2
+ev# 6850000 GEB_TYPE_GT_MOD29      440Bytes TS=1127840281465 curTS=1127840281273 dTS= 192
+ev# 6900000 GEB_TYPE_GT_MOD29      440Bytes TS=1128795716685 curTS=1128795716559 dTS= 126
+ev# 6900000 GEB_TYPE_DECOMP        464Bytes TS=1128795736095 curTS=1128795716559 dTS= 19536
+ev# 6950000 GEB_TYPE_DECOMP        464Bytes TS=1129764560813 curTS=1129764560813 dTS= 0
+ev# 6950000 GEB_TYPE_DECOMP        464Bytes TS=1129764560817 curTS=1129764560813 dTS= 4
+ev# 6950000 GEB_TYPE_GT_MOD29      440Bytes TS=1129764560997 curTS=1129764560813 dTS= 184
+ev# 7000000 GEB_TYPE_DECOMP        464Bytes TS=1130721221813 curTS=1130721221769 dTS= 44
+ev# 7000000 GEB_TYPE_DECOMP        464Bytes TS=1130721221813 curTS=1130721221769 dTS= 44
+ev# 7000000 GEB_TYPE_DECOMP        464Bytes TS=1130721221815 curTS=1130721221769 dTS= 46
+ev# 7000000 GEB_TYPE_DECOMP        464Bytes TS=1130721221821 curTS=1130721221769 dTS= 52
+ev# 7000000 GEB_TYPE_DECOMP        464Bytes TS=1130721221823 curTS=1130721221769 dTS= 54
+ev# 7000000 GEB_TYPE_DECOMP        464Bytes TS=1130721279843 curTS=1130721221769 dTS= 58074
+ev# 7050000 GEB_TYPE_DECOMP        464Bytes TS=1131690381481 curTS=1131690381479 dTS= 2
+ev# 7050000 GEB_TYPE_DECOMP        464Bytes TS=1131690425783 curTS=1131690381479 dTS= 44304
+ev# 7100000 GEB_TYPE_GT_MOD29      440Bytes TS=1132657212979 curTS=1132657212641 dTS= 338
+ev# 7150000 GEB_TYPE_DECOMP        464Bytes TS=1133624535163 curTS=1133624535161 dTS= 2
+ev# 7150000 GEB_TYPE_DECOMP        464Bytes TS=1133624535167 curTS=1133624535161 dTS= 6
+ev# 7150000 GEB_TYPE_DECOMP        464Bytes TS=1133624535365 curTS=1133624535161 dTS= 204
+ev# 7200000 GEB_TYPE_DECOMP        464Bytes TS=1134581131965 curTS=1134581131965 dTS= 0
+ev# 7200000 GEB_TYPE_DECOMP        464Bytes TS=1134581131967 curTS=1134581131965 dTS= 2
+ev# 7200000 GEB_TYPE_GT_MOD29      440Bytes TS=1134581132461 curTS=1134581131965 dTS= 496
+ev# 7250000 GEB_TYPE_DECOMP        464Bytes TS=1135558863435 curTS=1135558863431 dTS= 4
+ev# 7250000 GEB_TYPE_DECOMP        464Bytes TS=1135558863437 curTS=1135558863431 dTS= 6
+ev# 7250000 GEB_TYPE_DECOMP        464Bytes TS=1135558863439 curTS=1135558863431 dTS= 8
+ev# 7250000 GEB_TYPE_GT_MOD29      440Bytes TS=1135558911923 curTS=1135558863431 dTS= 48492
+ev# 7300000 GEB_TYPE_DECOMP        464Bytes TS=1136555619525 curTS=1136555619519 dTS= 6
+ev# 7300000 GEB_TYPE_GT_MOD29      440Bytes TS=1136555619609 curTS=1136555619519 dTS= 90
+ev# 7300000 GEB_TYPE_DECOMP        464Bytes TS=1136555629647 curTS=1136555619519 dTS= 10128
+ev# 7350000 GEB_TYPE_DECOMP        464Bytes TS=1137546774935 curTS=1137546774923 dTS= 12
+ev# 7350000 GEB_TYPE_DECOMP        464Bytes TS=1137546774937 curTS=1137546774923 dTS= 14
+ev# 7350000 GEB_TYPE_DECOMP        464Bytes TS=1137546775123 curTS=1137546774923 dTS= 200
+ev# 7400000 GEB_TYPE_DECOMP        464Bytes TS=1138527109201 curTS=1138527108711 dTS= 490
+ev# 7450000 GEB_TYPE_DECOMP        464Bytes TS=1139461527555 curTS=1139461527443 dTS= 112
+ev# 7450000 GEB_TYPE_DECOMP        464Bytes TS=1139461534849 curTS=1139461527443 dTS= 7406
+ev# 7500000 GEB_TYPE_DECOMP        464Bytes TS=1140386522703 curTS=1140386501349 dTS= 21354
+ev# 7550000 GEB_TYPE_GT_MOD29      440Bytes TS=1141320346899 curTS=1141320346861 dTS= 38
+ev# 7550000 GEB_TYPE_GT_MOD29      440Bytes TS=1141320379007 curTS=1141320346861 dTS= 32146
+ev# 7600000 GEB_TYPE_DECOMP        464Bytes TS=1142251122231 curTS=1142251111929 dTS= 10302
+ev# 7650000 GEB_TYPE_GT_MOD29      440Bytes TS=1143225375263 curTS=1143225375067 dTS= 196
+ev# 7700000 GEB_TYPE_DECOMP        464Bytes TS=1144175814169 curTS=1144175813631 dTS= 538
+ev# 7750000 GEB_TYPE_DECOMP        464Bytes TS=1145124275131 curTS=1145124167731 dTS= 107400
+ev# 7800000 GEB_TYPE_GT_MOD29      440Bytes TS=1146062295727 curTS=1146062295505 dTS= 222
+ev# 7850000 GEB_TYPE_GT_MOD29      440Bytes TS=1147029236085 curTS=1147029235977 dTS= 108
+ev# 7850000 GEB_TYPE_DECOMP        464Bytes TS=1147029236361 curTS=1147029235977 dTS= 384
+ev# 7900000 GEB_TYPE_GT_MOD29      440Bytes TS=1147963981065 curTS=1147963981023 dTS= 42
+ev# 7900000 GEB_TYPE_DECOMP        464Bytes TS=1147963981381 curTS=1147963981023 dTS= 358
+ev# 7950000 GEB_TYPE_DECOMP        464Bytes TS=1148906132279 curTS=1148906132263 dTS= 16
+ev# 7950000 GEB_TYPE_GT_MOD29      440Bytes TS=1148906132641 curTS=1148906132263 dTS= 378
+ev# 8000000 GEB_TYPE_DECOMP        464Bytes TS=1149867121863 curTS=1149867121731 dTS= 132
+ev# 8000000 GEB_TYPE_GT_MOD29      440Bytes TS=1149867122089 curTS=1149867121731 dTS= 358
+ev# 8050000 GEB_TYPE_GT_MOD29      440Bytes TS=1150811820913 curTS=1150811820779 dTS= 134
+ev# 8050000 GEB_TYPE_DECOMP        464Bytes TS=1150811822413 curTS=1150811820779 dTS= 1634
+ev# 8100000 GEB_TYPE_DECOMP        464Bytes TS=1151745773219 curTS=1151745772777 dTS= 442
+ev# 8150000 GEB_TYPE_GT_MOD29      440Bytes TS=1152684920309 curTS=1152684892493 dTS= 27816
+ev# 8200000 GEB_TYPE_DECOMP        464Bytes TS=1153616101833 curTS=1153616101829 dTS= 4
+ev# 8200000 GEB_TYPE_GT_MOD29      440Bytes TS=1153616102225 curTS=1153616101829 dTS= 396
+ev# 8250000 GEB_TYPE_DECOMP        464Bytes TS=1154551535283 curTS=1154551535127 dTS= 156
+ev# 8300000 GEB_TYPE_DECOMP        464Bytes TS=1155491219025 curTS=1155491207785 dTS= 11240
+ev# 8350000 GEB_TYPE_GT_MOD29      440Bytes TS=1156415768753 curTS=1156415768621 dTS= 132
+ev# 8350000 GEB_TYPE_DECOMP        464Bytes TS=1156415768805 curTS=1156415768621 dTS= 184
+ev# 8400000 GEB_TYPE_DECOMP        464Bytes TS=1157351873363 curTS=1157351863635 dTS= 9728
+ev# 8450000 GEB_TYPE_DECOMP        464Bytes TS=1158298534027 curTS=1158298534027 dTS= 0
+ev# 8450000 GEB_TYPE_DECOMP        464Bytes TS=1158298534033 curTS=1158298534027 dTS= 6
+ev# 8450000 GEB_TYPE_DECOMP        464Bytes TS=1158298576529 curTS=1158298534027 dTS= 42502
+ev# 8500000 GEB_TYPE_DECOMP        464Bytes TS=1159259765947 curTS=1159259765945 dTS= 2
+ev# 8500000 GEB_TYPE_DECOMP        464Bytes TS=1159259765949 curTS=1159259765945 dTS= 4
+ev# 8500000 GEB_TYPE_DECOMP        464Bytes TS=1159259765949 curTS=1159259765945 dTS= 4
+ev# 8500000 GEB_TYPE_DECOMP        464Bytes TS=1159259765949 curTS=1159259765945 dTS= 4
+ev# 8500000 GEB_TYPE_DECOMP        464Bytes TS=1159259765957 curTS=1159259765945 dTS= 12
+ev# 8500000 GEB_TYPE_DECOMP        464Bytes TS=1159259765961 curTS=1159259765945 dTS= 16
+ev# 8500000 GEB_TYPE_DECOMP        464Bytes TS=1159259789459 curTS=1159259765945 dTS= 23514
+ev# 8550000 GEB_TYPE_DECOMP        464Bytes TS=1160205648181 curTS=1160205648175 dTS= 6
+ev# 8550000 GEB_TYPE_GT_MOD29      440Bytes TS=1160205648549 curTS=1160205648175 dTS= 374
+ev# 8600000 GEB_TYPE_DECOMP        464Bytes TS=1161147460361 curTS=1161147460235 dTS= 126
+ev# 8600000 GEB_TYPE_DECOMP        464Bytes TS=1161147460363 curTS=1161147460235 dTS= 128
+ev# 8600000 GEB_TYPE_DECOMP        464Bytes TS=1161147460367 curTS=1161147460235 dTS= 132
+ev# 8600000 GEB_TYPE_DECOMP        464Bytes TS=1161147460371 curTS=1161147460235 dTS= 136
+ev# 8600000 GEB_TYPE_DECOMP        464Bytes TS=1161147477231 curTS=1161147460235 dTS= 16996
+ev# 8650000 GEB_TYPE_DECOMP        464Bytes TS=1162064671379 curTS=1162064671257 dTS= 122
+ev# 8650000 GEB_TYPE_DECOMP        464Bytes TS=1162064671381 curTS=1162064671257 dTS= 124
+ev# 8650000 GEB_TYPE_DECOMP        464Bytes TS=1162064671383 curTS=1162064671257 dTS= 126
+ev# 8650000 GEB_TYPE_DECOMP        464Bytes TS=1162064671383 curTS=1162064671257 dTS= 126
+ev# 8650000 GEB_TYPE_DECOMP        464Bytes TS=1162064671383 curTS=1162064671257 dTS= 126
+ev# 8650000 GEB_TYPE_DECOMP        464Bytes TS=1162064671385 curTS=1162064671257 dTS= 128
+ev# 8650000 GEB_TYPE_DECOMP        464Bytes TS=1162064671389 curTS=1162064671257 dTS= 132
+ev# 8650000 GEB_TYPE_DECOMP        464Bytes TS=1162064671627 curTS=1162064671257 dTS= 370
+ev# 8700000 GEB_TYPE_GT_MOD29      440Bytes TS=1162984401201 curTS=1162984400759 dTS= 442
+ev# 8750000 GEB_TYPE_DECOMP        464Bytes TS=1163883154101 curTS=1163883153925 dTS= 176
+ev# 8800000 GEB_TYPE_DECOMP        464Bytes TS=1164783894273 curTS=1164783894271 dTS= 2
+ev# 8800000 GEB_TYPE_GT_MOD29      440Bytes TS=1164783894801 curTS=1164783894271 dTS= 530
+ev# 8850000 GEB_TYPE_DECOMP        464Bytes TS=1165706673035 curTS=1165706672843 dTS= 192
+ev# 8900000 GEB_TYPE_DECOMP        464Bytes TS=1166632287039 curTS=1166632286373 dTS= 666
+ev# 8950000 GEB_TYPE_GT_MOD29      440Bytes TS=1167556502501 curTS=1167556502355 dTS= 146
+ev# 8950000 GEB_TYPE_DECOMP        464Bytes TS=1167556502687 curTS=1167556502355 dTS= 332
+ev# 9000000 GEB_TYPE_GT_MOD29      440Bytes TS=1168505660203 curTS=1168505660181 dTS= 22
+ev# 9000000 GEB_TYPE_DECOMP        464Bytes TS=1168505771041 curTS=1168505660181 dTS= 110860
+ev# 9050000 GEB_TYPE_DECOMP        464Bytes TS=1169428893409 curTS=1169428893023 dTS= 386
+ev# 9100000 GEB_TYPE_DECOMP        464Bytes TS=1170342367119 curTS=1170342367115 dTS= 4
+ev# 9100000 GEB_TYPE_GT_MOD29      440Bytes TS=1170342367289 curTS=1170342367115 dTS= 174
+ev# 9150000 GEB_TYPE_DECOMP        464Bytes TS=1171255670759 curTS=1171255670753 dTS= 6
+ev# 9150000 GEB_TYPE_DECOMP        464Bytes TS=1171255671077 curTS=1171255670753 dTS= 324
+ev# 9200000 GEB_TYPE_DECOMP        464Bytes TS=1172165405189 curTS=1172165376785 dTS= 28404
+ev# 9250000 GEB_TYPE_GT_MOD29      440Bytes TS=1173086419203 curTS=1173086419191 dTS= 12
+ev# 9250000 GEB_TYPE_GT_MOD29      440Bytes TS=1173086443365 curTS=1173086419191 dTS= 24174
+ev# 9300000 GEB_TYPE_DECOMP        464Bytes TS=1174025496523 curTS=1174025496517 dTS= 6
+ev# 9300000 GEB_TYPE_GT_MOD29      440Bytes TS=1174025497009 curTS=1174025496517 dTS= 492
+ev# 9350000 GEB_TYPE_DECOMP        464Bytes TS=1174966865333 curTS=1174966865221 dTS= 112
+ev# 9350000 GEB_TYPE_DECOMP        464Bytes TS=1174966865335 curTS=1174966865221 dTS= 114
+ev# 9350000 GEB_TYPE_DECOMP        464Bytes TS=1174966865499 curTS=1174966865221 dTS= 278
+ev# 9400000 GEB_TYPE_DECOMP        464Bytes TS=1175895244531 curTS=1175895244531 dTS= 0
+ev# 9400000 GEB_TYPE_DECOMP        464Bytes TS=1175895244535 curTS=1175895244531 dTS= 4
+ev# 9400000 GEB_TYPE_DECOMP        464Bytes TS=1175895244537 curTS=1175895244531 dTS= 6
+ev# 9400000 GEB_TYPE_DECOMP        464Bytes TS=1175895256779 curTS=1175895244531 dTS= 12248
+ev# 9450000 GEB_TYPE_DECOMP        464Bytes TS=1176831861369 curTS=1176831861339 dTS= 30
+ev# 9450000 GEB_TYPE_DECOMP        464Bytes TS=1176831861373 curTS=1176831861339 dTS= 34
+ev# 9450000 GEB_TYPE_DECOMP        464Bytes TS=1176831861375 curTS=1176831861339 dTS= 36
+ev# 9450000 GEB_TYPE_DECOMP        464Bytes TS=1176831861387 curTS=1176831861339 dTS= 48
+ev# 9450000 GEB_TYPE_DECOMP        464Bytes TS=1176831907011 curTS=1176831861339 dTS= 45672
+ev# 9500000 GEB_TYPE_DECOMP        464Bytes TS=1177774063617 curTS=1177774063603 dTS= 14
+ev# 9500000 GEB_TYPE_GT_MOD29      440Bytes TS=1177774063619 curTS=1177774063603 dTS= 16
+ev# 9500000 GEB_TYPE_GT_MOD29      440Bytes TS=1177774080353 curTS=1177774063603 dTS= 16750
+ev# 9550000 GEB_TYPE_DECOMP        464Bytes TS=1178736984915 curTS=1178736984783 dTS= 132
+ev# 9550000 GEB_TYPE_DECOMP        464Bytes TS=1178736984915 curTS=1178736984783 dTS= 132
+ev# 9550000 GEB_TYPE_DECOMP        464Bytes TS=1178736984921 curTS=1178736984783 dTS= 138
+ev# 9550000 GEB_TYPE_DECOMP        464Bytes TS=1178736984923 curTS=1178736984783 dTS= 140
+ev# 9550000 GEB_TYPE_GT_MOD29      440Bytes TS=1178736985017 curTS=1178736984783 dTS= 234
+ev# 9600000 GEB_TYPE_DECOMP        464Bytes TS=1179703997177 curTS=1179703996869 dTS= 308
+ev# 9650000 GEB_TYPE_DECOMP        464Bytes TS=1180661403009 curTS=1180661402969 dTS= 40
+ev# 9650000 GEB_TYPE_DECOMP        464Bytes TS=1180661403077 curTS=1180661402969 dTS= 108
+ev# 9650000 GEB_TYPE_GT_MOD29      440Bytes TS=1180661410311 curTS=1180661402969 dTS= 7342
+ev# 9700000 GEB_TYPE_GT_MOD29      440Bytes TS=1181635302565 curTS=1181635302137 dTS= 428
+ev# 9750000 GEB_TYPE_DECOMP        464Bytes TS=1182611940515 curTS=1182611940393 dTS= 122
+ev# 9750000 GEB_TYPE_DECOMP        464Bytes TS=1182611945225 curTS=1182611940393 dTS= 4832
+ev# 9800000 GEB_TYPE_DECOMP        464Bytes TS=1183610179369 curTS=1183610179365 dTS= 4
+ev# 9800000 GEB_TYPE_DECOMP        464Bytes TS=1183610179677 curTS=1183610179365 dTS= 312
+ev# 9850000 GEB_TYPE_DECOMP        464Bytes TS=1184599530907 curTS=1184599530533 dTS= 374
+ev# 9900000 GEB_TYPE_DECOMP        464Bytes TS=1185568081605 curTS=1185568081479 dTS= 126
+ev# 9900000 GEB_TYPE_GT_MOD29      440Bytes TS=1185568141575 curTS=1185568081479 dTS= 60096
+ev# 9950000 GEB_TYPE_DECOMP        464Bytes TS=1186542973619 curTS=1186542842705 dTS= 130914
+ev# 10000000 GEB_TYPE_DECOMP        464Bytes TS=1187527232227 curTS=1187527232041 dTS= 186
+ev# 10050000 GEB_TYPE_DECOMP        464Bytes TS=1188488617503 curTS=1188488617501 dTS= 2
+ev# 10050000 GEB_TYPE_GT_MOD29      440Bytes TS=1188488618149 curTS=1188488617501 dTS= 648
+ev# 10100000 GEB_TYPE_GT_MOD29      440Bytes TS=1189452095463 curTS=1189452095191 dTS= 272
+error: sX,sY= (        -nan ,        -nan )
+error: sX,sY= (        -nan ,        -nan )
+ev# 10150000 GEB_TYPE_DECOMP        464Bytes TS=1190433199677 curTS=1190433173275 dTS= 26402
+ev# 10200000 GEB_TYPE_DECOMP        464Bytes TS=1191376410983 curTS=1191376410863 dTS= 120
+ev# 10200000 GEB_TYPE_GT_MOD29      440Bytes TS=1191376411273 curTS=1191376410863 dTS= 410
+ev# 10250000 GEB_TYPE_DECOMP        464Bytes TS=1192300596551 curTS=1192300596547 dTS= 4
+ev# 10250000 GEB_TYPE_DECOMP        464Bytes TS=1192300596643 curTS=1192300596547 dTS= 96
+ev# 10250000 GEB_TYPE_DECOMP        464Bytes TS=1192300596643 curTS=1192300596547 dTS= 96
+ev# 10250000 GEB_TYPE_DECOMP        464Bytes TS=1192300596647 curTS=1192300596547 dTS= 100
+ev# 10250000 GEB_TYPE_DECOMP        464Bytes TS=1192300596647 curTS=1192300596547 dTS= 100
+ev# 10250000 GEB_TYPE_DECOMP        464Bytes TS=1192300596647 curTS=1192300596547 dTS= 100
+ev# 10250000 GEB_TYPE_DECOMP        464Bytes TS=1192300596647 curTS=1192300596547 dTS= 100
+ev# 10250000 GEB_TYPE_DECOMP        464Bytes TS=1192300596649 curTS=1192300596547 dTS= 102
+ev# 10250000 GEB_TYPE_DECOMP        464Bytes TS=1192300597167 curTS=1192300596547 dTS= 620
+ev# 10300000 GEB_TYPE_DECOMP        464Bytes TS=1193234299575 curTS=1193234299573 dTS= 2
+ev# 10300000 GEB_TYPE_GT_MOD29      440Bytes TS=1193234305077 curTS=1193234299573 dTS= 5504
+ev# 10350000 GEB_TYPE_DECOMP        464Bytes TS=1194147075675 curTS=1194147075621 dTS= 54
+ev# 10350000 GEB_TYPE_DECOMP        464Bytes TS=1194147075675 curTS=1194147075621 dTS= 54
+ev# 10350000 GEB_TYPE_DECOMP        464Bytes TS=1194147075681 curTS=1194147075621 dTS= 60
+ev# 10350000 GEB_TYPE_DECOMP        464Bytes TS=1194147075681 curTS=1194147075621 dTS= 60
+ev# 10350000 GEB_TYPE_DECOMP        464Bytes TS=1194147075923 curTS=1194147075621 dTS= 302
+ev# 10400000 GEB_TYPE_DECOMP        464Bytes TS=1195063747455 curTS=1195063747127 dTS= 328
+ev# 10450000 GEB_TYPE_GT_MOD29      440Bytes TS=1195990127259 curTS=1195990126925 dTS= 334
+ev# 10500000 GEB_TYPE_DECOMP        464Bytes TS=1196905211285 curTS=1196905161769 dTS= 49516
+"GEBSort.command" was not found
+time since last dump: 10 minute(s)
+*---------------------------------
+* you cannot update a disk file.  
+  you must wait for sort to finish
+  or stop the sort! Ignoring you...
+*---------------------------------
+continuing the sort...
+ev# 10550000 GEB_TYPE_DECOMP        464Bytes TS=1197826562009 curTS=1197826555305 dTS= 6704
+ev# 10600000 GEB_TYPE_DECOMP        464Bytes TS=1198733804221 curTS=1198733804219 dTS= 2
+ev# 10600000 GEB_TYPE_GT_MOD29      440Bytes TS=1198733804531 curTS=1198733804219 dTS= 312
+ev# 10650000 GEB_TYPE_GT_MOD29      440Bytes TS=1199622876945 curTS=1199622876307 dTS= 638
+ev# 10700000 GEB_TYPE_DECOMP        464Bytes TS=1200506190171 curTS=1200506143409 dTS= 46762
+ev# 10750000 GEB_TYPE_DECOMP        464Bytes TS=1201420340823 curTS=1201420340823 dTS= 0
+ev# 10750000 GEB_TYPE_DECOMP        464Bytes TS=1201420340825 curTS=1201420340823 dTS= 2
+ev# 10750000 GEB_TYPE_DECOMP        464Bytes TS=1201420340825 curTS=1201420340823 dTS= 2
+ev# 10750000 GEB_TYPE_DECOMP        464Bytes TS=1201420340837 curTS=1201420340823 dTS= 14
+ev# 10750000 GEB_TYPE_GT_MOD29      440Bytes TS=1201420341121 curTS=1201420340823 dTS= 298
+ev# 10800000 GEB_TYPE_GT_MOD29      440Bytes TS=1202336318391 curTS=1202336318359 dTS= 32
+ev# 10800000 GEB_TYPE_DECOMP        464Bytes TS=1202336318401 curTS=1202336318359 dTS= 42
+ev# 10800000 GEB_TYPE_DECOMP        464Bytes TS=1202336336237 curTS=1202336318359 dTS= 17878
+ev# 10850000 GEB_TYPE_DECOMP        464Bytes TS=1203247445705 curTS=1203247375955 dTS= 69750
+ev# 10900000 GEB_TYPE_DECOMP        464Bytes TS=1204172036393 curTS=1204172020045 dTS= 16348
+ev# 10950000 GEB_TYPE_DECOMP        464Bytes TS=1205099719103 curTS=1205099698201 dTS= 20902
+ev# 11000000 GEB_TYPE_GT_MOD29      440Bytes TS=1206022309329 curTS=1206022298735 dTS= 10594
+ev# 11050000 GEB_TYPE_DECOMP        464Bytes TS=1206918303145 curTS=1206918302949 dTS= 196
+ev# 11100000 GEB_TYPE_GT_MOD29      440Bytes TS=1207843209887 curTS=1207843187051 dTS= 22836
+ev# 11150000 GEB_TYPE_DECOMP        464Bytes TS=1208791904283 curTS=1208791904283 dTS= 0
+ev# 11150000 GEB_TYPE_DECOMP        464Bytes TS=1208791904285 curTS=1208791904283 dTS= 2
+ev# 11150000 GEB_TYPE_DECOMP        464Bytes TS=1208791904287 curTS=1208791904283 dTS= 4
+ev# 11150000 GEB_TYPE_DECOMP        464Bytes TS=1208791904287 curTS=1208791904283 dTS= 4
+ev# 11150000 GEB_TYPE_DECOMP        464Bytes TS=1208791904293 curTS=1208791904283 dTS= 10
+ev# 11150000 GEB_TYPE_GT_MOD29      440Bytes TS=1208792079455 curTS=1208791904283 dTS= 175172
+ev# 11200000 GEB_TYPE_GT_MOD29      440Bytes TS=1209745060829 curTS=1209745060169 dTS= 660
+ev# 11250000 GEB_TYPE_DECOMP        464Bytes TS=1210667673157 curTS=1210667645987 dTS= 27170
+ev# 11300000 GEB_TYPE_DECOMP        464Bytes TS=1211586341885 curTS=1211586333321 dTS= 8564
+ev# 11350000 GEB_TYPE_DECOMP        464Bytes TS=1212485517939 curTS=1212485517629 dTS= 310
+ev# 11400000 GEB_TYPE_GT_MOD29      440Bytes TS=1213391185737 curTS=1213391163757 dTS= 21980
+ev# 11450000 GEB_TYPE_DECOMP        464Bytes TS=1214315755513 curTS=1214315755513 dTS= 0
+ev# 11450000 GEB_TYPE_GT_MOD29      440Bytes TS=1214315755873 curTS=1214315755513 dTS= 360
+ev# 11500000 GEB_TYPE_GT_MOD29      440Bytes TS=1215229064829 curTS=1215229064279 dTS= 550
+ev# 11550000 GEB_TYPE_DECOMP        464Bytes TS=1216130410585 curTS=1216130410573 dTS= 12
+ev# 11550000 GEB_TYPE_GT_MOD29      440Bytes TS=1216130411259 curTS=1216130410573 dTS= 686
+ev# 11600000 GEB_TYPE_DECOMP        464Bytes TS=1217038398465 curTS=1217038345645 dTS= 52820
+ev# 11650000 GEB_TYPE_GT_MOD29      440Bytes TS=1217956423117 curTS=1217956422595 dTS= 522
+ev# 11700000 GEB_TYPE_GT_MOD29      440Bytes TS=1218871726029 curTS=1218871725987 dTS= 42
+ev# 11700000 GEB_TYPE_GT_MOD29      440Bytes TS=1218871784491 curTS=1218871725987 dTS= 58504
+ev# 11750000 GEB_TYPE_GT_MOD29      440Bytes TS=1219795743793 curTS=1219795743639 dTS= 154
+ev# 11800000 GEB_TYPE_DECOMP        464Bytes TS=1220707060651 curTS=1220707026815 dTS= 33836
+ev# 11850000 GEB_TYPE_GT_MOD29      440Bytes TS=1221614545513 curTS=1221614519899 dTS= 25614
+ev# 11900000 GEB_TYPE_DECOMP        464Bytes TS=1222543630413 curTS=1222543630405 dTS= 8
+ev# 11900000 GEB_TYPE_DECOMP        464Bytes TS=1222543630587 curTS=1222543630405 dTS= 182
+ev# 11950000 GEB_TYPE_DECOMP        464Bytes TS=1223475330219 curTS=1223475330207 dTS= 12
+ev# 11950000 GEB_TYPE_DECOMP        464Bytes TS=1223475393059 curTS=1223475330207 dTS= 62852
+ev# 12000000 GEB_TYPE_GT_MOD29      440Bytes TS=1224396071349 curTS=1224396071319 dTS= 30
+ev# 12000000 GEB_TYPE_DECOMP        464Bytes TS=1224396151905 curTS=1224396071319 dTS= 80586
+ev# 12050000 GEB_TYPE_DECOMP        464Bytes TS=1225288661621 curTS=1225288661591 dTS= 30
+ev# 12050000 GEB_TYPE_GT_MOD29      440Bytes TS=1225288662079 curTS=1225288661591 dTS= 488
+ev# 12100000 GEB_TYPE_DECOMP        464Bytes TS=1226181643251 curTS=1226181643221 dTS= 30
+ev# 12100000 GEB_TYPE_GT_MOD29      440Bytes TS=1226181643681 curTS=1226181643221 dTS= 460
+ev# 12150000 GEB_TYPE_GT_MOD29      440Bytes TS=1227081552681 curTS=1227081515037 dTS= 37644
+ev# 12200000 GEB_TYPE_GT_MOD29      440Bytes TS=1227972878223 curTS=1227972878043 dTS= 180
+ev# 12250000 GEB_TYPE_GT_MOD29      440Bytes TS=1228830215169 curTS=1228830215015 dTS= 154
+ev# 12300000 GEB_TYPE_DECOMP        464Bytes TS=1229715589899 curTS=1229715572201 dTS= 17698
+ev# 12350000 GEB_TYPE_DECOMP        464Bytes TS=1230600654979 curTS=1230600654977 dTS= 2
+ev# 12350000 GEB_TYPE_DECOMP        464Bytes TS=1230600778031 curTS=1230600654977 dTS= 123054
+ev# 12400000 GEB_TYPE_DECOMP        464Bytes TS=1231484256295 curTS=1231484256175 dTS= 120
+ev# 12400000 GEB_TYPE_DECOMP        464Bytes TS=1231484256301 curTS=1231484256175 dTS= 126
+ev# 12400000 GEB_TYPE_DECOMP        464Bytes TS=1231484256409 curTS=1231484256175 dTS= 234
+ev# 12450000 GEB_TYPE_DECOMP        464Bytes TS=1232406152333 curTS=1232406152259 dTS= 74
+ev# 12450000 GEB_TYPE_DECOMP        464Bytes TS=1232406222449 curTS=1232406152259 dTS= 70190
+ev# 12500000 GEB_TYPE_GT_MOD29      440Bytes TS=1233326313113 curTS=1233326279427 dTS= 33686
+ev# 12550000 GEB_TYPE_GT_MOD29      440Bytes TS=1234236893261 curTS=1234236886331 dTS= 6930
+ev# 12600000 GEB_TYPE_DECOMP        464Bytes TS=1235134949471 curTS=1235134949369 dTS= 102
+ev# 12600000 GEB_TYPE_DECOMP        464Bytes TS=1235134949473 curTS=1235134949369 dTS= 104
+ev# 12600000 GEB_TYPE_DECOMP        464Bytes TS=1235134949477 curTS=1235134949369 dTS= 108
+ev# 12600000 GEB_TYPE_DECOMP        464Bytes TS=1235134964001 curTS=1235134949369 dTS= 14632
+ev# 12650000 GEB_TYPE_DECOMP        464Bytes TS=1236052291049 curTS=1236052291047 dTS= 2
+ev# 12650000 GEB_TYPE_DECOMP        464Bytes TS=1236052291057 curTS=1236052291047 dTS= 10
+ev# 12650000 GEB_TYPE_GT_MOD29      440Bytes TS=1236052291507 curTS=1236052291047 dTS= 460
+ev# 12700000 GEB_TYPE_GT_MOD29      440Bytes TS=1236963408409 curTS=1236963407911 dTS= 498
+ev# 12750000 GEB_TYPE_DECOMP        464Bytes TS=1237852347879 curTS=1237852347877 dTS= 2
+ev# 12750000 GEB_TYPE_DECOMP        464Bytes TS=1237852347883 curTS=1237852347877 dTS= 6
+ev# 12750000 GEB_TYPE_DECOMP        464Bytes TS=1237852405481 curTS=1237852347877 dTS= 57604
+ev# 12800000 GEB_TYPE_DECOMP        464Bytes TS=1238757365315 curTS=1238757346717 dTS= 18598
+ev# 12850000 GEB_TYPE_DECOMP        464Bytes TS=1239642302577 curTS=1239642302521 dTS= 56
+ev# 12850000 GEB_TYPE_DECOMP        464Bytes TS=1239642302579 curTS=1239642302521 dTS= 58
+ev# 12850000 GEB_TYPE_DECOMP        464Bytes TS=1239642302713 curTS=1239642302521 dTS= 192
+ev# 12900000 GEB_TYPE_GT_MOD29      440Bytes TS=1240526781419 curTS=1240526781321 dTS= 98
+ev# 12900000 GEB_TYPE_DECOMP        464Bytes TS=1240526781613 curTS=1240526781321 dTS= 292
+ev# 12950000 GEB_TYPE_GT_MOD29      440Bytes TS=1241411550355 curTS=1241411549683 dTS= 672
+ev# 13000000 GEB_TYPE_DECOMP        464Bytes TS=1242320086121 curTS=1242320085873 dTS= 248
+ev# 13050000 GEB_TYPE_DECOMP        464Bytes TS=1243214666465 curTS=1243214666263 dTS= 202
+ev# 13100000 GEB_TYPE_DECOMP        464Bytes TS=1244097016965 curTS=1244096955031 dTS= 61934
+ev# 13150000 GEB_TYPE_GT_MOD29      440Bytes TS=1244993398023 curTS=1244993397929 dTS= 94
+ev# 13150000 GEB_TYPE_DECOMP        464Bytes TS=1244993398207 curTS=1244993397929 dTS= 278
+ev# 13200000 GEB_TYPE_DECOMP        464Bytes TS=1245875069737 curTS=1245875069699 dTS= 38
+ev# 13200000 GEB_TYPE_DECOMP        464Bytes TS=1245875069737 curTS=1245875069699 dTS= 38
+ev# 13200000 GEB_TYPE_DECOMP        464Bytes TS=1245875069753 curTS=1245875069699 dTS= 54
+ev# 13200000 GEB_TYPE_DECOMP        464Bytes TS=1245875096335 curTS=1245875069699 dTS= 26636
+ev# 13250000 GEB_TYPE_DECOMP        464Bytes TS=1246772414911 curTS=1246772414889 dTS= 22
+ev# 13250000 GEB_TYPE_DECOMP        464Bytes TS=1246772414925 curTS=1246772414889 dTS= 36
+ev# 13250000 GEB_TYPE_DECOMP        464Bytes TS=1246772415229 curTS=1246772414889 dTS= 340
+ev# 13300000 GEB_TYPE_DECOMP        464Bytes TS=1247649371069 curTS=1247649348241 dTS= 22828
+ev# 13350000 GEB_TYPE_DECOMP        464Bytes TS=1248531335183 curTS=1248531334977 dTS= 206
+ev# 13400000 GEB_TYPE_DECOMP        464Bytes TS=1249416846747 curTS=1249416846745 dTS= 2
+ev# 13400000 GEB_TYPE_DECOMP        464Bytes TS=1249416883235 curTS=1249416846745 dTS= 36490
+ev# 13450000 GEB_TYPE_GT_MOD29      440Bytes TS=1250278847275 curTS=1250278846595 dTS= 680
+ev# 13500000 GEB_TYPE_DECOMP        464Bytes TS=1251154547487 curTS=1251154547487 dTS= 0
+ev# 13500000 GEB_TYPE_DECOMP        464Bytes TS=1251154547501 curTS=1251154547487 dTS= 14
+ev# 13500000 GEB_TYPE_GT_MOD29      440Bytes TS=1251154551249 curTS=1251154547487 dTS= 3762
+ev# 13550000 GEB_TYPE_DECOMP        464Bytes TS=1252025309377 curTS=1252025309005 dTS= 372
+ev# 13600000 GEB_TYPE_GT_MOD29      440Bytes TS=1252899377133 curTS=1252899369571 dTS= 7562
+ev# 13650000 GEB_TYPE_GT_MOD29      440Bytes TS=1253791362305 curTS=1253791352931 dTS= 9374
+ev# 13700000 GEB_TYPE_DECOMP        464Bytes TS=1254673176687 curTS=1254673176517 dTS= 170
+ev# 13750000 GEB_TYPE_DECOMP        464Bytes TS=1255556039109 curTS=1255556037339 dTS= 1770
+ev# 13800000 GEB_TYPE_DECOMP        464Bytes TS=1256449566557 curTS=1256449566455 dTS= 102
+ev# 13800000 GEB_TYPE_GT_MOD29      440Bytes TS=1256449566797 curTS=1256449566455 dTS= 342
+ev# 13850000 GEB_TYPE_DECOMP        464Bytes TS=1257355770575 curTS=1257355770481 dTS= 94
+ev# 13850000 GEB_TYPE_GT_MOD29      440Bytes TS=1257355832151 curTS=1257355770481 dTS= 61670
+ev# 13900000 GEB_TYPE_DECOMP        464Bytes TS=1258264768965 curTS=1258264716293 dTS= 52672
+ev# 13950000 GEB_TYPE_GT_MOD29      440Bytes TS=1259151444979 curTS=1259151444481 dTS= 498
+ev# 14000000 GEB_TYPE_DECOMP        464Bytes TS=1260043065365 curTS=1260043065361 dTS= 4
+ev# 14000000 GEB_TYPE_DECOMP        464Bytes TS=1260043065365 curTS=1260043065361 dTS= 4
+ev# 14000000 GEB_TYPE_DECOMP        464Bytes TS=1260043065547 curTS=1260043065361 dTS= 186
+ev# 14050000 GEB_TYPE_DECOMP        464Bytes TS=1260945340815 curTS=1260945340597 dTS= 218
+ev# 14100000 GEB_TYPE_DECOMP        464Bytes TS=1261821646421 curTS=1261821646417 dTS= 4
+ev# 14100000 GEB_TYPE_GT_MOD29      440Bytes TS=1261821647047 curTS=1261821646417 dTS= 630
+ev# 14150000 GEB_TYPE_DECOMP        464Bytes TS=1262672582689 curTS=1262672526941 dTS= 55748
+ev# 14200000 GEB_TYPE_DECOMP        464Bytes TS=1263561372597 curTS=1263561365975 dTS= 6622
+ev# 14250000 GEB_TYPE_DECOMP        464Bytes TS=1264445834777 curTS=1264445834701 dTS= 76
+ev# 14250000 GEB_TYPE_DECOMP        464Bytes TS=1264445834845 curTS=1264445834701 dTS= 144
+ev# 14250000 GEB_TYPE_DECOMP        464Bytes TS=1264445834847 curTS=1264445834701 dTS= 146
+ev# 14250000 GEB_TYPE_DECOMP        464Bytes TS=1264445834853 curTS=1264445834701 dTS= 152
+ev# 14300000 GEB_TYPE_DECOMP        464Bytes TS=1265327141269 curTS=1265327141255 dTS= 14
+ev# 14300000 GEB_TYPE_DECOMP        464Bytes TS=1265327141269 curTS=1265327141255 dTS= 14
+ev# 14300000 GEB_TYPE_DECOMP        464Bytes TS=1265327141275 curTS=1265327141255 dTS= 20
+ev# 14300000 GEB_TYPE_GT_MOD29      440Bytes TS=1265327141669 curTS=1265327141255 dTS= 414
+ev# 14350000 GEB_TYPE_DECOMP        464Bytes TS=1266196232823 curTS=1266196232759 dTS= 64
+ev# 14350000 GEB_TYPE_DECOMP        464Bytes TS=1266196232829 curTS=1266196232759 dTS= 70
+ev# 14350000 GEB_TYPE_DECOMP        464Bytes TS=1266196251373 curTS=1266196232759 dTS= 18614
+ev# 14400000 GEB_TYPE_DECOMP        464Bytes TS=1267045911857 curTS=1267045911857 dTS= 0
+ev# 14400000 GEB_TYPE_DECOMP        464Bytes TS=1267045911861 curTS=1267045911857 dTS= 4
+ev# 14400000 GEB_TYPE_DECOMP        464Bytes TS=1267045911863 curTS=1267045911857 dTS= 6
+ev# 14400000 GEB_TYPE_GT_MOD29      440Bytes TS=1267045912241 curTS=1267045911857 dTS= 384
+ev# 14450000 GEB_TYPE_DECOMP        464Bytes TS=1267902012687 curTS=1267902012677 dTS= 10
+ev# 14450000 GEB_TYPE_GT_MOD29      440Bytes TS=1267902020039 curTS=1267902012677 dTS= 7362
+ev# 14500000 GEB_TYPE_GT_MOD29      440Bytes TS=1268788112671 curTS=1268788112471 dTS= 200
+ev# 14550000 GEB_TYPE_DECOMP        464Bytes TS=1269669634949 curTS=1269669626475 dTS= 8474
+ev# 14600000 GEB_TYPE_DECOMP        464Bytes TS=1270538877729 curTS=1270538877409 dTS= 320
+ev# 14650000 GEB_TYPE_GT_MOD29      440Bytes TS=1271417223047 curTS=1271417222559 dTS= 488
+ev# 14700000 GEB_TYPE_DECOMP        464Bytes TS=1272305393889 curTS=1272305393887 dTS= 2
+ev# 14700000 GEB_TYPE_DECOMP        464Bytes TS=1272305394381 curTS=1272305393887 dTS= 494
+ev# 14750000 GEB_TYPE_DECOMP        464Bytes TS=1273178899493 curTS=1273178899493 dTS= 0
+ev# 14750000 GEB_TYPE_DECOMP        464Bytes TS=1273178899505 curTS=1273178899493 dTS= 12
+ev# 14750000 GEB_TYPE_DECOMP        464Bytes TS=1273178941379 curTS=1273178899493 dTS= 41886
+ev# 14800000 GEB_TYPE_DECOMP        464Bytes TS=1274062429959 curTS=1274062411419 dTS= 18540
+ev# 14850000 GEB_TYPE_GT_MOD29      440Bytes TS=1274944131573 curTS=1274944131491 dTS= 82
+ev# 14850000 GEB_TYPE_DECOMP        464Bytes TS=1274944131683 curTS=1274944131491 dTS= 192
+ev# 14900000 GEB_TYPE_GT_MOD29      440Bytes TS=1275829701349 curTS=1275829701257 dTS= 92
+ev# 14900000 GEB_TYPE_DECOMP        464Bytes TS=1275829724047 curTS=1275829701257 dTS= 22790
+ev# 14950000 GEB_TYPE_DECOMP        464Bytes TS=1276728950405 curTS=1276728950147 dTS= 258
+ev# 15000000 GEB_TYPE_DECOMP        464Bytes TS=1277603952399 curTS=1277603952393 dTS= 6
+ev# 15000000 GEB_TYPE_DECOMP        464Bytes TS=1277603952401 curTS=1277603952393 dTS= 8
+ev# 15000000 GEB_TYPE_DECOMP        464Bytes TS=1277603952413 curTS=1277603952393 dTS= 20
+ev# 15000000 GEB_TYPE_DECOMP        464Bytes TS=1277603952519 curTS=1277603952393 dTS= 126
+ev# 15000000 GEB_TYPE_DECOMP        464Bytes TS=1277603952841 curTS=1277603952393 dTS= 448
+ev# 15050000 GEB_TYPE_GT_MOD29      440Bytes TS=1278470822087 curTS=1278470822065 dTS= 22
+ev# 15050000 GEB_TYPE_DECOMP        464Bytes TS=1278470822251 curTS=1278470822065 dTS= 186
+ev# 15100000 GEB_TYPE_DECOMP        464Bytes TS=1279336310299 curTS=1279336310241 dTS= 58
+ev# 15100000 GEB_TYPE_DECOMP        464Bytes TS=1279336310303 curTS=1279336310241 dTS= 62
+ev# 15100000 GEB_TYPE_DECOMP        464Bytes TS=1279336310407 curTS=1279336310241 dTS= 166
+ev# 15150000 GEB_TYPE_GT_MOD29      440Bytes TS=1280211261425 curTS=1280211261413 dTS= 12
+ev# 15150000 GEB_TYPE_DECOMP        464Bytes TS=1280211261819 curTS=1280211261413 dTS= 406
+ev# 15200000 GEB_TYPE_DECOMP        464Bytes TS=1281066667861 curTS=1281066663559 dTS= 4302
+ev# 15250000 GEB_TYPE_DECOMP        464Bytes TS=1281931693997 curTS=1281931693687 dTS= 310
+ev# 15300000 GEB_TYPE_GT_MOD29      440Bytes TS=1282780235433 curTS=1282780228071 dTS= 7362
+ev# 15350000 GEB_TYPE_GT_MOD29      440Bytes TS=1283631010483 curTS=1283631010347 dTS= 136
+ev# 15350000 GEB_TYPE_DECOMP        464Bytes TS=1283631010517 curTS=1283631010347 dTS= 170
+ev# 15400000 GEB_TYPE_GT_MOD29      440Bytes TS=1284486147513 curTS=1284486147301 dTS= 212
+ev# 15450000 GEB_TYPE_GT_MOD29      440Bytes TS=1285349815479 curTS=1285349815195 dTS= 284
+ev# 15500000 GEB_TYPE_DECOMP        464Bytes TS=1286217200619 curTS=1286217200105 dTS= 514
+ev# 15550000 GEB_TYPE_DECOMP        464Bytes TS=1287088531567 curTS=1287088531567 dTS= 0
+ev# 15550000 GEB_TYPE_DECOMP        464Bytes TS=1287088531765 curTS=1287088531567 dTS= 198
+ev# 15600000 GEB_TYPE_DECOMP        464Bytes TS=1287946839585 curTS=1287946839381 dTS= 204
+ev# 15650000 GEB_TYPE_DECOMP        464Bytes TS=1288810065675 curTS=1288810037813 dTS= 27862
+ev# 15700000 GEB_TYPE_DECOMP        464Bytes TS=1289721874763 curTS=1289721874763 dTS= 0
+ev# 15700000 GEB_TYPE_DECOMP        464Bytes TS=1289721874765 curTS=1289721874763 dTS= 2
+ev# 15700000 GEB_TYPE_DECOMP        464Bytes TS=1289721874975 curTS=1289721874763 dTS= 212
+ev# 15750000 GEB_TYPE_DECOMP        464Bytes TS=1290595468807 curTS=1290595468519 dTS= 288
+ev# 15800000 GEB_TYPE_DECOMP        464Bytes TS=1291465415463 curTS=1291465394777 dTS= 20686
+ev# 15850000 GEB_TYPE_DECOMP        464Bytes TS=1292339549187 curTS=1292339542065 dTS= 7122
+ev# 15900000 GEB_TYPE_DECOMP        464Bytes TS=1293210522993 curTS=1293210522899 dTS= 94
+ev# 15900000 GEB_TYPE_DECOMP        464Bytes TS=1293210523293 curTS=1293210522899 dTS= 394
+ev# 15950000 GEB_TYPE_DECOMP        464Bytes TS=1294090644553 curTS=1294090644551 dTS= 2
+ev# 15950000 GEB_TYPE_DECOMP        464Bytes TS=1294090644567 curTS=1294090644551 dTS= 16
+ev# 15950000 GEB_TYPE_DECOMP        464Bytes TS=1294090644569 curTS=1294090644551 dTS= 18
+ev# 15950000 GEB_TYPE_DECOMP        464Bytes TS=1294090644571 curTS=1294090644551 dTS= 20
+ev# 15950000 GEB_TYPE_GT_MOD29      440Bytes TS=1294090718539 curTS=1294090644551 dTS= 73988
+ev# 16000000 GEB_TYPE_DECOMP        464Bytes TS=1294967479813 curTS=1294967479697 dTS= 116
+ev# 16000000 GEB_TYPE_GT_MOD29      440Bytes TS=1294967479841 curTS=1294967479697 dTS= 144
+ev# 16000000 GEB_TYPE_GT_MOD29      440Bytes TS=1294967488571 curTS=1294967479697 dTS= 8874
+ev# 16050000 GEB_TYPE_DECOMP        464Bytes TS=1295840541187 curTS=1295840541181 dTS= 6
+ev# 16050000 GEB_TYPE_DECOMP        464Bytes TS=1295840541205 curTS=1295840541181 dTS= 24
+ev# 16050000 GEB_TYPE_DECOMP        464Bytes TS=1295840541265 curTS=1295840541181 dTS= 84
+ev# 16050000 GEB_TYPE_GT_MOD29      440Bytes TS=1295840541601 curTS=1295840541181 dTS= 420
+ev# 16100000 GEB_TYPE_GT_MOD29      440Bytes TS=1296709309207 curTS=1296709309077 dTS= 130
+ev# 16100000 GEB_TYPE_DECOMP        464Bytes TS=1296709309227 curTS=1296709309077 dTS= 150
+ev# 16150000 GEB_TYPE_DECOMP        464Bytes TS=1297592984939 curTS=1297592984927 dTS= 12
+ev# 16150000 GEB_TYPE_DECOMP        464Bytes TS=1297592985041 curTS=1297592984927 dTS= 114
+ev# 16150000 GEB_TYPE_DECOMP        464Bytes TS=1297592985125 curTS=1297592984927 dTS= 198
+ev# 16200000 GEB_TYPE_GT_MOD29      440Bytes TS=1298489467955 curTS=1298489461693 dTS= 6262
+ev# 16250000 GEB_TYPE_DECOMP        464Bytes TS=1299397484303 curTS=1299397484301 dTS= 2
+ev# 16250000 GEB_TYPE_DECOMP        464Bytes TS=1299397484303 curTS=1299397484301 dTS= 2
+ev# 16250000 GEB_TYPE_DECOMP        464Bytes TS=1299397484305 curTS=1299397484301 dTS= 4
+ev# 16250000 GEB_TYPE_DECOMP        464Bytes TS=1299397484307 curTS=1299397484301 dTS= 6
+ev# 16250000 GEB_TYPE_DECOMP        464Bytes TS=1299397484309 curTS=1299397484301 dTS= 8
+ev# 16250000 GEB_TYPE_DECOMP        464Bytes TS=1299397484501 curTS=1299397484301 dTS= 200
+ev# 16300000 GEB_TYPE_DECOMP        464Bytes TS=1300307374845 curTS=1300307374843 dTS= 2
+ev# 16300000 GEB_TYPE_GT_MOD29      440Bytes TS=1300307375515 curTS=1300307374843 dTS= 672
+ev# 16350000 GEB_TYPE_DECOMP        464Bytes TS=1301211573809 curTS=1301211568723 dTS= 5086
+ev# 16400000 GEB_TYPE_GT_MOD29      440Bytes TS=1302142776123 curTS=1302142776079 dTS= 44
+ev# 16400000 GEB_TYPE_DECOMP        464Bytes TS=1302142833565 curTS=1302142776079 dTS= 57486
+ev# 16450000 GEB_TYPE_DECOMP        464Bytes TS=1303070281461 curTS=1303070281353 dTS= 108
+ev# 16450000 GEB_TYPE_DECOMP        464Bytes TS=1303070281461 curTS=1303070281353 dTS= 108
+ev# 16450000 GEB_TYPE_DECOMP        464Bytes TS=1303070281461 curTS=1303070281353 dTS= 108
+ev# 16450000 GEB_TYPE_DECOMP        464Bytes TS=1303070281463 curTS=1303070281353 dTS= 110
+ev# 16450000 GEB_TYPE_DECOMP        464Bytes TS=1303070281475 curTS=1303070281353 dTS= 122
+ev# 16450000 GEB_TYPE_DECOMP        464Bytes TS=1303070290177 curTS=1303070281353 dTS= 8824
+ev# 16500000 GEB_TYPE_DECOMP        464Bytes TS=1303996846055 curTS=1303996845921 dTS= 134
+ev# 16500000 GEB_TYPE_DECOMP        464Bytes TS=1303996846059 curTS=1303996845921 dTS= 138
+ev# 16500000 GEB_TYPE_DECOMP        464Bytes TS=1303996846219 curTS=1303996845921 dTS= 298
+ev# 16550000 GEB_TYPE_DECOMP        464Bytes TS=1304927011383 curTS=1304927011315 dTS= 68
+ev# 16550000 GEB_TYPE_DECOMP        464Bytes TS=1304927011387 curTS=1304927011315 dTS= 72
+ev# 16550000 GEB_TYPE_DECOMP        464Bytes TS=1304927011387 curTS=1304927011315 dTS= 72
+ev# 16550000 GEB_TYPE_GT_MOD29      440Bytes TS=1304927011595 curTS=1304927011315 dTS= 280
+ev# 16600000 GEB_TYPE_GT_MOD29      440Bytes TS=1305818525637 curTS=1305818525507 dTS= 130
+ev# 16600000 GEB_TYPE_DECOMP        464Bytes TS=1305818525833 curTS=1305818525507 dTS= 326
+ev# 16650000 GEB_TYPE_DECOMP        464Bytes TS=1306698703609 curTS=1306698703609 dTS= 0
+ev# 16650000 GEB_TYPE_GT_MOD29      440Bytes TS=1306698704083 curTS=1306698703609 dTS= 474
+ev# 16700000 GEB_TYPE_DECOMP        464Bytes TS=1307596275571 curTS=1307596275533 dTS= 38
+ev# 16700000 GEB_TYPE_GT_MOD29      440Bytes TS=1307596275883 curTS=1307596275533 dTS= 350
+ev# 16750000 GEB_TYPE_DECOMP        464Bytes TS=1308506494421 curTS=1308506494413 dTS= 8
+ev# 16750000 GEB_TYPE_DECOMP        464Bytes TS=1308506549407 curTS=1308506494413 dTS= 54994
+ev# 16800000 GEB_TYPE_DECOMP        464Bytes TS=1309419285187 curTS=1309419267725 dTS= 17462
+ev# 16850000 GEB_TYPE_GT_MOD29      440Bytes TS=1310397061067 curTS=1310397060699 dTS= 368
+ev# 16900000 GEB_TYPE_DECOMP        464Bytes TS=1311353653475 curTS=1311353653353 dTS= 122
+ev# 16900000 GEB_TYPE_DECOMP        464Bytes TS=1311353653479 curTS=1311353653353 dTS= 126
+ev# 16900000 GEB_TYPE_DECOMP        464Bytes TS=1311353653511 curTS=1311353653353 dTS= 158
+ev# 16950000 GEB_TYPE_GT_MOD29      440Bytes TS=1312279883361 curTS=1312279858361 dTS= 25000
+ev# 17000000 GEB_TYPE_GT_MOD29      440Bytes TS=1313192447353 curTS=1313192446891 dTS= 462
+ev# 17050000 GEB_TYPE_DECOMP        464Bytes TS=1314099693451 curTS=1314099693447 dTS= 4
+ev# 17050000 GEB_TYPE_DECOMP        464Bytes TS=1314099693453 curTS=1314099693447 dTS= 6
+ev# 17050000 GEB_TYPE_DECOMP        464Bytes TS=1314099693763 curTS=1314099693447 dTS= 316
+ev# 17100000 GEB_TYPE_GT_MOD29      440Bytes TS=1314990888029 curTS=1314990887847 dTS= 182
+ev# 17150000 GEB_TYPE_DECOMP        464Bytes TS=1315883062563 curTS=1315883062417 dTS= 146
+ev# 17150000 GEB_TYPE_DECOMP        464Bytes TS=1315883139859 curTS=1315883062417 dTS= 77442
+ev# 17200000 GEB_TYPE_DECOMP        464Bytes TS=1316786312579 curTS=1316786312165 dTS= 414
+ev# 17250000 GEB_TYPE_DECOMP        464Bytes TS=1317695483671 curTS=1317695483273 dTS= 398
+ev# 17300000 GEB_TYPE_GT_MOD29      440Bytes TS=1318623074569 curTS=1318623074531 dTS= 38
+ev# 17300000 GEB_TYPE_DECOMP        464Bytes TS=1318623074729 curTS=1318623074531 dTS= 198
+ev# 17350000 GEB_TYPE_DECOMP        464Bytes TS=1319547647225 curTS=1319547647225 dTS= 0
+ev# 17350000 GEB_TYPE_DECOMP        464Bytes TS=1319547664429 curTS=1319547647225 dTS= 17204
+ev# 17400000 GEB_TYPE_DECOMP        464Bytes TS=1320479044369 curTS=1320479044369 dTS= 0
+ev# 17400000 GEB_TYPE_DECOMP        464Bytes TS=1320479044601 curTS=1320479044369 dTS= 232
+ev# 17450000 GEB_TYPE_DECOMP        464Bytes TS=1321406100531 curTS=1321406100463 dTS= 68
+ev# 17450000 GEB_TYPE_DECOMP        464Bytes TS=1321406176211 curTS=1321406100463 dTS= 75748
+ev# 17500000 GEB_TYPE_DECOMP        464Bytes TS=1322332442541 curTS=1322332442301 dTS= 240
+ev# 17550000 GEB_TYPE_DECOMP        464Bytes TS=1323263353625 curTS=1323263353125 dTS= 500
+ev# 17600000 GEB_TYPE_DECOMP        464Bytes TS=1324194635363 curTS=1324194635197 dTS= 166
+ev# 17650000 GEB_TYPE_DECOMP        464Bytes TS=1325113359231 curTS=1325113295541 dTS= 63690
+ev# 17700000 GEB_TYPE_DECOMP        464Bytes TS=1326064550021 curTS=1326064549859 dTS= 162
+ev# 17750000 GEB_TYPE_DECOMP        464Bytes TS=1327005547355 curTS=1327005547235 dTS= 120
+ev# 17750000 GEB_TYPE_DECOMP        464Bytes TS=1327005547357 curTS=1327005547235 dTS= 122
+ev# 17750000 GEB_TYPE_DECOMP        464Bytes TS=1327005547357 curTS=1327005547235 dTS= 122
+ev# 17750000 GEB_TYPE_DECOMP        464Bytes TS=1327005547615 curTS=1327005547235 dTS= 380
+ev# 17800000 GEB_TYPE_DECOMP        464Bytes TS=1327936925693 curTS=1327936925685 dTS= 8
+ev# 17800000 GEB_TYPE_GT_MOD29      440Bytes TS=1327936925951 curTS=1327936925685 dTS= 266
+ev# 17850000 GEB_TYPE_DECOMP        464Bytes TS=1328847014741 curTS=1328847014661 dTS= 80
+ev# 17850000 GEB_TYPE_DECOMP        464Bytes TS=1328847014741 curTS=1328847014661 dTS= 80
+ev# 17850000 GEB_TYPE_DECOMP        464Bytes TS=1328847014755 curTS=1328847014661 dTS= 94
+ev# 17850000 GEB_TYPE_DECOMP        464Bytes TS=1328847014823 curTS=1328847014661 dTS= 162
+ev# 17900000 GEB_TYPE_DECOMP        464Bytes TS=1329744389883 curTS=1329744389467 dTS= 416
+ev# 17950000 GEB_TYPE_GT_MOD29      440Bytes TS=1330639105057 curTS=1330639104483 dTS= 574
+batflag:: TS<Pars.curTS, reset it at event # 17968580
+TS=1327236300019, Pars.curTS=1330979637947, DT=-3743337928
+new Pars.curTS=1327236300019
+we have read 15738110236 bytes so far
+ev# 18000000 GEB_TYPE_GT_MOD29      440Bytes TS=1331540180949 curTS=1331540167345 dTS= 13604
+ev# 18050000 GEB_TYPE_GT_MOD29      440Bytes TS=1332448244141 curTS=1332448243649 dTS= 492
+ev# 18100000 GEB_TYPE_GT_MOD29      440Bytes TS=1333329279549 curTS=1333329271845 dTS= 7704
+ev# 18150000 GEB_TYPE_DECOMP        464Bytes TS=1334217929823 curTS=1334217929821 dTS= 2
+ev# 18150000 GEB_TYPE_GT_MOD29      440Bytes TS=1334217929935 curTS=1334217929821 dTS= 114
+ev# 18150000 GEB_TYPE_DECOMP        464Bytes TS=1334217929945 curTS=1334217929821 dTS= 124
+ev# 18150000 GEB_TYPE_DECOMP        464Bytes TS=1334217929953 curTS=1334217929821 dTS= 132
+ev# 18150000 GEB_TYPE_DECOMP        464Bytes TS=1334217937425 curTS=1334217929821 dTS= 7604
+ev# 18200000 GEB_TYPE_DECOMP        464Bytes TS=1335116026775 curTS=1335115934947 dTS= 91828
+ev# 18250000 GEB_TYPE_GT_MOD29      440Bytes TS=1336016195563 curTS=1336016194929 dTS= 634
+ev# 18300000 GEB_TYPE_DECOMP        464Bytes TS=1336900630643 curTS=1336900630525 dTS= 118
+ev# 18300000 GEB_TYPE_DECOMP        464Bytes TS=1336900630673 curTS=1336900630525 dTS= 148
+ev# 18300000 GEB_TYPE_GT_MOD29      440Bytes TS=1336900637047 curTS=1336900630525 dTS= 6522
+ev# 18350000 GEB_TYPE_DECOMP        464Bytes TS=1337795706121 curTS=1337795706121 dTS= 0
+ev# 18350000 GEB_TYPE_GT_MOD29      440Bytes TS=1337795706403 curTS=1337795706121 dTS= 282
+ev# 18400000 GEB_TYPE_GT_MOD29      440Bytes TS=1338707003941 curTS=1338707003819 dTS= 122
+ev# 18400000 GEB_TYPE_DECOMP        464Bytes TS=1338707004091 curTS=1338707003819 dTS= 272
+ev# 18450000 GEB_TYPE_DECOMP        464Bytes TS=1339601760473 curTS=1339601760467 dTS= 6
+ev# 18450000 GEB_TYPE_DECOMP        464Bytes TS=1339601760967 curTS=1339601760467 dTS= 500
+ev# 18500000 GEB_TYPE_GT_MOD29      440Bytes TS=1340487510211 curTS=1340487509883 dTS= 328
+ev# 18550000 GEB_TYPE_DECOMP        464Bytes TS=1341370418759 curTS=1341370403231 dTS= 15528
+ev# 18600000 GEB_TYPE_DECOMP        464Bytes TS=1342271565633 curTS=1342271532781 dTS= 32852
+ev# 18650000 GEB_TYPE_DECOMP        464Bytes TS=1343177477647 curTS=1343177477543 dTS= 104
+ev# 18650000 GEB_TYPE_DECOMP        464Bytes TS=1343177492195 curTS=1343177477543 dTS= 14652
+ev# 18700000 GEB_TYPE_DECOMP        464Bytes TS=1344081390907 curTS=1344081390905 dTS= 2
+ev# 18700000 GEB_TYPE_GT_MOD29      440Bytes TS=1344081458729 curTS=1344081390905 dTS= 67824
+ev# 18750000 GEB_TYPE_DECOMP        464Bytes TS=1344961769805 curTS=1344961769803 dTS= 2
+ev# 18750000 GEB_TYPE_DECOMP        464Bytes TS=1344961769807 curTS=1344961769803 dTS= 4
+ev# 18750000 GEB_TYPE_DECOMP        464Bytes TS=1344961769807 curTS=1344961769803 dTS= 4
+ev# 18750000 GEB_TYPE_DECOMP        464Bytes TS=1344961769809 curTS=1344961769803 dTS= 6
+ev# 18750000 GEB_TYPE_DECOMP        464Bytes TS=1344961826091 curTS=1344961769803 dTS= 56288
+ev# 18800000 GEB_TYPE_DECOMP        464Bytes TS=1345849725265 curTS=1345849724855 dTS= 410
+ev# 18850000 GEB_TYPE_DECOMP        464Bytes TS=1346738108751 curTS=1346738094821 dTS= 13930
+ev# 18900000 GEB_TYPE_DECOMP        464Bytes TS=1347641201575 curTS=1347641201513 dTS= 62
+ev# 18900000 GEB_TYPE_DECOMP        464Bytes TS=1347641211021 curTS=1347641201513 dTS= 9508
+ev# 18950000 GEB_TYPE_DECOMP        464Bytes TS=1348540993337 curTS=1348540934307 dTS= 59030
+ev# 19000000 GEB_TYPE_DECOMP        464Bytes TS=1349434708367 curTS=1349434655445 dTS= 52922
+ev# 19050000 GEB_TYPE_DECOMP        464Bytes TS=1350357060875 curTS=1350357055159 dTS= 5716
+ev# 19100000 GEB_TYPE_DECOMP        464Bytes TS=1351269752161 curTS=1351269752021 dTS= 140
+ev# 19100000 GEB_TYPE_DECOMP        464Bytes TS=1351269752165 curTS=1351269752021 dTS= 144
+ev# 19100000 GEB_TYPE_GT_MOD29      440Bytes TS=1351269752501 curTS=1351269752021 dTS= 480
+ev# 19150000 GEB_TYPE_DECOMP        464Bytes TS=1352172983917 curTS=1352172983907 dTS= 10
+ev# 19150000 GEB_TYPE_DECOMP        464Bytes TS=1352172997865 curTS=1352172983907 dTS= 13958
+ev# 19200000 GEB_TYPE_DECOMP        464Bytes TS=1353076664105 curTS=1353076664101 dTS= 4
+ev# 19200000 GEB_TYPE_DECOMP        464Bytes TS=1353076664107 curTS=1353076664101 dTS= 6
+ev# 19200000 GEB_TYPE_DECOMP        464Bytes TS=1353076664129 curTS=1353076664101 dTS= 28
+ev# 19200000 GEB_TYPE_DECOMP        464Bytes TS=1353076664133 curTS=1353076664101 dTS= 32
+ev# 19200000 GEB_TYPE_GT_MOD29      440Bytes TS=1353076722725 curTS=1353076664101 dTS= 58624
+ev# 19250000 GEB_TYPE_GT_MOD29      440Bytes TS=1353965448949 curTS=1353965448537 dTS= 412
+ev# 19300000 GEB_TYPE_GT_MOD29      440Bytes TS=1354843811077 curTS=1354843810371 dTS= 706
+ev# 19350000 GEB_TYPE_DECOMP        464Bytes TS=1355722923753 curTS=1355722923743 dTS= 10
+ev# 19350000 GEB_TYPE_GT_MOD29      440Bytes TS=1355722923893 curTS=1355722923743 dTS= 150
+ev# 19400000 GEB_TYPE_DECOMP        464Bytes TS=1356590715303 curTS=1356590715159 dTS= 144
+ev# 19400000 GEB_TYPE_GT_MOD29      440Bytes TS=1356590717875 curTS=1356590715159 dTS= 2716
+ev# 19450000 GEB_TYPE_DECOMP        464Bytes TS=1357471390073 curTS=1357471390073 dTS= 0
+ev# 19450000 GEB_TYPE_DECOMP        464Bytes TS=1357471434225 curTS=1357471390073 dTS= 44152
+ev# 19500000 GEB_TYPE_DECOMP        464Bytes TS=1358333553487 curTS=1358333462249 dTS= 91238
+ev# 19550000 GEB_TYPE_DECOMP        464Bytes TS=1359193803351 curTS=1359193642047 dTS= 161304
+ev# 19600000 GEB_TYPE_GT_MOD29      440Bytes TS=1360051869709 curTS=1360051869609 dTS= 100
+ev# 19600000 GEB_TYPE_DECOMP        464Bytes TS=1360051869725 curTS=1360051869609 dTS= 116
+ev# 19600000 GEB_TYPE_DECOMP        464Bytes TS=1360051869855 curTS=1360051869609 dTS= 246
+batflag:: TS<Pars.curTS, reset it at event # 19601180
+TS=1360035864137, Pars.curTS=1360070693571, DT=-34829434
+new Pars.curTS=1360035864137
+we have read 17181708452 bytes so far
+failed to read 16 bytes for header, got 0
+ GEBGetEv returned 1
+we have read 17183640588 bytes; CurEvNo=19604195
+
+Sorting is done
+attempting to save root or map file
+
+
+
+mean observed polar and azimuth angles
+for the detectors we saw (module,crystal)
+
+------------------------------------------
+mean pol/azi angle for detector  56 are   96.72/ 119.51
+mean pol/azi angle for detector  57 are  100.41/ 138.27
+mean pol/azi angle for detector  58 are   83.29/ 132.65
+mean pol/azi angle for detector  59 are   79.67/ 114.04
+mean pol/azi angle for detector  60 are   87.21/ 152.69
+mean pol/azi angle for detector  61 are  105.24/ 157.65
+mean pol/azi angle for detector  62 are   92.97/ 168.63
+mean pol/azi angle for detector  63 are   74.08/ 165.94
+mean pol/azi angle for detector  68 are   87.18/-134.94
+mean pol/azi angle for detector  69 are  105.29/-130.01
+mean pol/azi angle for detector  70 are   92.90/-116.92
+mean pol/azi angle for detector  71 are   74.18/-121.82
+mean pol/azi angle for detector  76 are   87.33/ -63.18
+mean pol/azi angle for detector  77 are  105.27/ -58.09
+mean pol/azi angle for detector  78 are   92.98/ -44.99
+mean pol/azi angle for detector  79 are   74.31/ -49.84
+mean pol/azi angle for detector  84 are  112.28/  33.63
+mean pol/azi angle for detector  85 are  125.17/  17.37
+mean pol/azi angle for detector  86 are  130.63/  39.22
+mean pol/azi angle for detector  87 are  115.90/  52.96
+mean pol/azi angle for detector  88 are  112.40/ 105.50
+mean pol/azi angle for detector  89 are  124.93/  89.34
+mean pol/azi angle for detector  90 are    -nan/   -nan
+mean pol/azi angle for detector  91 are  115.77/ 125.01
+mean pol/azi angle for detector  96 are  112.61/-110.67
+mean pol/azi angle for detector  97 are  124.81/-126.63
+mean pol/azi angle for detector  98 are  130.90/-104.93
+mean pol/azi angle for detector  99 are  115.84/ -91.00
+mean pol/azi angle for detector 100 are  112.40/ -38.57
+mean pol/azi angle for detector 101 are  124.72/ -55.03
+mean pol/azi angle for detector 102 are  130.66/ -32.99
+mean pol/azi angle for detector 103 are  115.78/ -19.08
+mean pol/azi angle for detector 104 are  144.43/  88.25
+mean pol/azi angle for detector 105 are  132.69/  65.85
+mean pol/azi angle for detector 106 are  148.86/  53.88
+mean pol/azi angle for detector 107 are  162.34/  88.33
+mean pol/azi angle for detector 108 are  144.74/ 160.15
+mean pol/azi angle for detector 109 are  132.70/ 137.99
+mean pol/azi angle for detector 110 are  149.57/ 125.45
+mean pol/azi angle for detector 111 are  162.28/ 111.51
+mean pol/azi angle for detector 116 are  144.41/ -55.86
+mean pol/azi angle for detector 117 are  132.57/ -78.27
+mean pol/azi angle for detector 118 are  148.97/ -90.30
+mean pol/azi angle for detector 119 are  162.43/ -56.03
+we found 44 crystals
+------------------------------------------
+
+minimum pol angle between crystals is  18.65
+compactness =  64.39%, 85 of 264
+module hit statistics
+module  14, crystal 0 was hit    1523480 times
+module  14, crystal 1 was hit    1643680 times
+module  14, crystal 2 was hit    1652620 times
+module  14, crystal 3 was hit    1440095 times
+module  15, crystal 0 was hit    1679119 times
+module  15, crystal 1 was hit    1483975 times
+module  15, crystal 2 was hit    1434190 times
+module  15, crystal 3 was hit    1376024 times
+module  17, crystal 0 was hit    1200660 times
+module  17, crystal 1 was hit    1173131 times
+module  17, crystal 2 was hit    1175047 times
+module  17, crystal 3 was hit    1217540 times
+module  19, crystal 0 was hit    1129070 times
+module  19, crystal 1 was hit    1159315 times
+module  19, crystal 2 was hit    1374580 times
+module  19, crystal 3 was hit    1356740 times
+module  21, crystal 0 was hit    1373914 times
+module  21, crystal 1 was hit    1204088 times
+module  21, crystal 2 was hit    1427751 times
+module  21, crystal 3 was hit    1376728 times
+module  22, crystal 0 was hit    1506925 times
+module  22, crystal 1 was hit    1399504 times
+module  22, crystal 2 was hit    1567015 times
+module  22, crystal 3 was hit    1465388 times
+module  24, crystal 0 was hit    1238869 times
+module  24, crystal 1 was hit    1193045 times
+module  24, crystal 2 was hit    1248452 times
+module  24, crystal 3 was hit    1146032 times
+module  25, crystal 0 was hit    1187530 times
+module  25, crystal 1 was hit    1221755 times
+module  25, crystal 2 was hit    1185072 times
+module  25, crystal 3 was hit    1166957 times
+module  26, crystal 0 was hit    1372388 times
+module  26, crystal 1 was hit    1348279 times
+module  26, crystal 2 was hit    1337355 times
+module  26, crystal 3 was hit    1260759 times
+module  27, crystal 0 was hit    1422597 times
+module  27, crystal 1 was hit    1391795 times
+module  27, crystal 2 was hit    1418287 times
+module  27, crystal 3 was hit    1295449 times
+module  29, crystal 0 was hit    1167232 times
+module  29, crystal 1 was hit    1153669 times
+module  29, crystal 2 was hit    1266084 times
+module  29, crystal 3 was hit    1149036 times
+
+bin_mode2: pad distribution
+__id   0,     25295656, 95.06%
+__id   2,         2895,  0.01%
+__id   3,         7547,  0.03%
+__id   4,         8263,  0.03%
+__id   5,        47465,  0.18%
+__id   6,        75528,  0.28%
+__id 128,      1169968,  4.40%
+__id 133,         2185,  0.01%
+
+bin_mode2 calculated mean CCsum energy to be  764.828 keV
+bin_mode2 calculated mean CCadd energy to be 1000.376 keV
+attempting to close root file...
+Pars.f1->Write();
+Pars.f1->Print();
+TFile: name=/lcrc/project/HELIOS/gretinafma/root_data/run92.root, title=, option=CREATE
+TH1.Print Name  = dtbtev, Entries= 36328131, Total sum= 3.63281e+07
+TH1.Print Name  = T0, Entries= 0, Total sum= 0
+TH1.Print Name  = hitpat, Entries= 25295656, Total sum= 2.52957e+07
+TH1.Print Name  = numHitArray2, Entries= 19604195, Total sum= 1.3121e+07
+TH1.Print Name  = CCmult, Entries= 19604195, Total sum= 1.96042e+07
+TH1.Print Name  = CCsum, Entries= 58509059, Total sum= 2.52952e+07
+TH1.Print Name  = hit2, Entries= 2853097, Total sum= 2.84955e+06
+TH1.Print Name  = hit3, Entries= 1511959, Total sum= 1.5009e+06
+TH1.Print Name  = hit4, Entries= 813322, Total sum= 793982
+TH1.Print Name  = CCsum_nodop, Entries= 58509059, Total sum= 2.52952e+07
+TH1.Print Name  = CCadd, Entries= 19604195, Total sum= 1.29863e+07
+TH1.Print Name  = SEGadd_FPGA, Entries= -2147483648, Total sum= 2.52833e+07
+TH1.Print Name  = SEGadd_PSA, Entries= -2147483648, Total sum= 2.51656e+07
+TH1.Print Name  = SEGsum_FPGA, Entries= 39330197, Total sum= 3.9321e+07
+TH1.Print Name  = SEGsum_PSA, Entries= 58511221, Total sum= 5.80828e+07
+TH1.Print Name  = radius_all, Entries= 58511196, Total sum= 5.85112e+07
+TH1.Print Name  = rate_mode2_min, Entries= 25295655, Total sum= 421594
+TH1.Print Name  = rate_mode2_sec, Entries= 9414271, Total sum= 9.41427e+06
+TH1.Print Name  = rate_mode2_intp, Entries= 25295655, Total sum= 975187
+TH1.Print Name  = cdtbtev, Entries= 3816783, Total sum= 3.81678e+06
+TH1.Print Name  = evsr_all, Entries= 58511196, Total sum= 5.71818e+07
+TH1.Print Name  = SMAP_allhits, Entries= 58511219, Total sum= 5.85112e+07
+TH1.Print Name  = SMAP_allhits_sq, Entries= 58511221, Total sum= 5.85112e+07
+TH1.Print Name  = seghitpat, Entries= 58511221, Total sum= 5.85112e+07
+TH1.Print Name  = CCe, Entries= 58509059, Total sum= 2.52952e+07
+TH1.Print Name  = ggCC, Entries= 48307508, Total sum= 4.22334e+07
+TH1.Print Name  = z_plot, Entries= 58511221, Total sum= 5.84602e+07
+TH1.Print Name  = crystal_hit, Entries= 0, Total sum= 0
+TH1.Print Name  = SegE, Entries= 58497285, Total sum= 5.84973e+07
+TH1.Print Name  = crXcr, Entries= 24155009, Total sum= 2.4155e+07
+******************************************************************************
+*Tree    :tree      : tree                                                   *
+*Entries :  1288427 : Total =       474501524 bytes  File  Size =  206801392 *
+*        :          : Tree compression factor =   2.29                       *
+******************************************************************************
+*Br    0 :runNumber : runNumber/I                                            *
+*Entries :  1288427 : Total  Size=    5157033 bytes  File Size  =      28342 *
+*Baskets :       30 : Basket Size=     715264 bytes  Compression= 181.92     *
+*............................................................................*
+*Br    1 :numHits   : numHits/I                                              *
+*Entries :  1288427 : Total  Size=    5156965 bytes  File Size  =      28280 *
+*Baskets :       30 : Basket Size=     715264 bytes  Compression= 182.32     *
+*............................................................................*
+*Br    2 :left      : left[numHits]/F                                        *
+*Entries :  1288427 : Total  Size=   10315442 bytes  File Size  =    4153603 *
+*Baskets :       74 : Basket Size=    2857984 bytes  Compression=   2.48     *
+*............................................................................*
+*Br    3 :right     : right[numHits]/F                                       *
+*Entries :  1288427 : Total  Size=   10315520 bytes  File Size  =    4153630 *
+*Baskets :       74 : Basket Size=    2857984 bytes  Compression=   2.48     *
+*............................................................................*
+*Br    4 :up        : up[numHits]/F                                          *
+*Entries :  1288427 : Total  Size=   10315286 bytes  File Size  =    4138621 *
+*Baskets :       74 : Basket Size=    2857984 bytes  Compression=   2.49     *
+*............................................................................*
+*Br    5 :down      : down[numHits]/F                                        *
+*Entries :  1288427 : Total  Size=   10315442 bytes  File Size  =    4182430 *
+*Baskets :       74 : Basket Size=    2857984 bytes  Compression=   2.47     *
+*............................................................................*
+*Br    6 :e1        : e1[numHits]/F                                          *
+*Entries :  1288427 : Total  Size=   10315286 bytes  File Size  =    4296455 *
+*Baskets :       74 : Basket Size=    2857984 bytes  Compression=   2.40     *
+*............................................................................*
+*Br    7 :e2        : e2[numHits]/F                                          *
+*Entries :  1288427 : Total  Size=   10315286 bytes  File Size  =    4218652 *
+*Baskets :       74 : Basket Size=    2857984 bytes  Compression=   2.44     *
+*............................................................................*
+*Br    8 :e3        : e3[numHits]/F                                          *
+*Entries :  1288427 : Total  Size=   10315286 bytes  File Size  =    4130961 *
+*Baskets :       74 : Basket Size=    2857984 bytes  Compression=   2.50     *
+*............................................................................*
+*Br    9 :tac       : tac[numHits]/F                                         *
+*Entries :  1288427 : Total  Size=   10315364 bytes  File Size  =    3528688 *
+*Baskets :       74 : Basket Size=    2857984 bytes  Compression=   2.92     *
+*............................................................................*
+*Br   10 :fmaDeltaTime : fmaDeltaTime[numHits]/F                             *
+*Entries :  1288427 : Total  Size=   10316177 bytes  File Size  =    4005109 *
+*Baskets :       75 : Basket Size=    2859008 bytes  Compression=   2.58     *
+*............................................................................*
+*Br   11 :fmaMult   : fmaMult[10]/I                                          *
+*Entries :  1288427 : Total  Size=   51560043 bytes  File Size  =     566690 *
+*Baskets :      231 : Basket Size=    7148544 bytes  Compression=  90.97     *
+*............................................................................*
+*Br   12 :gammaMult : gammaMult/I                                            *
+*Entries :  1288427 : Total  Size=    5157033 bytes  File Size  =     828139 *
+*Baskets :       30 : Basket Size=     715264 bytes  Compression=   6.23     *
+*............................................................................*
+*Br   13 :gammaEnergy : gammaEnergy[gammaMult]/F                             *
+*Entries :  1288427 : Total  Size=   16551174 bytes  File Size  =   12446976 *
+*Baskets :      101 : Basket Size=    3721216 bytes  Compression=   1.33     *
+*............................................................................*
+*Br   14 :gammaTimestamp : gammaTimestamp[gammaMult]/F                       *
+*Entries :  1288427 : Total  Size=   16551489 bytes  File Size  =    5103142 *
+*Baskets :      101 : Basket Size=    3721728 bytes  Compression=   3.24     *
+*............................................................................*
+*Br   15 :deltaTime : deltaTime[gammaMult]/F                                 *
+*Entries :  1288427 : Total  Size=   16550964 bytes  File Size  =    5885452 *
+*Baskets :      101 : Basket Size=    3721216 bytes  Compression=   2.81     *
+*............................................................................*
+*Br   16 :gebMult   : gebMult/I                                              *
+*Entries :  1288427 : Total  Size=    5156965 bytes  File Size  =     841241 *
+*Baskets :       30 : Basket Size=     715264 bytes  Compression=   6.13     *
+*............................................................................*
+*Br   17 :crysType  : crysType[gebMult]/I                                    *
+*Entries :  1288427 : Total  Size=   16883770 bytes  File Size  =    2561596 *
+*Baskets :      103 : Basket Size=    3766784 bytes  Compression=   6.59     *
+*............................................................................*
+*Br   18 :crysId    : crysId[gebMult]/I                                      *
+*Entries :  1288427 : Total  Size=   16883556 bytes  File Size  =    5984398 *
+*Baskets :      103 : Basket Size=    3766272 bytes  Compression=   2.82     *
+*............................................................................*
+*Br   19 :crysNum   : crysNum[gebMult]/I                                     *
+*Entries :  1288427 : Total  Size=   16883663 bytes  File Size  =    4382270 *
+*Baskets :      103 : Basket Size=    3766784 bytes  Compression=   3.85     *
+*............................................................................*
+*Br   20 :crysTot_e : crysTot_e[gebMult]/F                                   *
+*Entries :  1288427 : Total  Size=   16883884 bytes  File Size  =   12535553 *
+*Baskets :      103 : Basket Size=    3766784 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   21 :crysPolAngle : crysPolAngle[gebMult]/F                             *
+*Entries :  1288427 : Total  Size=   16884205 bytes  File Size  =    5457980 *
+*Baskets :      103 : Basket Size=    3766784 bytes  Compression=   3.09     *
+*............................................................................*
+*Br   22 :intMaxX   : intMaxX[gebMult]/F                                     *
+*Entries :  1288427 : Total  Size=   16883670 bytes  File Size  =   12650553 *
+*Baskets :      103 : Basket Size=    3766784 bytes  Compression=   1.33     *
+*............................................................................*
+*Br   23 :intMaxY   : intMaxY[gebMult]/F                                     *
+*Entries :  1288427 : Total  Size=   16883670 bytes  File Size  =   12510689 *
+*Baskets :      103 : Basket Size=    3766784 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   24 :intMaxZ   : intMaxZ[gebMult]/F                                     *
+*Entries :  1288427 : Total  Size=   16883670 bytes  File Size  =   12567097 *
+*Baskets :      103 : Basket Size=    3766784 bytes  Compression=   1.34     *
+*............................................................................*
+*Br   25 :intMaxE   : intMaxE[gebMult]/F                                     *
+*Entries :  1288427 : Total  Size=   16883670 bytes  File Size  =   12521182 *
+*Baskets :      103 : Basket Size=    3766784 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   26 :intMaxSeg : intMaxSeg[gebMult]/I                                   *
+*Entries :  1288427 : Total  Size=   16883877 bytes  File Size  =    5767699 *
+*Baskets :      103 : Basket Size=    3766784 bytes  Compression=   2.93     *
+*............................................................................*
+*Br   27 :intMaxSegE : intMaxSegE[gebMult]/F                                 *
+*Entries :  1288427 : Total  Size=   16883991 bytes  File Size  =   12528710 *
+*Baskets :      103 : Basket Size=    3766784 bytes  Compression=   1.35     *
+*............................................................................*
+*Br   28 :crysTimestamp : crysTimestamp[gebMult]/L                           *
+*Entries :  1288427 : Total  Size=   28608660 bytes  File Size  =   11933880 *
+*Baskets :      154 : Basket Size=    5390336 bytes  Compression=   2.40     *
+*............................................................................*
+*Br   29 :crysTrigtime : crysTrigtime[gebMult]/D                             *
+*Entries :  1288427 : Total  Size=   28608502 bytes  File Size  =   21276537 *
+*Baskets :      154 : Basket Size=    5390336 bytes  Compression=   1.34     *
+*............................................................................*
+*Br   30 :crysT0    : crysT0[gebMult]/F                                      *
+*Entries :  1288427 : Total  Size=   16883563 bytes  File Size  =   11560514 *
+*Baskets :      103 : Basket Size=    3766272 bytes  Compression=   1.46     *
+*............................................................................*
+TH1.Print Name  = eCC_a, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_b, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_c, Entries= 0, Total sum= 0
+TH1.Print Name  = eCC_d, Entries= 2890684, Total sum= 0
+TH1.Print Name  = eSeg, Entries= 0, Total sum= 0
+TH1.Print Name  = mode3_hitpat, Entries= 96717699, Total sum= 0
+TH1.Print Name  = mode3_hitpat_chan, Entries= 96717699, Total sum= 9.67177e+07
+TH1.Print Name  = chan0, Entries= 0, Total sum= 0
+TH1.Print Name  = module, Entries= 96717699, Total sum= 9.67177e+07
+TH1.Print Name  = chan, Entries= 96717699, Total sum= 9.66417e+07
+TH1.Print Name  = l, Entries= 9671772, Total sum= 9.66988e+06
+TH1.Print Name  = r, Entries= 9671775, Total sum= 9.6714e+06
+TH1.Print Name  = up, Entries= 9671769, Total sum= 9.67173e+06
+TH1.Print Name  = down, Entries= 9671770, Total sum= 9.67169e+06
+TH1.Print Name  = sumlr, Entries= 9511274, Total sum= 9.51127e+06
+TH1.Print Name  = sumud, Entries= 9039613, Total sum= 9.03961e+06
+TH1.Print Name  = x, Entries= 9511274, Total sum= 9.51127e+06
+TH1.Print Name  = y, Entries= 9039613, Total sum= 9.03961e+06
+TH1.Print Name  = de1, Entries= 9671772, Total sum= 9.67147e+06
+TH1.Print Name  = de2, Entries= 9671761, Total sum= 9.67176e+06
+TH1.Print Name  = de3, Entries= 9671769, Total sum= 9.65527e+06
+TH1.Print Name  = de12, Entries= 8387703, Total sum= 8.3877e+06
+TH1.Print Name  = etot, Entries= 8387703, Total sum= 8.3877e+06
+TH1.Print Name  = rftof, Entries= 9671766, Total sum= 9.62253e+06
+TH1.Print Name  = lr, Entries= 19604195, Total sum= 1.9602e+07
+TH1.Print Name  = ud, Entries= 19604195, Total sum= 1.96041e+07
+TH1.Print Name  = ede1, Entries= 8387703, Total sum= 8.3877e+06
+TH1.Print Name  = ede1g, Entries= 1204627, Total sum= 1.20455e+06
+TH1.Print Name  = ede2, Entries= 8387703, Total sum= 8.3877e+06
+TH1.Print Name  = ede12, Entries= 8387703, Total sum= 8.3877e+06
+TH1.Print Name  = xde1, Entries= 8387703, Total sum= 8.3877e+06
+TH1.Print Name  = erftof, Entries= 19604195, Total sum= 1.9555e+07
+TH1.Print Name  = erftofg, Entries= 394125, Total sum= 393388
+TH1.Print Name  = sumehi, Entries= 25295656, Total sum= 2.52955e+07
+TH1.Print Name  = tgppac, Entries= 25295656, Total sum= 6.76329e+06
+TH1.Print Name  = tgppacg, Entries= 1204627, Total sum= 1.20463e+06
+TH1.Print Name  = xehi1, Entries= 25295656, Total sum= 2.52955e+07
+TH1.Print Name  = xehi1g, Entries= 1204627, Total sum= 1.20462e+06
+TH1.Print Name  = de1ehi, Entries= 25295656, Total sum= 2.52952e+07
+TH1.Print Name  = de1ehig, Entries= 1204627, Total sum= 1.20454e+06
+TH1.Print Name  = ng, Entries= 19604195, Total sum= 1.96042e+07
+TH1.Print Name  = ehiz1, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz2, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz3, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz4, Entries= 0, Total sum= 0
+TH1.Print Name  = ehiz5, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_dt, Entries= 1365337, Total sum= 1.36534e+06
+TH1.Print Name  = gg, Entries= 2730674, Total sum= 2.69156e+06
+TH1.Print Name  = gg_z1, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z2, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z3, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z4, Entries= 0, Total sum= 0
+TH1.Print Name  = gg_z5, Entries= 0, Total sum= 0
+Pars.f1->Close();
+done saving rootfile "/lcrc/project/HELIOS/gretinafma/root_data/run92.root
+
+
+read 19604195 events; Pars.beta=0.0330; time since last update 8 minutes
+CommandFileName="GEBSort.command"
+
+sorted timestamp range 994506521887-->1360137649193: 365631127306
+that is 3656.3 seconds or 1h0m56s
+^^^^^ any timestamp jumps will upset this accounting
+
+hit statistics per type
+ 1 GEB_TYPE_DECOMP         26609507 ;   7277.69 Hz 
+ 8 GEB_TYPE_GT_MOD29        9718626 ;   2658.04 Hz 
+read a total of              36328133 ; header/payloads
+
+
+nn1=0
+nn2=36328134
+nn3=36328134
+
+nok_validate= 19604195, ntot_validate=19604195; validate fraction 100.00%
+
+bytes read=17183640588, 16387.596691 MB
+
+boniva sancta! ...GEBSort (unexpectedly) did not crash!
+
+ ** GEBSort is done at 

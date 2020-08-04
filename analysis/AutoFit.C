@@ -563,8 +563,8 @@ void fitNGauss(TH1 * hist, int bgEst = 10, TString fitFile = "fit_para.txt"){
 
   nPeaks = energy.size();
 
-  TCanvas *cFitNGauss = new TCanvas("cFitNGauss","Fitting on Ex (fixed width)", 600,600);
-  cFitNGauss->Divide(1,2);
+  TCanvas *cFitNGauss = new TCanvas("cFitNGauss","Fitting on Ex (fixed width)", 1250,800);
+  cFitNGauss->Divide(1,3);
   if(! cFitNGauss->GetShowEventStatus() ) cFitNGauss->ToggleEventStatus();
 
   gStyle->SetOptStat("neiou");
@@ -591,7 +591,7 @@ void fitNGauss(TH1 * hist, int bgEst = 10, TString fitFile = "fit_para.txt"){
   gStyle->SetOptFit(0);
   cFitNGauss->cd(2)->SetGrid();
   cFitNGauss->cd(2);
-  printf("============= subtracting the linear background...\n");
+  printf("============= subtracting the background...\n");
   specS->Sumw2();
   specS->Add(h1, -1.);
   specS->Draw("hist");
@@ -610,6 +610,9 @@ void fitNGauss(TH1 * hist, int bgEst = 10, TString fitFile = "fit_para.txt"){
   TF1 * fit = new TF1("fit", nGauss, xMin, xMax, 3* nPeaks );
   fit->SetLineWidth(3);
   fit->SetLineColor(1);
+  fit->SetFillStyle(1001);
+  fit->SetFillColor(kGray+2);
+  fit->SetFillColorAlpha(kGray+2,0.5);
   fit->SetNpx(1000);
   fit->SetParameters(para);
 
@@ -650,7 +653,7 @@ void fitNGauss(TH1 * hist, int bgEst = 10, TString fitFile = "fit_para.txt"){
     gSigmaEst->RemovePoint(iBin);
   }
   double sigma2 = TMath::Power(gSigmaEst->GetRMS(2),2);
-  printf("\n ==== Historgam : %s, FitMethod: fitNGauss, BG = %2d \n", hist->GetName(), bgEst);
+  printf("\n ==== Histogram : %s, FitMethod: fitNGauss, BG = %2d \n", hist->GetName(), bgEst);
   printf(" ==== Chi-Sq : %f , NDF : %d, BG-Sigma2 : %f \n", chisquare, ndf, sigma2);
   printf(" ============= Fit Result: reduced Chi-squared = %f\n", chisquare/ndf/sigma2);
 
@@ -668,7 +671,6 @@ void fitNGauss(TH1 * hist, int bgEst = 10, TString fitFile = "fit_para.txt"){
             paraA[3*i+2], paraE[3*i+2]);
   }
   printf("\n");
-
 
   //draw the indivual fit
   specS->Draw("hist");
@@ -689,6 +691,14 @@ void fitNGauss(TH1 * hist, int bgEst = 10, TString fitFile = "fit_para.txt"){
 
   specS->Draw("hist same");
   //specS->Draw("E same");
+
+  //CRH - get difference spectrum and display, try ->ADD(fit,-1) first
+  TH1F * specD = (TH1F*) specS->Clone();//should
+  specD->Add(fit,-1);
+  cFitNGauss->cd(3);
+  specD->Draw("hist");
+  // fit->Draw("same");
+  // specD->Draw("hist same");
 
   cFitNGauss->Update();
 }
