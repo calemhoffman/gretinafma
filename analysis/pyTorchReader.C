@@ -1,26 +1,26 @@
 
 ifstream inFile;
-Float_t e0[10000000];
-Float_t e1[10000000];
-Float_t e2[10000000];
-Float_t e3[10000000];
-Float_t e4[10000000];
-Float_t e5[10000000];
-Float_t e6[10000000];
-Float_t x[10000000];
-Float_t m[10000000];
-Float_t dt[10000000];
-Float_t ge[10000000];
-Float_t ga[10000000];
-Float_t gid[10000000];
-Float_t glabel[10000000];
-Int_t gmult[10000000];
-Float_t mlreturn[10000000];
-Float_t cre[10000000];
-Float_t ix[10000000];
-Float_t iy[10000000];
-Float_t iz[10000000];
-Int_t event[10000000];
+Float_t e0[50000000];
+Float_t e1[50000000];
+Float_t e2[50000000];
+Float_t e3[50000000];
+Float_t e4[50000000];
+Float_t e5[50000000];
+Float_t e6[50000000];
+Float_t x[50000000];
+Float_t m[50000000];
+Float_t dt[50000000];
+Float_t ge[50000000];
+Float_t ga[50000000];
+Float_t gid[50000000];
+Float_t glabel[50000000];
+Int_t gmult[50000000];
+Float_t mlreturn[50000000];
+Float_t cre[50000000];
+Float_t ix[50000000];
+Float_t iy[50000000];
+Float_t iz[50000000];
+Int_t event[50000000];
 Int_t number = 0;
 
 #define TRAIN 0 //1 for training to spit out ml stuff

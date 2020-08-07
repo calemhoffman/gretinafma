@@ -220,7 +220,7 @@ void gamPyTorch(void) {
 
 
   //Pull the TTrees of interest
-  fileName.Form("gamTreeNew.root");
+  fileName.Form("gamTreeLCRC.root");
   gamFileIn = new TFile(fileName);
   gDirectory->ls();
 
@@ -265,7 +265,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeNew.root");
+  fileName.Form("pyTreeLCRC.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -400,9 +400,9 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
       //&& cut_mx_good->IsInside(mass[gebMultNum],x)
       )
       {//e1e3 && x && mass
-        if ( //(cut_dtge_Skin1->IsInside(genergy[gebMultNum],dtime[gebMultNum]))
+        if ( (cut_dtge_Ave->IsInside(genergy[gebMultNum],dtime[gebMultNum]))
         //|| (cut_dtge_Skin2->IsInside(genergy[gebMultNum],dtime[gebMultNum]))
-        (dtime[gebMultNum]>60 && dtime[gebMultNum]<110)
+        //(dtime[gebMultNum]>60 && dtime[gebMultNum]<110)
         )
         {//dtime
           isGoodEvent = 1;
