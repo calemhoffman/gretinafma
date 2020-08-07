@@ -30,7 +30,7 @@
 
 #define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
-#define TRAIN 0 //0 no, 1 yes
+#define TRAIN 1 //0 no, 1 yes
 
 TFile *gamFileIn;
 TFile *gamFileOut;
@@ -112,6 +112,7 @@ TCutG *cut_e1e3_scan15;
 TCutG *cut_e1e3_scan25;
 TCutG *cut_e1e3_ml;
 TCutG *cut_e1e3_NEW;
+TCutG *cut_e1e2_NEW;
 TCutG *cut_e2e3_NEW;
 TCutG *cut_e1e3_Skin;
 TCutG *cut_e1e3_Skinniest;
@@ -140,6 +141,7 @@ void gamPyTorch(void) {
   cut_e1e3_scan25 = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_scan25");
   cut_e1e3_ml = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_ml");
   cut_e1e3_NEW = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_NEW");
+  cut_e1e2_NEW = (TCutG *) gDirectory->FindObjectAny("cut_e1e2_NEW");
   cut_e2e3_NEW = (TCutG *) gDirectory->FindObjectAny("cut_e2e3_NEW");
   cut_e1e3_Ave = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Ave");
   cut_e1e3_Skin = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skin");
@@ -265,7 +267,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeLCRC.root");
+  fileName.Form("pyTreeNewU_train.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -392,6 +394,8 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
         mass[gebMultNum] = ((e[0]+e[2])*t*t)/1.0e4;
       } else {mass[gebMultNum] = 0;}
       if ( (cut_e1e3_NEW->IsInside(e[2],e[0]))
+      &&
+      (cut_e1e2_NEW->IsInside(e[1],e[0]))
       &&
       (x>-1000&&x<1000)
       &&
@@ -548,9 +552,9 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
           } else if (TRAIN==1) {
             if (
             ( (glabel==1) /* || (glabel==3) */)
-            || ( (glabel==2) && ((cl38Counter%10)==0) )
-            || ( (glabel==3) && ((p33Counter%2)==0) )
-            || ( (glabel==4) && ((taCounter%2)==0) ) )
+            || ( (glabel==2) && ((cl38Counter%3)==0) )
+            || ( (glabel==3) && ((p33Counter%1)==0) )
+            || ( (glabel==4) && ((taCounter%3)==0) ) )
             {
               pytree->Fill();
               // if (ge>2000) {
