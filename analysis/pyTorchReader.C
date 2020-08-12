@@ -30,7 +30,9 @@ TTree *pytree;
 TH1F *hg[5];
 TH2F *hgg[5];
 
-Float_t mlCutMin[5] = {0.25,0.3,0.6,0.81,0.875};//five cuts for AveFat
+Float_t mlCutMin[5] = {0.35,0.38,0.4,0.5,0.8};//New for NewV
+//Float_t mlCutMin[5] = {0.25,0.3,0.6,0.81,0.875};//five cuts for AveFat
+
 //old 0.25,0.5,0.7,0.81,0.875
 //Float_t mlCutMin[5] = {0.22,0.25,0.6,0.765,0.805};//five cuts for AveSkin
 //Float_t mlCutMin[5] = {0.0,0.2,0.4,0.6,0.8};//five cuts for base

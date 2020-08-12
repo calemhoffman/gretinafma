@@ -1,6 +1,7 @@
 {
   TCanvas *cc = new TCanvas("cc","cc",1200,700);
-  TFile f("pyTorchOutAverageFatQb.root");
+  TFile f("pyTorchOutNewV.root");
+  //TFile f("pyTorchOutAverageFatQb.root");
 //TFile f("pyTorchOutAverageFatF.root");
 //TFile f("pyTorchOutAverageSkinK.root");
 //TFile f("pyTorchOutAverageFatF_base.root");
@@ -46,8 +47,9 @@ Float_t gates[100][3] =  //e, low, high
 }; //end gates
 Int_t coin = 31;//number of hc's
 Int_t sums = 1; //number of summed spectra
-Int_t hggID =0;//which hgg 0.25,0.3,0.6,0.81,0.875
-Int_t mlval=25;
+Int_t hggID =2;//which hgg 0.25,0.3,0.6,0.81,0.875
+//0.35,0.38,0.4,0.5,0.8
+Int_t mlval=38;
 
 for (Int_t i=0;i<5;i++) {
   //get hists

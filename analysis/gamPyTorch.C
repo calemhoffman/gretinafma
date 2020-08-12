@@ -121,6 +121,7 @@ TCutG *cut_dtge_feb10;
 TCutG *cut_dtge_Ave;
 TCutG *cut_mx_test,*cut_mg_good;
 TCutG *cut_mx_good;
+TCutG *cut_mx_NEW;
 TCutG *cut_e1e3_Ave;
 TCutG *cut_dtge_Skin1;
 TCutG *cut_dtge_Skin2;
@@ -148,6 +149,7 @@ void gamPyTorch(void) {
   cut_e1e3_Skinniest = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skinniest");
   cut_e1e3_Skinnier = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skinnier");
   cut_mx_test = (TCutG *) gDirectory->FindObjectAny("cut_mx_test");
+  cut_mx_NEW = (TCutG *) gDirectory->FindObjectAny("cut_mx_NEW");
   cut_mg_good = (TCutG *) gDirectory->FindObjectAny("cut_mg_good");
   cut_mx_good = (TCutG *) gDirectory->FindObjectAny("cut_mx_good");
   for (Int_t i=0;i<5;i++)
@@ -267,7 +269,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeNewU_train.root");
+  fileName.Form("pyTreeNewV_train.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -400,6 +402,8 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
       (x>-1000&&x<1000)
       &&
       (e[1]>200)
+      &&
+      (mass[gebMultNum]>800&&mass[gebMultNum<2500])
       //&& cut_mg_good->IsInside(mass[gebMultNum],gAddBack[gebMultNum])
       //&& cut_mx_good->IsInside(mass[gebMultNum],x)
       )
@@ -512,60 +516,63 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
       glabel = 0;
       m = mass[i];
       dt = (Float_t)dtime[i];
-      if ( (gAddBack[i]>1288.5 && gAddBack[i]<1297.5)
-        || (gAddBack[i]>1531 && gAddBack[i]<1539)
-        || (gAddBack[i]>847 && gAddBack[i]<851)
-        || (gAddBack[i]>382 && gAddBack[i]<385) ) {
-        gid = 1;
-        glabel = 1;
-        s38Counter++;
-      } else if ( //(gAddBack[i]>290 && gAddBack[i]<294)
-         //||
-         (gAddBack[i]>635 && gAddBack[i]<641)
-        || (gAddBack[i]>1188 && gAddBack[i]<1194)
-        || (gAddBack[i]>2040 && gAddBack[i]<2048)
-        || (gAddBack[i]>2269 && gAddBack[i]<2282)
-        || (gAddBack[i]>2966 && gAddBack[i]<2982)
-        || (gAddBack[i]>3136 && gAddBack[i]<3151) ) {
-          gid = 0;
-          glabel = 2;
-          cl38Counter++;
-      } else if ( (gAddBack[i]>1841.5 && gAddBack[i]<1852)
-        || (gAddBack[i]>1426 && gAddBack[i]<1434)
-        || (gAddBack[i]>2372 && gAddBack[i]<2383) ) {
-          gid = 0;
-          glabel = 3;
-          p33Counter++;
-      } else if ( (gAddBack[i]>136 && gAddBack[i]<142)
-    /* || (gAddBack[i]>167 && gAddBack[i]<173) cl?? */ ) {
-          gid = 0;
-          glabel = 4;
-          taCounter++;
-      }
-      if (m!=0 && (cre>0&&ge<6000) /*&& (ga>65.0 && ga<175.0)*/) {
-        if (gid>=trainVal) {
-          if (TRAIN==0) {
-            pytree->Fill();
-            if (pyTreeFill<100)
-            printf("i: %d ge: %f, cre: %f\n",i,ge,cre);//
-            pyTreeFill++;
-          } else if (TRAIN==1) {
-            if (
-            ( (glabel==1) /* || (glabel==3) */)
-            || ( (glabel==2) && ((cl38Counter%3)==0) )
-            || ( (glabel==3) && ((p33Counter%1)==0) )
-            || ( (glabel==4) && ((taCounter%3)==0) ) )
-            {
+      if (cut_dtge_Ave->IsInside(ge,dt)) {
+
+        if ( (gAddBack[i]>1288.5 && gAddBack[i]<1297.5)
+          || (gAddBack[i]>1531 && gAddBack[i]<1539)
+          || (gAddBack[i]>847 && gAddBack[i]<851)
+          || (gAddBack[i]>382 && gAddBack[i]<385) ) {
+          gid = 1;
+          glabel = 1;
+          s38Counter++;
+        } else if ( //(gAddBack[i]>290 && gAddBack[i]<294)
+           //||
+           (gAddBack[i]>635 && gAddBack[i]<641)
+          || (gAddBack[i]>1188 && gAddBack[i]<1194)
+          || (gAddBack[i]>2040 && gAddBack[i]<2048)
+          || (gAddBack[i]>2269 && gAddBack[i]<2282)
+          || (gAddBack[i]>2966 && gAddBack[i]<2982)
+          || (gAddBack[i]>3136 && gAddBack[i]<3151) ) {
+            gid = 0;
+            glabel = 2;
+            cl38Counter++;
+        } else if ( (gAddBack[i]>1841.5 && gAddBack[i]<1852)
+          || (gAddBack[i]>1426 && gAddBack[i]<1434)
+          || (gAddBack[i]>2372 && gAddBack[i]<2383) ) {
+            gid = 0;
+            glabel = 3;
+            p33Counter++;
+        } else if ( (gAddBack[i]>136 && gAddBack[i]<142)
+      /* || (gAddBack[i]>167 && gAddBack[i]<173) cl?? */ ) {
+            gid = 0;
+            glabel = 4;
+            taCounter++;
+        }
+        if (m!=0 && (cre>0&&ge<6000) /*&& (ga>65.0 && ga<175.0)*/) {
+          if (gid>=trainVal) {
+            if (TRAIN==0) {
               pytree->Fill();
-              // if (ge>2000) {
-              //   for (Int_t highEmult=0;highEmult<3;highEmult++)
-              //     pytree->Fill();
-              // }
-              // if (glabel==1){
-              //   for (Int_t highEmult=0;highEmult<10;highEmult++)
-              //     pytree->Fill();
-              // }
+              if (pyTreeFill<10)
+              printf("i: %d ge: %f, cre: %f\n",i,ge,cre);//
               pyTreeFill++;
+            } else if (TRAIN==1) {
+              if (
+              ( (glabel==1) /* || (glabel==3) */)
+              || ( (glabel==2) && ((cl38Counter%3)==0) )
+              || ( (glabel==3) && ((p33Counter%1)==0) )
+              || ( (glabel==4) && ((taCounter%3)==0) ) )
+              {
+                pytree->Fill();
+                // if (ge>2000) {
+                //   for (Int_t highEmult=0;highEmult<3;highEmult++)
+                //     pytree->Fill();
+                // }
+                // if (glabel==1){
+                //   for (Int_t highEmult=0;highEmult<10;highEmult++)
+                //     pytree->Fill();
+                // }
+                pyTreeFill++;
+              }
             }
           }
         }

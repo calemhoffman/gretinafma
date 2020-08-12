@@ -126,6 +126,7 @@
   gROOT->ProcessLine(".x cuts/cut_mg_good.C"); cut_mg_good;
   gROOT->ProcessLine(".x cuts/cut_mx_good.C"); cut_mx_good;
   gROOT->ProcessLine(".x cuts/cut_mx_tight.C"); cut_mx_tight;
+  gROOT->ProcessLine(".x cuts/cut_mx_NEW.C"); cut_mx_NEW;
 
 
   gROOT->ProcessLine(".x cuts/cut_p33_g1400.C"); cut_p33_g1400;
