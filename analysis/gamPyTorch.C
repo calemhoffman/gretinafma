@@ -30,7 +30,7 @@
 
 #define numRecoilProcess 1 //1-s38, 2-s38+cl38, etc.
 #define RUNLOOP 0
-#define TRAIN 1 //0 no, 1 yes
+#define TRAIN 0 //0 no, 1 yes
 
 TFile *gamFileIn;
 TFile *gamFileOut;
@@ -121,7 +121,10 @@ TCutG *cut_dtge_feb10;
 TCutG *cut_dtge_Ave;
 TCutG *cut_mx_test,*cut_mg_good;
 TCutG *cut_mx_good;
-TCutG *cut_mx_NEW;
+TCutG *cut_mx_fig;
+TCutG *cut_e1e3_fig;
+TCutG *cut_e1e2_fig;
+
 TCutG *cut_e1e3_Ave;
 TCutG *cut_dtge_Skin1;
 TCutG *cut_dtge_Skin2;
@@ -149,7 +152,9 @@ void gamPyTorch(void) {
   cut_e1e3_Skinniest = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skinniest");
   cut_e1e3_Skinnier = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_Skinnier");
   cut_mx_test = (TCutG *) gDirectory->FindObjectAny("cut_mx_test");
-  cut_mx_NEW = (TCutG *) gDirectory->FindObjectAny("cut_mx_NEW");
+  cut_mx_fig = (TCutG *) gDirectory->FindObjectAny("cut_mx_fig");
+  cut_e1e3_fig = (TCutG *) gDirectory->FindObjectAny("cut_e1e3_fig");
+  cut_e1e2_fig = (TCutG *) gDirectory->FindObjectAny("cut_e1e2_fig");
   cut_mg_good = (TCutG *) gDirectory->FindObjectAny("cut_mg_good");
   cut_mx_good = (TCutG *) gDirectory->FindObjectAny("cut_mx_good");
   for (Int_t i=0;i<5;i++)
@@ -269,7 +274,7 @@ void gamPyTorch(void) {
     gtree[nt]->SetBranchAddress("intMaxSegE",intMaxSegE);
   }
 
-  fileName.Form("pyTreeNewV_train.root");
+  fileName.Form("pyTreeNewW.root");
   gamFileOut = new TFile(fileName,"RECREATE");
   gDirectory->ls();
 
@@ -395,15 +400,15 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
       if (t>0&&t<200){
         mass[gebMultNum] = ((e[0]+e[2])*t*t)/1.0e4;
       } else {mass[gebMultNum] = 0;}
-      if ( (cut_e1e3_NEW->IsInside(e[2],e[0]))
+      if ( (cut_e1e3_fig->IsInside(e[2],e[0]))
       &&
-      (cut_e1e2_NEW->IsInside(e[1],e[0]))
+      (cut_e1e2_fig->IsInside(e[1],e[0]))
       &&
       (x>-1000&&x<1000)
       &&
       (e[1]>200)
-      &&
-      (mass[gebMultNum]>800&&mass[gebMultNum<2500])
+      // &&
+      // (mass[gebMultNum]>800&&mass[gebMultNum<2500])
       //&& cut_mg_good->IsInside(mass[gebMultNum],gAddBack[gebMultNum])
       //&& cut_mx_good->IsInside(mass[gebMultNum],x)
       )
@@ -517,7 +522,7 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
       m = mass[i];
       dt = (Float_t)dtime[i];
       if (cut_dtge_Ave->IsInside(ge,dt)) {
-
+        if (cut_mx_fig->IsInside(x,m)) {
         if ( (gAddBack[i]>1288.5 && gAddBack[i]<1297.5)
           || (gAddBack[i]>1531 && gAddBack[i]<1539)
           || (gAddBack[i]>847 && gAddBack[i]<851)
@@ -577,6 +582,7 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
           }
         }
       }
+    }
     }
   }
   isGoodEvent=0;

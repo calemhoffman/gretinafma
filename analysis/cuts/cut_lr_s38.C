@@ -3,8 +3,8 @@
 //========= by ROOT version6.15/01
    
    cutg = new TCutG("cut_lr_s38",10);
-   cutg->SetVarX("hlr");
-   cutg->SetVarY("");
+   cutg->SetVarX("l");
+   cutg->SetVarY("r");
    cutg->SetTitle("cut_lr_s38");
    cutg->SetFillStyle(1000);
    cutg->SetLineColor(51);

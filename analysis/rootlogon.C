@@ -116,7 +116,12 @@
   gROOT->ProcessLine(".x cuts/cut_e1e3_jan0.C"); cut_e1e3_jan0;
   gROOT->ProcessLine(".x cuts/cut_e1e3_ml.C"); cut_e1e3_ml;
   gROOT->ProcessLine(".x cuts/cut_e1e3_NEW.C"); cut_e1e3_NEW;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_NEW.C"); cut_e1e3_NEW;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_fig.C"); cut_e1e3_fig;
+  gROOT->ProcessLine(".x cuts/cut_e1e3_figpy.C"); cut_e1e3_figpy;
   gROOT->ProcessLine(".x cuts/cut_e1e2_NEW.C"); cut_e1e2_NEW;
+  gROOT->ProcessLine(".x cuts/cut_e1e2_fig.C"); cut_e1e2_fig;
+  gROOT->ProcessLine(".x cuts/cut_e1e2_figpy.C"); cut_e1e2_figpy;
   // gROOT->ProcessLine(".x cuts/cut_e2e3_NEW.C"); cut_e2e3_NEW;
   gROOT->ProcessLine(".x cuts/cut_e1e3_Ave.C"); cut_e1e3_Ave;
   gROOT->ProcessLine(".x cuts/cut_e1e3_Skin.C"); cut_e1e3_Skin;
@@ -149,6 +154,9 @@
   gROOT->ProcessLine(".x cuts/all_tof_dtge.C"); all_tof_dtge;
   gROOT->ProcessLine(".x cuts/cut_all_aq.C"); cut_all_aq;
   gROOT->ProcessLine(".x cuts/cut_all_z.C"); cut_all_z;
+  gROOT->ProcessLine(".x cuts/cut_lr_fig.C"); cut_lr_fig;
+  gROOT->ProcessLine(".x cuts/cut_mx_fig.C"); cut_mx_fig;
+  gROOT->ProcessLine(".x cuts/cut_mx_figpy.C"); cut_mx_figpy;
 
   //  TBrowser *b = new TBrowser()
 
