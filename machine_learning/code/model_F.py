@@ -82,7 +82,7 @@ sns.set(style="ticks")
 
 
 class Net(nn.Module):
-    
+
     def __init__(self):
         super().__init__()
         self.fc1 = nn.Linear(11, 40)
@@ -92,7 +92,7 @@ class Net(nn.Module):
         self.prelu = nn.PReLU(1)
         self.out = nn.Linear(20, 1)
         self.out_act = nn.Sigmoid()
-        
+
     def forward(self, input_):
         a1 = self.fc1(input_)
         h1 = self.relu1(a1)
@@ -102,7 +102,7 @@ class Net(nn.Module):
         a3 = self.out(h2)
         y = self.out_act(a3)
         return y
-    
+
 net = Net()
 opt = optim.Adam(net.parameters(), lr=0.001, betas=(0.9, 0.999))
 criterion = nn.BCELoss()
@@ -123,7 +123,7 @@ def train_epoch(model, opt, criterion, batch_size=500):
         #print(y_batch.shape)
         x_batch = Variable(x_batch)
         y_batch = Variable(y_batch)
-        
+
         opt.zero_grad()
         # (1) Forward
         y_hat = net(x_batch)
@@ -133,18 +133,18 @@ def train_epoch(model, opt, criterion, batch_size=500):
             y_round = torch.round(y_hat)
             total += y_batch.size(0)
             correct += (y_round == y_batch).sum().item()
-            
-                
+
+
         # (3) Compute diff
         loss = criterion(y_hat, y_batch)
-        
+
         # (3) Compute gradients
         loss.backward()
-        
+
         # (4) update weights
-        opt.step()        
+        opt.step()
         losses.append(loss.data.numpy())
-    
+
     print('Accuracy of the network on the current batch of data: %f %%' % (
         100 * correct / total))
     return losses
@@ -166,7 +166,7 @@ plt.plot(e_losses)
 #print(net.parameters)
 #print(net.state_dict())
 #uncomment below for real python script save
-torch.save(net, "./model_saves/model_F.pt")
+#torch.save(net, "./model_saves/model_F.pt")
 
 
 # In[ ]:
@@ -202,7 +202,7 @@ fig.show()
 #pull out events from model decision
 result_df = pd.concat([df, df_F], axis=1)
 #dump to csv
-result_df.to_csv("output/pyTreeAverageFatF_train.csv",sep=" ",header=False)
+#result_df.to_csv("output/pyTreeAverageFatF_train.csv",sep=" ",header=False)
 
 
 # In[ ]:
@@ -215,10 +215,10 @@ s38 = result_df[(result_df['A'] > s38_low) & (result_df['A'] < 1)]
 cl38 = result_df[(result_df['A'] < cl38_high) & (result_df['A'] < 1)]
 misc = result_df[(result_df['A'] > cl38_high) & (result_df['A'] < s38_low)]
 
-g1293a = result_df[(result_df['A'] > s38_low) & (result_df['ge'] >1280) 
+g1293a = result_df[(result_df['A'] > s38_low) & (result_df['ge'] >1280)
                    & (result_df['ge'] < 1300)]
 g1293_s38 = g1293a.size/15
-g1293b = result_df[(result_df['A'] < cl38_high) & (result_df['ge'] >1280) 
+g1293b = result_df[(result_df['A'] < cl38_high) & (result_df['ge'] >1280)
                    & (result_df['ge'] < 1300)]
 g1293_cl38 = g1293b.size/15
 g1293c = result_df[(result_df['A'] > cl38_high) & (result_df['A'] < s38_low)
@@ -226,11 +226,11 @@ g1293c = result_df[(result_df['A'] > cl38_high) & (result_df['A'] < s38_low)
 g1293_misc = g1293c.size/15
 
 #print(s38.size/10)
-print("1293 gamma rays for 38S: %d/%d*100.0 = %2.1f %%" 
+print("1293 gamma rays for 38S: %d/%d*100.0 = %2.1f %%"
       % (g1293_s38,g1293_tot,g1293_s38/g1293_tot*100.0))
-print("1293 gamma rays for 38Cl: %d/%d*100.0 = %2.1f %%" 
+print("1293 gamma rays for 38Cl: %d/%d*100.0 = %2.1f %%"
       % (g1293_cl38,g1293_tot,g1293_cl38/g1293_tot*100.0))
-print("1293 gamma rays for Misc: %d/%d*100.0 = %2.1f %%" 
+print("1293 gamma rays for Misc: %d/%d*100.0 = %2.1f %%"
       % (g1293_misc,g1293_tot,g1293_misc/g1293_tot*100.0))
 print("Sum 1293 gamma rays: %d" % (g1293_s38+g1293_cl38+g1293_misc))
 
@@ -252,7 +252,3 @@ fig.show()
 
 
 # In[ ]:
-
-
-
-

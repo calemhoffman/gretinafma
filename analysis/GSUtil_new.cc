@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <math.h>
-
+#include <TROOT.h>
 #include <TFile.h>
 #include <TMapFile.h>
 #include <TH1.h>
@@ -220,12 +220,12 @@ GetSystemType(void)
 
 void
 rdmat(Char_t * fn)
-  /** Read a two-dimensional matrix from a file in to Root. 
+  /** Read a two-dimensional matrix from a file in to Root.
       Example: rdmat("matrix_example")
         will read the following files:
           matrix_example.dm  (contains dimensions, machinetype & datatype)
           matrix_example     (contains data)
-          
+
   **/
 {
   /* declarations */
@@ -266,7 +266,7 @@ rdmat(Char_t * fn)
 
   /* xfer data */
 
-  { 
+  {
     TAxis *x = hist2->GetXaxis();
     TAxis *y = hist2->GetYaxis();
 
@@ -306,7 +306,7 @@ wrmat(Char_t * name)
   ny = hist2->GetNbinsY();
 
   /** allocate memory **/
-  
+
   need_bytes = (nx) * (ny) * sizeof(float);
   FloatMat1 = (float *) malloc(need_bytes);
 
@@ -1204,7 +1204,7 @@ setbeta(float beta)
 
 void
 sett0(float t0)
-{ 
+{
   /* declarations */
 
   char            str[STRLEN];
@@ -1311,29 +1311,29 @@ rdspe( Char_t *dfn, Char_t *rfn)
 {
 
   /* declarations */
-  
+
   int dim=20000,st,i;
   float sp[20000];
   TH1D           *tmppt;
   char   str1[132];
-  
+
   /* read the spectrum */
-  
+
   st=rd_spe(dfn, &dim, sp);
   printf("read spectrum \"%s\" of length %i\n", dfn, dim);
   fflush(stdout);
-  
+
   /* make spectrum */
-  
+
   sprintf(str1, "%s", rfn);
   tmppt = new TH1D(str1, str1, dim, 1, dim);
   printf("Created Object \"%s\", %p\n", str1,tmppt);
-  
+
   /* transfer */
-  
+
   for (i=1;i<dim;i++)
    tmppt->Fill(i,(double)sp[i]);
-  
+
   /* done */
 
   return(0);
@@ -1668,12 +1668,12 @@ gate(Char_t * histname, Char_t * pname, Float_t p1, Float_t w1, Double_t bgf = 1
 
     if (whist != NULL)
       whist->Delete();
-#if(0)      
+#if(0)
     if (gpro != NULL)
       gpro->Delete();
     if (tpro != NULL)
       tpro->Delete();
-#endif      
+#endif
 
   };
 
@@ -2348,7 +2348,7 @@ ealign(Char_t * GenSpNam, Char_t * oldf, Char_t * newf, Double_t kevch, Double_t
       };
     }
   else
-    {  
+    {
     fp = fopen(oldf, "r");
     if (fp == NULL)
     {
@@ -2376,7 +2376,7 @@ ealign(Char_t * GenSpNam, Char_t * oldf, Char_t * newf, Double_t kevch, Double_t
     };
     printf("read %i calibration parameters\n", nn);
     fflush(stdout);
-  
+
     fclose(fp);
 
   };
@@ -2515,9 +2515,9 @@ ealign(Char_t * GenSpNam, Char_t * oldf, Char_t * newf, Double_t kevch, Double_t
 
       gain[i] = (dphi - dplo) / (aphi - aplo);
       off[i] = dphi - gain[i] * aphi;
-      
+
       /* check for reasonable values */
-      
+
       if(std::isnan(gain[i]) || std::isnan(off[i]))
         {
         printf("unreasonable new parameters, set to 0,1 \n");
@@ -2680,40 +2680,40 @@ talign(Char_t * GenSpNam, Char_t * oldf, Char_t * newf, float dpos, int di, int 
     else
       printf("spectrum %s not found\n", str);
     fflush(stdout);
-    
+
     /* zap local spectrum */
-    
+
     for (j=0;j<20000;j++)
       sp[j]=0;
-    
+
     /* transfer time spectrum to local spectrum */
 
     i1=hist1->GetXaxis()->GetFirst();
     i2 = hist1->GetXaxis()->GetLast();
-#if(0)    
+#if(0)
     printf("fetching from %i to %i\n", i1,i2);
-#endif    
+#endif
     for (j=i1; j<i2; j++)
       sp[j]=(float)hist1->GetBinContent(j);
-      
-    /* zap out bottom */
-    
-    for (j=0; j<lo; j++)
-      sp[j]=0;      
 
-#if(1)      
-    /* write raw spectrum out */ 
-    
+    /* zap out bottom */
+
+    for (j=0; j<lo; j++)
+      sp[j]=0;
+
+#if(1)
+    /* write raw spectrum out */
+
     sprintf(str, "t_raw_%3.3i.spe", i);
     wr_spe(str, &i2, sp);
-#endif    
-      
+#endif
+
     /* remove spikes */
-    
+
     if (bp)
       {
        printf("despiking; ");
-       for (j=i1+3;j<(i2-3);j++) 
+       for (j=i1+3;j<(i2-3);j++)
        {
        bg=sp[j-3];
        bg+=sp[j-2];
@@ -2725,22 +2725,22 @@ talign(Char_t * GenSpNam, Char_t * oldf, Char_t * newf, float dpos, int di, int 
          sp[j]=bg;
          /*printf("[%i]", j);*/
          };
-       };  
-    
+       };
+
       /* smooth the spectrum a few time */
-    
+
       for (j=0;j<3;j++)
-        sm3(i2,sp);             
+        sm3(i2,sp);
 
       };
-      
-#if(1)      
-    /* write processed spectrum out */ 
-    
+
+#if(1)
+    /* write processed spectrum out */
+
     sprintf(str, "t_mod_%3.3i.spe", i);
     wr_spe(str, &i2, sp);
-#endif    
-           
+#endif
+
     /* find max channel */
 
     maxch = 0;
@@ -3212,14 +3212,14 @@ void write_ascii(char *hist1_name){
   file = open(fname, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 
   nbins = hist1->GetNbinsX();
-  
+
   for (i=1; i<=nbins; i++){
     sprintf(buffer, "%f %f\n", (double) hist1->GetBinLowEdge(i), (double) hist1->GetBinContent(i));
     write (file, buffer, strlen(buffer));
   }
 
   close(file);
-  
+
 }
 
 /*---------------------------------------------------------------*/

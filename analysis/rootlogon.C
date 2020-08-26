@@ -80,7 +80,7 @@
   /* gROOT->ProcessLine(".x cuts/cut_s38_e1e3.C"); cut_s38_e1e3; */
   /* gROOT->ProcessLine(".x cuts/cut_s38_e1e2.C"); cut_s38_e1e2;  */
   /* gROOT->ProcessLine(".x cuts/cut_s38_e2e3.C"); cut_s38_e2e3; */
-  /* gROOT->ProcessLine(".x cuts/cut_s38_e1x.C"); cut_s38_e1x; */
+  gROOT->ProcessLine(".x cuts/cut_s38_e1x.C"); cut_s38_e1x;
   gROOT->ProcessLine(".x cuts/cut_e1e3_ar38.C"); cut_e1e3_ar38;
   gROOT->ProcessLine(".x cuts/cut_e0x_ar38.C"); cut_e0x_ar38;
   gROOT->ProcessLine(".x cuts/cut_lr_ar38.C"); cut_lr_ar38;

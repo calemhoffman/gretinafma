@@ -525,13 +525,13 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
         if (cut_mx_fig->IsInside(x,m)) {
         if ( (gAddBack[i]>1288.5 && gAddBack[i]<1297.5)
           || (gAddBack[i]>1531 && gAddBack[i]<1539)
-          || (gAddBack[i]>847 && gAddBack[i]<851)
+          //|| (gAddBack[i]>847 && gAddBack[i]<851)
           || (gAddBack[i]>382 && gAddBack[i]<385) ) {
           gid = 1;
           glabel = 1;
           s38Counter++;
-        } else if ( //(gAddBack[i]>290 && gAddBack[i]<294)
-           //||
+        } else if ( (gAddBack[i]>290 && gAddBack[i]<294)
+           ||
            (gAddBack[i]>635 && gAddBack[i]<641)
           || (gAddBack[i]>1188 && gAddBack[i]<1194)
           || (gAddBack[i]>2040 && gAddBack[i]<2048)
@@ -563,9 +563,9 @@ for (Int_t gebMultNum=0; gebMultNum < gebMult; gebMultNum++) {
             } else if (TRAIN==1) {
               if (
               ( (glabel==1) /* || (glabel==3) */)
-              || ( (glabel==2) && ((cl38Counter%3)==0) )
+              || ( (glabel==2) && ((cl38Counter%5)==0) )
               || ( (glabel==3) && ((p33Counter%1)==0) )
-              || ( (glabel==4) && ((taCounter%3)==0) ) )
+              || ( (glabel==4) && ((taCounter%2)==0) ) )
               {
                 pytree->Fill();
                 // if (ge>2000) {
