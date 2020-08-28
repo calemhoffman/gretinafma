@@ -21,7 +21,7 @@ TFile fTotal("cal28full.root");
   pt;
 
   //general styles and canvas
-  gStyle->SetPalette(kGreyScale);
+  //gStyle->SetPalette(kGreyScale);
   TCanvas *cc = new TCanvas("cc","cc",1200,600);
 
 //cut values
