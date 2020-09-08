@@ -4,8 +4,8 @@ cmd=tools/num_to_letter
 run=1; x=$($cmd $run);
 
 
-GammaE=2668
-aligment=2.2
+GammaE=850.0
+aligment=1.8
 
 J1=6
 J2=4
@@ -17,7 +17,7 @@ cat<<EOF
  Gamma-ray energy = ${GammaE}
  Theta    Yexp    Yerr
  -----------------------
-90.0 290 17
+90.0  290 17
 113.0 271 19
 127.0 314 23
 138.0 418 35

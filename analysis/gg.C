@@ -48,7 +48,7 @@ Float_t gates[100][3] =  //e, low, high
 }; //end gates
 Int_t coin = 31;//number of hc's
 Int_t sums = 1; //number of summed spectra
-Int_t hggID =2;//which hgg F/K/Q? 0.25,0.3,0.6,0.81,0.875
+Int_t hggID =1;//which hgg F/K/Q? 0.25,0.3,0.6,0.81,0.875
 //V? 0.35,0.38,0.4,0.5,0.8
 //W 0.8,0.85,0.89,0.895,0.9
 Int_t mlval=38;

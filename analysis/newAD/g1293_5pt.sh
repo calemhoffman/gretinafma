@@ -1,11 +1,11 @@
 #!/bin/bash
-cmd=tools/num_to_letter
+cmd=/Users/calemhoffman/Research/anl/gretinafma/git/gretinafma/analysis/newAD/tools/num_to_letter
 
 run=1; x=$($cmd $run);
 
 
 GammaE=1293
-aligment=2.2
+aligment=1.8
 
 J1=2
 J2=0
@@ -18,11 +18,11 @@ cat<<EOF
  Gamma-ray energy = ${GammaE}
  Theta    Yexp    Yerr
  -----------------------
- 90.000000 920.292 27.471
- 113.000000 971.273 30.555
- 127.000000 999.798 33.726
- 138.000000 1110.161 46.228
- 154.000000 1202.473 39.912
+ 90.0     1147  32
+113.0    1238  38
+123.0    1356  44
+138.0    1438  62
+154.0    1513  49
 
 EOF
 ) > ${GammaE}${x}.0
@@ -44,4 +44,4 @@ EOF
 )>>ad_input.txt
 
 
-xterm -fg black -bg white -fa  faceSize4 -e AD_code/ad &
+xterm -fg black -bg white -fa  faceSize4 -e /Users/calemhoffman/Research/anl/gretinafma/git/gretinafma/analysis/newAD/AD_code/ad

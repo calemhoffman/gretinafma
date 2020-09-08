@@ -1,14 +1,16 @@
 #!/bin/bash
-cmd=tools/num_to_letter
+cmd=/Users/calemhoffman/Research/anl/gretinafma/git/gretinafma/analysis/newAD/tools/num_to_letter
+
 
 run=1; x=$($cmd $run);
 
 
-GammaE=1535
-aligment=1.8
+GammaE=3142
+aligment=1.5
 
-J1=4
-J2=2
+J1=7
+J2=5
+
 
 # counts measured under total projection.
 #-------------------------------------------------------
@@ -17,11 +19,12 @@ cat<<EOF
  Gamma-ray energy = ${GammaE}
  Theta    Yexp    Yerr
  -----------------------
-90.0 660  25
-113.0 713  29
-127.0 704  30
-138.0 797  46
-154.0 820  36
+ 90.000000 3342.980 66.615
+ 113.000000 3581.554 72.939
+ 127.000000 3938.061 82.277
+ 138.000000 4310.567 114.376
+ 154.000000 4884.455 96.741
+
 
 EOF
 ) > ${GammaE}${x}.0
@@ -43,4 +46,4 @@ EOF
 )>>ad_input.txt
 
 
-xterm -fg black -bg white -fa  faceSize4 -e AD_code/ad &
+xterm -fg black -bg white -fa  faceSize4 -e /Users/calemhoffman/Research/anl/gretinafma/git/gretinafma/analysis/newAD/AD_code/ad
