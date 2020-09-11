@@ -4,11 +4,11 @@ cmd=tools/num_to_letter
 run=1; x=$($cmd $run);
 
 
-GammaE=383
+GammaE=788
 aligment=1.8
 
-J1=5
-J2=3
+J1=2
+J2=4
 
 # counts measured under total projection.
 #-------------------------------------------------------
@@ -17,11 +17,9 @@ cat<<EOF
  Gamma-ray energy = ${GammaE}
  Theta    Yexp    Yerr
  -----------------------
-90.0 111  11
-113.0 77  11
-127.0 92  12
-138.0 72  16
-154.0 70  14
+90.0 42   14
+119.0 33  11
+149.0 32  15
 
 EOF
 ) > ${GammaE}${x}.0

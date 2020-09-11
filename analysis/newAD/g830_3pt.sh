@@ -5,7 +5,7 @@ run=1; x=$($cmd $run);
 
 
 GammaE=830
-aligment=2.2
+aligment=1.8
 
 J1=2
 J2=4
