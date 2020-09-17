@@ -5,7 +5,7 @@ run=1; x=$($cmd $run);
 
 
 GammaE=760
-aligment=1.5
+aligment=1.8
 
 J1=4
 J2=6
@@ -17,11 +17,9 @@ cat<<EOF
  Gamma-ray energy = ${GammaE}
  Theta    Yexp    Yerr
  -----------------------
-90.0 32   8
-113.0     19   8
-123.0     35  12
-138.0     37  14
-154.0    11   8
+90.0 60  16
+119.0 55  13
+149.0 43  16
 
 EOF
 ) > ${GammaE}${x}.0

@@ -1,8 +1,8 @@
 {
   TCanvas *cc = new TCanvas("cc","cc",1200,700);
-  TFile f("pyTorchOutNewW.root");
+  //TFile f("pyTorchOutNewW.root");
 //  TFile f("pyTorchOutNewV.root");
-  //TFile f("pyTorchOutAverageFatQb.root");
+  TFile f("pyTorchOutAverageFatQb.root");
 //TFile f("pyTorchOutAverageFatF.root");
 //TFile f("pyTorchOutAverageSkinK.root");
 //TFile f("pyTorchOutAverageFatF_base.root");
@@ -30,7 +30,7 @@ Float_t gates[100][3] =  //e, low, high
 {1020,1014,1023},//13 doubled w/ 1013?cl38 1020 too x
 {1067,1063,1072},//14 not sure about this one x
 {1457,1452,1459},//15 x
-{1512,1505,1516},//16 x
+{1512,1507,1516},//16 x
 {1577,1572,1582},//17 x
 {1609,1605,1614},//18 x
 {1617,1614,1621},//19 x
@@ -48,7 +48,7 @@ Float_t gates[100][3] =  //e, low, high
 }; //end gates
 Int_t coin = 31;//number of hc's
 Int_t sums = 1; //number of summed spectra
-Int_t hggID =1;//which hgg F/K/Q? 0.25,0.3,0.6,0.81,0.875
+Int_t hggID =0;//which hgg F/K/Q? 0.25,0.3,0.6,0.81,0.875
 //V? 0.35,0.38,0.4,0.5,0.8
 //W 0.8,0.85,0.89,0.895,0.9
 Int_t mlval=38;

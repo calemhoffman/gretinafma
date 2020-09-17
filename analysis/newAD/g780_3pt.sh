@@ -1,5 +1,5 @@
 #!/bin/bash
-cmd=tools/num_to_letter
+cmd=/Users/calemhoffman/Research/anl/gretinafma/git/gretinafma/analysis/newAD/tools/num_to_letter
 
 run=1; x=$($cmd $run);
 
@@ -41,4 +41,4 @@ EOF
 )>>ad_input.txt
 
 
-xterm -fg black -bg white -fa  faceSize4 -e AD_code/ad &
+xterm -fg black -bg white -fa  faceSize4 -e /Users/calemhoffman/Research/anl/gretinafma/git/gretinafma/analysis/newAD/AD_code/ad
