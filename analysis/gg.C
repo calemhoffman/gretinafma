@@ -43,15 +43,15 @@ Float_t gates[100][3] =  //e, low, high
 {2385,2378,2392},//26
 {2804,2792,2806},//27
 {720,718,722},//28 doubtful
-{2015,2105,2125},
+{3033,3023,3043},
 {2224,2220,2230}
 }; //end gates
 Int_t coin = 31;//number of hc's
 Int_t sums = 1; //number of summed spectra
-Int_t hggID =0;//which hgg F/K/Q? 0.25,0.3,0.6,0.81,0.875
+Int_t hggID =2;//which hgg F/K/Q? 0.25,0.3,0.6,0.81,0.875
 //V? 0.35,0.38,0.4,0.5,0.8
 //W 0.8,0.85,0.89,0.895,0.9
-Int_t mlval=38;
+Int_t mlval=60;
 
 for (Int_t i=0;i<5;i++) {
   //get hists
@@ -87,6 +87,16 @@ for (Int_t i=0;i<5;i++) {
   hg_px[i]->SetFillStyle(1001);
   hg[i]->SetFillColorAlpha(40+i,0.3); hg_py[i]->SetFillColorAlpha(40+i,0.3);
   hg_px[i]->SetFillColorAlpha(40+i,0.3);
+
+
+  // write_ascii("hc3033");
+  // gROOT->ProcessLine(Form(".! mv hc3033.ascii ascii/hc3033_ml%d_1keV.ascii",mlval));
+  // hc[29]->Rebin();
+  // write_ascii("hc3033");
+  // gROOT->ProcessLine(Form(".! mv hc3033.ascii ascii/hc3033_ml%d_2keV.ascii",mlval));
+  // hc[29]->Rebin();
+  // write_ascii("hc3033");
+  // gROOT->ProcessLine(Form(".! mv hc3033.ascii ascii/hc3033_ml%d_4keV.ascii",mlval));
 
   // for (Int_t j=0;j<coin;j++) {
   //   if (i==hggID) {
@@ -180,9 +190,29 @@ hs[5]->Add(hc[2]); hs[5]->Add(hc[3]);
 //look at 1577,1950,1019,559,1625 for 4437 level (1067 possible too)
 hs[6] = new TH1D("hs6","Sum 1577,1950",4000,0,4000);
 hs[6]->Add(hc[17]); hs[6]->Add(hc[22]);
-hs[8] = new TH1D("hs8","1019,559,1625",4000,0,4000);
-hs[8]->Add(hc[13]);
+hs[6]->Rebin();
+write_ascii(Form("hs6"));
+gROOT->ProcessLine(Form(".! mv hs6.ascii ascii/hs6_ml%d_2keV.ascii",mlval));
+hs[6]->Rebin();
+write_ascii(Form("hs6"));
+gROOT->ProcessLine(Form(".! mv hs6.ascii ascii/hs6_ml%d_4keV.ascii",mlval));
+hs[6]->Rebin();
+write_ascii(Form("hs6"));
+gROOT->ProcessLine(Form(".! mv hs6.ascii ascii/hs6_ml%d_8keV.ascii",mlval));
+
+hs[8] = new TH1D("hs8","1019,559,1625,1067",4000,0,4000);
+hs[8]->Add(hc[13]);hs[8]->Add(hc[14]);
 hs[8]->Add(hc[6]); hs[8]->Add(hc[20]);
+hs[8]->Rebin();
+write_ascii(Form("hs8"));
+gROOT->ProcessLine(Form(".! mv hs8.ascii ascii/hs8_ml%d_2keV.ascii",mlval));
+hs[8]->Rebin();
+write_ascii(Form("hs8"));
+gROOT->ProcessLine(Form(".! mv hs8.ascii ascii/hs8_ml%d_4keV.ascii",mlval));
+hs[8]->Rebin();
+write_ascii(Form("hs8"));
+gROOT->ProcessLine(Form(".! mv hs8.ascii ascii/hs8_ml%d_8keV.ascii",mlval));
+
 hs[10] = new TH1D("hs10","Sum 1577,1950,1019,559,1625",4000,0,4000);
 hs[10]->Add(hc[17]); hs[10]->Add(hc[22]); hs[10]->Add(hc[13]);
 hs[10]->Add(hc[6]); hs[10]->Add(hc[20]);
