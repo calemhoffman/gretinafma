@@ -210,10 +210,10 @@ confusion_matrix=metrics.confusion_matrix(y, scores_round)
 confusion_matrix_norm=metrics.confusion_matrix(y, scores_round,normalize='true')
 print(confusion_matrix)
 print(confusion_matrix_norm)
-display_labels=['0','1']
-disp = ConfusionMatrixDisplay(confusion_matrix_norm, display_labels)
-disp = disp.plot()
-plt.show()
+# ~ display_labels=['0','1']
+# ~ disp = ConfusionMatrixDisplay(confusion_matrix_norm, display_labels)
+# ~ disp = disp.plot()
+# ~ plt.show()
 
 lw = 2
 plt.plot(fpr, tpr, color='darkorange',
