@@ -13,7 +13,7 @@ main (int argc, char **argv){
   if (argc==1) {
     printf("USAGE: For Clebsch_Gordan:       1 j1 j2 j3 m1 m2 m3\n");
     printf("USAGE: For Wigner 6j-symbol:     2 j1 j2 j3 l1 l2 l3\n");
-    printf("USAGE: For angular distribution: 3 ji l1 l2 jf delta sigma/ji\n");
+    printf("USAGE: For angular distribution: 3 ji l1 l2 jf delta sigma\n");
     printf("USAGE: For angular correlations: 4 ji l11 l21 j l12 l22 jf delta1 delta2\n");
     exit(-1);
   }
@@ -33,7 +33,7 @@ main (int argc, char **argv){
 
     value = clebsch_gordan(i1,i2,i3,i4,i5,i6);
     printf("CG: <%i %i %i %i | %i %i> = %g\n",
-                 i1/2,i4/2,i2/2,i5/2,i3/2,i6/2,value); 
+                 i1/2,i4/2,i2/2,i5/2,i3/2,i6/2,value);
   }
   else if(option == 2){
     if(argc!=8){
@@ -49,11 +49,11 @@ main (int argc, char **argv){
 
     value = wigner_6j(i1,i2,i3,i4,i5,i6);
     printf("Wigner 6j: {%i %i %i; %i %i %i} = %g\n",
-                       i1/2,i2/2,i3/2,i4/2,i5/2,i6/2,value); 
+                       i1/2,i2/2,i3/2,i4/2,i5/2,i6/2,value);
   }
   else if(option == 3){
     if(argc!=8){
-      printf("3 ji l1 l2 jf delta sigma/ji\n");
+      printf("3 ji l1 l2 jf delta sigma\n");
       exit(-1);
     }
     fji = strtod(argv[2], NULL);
@@ -62,18 +62,24 @@ main (int argc, char **argv){
     fjf = strtod(argv[5], NULL);
     delta1 = strtod(argv[6], NULL);
     sigma = strtod(argv[7], NULL);
-    sigma*=fji;
+    //sigma*=fji;
     ji=(int)(fji*2);
     faci=((float)ji-fji*2.0);
     jf=(int)(fjf*2);
     facf=((float)jf-fjf*2.0);
     if(faci==0.0 && facf==0.0){
       l11*=2;l21*=2;
-      a0=aK(ji, l11, l21, jf, 0, delta1, sigma);
-      a2=aK(ji, l11, l21, jf, 2, delta1, sigma);
-      a4=aK(ji, l11, l21, jf, 4, delta1, sigma);
-      a6=aK(ji, l11, l21, jf, 6, delta1, sigma);
-      printf("a0=%f; a2=%f; a4=%f; a6=%f\n",a0,a2,a4,a6);
+
+      //printf("a0=%f; a2=%f; a4=%f; a6=%f\n",a0,a2,a4,a6);
+      for (int incr=0;incr<3600;incr++){
+        delta1 = (float)incr*0.1-180.0;
+        a0=aK(ji, l11, l21, jf, 0, delta1, sigma);
+        a2=aK(ji, l11, l21, jf, 2, delta1, sigma);
+        a4=aK(ji, l11, l21, jf, 4, delta1, sigma);
+        a6=aK(ji, l11, l21, jf, 6, delta1, sigma);
+        printf("%f %f %f %f %f %f %d %d %d %d\n",
+        delta1,a0,a2,a4,a6,sigma,ji/2, l11/2, l21/2, jf/2);
+      }
     }
     else{
       printf("%f or %f are not integer or half integer\n",fji,fjf);
@@ -119,13 +125,13 @@ main (int argc, char **argv){
   }
   else{
     printf("\007  ERROR -- choose 1, 2, 3 or 4!\n");
-    printf("USAGE: Clebsch_Gordan:\n");   
+    printf("USAGE: Clebsch_Gordan:\n");
     printf("       1 j1 j2 j3 m1 m2 m3\n");
     printf("USAGE: Wigner 6j-symbol:\n");
     printf("       2 j1 j2 j3 l1 l2 l3\n");
     printf("USAGE: angular distributions (a0, a2, a4, a6):\n");
     printf("       3 ji l1 l2 jf delta sigma/ji\n");
-    printf("USAGE: angular correlations (a0, a2, a4, a6):\n"); 
+    printf("USAGE: angular correlations (a0, a2, a4, a6):\n");
     printf("       4 ji l11 l21 j l12 l22 jf delta1 delta2\n");
     exit(0);
   }

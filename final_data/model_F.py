@@ -1,9 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-# In[ ]:
-
-
 import ROOT
 from sys import exit
 import numpy as np
@@ -23,7 +19,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 import torch.optim as optim
 
-data_in = rnp.root2array("../data/pyTreeAverageFatF_train.root","pytree",
+data_in = rnp.root2array("pyTreeAverageFatF_train.root","pytree",
                          branches=['e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','gid','glabel'])
 assert_equal(data_in.dtype.names, ('e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','gid','glabel'))
 

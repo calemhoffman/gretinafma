@@ -9,7 +9,47 @@ set palette defined ( 0 '#8C510A',\
 		      6 '#35978F',\
 		      7 '#01665E' )
                    # palette
-set palette maxcolors 24
+set palette maxcolors 8
+#show palette gradient
+delta(x) = tan(x/180.0*3.14)
+fa(x) = 1.0/(1.0 +  delta(x)*delta(x))
+fb(x) = (delta(x)*delta(x))/(1.0 + delta(x)*delta(x))
+print(delta(0))
+set multiplot layout 2,1
+set xlabel 'arctan(delta) [degrees]'
+set ylabel 'ratio of L1/L2'
+plot [-90:90] fa(x) w lines, fb(x) w lines
+delta(x) = tan(x/180.0*3.14)
+fa(x) = 1.0/(1.0 +  x*x)
+fb(x) = (x*x)/(1.0 + x*x)
+set xlabel 'delta'
+plot [-2:2] fa(x) w lines, fb(x) w lines
+unset multiplot
+
+
+set pointsize 2
+set obj rect from -0.39-0.18,-0.27 to -0.39+0.18,0.27
+set title "^{38}S - 1609 keV sigma=1.5"
+set xlabel "a2"
+set ylabel "a4"
+set key outside top
+plot [-1:1][-0.5:0.5] '2_0.dat' u 3:(abs($1)==0 ? $4 : 1/0) every :::0::0 w points  tit '2->0',\
+                    '4_2.dat' u 3:(abs($1)==0 ? $4 : 1/0) every :::0::0 w points tit '4->2',\
+                    '6_4.dat' u 3:(abs($1)==0 ? $4 : 1/0) every :::0::0 w points tit '6->4',\
+                    '8_6.dat' u 3:(abs($1)==0 ? $4 : 1/0) every :::0::0 w points tit '8->6'
+
+plot [-1:1][-0.5:0.5] '3_2.dat' u 3:4:($1) every :::0::0 w points lc palette tit '3->2',\
+                    '4_3.dat' u 3:4:($1) every :::0::0 w points lc palette tit '4->3',\
+                    '5_4.dat' u 3:4:($1) every :::0::0 w points lc palette tit '5->4',\
+                    '6_5.dat' u 3:4:($1) every :::0::0 w points lc palette tit '6->5'
+
+plot [-1:1][-0.5:0.5] '2_2.dat' u 3:(abs($1)<180 ? $4 : 1/0):($1) every :::0::0 w points lc palette tit '2->2',\
+                    '3_3.dat' u 3:4:($1) every :::0::0 w points lc palette tit '3->3',\
+                    '4_4.dat' u 3:4:($1) every :::0::0 w points lc palette tit '4->4',\
+                    '5_5.dat' u 3:4:($1) every :::0::0 w points lc palette tit '5->5'
+
+plot [-1:1][-0.5:0.5] '4_4.dat' u 3:(abs($1)<30 ? $4 : 1/0):($1) every :::0::0 w points lc palette tit '4->4',\
+                    '5_4.dat' u 3:(abs($1)<30 ? $4 : 1/0):($1) every :::0::0 w points lc palette tit '5->4'
 
 set title "^{38}Cl - 171,292,638,755 keV"
 set xlabel "a2"
