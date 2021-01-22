@@ -29,59 +29,73 @@
   Float_t trans=0.25;
   //Float_t mlcut[5]={0.0,0.3,0.5,0.8,1.0};
   Float_t mlcut[5]={0.0,0.25,0.6,0.8,1.0};
+  Float_t m_size=0.3;
 
   TH2F *he1xc = new TH2F("he1xc","; x [arb. units]; E_{1} [arb. units]",250,-1000,1000,400,0,4000);
   ct->Draw("e[0]:x>>he1xc","Entry$<1e9&&e[1]>200&&dtime>70&&dtime<85&&cut_lr_fig","col");
   he1xc->SetStats(0);he1xc->GetZaxis()->SetRangeUser(1,1e2);
   TH2F *he1xp0 = new TH2F("he1xp0","; x [arb. units]; E_{1} [arb. units]",250,-1000,1000,400,0,4000);
   pt->Draw("py_e[0]:py_x>>he1xp0",Form("Entry$<1e5&&py_mlreturn>%f&&py_mlreturn<=%f",mlcut[0],mlcut[1]),"same");
-  he1xp0->SetStats(0); he1xp0->SetMarkerStyle(20);
+  he1xp0->SetStats(0); he1xp0->SetMarkerStyle(20); he1xp0->SetMarkerSize(m_size);
   he1xp0->SetMarkerColorAlpha(ci_gre, trans);
   TH2F *he1xp1 = new TH2F("he1xp1","; x [arb. units]; E_{1} [arb. units]",250,-1000,1000,400,0,4000);
   pt->Draw("py_e[0]:py_x>>he1xp1",Form("Entry$<1e5&&py_mlreturn>%f",mlcut[1]),"same");
-  he1xp1->SetStats(0); he1xp1->SetMarkerStyle(20);
+  he1xp1->SetStats(0); he1xp1->SetMarkerStyle(20); he1xp1->SetMarkerSize(m_size);
   he1xp1->SetMarkerColorAlpha(ci_yel, trans);
   TH2F *he1xp2 = new TH2F("he1xp2","; x [arb. units]; E_{1} [arb. units]",250,-1000,1000,400,0,4000);
   pt->Draw("py_e[0]:py_x>>he1xp2",Form("Entry$<1e5&&py_mlreturn>%f",mlcut[2]),"same");
-  he1xp2->SetStats(0); he1xp2->SetMarkerStyle(20);
+  he1xp2->SetStats(0); he1xp2->SetMarkerStyle(20); he1xp2->SetMarkerSize(m_size);
   he1xp2->SetMarkerColorAlpha(ci_blu, trans);
   TH2F *he1xp3 = new TH2F("he1xp3","; x [arb. units]; E_{1} [arb. units]",250,-1000,1000,400,0,4000);
   pt->Draw("py_e[0]:py_x>>he1xp3",Form("Entry$<1e5&&py_mlreturn>%f",mlcut[3]),"same");
-  he1xp3->SetStats(0); he1xp3->SetMarkerStyle(20);
+  he1xp3->SetStats(0); he1xp3->SetMarkerStyle(20); he1xp3->SetMarkerSize(m_size);
   he1xp3->SetMarkerColorAlpha(ci_pur, trans);
 
-
-  // TH2F *hmxc = new TH2F("hmxc","; x; m",600,-1000,1000,400,0,5000);
-  // ct->Draw("m2:x>>hmxc","Entry$<1e9&&e[1]>200&&dtime>70&&dtime<85&&cut_lr_fig","col");
-  // hmxc->SetStats(0);hmxc->GetZaxis()->SetRangeUser(1,1e2);
-  // TH2F *hmxp0 = new TH2F("hmxp0","; x; m",600,-1000,1000,400,0,5000);
-  // pt->Draw("py_m:py_x>>hmxp0",Form("Entry$<1e6&&py_mlreturn>%f",mlcut[0]),"same");
-  // hmxp0->SetStats(0); hmxp0->SetMarkerStyle(20);
-  // hmxp0->SetMarkerColorAlpha(ci_gre, trans);
-  // TH2F *hmxp1 = new TH2F("hmxp1","; x; m",600,-1000,1000,400,0,5000);
-  // pt->Draw("py_m:py_x>>hmxp1",Form("Entry$<1e5&&py_mlreturn>%f",mlcut[1]),"same");
-  // hmxp1->SetStats(0); hmxp1->SetMarkerStyle(20);
-  // hmxp1->SetMarkerColorAlpha(ci_yel, trans);
-  // TH2F *hmxp2 = new TH2F("hmxp2","; x; m",600,-1000,1000,400,0,5000);
-  // pt->Draw("py_m:py_x>>hmxp2",Form("Entry$<1e5&&py_mlreturn>%f",mlcut[2]),"same");
-  // hmxp2->SetStats(0); hmxp2->SetMarkerStyle(20);
-  // hmxp2->SetMarkerColorAlpha(ci_blu, trans);
-  // TH2F *hmxp3 = new TH2F("hmxp3","; x; m",600,-1000,1000,400,0,5000);
-  // pt->Draw("py_m:py_x>>hmxp3",Form("Entry$<1e5&&py_mlreturn>%f",mlcut[3]),"same");
-  // hmxp3->SetStats(0); hmxp3->SetMarkerStyle(20);
-  // hmxp3->SetMarkerColorAlpha(ci_pur, trans);
+  TH2F *hmxc = new TH2F("hmxc","; x; m",600,-1000,1000,400,0,5000);
+  ct->Draw("m2:x>>hmxc","Entry$<1e9&&e[1]>200&&dtime>70&&dtime<85&&cut_lr_fig","col");
+  hmxc->SetStats(0);hmxc->GetZaxis()->SetRangeUser(1,1e2);
+  TH2F *hmxp0 = new TH2F("hmxp0","; x; m",600,-1000,1000,400,0,5000);
+  pt->Draw("py_m:py_x>>hmxp0",Form("py_e[1]>200&&Entry$<5e3&&py_mlreturn>%f",mlcut[0]),"same");
+  hmxp0->SetStats(0); hmxp0->SetMarkerStyle(20); hmxp0->SetMarkerSize(m_size);
+  hmxp0->SetMarkerColorAlpha(ci_gre, trans);
+  TH2F *hmxp1 = new TH2F("hmxp1","; x; m",600,-1000,1000,400,0,5000);
+  pt->Draw("py_m:py_x>>hmxp1",Form("Entry$<1e5&&py_mlreturn>%f",mlcut[1]),"same");
+  hmxp1->SetStats(0); hmxp1->SetMarkerStyle(20);hmxp1->SetMarkerSize(m_size);
+  hmxp1->SetMarkerColorAlpha(ci_yel, trans);
+  TH2F *hmxp2 = new TH2F("hmxp2","; x; m",600,-1000,1000,400,0,5000);
+  pt->Draw("py_m:py_x>>hmxp2",Form("Entry$<1e5&&py_mlreturn>%f",mlcut[2]),"same");
+  hmxp2->SetStats(0); hmxp2->SetMarkerStyle(20); hmxp2->SetMarkerSize(m_size);
+  hmxp2->SetMarkerColorAlpha(ci_blu, trans);
+  TH2F *hmxp3 = new TH2F("hmxp3","; x; m",600,-1000,1000,400,0,5000);
+  pt->Draw("py_m:py_x>>hmxp3",Form("Entry$<1e5&&py_mlreturn>%f",mlcut[3]),"same");
+  hmxp3->SetStats(0); hmxp3->SetMarkerStyle(20); hmxp3->SetMarkerSize(m_size);
+  hmxp3->SetMarkerColorAlpha(ci_pur, trans);
 
 //redraws and cleanup
 cc->Clear(); cc->Divide(2,1);
-// cc->cd(1);
-// hmxc->Rebin2D(); hmxc->SetMinimum(1); hmxc->SetMaximum(5e3);
-// hmxc->Draw("col");
-// // cut_mx_good->SetLineColor(kGray+1); cut_mx_fig->SetLineWidth(2);
-// // cut_mx_good->Draw("same");
-//
-// cc->cd(2);
-// hmxc->Draw("col");
-// hmxp0->Draw("same");
+cc->cd(1); gPad->SetLogz();
+// hmxc->Rebin2D();
+hmxc->SetMinimum(1); hmxc->SetMaximum(1e3);
+hmxc->GetXaxis()->SetLabelSize(0);
+hmxc->GetXaxis()->SetTickLength(0);
+hmxc->GetYaxis()->SetLabelSize(0);
+hmxc->GetYaxis()->SetTickLength(0);
+// he1e3c->SetXTitle("E_{2} [arb. units]")
+// he1e3c->SetYTitle("E_{1} [arb. units]")
+hmxc->GetXaxis()->CenterTitle();
+hmxc->GetYaxis()->CenterTitle();
+
+hmxc->Draw("col");
+// cut_mx_good->SetLineColor(kBlue); cut_mx_good->SetLineWidth(2);
+// cut_mx_good->Draw("same");
+
+cc->cd(2); gPad->SetLogz();
+hmxc->Draw("col");
+// hmxp0->SetMinimum(1);hmxp0->SetMaximum(100);
+// hmxp1->SetMinimum(1);hmxp1->SetMaximum(100);
+// hmxp2->SetMinimum(1);hmxp2->SetMaximum(100);
+// hmxp3->SetMinimum(1);hmxp3->SetMaximum(100);
+hmxp0->Draw("same");
 // hmxp1->Draw("same"); hmxp2->Draw("same"); hmxp3->Draw("same");
 
 TCanvas *cc2 = new TCanvas("cc2","cc2",1200,600);
@@ -106,13 +120,13 @@ he1xc->Draw("col");
 // cut_e0x_s38->Draw("same");
 
 cc2->cd(2);gPad->SetLogz();
-he1xp0->SetMinimum(1);he1xp0->SetMaximum(100);
-he1xp1->SetMinimum(1);he1xp1->SetMaximum(100);
-he1xp2->SetMinimum(1);he1xp2->SetMaximum(100);
-he1xp3->SetMinimum(1);he1xp3->SetMaximum(100);
+// he1xp0->SetMinimum(1);he1xp0->SetMaximum(100);
+// he1xp1->SetMinimum(1);he1xp1->SetMaximum(100);
+// he1xp2->SetMinimum(1);he1xp2->SetMaximum(100);
+// he1xp3->SetMinimum(1);he1xp3->SetMaximum(100);
 he1xc->Draw("col");
 he1xp0->Draw("same");
-he1xp1->Draw("same");
-he1xp2->Draw("same");
-he1xp3->Draw("same");
+// he1xp1->Draw("same");
+// he1xp2->Draw("same");
+// he1xp3->Draw("same");
 }

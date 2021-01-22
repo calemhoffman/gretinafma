@@ -36,8 +36,9 @@ corr_matrix = corr_matrix.corr(method="pearson")
 sns.heatmap(corr_matrix, vmin=-1., vmax=1.,
 annot=True,fmt='.2f',cmap="YlGnBu",cbar=True,linewidths=0.5)
 plt.title("pearson correlation")
-plt.savefig("output.png")
+plt.savefig("output.pdf")
 
+#use various methods to determine key inputs
 X = df.drop(["ge","glabel","gid"], axis=1).values
 y = df["gid"].values
 feature_names = df.drop(["ge","glabel","gid"], axis=1).columns

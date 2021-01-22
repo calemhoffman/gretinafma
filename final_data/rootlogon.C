@@ -42,4 +42,7 @@
   gROOT->ProcessLine(".x cuts/cut_e1e2_s38.C"); cut_e1e2_s38;
   gROOT->ProcessLine(".x cuts/cut_e0x_s38.C"); cut_e0x_s38;
   //gROOT->ProcessLine(".x cuts/cut_dtge_Ave.C"); cut_dtge_Ave;
+  gROOT->ProcessLine(".x cuts/cut_mx_good.C"); cut_mx_good;
+  gROOT->ProcessLine(".x cuts/cut_lr_fig.C"); cut_lr_fig;
+
 }

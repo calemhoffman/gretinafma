@@ -21,14 +21,21 @@ import torch.optim as optim
 #look at data loaded
 import matplotlib.pyplot as plt
 import plotly.express as px
-
-data_in = rnp.root2array("pyTreeAverageFatQ.root","pytree",
-                         branches=['e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','ga','gid','glabel',
-                                  'cre','ix','iy','iz'])
-assert_equal(data_in.dtype.names, ('e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','ga','gid','glabel',
-                                  'cre','ix','iy','iz'))
+data_type=1 #1 is old (F), 0 in new (Q)
+if (data_type==1):
+    data_in = rnp.root2array("pyTreeAverageFatF_train.root","pytree",
+                             branches=['e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','gid','glabel'])
+    assert_equal(data_in.dtype.names, ('e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','gid','glabel'))
+    num_data_columns=14.0
+else:
+    data_in = rnp.root2array("pyTreeAverageFatQ.root","pytree",
+                             branches=['e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','ga','gid','glabel',
+                                      'cre','ix','iy','iz'])
+    assert_equal(data_in.dtype.names, ('e0','e1','e2','e3','e4','e5','e6','x','m','dt','gmult','ge','ga','gid','glabel',
+                                      'cre','ix','iy','iz'))
+    num_data_columns=19.0
 #print(data_in.dtype)
-num_data_columns=19.0
+
 #convert to pandas
 df = pd.DataFrame(data=data_in)
 #print(df)
@@ -98,7 +105,85 @@ df_F.columns = ["A"]
 result_df = pd.concat([df, df_F], axis=1)
 print(result_df)
 
-# plt.figure(figsize=(4,2))
-# fig = px.histogram(result_df, x="ge",nbins=8, color="glabel")
-# fig.update_xaxes(range=[0, 1])
-# fig.show()
+mlr = []
+tp = []
+fp = []
+tn = []
+fn = []
+tp_tot = len(result_df[(result_df['gid']==1)])
+tn_tot = len(result_df[(result_df['gid']==0)])
+print('tp_tot:%d tn_tot:%d' % (tp_tot,tn_tot))
+for cut_val in range(20):
+    cut_low=cut_val*0.05
+    mlr.append(cut_low)
+    tp.append(len(result_df[(result_df['A'] > cut_low) & (result_df['gid']==1)])/tp_tot)
+    fn.append(len(result_df[(result_df['A'] > cut_low) & (result_df['gid']==0)])/tn_tot)
+    tn.append(len(result_df[(result_df['A'] < cut_low) & (result_df['gid']==0)])/tn_tot)
+    fp.append(len(result_df[(result_df['A'] < cut_low) & (result_df['gid']==1)])/tp_tot)
+
+df_cm=pd.DataFrame(mlr, columns=['mlr'])
+df_tp=pd.DataFrame(tp, columns=['tp'])
+df_fp=pd.DataFrame(fp, columns=['fp'])
+df_tn=pd.DataFrame(tn, columns=['tn'])
+df_fn=pd.DataFrame(fn, columns=['fn'])
+
+#df_cm=pd.concat([df_cm, df_mlr], axis=1)
+df_cm=pd.concat([df_cm, df_tp], axis=1)
+df_cm=pd.concat([df_cm, df_fp], axis=1)
+df_cm=pd.concat([df_cm, df_tn], axis=1)
+df_cm=pd.concat([df_cm, df_fn], axis=1)
+#print(df_cm)
+
+fig = px.scatter(df_cm, x="fp",y="tn",color="mlr",opacity=1)
+#fig = px.line(df_cm, x="fp",y="tn")
+fig.show()
+
+from sklearn import metrics
+from sklearn.metrics import ConfusionMatrixDisplay
+#fpr, tpr, thresholds = metrics.roc_curve(y, scores, pos_label=2)
+#y = true labels so for me it is gid [0,1] so no pos_label needed
+#scores are output from model
+scores=result_df['A'].values
+y=result_df['gid'].values
+#print(y)
+#print(scores)
+fpr, tpr, thresholds = metrics.roc_curve(y, scores)
+roc_auc = metrics.auc(fpr, tpr)
+print(metrics.roc_auc_score(y, scores))
+
+#metrics that need binary so using >0.5
+print(scores)
+scores_round=np.round_(scores,0)
+print(scores_round)
+print(metrics.classification_report(y, scores_round))
+confusion_matrix=metrics.confusion_matrix(y, scores_round)
+confusion_matrix_norm=metrics.confusion_matrix(y, scores_round,normalize='true')
+print(confusion_matrix)
+print(confusion_matrix_norm)
+disp = ConfusionMatrixDisplay(confusion_matrix_norm)
+disp = disp.plot()
+plt.show()
+
+lw = 2
+plt.plot(fpr, tpr, color='darkorange', marker='.',
+         lw=lw, label='ROC curve (area = %0.2f)' % roc_auc)
+plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('')
+plt.legend(loc="lower right")
+plt.show()
+
+
+# plot the roc curve for the model
+# plt.plot(ns_fpr, ns_tpr, linestyle='--', label='No Skill')
+plt.plot(fpr, tpr, marker='.', label='Logistic')
+# axis labels
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+# show the legend
+plt.legend()
+# show the plot
+plt.show()

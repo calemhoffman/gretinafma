@@ -99,12 +99,12 @@ he1e3c->Draw("col");
 cc->Update();
 cc->cd(2);gPad->SetLogz();
 //TCanvas *cc1 = new TCanvas("cc1","cc1",600,600);
-he1e3p0->SetMinimum(1);
-he1e3p1->SetMinimum(1);
-he1e3p2->SetMinimum(1);
-he1e3p3->SetMinimum(1);
+// he1e3p0->SetMinimum(1);
+// he1e3p1->SetMinimum(1);
+// he1e3p2->SetMinimum(1);
+// he1e3p3->SetMinimum(1);
 he1e3c->Draw("col");he1e3p0->Draw("same");
-he1e3p1->Draw("same"); he1e3p2->Draw("same"); he1e3p3->Draw("same");
+//he1e3p1->Draw("same"); he1e3p2->Draw("same"); he1e3p3->Draw("same");
 cc->Update();
 
 
@@ -134,12 +134,12 @@ he1e2c->Draw("col");
 cc2->Update();
 cc2->cd(2);gPad->SetLogz();
 //TCanvas *cc1 = new TCanvas("cc1","cc1",600,600);
-he1e2p0->SetMinimum(1);
-he1e2p1->SetMinimum(1);
-he1e2p2->SetMinimum(1);
-he1e2p3->SetMinimum(1);
+// he1e2p0->SetMinimum(1);
+// he1e2p1->SetMinimum(1);
+// he1e2p2->SetMinimum(1);
+// he1e2p3->SetMinimum(1);
 he1e2c->Draw("col");he1e2p0->Draw("same");
-he1e2p1->Draw("same"); he1e2p2->Draw("same"); he1e2p3->Draw("same");
+//he1e2p1->Draw("same"); he1e2p2->Draw("same"); he1e2p3->Draw("same");
 cc2->Update();
 //
 // TCanvas *cc3 = new TCanvas("cc3","cc3",600,600);
